@@ -1,9 +1,7 @@
-import numpy as np
-from .utils import *
+from src.openne.models.utils import *
 from . import gcnModel
 from ..models import *
 import time
-import scipy.sparse as sp
 import torch
 
 

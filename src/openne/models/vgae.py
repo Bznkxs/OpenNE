@@ -1,7 +1,5 @@
-import numpy as np
-from .gcn.utils import *
-from .gcn.layers import GraphConvolution
-from .gcn.layers import *
+from .layers import *
+from .utils import *
 from .models import *
 import time
 import scipy.sparse as sp
