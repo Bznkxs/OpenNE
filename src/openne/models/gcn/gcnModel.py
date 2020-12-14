@@ -1,4 +1,4 @@
-from .layers import *
+from ..layers import *
 from .metrics import *
 import torch.nn.functional as F
 

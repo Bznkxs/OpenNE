@@ -1,6 +1,5 @@
-import numpy as np
-from .gcn.utils import *
-from .gcn.layers import GraphConvolution
+from .utils import *
+from .layers import GraphConvolution
 from .models import *
 import time
 import scipy.sparse as sp
@@ -110,10 +109,9 @@ class GAE(ModelWithEmbeddings):
                 self.labels[node_id, l_id] = 1
 
     def loss(self, output, adj_label, pos_weight, norm):
-        cost = 0.
 
-        cost += norm * F.binary_cross_entropy_with_logits(torch.mm(output, output.t()), adj_label,
-                                                          pos_weight=pos_weight)
+        cost = norm * F.binary_cross_entropy_with_logits(torch.mm(output, output.t()), adj_label,
+                                                         pos_weight=pos_weight)
 
         return cost
 
@@ -160,31 +158,32 @@ class GAE(ModelWithEmbeddings):
             self.register_buffer("support_{0}".format(n), i)
         # print(self.support)
 
-class GraphConvolution(nn.Module):
-    """
-    Simple GCN layer, similar to https://arxiv.org/abs/1609.02907
-    """
 
-    def __init__(self, in_features, out_features, dropout=0., act=F.relu):
-        super(GraphConvolution, self).__init__()
-        self.in_features = in_features
-        self.out_features = out_features
-        self.dropout = dropout
-        self.act = act
-        self.weight = nn.Parameter(torch.zeros(in_features, out_features), requires_grad=True)
-        self.reset_parameters()
-
-    def reset_parameters(self):
-        torch.nn.init.xavier_uniform_(self.weight)
-
-    def forward(self, input, adj):
-        input = F.dropout(input, self.dropout, self.training)
-        support = torch.mm(input, self.weight)
-        output = torch.spmm(adj, support)
-        output = self.act(output)
-        return output
-
-    def __repr__(self):
-        return self.__class__.__name__ + ' (' \
-               + str(self.in_features) + ' -> ' \
-               + str(self.out_features) + ')'
+# class GraphConvolution(nn.Module):
+#     """
+#     Simple GCN layer, similar to https://arxiv.org/abs/1609.02907
+#     """
+#
+#     def __init__(self, in_features, out_features, dropout=0., act=F.relu):
+#         super(GraphConvolution, self).__init__()
+#         self.in_features = in_features
+#         self.out_features = out_features
+#         self.dropout = dropout
+#         self.act = act
+#         self.weight = nn.Parameter(torch.zeros(in_features, out_features), requires_grad=True)
+#         self.reset_parameters()
+#
+#     def reset_parameters(self):
+#         torch.nn.init.xavier_uniform_(self.weight)
+#
+#     def forward(self, input, adj):
+#         input = F.dropout(input, self.dropout, self.training)
+#         support = torch.mm(input, self.weight)
+#         output = torch.spmm(adj, support)
+#         output = self.act(output)
+#         return output
+#
+#     def __repr__(self):
+#         return self.__class__.__name__ + ' (' \
+#                + str(self.in_features) + ' -> ' \
+#                + str(self.out_features) + ')'

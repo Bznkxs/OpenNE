@@ -1,15 +1,8 @@
-import numpy as np
-from .gcn.utils import *
-from .models import *
-from .gcn.inits import *
 from .ss_encoder import Encoder
 from .ss_decoder import Decoder
 from .ss_sampler import BaseSampler
-import time
-import scipy.sparse as sp
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 class SSModel(nn.Module):

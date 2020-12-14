@@ -1,13 +1,10 @@
-import numpy as np
-from .gcn.utils import *
+from .utils import *
 from .models import *
 from .ss_model import SSModel
 import time
 import scipy.sparse as sp
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
-
 
 
 class SS_GAE(ModelWithEmbeddings):
@@ -35,7 +32,7 @@ class SS_GAE(ModelWithEmbeddings):
                              "clf_ratio": (0, 1),
                              "max_degree": (0, np.inf)})
         return kwargs
-    
+
     @classmethod
     def check_graphtype(cls, graphtype, **kwargs):
         if not graphtype.attributed():
@@ -64,29 +61,24 @@ class SS_GAE(ModelWithEmbeddings):
         self.enc = enc
         self.dec = dec
         self.sampler = sampler
-        
-        
+
         self.preprocess_data(graph)
         # Create models
         input_dim = self.features.shape[1] if not self.sparse else self.features[2][1]
         feature_shape = self.features.shape if not self.sparse else self.features[0].shape[0]
-        
-        
 
-        self.dimensions = [input_dim]+self.hiddens+[self.output_dim]
-        self.dec_dims = [self.dimensions[-1]*2, 1]
+        self.dimensions = [input_dim] + self.hiddens + [self.output_dim]
+        self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
-                        enc_dims=self.dimensions, adj=self.support[0], features=self.features, batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
+                             enc_dims=self.dimensions, adj=self.support[0], features=self.features,
+                             batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
-        
-        
-        
 
     def train_model(self, graph, **kwargs):
         # Train models
-        output, train_loss,  __ = self.evaluate()
-        self.debug_info =str({"train_loss": "{:.5f}".format(train_loss)})
-        
+        output, train_loss, __ = self.evaluate()
+        self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
+
     def build_label(self, graph):
         g = graph.G
         look_up = graph.look_up_dict
@@ -106,21 +98,22 @@ class SS_GAE(ModelWithEmbeddings):
             for ll in l:
                 l_id = label_dict[ll]
                 self.labels[node_id][l_id] = 1
-    
-    def loss(self, output, adj_label):
-        cost = 0.
-        cost += F.binary_cross_entropy_with_logits(output, adj_label)
-        
-        return cost 
 
-    # Define models evaluation function
+    def loss(self, output, adj_label):
+        cost = F.binary_cross_entropy_with_logits(output, adj_label)
+
+        return cost
+
+        # Define models evaluation function
+
     def evaluate(self, train=True):
         t_test = time.time()
-        #st, ed = 0, self.batch_size
-        #neg = self.gen_neg(self.x.size()[0], self.nb_nodes)
-        #neg_inds = self.features[torch.tensor(neg)]
+        # st, ed = 0, self.batch_size
+        # neg = self.gen_neg(self.x.size()[0], self.nb_nodes)
+        # neg_inds = self.features[torch.tensor(neg)]
         cur_loss = 0.
         batch_num = 0.
+        output = None
         for batch in self.model.sampler:
             x, pos, neg = zip(*batch)
             self.optimizer.zero_grad()
@@ -128,7 +121,7 @@ class SS_GAE(ModelWithEmbeddings):
             bpos = torch.tensor(list(pos))
             bneg = torch.tensor(list(neg))
             lbl_1 = torch.ones(1, len(x))
-            lbl = torch.cat((lbl_1, 1-lbl_1), 1).to(self._device)
+            lbl = torch.cat((lbl_1, 1 - lbl_1), 1).to(self._device)
             batch_num += 1
             output = self.model(bx, bpos, bneg)
             loss = self.loss(output, lbl)
@@ -137,7 +130,7 @@ class SS_GAE(ModelWithEmbeddings):
                 self.optimizer.step()
 
             cur_loss += loss.item()
-        
+
         return output, cur_loss / batch_num, (time.time() - t_test)
 
     def _get_embeddings(self, graph, **kwargs):

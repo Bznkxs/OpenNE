@@ -90,3 +90,12 @@ def chebyshev_polynomials(adj, k):
         t_k.append(chebyshev_recurrence(t_k[-1], t_k[-2], scaled_laplacian))
 
     return [scipy_coo_to_torch_sparse(st.tocoo()) for st in t_k]
+
+def sparse_dropout(x, drop_prob, noise_shape):
+    """Dropout for sparse tensors."""
+    random_tensor = drop_prob
+    random_tensor += torch.rand(noise_shape)
+    dropout_mask = torch.floor(random_tensor).type(torch.bool)
+    i = x.indices()[:, dropout_mask]
+    preout = torch.sparse_coo_tensor(i, values=x.values()[dropout_mask], size=x.shape, dtype=torch.float32, device=x.device)
+    return preout * (1./drop_prob)
