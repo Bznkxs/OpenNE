@@ -5,8 +5,8 @@ import math
 
 def glorot(shape):
     """Glorot & Bengio (AISTATS 2010) init."""
-    init_range = math.sqrt(6.0/(shape[0]+shape[1]))
-    initial = torch.rand(shape)*(2*init_range)-init_range
+    initial = torch.zeros(shape, dtype=torch.float32)
+    torch.nn.init.xavier_normal_(initial)
     return torch.nn.Parameter(initial)
 
 
