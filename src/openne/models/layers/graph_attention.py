@@ -1,8 +1,6 @@
 from .layers import Layer
-from ..inits import *
+from ..inits import zeros, glorot
 from ..utils import *
-from ...utils import check_range
-from torch.nn.parameter import Parameter
 import torch
 
 
@@ -36,22 +34,23 @@ class GAT(Layer):
 
         for head in range(self.attn_heads):
             # weights
-            weight = Parameter(torch.zeros(input_dim, output_dim), requires_grad=True)
-            torch.nn.init.xavier_uniform_(weight)
-            self.weights.append(weight)
+            self.weights.append(glorot([input_dim, output_dim]))
 
             # biases
             if self.bias:
-                self.biases.append(Parameter(torch.zeros(output_dim, 1), requires_grad=True))
+                self.biases.append(zeros([output_dim, 1]))
 
             # attention kernels: [k_self, k_neigh]
             self.attn_kernels.append([
-                Parameter(torch.zeros(output_dim, 1), requires_grad=True),
-                Parameter(torch.zeros(output_dim, 1), requires_grad=True)
+                zeros([output_dim, 1]),
+                zeros([output_dim, 1])
             ])
 
-    def forward(self, input):
-        x = input  # input node features (n * input_dim)
+        if self.logging:
+            self._log_vars()
+
+    def forward(self, inputs):
+        x = inputs  # input node features (n * input_dim)
         if self.training:
             # dropout
             if self.sparse_inputs:
