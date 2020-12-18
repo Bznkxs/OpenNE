@@ -37,12 +37,7 @@ class Encoder(nn.Module):
 layer_dict = {
     "linear": layers.Linear,
     "gcn": layers.GraphConvolution,
-    "gat": layers.GAT
+    "gat": layers.GAT,
+    "gin": layers.GIN
 }
 
-'''
-TO DO:
-    ● GCN
-    ● GAT
-    ● GIN
-'''
