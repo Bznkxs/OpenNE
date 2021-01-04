@@ -1,4 +1,4 @@
-from .ss_encoder import Linear
+from .layers import Linear
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -22,7 +22,7 @@ class InnerProd(nn.Module):
         self.dim = dim
 
     def forward(self, x, y):
-        score = torch.sum((x * y), dim=1)
+        score = torch.sum((x * y), dim=-1)
         return score
 
 

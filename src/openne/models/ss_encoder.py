@@ -1,9 +1,10 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from . import layers
 
 class Encoder(nn.Module):
-    def __init__(self, name, dimensions, adj, features, dropout):
+    def __init__(self, name, dimensions, adj, features, dropout, readout):
         super(Encoder, self).__init__()
         self.dimensions = dimensions
         self.adj = adj
@@ -12,6 +13,7 @@ class Encoder(nn.Module):
         self.nnodes = self.features.size()[0]
         self.sigm = nn.Sigmoid()
         self.name = name
+        self.readout = readout
         if name == 'none':
             self.embedding = nn.Embedding(self.nnodes, self.dimensions[-1])
         else:
@@ -26,10 +28,19 @@ class Encoder(nn.Module):
             return self.features[x]
     
     def forward(self, x):
+        """
+        special input: graph
+        """
+        isgraph = False
+        if x == 'graph':
+            isgraph = True
+            x = torch.arange(self.nnodes)
         hx = self.embed(x)
         if self.name != 'none':
             for layer in self.layers:
                 hx = layer(hx)
+        if isgraph:
+            hx = self.readout(hx)
         return hx
 
 "Layers"

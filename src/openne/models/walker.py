@@ -6,6 +6,7 @@ import math
 import multiprocessing
 import networkx as nx
 from time import time
+from .utils import alias_draw, alias_setup
 import os
 
 
@@ -176,47 +177,3 @@ class Walker(BasicWalker):
 
 
 
-def alias_setup(probs):
-    """
-    Compute utility lists for non-uniform sampling from discrete distributions.
-    Refer to https://hips.seas.harvard.edu/blog/2013/03/03/the-alias-method-efficient-sampling-with-many-discrete-outcomes/
-    for details
-    """
-    K = len(probs)
-    q = [0 for i in range(K)] # torch.zeros(K, dtype=torch.float32) # np.zeros(K, dtype=np.float32)
-    J = [0.0 for i in range(K)] # np.zeros(K, dtype=np.int32)
-
-    smaller = []
-    larger = []
-    for kk, prob in enumerate(probs):
-        q[kk] = K*prob
-        if q[kk] < 1.0:
-            smaller.append(kk)
-        else:
-            larger.append(kk)
-
-    while len(smaller) > 0 and len(larger) > 0:
-        small = smaller.pop()
-        large = larger.pop()
-
-        J[small] = large
-        q[large] = q[large] + q[small] - 1.0
-        if q[large] < 1.0:
-            smaller.append(large)
-        else:
-            larger.append(large)
-
-    return J, q
-
-
-def alias_draw(J, q):
-    """
-    Draw sample from a non-uniform discrete distribution using alias sampling.
-    """
-    K = len(J)
-    kk = int(math.floor(random.random()*K))
-
-    if random.random() < q[kk]:
-        return kk
-    else:
-        return J[kk]
