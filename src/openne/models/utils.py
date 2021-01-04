@@ -5,6 +5,8 @@ import scipy.sparse as sp
 from scipy.sparse.linalg.eigen.arpack import eigsh
 import sys
 import torch
+import math
+import random
 
 def parse_index_file(filename):
     """Parse index file."""
@@ -99,3 +101,63 @@ def sparse_dropout(x, drop_prob, noise_shape):
     i = x.indices()[:, dropout_mask]
     preout = torch.sparse_coo_tensor(i, values=x.values()[dropout_mask], size=x.shape, dtype=torch.float32, device=x.device)
     return preout * (1./drop_prob)
+
+def alias_setup(probs):
+    """
+    Compute utility lists for non-uniform sampling from discrete distributions.
+    Refer to https://hips.seas.harvard.edu/blog/2013/03/03/the-alias-method-efficient-sampling-with-many-discrete-outcomes/
+    for details
+    """
+    K = len(probs)
+    q = [0 for i in range(K)] # torch.zeros(K, dtype=torch.float32) # np.zeros(K, dtype=np.float32)
+    J = [0.0 for i in range(K)] # np.zeros(K, dtype=np.int32)
+
+    smaller = []
+    larger = []
+    for kk, prob in enumerate(probs):
+        q[kk] = K*prob
+        if q[kk] < 1.0:
+            smaller.append(kk)
+        else:
+            larger.append(kk)
+
+    while len(smaller) > 0 and len(larger) > 0:
+        small = smaller.pop()
+        large = larger.pop()
+
+        J[small] = large
+        q[large] = q[large] + q[small] - 1.0
+        if q[large] < 1.0:
+            smaller.append(large)
+        else:
+            larger.append(large)
+
+    return J, q
+
+# from https://github.com/Stonesjtu/Pytorch-NCE
+def alias_draw(J, q, *size):
+    """
+    Draw sample from a non-uniform discrete distribution using alias sampling.
+    """
+    if len(size) == 0:
+        K = len(J)
+        kk = int(math.floor(random.random()*K))
+
+        if random.random() < q[kk]:
+            return kk
+        else:
+            return J[kk]
+
+    q = torch.tensor(q)
+    J = torch.tensor(J)
+    max_value = q.size()[0]
+
+    kk = q.new(*size).random_(0, max_value).long().view(-1)
+    prob = J[kk]
+    alias = q[kk]
+    # b is whether a random number is greater than q
+    b = torch.bernoulli(prob).long()
+    oq = kk.mul(b)
+    oj = alias.mul(1 - b)
+
+    return (oq + oj).view(size)
