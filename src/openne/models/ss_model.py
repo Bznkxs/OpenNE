@@ -5,10 +5,11 @@ from .ss_readout import BaseReadOut
 from .ss_estimator import BaseEstimator
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 
 class SSModel(nn.Module):
-    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, adj, features, batch_size, dropout=0, dec_dims=None):
+    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, adj, features, batch_size, dropout=0, dec_dims=None, norm=False):
         super(SSModel, self).__init__()
         self.enc_dims = enc_dims
         self.dec_dims = dec_dims
@@ -22,6 +23,7 @@ class SSModel(nn.Module):
         self.readout_name = readout_name
         self.estimator_name = estimator_name
         self.features = features
+        self.normalize = norm
         self.readout = BaseReadOut(self.readout_name)
         self.encoder = Encoder(self.encoder_name, self.enc_dims, self.adj, self.features, dropout, self.readout)
         self.decoder = Decoder(self.decoder_name, self.enc_dims[-1], self.dec_dims)
@@ -36,13 +38,12 @@ class SSModel(nn.Module):
         hx = self.embed(x)
         hpos = self.embed(pos)
         hneg = self.embed(neg)
-        epos, eneg = self.estimator(self.decoder(hx, hpos), self.decoder(hx, hneg))
-
-        # TODO: is this operation universal?
-        epos = epos.mean()
-        eneg = eneg.mean()
-        logits = epos - eneg
-        return torch.unsqueeze(logits, 0)
+        if self.normalize:
+            hx = F.normalize(hx, dim=-1)
+            hpos = F.normalize(hpos, dim=-1)
+            hneg = F.normalize(hneg, dim=-1)
+        loss = self.estimator(self.decoder(hx, hpos), self.decoder(hx, hneg))
+        return loss
     
     def sample(self):
         return next(self.sampler)

@@ -1,4 +1,4 @@
-from src.openne.models.utils import *
+from ..utils import *
 from . import gcnModel
 from ..models import *
 import time
