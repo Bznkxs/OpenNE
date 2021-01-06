@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 class SS_GAE(ModelWithEmbeddings):
 
-    def __init__(self, output_dim=16, hiddens=None, max_degree=0, **kwargs):
+    def __init__(self, output_dim=32, hiddens=None, max_degree=0, **kwargs):
         if hiddens is None:
             hiddens = [32]
         super(SS_GAE, self).__init__(output_dim=output_dim, hiddens=hiddens, max_degree=max_degree, **kwargs)
@@ -22,7 +22,7 @@ class SS_GAE(ModelWithEmbeddings):
                                  "weight_decay": 1e-4,
                                  "early_stopping": 100,
                                  "clf_ratio": 0.5,
-                                 "hiddens": [32],
+                                 "hiddens": [64],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
                              "epochs": (0, np.inf),
@@ -38,9 +38,9 @@ class SS_GAE(ModelWithEmbeddings):
         if not graphtype.attributed():
             raise TypeError("GAE only accepts attributed graphs!")
 
-    def build(self, graph, *, learning_rate=0.01, epochs=200,
+    def build(self, graph, *, learning_rate=0.1, epochs=200,
               dropout=0., weight_decay=1e-4, early_stopping=100,
-              clf_ratio=0.5, batch_size=10000, enc='linear', dec='mlp', sampler='node-nei-random', **kwargs):
+              clf_ratio=0.5, batch_size=10000, enc='linear', dec='inner', sampler='node-neighbor-random', readout='mean', est='spJSD', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -61,6 +61,8 @@ class SS_GAE(ModelWithEmbeddings):
         self.enc = enc
         self.dec = dec
         self.sampler = sampler
+        self.readout = readout
+        self.est = est
 
         self.preprocess_data(graph)
         # Create models
@@ -70,7 +72,8 @@ class SS_GAE(ModelWithEmbeddings):
         self.dimensions = [input_dim] + self.hiddens + [self.output_dim]
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
-                             enc_dims=self.dimensions, adj=self.support[0], features=self.features,
+                             readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions, 
+                             adj=self.support[0], features=self.features,
                              batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
@@ -120,11 +123,12 @@ class SS_GAE(ModelWithEmbeddings):
             bx = torch.tensor(list(x))
             bpos = torch.tensor(list(pos))
             bneg = torch.tensor(list(neg))
+            '''
             lbl_1 = torch.ones(1, len(x))
             lbl = torch.cat((lbl_1, 1 - lbl_1), 1).to(self._device)
+            '''
             batch_num += 1
-            output = self.model(bx, bpos, bneg)
-            loss = self.loss(output, lbl)
+            loss = self.model(bx, bpos, bneg)
             if train:
                 loss.backward()
                 self.optimizer.step()
