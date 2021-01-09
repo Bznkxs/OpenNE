@@ -40,7 +40,7 @@ class SS_GAE(ModelWithEmbeddings):
 
     def build(self, graph, *, learning_rate=0.1, epochs=200,
               dropout=0., weight_decay=1e-4, early_stopping=100,
-              clf_ratio=0.5, batch_size=10000, enc='linear', dec='inner', sampler='node-neighbor-random', readout='mean', est='spJSD', **kwargs):
+              clf_ratio=0.5, batch_size=10000, enc='linear', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train

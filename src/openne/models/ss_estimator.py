@@ -12,23 +12,6 @@ class BaseEstimator(torch.nn.Module):
     def forward(self, *args, **kwargs):
         return self.estimator(*args, **kwargs)
 
-# from https://github.com/fanyun-sun/InfoGraph
-class spJSDEstimator(torch.nn.Module):
-    def __init__(self, **kwargs):
-        super().__init__()
-        for i, j in kwargs.items():
-            setattr(self, i, j)
-
-    def forward(self, positive, negative):
-        log_2 = np.log(2.)
-        #ep = log_2 - F.softplus(-positive)
-
-        #eq = F.softplus(-negative) + negative - log_2
-        ep = F.softplus(-positive).mean()
-        eq = F.softplus(negative).mean()
-        loss = -(ep + eq)
-        return loss
-
 class JSDEstimator(torch.nn.Module):
     def __init__(self, **kwargs):
         super().__init__()
@@ -59,9 +42,7 @@ class NCEEstimator(torch.nn.Module):
 
 estimator_dict = {
     "JSD": JSDEstimator,
-    "NCE": NCEEstimator,
-    "spJSD": spJSDEstimator
-
+    "NCE": NCEEstimator
 }
 
 """
