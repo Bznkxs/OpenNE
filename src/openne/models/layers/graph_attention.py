@@ -18,7 +18,10 @@ class GAT(Layer):
         self.attn_heads_reduction = attn_heads_reduction
         self.input_dim = input_dim
         self.output_dim = output_dim
-        self.adjmat = adjmat
+        if isinstance(adjmat, list):  # input supports
+            self.adjmat = adjmat[0]
+        else:
+            self.adjmat = adjmat
         self.attn_heads = attn_heads
         self.dropout_input = dropout_input
         self.dropout_coef = dropout_coef

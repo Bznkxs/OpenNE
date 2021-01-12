@@ -12,7 +12,11 @@ from .models import ModelWithEmbeddings
 from .gae import GAE
 from .vgae import VGAE
 from .ss_gae import SS_GAE
+from .ss_deepwalk import SS_DeepWalk
+# add import of new models here
 
-modellist = [GraphFactorization, GraRep, HOPE, LaplacianEigenmaps, LINE, LLE, Node2vec, DeepWalk, SDNE, TADW, GCN, GAE, VGAE, SS_GAE]
+modellist = [GraphFactorization, GraRep, HOPE, LaplacianEigenmaps, LINE,
+             LLE, Node2vec, DeepWalk, SDNE, TADW, GCN, GAE, VGAE, SS_GAE,
+             SS_DeepWalk]  # add new models here
 modeldict = {Cls.__name__.lower(): Cls for Cls in modellist}
 modeldict.update({Cls.othername.lower(): Cls for Cls in modellist if 'othername' in Cls.__dict__})

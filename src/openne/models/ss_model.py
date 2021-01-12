@@ -9,11 +9,12 @@ import torch.nn.functional as F
 
 
 class SSModel(nn.Module):
-    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, adj, features, batch_size, dropout=0, dec_dims=None, norm=False):
+    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, graph, supports, features, batch_size, dropout=0, dec_dims=None, norm=False):
         super(SSModel, self).__init__()
         self.enc_dims = enc_dims
         self.dec_dims = dec_dims
-        self.adj = adj
+        self.graph = graph
+        self.supports = supports
 
         self.layers = nn.ModuleList()
         self.sigm = nn.Sigmoid()
@@ -25,10 +26,10 @@ class SSModel(nn.Module):
         self.features = features
         self.normalize = norm
         self.readout = BaseReadOut(self.readout_name)
-        self.encoder = Encoder(self.encoder_name, self.enc_dims, self.adj, self.features, dropout, self.readout)
+        self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
         self.decoder = Decoder(self.decoder_name, self.enc_dims[-1], self.dec_dims)
         self.estimator = BaseEstimator(self.estimator_name)
-        self.sampler = BaseSampler(self.sampler_name, self.adj, batch_size)
+        self.sampler = BaseSampler(self.sampler_name, self.graph, batch_size)
 
     def embed(self, x):
         return self.encoder(x)
@@ -43,6 +44,7 @@ class SSModel(nn.Module):
             hpos = F.normalize(hpos, dim=-1)
             hneg = F.normalize(hneg, dim=-1)
         loss = self.estimator(self.decoder(hx, hpos), self.decoder(hx, hneg))
+        self.encoder.reset()  # remove full forward record
         return loss
     
     def sample(self):

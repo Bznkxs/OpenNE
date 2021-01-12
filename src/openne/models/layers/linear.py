@@ -14,7 +14,7 @@ class Linear(Layer):
 
         self.dropout = dropout  # note we modified the API
         self.act = act
-        self.adj = adj
+        self.adj = adj  # unused
         self.sparse_inputs = sparse_inputs
         self.output_dim = output_dim
         self.input_dim = input_dim
