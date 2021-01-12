@@ -42,6 +42,10 @@ class Node2vec(ModelWithEmbeddings):
             self.debug("Preprocess transition probs...")
             self.walker.preprocess_transition_probs()
         sentences = self.walker.simulate_walks(num_walks=num_paths, walk_length=path_length)
+        sentences = [
+            [str(word) for word in sentence]
+            for sentence in sentences
+        ]
         self.args["sentences"] = sentences
         self.args["size"] = self.dim
         self.args['min_count'] = 0

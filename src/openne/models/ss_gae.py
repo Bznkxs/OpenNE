@@ -22,6 +22,7 @@ class SS_GAE(ModelWithEmbeddings):
                                  "weight_decay": 1e-4,
                                  "early_stopping": 100,
                                  "clf_ratio": 0.5,
+                                 "batch_size": 4096,
                                  "hiddens": [64],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
@@ -40,7 +41,8 @@ class SS_GAE(ModelWithEmbeddings):
 
     def build(self, graph, *, learning_rate=0.1, epochs=200,
               dropout=0., weight_decay=1e-4, early_stopping=100,
-              clf_ratio=0.5, batch_size=10000, enc='linear', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
+              clf_ratio=0.5, batch_size=4096,
+              enc='gcn', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -50,6 +52,7 @@ class SS_GAE(ModelWithEmbeddings):
                         early_stopping: Tolerance for early stopping (# of epochs)
                         max_degree: Maximum Chebyshev polynomial degree
         """
+        print(batch_size)
         self.clf_ratio = clf_ratio
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -73,7 +76,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions, 
-                             adj=self.support[0], features=self.features,
+                             graph=graph, supports=self.support, features=self.features,
                              batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
@@ -118,7 +121,8 @@ class SS_GAE(ModelWithEmbeddings):
         batch_num = 0.
         output = None
         for batch in self.model.sampler:
-            x, pos, neg = zip(*batch)
+            x, pos, neg = batch
+            # print(len(x), x[:4], x[-4:])
             self.optimizer.zero_grad()
             bx = torch.tensor(list(x))
             bpos = torch.tensor(list(pos))
@@ -132,6 +136,7 @@ class SS_GAE(ModelWithEmbeddings):
             if train:
                 loss.backward()
                 self.optimizer.step()
+                self.model.encoder.reset()
 
             cur_loss += loss.item()
 

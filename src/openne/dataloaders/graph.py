@@ -96,7 +96,7 @@ class Graph(Dataset, ABC):
         G = self.G
         if type(self).directed() and not directed:
             G = nx.to_undirected(G)
-        A = nx.adjacency_matrix(G).astype(np.float32)
+        A = nx.adjacency_matrix(G).astype(np.float32)  # a csr sparse matrix
         if not sparse:
             A = np.array(nx.adjacency_matrix(G).todense())
         if type(self).weighted() and not weighted:
