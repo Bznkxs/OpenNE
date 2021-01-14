@@ -20,9 +20,11 @@ class SS_GAE(ModelWithEmbeddings):
                                  "epochs": 200,
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
-                                 "early_stopping": 100,
+                                 "early_stopping": 50,
+                                 "patience": 10,
+                                 "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
-                                 "batch_size": 4096,
+                                 "batch_size": 100000,
                                  "hiddens": [64],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
@@ -41,6 +43,7 @@ class SS_GAE(ModelWithEmbeddings):
 
     def build(self, graph, *, learning_rate=0.1, epochs=200,
               dropout=0., weight_decay=1e-4, early_stopping=100,
+              patience=10, min_delta=1e-5,
               clf_ratio=0.5, batch_size=4096,
               enc='gcn', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
         """
@@ -60,6 +63,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.batch_size = batch_size
         self.weight_decay = weight_decay
         self.early_stopping = early_stopping
+        self.patience = patience
         self.sparse = False
         self.enc = enc
         self.dec = dec
@@ -79,10 +83,12 @@ class SS_GAE(ModelWithEmbeddings):
                              graph=graph, supports=self.support, features=self.features,
                              batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
+        self.cost_val = []
 
     def train_model(self, graph, **kwargs):
         # Train models
         output, train_loss, __ = self.evaluate()
+        self.cost_val.append(train_loss)
         self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
 
     def build_label(self, graph):
@@ -141,6 +147,14 @@ class SS_GAE(ModelWithEmbeddings):
             cur_loss += loss.item()
 
         return output, cur_loss / batch_num, (time.time() - t_test)
+
+    def early_stopping_judge(self, graph, *, step=0, **kwargs):
+        if self.patience > len(self.cost_val) - self.early_stopping:
+            start = self.early_stopping
+        else:
+            start = -self.patience
+        return step > self.early_stopping and self.cost_val[-1] > torch.mean(
+                    torch.tensor(self.cost_val[start:-1])) * (1 - self.min_delta)
 
     def _get_embeddings(self, graph, **kwargs):
 

@@ -102,7 +102,7 @@ class ModelWithEmbeddings(torch.nn.Module):
                                      'debug_output_interval': 5,
                                      '_multiple_epochs': _multiple_epochs,
                                      'output': None,
-                                     'save': True,})
+                                     'save': False,})
         if graphtype:
             if not torch.cuda.is_available() or new_kwargs['cpu']:
                 new_kwargs['data_parallel'] = False

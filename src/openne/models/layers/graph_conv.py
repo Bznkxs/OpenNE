@@ -7,8 +7,10 @@ import torch
 class GraphConvolution(Layer):
     """Graph convolution layer."""
 
-    def __init__(self, input_dim, output_dim, support, dropout=0., num_features_nonzero=0.,
-                 sparse_inputs=False, act=torch.relu, bias=False,
+    def __init__(self, input_dim, output_dim, support, dropout=0., *,
+                 act=torch.relu, bias=False,
+                 num_features_nonzero=0.,
+                 sparse_inputs=False,
                  featureless=False, **kwargs):
         super(GraphConvolution, self).__init__(**kwargs)
 

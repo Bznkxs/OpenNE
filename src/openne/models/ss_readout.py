@@ -3,7 +3,7 @@ import torch
 class BaseReadOut(torch.nn.Module):
     def __init__(self, name,  **kwargs):
         super().__init__()
-        self.readout = readout_dict[name](**kwargs)
+        self.readout = readout_dict[name.lower()](**kwargs)
 
     def forward(self, *args, **kwargs):
         return self.readout(*args, **kwargs)

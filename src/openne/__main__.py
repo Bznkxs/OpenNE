@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 import time
+import datetime
+import os, sys
 import ast
 
 import numpy as np
@@ -126,7 +128,7 @@ def parse_args():
     # structure & training args
     generalgroup = parser.add_argument_group("GENERAL MODEL ARGUMENTS")
     no_default_args = ['epochs', 'output', ]
-    addarg("clf_ratio", generalgroup, used_names, 0.5, True)
+    addarg("clf_ratio", generalgroup, used_names, 0.2, True)
     validate_args = generalgroup.add_mutually_exclusive_group()
     validate_args.add_argument('--validate', action='store_true', dest='_validate')
     validate_args.add_argument('--no-validate', action='store_true', dest='_no_validate')
@@ -209,8 +211,21 @@ def main(args):
     # parsing
     args = {x: y for x, y in args.__dict__.items() if y is not None}
 
-    if not args['silent']:
-        print("actual args:", args)
+    if not os.path.exists('logs'):
+        os.mkdir("logs")
+    while True:
+        lname = os.path.join("logs",
+                             datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + str(time.time_ns())[-9:] + ".txt")
+        if not os.path.exists(lname):
+            break
+
+    logs = []
+    def log(*args, silent=False, **kwargs):
+        if not silent:
+            print(*args, **kwargs)
+        logs.append((args, kwargs))
+
+    log("actual args:", args, silent=args['silent'])
 
     Task, Graph, Model = parse(**args)  # parse required Task, Dataset, Model (classes)
     dellist = ['dataset', 'edgefile', 'adjfile', 'labelfile', 'features',
@@ -229,11 +244,15 @@ def main(args):
 
     # evaluation
     res = task.evaluate(model, res, graph)  # evaluate
-    if train_args['silent']:
-        print(res)
+    log(res, silent=not train_args["silent"])
 
+    # write to log
+    with open(lname, "w") as f:
+        for args, kwargs in logs:
+            print(*args, file=f, **kwargs)
 
 if __name__ == "__main__":
     random.seed(32)
     np.random.seed(32)
+    torch.random.manual_seed(32)
     main(parse_args())

@@ -75,6 +75,7 @@ class GCN(ModelWithEmbeddings):
     def train_model(self, graph, **kwargs):
         # Train models
         output, train_loss, train_acc, __ = self.evaluate(graph.train_mask)
+        self.cost_val.append(train_loss)
         self.debug_info = "train_loss = {:.5f}, train_acc = {:.5f}".format(train_loss, train_acc)
         return output
 

@@ -18,7 +18,7 @@ class UnsupervisedNodeClassification(BaseTask):
         #  by default validate == False
         #  validate is always false
         check_existance(self.kwargs, {"_validate": False, "_no_validate": False})
-        check_existance(self.kwargs, {"validate": False, 'clf_ratio': 0.5})
+        check_existance(self.kwargs, {"validate": False, 'clf_ratio': 0.2})
 
 
         def f_v(model, graph, **kwargs):
