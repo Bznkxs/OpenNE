@@ -9,7 +9,7 @@ class Decoder(nn.Module):
         super(Decoder, self).__init__()
         self.dim = dim
         self.mlp_dim = mlp_dim
-        self.layer = disc_dict[name](dim, mlp_dim)
+        self.layer = disc_dict[name.lower()](dim, mlp_dim)
 
     def forward(self, x, y):
         score = self.layer(x, y)

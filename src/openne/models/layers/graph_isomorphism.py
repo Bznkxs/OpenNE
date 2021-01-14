@@ -9,7 +9,7 @@ class GIN(Layer):
     """
 
     def __init__(self, input_dim, output_dim, adj,
-                 dropout=0., sparse_inputs=False,
+                 dropout=0., *, sparse_inputs=False,
                  act=torch.relu, **kwargs):
         super(GIN, self).__init__(**kwargs)
         self.input_dim = input_dim
@@ -29,8 +29,8 @@ class GIN(Layer):
         if self.training:
             # dropout
             if self.sparse_inputs:
-                x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
+                x = sparse_dropout(x, self.dropout, self.num_features_nonzero)
             else:
-                x = torch.dropout(x, self.dropout_input, True)  # dropout
+                x = torch.dropout(x, self.dropout, True)  # dropout
         y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
         return self.act(y)

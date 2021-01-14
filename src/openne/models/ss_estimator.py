@@ -7,7 +7,7 @@ from .utils import alias_setup, alias_draw
 class BaseEstimator(torch.nn.Module):
     def __init__(self, name, **kwargs):
         super().__init__()
-        self.estimator = estimator_dict[name](**kwargs)
+        self.estimator = estimator_dict[name.lower()](**kwargs)
 
     def forward(self, *args, **kwargs):
         return self.estimator(*args, **kwargs)
@@ -41,8 +41,8 @@ class NCEEstimator(torch.nn.Module):
         return loss
 
 estimator_dict = {
-    "JSD": JSDEstimator,
-    "NCE": NCEEstimator
+    "jsd": JSDEstimator,
+    "nce": NCEEstimator
 }
 
 """

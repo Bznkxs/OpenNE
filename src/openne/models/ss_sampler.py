@@ -41,7 +41,7 @@ class TripleGenerator(Sampler):
         self.graph = graph
         self.adj = adj  # should be a sparse matrix
         self.adj_ind = self.adj._indices()
-        self.anchor_name, self.pos_name, self.neg_name = name.split('-')
+        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
         self.negative_ratio = negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
@@ -82,15 +82,15 @@ class TripleGenerator(Sampler):
             silent = getattr(self, 'silent', False)
             p = getattr(self, 'p', 0.5)
             q = getattr(self, 'q', 0.5)
-            path_length = getattr(self, 'path_length', 60)
+            path_length = getattr(self, 'path_length', 50)
             num_paths = getattr(self, 'num_paths', 5)
-            window = getattr(self, 'window', 10)
+            window = getattr(self, 'window', 5)
             sentences = randwalk(dw, workers, silent, self.graph, p, q, path_length, num_paths)
             print(f"{len(sentences)} sentences created")
 
             anchor = []
             positive = []
-            mode = 2
+            mode = 1
 
             if mode == 1:
                 # brute force
@@ -102,10 +102,12 @@ class TripleGenerator(Sampler):
                             if k != j:
                                 anchor.append(sentence[j])
                                 positive.append(sentence[k])
+                # deduplicate
+                items = set(zip(anchor, positive))
+                anchor, positive = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
                 print("mode 1: time used =", time.time() - t)
-                print(self.anchor.shape, self.positive.shape)
 
 
             else:
@@ -128,10 +130,15 @@ class TripleGenerator(Sampler):
                     positive.append(s[k1])
                     anchor.append(s[j2])
                     positive.append(s[k2])
-                self.anchor = torch.cat(anchor)
-                self.positive = torch.cat(positive)
+
+                anchor = torch.cat(anchor).tolist()
+                positive = torch.cat(positive).tolist()
+                items = set(zip(anchor, positive))
+                anchor, positive = zip(*items)
+                self.anchor = torch.tensor(anchor)
+                self.positive = torch.tensor(positive)
                 print("mode 2: time used =", time.time() - t)
-                print(self.anchor.shape, self.positive.shape)
+
 
 
         print(f"anchors and positive samples of len {len(self.anchor)} generated")
