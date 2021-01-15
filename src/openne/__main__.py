@@ -227,7 +227,7 @@ def main(args):
         os.mkdir("logs")
     while True:
         lname = os.path.join("logs", "_".join((
-                             datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + str(time.time_ns())[-9:],
+                             datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + str(time.time()*10000000)[-9:],
                              Model.__name__[:2], args["enc"], args["dec"], args["sampler"], Graph.__name__[:2] , ".txt")
                              ))
         if not os.path.exists(lname):
