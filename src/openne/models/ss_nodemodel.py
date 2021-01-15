@@ -142,6 +142,9 @@ class SS_NodeModel(ModelWithEmbeddings):
         output = None
         for batch in self.model.sampler:
             x, pos, neg = batch
+            x = x.to(self._device)
+            pos = pos.to(self._device)
+            neg = neg.to(self._device)
             self.optimizer.zero_grad()
             bx = x
             bpos = pos

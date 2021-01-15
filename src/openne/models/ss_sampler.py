@@ -27,7 +27,7 @@ class BaseSampler(Sampler):
 
     def __len__(self):
         return (len(self.sampler) + self.batch_size - 1) // self.batch_size
-torch.sparse.Tensor(1)
+
 
 def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
     if dw:
