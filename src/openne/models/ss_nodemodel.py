@@ -147,11 +147,8 @@ class SS_NodeModel(ModelWithEmbeddings):
             neg = neg.to(self._device)
             print(x.device, pos.device, neg.device)
             self.optimizer.zero_grad()
-            bx = x
-            bpos = pos
-            bneg = neg
             batch_num += 1
-            loss = self.model(bx, bpos, bneg)
+            loss = self.model(x, pos, neg)
             if train:
                 loss.backward()
                 self.optimizer.step()
