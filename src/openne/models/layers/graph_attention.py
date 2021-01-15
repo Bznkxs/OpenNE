@@ -118,8 +118,9 @@ class GAT(Layer):
                 else:
                     c = torch.dropout(c, self.dropout_coef, True)  # dropout
                     feat_in = torch.dropout(feat_in, self.dropout_input, True)
-
+            print(c.device, feat_in.device)
             feat_out = torch.mm(c, feat_in)
+
             if self.bias:
                 feat_out += bias
             y_list.append(feat_out)
