@@ -1,6 +1,7 @@
 from .layers import Layer
 from ..inits import zeros, glorot
 from ..utils import *
+from ...utils import getdevice
 import torch
 
 
@@ -125,9 +126,9 @@ class GAT(Layer):
 
         # aggregate
         if self.attn_heads_reduction == 'concat':
-            y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
+            y = torch.cat(y_list, dim=1).to(x.device)  # concatenate along dim 1 (n * (k*output_dim))
         else:
-            y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
+            y = torch.mean(torch.stack(y_list), dim=0).to(x.device)   # (n * output_dim)
         y = self.batch_norm(y)
         return self.act(y)
 

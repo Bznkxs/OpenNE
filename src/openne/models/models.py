@@ -219,6 +219,7 @@ class ModelWithEmbeddings(torch.nn.Module):
         self.debug("Start training...")
         self.build(graph, **kwargs)
         self.to(self._device)
+        setdevice(self._device)
         # print([(i, v.shape) for i, v in self.named_parameters(recurse=True)])
         # print([i for i in self.named_modules()])
         self.after_build(graph, **kwargs)
