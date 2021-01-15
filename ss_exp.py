@@ -24,7 +24,7 @@ training_list = {
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 
 }
-basics = "python -m openne"
+basics = "python3 -m openne"
 
 ll = []
 def rec(reclist, idea, dim=None):
