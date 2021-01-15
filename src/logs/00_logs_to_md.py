@@ -89,6 +89,7 @@ def transfer(filename):
         return r_args, rddd
 
 if __name__ == "__main__":
+    os.system("git pull")
     curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
     X = []
 
@@ -119,7 +120,6 @@ if __name__ == "__main__":
         f.write(csvstr)
 
     os.chdir(curdir)
-    os.system("git pull")
     os.system("git add .")
     os.system('git commit -m "update experiment data (automatic operation)"')
     os.system("git push")
