@@ -69,7 +69,7 @@ class GAT(Layer):
                 ak1,ak2
             ])
 
-        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim).to(getdevice())
+        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
 
         if self.logging:
             self._log_vars()

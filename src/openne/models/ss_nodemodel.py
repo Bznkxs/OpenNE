@@ -145,6 +145,7 @@ class SS_NodeModel(ModelWithEmbeddings):
             x = x.to(self._device)
             pos = pos.to(self._device)
             neg = neg.to(self._device)
+            print(x.device, pos.device, neg.device)
             self.optimizer.zero_grad()
             bx = x
             bpos = pos
