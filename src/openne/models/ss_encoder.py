@@ -32,9 +32,10 @@ class Encoder(nn.Module):
         self.full_embeddings = None
         self.register_buffer("arange", torch.arange(self.nnodes))
 
-        print([(n, i.shape) for n,i in self.named_parameters(recurse=True)])
+
 
     def embed(self, x):
+        print([(n, i.shape, i.device) for n,i in self.named_parameters(recurse=True)])
         if self.name == 'none':
             return self.embedding(x)
         else:
@@ -48,6 +49,7 @@ class Encoder(nn.Module):
         x: batch input of indices
         special input: -1 which indicates graph
         """
+        print(x.device)
         def _forward(x):
             hx = self.embed(x)
             if self.name != 'none':
