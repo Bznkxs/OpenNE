@@ -64,8 +64,9 @@ if __name__ == "__main__":
         for l in ll:
             if random.random() < pos:
                 print(l, file=f1)
-
+    ll = []
     with open(filename2, "w") as f2:
+
         rec(training_list, basics_bash)
         for l in ll:
             if random.random() < pos:
