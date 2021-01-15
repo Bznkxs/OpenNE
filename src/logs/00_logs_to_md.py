@@ -89,7 +89,7 @@ def transfer(filename):
         return r_args, rddd
 
 if __name__ == "__main__":
-    curdir = os.path.dirname(__file__)
+    curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
     X = []
 
     for d in os.listdir(curdir):
