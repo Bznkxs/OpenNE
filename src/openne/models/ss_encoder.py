@@ -21,7 +21,7 @@ class Encoder(nn.Module):
         self.sigm = nn.Sigmoid()
         self.name = name.lower()
         self.readout = readout
-        print(name)
+        print("encoder =", name)
         if name == 'none':
             self.embedding = nn.Embedding(self.nnodes + 1, self.dimensions[-1])
         else:
@@ -37,8 +37,6 @@ class Encoder(nn.Module):
 
     def embed(self, x):
         if self.name == 'none':
-            print(x.device)
-            print([(i.shape, i.device) for i in self.embedding.parameters()])
             return self.embedding(x)
         else:
             return self.features[x]
