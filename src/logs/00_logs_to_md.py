@@ -119,10 +119,10 @@ def main():
     with open(os.path.join(mddir, "logs.csv"), 'w') as f:
         f.write(csvstr)
 
-    os.chdir(curdir)
-    os.system("git add .")
-    os.system('git commit -m "update experiment data (automatic operation)"')
-    os.system("git push")
+    #os.chdir(curdir)
+    #os.system("git add .")
+    #os.system('git commit -m "update experiment data (automatic operation)"')
+    #os.system("git push")
 
 if __name__ == "__main__":
     main()
