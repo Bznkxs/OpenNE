@@ -88,7 +88,7 @@ def transfer(filename):
             r_args[0][1].append((i, args.get(i, '-')))
         return r_args, rddd
 
-if __name__ == "__main__":
+def main():
     os.system("git pull")
     curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
     X = []
@@ -123,5 +123,8 @@ if __name__ == "__main__":
     os.system("git add .")
     os.system('git commit -m "update experiment data (automatic operation)"')
     os.system("git push")
+
+if __name__ == "__main__":
+    main()
 
 
