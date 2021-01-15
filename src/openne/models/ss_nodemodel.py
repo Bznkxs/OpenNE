@@ -160,7 +160,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         return output, cur_loss / batch_num, (time.time() - t_test)
 
     def _get_embeddings(self, graph, **kwargs):
-        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes))).detach()
+        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes)).to(self._device)).detach()
 
     def preprocess_data(self, graph):
         """

@@ -24,6 +24,25 @@ training_list = {
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 
 }
+
+
+test_list = {
+    "model": ["ss_nodemodel"],
+    "dataset": ["cora"],
+    "enc": ["none", "gcn", "gat", "gin", "linear"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": sampler_list,
+    "readout": ["mean"],
+    "est": ["jsd"],
+    "epochs": ["1"],
+    "early-stopping": ["20"],
+
+    "dim": ["16",],
+    "_hiddens": [0],
+    "lr": ["0.001"],
+
+}
+
 basics_bat = "python -m openne"
 basics_bash = "python3 -m openne"
 
@@ -48,29 +67,35 @@ def rec(reclist, idea, dim=None):
 import random
 
 pos = 0.2
+training_list = list(training_list.items())
+test_list = list(test_list.items())
 
-
-
-
-if __name__ == "__main__":
-    training_list = list(training_list.items())
-
-    filename1 = os.path.join(os.path.dirname(__file__), f"src/ss_node_{pos}.bat")
+def gen_exps(glist, name):
+    ll.clear()
+    filename1 = os.path.join(os.path.dirname(__file__), f"src/{name}_{pos}.bat")
     print(filename1)
-    filename2 = os.path.join(os.path.dirname(__file__), f"src/ss_node_{pos}.sh")
+    filename2 = os.path.join(os.path.dirname(__file__), f"src/{name}_{pos}.sh")
     print(filename2)
     with open(filename1, "w") as f1:
-        rec(training_list, basics_bat)
+        rec(glist, basics_bat)
         for l in ll:
             if random.random() < pos:
                 print(l, file=f1)
-    ll = []
+    ll.clear()
     with open(filename2, "w") as f2:
 
-        rec(training_list, basics_bash)
+        rec(glist, basics_bash)
         for l in ll:
             if random.random() < pos:
                 print(l, file=f2)
+
+
+if __name__ == "__main__":
+    gen_exps(training_list, 'ss_node')
+    gen_exps(test_list, 'test')
+
+
+
 
 
 
