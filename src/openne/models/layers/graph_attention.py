@@ -13,7 +13,7 @@ class GAT(Layer):
                  num_features_nonzero=0.,
                  sparse_inputs=False, bias=False,
 
-                 dropout_coef=None,
+                 dropout_coef=0.2,
                  attn_heads=1, attn_heads_reduction='average',
                  **kwargs):
         super(GAT, self).__init__(**kwargs)
@@ -22,11 +22,16 @@ class GAT(Layer):
         self.attn_heads_reduction = attn_heads_reduction
         self.input_dim = input_dim
         self.output_dim = output_dim
+        if attn_heads_reduction == 'concat':
+            self.output_dim *= attn_heads
         if isinstance(adjmat, list):  # input supports
             self.adjmat = adjmat[0]
         else:
             self.adjmat = adjmat
+
+        self.aux = -10e9 * (1 - self.adjmat.to_dense())
         self.attn_heads = int(attn_heads+0.5)
+        print(dropout, dropout_coef)
         self.dropout_input = dropout
         if dropout_coef is None:
             dropout_coef = dropout
@@ -63,11 +68,14 @@ class GAT(Layer):
                 ak1,ak2
             ])
 
+        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
+
         if self.logging:
             self._log_vars()
 
     def forward(self, inputs):
         x = inputs  # input node features (n * input_dim)
+
         if self.training:
             # dropout
             if self.sparse_inputs:
@@ -96,6 +104,8 @@ class GAT(Layer):
 
             c = f1 + f2.T
 
+            c += self.aux
+
             # leakyReLU and softmax
             c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
 
@@ -118,6 +128,6 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
-
+        y = self.batch_norm(y)
         return self.act(y)
 

@@ -102,6 +102,7 @@ class Graph(Dataset, ABC):
         if type(self).weighted() and not weighted:
             A = A.astype(np.bool).astype(np.float32)
         if scaled is not None:  # e.g. scaled = 1
+            print(scaled)
             A = A / A.sum(scaled, keepdims=True)
         return A
 

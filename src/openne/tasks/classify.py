@@ -2,18 +2,20 @@
 
 from __future__ import print_function
 
-import warnings
 
 import numpy
 import torch
-from sklearn.multiclass import OneVsRestClassifier # data training. TODO: write a PyTorch version of OVRClassifier
+from sklearn.multiclass import OneVsRestClassifier
 from sklearn.metrics import f1_score  # data process
 from sklearn.preprocessing import MultiLabelBinarizer # data process
+from sklearn.exceptions import ConvergenceWarning
 from time import time
+import warnings
 
 
 class TopKRanker(OneVsRestClassifier):
     def predict(self, X, top_k_list):
+
         probs = torch.tensor(super(TopKRanker, self).predict_proba(numpy.asarray(X)))  # assume X as a Tensor
         all_labels = []
         for i, k in enumerate(top_k_list):
@@ -41,7 +43,9 @@ class Classifier(object):
         self.binarizer.fit(Y_all)
         X_train = torch.stack([self.embeddings[x] for x in X])
         Y = self.binarizer.transform(Y)  # lhs Y a numpy array
-        self.clf.fit(X_train, Y)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            self.clf.fit(X_train, Y)
 
     def evaluate(self, X, Y):  # X Y tensor
         top_k_list = [len(l) for l in Y]
@@ -49,7 +53,6 @@ class Classifier(object):
         Y = self.binarizer.transform(Y)  # Y  np array
         averages = ["micro", "macro", "samples", "weighted"][:self.f1cat]
         results = {}
-
         for average in averages:
             if self.silent:
                 with warnings.catch_warnings():

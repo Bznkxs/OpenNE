@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 
 class SSModel(nn.Module):
-    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, graph, supports, features, batch_size, dropout=0, dec_dims=None, norm=False):
+    def __init__(self, encoder_name, decoder_name, sampler_name, readout_name, estimator_name, enc_dims, graph, supports, features, batch_size, negative_ratio=5, dropout=0, dec_dims=None, norm=False, **kwargs):
         super(SSModel, self).__init__()
         self.enc_dims = enc_dims
         self.dec_dims = dec_dims
@@ -25,11 +25,13 @@ class SSModel(nn.Module):
         self.estimator_name = estimator_name
         self.features = features
         self.normalize = norm
+        kwargs.pop('name')
         self.readout = BaseReadOut(self.readout_name)
         self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
         self.decoder = Decoder(self.decoder_name, self.enc_dims[-1], self.dec_dims)
         self.estimator = BaseEstimator(self.estimator_name)
-        self.sampler = BaseSampler(self.sampler_name, self.graph, batch_size)
+
+        self.sampler = BaseSampler(self.sampler_name, self.graph, batch_size, negative_ratio, **kwargs)
 
     def embed(self, x):
         return self.encoder(x)
