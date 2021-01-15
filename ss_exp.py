@@ -47,9 +47,12 @@ basics_bat = "python -m openne"
 basics_bash = "python3 -m openne"
 
 ll = []
-def rec(reclist, idea, dim=None):
+def rec(reclist, idea, dim=None, format='bat'):
     if len(reclist) == 0:
-        ll.append(idea)
+        if format == 'bat':
+            ll.append(idea + " %1 %2 %3 %4 %5 %6 %7 %8 %9")
+        else:
+            ll.append(idea + " $*")
         return
     l, r = reclist[0]
 
@@ -57,12 +60,17 @@ def rec(reclist, idea, dim=None):
         rec(reclist[1:], idea)
         for p in r[1:]:
             elist = ' '.join([dim]*p)
-            rec(reclist[1:], idea + ' --hiddens ' + elist)
+            rec(reclist[1:], idea + ' --hiddens ' + elist, dim, format)
         return
     for p in r:
         if l == "dim":
             dim = p
-        rec(reclist[1:], idea + " --" + l + " " + p, dim)
+        rec(reclist[1:], idea + " --" + l + " " + p, dim, format)
+
+def rec0(reclist, idea, dim=None, format='bat'):
+    # inits
+    ll.clear()
+    rec(reclist, idea, dim, format=format)
 
 import random
 
@@ -77,14 +85,14 @@ def gen_exps(glist, name):
     filename2 = os.path.join(os.path.dirname(__file__), f"src/{name}_{pos}.sh")
     print(filename2)
     with open(filename1, "w") as f1:
-        rec(glist, basics_bat)
+        rec0(glist, basics_bat, "bat")
         for l in ll:
             if random.random() < pos:
                 print(l, file=f1)
     ll.clear()
     with open(filename2, "w") as f2:
 
-        rec(glist, basics_bash)
+        rec0(glist, basics_bash, "bash")
         for l in ll:
             if random.random() < pos:
                 print(l, file=f2)
