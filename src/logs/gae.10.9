@@ -1,0 +1,52 @@
+actual args: {'cpu': False, 'devices': [0], 'model': 'gae', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.9, '_validate': False, '_no_validate': False, 'dim': 128, 'validation_interval': 5, 'debug_output_interval': 5, 'save': True, 'silent': False, 'sparse': False, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+output path =  D:\Documents\GitHub\OpenNE\results\GAE
+Loading Cora Dataset from root dir: D:\Documents\GitHub\OpenNE\data\Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 90.0% nodes as training set...finished
+Start training...
+total iter: 200
+epoch 5: train_loss = 0.76794; time used = 1.0619356632232666s
+epoch 10: train_loss = 0.75217; time used = 1.1126446723937988s
+epoch 15: train_loss = 0.74204; time used = 1.0684995651245117s
+epoch 20: train_loss = 0.73216; time used = 1.1101338863372803s
+epoch 25: train_loss = 0.72191; time used = 1.090165138244629s
+epoch 30: train_loss = 0.70434; time used = 1.0493106842041016s
+epoch 35: train_loss = 0.67190; time used = 1.0443534851074219s
+epoch 40: train_loss = 0.61871; time used = 1.0279052257537842s
+epoch 45: train_loss = 0.56705; time used = 1.067741870880127s
+epoch 50: train_loss = 0.55973; time used = 1.0535717010498047s
+epoch 55: train_loss = 0.54782; time used = 1.0767576694488525s
+epoch 60: train_loss = 0.53821; time used = 1.0791597366333008s
+epoch 65: train_loss = 0.53347; time used = 1.0649590492248535s
+epoch 70: train_loss = 0.52709; time used = 1.0528745651245117s
+epoch 75: train_loss = 0.52397; time used = 1.04185152053833s
+epoch 80: train_loss = 0.51894; time used = 1.0793251991271973s
+epoch 85: train_loss = 0.51398; time used = 1.0383915901184082s
+epoch 90: train_loss = 0.50679; time used = 1.060652256011963s
+epoch 95: train_loss = 0.50009; time used = 1.0569748878479004s
+epoch 100: train_loss = 0.49694; time used = 1.0427038669586182s
+epoch 105: train_loss = 0.49515; time used = 1.0320587158203125s
+epoch 110: train_loss = 0.49194; time used = 1.0419952869415283s
+epoch 115: train_loss = 0.48972; time used = 1.0460443496704102s
+epoch 120: train_loss = 0.48798; time used = 1.0408546924591064s
+epoch 125: train_loss = 0.48590; time used = 1.0551929473876953s
+epoch 130: train_loss = 0.48365; time used = 1.0555815696716309s
+epoch 135: train_loss = 0.48082; time used = 1.043287992477417s
+epoch 140: train_loss = 0.47744; time used = 1.0679621696472168s
+epoch 145: train_loss = 0.47427; time used = 1.037928581237793s
+epoch 150: train_loss = 0.47236; time used = 1.0242321491241455s
+epoch 155: train_loss = 0.47135; time used = 1.0538623332977295s
+epoch 160: train_loss = 0.46986; time used = 1.0419859886169434s
+epoch 165: train_loss = 0.46841; time used = 1.0571494102478027s
+epoch 170: train_loss = 0.46727; time used = 1.0508038997650146s
+epoch 175: train_loss = 0.46590; time used = 1.0343399047851562s
+epoch 180: train_loss = 0.46422; time used = 1.0372247695922852s
+epoch 185: train_loss = 0.46232; time used = 1.0379199981689453s
+epoch 190: train_loss = 0.46041; time used = 1.061899185180664s
+epoch 195: train_loss = 0.45898; time used = 1.0390980243682861s
+epoch 200: train_loss = 0.45804; time used = 1.0306143760681152s
+Finished training. Time used = 42.64191222190857.
+Saving embeddings to D:\Documents\GitHub\OpenNE\results\GAE\GAE_embeddings.txt...
+Saving model to D:\Documents\GitHub\OpenNE\results\GAE\GAE_model.txt...
+Training classifier using 90.00% nodes...
+{'micro': 0.7896678966789668, 'macro': 0.7456241712035453, 'samples': 0.7896678966789668, 'weighted': 0.787420049884359}

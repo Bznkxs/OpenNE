@@ -1,0 +1,35 @@
+actual args: {'cpu': False, 'devices': [0], 'model': 'deepwalk', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.1, '_validate': False, '_no_validate': False, 'dim': 128, 'validation_interval': 5, 'debug_output_interval': 5, 'save': True, 'silent': False, 'sparse': False, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+output path =  D:\Documents\GitHub\OpenNE\results\DeepWalk
+Loading Cora Dataset from root dir: D:\Documents\GitHub\OpenNE\data\Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 10.0% nodes as training set...finished
+Start training...
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.5310287475585938 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5397088527679443 seconds.
+Run epoch 2
+Epoch 2 ends in 0.5471460819244385 seconds.
+Run epoch 3
+Epoch 3 ends in 0.4977295398712158 seconds.
+Run epoch 4
+Epoch 4 ends in 0.43578100204467773 seconds.
+Run epoch 5
+Epoch 5 ends in 0.6522543430328369 seconds.
+Run epoch 6
+Epoch 6 ends in 0.5273110866546631 seconds.
+Run epoch 7
+Epoch 7 ends in 0.5523531436920166 seconds.
+Run epoch 8
+Epoch 8 ends in 0.5663771629333496 seconds.
+Run epoch 9
+Epoch 9 ends in 0.5166370868682861 seconds.
+training Word2Vec model...
+Obtaining vectors...
+Time used = 67.12921714782715s
+Finished training. Time used = 72.49652338027954.
+Saving embeddings to D:\Documents\GitHub\OpenNE\results\DeepWalk\DeepWalk_embeddings.txt...
+Saving model to D:\Documents\GitHub\OpenNE\results\DeepWalk\DeepWalk_model.txt...
+Training classifier using 10.00% nodes...
+{'micro': 0.7756357670221493, 'macro': 0.7637519385551882, 'samples': 0.7756357670221493, 'weighted': 0.7761087601684213}
