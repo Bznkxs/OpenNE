@@ -24,7 +24,8 @@ training_list = {
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 
 }
-basics = "python3 -m openne"
+basics_bat = "python -m openne"
+basics_bash = "python3 -m openne"
 
 ll = []
 def rec(reclist, idea, dim=None):
@@ -47,16 +48,28 @@ def rec(reclist, idea, dim=None):
 import random
 
 pos = 0.2
-filename = os.path.join(os.path.dirname(__file__), f"src/ss_node_{pos}.bat")
-print(filename)
-f = open(filename, "w")
+
+
+
 
 if __name__ == "__main__":
     training_list = list(training_list.items())
-    rec(training_list, basics)
-    for l in ll:
-        if random.random() < pos:
-            print(l, file=f)
+
+    filename1 = os.path.join(os.path.dirname(__file__), f"src/ss_node_{pos}.bat")
+    print(filename1)
+    filename2 = os.path.join(os.path.dirname(__file__), f"src/ss_node_{pos}.sh")
+    print(filename2)
+    with open(filename1, "w") as f1:
+        rec(training_list, basics_bat)
+        for l in ll:
+            if random.random() < pos:
+                print(l, file=f1)
+
+    with open(filename2, "w") as f2:
+        rec(training_list, basics_bash)
+        for l in ll:
+            if random.random() < pos:
+                print(l, file=f2)
 
 
 
