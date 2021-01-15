@@ -15,15 +15,14 @@ class Encoder(nn.Module):
         self.layers = nn.ModuleList()
         self.features = features  # none if name=="none"
         if features is not None:
-            self.features = torch.cat(
-                (features, torch.rand(1, features.size()[1])))  # +1 rand feature for rand nodes
+            self.features = features
         self.nnodes = self.supports[0].size()[0]
         self.sigm = nn.Sigmoid()
         self.name = name.lower()
         self.readout = readout
         print("encoder =", name)
         if name == 'none':
-            self.embedding = nn.Embedding(self.nnodes + 1, self.dimensions[-1])
+            self.embedding = nn.Embedding(self.nnodes, self.dimensions[-1])
         else:
             if 'act' in kwargs:
                 kwargs.pop('act')
