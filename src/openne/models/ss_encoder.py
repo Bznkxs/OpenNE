@@ -35,8 +35,8 @@ class Encoder(nn.Module):
 
 
     def embed(self, x):
-        print([(n, i.shape, i.device) for n,i in self.named_parameters(recurse=True)])
-        print(self.features.device)
+        #print([(n, i.shape, i.device) for n,i in self.named_parameters(recurse=True)])
+        #print(self.features.device)
         if self.name == 'none':
             return self.embedding(x)
         else:
@@ -50,7 +50,7 @@ class Encoder(nn.Module):
         x: batch input of indices
         special input: -1 which indicates graph
         """
-        print(x.device)
+        #print(x.device)
         def _forward(x):
             hx = self.embed(x)
             if self.name != 'none':

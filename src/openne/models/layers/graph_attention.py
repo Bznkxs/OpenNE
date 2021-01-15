@@ -76,14 +76,14 @@ class GAT(Layer):
 
     def forward(self, inputs):
         x = inputs  # input node features (n * input_dim)
-        print("input_device", x.device)
+        #print("input_device", x.device)
         if self.training:
             # dropout
             if self.sparse_inputs:
                 x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
             else:
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
-        print("mid", x.device)
+        #print("mid", x.device)
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
             weight = self.weights[i]
@@ -118,7 +118,7 @@ class GAT(Layer):
                 else:
                     c = torch.dropout(c, self.dropout_coef, True)  # dropout
                     feat_in = torch.dropout(feat_in, self.dropout_input, True)
-            print(c.device, feat_in.device)
+            #print(c.device, feat_in.device)
             feat_out = torch.mm(c, feat_in)
 
             if self.bias:
@@ -130,8 +130,8 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1).to(x.device)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0).to(x.device)   # (n * output_dim)
-        print(y.device)
-        print("??")
+        #print(y.device)
+        #print("??")
         y = self.batch_norm(y)
         return self.act(y)
 
