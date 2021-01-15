@@ -31,6 +31,7 @@ class Encoder(nn.Module):
                 self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
             self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
         self.full_embeddings = None
+        self.register_buffer("arange", torch.arange(self.nnodes))
 
         print([(n, i.shape) for n,i in self.named_parameters(recurse=True)])
 
@@ -59,7 +60,7 @@ class Encoder(nn.Module):
 
         if hasattr(x, "__getitem__") and x[0] == -1:  # must always be graph
             wsize = x.size()[0]
-            x = torch.arange(self.nnodes)
+            x = self.arange
             if self.full_embeddings is not None:
                 hx = self.full_embeddings
             else:
@@ -76,7 +77,7 @@ class Encoder(nn.Module):
                     #  these encoders require a full feature matrix
                     #  (since they need to calculate output reprs with neighboring features)
                     #  and so we must send all nodes into these layers
-                    x = torch.arange(self.nnodes)
+                    x = self.arange
                     if self.name == "none":
                         return self.embed(x)[indices]
                     self.full_embeddings = _forward(x)
