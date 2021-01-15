@@ -90,7 +90,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         if self.enc in ['gcn', ]:
             self.preprocess_data(graph)
         else:
-            features = torch.from_numpy(graph.features())
+            features = torch.from_numpy(graph.features()).to(self._device)
             self.register_buffer("features", features)
             self.support = [self.adj]
         self.dim = dim
