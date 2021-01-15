@@ -76,14 +76,14 @@ class GAT(Layer):
 
     def forward(self, inputs):
         x = inputs  # input node features (n * input_dim)
-
+        print("input_device", x.device)
         if self.training:
             # dropout
             if self.sparse_inputs:
                 x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
             else:
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
-
+        print("mid", x.device)
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
             weight = self.weights[i]
