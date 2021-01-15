@@ -36,6 +36,8 @@ class Encoder(nn.Module):
 
     def embed(self, x):
         if self.name == 'none':
+            print(x.device)
+            print([(i.shape, i.device) for i in self.embedding.parameters()])
             return self.embedding(x)
         else:
             return self.features[x]

@@ -1,0 +1,22 @@
+actual args: {'cpu': False, 'devices': [0], 'model': 'line', 'dataset': 'blogcatalog', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.1, '_validate': False, '_no_validate': False, 'dim': 128, 'validation_interval': 5, 'debug_output_interval': 5, 'save': True, 'silent': False, 'sparse': False, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+output path =  D:\Documents\GitHub\OpenNE\results\LINE
+Loading BlogCatalog Dataset from root dir: D:\Documents\GitHub\OpenNE\data\BlogCatalog
+Executing task UnsupervisedNodeClassification.
+Creating test set using 10.0% nodes as training set...finished
+Start training...
+Pre-processing for non-uniform negative sampling!
+Pre-processing for non-uniform negative sampling!
+total iter: 40
+epoch 5: sum of loss: tensor(4131.7007, grad_fn=<AddBackward0>); time used = 622.937924861908s
+epoch 10: sum of loss: tensor(3901.5671, grad_fn=<AddBackward0>); time used = 638.7745878696442s
+epoch 15: sum of loss: tensor(3787.1235, grad_fn=<AddBackward0>); time used = 658.6508927345276s
+epoch 20: sum of loss: tensor(3731.1768, grad_fn=<AddBackward0>); time used = 679.1889595985413s
+epoch 25: sum of loss: tensor(3701.4268, grad_fn=<AddBackward0>); time used = 679.4867749214172s
+epoch 30: sum of loss: tensor(3682.8467, grad_fn=<AddBackward0>); time used = 713.685418844223s
+epoch 35: sum of loss: tensor(3667.5332, grad_fn=<AddBackward0>); time used = 836.5061621665955s
+epoch 40: sum of loss: tensor(3657.7371, grad_fn=<AddBackward0>); time used = 811.9349367618561s
+Finished training. Time used = 5719.119874000549.
+Saving embeddings to D:\Documents\GitHub\OpenNE\results\LINE\LINE_embeddings.txt...
+Saving model to D:\Documents\GitHub\OpenNE\results\LINE\LINE_model.txt...
+Training classifier using 10.00% nodes...
+{'micro': 0.3172080165860401, 'macro': 0.17905765667048337, 'samples': 0.3176763984139267, 'weighted': 0.29853996396102817}

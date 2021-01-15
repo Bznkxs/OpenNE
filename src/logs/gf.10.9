@@ -1,0 +1,38 @@
+actual args: {'cpu': False, 'devices': [0], 'model': 'gf', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.9, '_validate': False, '_no_validate': False, 'dim': 128, 'validation_interval': 5, 'debug_output_interval': 5, 'save': True, 'silent': False, 'sparse': False, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+output path =  D:\Documents\GitHub\OpenNE\results\GraphFactorization
+Loading Cora Dataset from root dir: D:\Documents\GitHub\OpenNE\data\Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 90.0% nodes as training set...finished
+Start training...
+total iter: 130
+epoch 5: cost: 10162.3701171875; time used = 0.8097162246704102s
+epoch 10: cost: 9199.2265625; time used = 0.796025276184082s
+epoch 15: cost: 7826.34033203125; time used = 0.7919585704803467s
+epoch 20: cost: 6121.48779296875; time used = 0.779587984085083s
+epoch 25: cost: 4462.9130859375; time used = 0.7950942516326904s
+epoch 30: cost: 3395.49609375; time used = 0.7945215702056885s
+epoch 35: cost: 3092.188232421875; time used = 0.7908425331115723s
+epoch 40: cost: 3032.732666015625; time used = 0.8007321357727051s
+epoch 45: cost: 2875.333984375; time used = 0.808779239654541s
+epoch 50: cost: 2745.704345703125; time used = 0.8122475147247314s
+epoch 55: cost: 2697.3671875; time used = 0.8032219409942627s
+epoch 60: cost: 2661.89404296875; time used = 0.7858974933624268s
+epoch 65: cost: 2619.8291015625; time used = 0.7788565158843994s
+epoch 70: cost: 2591.5146484375; time used = 0.7609093189239502s
+epoch 75: cost: 2574.763427734375; time used = 0.7907125949859619s
+epoch 80: cost: 2557.98095703125; time used = 0.7957034111022949s
+epoch 85: cost: 2543.041015625; time used = 0.784898042678833s
+epoch 90: cost: 2531.502685546875; time used = 0.7765355110168457s
+epoch 95: cost: 2521.0; time used = 0.7608871459960938s
+epoch 100: cost: 2511.4228515625; time used = 0.8036346435546875s
+epoch 105: cost: 2503.10888671875; time used = 0.7699084281921387s
+epoch 110: cost: 2495.46142578125; time used = 0.7719354629516602s
+epoch 115: cost: 2488.36962890625; time used = 0.8056063652038574s
+epoch 120: cost: 2481.864013671875; time used = 0.7681581974029541s
+epoch 125: cost: 2475.798095703125; time used = 0.7707943916320801s
+epoch 130: cost: 2470.13525390625; time used = 0.7919042110443115s
+Finished training. Time used = 20.648988485336304.
+Saving embeddings to D:\Documents\GitHub\OpenNE\results\GraphFactorization\GraphFactorization_embeddings.txt...
+Saving model to D:\Documents\GitHub\OpenNE\results\GraphFactorization\GraphFactorization_model.txt...
+Training classifier using 90.00% nodes...
+{'micro': 0.8228782287822878, 'macro': 0.8189869423825832, 'samples': 0.8228782287822878, 'weighted': 0.8213297922961565}
