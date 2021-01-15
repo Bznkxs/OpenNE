@@ -8,18 +8,22 @@ from torch.utils.data import Sampler
 from .walker import Walker, BasicWalker
 from .utils import scipy_coo_to_torch_sparse
 class BaseSampler(Sampler):
-    def __init__(self, name, graph, batch_size, negative_ratio=5):
+    def __init__(self, name, graph, batch_size, negative_ratio=5, **kwargs):
         self.adj = scipy_coo_to_torch_sparse(
             sp.coo_matrix(graph.adjmat(weighted=False, directed=True, sparse=True)))
         self.nnodes = self.adj.size()[0]
         self.nedges = self.adj._indices().size()[1]
         self.batch_size = batch_size
-        self.sampler = sampler_dict[name](graph, self.adj, self.nnodes, self.nedges, negative_ratio)
+        if name not in sampler_dict:
+            self.sampler = TripleGenerator(graph, self.adj, self.nnodes, self.nedges, negative_ratio, name, **kwargs)
+        else:
+            self.sampler = sampler_dict[name](graph, self.adj, self.nnodes, self.nedges, negative_ratio, **kwargs)
         super(BaseSampler, self).__init__(self.sampler)
 
     def __iter__(self):
         for idx in range(0, len(self.sampler), self.batch_size):
             yield self.sampler[idx:idx+self.batch_size]
+        self.sampler.regenerate()
 
     def __len__(self):
         return (len(self.sampler) + self.batch_size - 1) // self.batch_size
@@ -42,7 +46,7 @@ class TripleGenerator(Sampler):
         self.adj = adj  # should be a sparse matrix
         self.adj_ind = self.adj._indices()
         self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
-        self.negative_ratio = negative_ratio
+        self.negative_ratio = 1  # negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
         self.anchor = torch.zeros(1)
@@ -71,6 +75,13 @@ class TripleGenerator(Sampler):
 
         self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
 
+    def regenerate(self):
+
+        if self.anchor_name == "node":
+            self.gen_node_negative(False)
+        else:
+            self.gen_graph_negative()
+        self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
 
     def gen_node_positive(self):
         print("generating anchors and positive samples...")
@@ -85,6 +96,7 @@ class TripleGenerator(Sampler):
             path_length = getattr(self, 'path_length', 50)
             num_paths = getattr(self, 'num_paths', 5)
             window = getattr(self, 'window', 5)
+            print(path_length, num_paths, window)
             sentences = randwalk(dw, workers, silent, self.graph, p, q, path_length, num_paths)
             print(f"{len(sentences)} sentences created")
 
@@ -103,8 +115,8 @@ class TripleGenerator(Sampler):
                                 anchor.append(sentence[j])
                                 positive.append(sentence[k])
                 # deduplicate
-                items = set(zip(anchor, positive))
-                anchor, positive = zip(*items)
+                # items = set(zip(anchor, positive))
+                # anchor, positive = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
                 print("mode 1: time used =", time.time() - t)
@@ -133,8 +145,8 @@ class TripleGenerator(Sampler):
 
                 anchor = torch.cat(anchor).tolist()
                 positive = torch.cat(positive).tolist()
-                items = set(zip(anchor, positive))
-                anchor, positive = zip(*items)
+                # items = set(zip(anchor, positive))
+                # anchor, positive = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
                 print("mode 2: time used =", time.time() - t)
@@ -152,11 +164,12 @@ class TripleGenerator(Sampler):
             self.positive = list(range(self.nnodes))
         print(f"anchors and positive samples of len {len(self.anchor)} generated")
 
-    def gen_node_negative(self):  # called after self.anchor is created
-        print(f"repeating {self.negative_ratio} times...")
-        self.anchor = self.anchor.repeat_interleave(self.negative_ratio)
-        self.positive = self.positive.repeat_interleave(self.negative_ratio)
-        print(f"generating negative samples with {self.neg_name}...")
+    def gen_node_negative(self, repeat=True):  # called after self.anchor is created
+        if repeat:
+            print(f"repeating {self.negative_ratio} times...")
+            self.anchor = self.anchor.repeat(self.negative_ratio)
+            self.positive = self.positive.repeat(self.negative_ratio)
+            print(f"generating negative samples with {self.neg_name}...")
         if self.neg_name == 'random':
             self.negative = torch.randint(high=self.nnodes, size=(len(self.anchor),))
         elif self.neg_name == 'except_neighbor':  # anchor must be node
@@ -199,7 +212,8 @@ class TripleGenerator(Sampler):
                             l = mid + 1
                     ys[idx] = i + l
             self.negative = ys
-        print("negative samples generated")
+        if repeat:
+            print("negative samples generated")
         # todo: deal with other conditions
     def gen_graph_negative(self):
         print("generating negative samples...")

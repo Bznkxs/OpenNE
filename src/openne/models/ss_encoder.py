@@ -3,6 +3,7 @@ import torch
 import time
 import torch.nn as nn
 import torch.nn.functional as F
+from .inits import glorot
 from . import layers
 
 # for one graph
@@ -31,6 +32,8 @@ class Encoder(nn.Module):
             self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
         self.full_embeddings = None
 
+        print([(n, i.shape) for n,i in self.named_parameters(recurse=True)])
+
     def embed(self, x):
         if self.name == 'none':
             return self.embedding(x)
@@ -45,7 +48,6 @@ class Encoder(nn.Module):
         x: batch input of indices
         special input: -1 which indicates graph
         """
-        t0 = time.time()
         def _forward(x):
             hx = self.embed(x)
             if self.name != 'none':
@@ -74,7 +76,7 @@ class Encoder(nn.Module):
                     #  and so we must send all nodes into these layers
                     x = torch.arange(self.nnodes)
                     if self.name == "none":
-                        return _forward(x)[indices]
+                        return self.embed(x)[indices]
                     self.full_embeddings = _forward(x)
                     hx = self.full_embeddings[indices]
                 else:  # these encoders do not depend on other nodes to calculate repr
@@ -133,6 +135,6 @@ requires_full_embeddings = {
     "none": False,
     "linear": False,
     "gcn": True,
-    "gat": False,
+    "gat": True,
     "gin": True
 }
