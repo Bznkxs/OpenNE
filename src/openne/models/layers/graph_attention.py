@@ -69,7 +69,7 @@ class GAT(Layer):
                 ak1,ak2
             ])
 
-        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
+        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim).to(getdevice())
 
         if self.logging:
             self._log_vars()
@@ -129,6 +129,8 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1).to(x.device)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0).to(x.device)   # (n * output_dim)
+        print(y.device)
+        print("??")
         y = self.batch_norm(y)
         return self.act(y)
 
