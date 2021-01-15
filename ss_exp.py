@@ -101,6 +101,7 @@ def gen_exps(glist, name):
 
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
+    pos = 1
     gen_exps(test_list, 'test')
 
 
