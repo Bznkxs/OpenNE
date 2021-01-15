@@ -30,7 +30,7 @@ class GAT(Layer):
         else:
             self.adjmat = adjmat
 
-        self.aux = -10e9 * (1 - self.adjmat.to_dense())
+        self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
         self.attn_heads = int(attn_heads+0.5)
         print(dropout, dropout_coef)
         self.dropout_input = dropout
