@@ -75,7 +75,7 @@ def rec0(reclist, idea, dim=None, form='bat'):
 
 import random
 
-pos = 0.2
+pos = 1
 training_list = list(training_list.items())
 test_list = list(test_list.items())
 
@@ -101,8 +101,8 @@ def gen_exps(glist, name):
 
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
-    pos = 1
-    gen_exps(test_list, 'test')
+    #pos = 1
+    #gen_exps(test_list, 'test')
 
 
 
