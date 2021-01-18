@@ -16,6 +16,7 @@
 | ss_nodemodel | cora | gat | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 18:57:28 | 0.7388 | 0.7318 | 0.7388 | 0.7391 | 
 | ss_nodemodel | cora | gat | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 18:20:19 | 0.737 | 0.732 | 0.737 | 0.7356 | 
 | ss_nodemodel | cora | gat | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-17 16:46:42 | 0.736 | 0.7052 | 0.736 | 0.733 | 
+| ss_nodemodel | cora | gat | bilinear | node-randwalk-except_neighbor | - | - | - | 512 | [512, 512, 512] | mean | jsd | 21-01-17 00:05:08 | 0.7342 | 0.7321 | 0.7342 | 0.7333 | 
 | ss_nodemodel | cora | gat | bilinear | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 20:27:46 | 0.731 | 0.7219 | 0.731 | 0.7291 | 
 | ss_nodemodel | cora | gat | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-17 22:23:33 | 0.7305 | 0.7212 | 0.7305 | 0.7294 | 
 | ss_nodemodel | cora | gat | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-17 22:05:04 | 0.7259 | 0.7147 | 0.7259 | 0.7253 | 
@@ -107,15 +108,15 @@
 | ss_nodemodel | cora | gat | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 18:50:38 | 0.3009 | 0.0811 | 0.3009 | 0.1528 | 
 | ss_nodemodel | cora | gat | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 03:57:19 | 0.3004 | 0.0966 | 0.3004 | 0.1696 | 
 | ss_nodemodel | cora | gat | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 16:33:17 | 0.2953 | 0.0684 | 0.2953 | 0.138 | 
-| ss_nodemodel | cora | gat | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 17:17:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-14 23:24:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-15 09:39:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-15 09:37:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gat | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 16:38:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gat | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 18:27:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gat | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 17:08:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | 1e-05 | 100 | 128 | - | mean | jsd | 21-01-15 09:48:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-15 09:39:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | 1e-05 | 100 | 128 | - | mean | jsd | 21-01-15 09:45:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-neighbor-random | 300 | 1e-05 | 100 | 128 | - | mean | jsd | 21-01-15 09:48:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 16:38:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 17:08:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 17:17:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gat | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 18:27:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gat | inner | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512] | mean | jsd | 21-01-17 17:55:03 | 0.2944 | 0.0733 | 0.2944 | 0.1415 | 
 | ss_nodemodel | cora | gat | inner | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 18:00:17 | 0.2912 | 0.0668 | 0.2912 | 0.1351 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-17 04:22:57 | 0.8076 | 0.7986 | 0.8076 | 0.8067 | 
@@ -128,15 +129,15 @@
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-17 09:32:24 | 0.7891 | 0.7747 | 0.7891 | 0.7881 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-17 01:22:33 | 0.7868 | 0.7724 | 0.7868 | 0.786 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 20:58:50 | 0.7845 | 0.7719 | 0.7845 | 0.7829 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:38:06 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:38:32 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:32:20 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:37:14 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:48:42 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:43:25 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:40:51 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:39:55 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:38:06 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:38:32 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:39:40 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:39:55 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:40:51 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:43:25 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:48:42 | 0.7808 | 0.7728 | 0.7808 | 0.7792 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 21:06:13 | 0.779 | 0.7688 | 0.779 | 0.7771 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 23:44:05 | 0.7766 | 0.7638 | 0.7766 | 0.7737 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-16 19:53:52 | 0.7753 | 0.7697 | 0.7753 | 0.7744 | 
@@ -145,15 +146,15 @@
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-17 15:02:14 | 0.7702 | 0.757 | 0.7702 | 0.7685 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 20 | - | - | 128 | - | mean | jsd | 21-01-15 12:42:59 | 0.7693 | 0.7593 | 0.7693 | 0.7671 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-16 20:59:40 | 0.7693 | 0.7525 | 0.7693 | 0.7668 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-16 22:36:50 | 0.7679 | 0.7507 | 0.7679 | 0.7654 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 19:12:20 | 0.7679 | 0.7626 | 0.7679 | 0.7665 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-16 22:36:50 | 0.7679 | 0.7507 | 0.7679 | 0.7654 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-16 19:26:00 | 0.767 | 0.7618 | 0.767 | 0.7653 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | - | - | - | 128 | - | mean | jsd | 21-01-15 12:31:07 | 0.7642 | 0.7598 | 0.7642 | 0.7627 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | - | - | - | 128 | - | mean | jsd | 21-01-15 12:41:29 | 0.7642 | 0.7598 | 0.7642 | 0.7627 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-16 19:12:57 | 0.7637 | 0.759 | 0.7637 | 0.7625 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-17 09:24:33 | 0.7628 | 0.747 | 0.7628 | 0.7611 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 20:19:53 | 0.7619 | 0.7523 | 0.7619 | 0.7606 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 19:33:10 | 0.7619 | 0.7523 | 0.7619 | 0.7606 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 20:19:53 | 0.7619 | 0.7523 | 0.7619 | 0.7606 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 10 | - | - | 128 | - | mean | jsd | 21-01-15 12:42:42 | 0.7587 | 0.7492 | 0.7587 | 0.7573 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-16 20:37:45 | 0.7582 | 0.7502 | 0.7582 | 0.7571 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 20 | - | - | 128 | - | mean | jsd | 21-01-15 12:45:39 | 0.7559 | 0.7497 | 0.7559 | 0.7542 | 
@@ -162,8 +163,8 @@
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-17 14:52:04 | 0.7545 | 0.7433 | 0.7545 | 0.7532 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | - | - | - | 128 | - | mean | jsd | 21-01-15 12:47:40 | 0.7457 | 0.7346 | 0.7457 | 0.7441 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.001 | 50 | 128 | - | mean | jsd | 21-01-15 11:03:37 | 0.7448 | 0.7383 | 0.7448 | 0.7451 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-17 15:42:54 | 0.7425 | 0.7375 | 0.7425 | 0.7409 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 19:27:58 | 0.7425 | 0.7455 | 0.7425 | 0.7436 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-17 15:42:54 | 0.7425 | 0.7375 | 0.7425 | 0.7409 | 
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-17 14:43:02 | 0.7402 | 0.7338 | 0.7402 | 0.7388 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 19:15:14 | 0.7388 | 0.7411 | 0.7388 | 0.74 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-16 19:27:07 | 0.7383 | 0.7311 | 0.7383 | 0.7365 | 
@@ -173,9 +174,9 @@
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-16 19:39:41 | 0.7337 | 0.7202 | 0.7337 | 0.7321 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 20:33:03 | 0.7323 | 0.7306 | 0.7323 | 0.7323 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-16 19:29:24 | 0.7305 | 0.728 | 0.7305 | 0.7297 | 
-| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-17 14:48:56 | 0.7296 | 0.7164 | 0.7296 | 0.7287 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-16 19:13:26 | 0.7296 | 0.7197 | 0.7296 | 0.7279 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-16 19:20:15 | 0.7296 | 0.7197 | 0.7296 | 0.7279 | 
+| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-17 14:48:56 | 0.7296 | 0.7164 | 0.7296 | 0.7287 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 14:58:03 | 0.7231 | 0.7192 | 0.7231 | 0.7226 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-16 19:14:17 | 0.7217 | 0.7113 | 0.7217 | 0.7195 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-17 15:35:16 | 0.7217 | 0.7106 | 0.7217 | 0.7208 | 
@@ -185,8 +186,8 @@
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:55:16 | 0.7148 | 0.704 | 0.7148 | 0.7127 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-16 23:49:17 | 0.7144 | 0.6948 | 0.7144 | 0.709 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 20:11:45 | 0.7139 | 0.7134 | 0.7139 | 0.7148 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 19:50:23 | 0.7134 | 0.7082 | 0.7134 | 0.7105 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 19:30:02 | 0.7134 | 0.7082 | 0.7134 | 0.7105 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 19:50:23 | 0.7134 | 0.7082 | 0.7134 | 0.7105 | 
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 14:42:19 | 0.7125 | 0.7101 | 0.7125 | 0.7104 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-16 21:00:41 | 0.7056 | 0.6747 | 0.7056 | 0.7013 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-17 15:32:24 | 0.6982 | 0.6833 | 0.6982 | 0.696 | 
@@ -235,70 +236,70 @@
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 21:04:16 | 0.3313 | 0.1219 | 0.3313 | 0.1986 | 
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-17 14:39:47 | 0.3276 | 0.1541 | 0.3276 | 0.2283 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 19:16:24 | 0.3263 | 0.1216 | 0.3263 | 0.189 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 20:43:44 | 0.3207 | 0.1138 | 0.3207 | 0.1813 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-16 19:17:57 | 0.3207 | 0.1286 | 0.3207 | 0.2018 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 22:44:41 | 0.3193 | 0.1042 | 0.3193 | 0.1788 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 20:43:44 | 0.3207 | 0.1138 | 0.3207 | 0.1813 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 19:18:47 | 0.3193 | 0.1276 | 0.3193 | 0.1999 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 22:44:41 | 0.3193 | 0.1042 | 0.3193 | 0.1788 | 
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-17 14:44:31 | 0.3161 | 0.0994 | 0.3161 | 0.1735 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:17:06 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:49:06 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:49:44 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 20:56:32 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 20:57:42 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:17:06 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:49:44 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:49:06 | 0.311 | 0.0972 | 0.311 | 0.1653 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 15:00:15 | 0.3096 | 0.0967 | 0.3096 | 0.1646 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 15:42:11 | 0.3096 | 0.0967 | 0.3096 | 0.1646 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512] | mean | jsd | 21-01-16 21:29:57 | 0.3083 | 0.0925 | 0.3083 | 0.1649 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-17 00:23:24 | 0.3018 | 0.0933 | 0.3018 | 0.15 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-16 19:31:25 | 0.3018 | 0.1143 | 0.3018 | 0.1842 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-17 00:23:24 | 0.3018 | 0.0933 | 0.3018 | 0.15 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:55:53 | 0.3013 | 0.0805 | 0.3013 | 0.1515 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 22:44:19 | 0.2986 | 0.0718 | 0.2986 | 0.1419 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 22:39:07 | 0.2986 | 0.0793 | 0.2986 | 0.1495 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 22:44:19 | 0.2986 | 0.0718 | 0.2986 | 0.1419 | 
 | ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-17 15:04:10 | 0.2972 | 0.0694 | 0.2972 | 0.1392 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 22:49:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 19:22:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-16 20:28:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-17 14:54:06 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:48:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 14:44:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:38:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 23:51:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:14:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 21:03:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-17 14:57:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 15:56:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 19:22:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 20:04:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 10:34:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-17 00:05:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 19:13:59 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-16 19:42:43 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 20:16:06 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 08:56:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:23:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-17 14:54:40 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 19:12:50 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-16 22:38:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 23:04:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-17 14:50:16 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 14:12:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:41:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 11:22:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 19:13:59 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:14:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-16 19:21:15 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 19:22:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 19:22:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:23:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-16 19:34:57 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-16 19:36:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 21:19:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 23:51:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 19:38:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-16 19:42:43 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 19:57:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-16 20:00:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 20:04:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 20:16:06 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-16 20:28:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 21:03:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 21:12:57 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-17 15:15:56 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 12:12:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 21:19:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 21:46:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 22:11:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-16 22:38:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 22:49:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 23:04:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 23:51:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 23:51:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-17 00:05:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 00:36:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-16 19:21:15 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 15:41:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-16 19:34:57 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-17 15:22:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 08:56:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 10:34:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 11:22:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-17 12:12:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-17 14:12:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:41:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 14:44:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-17 14:48:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-17 14:49:30 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-16 20:00:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | gcn | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 19:57:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-17 14:50:16 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-17 14:54:06 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-17 14:54:40 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-17 14:57:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-17 15:15:56 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-17 15:22:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-17 15:41:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | gcn | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-17 15:56:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | gcn | cora | gcn | inner | node-rand_walk-random | - | - | - | 128 | - | mean | jsd | 21-01-15 19:59:06 | 0.1674 | 0.8496 | 0.0057 | 
 | ss_nodemodel | cora | gin | inner | node-neighbor-random | 500 | 0.03 | - | 128 | - | mean | jsd | 21-01-15 12:55:43 | 0.8283 | 0.8184 | 0.8283 | 0.8268 | 
 | ss_nodemodel | cora | gin | inner | node-neighbor-random | 500 | 0.01 | 50 | 128 | - | mean | jsd | 21-01-15 11:39:16 | 0.8108 | 0.8038 | 0.8108 | 0.8092 | 
@@ -320,8 +321,8 @@
 | ss_nodemodel | pubmed | linear | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:02:55 | 0.8348 | 0.8327 | 0.8348 | 0.8346 | 
 | ss_nodemodel | pubmed | linear | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 13:41:50 | 0.8203 | 0.8155 | 0.8203 | 0.8203 | 
 | ss_nodemodel | pubmed | linear | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:33:23 | 0.8198 | 0.8172 | 0.8198 | 0.8198 | 
-| ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:25:48 | 0.8168 | 0.8028 | 0.8168 | 0.8149 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 08:58:17 | 0.8168 | 0.8028 | 0.8168 | 0.8149 | 
+| ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:25:48 | 0.8168 | 0.8028 | 0.8168 | 0.8149 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 10:28:31 | 0.8168 | 0.8062 | 0.8168 | 0.8156 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 08:58:53 | 0.8145 | 0.8086 | 0.8145 | 0.8144 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:05:20 | 0.7997 | 0.7884 | 0.7997 | 0.7985 | 
@@ -341,15 +342,15 @@
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:06:22 | 0.7563 | 0.7257 | 0.7563 | 0.7533 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-18 09:40:25 | 0.7554 | 0.7369 | 0.7554 | 0.7519 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-18 09:46:12 | 0.7554 | 0.7369 | 0.7554 | 0.7519 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:28:00 | 0.7545 | 0.7446 | 0.7545 | 0.752 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 11:20:29 | 0.7545 | 0.7389 | 0.7545 | 0.7521 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:28:00 | 0.7545 | 0.7446 | 0.7545 | 0.752 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 11:45:01 | 0.754 | 0.7365 | 0.754 | 0.7528 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:31:16 | 0.7536 | 0.7197 | 0.7536 | 0.7509 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 09:30:00 | 0.7522 | 0.7348 | 0.7522 | 0.7505 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:56:53 | 0.7508 | 0.725 | 0.7508 | 0.7474 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 10:54:05 | 0.7494 | 0.7206 | 0.7494 | 0.7444 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-18 11:39:04 | 0.7494 | 0.729 | 0.7494 | 0.7461 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:08:13 | 0.7494 | 0.7206 | 0.7494 | 0.7444 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-18 11:39:04 | 0.7494 | 0.729 | 0.7494 | 0.7461 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:52:39 | 0.749 | 0.729 | 0.749 | 0.748 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 08:52:07 | 0.7434 | 0.722 | 0.7434 | 0.7432 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:12:47 | 0.7425 | 0.6981 | 0.7425 | 0.7348 | 
@@ -358,9 +359,9 @@
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 09:38:45 | 0.7388 | 0.7203 | 0.7388 | 0.7372 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:53:54 | 0.7365 | 0.7116 | 0.7365 | 0.7329 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 10:20:13 | 0.7333 | 0.7133 | 0.7333 | 0.7295 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-18 11:18:22 | 0.7314 | 0.7135 | 0.7314 | 0.7285 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-18 11:15:58 | 0.7314 | 0.7131 | 0.7314 | 0.7289 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-18 09:41:48 | 0.7314 | 0.7135 | 0.7314 | 0.7285 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-18 11:15:58 | 0.7314 | 0.7131 | 0.7314 | 0.7289 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-18 11:18:22 | 0.7314 | 0.7135 | 0.7314 | 0.7285 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 08:56:20 | 0.7291 | 0.7179 | 0.7291 | 0.7269 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:22:44 | 0.7263 | 0.7051 | 0.7263 | 0.7253 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:51:20 | 0.7245 | 0.6813 | 0.7245 | 0.7183 | 
@@ -371,11 +372,11 @@
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 10:56:37 | 0.7024 | 0.6884 | 0.7024 | 0.6982 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-18 08:44:49 | 0.7005 | 0.6878 | 0.7005 | 0.6977 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-18 08:58:34 | 0.6922 | 0.6807 | 0.6922 | 0.6883 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:47:26 | 0.689 | 0.6023 | 0.689 | 0.667 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:43:32 | 0.689 | 0.6023 | 0.689 | 0.667 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:47:26 | 0.689 | 0.6023 | 0.689 | 0.667 | 
 | ss_nodemodel | pubmed | linear | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 14:01:52 | 0.6853 | 0.6821 | 0.6853 | 0.6836 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 10:30:00 | 0.6839 | 0.5804 | 0.6839 | 0.6603 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 10:11:49 | 0.6839 | 0.5804 | 0.6839 | 0.6603 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 10:30:00 | 0.6839 | 0.5804 | 0.6839 | 0.6603 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 08:43:11 | 0.6811 | 0.5749 | 0.6811 | 0.6334 | 
 | ss_nodemodel | cora | linear | mlp | node-neighbor-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-18 10:00:40 | 0.6345 | 0.6027 | 0.6345 | 0.6267 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 08:45:12 | 0.6341 | 0.6132 | 0.6341 | 0.6278 | 
@@ -394,8 +395,8 @@
 | ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:02:18 | 0.5344 | 0.3379 | 0.5344 | 0.4469 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 100 | - | - | 128 | - | mean | jsd | 21-01-14 23:41:44 | 0.5293 | 0.4951 | 0.5293 | 0.5226 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 08:44:00 | 0.5288 | 0.4882 | 0.5288 | 0.5014 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 08:46:36 | 0.479 | 0.3766 | 0.479 | 0.4149 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 08:42:24 | 0.479 | 0.3766 | 0.479 | 0.4149 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 08:46:36 | 0.479 | 0.3766 | 0.479 | 0.4149 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 08:57:14 | 0.4509 | 0.2825 | 0.4509 | 0.3764 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-18 10:37:40 | 0.4389 | 0.228 | 0.4389 | 0.3325 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 10:22:33 | 0.4324 | 0.2109 | 0.4324 | 0.3091 | 
@@ -411,12 +412,12 @@
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-18 08:48:54 | 0.3572 | 0.1366 | 0.3572 | 0.2128 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:38 | 0.3299 | 0.1695 | 0.3299 | 0.2441 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:43 | 0.3299 | 0.1695 | 0.3299 | 0.2441 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:32 | 0.3267 | 0.1659 | 0.3267 | 0.2406 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:26 | 0.3267 | 0.1659 | 0.3267 | 0.2406 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:56 | 0.3244 | 0.1671 | 0.3244 | 0.2398 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:32 | 0.3267 | 0.1659 | 0.3267 | 0.2406 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:50 | 0.3244 | 0.1671 | 0.3244 | 0.2398 | 
-| ss_nodemodel | cora | linear | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:12:07 | 0.3235 | 0.1596 | 0.3235 | 0.2338 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:11:56 | 0.3244 | 0.1671 | 0.3244 | 0.2398 | 
 | ss_nodemodel | cora | linear | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:12:01 | 0.3235 | 0.1596 | 0.3235 | 0.2338 | 
+| ss_nodemodel | cora | linear | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:12:07 | 0.3235 | 0.1596 | 0.3235 | 0.2338 | 
 | ss_nodemodel | cora | linear | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:12:13 | 0.3216 | 0.1408 | 0.3216 | 0.2187 | 
 | ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:12:19 | 0.3216 | 0.1408 | 0.3216 | 0.2187 | 
 | ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 10:23:22 | 0.3207 | 0.1177 | 0.3207 | 0.1936 | 
@@ -428,99 +429,99 @@
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 10:58:04 | 0.3073 | 0.1186 | 0.3073 | 0.1832 | 
 | ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 10:35:00 | 0.2953 | 0.0698 | 0.2953 | 0.1395 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:43:50 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:33:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 10:33:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-18 09:23:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-18 08:54:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:27:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 10:26:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 10:20:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 08:55:43 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 08:51:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 08:44:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 08:45:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:48:16 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 08:49:21 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 08:50:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 08:51:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-18 08:54:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 08:54:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 08:55:43 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-18 09:23:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:11:21 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 10:20:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 10:24:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 10:26:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-18 10:30:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 10:33:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | linear | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 10:46:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 10:59:16 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 08:50:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 08:48:16 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-18 10:30:00 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 08:44:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 08:54:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:11:21 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 08:45:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | linear | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 10:24:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:27:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:33:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | linear | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:09:59 | 0.2935 | 0.0947 | 0.2935 | 0.1537 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:01:38 | 0.293 | 0.0696 | 0.293 | 0.1395 | 
 | ss_nodemodel | cora | linear | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-18 10:04:48 | 0.2926 | 0.0743 | 0.2926 | 0.1461 | 
 | ss_nodemodel | cora | linear | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 10:25:36 | 0.2921 | 0.0694 | 0.2921 | 0.139 | 
 | ss_nodemodel | cora | linear | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:09:41 | 0.2893 | 0.07 | 0.2893 | 0.1402 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 19:12:38 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-15 17:23:49 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-15 17:25:49 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 17:29:26 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 17:33:13 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 18:54:34 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-15 17:25:49 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 22:05:18 | 0.7194 | 0.7157 | 0.7194 | 0.7187 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 19:12:38 | 0.7328 | 0.7289 | 0.7328 | 0.7326 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-15 22:02:49 | 0.7194 | 0.7157 | 0.7194 | 0.7187 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 22:05:18 | 0.7194 | 0.7157 | 0.7194 | 0.7187 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-15 22:05:53 | 0.7107 | 0.7 | 0.7107 | 0.7098 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-15 17:22:03 | 0.6927 | 0.6878 | 0.6927 | 0.6927 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 22:04:20 | 0.6922 | 0.6899 | 0.6922 | 0.6922 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-15 22:02:13 | 0.6922 | 0.6899 | 0.6922 | 0.6922 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 22:04:20 | 0.6922 | 0.6899 | 0.6922 | 0.6922 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 22:24:41 | 0.6742 | 0.6637 | 0.6742 | 0.6712 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 10:12:37 | 0.6742 | 0.6637 | 0.6742 | 0.6712 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:41:41 | 0.6608 | 0.6509 | 0.6608 | 0.6603 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 17:48:25 | 0.6608 | 0.6597 | 0.6608 | 0.6611 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 19:32:41 | 0.6608 | 0.6509 | 0.6608 | 0.6603 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:41:41 | 0.6608 | 0.6509 | 0.6608 | 0.6603 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-15 19:57:45 | 0.6544 | 0.6382 | 0.6544 | 0.65 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-15 17:54:23 | 0.6544 | 0.6382 | 0.6544 | 0.65 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-15 19:57:45 | 0.6544 | 0.6382 | 0.6544 | 0.65 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-15 22:36:16 | 0.6447 | 0.6384 | 0.6447 | 0.6434 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 22:44:46 | 0.6447 | 0.6384 | 0.6447 | 0.6434 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-15 22:31:55 | 0.6008 | 0.592 | 0.6008 | 0.5974 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-15 22:40:37 | 0.6008 | 0.592 | 0.6008 | 0.5974 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 1000 | 128 | - | mean | jsd | 21-01-15 10:43:29 | 0.5635 | 0.5493 | 0.5635 | 0.5582 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 23:05:22 | 0.5635 | 0.5451 | 0.5635 | 0.5591 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-15 20:19:48 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 20:20:03 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-15 20:19:22 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 16:39:14 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 16:50:30 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-15 20:19:22 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-15 20:19:48 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 20:20:03 | 0.5362 | 0.5053 | 0.5362 | 0.5253 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 17:27:36 | 0.5335 | 0.5051 | 0.5335 | 0.5238 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 18:45:33 | 0.5335 | 0.5051 | 0.5335 | 0.5238 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 19:03:36 | 0.5335 | 0.5051 | 0.5335 | 0.5238 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 17:27:36 | 0.5335 | 0.5051 | 0.5335 | 0.5238 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-16 02:27:09 | 0.5279 | 0.4535 | 0.5279 | 0.5029 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 09:40:33 | 0.5279 | 0.4535 | 0.5279 | 0.5029 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 02:34:07 | 0.5279 | 0.4535 | 0.5279 | 0.5029 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 09:40:33 | 0.5279 | 0.4535 | 0.5279 | 0.5029 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 09:46:36 | 0.5159 | 0.444 | 0.5159 | 0.4744 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 10:55:51 | 0.5002 | 0.3973 | 0.5002 | 0.4481 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 21:47:38 | 0.4689 | 0.3928 | 0.4689 | 0.4402 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 2000 | 128 | - | mean | jsd | 21-01-15 10:31:00 | 0.4689 | 0.4332 | 0.4689 | 0.4594 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 21:47:38 | 0.4689 | 0.3928 | 0.4689 | 0.4402 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-18 09:26:10 | 0.4689 | 0.3928 | 0.4689 | 0.4402 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:26:50 | 0.4689 | 0.3928 | 0.4689 | 0.4402 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:50:51 | 0.4689 | 0.3928 | 0.4689 | 0.4402 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:27:15 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:52:52 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:45:16 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:55:13 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-15 21:40:15 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:27:15 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:45:16 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:52:52 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:55:13 | 0.4675 | 0.3987 | 0.4675 | 0.4455 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | - | 128 | - | mean | jsd | 21-01-15 12:52:03 | 0.4596 | 0.3795 | 0.4596 | 0.4206 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 10:01:36 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-15 21:42:01 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-15 21:49:18 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-15 21:42:20 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 21:52:03 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-15 21:43:13 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-15 21:49:18 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-15 21:51:06 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 10:30:04 | 0.4587 | 0.3478 | 0.4587 | 0.3875 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 21:52:03 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 02:51:33 | 0.4587 | 0.3478 | 0.4587 | 0.3875 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 10:14:15 | 0.4462 | 0.3354 | 0.4462 | 0.3776 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 10:30:04 | 0.4587 | 0.3478 | 0.4587 | 0.3875 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 10:01:36 | 0.4587 | 0.4138 | 0.4587 | 0.4458 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 03:08:00 | 0.4462 | 0.3354 | 0.4462 | 0.3776 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 10:14:15 | 0.4462 | 0.3354 | 0.4462 | 0.3776 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 22:03:51 | 0.4435 | 0.3142 | 0.4435 | 0.374 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 22:04:50 | 0.4435 | 0.3142 | 0.4435 | 0.374 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 22:06:50 | 0.443 | 0.3446 | 0.443 | 0.3857 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 22:28:17 | 0.443 | 0.3446 | 0.443 | 0.3857 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 10:11:24 | 0.443 | 0.3446 | 0.443 | 0.3857 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 22:06:50 | 0.443 | 0.3446 | 0.443 | 0.3857 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:38:22 | 0.4402 | 0.342 | 0.4402 | 0.3903 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-15 17:50:55 | 0.4402 | 0.342 | 0.4402 | 0.3903 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-15 19:21:48 | 0.4402 | 0.342 | 0.4402 | 0.3903 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:38:22 | 0.4402 | 0.342 | 0.4402 | 0.3903 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-16 05:26:27 | 0.4232 | 0.3016 | 0.4232 | 0.3614 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-18 10:01:37 | 0.4215 | 0.3041 | 0.4215 | 0.36 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:02:58 | 0.4215 | 0.3041 | 0.4215 | 0.36 | 
@@ -528,8 +529,8 @@
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:09:27 | 0.4192 | 0.2993 | 0.4192 | 0.3543 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 11:18:14 | 0.4189 | 0.3046 | 0.4189 | 0.3605 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 12:05:02 | 0.4138 | 0.3043 | 0.4138 | 0.3601 | 
-| ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 12:03:12 | 0.4118 | 0.3024 | 0.4118 | 0.3579 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-18 12:01:16 | 0.4118 | 0.3024 | 0.4118 | 0.3579 | 
+| ss_nodemodel | pubmed | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-18 12:03:12 | 0.4118 | 0.3024 | 0.4118 | 0.3579 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 23:13:20 | 0.4102 | 0.3153 | 0.4102 | 0.364 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 00:39:01 | 0.4102 | 0.3153 | 0.4102 | 0.364 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 10:37:29 | 0.4102 | 0.3153 | 0.4102 | 0.364 | 
@@ -548,10 +549,10 @@
 | ss_nodemodel | pubmed | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 13:19:58 | 0.3963 | 0.2508 | 0.3963 | 0.297 | 
 | ss_nodemodel | pubmed | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-18 11:06:42 | 0.3962 | 0.2 | 0.3962 | 0.2369 | 
 | ss_nodemodel | pubmed | none | mlp | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-18 14:22:03 | 0.396 | 0.2861 | 0.396 | 0.3386 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:59:54 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-15 22:13:36 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:18:53 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-15 22:49:00 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-15 22:13:36 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:59:54 | 0.3959 | 0.3155 | 0.3959 | 0.3564 | 
 | ss_nodemodel | pubmed | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 12:08:28 | 0.3951 | 0.2853 | 0.3951 | 0.3377 | 
 | ss_nodemodel | pubmed | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 12:09:07 | 0.3951 | 0.2853 | 0.3951 | 0.3377 | 
 | ss_nodemodel | pubmed | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 12:07:48 | 0.395 | 0.198 | 0.395 | 0.2345 | 
@@ -568,304 +569,304 @@
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-15 19:43:35 | 0.3678 | 0.2043 | 0.3678 | 0.2594 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 16:49:01 | 0.3641 | 0.2239 | 0.3641 | 0.2767 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 23:12:11 | 0.3609 | 0.208 | 0.3609 | 0.2696 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-16 00:40:23 | 0.3609 | 0.208 | 0.3609 | 0.2696 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 23:12:46 | 0.3609 | 0.208 | 0.3609 | 0.2696 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-16 00:40:23 | 0.3609 | 0.208 | 0.3609 | 0.2696 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:56:35 | 0.3539 | 0.1903 | 0.3539 | 0.2429 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 512 | - | mean | jsd | 21-01-16 06:21:11 | 0.3512 | 0.1582 | 0.3512 | 0.2412 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-16 00:48:08 | 0.3493 | 0.181 | 0.3493 | 0.2379 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 00:50:28 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 23:24:12 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 23:18:57 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-16 00:43:19 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 00:55:12 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-15 23:15:48 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-15 23:18:57 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 23:24:12 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-16 00:43:19 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 00:50:28 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 00:55:12 | 0.3466 | 0.1778 | 0.3466 | 0.2361 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-15 21:41:37 | 0.3392 | 0.1865 | 0.3392 | 0.2611 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-18 09:56:18 | 0.3392 | 0.1865 | 0.3392 | 0.2611 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-15 21:42:46 | 0.3392 | 0.1865 | 0.3392 | 0.2611 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 09:29:51 | 0.3392 | 0.1865 | 0.3392 | 0.2611 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:38:24 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-15 21:52:55 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | - | mean | jsd | 21-01-18 09:56:18 | 0.3392 | 0.1865 | 0.3392 | 0.2611 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 21:44:05 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-15 21:52:55 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:56:22 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-18 09:34:10 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 21:57:11 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-18 09:34:10 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 09:36:09 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:38:24 | 0.3332 | 0.1295 | 0.3332 | 0.2062 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-16 08:15:07 | 0.3313 | 0.1233 | 0.3313 | 0.2003 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 08:57:27 | 0.3309 | 0.1414 | 0.3309 | 0.2206 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-15 23:32:07 | 0.3299 | 0.1241 | 0.3299 | 0.2008 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 00:17:51 | 0.329 | 0.1578 | 0.329 | 0.2209 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 23:22:42 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-16 00:41:17 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-15 23:17:25 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-15 23:14:11 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 20:19:35 | 0.3263 | 0.1611 | 0.3263 | 0.2174 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-15 23:17:25 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 23:22:42 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 00:17:51 | 0.329 | 0.1578 | 0.329 | 0.2209 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-16 00:41:17 | 0.329 | 0.1243 | 0.329 | 0.2009 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 16:47:17 | 0.3263 | 0.1611 | 0.3263 | 0.2174 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 20:19:35 | 0.3263 | 0.1611 | 0.3263 | 0.2174 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 01:23:06 | 0.3216 | 0.1177 | 0.3216 | 0.1933 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | - | mean | jsd | 21-01-15 17:00:52 | 0.3212 | 0.1217 | 0.3212 | 0.1964 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-15 23:51:41 | 0.317 | 0.1115 | 0.317 | 0.1864 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-15 16:42:17 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 16:43:35 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 17:07:55 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 17:13:03 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 16:43:35 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-15 16:42:17 | 0.3143 | 0.1137 | 0.3143 | 0.188 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 18:17:43 | 0.3013 | 0.0877 | 0.3013 | 0.1593 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-15 20:09:31 | 0.3013 | 0.0877 | 0.3013 | 0.1593 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-15 20:30:26 | 0.3013 | 0.0877 | 0.3013 | 0.1593 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 01:15:51 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 17:03:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 02:00:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 17:05:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 17:34:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:54:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 02:30:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 18:45:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:59 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-16 01:04:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 16:38:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:32:24 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:28 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 18:28:11 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-16 17:34:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:43:56 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-16 18:57:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 01:08:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-15 12:50:00 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-15 18:12:21 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:54:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:18:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:22:15 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 17:59:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-15 16:58:30 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:37:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 18:17:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 01:28:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:05:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:46:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:45:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:26:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-15 17:15:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 11:41:20 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-15 16:44:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 11:09:59 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:11:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 17:47:12 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 17:18:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:12:11 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 17:31:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 18:05:07 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 23:45:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 03:08:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:45:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:48 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-16 18:01:38 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 23:11:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:48:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 17:45:05 | 0.2949 | 0.0667 | 0.2949 | 0.1362 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-16 18:40:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-16 17:36:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:45:57 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:46:10 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 00:37:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:47:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:34:38 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 17:37:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 10:46:12 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:18:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-16 00:57:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-16 18:21:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-18 09:33:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:07 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 23:38:51 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:15:30 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:44:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:31:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:50:28 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 14:54:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:50:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 18:53:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:12:06 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:35:04 | 0.2949 | 0.0667 | 0.2949 | 0.1362 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:50:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 03:21:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 22:00:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:51:34 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-16 17:57:28 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:40:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | - | 128 | - | mean | jsd | 21-01-15 12:50:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:35:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:10:50 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 19:02:05 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 11:37:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-18 11:28:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 16:38:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 16:39:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-15 22:07:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:37:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 21:53:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-18 11:27:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:43:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 17:49:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-16 01:35:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:48 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-15 22:10:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 22:09:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:42:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-15 21:59:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:54:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-16 17:36:08 | 0.2949 | 0.0768 | 0.2949 | 0.1471 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 11:40:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 17:10:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:08:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 17:48:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:40:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-15 16:41:15 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:36 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 17:55:24 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 18:49:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 09:52:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:09:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-18 09:33:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:27 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 11:36:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:33:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:16:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:22:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 17:35:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:38:40 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-15 16:44:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:54:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-15 16:58:30 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 17:03:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 17:05:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 17:10:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-15 17:15:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 17:18:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 17:31:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-15 17:35:04 | 0.2949 | 0.0667 | 0.2949 | 0.1362 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 17:45:05 | 0.2949 | 0.0667 | 0.2949 | 0.1362 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-15 18:12:21 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:28 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:50 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-15 23:25:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 18:24:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:46:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:47:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:43:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:45:01 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 21:53:45 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:54:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 21:55:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-16 17:49:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-15 21:59:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 22:00:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-15 22:07:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-15 22:09:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | - | mean | jsd | 21-01-15 22:10:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:16:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 22:54:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 23:11:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-15 23:25:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-15 23:38:51 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-15 23:45:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 00:37:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-16 00:57:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-16 01:04:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 01:08:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 01:15:51 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 01:28:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512] | mean | jsd | 21-01-16 01:35:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 02:00:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 02:30:39 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 03:08:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 03:21:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 09:52:44 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 10:46:12 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 14:54:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:27 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 17:34:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256] | mean | jsd | 21-01-16 17:34:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 17:35:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 512 | - | mean | jsd | 21-01-16 17:36:08 | 0.2949 | 0.0768 | 0.2949 | 0.1471 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-16 17:36:55 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 17:37:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:38:40 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 17:43:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:44:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:45:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 17:46:10 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 17:47:12 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-16 17:48:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 17:49:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-16 17:49:41 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:50:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:50:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:51:34 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-16 17:55:24 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-16 17:57:28 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 17:59:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512] | mean | jsd | 21-01-16 18:01:38 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 18:05:07 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:08:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:12:06 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 18:15:30 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-16 18:17:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-16 18:21:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 18:24:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 18:28:11 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-16 18:40:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-16 18:45:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 256 | [256, 256] | mean | jsd | 21-01-16 18:49:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-16 18:53:02 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-16 18:57:54 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-16 19:02:05 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.02 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-16 19:05:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:07 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:36 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:48 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:08:59 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:09:04 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:18:52 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:18:58 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:03 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:08 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:14 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:19 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:29:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:37 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:42 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:19:48 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:22:09 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-18 08:22:15 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-18 09:25:48 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:12 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:46:06 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:41 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:15 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-18 11:42:15 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:11:13 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:51:21 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:20 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:09 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:12:46 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:32:56 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 21:46:38 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:57 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:30 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:27 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:44:56 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-15 21:58:01 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:51 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:39 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:26:14 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:02 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:21:28 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:59:54 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:21:34 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:36 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:45 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:18 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:47:41 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:48 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-15 20:20:21 | 0.2944 | 0.0667 | 0.2944 | 0.1361 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-16 17:32:44 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:42:05 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:07 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-18 11:10:23 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
-| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:04 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-18 11:41:51 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:44 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:37 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:26:25 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-18 09:33:22 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | - | mean | jsd | 21-01-18 09:33:23 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:37:17 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 09:37:18 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:46:13 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:47:26 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 11:09:59 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:10:50 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:11:31 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:12:11 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | - | mean | jsd | 21-01-18 11:27:32 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | - | mean | jsd | 21-01-18 11:28:33 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:29:35 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:31:27 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 256 | [256] | mean | jsd | 21-01-18 11:32:24 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:33:53 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:34:38 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256] | mean | jsd | 21-01-18 11:35:56 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 11:36:46 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 256 | [256, 256, 256] | mean | jsd | 21-01-18 11:37:49 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-18 11:40:20 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 11:41:20 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:42:47 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:43:56 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:45:57 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:48:29 | 0.2949 | 0.0651 | 0.2949 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:50:28 | 0.2949 | 0.0651 | 0.2949 | 0.1344 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 16:52:48 | 0.2944 | 0.0667 | 0.2944 | 0.1361 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:40 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-15 20:20:21 | 0.2944 | 0.0667 | 0.2944 | 0.1361 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:21:22 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:42:00 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:21:28 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:21:34 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:02 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:07 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:12 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:18 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:24 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:30 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:36 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:41 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:48 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:41:54 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:42:00 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:42:05 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:40 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:45 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:51 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:43:57 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:04 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:09 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:15 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:20 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:27 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:33 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:21:38 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:18:58 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 11:15:22 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:26:14 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:39 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 1 | 0.001 | 20 | 16 | - | mean | jsd | 21-01-15 20:44:44 | 0.2944 | 0.065 | 0.2944 | 0.1341 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:46:06 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 512 | [512, 512, 512] | mean | jsd | 21-01-15 21:46:38 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | - | mean | jsd | 21-01-15 21:58:01 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:59:54 | 0.2944 | 0.0978 | 0.2944 | 0.169 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64] | mean | jsd | 21-01-16 17:32:44 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-16 17:32:56 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-16 17:33:37 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:26:14 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-18 11:10:23 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:11:13 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:12:46 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | - | mean | jsd | 21-01-18 11:41:51 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-18 11:42:15 | 0.2944 | 0.0652 | 0.2944 | 0.1345 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64] | mean | jsd | 21-01-18 11:44:56 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 11:47:41 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 11:51:21 | 0.2944 | 0.0651 | 0.2944 | 0.1343 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-16 17:38:59 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 17:54:50 | 0.2907 | 0.0692 | 0.2907 | 0.1386 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-18 11:15:22 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:18:58 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:21:38 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:26:14 | 0.2912 | 0.0731 | 0.2912 | 0.1432 | 
 | ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 128 | - | mean | jsd | 21-01-16 17:52:57 | 0.2907 | 0.0692 | 0.2907 | 0.1386 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.03 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 17:54:50 | 0.2907 | 0.0692 | 0.2907 | 0.1386 | 
 | ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.03 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 18:39:19 | 0.2907 | 0.0692 | 0.2907 | 0.1386 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-16 17:53:33 | 0.2903 | 0.0684 | 0.2903 | 0.1377 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.03 | 20 | 64 | - | mean | jsd | 21-01-15 21:39:18 | 0.2903 | 0.0824 | 0.2903 | 0.1537 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-15 23:20:42 | 0.2903 | 0.0684 | 0.2903 | 0.1376 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-16 00:45:25 | 0.2903 | 0.0684 | 0.2903 | 0.1376 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 09:51:35 | 0.2903 | 0.0684 | 0.2903 | 0.1377 | 
 | ss_nodemodel | cora | none | bilinear | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 00:52:35 | 0.2903 | 0.0684 | 0.2903 | 0.1376 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-16 02:37:40 | 0.2903 | 0.0686 | 0.2903 | 0.1382 | 
 | ss_nodemodel | cora | none | bilinear | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 09:58:52 | 0.2903 | 0.0686 | 0.2903 | 0.1382 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-16 17:53:33 | 0.2903 | 0.0684 | 0.2903 | 0.1377 | 
 | ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 18:35:25 | 0.2903 | 0.0684 | 0.2903 | 0.1377 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 09:51:35 | 0.2903 | 0.0684 | 0.2903 | 0.1377 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-15 21:41:11 | 0.2898 | 0.0676 | 0.2898 | 0.1366 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-15 21:48:32 | 0.2898 | 0.0676 | 0.2898 | 0.1366 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-15 21:50:17 | 0.2898 | 0.0676 | 0.2898 | 0.1366 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-15 21:41:11 | 0.2898 | 0.0676 | 0.2898 | 0.1366 | 
 | ss_nodemodel | cora | none | mlp | node-rand_walk-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-16 17:52:17 | 0.2893 | 0.0669 | 0.2893 | 0.136 | 
-| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 18:33:34 | 0.2893 | 0.0669 | 0.2893 | 0.136 | 
 | ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-16 18:31:37 | 0.2893 | 0.0669 | 0.2893 | 0.136 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:16:48 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 17:42:22 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-18 11:13:45 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:25:28 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
+| ss_nodemodel | cora | none | mlp | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 18:33:34 | 0.2893 | 0.0669 | 0.2893 | 0.136 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 17:33:47 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:20:55 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:23:45 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-16 17:40:37 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-16 17:41:22 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-16 17:42:22 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-18 11:13:45 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:16:48 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:18:12 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-18 11:13:04 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:19:54 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:20:55 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.01 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:23:45 | 0.2889 | 0.072 | 0.2889 | 0.1417 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.02 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:25:28 | 0.2889 | 0.0714 | 0.2889 | 0.1411 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-16 17:39:50 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-18 09:26:49 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:23:06 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
-| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:16:08 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
 | ss_nodemodel | cora | none | mlp | node-neighbor-except_neighbor | 500 | 0.001 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 09:29:50 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:45:33 | 0.288 | 0.0992 | 0.288 | 0.1694 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | - | mean | jsd | 21-01-18 11:13:04 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128] | mean | jsd | 21-01-18 11:16:08 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128, 128] | mean | jsd | 21-01-18 11:19:54 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
+| ss_nodemodel | cora | none | mlp | node-neighbor-random | 500 | 0.001 | 20 | 128 | [128, 128, 128] | mean | jsd | 21-01-18 11:23:06 | 0.2884 | 0.0681 | 0.2884 | 0.1371 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512] | mean | jsd | 21-01-15 21:44:32 | 0.288 | 0.0992 | 0.288 | 0.1694 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.02 | 20 | 512 | [512, 512] | mean | jsd | 21-01-15 21:45:33 | 0.288 | 0.0992 | 0.288 | 0.1694 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 21:40:33 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 21:40:46 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-15 21:40:57 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-15 21:47:10 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | - | mean | jsd | 21-01-18 09:26:00 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:49:45 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-15 21:40:33 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:54:19 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64] | mean | jsd | 21-01-18 09:44:15 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 21:40:46 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 22:03:25 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:20:34 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
-| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 22:21:34 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 09:49:45 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 64 | [64, 64, 64] | mean | jsd | 21-01-18 09:54:19 | 0.2866 | 0.0814 | 0.2866 | 0.1522 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 64 | - | mean | jsd | 21-01-15 22:01:43 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-random | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-15 22:03:25 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64] | mean | jsd | 21-01-15 22:21:34 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-except_neighbor | 500 | 0.01 | 20 | 128 | [128] | mean | jsd | 21-01-18 09:57:56 | 0.2787 | 0.0798 | 0.2787 | 0.1498 | 
+| ss_nodemodel | cora | none | inner | node-rand_walk-except_neighbor | 500 | 0.001 | 20 | 64 | [64, 64] | mean | jsd | 21-01-18 10:20:34 | 0.2787 | 0.0808 | 0.2787 | 0.1507 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 500 | 0.01 | 2000 | 128 | - | mean | jsd | 21-01-15 10:30:12 | 0.2252 | 0.1793 | 0.2252 | 0.2148 | 
 | ss_nodemodel | cora | none | inner | node-rand_walk-random | 300 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-15 10:41:34 | 0.2118 | 0.1669 | 0.2118 | 0.2039 | 
-| ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-14 23:38:07 | 0.1947 | 0.1565 | 0.1947 | 0.1903 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-14 23:25:22 | 0.1947 | 0.1565 | 0.1947 | 0.1903 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-14 23:36:57 | 0.1947 | 0.1565 | 0.1947 | 0.1903 | 
+| ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | - | - | 128 | - | mean | jsd | 21-01-14 23:38:07 | 0.1947 | 0.1565 | 0.1947 | 0.1903 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-15 10:10:51 | 0.1947 | 0.1565 | 0.1947 | 0.1903 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | 0.01 | 2000 | 128 | - | mean | jsd | 21-01-15 10:29:27 | 0.1943 | 0.1509 | 0.1943 | 0.1868 | 
 | ss_nodemodel | cora | none | inner | node-neighbor-random | 300 | 0.01 | 20 | 128 | - | mean | jsd | 21-01-15 10:27:47 | 0.1887 | 0.1442 | 0.1887 | 0.182 | 
