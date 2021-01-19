@@ -25,22 +25,22 @@ class Encoder(nn.Module):
         if self.name == 'none':
             return self.embedding(x)
         else:
-            return self.features[x]
+            return x
     
     def forward(self, x):
         """
         special input: graph
         """
         isgraph = False
-        if x == 'graph':
+        if x.typ == 'graph':
             isgraph = True
-            x = torch.arange(self.nnodes)
-        hx = self.embed(x)
+            #x = torch.arange(self.nnodes)
+        hx = self.embed(x.feat)
         if self.name != 'none':
             for layer in self.layers:
-                hx = layer(hx)
+                hx = layer([hx, x.adj])
         if isgraph:
-            hx = self.readout(hx)
+            hx = self.sigm(self.readout(hx))
         return hx
 
 "Layers"
