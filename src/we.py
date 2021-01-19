@@ -45,7 +45,7 @@ def transfer(filename):
                 args = json.loads(args)
 
                 priority_list_args = [['model', 'dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr','early_stopping', 'dim', 'hiddens', 'readout', 'est']]
-                if args['dim'] == 512 or len(args.get('hiddens', '-')) == 3:
+                if args['dim'] == 512 or len(args.get('hiddens', '-')) == 3 or args['enc'] == 'gat':
                     flag = 0
                     continue
                 nm = args['model']
