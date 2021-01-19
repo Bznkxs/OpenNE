@@ -78,6 +78,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         self.weight_decay = weight_decay
         self.early_stopping = early_stopping
         self.patience = patience
+        self.sparse = False
         self.min_delta = min_delta
         self.enc = enc
         self.dec = dec
