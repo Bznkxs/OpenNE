@@ -15,7 +15,7 @@ def dict_to_cmd(dict1):
         ret += "python3 -m openne "
         for p, q in ls:
             if q != "-":
-                ret += "--" + p + ' ' + str(q).replace('[', '').replace(']', '').replace(',', '') + " "
+                ret += "--" + p.replace('_', '-') + ' ' + str(q).replace('[', '').replace(']', '').replace(',', '') + " "
         ret += "--devices 7\n"
     return ret
 
