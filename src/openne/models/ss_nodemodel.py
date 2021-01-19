@@ -172,7 +172,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         self.register_buffer("features", features)
         n = graph.nodesize
         self.build_label(graph)
-        adj_label = graph.adjmat(weighted=False, directed=False, sparse=True)
+        adj_label = graph.adjmat(weighted=False, directed=False, sparse=self.sparse)
         self.register_float_buffer("adj_label", adj_label + sp.eye(n).toarray())
         adj = nx.adjacency_matrix(g)  # the type of graph
         self.register_float_buffer("pos_weight", [float(n * n - adj.sum()) / adj.sum()])
