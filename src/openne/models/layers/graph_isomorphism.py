@@ -34,7 +34,9 @@ class GIN(Layer):
             else:
                 x = torch.dropout(x, self.dropout, True)  # dropout
         # sum pooling
-        y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+        y = (1 + self.eps) * x
+        y += torch.mm(self.adj, x)
+        y = self.mlp(y)
         # batch norm
         y = self.batch_norm(y)
         return self.act(y)
