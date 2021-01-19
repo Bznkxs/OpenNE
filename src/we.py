@@ -12,7 +12,7 @@ def dict_to_cmd(dict1):
     ret = ""
     # items
     for nm, ls in dict1:
-        ret += "python -m openne "
+        ret += "python3 -m openne "
         for p, q in ls:
             if q != "-":
                 ret += "--" + p + ' ' + str(q).replace('[', '').replace(']', '').replace(',', '') + " "
