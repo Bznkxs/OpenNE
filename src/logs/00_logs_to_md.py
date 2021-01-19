@@ -38,7 +38,7 @@ def dict_to_csv(dict1):
     for nm, ls in dict1:
         ret += str(nm) + ", "
         for p, q in ls:
-            ret += str(q) + ", "
+            ret += str(q).replace(',', ' ') + ", "
         ret += "\n"
     ret += "\n"
     return ret
@@ -120,9 +120,9 @@ def main():
         f.write(csvstr)
 
     os.chdir(curdir)
-    os.system("git add .")
-    os.system('git commit -m "update experiment data (automatic operation)"')
-    os.system("git push")
+    #os.system("git add .")
+    #os.system('git commit -m "update experiment data (automatic operation)"')
+    #os.system("git push")
 
 if __name__ == "__main__":
     main()
