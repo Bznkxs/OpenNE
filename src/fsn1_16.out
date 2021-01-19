@@ -1,0 +1,852 @@
+  0%|          | 0/39434 [00:00<?, ?it/s] 24%|██▍       | 9650/39434 [00:00<00:00, 96491.35it/s] 43%|████▎     | 16793/39434 [00:00<00:00, 87154.44it/s] 62%|██████▏   | 24347/39434 [00:00<00:00, 83311.60it/s] 80%|████████  | 31653/39434 [00:00<00:00, 79945.33it/s] 98%|█████████▊| 38458/39434 [00:00<00:00, 75959.79it/s]100%|██████████| 39434/39434 [00:00<00:00, 76904.17it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 9942/552076 [00:00<00:05, 95380.04it/s]  4%|▎         | 19369/552076 [00:00<00:05, 95043.02it/s]  6%|▌         | 30427/552076 [00:00<00:05, 98504.74it/s]  7%|▋         | 40869/552076 [00:00<00:05, 100206.73it/s]  9%|▉         | 52327/552076 [00:00<00:04, 104123.33it/s] 12%|█▏        | 63736/552076 [00:00<00:04, 106925.10it/s] 14%|█▍        | 75993/552076 [00:00<00:04, 111180.89it/s] 16%|█▌        | 88273/552076 [00:00<00:04, 114427.36it/s] 18%|█▊        | 99794/552076 [00:00<00:03, 114660.00it/s] 20%|██        | 112185/552076 [00:01<00:03, 117285.51it/s] 22%|██▏       | 123701/552076 [00:01<00:03, 107364.32it/s] 24%|██▍       | 134452/552076 [00:01<00:04, 100775.37it/s] 27%|██▋       | 146689/552076 [00:01<00:03, 106407.06it/s] 29%|██▉       | 159321/552076 [00:01<00:03, 111687.07it/s] 31%|███       | 172209/552076 [00:01<00:03, 116341.97it/s] 33%|███▎      | 184015/552076 [00:01<00:03, 116009.84it/s] 35%|███▌      | 195737/552076 [00:01<00:03, 115540.92it/s] 38%|███▊      | 207376/552076 [00:01<00:03, 105430.64it/s] 40%|███▉      | 218150/552076 [00:02<00:03, 100877.48it/s] 41%|████▏     | 228441/552076 [00:02<00:03, 93672.76it/s]  43%|████▎     | 238054/552076 [00:02<00:03, 94307.91it/s] 45%|████▍     | 247658/552076 [00:02<00:03, 91178.90it/s] 47%|████▋     | 256920/552076 [00:02<00:03, 86550.30it/s] 49%|████▊     | 268931/552076 [00:02<00:02, 94468.19it/s] 51%|█████     | 281912/552076 [00:02<00:02, 102869.06it/s] 53%|█████▎    | 292643/552076 [00:02<00:02, 99136.21it/s]  55%|█████▌    | 304876/552076 [00:02<00:02, 105114.93it/s] 57%|█████▋    | 315724/552076 [00:03<00:02, 88019.52it/s]  59%|█████▉    | 326262/552076 [00:03<00:02, 92595.69it/s] 61%|██████▏   | 338203/552076 [00:03<00:02, 99281.59it/s] 63%|██████▎   | 349864/552076 [00:03<00:01, 103913.89it/s] 66%|██████▌   | 361916/552076 [00:03<00:01, 108394.18it/s] 68%|██████▊   | 374093/552076 [00:03<00:01, 112086.86it/s] 70%|██████▉   | 385897/552076 [00:03<00:01, 113804.66it/s] 72%|███████▏  | 397917/552076 [00:03<00:01, 115650.04it/s] 74%|███████▍  | 409629/552076 [00:03<00:01, 113841.32it/s] 76%|███████▋  | 421646/552076 [00:03<00:01, 115667.25it/s] 79%|███████▊  | 433650/552076 [00:04<00:01, 116002.78it/s] 81%|████████  | 445309/552076 [00:04<00:00, 107617.68it/s] 83%|████████▎ | 456233/552076 [00:04<00:00, 106635.41it/s] 85%|████████▍ | 467012/552076 [00:04<00:00, 100175.29it/s] 86%|████████▋ | 477191/552076 [00:04<00:00, 100619.31it/s] 88%|████████▊ | 488440/552076 [00:04<00:00, 103907.44it/s] 91%|█████████ | 500769/552076 [00:04<00:00, 109049.28it/s] 93%|█████████▎| 511816/552076 [00:04<00:00, 108644.17it/s] 95%|█████████▍| 523448/552076 [00:04<00:00, 110838.28it/s] 97%|█████████▋| 535246/552076 [00:05<00:00, 112887.90it/s] 99%|█████████▉| 546601/552076 [00:05<00:00, 105948.79it/s]100%|██████████| 552076/552076 [00:05<00:00, 106272.09it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.43102121353149414 seconds.
+Run epoch 1
+Epoch 1 ends in 0.4556765556335449 seconds.
+39434 sentences created
+mode 1: time used = 0.6610276699066162
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 26%|██▋       | 10378/39434 [00:00<00:00, 103770.94it/s] 51%|█████     | 20031/39434 [00:00<00:00, 101486.60it/s] 88%|████████▊ | 34551/39434 [00:00<00:00, 111562.31it/s]100%|██████████| 39434/39434 [00:00<00:00, 118414.67it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  4%|▍         | 21191/552076 [00:00<00:02, 211909.70it/s]  6%|▌         | 30816/552076 [00:00<00:03, 152831.16it/s]  8%|▊         | 43854/552076 [00:00<00:03, 145321.67it/s] 11%|█         | 61288/552076 [00:00<00:03, 152959.50it/s] 15%|█▍        | 81259/552076 [00:00<00:02, 164511.33it/s] 18%|█▊        | 102061/552076 [00:00<00:02, 175355.26it/s] 22%|██▏       | 123293/552076 [00:00<00:02, 185018.21it/s] 26%|██▌       | 141823/552076 [00:00<00:02, 185101.52it/s] 29%|██▉       | 161195/552076 [00:00<00:02, 187605.38it/s] 33%|███▎      | 180709/552076 [00:01<00:01, 189803.74it/s] 36%|███▋      | 201016/552076 [00:01<00:01, 193597.64it/s] 40%|███▉      | 220224/552076 [00:01<00:01, 193138.64it/s] 43%|████▎     | 239407/552076 [00:01<00:01, 192250.99it/s] 47%|████▋     | 258541/552076 [00:01<00:01, 177779.26it/s] 50%|█████     | 276472/552076 [00:01<00:01, 172348.71it/s] 54%|█████▎    | 296727/552076 [00:01<00:01, 180417.01it/s] 57%|█████▋    | 315919/552076 [00:01<00:01, 183716.25it/s] 61%|██████    | 334445/552076 [00:01<00:01, 172512.95it/s] 64%|██████▎   | 351944/552076 [00:01<00:01, 160977.88it/s] 67%|██████▋   | 371727/552076 [00:02<00:01, 170505.55it/s] 71%|███████   | 391000/552076 [00:02<00:00, 176614.07it/s] 74%|███████▍  | 408986/552076 [00:02<00:00, 176777.58it/s] 77%|███████▋  | 426891/552076 [00:02<00:00, 157085.46it/s] 81%|████████  | 446523/552076 [00:02<00:00, 167103.62it/s] 84%|████████▍ | 463804/552076 [00:02<00:00, 167201.85it/s] 88%|████████▊ | 483810/552076 [00:02<00:00, 175866.64it/s] 91%|█████████ | 503565/552076 [00:02<00:00, 181852.84it/s] 95%|█████████▍| 523899/552076 [00:02<00:00, 187804.38it/s] 99%|█████████▊| 544088/552076 [00:03<00:00, 191818.29it/s]100%|██████████| 552076/552076 [00:03<00:00, 179364.84it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.24994325637817383 seconds.
+Run epoch 1
+Epoch 1 ends in 0.35298848152160645 seconds.
+39434 sentences created
+mode 1: time used = 0.4153921604156494
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 34%|███▎      | 13258/39434 [00:00<00:00, 132578.55it/s] 60%|█████▉    | 23587/39434 [00:00<00:00, 122182.85it/s] 84%|████████▍ | 33112/39434 [00:00<00:00, 112624.07it/s]100%|██████████| 39434/39434 [00:00<00:00, 106104.94it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 8419/552076 [00:00<00:06, 84186.27it/s]  3%|▎         | 17612/552076 [00:00<00:06, 86367.02it/s]  5%|▌         | 29339/552076 [00:00<00:05, 93779.54it/s]  7%|▋         | 37901/552076 [00:00<00:05, 91170.66it/s]  8%|▊         | 45150/552076 [00:00<00:06, 77060.66it/s] 10%|▉         | 53759/552076 [00:00<00:06, 79563.88it/s] 11%|█▏        | 62846/552076 [00:00<00:05, 82646.94it/s] 13%|█▎        | 70699/552076 [00:00<00:07, 67345.88it/s] 14%|█▍        | 78557/552076 [00:00<00:06, 70362.44it/s] 16%|█▌        | 87345/552076 [00:01<00:06, 74836.20it/s] 17%|█▋        | 95671/552076 [00:01<00:05, 77176.73it/s] 19%|█▉        | 106526/552076 [00:01<00:05, 84503.53it/s] 22%|██▏       | 119011/552076 [00:01<00:04, 93575.34it/s] 24%|██▎       | 130709/552076 [00:01<00:04, 99550.01it/s] 26%|██▌       | 142543/552076 [00:01<00:03, 104528.57it/s] 28%|██▊       | 153391/552076 [00:01<00:04, 84608.95it/s]  29%|██▉       | 162742/552076 [00:01<00:05, 77535.33it/s] 32%|███▏      | 178791/552076 [00:02<00:04, 91764.31it/s] 35%|███▌      | 194261/552076 [00:02<00:03, 104520.00it/s] 38%|███▊      | 207523/552076 [00:02<00:03, 111614.63it/s] 40%|███▉      | 220616/552076 [00:02<00:02, 115689.79it/s] 43%|████▎     | 235621/552076 [00:02<00:02, 124220.29it/s] 46%|████▌     | 251277/552076 [00:02<00:02, 132426.07it/s] 48%|████▊     | 265970/552076 [00:02<00:02, 136465.27it/s] 51%|█████     | 280241/552076 [00:02<00:01, 138278.57it/s] 54%|█████▎    | 295710/552076 [00:02<00:01, 142822.02it/s] 56%|█████▌    | 310307/552076 [00:02<00:01, 142630.59it/s] 59%|█████▉    | 327246/552076 [00:03<00:01, 149726.07it/s] 62%|██████▏   | 342466/552076 [00:03<00:01, 146030.98it/s] 65%|██████▍   | 357263/552076 [00:03<00:01, 143244.65it/s] 68%|██████▊   | 372681/552076 [00:03<00:01, 146358.38it/s] 70%|███████   | 388497/552076 [00:03<00:01, 149707.01it/s] 73%|███████▎  | 403571/552076 [00:03<00:01, 148094.15it/s] 76%|███████▌  | 419699/552076 [00:03<00:00, 151817.35it/s] 79%|███████▉  | 436233/552076 [00:03<00:00, 155635.99it/s] 82%|████████▏ | 454043/552076 [00:03<00:00, 161755.45it/s] 85%|████████▌ | 470335/552076 [00:03<00:00, 154964.99it/s] 88%|████████▊ | 485974/552076 [00:04<00:00, 144993.95it/s] 91%|█████████ | 500703/552076 [00:04<00:00, 138739.45it/s] 93%|█████████▎| 514795/552076 [00:04<00:00, 139226.28it/s] 96%|█████████▌| 528871/552076 [00:04<00:00, 138504.79it/s] 98%|█████████▊| 543579/552076 [00:04<00:00, 140969.47it/s]100%|██████████| 552076/552076 [00:04<00:00, 120780.23it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.2365562915802002 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2744903564453125 seconds.
+39434 sentences created
+mode 1: time used = 0.4490056037902832
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s]  7%|▋         | 2889/39434 [00:00<00:01, 27958.61it/s] 18%|█▊        | 7024/39434 [00:00<00:01, 30532.49it/s] 28%|██▊       | 11203/39434 [00:00<00:00, 33216.10it/s] 38%|███▊      | 14927/39434 [00:00<00:00, 34051.17it/s] 45%|████▌     | 17750/39434 [00:00<00:00, 27128.25it/s] 54%|█████▍    | 21373/39434 [00:00<00:00, 29339.35it/s] 61%|██████▏   | 24247/39434 [00:00<00:00, 29156.52it/s] 75%|███████▍  | 29478/39434 [00:00<00:00, 33620.63it/s] 84%|████████▍ | 33051/39434 [00:00<00:00, 34191.33it/s] 94%|█████████▎| 36961/39434 [00:01<00:00, 35529.10it/s]100%|██████████| 39434/39434 [00:01<00:00, 33550.51it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 10055/552076 [00:00<00:05, 100548.90it/s]  3%|▎         | 19239/552076 [00:00<00:05, 97765.47it/s]   5%|▌         | 28435/552076 [00:00<00:05, 95947.61it/s]  7%|▋         | 36094/552076 [00:00<00:05, 89183.04it/s]  8%|▊         | 42708/552076 [00:00<00:07, 70917.43it/s]  9%|▉         | 48777/552076 [00:00<00:07, 65890.16it/s] 11%|█         | 58785/552076 [00:00<00:06, 73412.98it/s] 13%|█▎        | 69130/552076 [00:00<00:06, 80415.45it/s] 14%|█▍        | 77248/552076 [00:00<00:05, 80641.20it/s] 15%|█▌        | 85366/552076 [00:01<00:05, 80548.54it/s] 17%|█▋        | 95056/552076 [00:01<00:05, 84842.81it/s] 19%|█▉        | 105169/552076 [00:01<00:05, 89150.01it/s] 21%|██        | 114981/552076 [00:01<00:04, 90969.38it/s] 23%|██▎       | 124473/552076 [00:01<00:04, 92118.15it/s] 24%|██▍       | 134679/552076 [00:01<00:04, 94889.21it/s] 26%|██▌       | 144237/552076 [00:01<00:05, 71686.17it/s] 28%|██▊       | 152297/552076 [00:01<00:06, 63023.79it/s] 29%|██▉       | 159414/552076 [00:02<00:07, 53057.61it/s] 30%|██▉       | 165559/552076 [00:02<00:07, 52295.45it/s] 31%|███       | 171378/552076 [00:02<00:11, 32584.47it/s] 32%|███▏      | 175972/552076 [00:02<00:11, 32094.78it/s] 33%|███▎      | 180118/552076 [00:02<00:11, 32535.32it/s] 33%|███▎      | 184029/552076 [00:02<00:11, 31045.23it/s] 34%|███▍      | 187608/552076 [00:03<00:12, 30339.45it/s] 35%|███▍      | 190978/552076 [00:03<00:12, 29493.73it/s] 35%|███▌      | 194381/552076 [00:03<00:11, 30713.74it/s] 36%|███▌      | 198998/552076 [00:03<00:10, 34141.89it/s] 37%|███▋      | 204623/552076 [00:03<00:08, 38705.54it/s] 38%|███▊      | 208874/552076 [00:03<00:09, 37435.59it/s] 39%|███▊      | 212893/552076 [00:03<00:09, 33949.47it/s] 40%|███▉      | 218265/552076 [00:03<00:08, 37866.45it/s] 40%|████      | 222375/552076 [00:04<00:08, 37303.32it/s] 41%|████      | 226334/552076 [00:04<00:09, 34837.80it/s] 42%|████▏     | 230044/552076 [00:04<00:09, 35158.99it/s] 43%|████▎     | 234825/552076 [00:04<00:08, 38190.43it/s] 43%|████▎     | 238816/552076 [00:04<00:08, 35617.72it/s] 44%|████▍     | 242533/552076 [00:04<00:09, 32723.99it/s] 45%|████▍     | 245960/552076 [00:04<00:09, 32288.36it/s] 45%|████▌     | 249299/552076 [00:04<00:09, 31644.20it/s] 46%|████▌     | 252543/552076 [00:04<00:09, 31518.99it/s] 46%|████▋     | 256577/552076 [00:05<00:08, 33021.66it/s] 47%|████▋     | 262054/552076 [00:05<00:07, 36693.22it/s] 48%|████▊     | 266291/552076 [00:05<00:07, 37062.08it/s] 49%|████▉     | 270117/552076 [00:05<00:07, 36760.60it/s] 50%|████▉     | 274743/552076 [00:05<00:07, 38577.03it/s] 51%|█████     | 278883/552076 [00:05<00:06, 39382.18it/s] 51%|█████▏    | 284048/552076 [00:05<00:06, 42403.46it/s] 52%|█████▏    | 288398/552076 [00:05<00:06, 40642.43it/s] 53%|█████▎    | 293513/552076 [00:05<00:05, 43311.41it/s] 54%|█████▍    | 297957/552076 [00:06<00:06, 37803.06it/s] 55%|█████▍    | 301943/552076 [00:06<00:06, 36991.66it/s] 55%|█████▌    | 306002/552076 [00:06<00:06, 38001.16it/s] 56%|█████▌    | 309913/552076 [00:06<00:06, 36696.88it/s] 57%|█████▋    | 313900/552076 [00:06<00:06, 36934.46it/s] 58%|█████▊    | 317655/552076 [00:06<00:06, 36534.94it/s] 58%|█████▊    | 321353/552076 [00:06<00:06, 36307.69it/s] 59%|█████▉    | 325015/552076 [00:06<00:06, 36184.14it/s] 60%|█████▉    | 328656/552076 [00:06<00:06, 35492.71it/s] 60%|██████    | 332285/552076 [00:07<00:06, 34390.17it/s] 61%|██████    | 335745/552076 [00:07<00:06, 32354.03it/s] 61%|██████▏   | 339412/552076 [00:07<00:06, 32866.92it/s] 62%|██████▏   | 343105/552076 [00:07<00:06, 33988.57it/s] 63%|██████▎   | 346821/552076 [00:07<00:05, 34881.09it/s] 64%|██████▎   | 350977/552076 [00:07<00:05, 36647.61it/s] 65%|██████▍   | 356217/552076 [00:07<00:04, 39639.42it/s] 65%|██████▌   | 360389/552076 [00:07<00:04, 39589.98it/s] 66%|██████▌   | 364419/552076 [00:07<00:05, 36997.67it/s] 67%|██████▋   | 368203/552076 [00:07<00:05, 36315.58it/s] 68%|██████▊   | 373398/552076 [00:08<00:04, 39919.25it/s] 68%|██████▊   | 377542/552076 [00:08<00:04, 40304.81it/s] 69%|██████▉   | 381680/552076 [00:08<00:04, 39836.96it/s] 70%|███████   | 387198/552076 [00:08<00:03, 42653.41it/s] 71%|███████   | 391573/552076 [00:08<00:03, 42385.41it/s] 72%|███████▏  | 396137/552076 [00:08<00:03, 43309.85it/s] 73%|███████▎  | 400527/552076 [00:08<00:03, 42741.56it/s] 73%|███████▎  | 404889/552076 [00:08<00:03, 42836.57it/s] 74%|███████▍  | 409203/552076 [00:08<00:03, 39889.79it/s] 75%|███████▍  | 413254/552076 [00:09<00:04, 34414.50it/s] 76%|███████▌  | 416872/552076 [00:09<00:04, 32354.64it/s] 76%|███████▌  | 420256/552076 [00:09<00:04, 29535.04it/s] 77%|███████▋  | 423362/552076 [00:09<00:04, 28508.20it/s] 77%|███████▋  | 427588/552076 [00:09<00:04, 31116.08it/s] 78%|███████▊  | 431657/552076 [00:09<00:03, 32278.32it/s] 79%|███████▉  | 437013/552076 [00:09<00:03, 36646.02it/s] 80%|████████  | 441987/552076 [00:09<00:02, 39204.59it/s] 81%|████████  | 446156/552076 [00:10<00:02, 35814.13it/s] 82%|████████▏ | 450598/552076 [00:10<00:02, 37982.19it/s] 83%|████████▎ | 455735/552076 [00:10<00:02, 41203.39it/s] 83%|████████▎ | 460073/552076 [00:10<00:02, 37669.52it/s] 84%|████████▍ | 464052/552076 [00:10<00:02, 35537.51it/s] 85%|████████▍ | 468812/552076 [00:10<00:02, 38461.50it/s] 86%|████████▌ | 472849/552076 [00:10<00:02, 38386.95it/s] 86%|████████▋ | 476821/552076 [00:10<00:02, 29039.09it/s] 87%|████████▋ | 481863/552076 [00:11<00:02, 33271.69it/s] 88%|████████▊ | 488057/552076 [00:11<00:01, 37563.50it/s] 89%|████████▉ | 493891/552076 [00:11<00:01, 42056.77it/s] 90%|█████████ | 499468/552076 [00:11<00:01, 45405.90it/s] 92%|█████████▏| 505323/552076 [00:11<00:00, 47821.57it/s] 92%|█████████▏| 510467/552076 [00:11<00:00, 47569.43it/s] 93%|█████████▎| 515478/552076 [00:11<00:00, 41884.96it/s] 94%|█████████▍| 519968/552076 [00:11<00:00, 37984.91it/s] 95%|█████████▌| 525454/552076 [00:11<00:00, 41846.05it/s] 96%|█████████▌| 529955/552076 [00:12<00:00, 35787.74it/s] 97%|█████████▋| 533909/552076 [00:12<00:00, 33888.69it/s] 97%|█████████▋| 537581/552076 [00:12<00:00, 23378.47it/s] 98%|█████████▊| 540559/552076 [00:12<00:00, 24706.99it/s] 99%|█████████▊| 545002/552076 [00:12<00:00, 27761.91it/s]100%|█████████▉| 549471/552076 [00:12<00:00, 30735.98it/s]100%|██████████| 552076/552076 [00:12<00:00, 42746.54it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.7084598541259766 seconds.
+Run epoch 1
+Epoch 1 ends in 1.0544912815093994 seconds.
+39434 sentences created
+mode 1: time used = 1.5583434104919434
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 12%|█▏        | 4628/39434 [00:00<00:00, 43297.06it/s] 34%|███▍      | 13317/39434 [00:00<00:00, 50968.03it/s] 50%|████▉     | 19609/39434 [00:00<00:00, 53494.70it/s] 70%|███████   | 27724/39434 [00:00<00:00, 59585.75it/s] 91%|█████████ | 35746/39434 [00:00<00:00, 64566.69it/s]100%|██████████| 39434/39434 [00:00<00:00, 70567.93it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 2880/552076 [00:00<00:20, 26654.30it/s]  1%|▏         | 7031/552076 [00:00<00:18, 29038.77it/s]  2%|▏         | 10994/552076 [00:00<00:17, 31569.35it/s]  3%|▎         | 14623/552076 [00:00<00:16, 32810.76it/s]  4%|▎         | 20291/552076 [00:00<00:14, 37554.81it/s]  5%|▍         | 27078/552076 [00:00<00:12, 43365.37it/s]  6%|▌         | 32488/552076 [00:00<00:11, 45623.57it/s]  7%|▋         | 37241/552076 [00:00<00:12, 41560.77it/s]  8%|▊         | 41601/552076 [00:01<00:14, 34848.52it/s]  8%|▊         | 46558/552076 [00:01<00:13, 38256.47it/s]  9%|▉         | 50713/552076 [00:01<00:12, 38991.99it/s] 10%|█         | 55349/552076 [00:01<00:12, 40894.17it/s] 11%|█         | 62019/552076 [00:01<00:10, 45801.62it/s] 12%|█▏        | 66922/552076 [00:01<00:12, 38788.71it/s] 13%|█▎        | 71212/552076 [00:01<00:14, 34218.56it/s] 14%|█▎        | 75655/552076 [00:01<00:13, 35214.10it/s] 15%|█▍        | 81093/552076 [00:01<00:11, 39377.49it/s] 16%|█▋        | 89757/552076 [00:02<00:09, 47082.47it/s] 18%|█▊        | 96740/552076 [00:02<00:08, 52009.63it/s] 19%|█▊        | 102727/552076 [00:02<00:08, 50492.14it/s] 20%|█▉        | 108336/552076 [00:02<00:09, 45718.88it/s] 21%|██        | 116355/552076 [00:02<00:08, 52486.84it/s] 23%|██▎       | 127176/552076 [00:02<00:06, 62076.49it/s] 25%|██▌       | 138765/552076 [00:02<00:05, 72122.76it/s] 28%|██▊       | 151857/552076 [00:02<00:04, 83352.16it/s] 30%|██▉       | 164998/552076 [00:02<00:04, 93623.00it/s] 32%|███▏      | 175933/552076 [00:03<00:05, 67616.31it/s] 33%|███▎      | 184818/552076 [00:03<00:05, 65129.13it/s] 35%|███▍      | 192837/552076 [00:03<00:05, 62466.98it/s] 37%|███▋      | 204065/552076 [00:03<00:04, 72056.69it/s] 39%|███▉      | 216342/552076 [00:03<00:04, 81413.31it/s] 41%|████      | 225793/552076 [00:03<00:04, 66186.17it/s] 43%|████▎     | 234816/552076 [00:04<00:04, 71936.17it/s] 45%|████▍     | 246938/552076 [00:04<00:03, 81927.69it/s] 47%|████▋     | 258801/552076 [00:04<00:03, 90308.28it/s] 49%|████▉     | 270966/552076 [00:04<00:02, 97872.21it/s] 51%|█████     | 282538/552076 [00:04<00:02, 102618.31it/s] 53%|█████▎    | 294551/552076 [00:04<00:02, 107309.00it/s] 56%|█████▌    | 306643/552076 [00:04<00:02, 111059.27it/s] 58%|█████▊    | 318942/552076 [00:04<00:02, 114386.52it/s] 60%|█████▉    | 330714/552076 [00:04<00:01, 114539.01it/s] 62%|██████▏   | 342967/552076 [00:04<00:01, 116824.15it/s] 64%|██████▍   | 354824/552076 [00:05<00:01, 114794.29it/s] 66%|██████▋   | 366951/552076 [00:05<00:01, 116660.35it/s] 69%|██████▊   | 379274/552076 [00:05<00:01, 118555.79it/s] 71%|███████   | 391206/552076 [00:05<00:01, 117681.58it/s] 73%|███████▎  | 403351/552076 [00:05<00:01, 118784.61it/s] 75%|███████▌  | 415271/552076 [00:05<00:01, 118884.78it/s] 77%|███████▋  | 427189/552076 [00:05<00:01, 114712.69it/s] 80%|███████▉  | 439138/552076 [00:05<00:00, 116102.58it/s] 82%|████████▏ | 450927/552076 [00:05<00:00, 116632.46it/s] 84%|████████▍ | 463105/552076 [00:05<00:00, 118129.25it/s] 86%|████████▌ | 474943/552076 [00:06<00:00, 111012.35it/s] 88%|████████▊ | 487229/552076 [00:06<00:00, 114318.69it/s] 90%|█████████ | 498760/552076 [00:06<00:00, 95556.97it/s]  93%|█████████▎| 510928/552076 [00:06<00:00, 102134.91it/s] 94%|█████████▍| 521680/552076 [00:06<00:00, 99004.51it/s]  97%|█████████▋| 533840/552076 [00:06<00:00, 104848.44it/s] 99%|█████████▉| 545328/552076 [00:06<00:00, 107666.80it/s]100%|██████████| 552076/552076 [00:06<00:00, 80538.17it/s] 
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.3117682933807373 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5078232288360596 seconds.
+39434 sentences created
+mode 1: time used = 0.6860392093658447
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 20%|██        | 7946/39434 [00:00<00:00, 79455.72it/s] 42%|████▏     | 16524/39434 [00:00<00:00, 81252.40it/s] 63%|██████▎   | 25002/39434 [00:00<00:00, 82278.35it/s] 83%|████████▎ | 32662/39434 [00:00<00:00, 80486.52it/s]100%|██████████| 39434/39434 [00:00<00:00, 81284.22it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 8297/552076 [00:00<00:06, 82964.34it/s]  4%|▍         | 21022/552076 [00:00<00:05, 92634.76it/s]  6%|▌         | 32385/552076 [00:00<00:05, 96765.04it/s]  7%|▋         | 39517/552076 [00:00<00:06, 83170.30it/s]  9%|▉         | 50878/552076 [00:00<00:05, 90439.67it/s] 11%|█         | 59097/552076 [00:00<00:07, 62211.98it/s] 13%|█▎        | 69791/552076 [00:00<00:06, 71137.51it/s] 14%|█▍        | 77782/552076 [00:00<00:06, 73279.44it/s] 16%|█▌        | 89285/552076 [00:01<00:05, 82233.33it/s] 18%|█▊        | 101808/552076 [00:01<00:04, 91674.84it/s] 20%|██        | 111880/552076 [00:01<00:04, 91558.23it/s] 22%|██▏       | 123692/552076 [00:01<00:04, 98181.49it/s] 24%|██▍       | 134088/552076 [00:01<00:04, 97754.60it/s] 26%|██▌       | 144269/552076 [00:01<00:04, 84262.88it/s] 28%|██▊       | 155946/552076 [00:01<00:04, 91478.05it/s] 30%|███       | 166805/552076 [00:01<00:04, 96016.01it/s] 32%|███▏      | 179063/552076 [00:01<00:03, 102690.69it/s] 34%|███▍      | 190165/552076 [00:02<00:03, 105055.19it/s] 36%|███▋      | 201013/552076 [00:02<00:03, 102579.72it/s] 38%|███▊      | 211524/552076 [00:02<00:03, 102814.42it/s] 40%|████      | 221983/552076 [00:02<00:03, 83591.61it/s]  42%|████▏     | 233589/552076 [00:02<00:03, 91248.79it/s] 44%|████▍     | 243418/552076 [00:02<00:03, 92284.07it/s] 46%|████▌     | 253142/552076 [00:02<00:03, 89739.16it/s] 48%|████▊     | 265705/552076 [00:02<00:02, 98150.30it/s] 50%|████▉     | 276009/552076 [00:02<00:03, 90574.39it/s] 52%|█████▏    | 285525/552076 [00:03<00:03, 86137.26it/s] 54%|█████▍    | 297868/552076 [00:03<00:02, 94721.57it/s] 56%|█████▌    | 307857/552076 [00:03<00:02, 90329.57it/s] 57%|█████▋    | 317295/552076 [00:03<00:02, 88207.34it/s] 59%|█████▉    | 327875/552076 [00:03<00:02, 92837.77it/s] 62%|██████▏   | 339709/552076 [00:03<00:02, 99252.68it/s] 63%|██████▎   | 349947/552076 [00:03<00:02, 89142.57it/s] 66%|██████▌   | 362574/552076 [00:03<00:01, 97765.35it/s] 68%|██████▊   | 373367/552076 [00:03<00:01, 100606.22it/s] 70%|██████▉   | 383827/552076 [00:04<00:01, 88967.21it/s]  72%|███████▏  | 395612/552076 [00:04<00:01, 96026.64it/s] 74%|███████▍  | 407699/552076 [00:04<00:01, 102336.34it/s] 76%|███████▌  | 418418/552076 [00:04<00:01, 102580.34it/s] 78%|███████▊  | 429016/552076 [00:04<00:01, 93773.49it/s]  80%|███████▉  | 441363/552076 [00:04<00:01, 101065.13it/s] 82%|████████▏ | 451901/552076 [00:04<00:01, 91669.52it/s]  84%|████████▍ | 463640/552076 [00:04<00:00, 98118.40it/s] 86%|████████▌ | 476133/552076 [00:05<00:00, 104869.13it/s] 89%|████████▊ | 488726/552076 [00:05<00:00, 110407.91it/s] 91%|█████████ | 500390/552076 [00:05<00:00, 112205.26it/s] 93%|█████████▎| 512574/552076 [00:05<00:00, 114929.97it/s] 95%|█████████▌| 525110/552076 [00:05<00:00, 117869.57it/s] 97%|█████████▋| 537581/552076 [00:05<00:00, 119841.05it/s]100%|█████████▉| 549691/552076 [00:05<00:00, 93504.43it/s] 100%|██████████| 552076/552076 [00:05<00:00, 96542.82it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.5303661823272705 seconds.
+Run epoch 1
+Epoch 1 ends in 0.4931333065032959 seconds.
+39434 sentences created
+mode 1: time used = 0.6826398372650146
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 48%|████▊     | 18967/39434 [00:00<00:00, 189668.37it/s] 95%|█████████▌| 37571/39434 [00:00<00:00, 188564.18it/s]100%|██████████| 39434/39434 [00:00<00:00, 181758.44it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 11182/552076 [00:00<00:04, 111813.98it/s]  4%|▍         | 22383/552076 [00:00<00:04, 111869.95it/s]  6%|▌         | 32608/552076 [00:00<00:04, 108796.08it/s]  8%|▊         | 44688/552076 [00:00<00:04, 112138.65it/s] 10%|▉         | 54651/552076 [00:00<00:04, 108067.42it/s] 12%|█▏        | 63638/552076 [00:00<00:04, 100839.45it/s] 13%|█▎        | 72610/552076 [00:00<00:04, 97223.94it/s]  15%|█▌        | 84740/552076 [00:00<00:04, 103379.03it/s] 17%|█▋        | 94904/552076 [00:00<00:04, 102849.72it/s] 19%|█▉        | 104875/552076 [00:01<00:04, 100810.44it/s] 21%|██        | 115049/552076 [00:01<00:04, 101085.25it/s] 23%|██▎       | 125237/552076 [00:01<00:04, 101320.88it/s] 25%|██▍       | 135266/552076 [00:01<00:04, 98693.99it/s]  26%|██▋       | 145918/552076 [00:01<00:04, 100917.19it/s] 29%|██▊       | 157811/552076 [00:01<00:03, 105719.53it/s] 31%|███       | 169731/552076 [00:01<00:03, 109430.29it/s] 33%|███▎      | 180736/552076 [00:01<00:03, 106972.74it/s] 35%|███▍      | 191890/552076 [00:01<00:03, 108302.06it/s] 37%|███▋      | 202763/552076 [00:01<00:03, 106848.99it/s] 39%|███▉      | 213961/552076 [00:02<00:03, 108335.71it/s] 41%|████      | 224824/552076 [00:02<00:03, 93079.75it/s]  43%|████▎     | 235602/552076 [00:02<00:03, 97047.40it/s] 45%|████▌     | 250794/552076 [00:02<00:02, 108841.21it/s] 49%|████▊     | 268964/552076 [00:02<00:02, 123724.00it/s] 52%|█████▏    | 285276/552076 [00:02<00:02, 133387.95it/s] 56%|█████▌    | 306414/552076 [00:02<00:01, 149989.40it/s] 58%|█████▊    | 322823/552076 [00:02<00:01, 132537.84it/s] 61%|██████    | 337436/552076 [00:02<00:01, 131241.52it/s] 64%|██████▎   | 351515/552076 [00:03<00:01, 122752.96it/s] 66%|██████▌   | 365493/552076 [00:03<00:01, 127408.86it/s] 70%|███████   | 387052/552076 [00:03<00:01, 145228.05it/s] 74%|███████▍  | 408064/552076 [00:03<00:00, 160055.10it/s] 78%|███████▊  | 428393/552076 [00:03<00:00, 170961.62it/s] 81%|████████  | 446646/552076 [00:03<00:00, 171547.60it/s] 84%|████████▍ | 464611/552076 [00:03<00:00, 166767.77it/s] 87%|████████▋ | 482762/552076 [00:03<00:00, 170931.03it/s] 91%|█████████ | 502026/552076 [00:03<00:00, 176911.46it/s] 94%|█████████▍| 520676/552076 [00:04<00:00, 179681.94it/s] 98%|█████████▊| 538910/552076 [00:04<00:00, 179866.41it/s]100%|██████████| 552076/552076 [00:04<00:00, 132474.32it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.14397311210632324 seconds.
+Run epoch 1
+Epoch 1 ends in 0.29558467864990234 seconds.
+39434 sentences created
+mode 1: time used = 0.2670173645019531
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 37%|███▋      | 14661/39434 [00:00<00:00, 146608.04it/s] 75%|███████▌  | 29754/39434 [00:00<00:00, 147876.49it/s]100%|██████████| 39434/39434 [00:00<00:00, 149510.05it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  3%|▎         | 15725/552076 [00:00<00:03, 157248.28it/s]  6%|▌         | 30966/552076 [00:00<00:03, 155761.36it/s]  9%|▉         | 48749/552076 [00:00<00:03, 161783.04it/s] 12%|█▏        | 68280/552076 [00:00<00:02, 170565.67it/s] 16%|█▌        | 86678/552076 [00:00<00:02, 174378.73it/s] 18%|█▊        | 101614/552076 [00:00<00:02, 159914.48it/s] 21%|██        | 116089/552076 [00:00<00:02, 150776.69it/s] 24%|██▍       | 132131/552076 [00:00<00:02, 153543.86it/s] 27%|██▋       | 150900/552076 [00:00<00:02, 162406.88it/s] 31%|███       | 170198/552076 [00:01<00:02, 170509.66it/s] 34%|███▍      | 189037/552076 [00:01<00:02, 175505.93it/s] 37%|███▋      | 206542/552076 [00:01<00:02, 168154.34it/s] 40%|████      | 223391/552076 [00:01<00:02, 163915.57it/s] 44%|████▍     | 242512/552076 [00:01<00:01, 171249.03it/s] 47%|████▋     | 261276/552076 [00:01<00:01, 175855.36it/s] 51%|█████     | 281440/552076 [00:01<00:01, 182870.65it/s] 55%|█████▍    | 301620/552076 [00:01<00:01, 188165.32it/s] 58%|█████▊    | 320581/552076 [00:01<00:01, 185411.03it/s] 62%|██████▏   | 339645/552076 [00:01<00:01, 186948.62it/s] 65%|██████▍   | 358421/552076 [00:02<00:01, 183764.76it/s] 68%|██████▊   | 376866/552076 [00:02<00:01, 169703.39it/s] 71%|███████▏  | 394098/552076 [00:02<00:00, 159832.85it/s] 74%|███████▍  | 410382/552076 [00:02<00:00, 154594.60it/s] 77%|███████▋  | 426090/552076 [00:02<00:00, 151689.60it/s] 80%|███████▉  | 441445/552076 [00:02<00:00, 150224.29it/s] 83%|████████▎ | 459376/552076 [00:02<00:00, 157906.70it/s] 86%|████████▋ | 477361/552076 [00:02<00:00, 163903.26it/s] 90%|█████████ | 497028/552076 [00:02<00:00, 172526.15it/s] 93%|█████████▎| 514539/552076 [00:03<00:00, 172483.49it/s] 97%|█████████▋| 533341/552076 [00:03<00:00, 176865.89it/s]100%|█████████▉| 551769/552076 [00:03<00:00, 179026.64it/s]100%|██████████| 552076/552076 [00:03<00:00, 170642.99it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.19648027420043945 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2508111000061035 seconds.
+39434 sentences created
+mode 1: time used = 0.41091299057006836
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 21%|██▏       | 8424/39434 [00:00<00:00, 84231.24it/s] 44%|████▍     | 17387/39434 [00:00<00:00, 85777.77it/s] 66%|██████▌   | 25839/39434 [00:00<00:00, 85395.68it/s] 88%|████████▊ | 34527/39434 [00:00<00:00, 85833.22it/s]100%|██████████| 39434/39434 [00:00<00:00, 87117.43it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|▏         | 7864/552076 [00:00<00:06, 78639.51it/s]  3%|▎         | 16606/552076 [00:00<00:06, 81082.51it/s]  5%|▍         | 24937/552076 [00:00<00:06, 81737.94it/s]  6%|▌         | 34139/552076 [00:00<00:06, 84571.72it/s]  8%|▊         | 41890/552076 [00:00<00:06, 82320.15it/s]  9%|▉         | 51085/552076 [00:00<00:05, 84749.77it/s] 11%|█         | 58680/552076 [00:00<00:06, 76148.20it/s] 12%|█▏        | 68735/552076 [00:00<00:05, 82127.46it/s] 14%|█▍        | 79735/552076 [00:00<00:05, 88882.76it/s] 17%|█▋        | 91481/552076 [00:01<00:04, 95879.43it/s] 19%|█▊        | 103349/552076 [00:01<00:04, 101741.36it/s] 21%|██        | 115760/552076 [00:01<00:04, 107554.96it/s] 23%|██▎       | 127360/552076 [00:01<00:03, 109955.46it/s] 25%|██▌       | 139522/552076 [00:01<00:03, 113211.07it/s] 28%|██▊       | 151831/552076 [00:01<00:03, 116002.77it/s] 30%|██▉       | 163557/552076 [00:01<00:03, 107713.74it/s] 32%|███▏      | 175892/552076 [00:01<00:03, 111970.64it/s] 34%|███▍      | 188426/552076 [00:01<00:03, 115670.81it/s] 36%|███▋      | 200581/552076 [00:01<00:02, 117371.66it/s] 38%|███▊      | 212438/552076 [00:02<00:02, 116759.96it/s] 41%|████      | 224374/552076 [00:02<00:02, 117527.62it/s] 43%|████▎     | 236767/552076 [00:02<00:02, 119376.42it/s] 45%|████▌     | 248860/552076 [00:02<00:02, 119837.81it/s] 47%|████▋     | 260927/552076 [00:02<00:02, 120083.98it/s] 49%|████▉     | 273048/552076 [00:02<00:02, 120418.17it/s] 52%|█████▏    | 285108/552076 [00:02<00:02, 120259.08it/s] 54%|█████▍    | 297147/552076 [00:02<00:02, 118474.46it/s] 56%|█████▌    | 309467/552076 [00:02<00:02, 119853.48it/s] 58%|█████▊    | 321839/552076 [00:02<00:01, 120985.49it/s] 61%|██████    | 334323/552076 [00:03<00:01, 122114.94it/s] 63%|██████▎   | 346546/552076 [00:03<00:01, 121440.80it/s] 65%|██████▌   | 358958/552076 [00:03<00:01, 122230.13it/s] 67%|██████▋   | 371456/552076 [00:03<00:01, 123042.08it/s] 70%|██████▉   | 383905/552076 [00:03<00:01, 123471.54it/s] 72%|███████▏  | 396402/552076 [00:03<00:01, 123914.25it/s] 74%|███████▍  | 409179/552076 [00:03<00:01, 125043.38it/s] 76%|███████▋  | 421689/552076 [00:03<00:01, 124919.00it/s] 79%|███████▊  | 434185/552076 [00:03<00:01, 111986.18it/s] 81%|████████  | 446176/552076 [00:04<00:00, 114249.15it/s] 83%|████████▎ | 458191/552076 [00:04<00:00, 115956.71it/s] 85%|████████▌ | 469926/552076 [00:04<00:00, 88247.25it/s]  87%|████████▋ | 479840/552076 [00:04<00:00, 74706.48it/s] 88%|████████▊ | 488448/552076 [00:04<00:00, 77789.90it/s] 90%|█████████ | 497044/552076 [00:04<00:00, 73296.72it/s] 91%|█████████▏| 504999/552076 [00:04<00:00, 59174.36it/s] 93%|█████████▎| 512270/552076 [00:05<00:00, 62673.84it/s] 95%|█████████▍| 523570/552076 [00:05<00:00, 72338.22it/s] 97%|█████████▋| 533277/552076 [00:05<00:00, 78324.45it/s] 99%|█████████▊| 544046/552076 [00:05<00:00, 85301.71it/s]100%|██████████| 552076/552076 [00:05<00:00, 102421.32it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.5050218105316162 seconds.
+Run epoch 1
+Epoch 1 ends in 0.31703782081604004 seconds.
+39434 sentences created
+mode 1: time used = 0.6151115894317627
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 119, in forward
+    c = torch.dropout(c, self.dropout_coef, True)  # dropout
+RuntimeError: CUDA out of memory. Tried to allocate 372.00 MiB (GPU 7; 10.76 GiB total capacity; 7.33 GiB already allocated; 32.44 MiB free; 7.34 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    self.optimizer.zero_grad()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 108, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: Could not run 'aten::to_dense' with arguments from the 'CPU' backend. 'aten::to_dense' is only available for these backends: [MkldnnCPU, SparseCPU, SparseCUDA, Autograd, Profiler, Tracer].
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:7')
+encoder = gat
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 108, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: Could not run 'aten::to_dense' with arguments from the 'CPU' backend. 'aten::to_dense' is only available for these backends: [MkldnnCPU, SparseCPU, SparseCUDA, Autograd, Profiler, Tracer].
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:7')
+encoder = gat
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 108, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: Could not run 'aten::to_dense' with arguments from the 'CUDA' backend. 'aten::to_dense' is only available for these backends: [MkldnnCPU, SparseCPU, SparseCUDA, Autograd, Profiler, Tracer].
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:7')
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:7')
+encoder = gat
