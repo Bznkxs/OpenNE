@@ -16,7 +16,7 @@ def dict_to_cmd(dict1):
         for p, q in ls:
             if q != "-":
                 ret += "--" + p + ' ' + str(q).replace('[', '').replace(']', '').replace(',', '') + " "
-        ret += "\n"
+        ret += "--devices 7\n"
     return ret
 
 
