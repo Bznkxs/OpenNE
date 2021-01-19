@@ -1,0 +1,1722 @@
+  0%|          | 0/39434 [00:00<?, ?it/s] 22%|██▏       | 8562/39434 [00:00<00:00, 85617.02it/s] 42%|████▏     | 16714/39434 [00:00<00:00, 84343.97it/s] 53%|█████▎    | 20958/39434 [00:00<00:00, 57945.41it/s] 77%|███████▋  | 30264/39434 [00:00<00:00, 65287.61it/s] 99%|█████████▉| 39182/39434 [00:00<00:00, 70992.83it/s]100%|██████████| 39434/39434 [00:00<00:00, 74329.98it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|▏         | 7626/552076 [00:00<00:07, 76257.89it/s]  3%|▎         | 18482/552076 [00:00<00:06, 83730.86it/s]  5%|▌         | 28222/552076 [00:00<00:05, 87408.60it/s]  7%|▋         | 38727/552076 [00:00<00:05, 92045.03it/s]  9%|▊         | 48110/552076 [00:00<00:05, 92572.72it/s] 11%|█         | 60227/552076 [00:00<00:04, 99624.77it/s] 13%|█▎        | 71292/552076 [00:00<00:04, 102151.53it/s] 15%|█▍        | 81072/552076 [00:00<00:04, 99656.24it/s]  17%|█▋        | 92441/552076 [00:00<00:04, 103488.35it/s] 19%|█▉        | 104416/552076 [00:01<00:04, 107882.26it/s] 21%|██        | 115954/552076 [00:01<00:03, 110025.76it/s] 23%|██▎       | 127621/552076 [00:01<00:03, 111937.99it/s] 25%|██▌       | 139477/552076 [00:01<00:03, 113843.44it/s] 27%|██▋       | 150857/552076 [00:01<00:03, 107243.42it/s] 29%|██▉       | 162139/552076 [00:01<00:03, 108856.69it/s] 31%|███▏      | 173084/552076 [00:01<00:03, 107816.16it/s] 33%|███▎      | 183909/552076 [00:01<00:03, 103401.95it/s] 35%|███▌      | 194504/552076 [00:01<00:03, 104151.68it/s] 37%|███▋      | 204969/552076 [00:01<00:03, 99796.50it/s]  39%|███▉      | 217079/552076 [00:02<00:03, 105354.70it/s] 42%|████▏     | 229327/552076 [00:02<00:02, 109966.96it/s] 44%|████▎     | 240587/552076 [00:02<00:02, 110743.49it/s] 46%|████▌     | 252423/552076 [00:02<00:02, 112922.45it/s] 48%|████▊     | 264682/552076 [00:02<00:02, 115656.81it/s] 50%|█████     | 276839/552076 [00:02<00:02, 117368.45it/s] 52%|█████▏    | 289104/552076 [00:02<00:02, 118904.15it/s] 55%|█████▍    | 301041/552076 [00:02<00:02, 116290.93it/s] 57%|█████▋    | 313328/552076 [00:02<00:02, 118186.90it/s] 59%|█████▉    | 325848/552076 [00:02<00:01, 120204.31it/s] 61%|██████    | 337904/552076 [00:03<00:01, 116980.43it/s] 63%|██████▎   | 349646/552076 [00:03<00:01, 114696.28it/s] 65%|██████▌   | 361157/552076 [00:03<00:01, 111562.07it/s] 67%|██████▋   | 372361/552076 [00:03<00:01, 111630.54it/s] 69%|██████▉   | 383558/552076 [00:03<00:01, 110431.76it/s] 71%|███████▏  | 394652/552076 [00:03<00:01, 110582.28it/s] 73%|███████▎  | 405729/552076 [00:03<00:01, 106686.60it/s] 75%|███████▌  | 416788/552076 [00:03<00:01, 107826.15it/s] 78%|███████▊  | 429734/552076 [00:03<00:01, 113516.22it/s] 80%|███████▉  | 441189/552076 [00:04<00:01, 91841.91it/s]  82%|████████▏ | 453011/552076 [00:04<00:01, 98430.41it/s] 84%|████████▍ | 465235/552076 [00:04<00:00, 104537.25it/s] 86%|████████▋ | 476789/552076 [00:04<00:00, 107610.60it/s] 89%|████████▊ | 489036/552076 [00:04<00:00, 111673.13it/s] 91%|█████████ | 500533/552076 [00:04<00:00, 112537.78it/s] 93%|█████████▎| 512272/552076 [00:04<00:00, 113949.33it/s] 95%|█████████▍| 523834/552076 [00:04<00:00, 100747.15it/s] 97%|█████████▋| 534307/552076 [00:04<00:00, 93174.62it/s]  99%|█████████▊| 544016/552076 [00:05<00:00, 91027.52it/s]100%|██████████| 552076/552076 [00:05<00:00, 107252.43it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.28528451919555664 seconds.
+Run epoch 1
+Epoch 1 ends in 0.3905823230743408 seconds.
+39434 sentences created
+mode 1: time used = 0.6539175510406494
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 22%|██▏       | 19877/88651 [00:00<00:00, 198764.50it/s] 47%|████▋     | 41364/88651 [00:00<00:00, 203335.77it/s] 70%|███████   | 62160/88651 [00:00<00:00, 204699.19it/s] 93%|█████████▎| 82280/88651 [00:00<00:00, 203635.90it/s]100%|██████████| 88651/88651 [00:00<00:00, 203940.07it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.53 GiB already allocated; 409.44 MiB free; 1.55 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 13%|█▎        | 11240/88651 [00:00<00:00, 109843.56it/s] 21%|██        | 18450/88651 [00:00<00:00, 94934.28it/s]  29%|██▉       | 26151/88651 [00:00<00:00, 88737.74it/s] 43%|████▎     | 38386/88651 [00:00<00:00, 96707.84it/s] 56%|█████▌    | 49210/88651 [00:00<00:00, 99900.05it/s] 67%|██████▋   | 58963/88651 [00:00<00:00, 99176.63it/s] 77%|███████▋  | 67826/88651 [00:00<00:00, 94435.84it/s] 86%|████████▋ | 76579/88651 [00:00<00:00, 89625.99it/s]100%|█████████▉| 88607/88651 [00:00<00:00, 97045.30it/s]100%|██████████| 88651/88651 [00:00<00:00, 96688.52it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.53 GiB already allocated; 409.44 MiB free; 1.55 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+  0%|          | 0/88651 [00:00<?, ?it/s] 15%|█▍        | 12941/88651 [00:00<00:00, 129406.42it/s] 35%|███▌      | 31146/88651 [00:00<00:00, 141698.95it/s] 59%|█████▊    | 51972/88651 [00:00<00:00, 156724.79it/s] 82%|████████▏ | 72346/88651 [00:00<00:00, 168379.70it/s]100%|██████████| 88651/88651 [00:00<00:00, 188258.34it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 119, in forward
+    c = torch.dropout(c, self.dropout_coef, True)  # dropout
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 8.78 GiB already allocated; 184.44 MiB free; 8.79 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 19%|█▉        | 16945/88651 [00:00<00:00, 169444.51it/s] 40%|████      | 35515/88651 [00:00<00:00, 174013.86it/s] 62%|██████▏   | 54696/88651 [00:00<00:00, 178994.17it/s] 84%|████████▎ | 74045/88651 [00:00<00:00, 183106.07it/s]100%|██████████| 88651/88651 [00:00<00:00, 182973.51it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 119, in forward
+    c = torch.dropout(c, self.dropout_coef, True)  # dropout
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 8.78 GiB already allocated; 184.44 MiB free; 8.79 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+  0%|          | 0/88651 [00:00<?, ?it/s] 14%|█▍        | 12438/88651 [00:00<00:00, 124372.41it/s] 30%|██▉       | 26445/88651 [00:00<00:00, 128697.06it/s] 43%|████▎     | 38510/88651 [00:00<00:00, 126170.78it/s] 59%|█████▉    | 52428/88651 [00:00<00:00, 129808.35it/s] 74%|███████▎  | 65313/88651 [00:00<00:00, 129516.69it/s] 88%|████████▊ | 78401/88651 [00:00<00:00, 129921.99it/s]100%|██████████| 88651/88651 [00:00<00:00, 136277.26it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 111, in forward
+    c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/functional.py", line 1498, in softmax
+    ret = input.softmax(dim)
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 7.33 GiB already allocated; 1011.44 MiB free; 7.34 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+  0%|          | 0/88651 [00:00<?, ?it/s]  9%|▉         | 7773/88651 [00:00<00:01, 65206.87it/s] 11%|█         | 9907/88651 [00:00<00:01, 40332.62it/s] 15%|█▌        | 13438/88651 [00:00<00:01, 38681.71it/s] 23%|██▎       | 20312/88651 [00:00<00:01, 44521.66it/s] 33%|███▎      | 29088/88651 [00:00<00:01, 52243.19it/s] 46%|████▌     | 40532/88651 [00:00<00:00, 62331.11it/s] 54%|█████▎    | 47635/88651 [00:00<00:00, 62817.05it/s] 67%|██████▋   | 59695/88651 [00:00<00:00, 73361.32it/s] 78%|███████▊  | 69511/88651 [00:00<00:00, 79376.80it/s] 88%|████████▊ | 78365/88651 [00:01<00:00, 78669.06it/s]100%|██████████| 88651/88651 [00:01<00:00, 78365.55it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.54 GiB already allocated; 409.44 MiB free; 1.55 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s]  6%|▋         | 5712/88651 [00:00<00:02, 38141.93it/s] 15%|█▍        | 13216/88651 [00:00<00:01, 44741.52it/s] 26%|██▌       | 23104/88651 [00:00<00:01, 50703.59it/s] 34%|███▎      | 29823/88651 [00:00<00:01, 52983.55it/s] 42%|████▏     | 37537/88651 [00:00<00:00, 56610.51it/s] 50%|████▉     | 44086/88651 [00:00<00:00, 59010.68it/s] 57%|█████▋    | 50116/88651 [00:00<00:00, 59276.37it/s] 64%|██████▍   | 56890/88651 [00:00<00:00, 57938.57it/s] 71%|███████   | 62612/88651 [00:01<00:00, 52580.79it/s] 78%|███████▊  | 69274/88651 [00:01<00:00, 53716.57it/s] 84%|████████▍ | 74683/88651 [00:01<00:00, 51336.53it/s] 94%|█████████▍| 83545/88651 [00:01<00:00, 58751.53it/s]100%|██████████| 88651/88651 [00:01<00:00, 60631.36it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.54 GiB already allocated; 409.44 MiB free; 1.55 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s]  4%|▍         | 3568/88651 [00:00<00:02, 35679.86it/s]  8%|▊         | 7267/88651 [00:00<00:02, 36062.61it/s] 13%|█▎        | 11932/88651 [00:00<00:02, 38330.61it/s] 20%|█▉        | 17298/88651 [00:00<00:01, 41923.33it/s] 26%|██▌       | 22806/88651 [00:00<00:01, 42587.98it/s] 33%|███▎      | 29445/88651 [00:00<00:01, 47429.98it/s] 41%|████      | 36153/88651 [00:00<00:01, 51999.48it/s] 49%|████▉     | 43390/88651 [00:00<00:00, 56793.86it/s] 57%|█████▋    | 50647/88651 [00:00<00:00, 60514.12it/s] 66%|██████▌   | 58214/88651 [00:01<00:00, 64381.46it/s] 73%|███████▎  | 64834/88651 [00:01<00:00, 64255.32it/s] 82%|████████▏ | 72437/88651 [00:01<00:00, 67385.16it/s] 91%|█████████ | 80548/88651 [00:01<00:00, 68910.57it/s] 99%|█████████▊| 87538/88651 [00:01<00:00, 67803.92it/s]100%|██████████| 88651/88651 [00:01<00:00, 59648.16it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.54 GiB already allocated; 409.44 MiB free; 1.55 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 19%|█▊        | 16535/88651 [00:00<00:00, 165346.22it/s] 37%|███▋      | 32673/88651 [00:00<00:00, 164131.90it/s] 55%|█████▍    | 48658/88651 [00:00<00:00, 162820.40it/s] 75%|███████▌  | 66896/88651 [00:00<00:00, 168231.05it/s] 96%|█████████▌| 85218/88651 [00:00<00:00, 172461.48it/s]100%|██████████| 88651/88651 [00:00<00:00, 170338.14it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    batch_size=self.batch_size, negative_ratio=self.negative_ratio,
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+  0%|          | 0/88651 [00:00<?, ?it/s] 22%|██▏       | 19266/88651 [00:00<00:00, 192653.75it/s] 43%|████▎     | 37818/88651 [00:00<00:00, 190455.90it/s] 66%|██████▌   | 58217/88651 [00:00<00:00, 194322.06it/s] 89%|████████▉ | 78967/88651 [00:00<00:00, 198095.12it/s]100%|██████████| 88651/88651 [00:00<00:00, 199598.07it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 111, in forward
+    c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/functional.py", line 1295, in leaky_relu
+    result = torch._C._nn.leaky_relu(input, negative_slope)
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 7.33 GiB already allocated; 665.44 MiB free; 7.34 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 481.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+  0%|          | 0/88651 [00:00<?, ?it/s] 23%|██▎       | 20280/88651 [00:00<00:00, 202798.74it/s] 44%|████▍     | 39066/88651 [00:00<00:00, 198072.33it/s] 69%|██████▉   | 61353/88651 [00:00<00:00, 204910.78it/s] 94%|█████████▍| 83158/88651 [00:00<00:00, 208680.99it/s]100%|██████████| 88651/88651 [00:00<00:00, 208632.04it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.55 GiB already allocated; 389.44 MiB free; 1.57 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s]  7%|▋         | 5964/88651 [00:00<00:01, 59637.07it/s] 14%|█▍        | 12534/88651 [00:00<00:01, 61333.90it/s] 20%|█▉        | 17293/88651 [00:00<00:01, 56443.38it/s] 25%|██▌       | 22359/88651 [00:00<00:01, 54535.16it/s] 31%|███       | 27058/88651 [00:00<00:01, 50379.70it/s] 36%|███▌      | 31884/88651 [00:00<00:01, 47892.22it/s] 41%|████      | 36078/88651 [00:00<00:01, 45403.47it/s] 48%|████▊     | 42218/88651 [00:00<00:00, 48415.01it/s] 54%|█████▍    | 48270/88651 [00:00<00:00, 50956.28it/s] 62%|██████▏   | 54899/88651 [00:01<00:00, 54755.21it/s] 68%|██████▊   | 60373/88651 [00:01<00:00, 53355.46it/s] 75%|███████▌  | 66868/88651 [00:01<00:00, 55243.76it/s] 82%|████████▏ | 72414/88651 [00:01<00:00, 54275.68it/s] 88%|████████▊ | 77861/88651 [00:01<00:00, 41898.57it/s] 93%|█████████▎| 82494/88651 [00:01<00:00, 39341.11it/s] 99%|█████████▉| 87895/88651 [00:01<00:00, 42830.45it/s]100%|██████████| 88651/88651 [00:01<00:00, 49031.53it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.55 GiB already allocated; 389.44 MiB free; 1.57 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 10%|█         | 9288/88651 [00:00<00:00, 91255.92it/s] 15%|█▌        | 13316/88651 [00:00<00:01, 63947.93it/s] 18%|█▊        | 16363/88651 [00:00<00:02, 35553.56it/s] 24%|██▍       | 21078/88651 [00:00<00:01, 38385.33it/s] 28%|██▊       | 25176/88651 [00:00<00:01, 39128.41it/s] 33%|███▎      | 29669/88651 [00:00<00:01, 40704.53it/s] 40%|████      | 35577/88651 [00:00<00:01, 44892.97it/s] 54%|█████▎    | 47468/88651 [00:00<00:00, 55200.78it/s] 67%|██████▋   | 59571/88651 [00:00<00:00, 65963.89it/s] 81%|████████  | 71645/88651 [00:01<00:00, 76355.38it/s] 93%|█████████▎| 82508/88651 [00:01<00:00, 83826.63it/s]100%|██████████| 88651/88651 [00:01<00:00, 71761.95it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.55 GiB already allocated; 389.44 MiB free; 1.57 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 12%|█▏        | 10658/88651 [00:00<00:00, 106576.80it/s] 24%|██▍       | 21427/88651 [00:00<00:00, 106904.80it/s] 36%|███▋      | 32238/88651 [00:00<00:00, 107261.43it/s] 47%|████▋     | 41900/88651 [00:00<00:00, 103829.98it/s] 60%|█████▉    | 52817/88651 [00:00<00:00, 105372.93it/s] 72%|███████▏  | 63729/88651 [00:00<00:00, 106468.81it/s] 84%|████████▍ | 74534/88651 [00:00<00:00, 106628.92it/s] 96%|█████████▌| 85214/88651 [00:00<00:00, 106679.68it/s]100%|██████████| 88651/88651 [00:00<00:00, 105986.04it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.55 GiB already allocated; 389.44 MiB free; 1.57 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+  0%|          | 0/88651 [00:00<?, ?it/s] 25%|██▌       | 22562/88651 [00:00<00:00, 225616.45it/s] 49%|████▉     | 43430/88651 [00:00<00:00, 220253.62it/s] 73%|███████▎  | 65139/88651 [00:00<00:00, 219293.69it/s] 99%|█████████▊| 87371/88651 [00:00<00:00, 220190.62it/s]100%|██████████| 88651/88651 [00:00<00:00, 218347.40it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 119, in forward
+    c = torch.dropout(c, self.dropout_coef, True)  # dropout
+RuntimeError: CUDA out of memory. Tried to allocate 372.00 MiB (GPU 5; 10.76 GiB total capacity; 8.79 GiB already allocated; 164.44 MiB free; 8.81 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+torch.int64
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 106, in build
+    graph=graph, supports=[self.adj], features=self.features,
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 5; 10.76 GiB total capacity; 1.49 GiB already allocated; 479.44 MiB free; 1.49 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 108, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: Could not run 'aten::to_dense' with arguments from the 'CPU' backend. 'aten::to_dense' is only available for these backends: [MkldnnCPU, SparseCPU, SparseCUDA, Autograd, Profiler, Tracer].
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:5')
+encoder = gat
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 108, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: Could not run 'aten::to_dense' with arguments from the 'CPU' backend. 'aten::to_dense' is only available for these backends: [MkldnnCPU, SparseCPU, SparseCUDA, Autograd, Profiler, Tracer].
+actual args: {'cpu': False, 'devices': [5], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:5')
+encoder = gat

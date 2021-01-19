@@ -1,0 +1,2133 @@
+  0%|          | 0/88651 [00:00<?, ?it/s] 21%|██        | 18437/88651 [00:00<00:00, 184368.86it/s] 44%|████▍     | 39263/88651 [00:00<00:00, 190938.43it/s] 68%|██████▊   | 60401/88651 [00:00<00:00, 196643.16it/s] 93%|█████████▎| 82650/88651 [00:00<00:00, 203743.00it/s]100%|██████████| 88651/88651 [00:00<00:00, 207939.70it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 7.43 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fcb7b48d1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fcb836e864b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fcb836e9464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fcb836e9aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7fc92a67890e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7fc928ab2949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7fc928acc777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fc963868c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fc963868f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fc963973a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fc9636034f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fc963605166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fc96360565d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fc96360580a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fc963342eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7fc928aa1b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fc9631d5530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fc9639bd81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fc96390e82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fc963445952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fc963446f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fc963a1a8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fc963a4408b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fc96396b337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fc965579205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fc963a4408b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fc96396b337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fc9654d8f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fc965af4bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fc965af0400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fc965af0fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fc965ae9119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fcb842444ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fcb8d3be6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fcb914196db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fcb9175271f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/88651 [00:00<?, ?it/s]  6%|▌         | 4984/88651 [00:00<00:02, 37052.34it/s] 11%|█▏        | 10067/88651 [00:00<00:02, 39107.05it/s] 25%|██▍       | 21977/88651 [00:00<00:01, 48975.10it/s] 35%|███▌      | 31211/88651 [00:00<00:01, 57005.81it/s] 44%|████▍     | 39347/88651 [00:00<00:00, 62267.72it/s] 52%|█████▏    | 46147/88651 [00:00<00:00, 63281.92it/s] 60%|█████▉    | 52881/88651 [00:00<00:00, 61689.47it/s] 67%|██████▋   | 59343/88651 [00:00<00:00, 61779.42it/s] 74%|███████▍  | 65787/88651 [00:00<00:00, 62554.21it/s] 81%|████████▏ | 72189/88651 [00:01<00:00, 59402.68it/s] 88%|████████▊ | 78265/88651 [00:01<00:00, 58347.61it/s] 95%|█████████▌| 84649/88651 [00:01<00:00, 59893.20it/s]100%|██████████| 88651/88651 [00:01<00:00, 64551.28it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 7.43 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fb8293d61e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fb8317fe64b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fb8317ff464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fb8317ffaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7fb5cf5bf90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7fb5cd9f9949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7fb5cda13777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fb6087afc7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fb6087aff97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fb6088baa1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fb60854a4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fb60854c166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fb60854c65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fb60854c80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fb608289eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7fb5cd9e8b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fb60811c530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fb60890481c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fb60885582b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fb60838c952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fb60838df4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fb6089618c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fb60898b08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fb6088b2337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fb60a4c0205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fb60898b08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fb6088b2337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fb60a41ff78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fb60aa3bbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fb60aa37400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fb60aa37fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fb60aa30119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fb7f61854ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fb8323056df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fb8363606db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fb83669971f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/88651 [00:00<?, ?it/s] 25%|██▍       | 22117/88651 [00:00<00:00, 221164.41it/s] 53%|█████▎    | 47046/88651 [00:00<00:00, 228912.13it/s] 79%|███████▉  | 70452/88651 [00:00<00:00, 230432.30it/s]100%|██████████| 88651/88651 [00:00<00:00, 231550.43it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 5.81 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f4a34f581e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f4a351ae64b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f4a351af464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f4a351afaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f47f44a290e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f47f28dc949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f47f28f6777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f4a364aac7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f4a364aaf97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f4a365b5a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f4a362454f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f4a36247166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f4a3624765d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f4a3624780a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f4a35f84eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f47f28cbb40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f4a35e17530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f4a365ff81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f4a3655082b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f4a36087952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f4a36088f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f4a3665c8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f4a3668608b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f4a365ad337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f4a381bb205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f4a3668608b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f4a365ad337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f4a3811af78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f4a38736bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f4a38732400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f4a38732fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f4a3872b119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f4a45ecb4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f4a470276df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f4a4b0826db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f4a4b3bb71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/88651 [00:00<?, ?it/s] 25%|██▌       | 22335/88651 [00:00<00:00, 223347.02it/s] 48%|████▊     | 42536/88651 [00:00<00:00, 216486.41it/s] 73%|███████▎  | 65058/88651 [00:00<00:00, 219033.52it/s] 99%|█████████▊| 87541/88651 [00:00<00:00, 220740.59it/s]100%|██████████| 88651/88651 [00:00<00:00, 218850.53it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 5.81 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f800f9011e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f801fd2964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f801fd2a464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f801fd2aaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f7dbdaea90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f7dbbf24949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f7dbbf3e777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f7df6cdac7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f7df6cdaf97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f7df6de5a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f7df6a754f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f7df6a77166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f7df6a7765d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f7df6a7780a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f7df67b4eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f7dbbf13b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f7df6647530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f7df6e2f81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f7df6d8082b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f7df68b7952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f7df68b8f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f7df6e8c8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f7df6eb608b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f7df6ddd337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f7df89eb205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f7df6eb608b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f7df6ddd337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f7df894af78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f7df8f66bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f7df8f62400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f7df8f62fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f7df8f5b119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f7ed368e4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f80208306df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f802488b6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f8024bc471f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/88651 [00:00<?, ?it/s] 16%|█▌        | 14402/88651 [00:00<00:00, 144005.03it/s] 38%|███▊      | 33565/88651 [00:00<00:00, 155605.39it/s] 64%|██████▍   | 56965/88651 [00:00<00:00, 172991.61it/s] 86%|████████▌ | 76160/88651 [00:00<00:00, 178272.88it/s]100%|██████████| 88651/88651 [00:00<00:00, 194033.87it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 5.83 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f4a73bd81e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f4a8400064b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f4a84001464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f4a84001aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f4821dc190e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f48201fb949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f4820215777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f485afb1c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f485afb1f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f485b0bca1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f485ad4c4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f485ad4e166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f485ad4e65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f485ad4e80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f485aa8beb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f48201eab40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f485a91e530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f485b10681c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f485b05782b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f485ab8e952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f485ab8ff4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f485b1638c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f485b18d08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f485b0b4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f485ccc2205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f485b18d08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f485b0b4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f485cc21f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f485d23dbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f485d239400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f485d239fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f485d232119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f4a489874ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f4a84b076df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f4a88b626db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f4a88e9b71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/88651 [00:00<?, ?it/s] 24%|██▍       | 21145/88651 [00:00<00:00, 211449.70it/s] 50%|████▉     | 44252/88651 [00:00<00:00, 216974.81it/s] 74%|███████▍  | 65604/88651 [00:00<00:00, 215725.77it/s] 99%|█████████▉| 88198/88651 [00:00<00:00, 218690.89it/s]100%|██████████| 88651/88651 [00:00<00:00, 220202.33it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 86.57 GiB (GPU 6; 10.76 GiB total capacity; 778.20 MiB already allocated; 6.44 GiB free; 780.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f8e933ac1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f8e9360264b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f8e93603464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f8e93603aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f8c393e190e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f8c3781b949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f8c37835777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f8c725d1c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f8c725d1f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f8c726dca1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f8c7236c4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f8c7236e166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f8c7236e65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f8c7236e80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f8c720abeb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f8c3780ab40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f8c71f3e530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f8c7272681c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f8c7267782b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f8c721ae952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f8c721aff4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f8c727838c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f8c727ad08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f8c726d4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f8c742e2205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f8c727ad08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f8c726d4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f8c74241f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f8c7485dbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f8c74859400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f8c74859fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f8c74852119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f8e2cfa14ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f8e9c1276df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f8ea01826db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f8ea04bb71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 88651 88651 88651
+total iter: 500
+  0%|          | 0/39434 [00:00<?, ?it/s] 50%|█████     | 19776/39434 [00:00<00:00, 197755.00it/s] 99%|█████████▉| 38943/39434 [00:00<00:00, 195888.37it/s]100%|██████████| 39434/39434 [00:00<00:00, 194679.54it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.14785361289978027 seconds.
+Run epoch 1
+Epoch 1 ends in 0.21482086181640625 seconds.
+39434 sentences created
+mode 1: time used = 0.3220677375793457
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '3.47138'}; time used = 0.7540202140808105s
+epoch 10: {'train_loss': '3.03783'}; time used = 0.5318105220794678s
+epoch 15: {'train_loss': '2.66163'}; time used = 0.5281310081481934s
+epoch 20: {'train_loss': '2.35556'}; time used = 0.5719337463378906s
+epoch 25: {'train_loss': '2.09806'}; time used = 0.5269923210144043s
+epoch 30: {'train_loss': '1.88608'}; time used = 0.5005884170532227s
+epoch 35: {'train_loss': '1.71081'}; time used = 0.5143635272979736s
+epoch 40: {'train_loss': '1.58079'}; time used = 0.536862850189209s
+epoch 45: {'train_loss': '1.48495'}; time used = 0.4974241256713867s
+epoch 50: {'train_loss': '1.41738'}; time used = 0.524369478225708s
+epoch 55: {'train_loss': '1.37323'}; time used = 0.5277538299560547s
+epoch 60: {'train_loss': '1.34734'}; time used = 0.5456993579864502s
+epoch 65: {'train_loss': '1.33272'}; time used = 0.55810546875s
+epoch 70: {'train_loss': '1.32468'}; time used = 0.5569255352020264s
+epoch 75: {'train_loss': '1.31979'}; time used = 0.555912971496582s
+epoch 80: {'train_loss': '1.31638'}; time used = 0.5509483814239502s
+epoch 85: {'train_loss': '1.31371'}; time used = 0.5491166114807129s
+epoch 90: {'train_loss': '1.31194'}; time used = 0.5429501533508301s
+epoch 95: {'train_loss': '1.30932'}; time used = 0.5543622970581055s
+epoch 100: {'train_loss': '1.30684'}; time used = 0.5489778518676758s
+epoch 105: {'train_loss': '1.30509'}; time used = 0.5533225536346436s
+epoch 110: {'train_loss': '1.30218'}; time used = 0.5324525833129883s
+epoch 115: {'train_loss': '1.29975'}; time used = 0.5827195644378662s
+epoch 120: {'train_loss': '1.29752'}; time used = 0.6028854846954346s
+epoch 125: {'train_loss': '1.29360'}; time used = 0.551964282989502s
+epoch 130: {'train_loss': '1.29083'}; time used = 0.5509648323059082s
+epoch 135: {'train_loss': '1.28757'}; time used = 0.5977177619934082s
+epoch 140: {'train_loss': '1.28376'}; time used = 0.5534896850585938s
+epoch 145: {'train_loss': '1.28053'}; time used = 0.5145092010498047s
+epoch 150: {'train_loss': '1.27675'}; time used = 0.521730899810791s
+epoch 155: {'train_loss': '1.27227'}; time used = 0.5341074466705322s
+epoch 160: {'train_loss': '1.26793'}; time used = 0.5114750862121582s
+epoch 165: {'train_loss': '1.26436'}; time used = 0.5317628383636475s
+epoch 170: {'train_loss': '1.25932'}; time used = 0.5466856956481934s
+epoch 175: {'train_loss': '1.25424'}; time used = 0.5478837490081787s
+epoch 180: {'train_loss': '1.24871'}; time used = 0.5458357334136963s
+epoch 185: {'train_loss': '1.24314'}; time used = 0.5428321361541748s
+epoch 190: {'train_loss': '1.23768'}; time used = 0.5346403121948242s
+epoch 195: {'train_loss': '1.23109'}; time used = 0.5705375671386719s
+epoch 200: {'train_loss': '1.22460'}; time used = 0.5397379398345947s
+epoch 205: {'train_loss': '1.21838'}; time used = 0.5444540977478027s
+epoch 210: {'train_loss': '1.21070'}; time used = 0.5309112071990967s
+epoch 215: {'train_loss': '1.20366'}; time used = 0.520219087600708s
+epoch 220: {'train_loss': '1.19605'}; time used = 0.5512611865997314s
+epoch 225: {'train_loss': '1.18840'}; time used = 0.5892527103424072s
+epoch 230: {'train_loss': '1.18066'}; time used = 0.5671520233154297s
+epoch 235: {'train_loss': '1.17186'}; time used = 0.5450966358184814s
+epoch 240: {'train_loss': '1.16371'}; time used = 0.5459659099578857s
+epoch 245: {'train_loss': '1.15364'}; time used = 0.5700054168701172s
+epoch 250: {'train_loss': '1.14377'}; time used = 0.5533103942871094s
+epoch 255: {'train_loss': '1.13452'}; time used = 0.5935397148132324s
+epoch 260: {'train_loss': '1.12513'}; time used = 0.5919620990753174s
+epoch 265: {'train_loss': '1.11457'}; time used = 0.5299360752105713s
+epoch 270: {'train_loss': '1.10400'}; time used = 0.5416145324707031s
+epoch 275: {'train_loss': '1.09314'}; time used = 0.5701320171356201s
+epoch 280: {'train_loss': '1.08300'}; time used = 0.5434043407440186s
+epoch 285: {'train_loss': '1.07229'}; time used = 0.5371484756469727s
+epoch 290: {'train_loss': '1.06108'}; time used = 0.5450267791748047s
+epoch 295: {'train_loss': '1.04978'}; time used = 0.6711390018463135s
+epoch 300: {'train_loss': '1.03842'}; time used = 0.5949728488922119s
+epoch 305: {'train_loss': '1.02536'}; time used = 0.5486688613891602s
+epoch 310: {'train_loss': '1.01429'}; time used = 0.6114852428436279s
+epoch 315: {'train_loss': '1.00356'}; time used = 0.5495238304138184s
+epoch 320: {'train_loss': '0.99217'}; time used = 0.549720048904419s
+epoch 325: {'train_loss': '0.98009'}; time used = 0.5701801776885986s
+epoch 330: {'train_loss': '0.96862'}; time used = 0.5427367687225342s
+epoch 335: {'train_loss': '0.95738'}; time used = 0.5543200969696045s
+epoch 340: {'train_loss': '0.94361'}; time used = 0.5428900718688965s
+epoch 345: {'train_loss': '0.93291'}; time used = 0.5432493686676025s
+epoch 350: {'train_loss': '0.92155'}; time used = 0.5479695796966553s
+epoch 355: {'train_loss': '0.90928'}; time used = 0.5349178314208984s
+epoch 360: {'train_loss': '0.89725'}; time used = 0.5321166515350342s
+epoch 365: {'train_loss': '0.88941'}; time used = 0.5056312084197998s
+epoch 370: {'train_loss': '0.87807'}; time used = 0.5066401958465576s
+epoch 375: {'train_loss': '0.86520'}; time used = 0.4990098476409912s
+epoch 380: {'train_loss': '0.85511'}; time used = 0.5346112251281738s
+epoch 385: {'train_loss': '0.84340'}; time used = 0.5160377025604248s
+epoch 390: {'train_loss': '0.83303'}; time used = 0.49801182746887207s
+epoch 395: {'train_loss': '0.82350'}; time used = 0.5464684963226318s
+epoch 400: {'train_loss': '0.81015'}; time used = 0.5427970886230469s
+epoch 405: {'train_loss': '0.80235'}; time used = 0.5595858097076416s
+epoch 410: {'train_loss': '0.79099'}; time used = 0.5217189788818359s
+epoch 415: {'train_loss': '0.78010'}; time used = 0.7822120189666748s
+epoch 420: {'train_loss': '0.77081'}; time used = 1.1890971660614014s
+epoch 425: {'train_loss': '0.76002'}; time used = 1.298382043838501s
+epoch 430: {'train_loss': '0.75147'}; time used = 1.041186809539795s
+epoch 435: {'train_loss': '0.74337'}; time used = 1.0889596939086914s
+epoch 440: {'train_loss': '0.73316'}; time used = 1.2842497825622559s
+epoch 445: {'train_loss': '0.72435'}; time used = 1.1363253593444824s
+epoch 450: {'train_loss': '0.71588'}; time used = 1.1922729015350342s
+epoch 455: {'train_loss': '0.70617'}; time used = 1.2338314056396484s
+epoch 460: {'train_loss': '0.69725'}; time used = 1.2288458347320557s
+epoch 465: {'train_loss': '0.68771'}; time used = 1.206573724746704s
+epoch 470: {'train_loss': '0.67917'}; time used = 1.0672245025634766s
+epoch 475: {'train_loss': '0.66977'}; time used = 1.089550495147705s
+epoch 480: {'train_loss': '0.66396'}; time used = 1.1976957321166992s
+epoch 485: {'train_loss': '0.65646'}; time used = 1.2006340026855469s
+epoch 490: {'train_loss': '0.64877'}; time used = 1.199493169784546s
+epoch 495: {'train_loss': '0.64044'}; time used = 1.2207000255584717s
+
+epoch 500: {'train_loss': '0.63358'}; time used = 1.3081679344177246s
+torch.int64
+Finished training. Time used = 70.34150743484497.
+Training classifier using 20.00% nodes...
+{'micro': 0.4618993280081146, 'macro': 0.3435896203635021, 'samples': 0.4618993280081146, 'weighted': 0.4066303776680317}
+  0%|          | 0/39434 [00:00<?, ?it/s] 43%|████▎     | 16942/39434 [00:00<00:00, 169414.91it/s] 74%|███████▎  | 29040/39434 [00:00<00:00, 151247.65it/s]100%|██████████| 39434/39434 [00:00<00:00, 134285.34it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.17580175399780273 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2327885627746582 seconds.
+39434 sentences created
+mode 1: time used = 0.35598182678222656
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.53297'}; time used = 0.611309289932251s
+epoch 10: {'train_loss': '1.46519'}; time used = 0.5701911449432373s
+epoch 15: {'train_loss': '1.30352'}; time used = 0.5765855312347412s
+epoch 20: {'train_loss': '1.25546'}; time used = 0.5690195560455322s
+epoch 25: {'train_loss': '1.18139'}; time used = 0.5521478652954102s
+epoch 30: {'train_loss': '1.10470'}; time used = 0.546410083770752s
+epoch 35: {'train_loss': '1.01542'}; time used = 0.522219181060791s
+epoch 40: {'train_loss': '0.92502'}; time used = 0.5201520919799805s
+epoch 45: {'train_loss': '0.83590'}; time used = 0.5519657135009766s
+epoch 50: {'train_loss': '0.75194'}; time used = 0.5501382350921631s
+epoch 55: {'train_loss': '0.67750'}; time used = 0.5473198890686035s
+epoch 60: {'train_loss': '0.60982'}; time used = 0.5605013370513916s
+epoch 65: {'train_loss': '0.55265'}; time used = 0.5342700481414795s
+epoch 70: {'train_loss': '0.50616'}; time used = 0.5503826141357422s
+epoch 75: {'train_loss': '0.46413'}; time used = 0.5310025215148926s
+epoch 80: {'train_loss': '0.42707'}; time used = 0.5517055988311768s
+epoch 85: {'train_loss': '0.39324'}; time used = 0.586411714553833s
+epoch 90: {'train_loss': '0.36915'}; time used = 0.5517277717590332s
+epoch 95: {'train_loss': '0.34430'}; time used = 0.5756056308746338s
+epoch 100: {'train_loss': '0.32198'}; time used = 0.6140851974487305s
+epoch 105: {'train_loss': '0.30363'}; time used = 0.5918292999267578s
+epoch 110: {'train_loss': '0.28652'}; time used = 0.5393297672271729s
+epoch 115: {'train_loss': '0.27189'}; time used = 0.5717043876647949s
+epoch 120: {'train_loss': '0.25845'}; time used = 0.624211311340332s
+epoch 125: {'train_loss': '0.24581'}; time used = 0.6344277858734131s
+epoch 130: {'train_loss': '0.23469'}; time used = 0.5747730731964111s
+epoch 135: {'train_loss': '0.22489'}; time used = 0.5817935466766357s
+epoch 140: {'train_loss': '0.21525'}; time used = 0.573051929473877s
+epoch 145: {'train_loss': '0.20589'}; time used = 0.5664362907409668s
+epoch 150: {'train_loss': '0.19875'}; time used = 0.5919861793518066s
+epoch 155: {'train_loss': '0.19109'}; time used = 0.5717096328735352s
+epoch 160: {'train_loss': '0.18458'}; time used = 0.5657153129577637s
+epoch 165: {'train_loss': '0.17853'}; time used = 0.5709700584411621s
+epoch 170: {'train_loss': '0.17176'}; time used = 0.6573638916015625s
+epoch 175: {'train_loss': '0.16649'}; time used = 0.6184592247009277s
+epoch 180: {'train_loss': '0.16124'}; time used = 0.5162639617919922s
+epoch 185: {'train_loss': '0.15634'}; time used = 0.6473207473754883s
+epoch 190: {'train_loss': '0.15189'}; time used = 0.5628478527069092s
+epoch 195: {'train_loss': '0.14699'}; time used = 0.5514853000640869s
+epoch 200: {'train_loss': '0.14284'}; time used = 0.5436801910400391s
+epoch 205: {'train_loss': '0.13892'}; time used = 0.5579168796539307s
+epoch 210: {'train_loss': '0.13570'}; time used = 0.613884687423706s
+epoch 215: {'train_loss': '0.13136'}; time used = 0.5504283905029297s
+epoch 220: {'train_loss': '0.12810'}; time used = 0.5172386169433594s
+epoch 225: {'train_loss': '0.12501'}; time used = 0.5441985130310059s
+epoch 230: {'train_loss': '0.12275'}; time used = 0.5770621299743652s
+epoch 235: {'train_loss': '0.11858'}; time used = 0.5506789684295654s
+epoch 240: {'train_loss': '0.11615'}; time used = 0.5413196086883545s
+epoch 245: {'train_loss': '0.11314'}; time used = 0.5495033264160156s
+epoch 250: {'train_loss': '0.11079'}; time used = 0.6086478233337402s
+epoch 255: {'train_loss': '0.10880'}; time used = 0.5552542209625244s
+epoch 260: {'train_loss': '0.10633'}; time used = 0.5760419368743896s
+epoch 265: {'train_loss': '0.10442'}; time used = 0.6235032081604004s
+epoch 270: {'train_loss': '0.10212'}; time used = 0.5534482002258301s
+epoch 275: {'train_loss': '0.09994'}; time used = 0.5621800422668457s
+epoch 280: {'train_loss': '0.09829'}; time used = 0.5941941738128662s
+epoch 285: {'train_loss': '0.09599'}; time used = 0.664661169052124s
+epoch 290: {'train_loss': '0.09393'}; time used = 0.5730347633361816s
+epoch 295: {'train_loss': '0.09238'}; time used = 0.5559337139129639s
+epoch 300: {'train_loss': '0.09103'}; time used = 0.5629079341888428s
+epoch 305: {'train_loss': '0.08880'}; time used = 0.5575511455535889s
+epoch 310: {'train_loss': '0.08819'}; time used = 0.6367168426513672s
+epoch 315: {'train_loss': '0.08634'}; time used = 0.5480797290802002s
+epoch 320: {'train_loss': '0.08497'}; time used = 0.5527329444885254s
+epoch 325: {'train_loss': '0.08230'}; time used = 0.5790700912475586s
+epoch 330: {'train_loss': '0.08147'}; time used = 0.5553975105285645s
+epoch 335: {'train_loss': '0.07917'}; time used = 0.5628061294555664s
+epoch 340: {'train_loss': '0.07849'}; time used = 0.5550289154052734s
+epoch 345: {'train_loss': '0.07693'}; time used = 0.6275629997253418s
+epoch 350: {'train_loss': '0.07618'}; time used = 0.5833449363708496s
+epoch 355: {'train_loss': '0.07471'}; time used = 0.5493142604827881s
+epoch 360: {'train_loss': '0.07349'}; time used = 0.5698792934417725s
+epoch 365: {'train_loss': '0.07221'}; time used = 0.5721068382263184s
+epoch 370: {'train_loss': '0.07131'}; time used = 0.5232479572296143s
+epoch 375: {'train_loss': '0.07029'}; time used = 0.5408873558044434s
+epoch 380: {'train_loss': '0.07030'}; time used = 0.5378775596618652s
+epoch 385: {'train_loss': '0.06798'}; time used = 0.5444574356079102s
+epoch 390: {'train_loss': '0.06650'}; time used = 0.5510225296020508s
+epoch 395: {'train_loss': '0.06584'}; time used = 0.5528063774108887s
+epoch 400: {'train_loss': '0.06469'}; time used = 0.5541994571685791s
+epoch 405: {'train_loss': '0.06366'}; time used = 0.5556831359863281s
+epoch 410: {'train_loss': '0.06251'}; time used = 0.5603048801422119s
+epoch 415: {'train_loss': '0.06081'}; time used = 0.5375680923461914s
+epoch 420: {'train_loss': '0.05935'}; time used = 0.5588750839233398s
+epoch 425: {'train_loss': '0.05821'}; time used = 0.5587971210479736s
+epoch 430: {'train_loss': '0.05662'}; time used = 0.5967385768890381s
+epoch 435: {'train_loss': '0.05522'}; time used = 0.7123410701751709s
+epoch 440: {'train_loss': '0.05286'}; time used = 0.6761186122894287s
+epoch 445: {'train_loss': '0.05009'}; time used = 0.5567502975463867s
+epoch 450: {'train_loss': '0.04707'}; time used = 0.5479576587677002s
+epoch 455: {'train_loss': '0.04218'}; time used = 0.5821382999420166s
+epoch 460: {'train_loss': '0.03959'}; time used = 0.5444035530090332s
+epoch 465: {'train_loss': '0.03571'}; time used = 0.5261476039886475s
+epoch 470: {'train_loss': '0.03260'}; time used = 0.5451323986053467s
+epoch 475: {'train_loss': '0.03042'}; time used = 0.5824704170227051s
+epoch 480: {'train_loss': '0.02944'}; time used = 0.5844554901123047s
+epoch 485: {'train_loss': '0.02818'}; time used = 0.5605342388153076s
+epoch 490: {'train_loss': '0.02569'}; time used = 0.5646538734436035s
+epoch 495: {'train_loss': '0.02586'}; time used = 0.5464444160461426s
+
+epoch 500: {'train_loss': '0.02512'}; time used = 0.5418124198913574s
+torch.int64
+Finished training. Time used = 69.13485455513.
+Training classifier using 20.00% nodes...
+{'micro': 0.7054012932674021, 'macro': 0.666965650984615, 'samples': 0.7054012932674021, 'weighted': 0.6958327876103192}
+  0%|          | 0/39434 [00:00<?, ?it/s] 38%|███▊      | 14803/39434 [00:00<00:00, 148025.20it/s] 83%|████████▎ | 32716/39434 [00:00<00:00, 156158.64it/s]100%|██████████| 39434/39434 [00:00<00:00, 158215.52it/s]
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.15550851821899414 seconds.
+Run epoch 1
+Epoch 1 ends in 0.21694564819335938 seconds.
+39434 sentences created
+mode 1: time used = 0.3217132091522217
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64426'}; time used = 0.6198816299438477s
+epoch 10: {'train_loss': '1.30800'}; time used = 0.6483983993530273s
+epoch 15: {'train_loss': '1.17009'}; time used = 0.5627293586730957s
+epoch 20: {'train_loss': '1.00143'}; time used = 0.5460922718048096s
+epoch 25: {'train_loss': '0.83372'}; time used = 0.6241574287414551s
+epoch 30: {'train_loss': '0.69314'}; time used = 0.5594732761383057s
+epoch 35: {'train_loss': '0.57696'}; time used = 0.5683181285858154s
+epoch 40: {'train_loss': '0.48688'}; time used = 0.556464672088623s
+epoch 45: {'train_loss': '0.41675'}; time used = 0.5838131904602051s
+epoch 50: {'train_loss': '0.36109'}; time used = 0.5610404014587402s
+epoch 55: {'train_loss': '0.31864'}; time used = 0.5597171783447266s
+epoch 60: {'train_loss': '0.28298'}; time used = 0.561403751373291s
+epoch 65: {'train_loss': '0.25534'}; time used = 0.5192234516143799s
+epoch 70: {'train_loss': '0.23270'}; time used = 0.5877201557159424s
+epoch 75: {'train_loss': '0.21405'}; time used = 0.6305592060089111s
+epoch 80: {'train_loss': '0.19731'}; time used = 0.6616001129150391s
+epoch 85: {'train_loss': '0.18161'}; time used = 0.5703814029693604s
+epoch 90: {'train_loss': '0.17147'}; time used = 0.5206921100616455s
+epoch 95: {'train_loss': '0.16054'}; time used = 0.5655088424682617s
+epoch 100: {'train_loss': '0.15032'}; time used = 0.6976709365844727s
+epoch 105: {'train_loss': '0.14181'}; time used = 0.7064316272735596s
+epoch 110: {'train_loss': '0.13404'}; time used = 0.5455007553100586s
+epoch 115: {'train_loss': '0.12773'}; time used = 0.567345142364502s
+epoch 120: {'train_loss': '0.12209'}; time used = 0.5449514389038086s
+epoch 125: {'train_loss': '0.11622'}; time used = 0.5588765144348145s
+epoch 130: {'train_loss': '0.11096'}; time used = 0.6322207450866699s
+epoch 135: {'train_loss': '0.10620'}; time used = 0.5609209537506104s
+epoch 140: {'train_loss': '0.10213'}; time used = 0.5232274532318115s
+epoch 145: {'train_loss': '0.09763'}; time used = 0.5432929992675781s
+epoch 150: {'train_loss': '0.09413'}; time used = 0.5571498870849609s
+epoch 155: {'train_loss': '0.09085'}; time used = 0.5187015533447266s
+epoch 160: {'train_loss': '0.08761'}; time used = 0.558220386505127s
+epoch 165: {'train_loss': '0.08563'}; time used = 0.5501234531402588s
+epoch 170: {'train_loss': '0.08165'}; time used = 0.5275189876556396s
+epoch 175: {'train_loss': '0.07886'}; time used = 0.5203526020050049s
+epoch 180: {'train_loss': '0.07575'}; time used = 0.5388929843902588s
+epoch 185: {'train_loss': '0.07345'}; time used = 0.8193907737731934s
+epoch 190: {'train_loss': '0.07097'}; time used = 1.1188619136810303s
+epoch 195: {'train_loss': '0.06687'}; time used = 1.0358786582946777s
+epoch 200: {'train_loss': '0.06283'}; time used = 1.2888109683990479s
+epoch 205: {'train_loss': '0.05752'}; time used = 1.2840478420257568s
+epoch 210: {'train_loss': '0.05164'}; time used = 1.1602282524108887s
+epoch 215: {'train_loss': '0.04328'}; time used = 1.2393929958343506s
+epoch 220: {'train_loss': '0.03647'}; time used = 1.0453412532806396s
+epoch 225: {'train_loss': '0.03204'}; time used = 1.3714613914489746s
+epoch 230: {'train_loss': '0.03000'}; time used = 1.1977713108062744s
+epoch 235: {'train_loss': '0.02745'}; time used = 1.253641128540039s
+epoch 240: {'train_loss': '0.02675'}; time used = 1.2473976612091064s
+epoch 245: {'train_loss': '0.02568'}; time used = 1.320124626159668s
+epoch 250: {'train_loss': '0.02504'}; time used = 1.2013435363769531s
+epoch 255: {'train_loss': '0.02477'}; time used = 1.070204734802246s
+epoch 260: {'train_loss': '0.02442'}; time used = 1.2429683208465576s
+epoch 265: {'train_loss': '0.02385'}; time used = 1.2746388912200928s
+epoch 270: {'train_loss': '0.02367'}; time used = 1.1439945697784424s
+epoch 275: {'train_loss': '0.02341'}; time used = 1.0117568969726562s
+epoch 280: {'train_loss': '0.02237'}; time used = 1.1947948932647705s
+epoch 285: {'train_loss': '0.02296'}; time used = 0.6354920864105225s
+epoch 290: {'train_loss': '0.02142'}; time used = 0.56646728515625s
+epoch 295: {'train_loss': '0.02176'}; time used = 0.5556223392486572s
+epoch 300: {'train_loss': '0.02184'}; time used = 0.5616848468780518s
+epoch 305: {'train_loss': '0.02120'}; time used = 0.5510053634643555s
+epoch 310: {'train_loss': '0.02150'}; time used = 0.5406475067138672s
+epoch 315: {'train_loss': '0.02110'}; time used = 0.5394277572631836s
+epoch 320: {'train_loss': '0.02160'}; time used = 0.5473036766052246s
+epoch 325: {'train_loss': '0.01981'}; time used = 0.5579650402069092s
+epoch 330: {'train_loss': '0.02087'}; time used = 0.611985445022583s
+epoch 335: {'train_loss': '0.01942'}; time used = 0.6680588722229004s
+epoch 340: {'train_loss': '0.01983'}; time used = 0.6884183883666992s
+epoch 345: {'train_loss': '0.01877'}; time used = 0.7190704345703125s
+epoch 350: {'train_loss': '0.01899'}; time used = 0.7198469638824463s
+epoch 355: {'train_loss': '0.01943'}; time used = 0.7075085639953613s
+epoch 360: {'train_loss': '0.01928'}; time used = 0.7049720287322998s
+epoch 365: {'train_loss': '0.01927'}; time used = 0.6748590469360352s
+epoch 370: {'train_loss': '0.01908'}; time used = 0.7003860473632812s
+epoch 375: {'train_loss': '0.01939'}; time used = 0.7144336700439453s
+epoch 380: {'train_loss': '0.01997'}; time used = 0.6657776832580566s
+epoch 385: {'train_loss': '0.01853'}; time used = 0.6295187473297119s
+epoch 390: {'train_loss': '0.01789'}; time used = 0.6741180419921875s
+epoch 395: {'train_loss': '0.01855'}; time used = 0.6949000358581543s
+epoch 400: {'train_loss': '0.01852'}; time used = 0.6638975143432617s
+epoch 405: {'train_loss': '0.01859'}; time used = 0.6028609275817871s
+epoch 410: {'train_loss': '0.01849'}; time used = 0.6502764225006104s
+epoch 415: {'train_loss': '0.01759'}; time used = 0.6219940185546875s
+epoch 420: {'train_loss': '0.01775'}; time used = 0.5894267559051514s
+epoch 425: {'train_loss': '0.01744'}; time used = 0.6541621685028076s
+epoch 430: {'train_loss': '0.01805'}; time used = 0.6636056900024414s
+epoch 435: {'train_loss': '0.01817'}; time used = 0.5443298816680908s
+epoch 440: {'train_loss': '0.01804'}; time used = 1.0312817096710205s
+epoch 445: {'train_loss': '0.01776'}; time used = 1.2643566131591797s
+epoch 450: {'train_loss': '0.01839'}; time used = 1.235311508178711s
+epoch 455: {'train_loss': '0.01687'}; time used = 1.4339702129364014s
+epoch 460: {'train_loss': '0.01804'}; time used = 1.1795969009399414s
+Early stopping condition satisfied. Abort training.
+torch.int64
+Finished training. Time used = 83.1990749835968.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899961962723469, 'macro': 0.6497144140461667, 'samples': 0.6899961962723469, 'weighted': 0.6797266901750884}
+  0%|          | 0/39434 [00:00<?, ?it/s]  5%|▌         | 2133/39434 [00:00<00:02, 18190.28it/s] 13%|█▎        | 5124/39434 [00:00<00:01, 20613.06it/s] 27%|██▋       | 10481/39434 [00:00<00:01, 25277.90it/s] 41%|████      | 16022/39434 [00:00<00:00, 30205.61it/s] 56%|█████▌    | 22113/39434 [00:00<00:00, 35586.94it/s] 77%|███████▋  | 30264/39434 [00:00<00:00, 41946.21it/s]100%|██████████| 39434/39434 [00:00<00:00, 52975.68it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.28819918632507324 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5633742809295654 seconds.
+39434 sentences created
+mode 1: time used = 0.8561322689056396
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64040'}; time used = 1.1482243537902832s
+epoch 10: {'train_loss': '1.26248'}; time used = 1.1830880641937256s
+epoch 15: {'train_loss': '0.98028'}; time used = 1.0952332019805908s
+epoch 20: {'train_loss': '0.75926'}; time used = 1.160431146621704s
+epoch 25: {'train_loss': '0.58309'}; time used = 1.181213140487671s
+epoch 30: {'train_loss': '0.45832'}; time used = 1.1472268104553223s
+epoch 35: {'train_loss': '0.37044'}; time used = 1.0921669006347656s
+epoch 40: {'train_loss': '0.30712'}; time used = 1.1699953079223633s
+epoch 45: {'train_loss': '0.26098'}; time used = 1.3464462757110596s
+epoch 50: {'train_loss': '0.22536'}; time used = 1.17954683303833s
+epoch 55: {'train_loss': '0.19942'}; time used = 1.0820610523223877s
+epoch 60: {'train_loss': '0.17716'}; time used = 1.1499316692352295s
+epoch 65: {'train_loss': '0.16087'}; time used = 1.0966992378234863s
+epoch 70: {'train_loss': '0.14631'}; time used = 1.0575692653656006s
+epoch 75: {'train_loss': '0.13557'}; time used = 1.1340301036834717s
+epoch 80: {'train_loss': '0.12552'}; time used = 1.2160205841064453s
+epoch 85: {'train_loss': '0.11542'}; time used = 1.2197844982147217s
+epoch 90: {'train_loss': '0.10969'}; time used = 1.12949538230896s
+epoch 95: {'train_loss': '0.10298'}; time used = 1.2563743591308594s
+epoch 100: {'train_loss': '0.09602'}; time used = 1.071641445159912s
+epoch 105: {'train_loss': '0.09065'}; time used = 1.258542776107788s
+epoch 110: {'train_loss': '0.08545'}; time used = 1.2387909889221191s
+epoch 115: {'train_loss': '0.08133'}; time used = 1.1756794452667236s
+epoch 120: {'train_loss': '0.07734'}; time used = 1.294992446899414s
+epoch 125: {'train_loss': '0.07228'}; time used = 1.2440266609191895s
+epoch 130: {'train_loss': '0.06669'}; time used = 1.1130390167236328s
+epoch 135: {'train_loss': '0.05886'}; time used = 1.11476731300354s
+epoch 140: {'train_loss': '0.04938'}; time used = 1.045557975769043s
+epoch 145: {'train_loss': '0.03869'}; time used = 1.168726921081543s
+epoch 150: {'train_loss': '0.03168'}; time used = 1.2201292514801025s
+epoch 155: {'train_loss': '0.02989'}; time used = 1.0959057807922363s
+epoch 160: {'train_loss': '0.02825'}; time used = 1.3241920471191406s
+epoch 165: {'train_loss': '0.02795'}; time used = 1.0952987670898438s
+epoch 170: {'train_loss': '0.02716'}; time used = 1.1012167930603027s
+epoch 175: {'train_loss': '0.02592'}; time used = 1.1292853355407715s
+epoch 180: {'train_loss': '0.02478'}; time used = 1.3537535667419434s
+epoch 185: {'train_loss': '0.02533'}; time used = 1.1336359977722168s
+epoch 190: {'train_loss': '0.02511'}; time used = 1.0784361362457275s
+epoch 195: {'train_loss': '0.02360'}; time used = 1.5671069622039795s
+epoch 200: {'train_loss': '0.02343'}; time used = 1.7195022106170654s
+epoch 205: {'train_loss': '0.02263'}; time used = 1.6503198146820068s
+epoch 210: {'train_loss': '0.02286'}; time used = 1.4068841934204102s
+epoch 215: {'train_loss': '0.02226'}; time used = 1.3343513011932373s
+epoch 220: {'train_loss': '0.02156'}; time used = 1.8136060237884521s
+epoch 225: {'train_loss': '0.02112'}; time used = 1.482835292816162s
+epoch 230: {'train_loss': '0.02181'}; time used = 1.4411518573760986s
+epoch 235: {'train_loss': '0.02063'}; time used = 1.4799420833587646s
+epoch 240: {'train_loss': '0.02098'}; time used = 1.444573163986206s
+epoch 245: {'train_loss': '0.02046'}; time used = 1.3488247394561768s
+epoch 250: {'train_loss': '0.02051'}; time used = 1.4185047149658203s
+epoch 255: {'train_loss': '0.02033'}; time used = 1.6062119007110596s
+epoch 260: {'train_loss': '0.02029'}; time used = 1.582982063293457s
+epoch 265: {'train_loss': '0.01992'}; time used = 1.4940063953399658s
+epoch 270: {'train_loss': '0.02003'}; time used = 1.4076340198516846s
+epoch 275: {'train_loss': '0.01997'}; time used = 1.4520518779754639s
+epoch 280: {'train_loss': '0.01927'}; time used = 1.4765450954437256s
+epoch 285: {'train_loss': '0.01993'}; time used = 1.4915568828582764s
+epoch 290: {'train_loss': '0.01874'}; time used = 1.487839698791504s
+epoch 295: {'train_loss': '0.01909'}; time used = 1.4624783992767334s
+epoch 300: {'train_loss': '0.01958'}; time used = 1.8365600109100342s
+epoch 305: {'train_loss': '0.01890'}; time used = 1.6915578842163086s
+epoch 310: {'train_loss': '0.01895'}; time used = 1.6063971519470215s
+epoch 315: {'train_loss': '0.01881'}; time used = 1.368617296218872s
+epoch 320: {'train_loss': '0.01940'}; time used = 1.454606533050537s
+epoch 325: {'train_loss': '0.01780'}; time used = 1.2726600170135498s
+epoch 330: {'train_loss': '0.01881'}; time used = 1.548095464706421s
+epoch 335: {'train_loss': '0.01786'}; time used = 1.6833608150482178s
+epoch 340: {'train_loss': '0.01798'}; time used = 1.5168523788452148s
+epoch 345: {'train_loss': '0.01713'}; time used = 1.6388392448425293s
+epoch 350: {'train_loss': '0.01730'}; time used = 1.4887657165527344s
+epoch 355: {'train_loss': '0.01790'}; time used = 1.6014304161071777s
+epoch 360: {'train_loss': '0.01774'}; time used = 1.593740701675415s
+epoch 365: {'train_loss': '0.01785'}; time used = 1.4770135879516602s
+epoch 370: {'train_loss': '0.01745'}; time used = 1.7036809921264648s
+epoch 375: {'train_loss': '0.01836'}; time used = 1.5839886665344238s
+epoch 380: {'train_loss': '0.01876'}; time used = 1.3254194259643555s
+epoch 385: {'train_loss': '0.01737'}; time used = 1.1163935661315918s
+epoch 390: {'train_loss': '0.01680'}; time used = 1.2535390853881836s
+epoch 395: {'train_loss': '0.01759'}; time used = 1.1125664710998535s
+epoch 400: {'train_loss': '0.01734'}; time used = 1.0559167861938477s
+epoch 405: {'train_loss': '0.01762'}; time used = 1.0260627269744873s
+epoch 410: {'train_loss': '0.01750'}; time used = 1.140904426574707s
+epoch 415: {'train_loss': '0.01655'}; time used = 1.2535498142242432s
+epoch 420: {'train_loss': '0.01678'}; time used = 1.092247724533081s
+epoch 425: {'train_loss': '0.01653'}; time used = 1.24452805519104s
+epoch 430: {'train_loss': '0.01715'}; time used = 1.0923302173614502s
+epoch 435: {'train_loss': '0.01742'}; time used = 1.1383602619171143s
+epoch 440: {'train_loss': '0.01723'}; time used = 1.1375157833099365s
+epoch 445: {'train_loss': '0.01695'}; time used = 1.1809170246124268s
+epoch 450: {'train_loss': '0.01765'}; time used = 1.059077262878418s
+epoch 455: {'train_loss': '0.01646'}; time used = 1.1874232292175293s
+epoch 460: {'train_loss': '0.01727'}; time used = 1.250495195388794s
+epoch 465: {'train_loss': '0.01672'}; time used = 1.2263879776000977s
+epoch 470: {'train_loss': '0.01669'}; time used = 0.6753597259521484s
+epoch 475: {'train_loss': '0.01692'}; time used = 0.5513162612915039s
+epoch 480: {'train_loss': '0.01741'}; time used = 0.6492288112640381s
+epoch 485: {'train_loss': '0.01740'}; time used = 0.6441800594329834s
+epoch 490: {'train_loss': '0.01576'}; time used = 0.6195991039276123s
+epoch 495: {'train_loss': '0.01659'}; time used = 0.5500807762145996s
+
+epoch 500: {'train_loss': '0.01612'}; time used = 0.5401527881622314s
+torch.int64
+Finished training. Time used = 140.01358318328857.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899328008114619, 'macro': 0.6513044732695176, 'samples': 0.6899328008114619, 'weighted': 0.6802914513886905}
+  0%|          | 0/39434 [00:00<?, ?it/s] 48%|████▊     | 19113/39434 [00:00<00:00, 191126.08it/s] 93%|█████████▎| 36743/39434 [00:00<00:00, 186421.23it/s]100%|██████████| 39434/39434 [00:00<00:00, 183572.20it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.1940474510192871 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2029249668121338 seconds.
+39434 sentences created
+mode 1: time used = 0.2643296718597412
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '3.47138'}; time used = 0.5753650665283203s
+epoch 10: {'train_loss': '3.03783'}; time used = 0.5992515087127686s
+epoch 15: {'train_loss': '2.66163'}; time used = 0.5594580173492432s
+epoch 20: {'train_loss': '2.35556'}; time used = 0.5654251575469971s
+epoch 25: {'train_loss': '2.09806'}; time used = 0.5752770900726318s
+epoch 30: {'train_loss': '1.88608'}; time used = 0.5529232025146484s
+epoch 35: {'train_loss': '1.71081'}; time used = 0.7473413944244385s
+epoch 40: {'train_loss': '1.58079'}; time used = 0.5895419120788574s
+epoch 45: {'train_loss': '1.48495'}; time used = 0.6029143333435059s
+epoch 50: {'train_loss': '1.41738'}; time used = 0.5389728546142578s
+epoch 55: {'train_loss': '1.37323'}; time used = 0.5379931926727295s
+epoch 60: {'train_loss': '1.34734'}; time used = 0.5649266242980957s
+epoch 65: {'train_loss': '1.33272'}; time used = 0.5647029876708984s
+epoch 70: {'train_loss': '1.32468'}; time used = 0.6617224216461182s
+epoch 75: {'train_loss': '1.31979'}; time used = 1.1485850811004639s
+epoch 80: {'train_loss': '1.31638'}; time used = 1.183002233505249s
+epoch 85: {'train_loss': '1.31371'}; time used = 1.194727897644043s
+epoch 90: {'train_loss': '1.31194'}; time used = 1.04142427444458s
+epoch 95: {'train_loss': '1.30932'}; time used = 1.0737545490264893s
+epoch 100: {'train_loss': '1.30684'}; time used = 1.1684746742248535s
+epoch 105: {'train_loss': '1.30509'}; time used = 1.2485837936401367s
+epoch 110: {'train_loss': '1.30218'}; time used = 1.2441918849945068s
+epoch 115: {'train_loss': '1.29975'}; time used = 1.2393441200256348s
+epoch 120: {'train_loss': '1.29752'}; time used = 1.1582648754119873s
+epoch 125: {'train_loss': '1.29360'}; time used = 1.0999233722686768s
+epoch 130: {'train_loss': '1.29083'}; time used = 1.2104401588439941s
+epoch 135: {'train_loss': '1.28757'}; time used = 1.0934569835662842s
+epoch 140: {'train_loss': '1.28376'}; time used = 1.2234253883361816s
+epoch 145: {'train_loss': '1.28053'}; time used = 1.1248562335968018s
+epoch 150: {'train_loss': '1.27675'}; time used = 1.214113473892212s
+epoch 155: {'train_loss': '1.27227'}; time used = 1.3516416549682617s
+epoch 160: {'train_loss': '1.26793'}; time used = 1.1506938934326172s
+epoch 165: {'train_loss': '1.26436'}; time used = 1.2350575923919678s
+epoch 170: {'train_loss': '1.25932'}; time used = 1.1877973079681396s
+epoch 175: {'train_loss': '1.25424'}; time used = 1.371272087097168s
+epoch 180: {'train_loss': '1.24871'}; time used = 1.158569097518921s
+epoch 185: {'train_loss': '1.24314'}; time used = 1.1190791130065918s
+epoch 190: {'train_loss': '1.23768'}; time used = 1.2185859680175781s
+epoch 195: {'train_loss': '1.23109'}; time used = 1.2852087020874023s
+epoch 200: {'train_loss': '1.22460'}; time used = 1.1992545127868652s
+epoch 205: {'train_loss': '1.21838'}; time used = 1.181523323059082s
+epoch 210: {'train_loss': '1.21070'}; time used = 1.2593657970428467s
+epoch 215: {'train_loss': '1.20366'}; time used = 1.2417783737182617s
+epoch 220: {'train_loss': '1.19605'}; time used = 1.1594247817993164s
+epoch 225: {'train_loss': '1.18840'}; time used = 1.0657052993774414s
+epoch 230: {'train_loss': '1.18066'}; time used = 1.2567484378814697s
+epoch 235: {'train_loss': '1.17186'}; time used = 1.4275248050689697s
+epoch 240: {'train_loss': '1.16371'}; time used = 1.5197412967681885s
+epoch 245: {'train_loss': '1.15364'}; time used = 1.3458271026611328s
+epoch 250: {'train_loss': '1.14377'}; time used = 1.2020225524902344s
+epoch 255: {'train_loss': '1.13452'}; time used = 1.2522635459899902s
+epoch 260: {'train_loss': '1.12513'}; time used = 1.1775588989257812s
+epoch 265: {'train_loss': '1.11457'}; time used = 1.100419282913208s
+epoch 270: {'train_loss': '1.10400'}; time used = 1.0262207984924316s
+epoch 275: {'train_loss': '1.09314'}; time used = 1.095341682434082s
+epoch 280: {'train_loss': '1.08300'}; time used = 1.2164301872253418s
+epoch 285: {'train_loss': '1.07229'}; time used = 1.159614086151123s
+epoch 290: {'train_loss': '1.06108'}; time used = 1.1908695697784424s
+epoch 295: {'train_loss': '1.04978'}; time used = 1.1387286186218262s
+epoch 300: {'train_loss': '1.03842'}; time used = 1.363914966583252s
+epoch 305: {'train_loss': '1.02536'}; time used = 1.3115565776824951s
+epoch 310: {'train_loss': '1.01429'}; time used = 1.135098934173584s
+epoch 315: {'train_loss': '1.00356'}; time used = 1.1681389808654785s
+epoch 320: {'train_loss': '0.99217'}; time used = 1.2045438289642334s
+epoch 325: {'train_loss': '0.98009'}; time used = 1.192741870880127s
+epoch 330: {'train_loss': '0.96862'}; time used = 1.2158071994781494s
+epoch 335: {'train_loss': '0.95738'}; time used = 1.1627256870269775s
+epoch 340: {'train_loss': '0.94361'}; time used = 1.3764429092407227s
+epoch 345: {'train_loss': '0.93291'}; time used = 1.3044390678405762s
+epoch 350: {'train_loss': '0.92155'}; time used = 1.2712600231170654s
+epoch 355: {'train_loss': '0.90928'}; time used = 1.2623050212860107s
+epoch 360: {'train_loss': '0.89725'}; time used = 1.3451812267303467s
+epoch 365: {'train_loss': '0.88941'}; time used = 1.2837677001953125s
+epoch 370: {'train_loss': '0.87807'}; time used = 1.2621958255767822s
+epoch 375: {'train_loss': '0.86520'}; time used = 1.1646490097045898s
+epoch 380: {'train_loss': '0.85511'}; time used = 1.1768724918365479s
+epoch 385: {'train_loss': '0.84340'}; time used = 1.0981011390686035s
+epoch 390: {'train_loss': '0.83303'}; time used = 1.3249921798706055s
+epoch 395: {'train_loss': '0.82350'}; time used = 1.2211308479309082s
+epoch 400: {'train_loss': '0.81015'}; time used = 1.2874655723571777s
+epoch 405: {'train_loss': '0.80235'}; time used = 1.0913565158843994s
+epoch 410: {'train_loss': '0.79099'}; time used = 1.270200252532959s
+epoch 415: {'train_loss': '0.78010'}; time used = 1.3256778717041016s
+epoch 420: {'train_loss': '0.77081'}; time used = 1.2678420543670654s
+epoch 425: {'train_loss': '0.76002'}; time used = 1.2125980854034424s
+epoch 430: {'train_loss': '0.75147'}; time used = 1.0916213989257812s
+epoch 435: {'train_loss': '0.74337'}; time used = 1.2823832035064697s
+epoch 440: {'train_loss': '0.73316'}; time used = 1.3133211135864258s
+epoch 445: {'train_loss': '0.72435'}; time used = 1.175154685974121s
+epoch 450: {'train_loss': '0.71588'}; time used = 1.3345909118652344s
+epoch 455: {'train_loss': '0.70617'}; time used = 1.140362024307251s
+epoch 460: {'train_loss': '0.69725'}; time used = 1.1911416053771973s
+epoch 465: {'train_loss': '0.68771'}; time used = 0.8346965312957764s
+epoch 470: {'train_loss': '0.67917'}; time used = 0.6143853664398193s
+epoch 475: {'train_loss': '0.66977'}; time used = 0.5307261943817139s
+epoch 480: {'train_loss': '0.66396'}; time used = 0.5890994071960449s
+epoch 485: {'train_loss': '0.65646'}; time used = 0.5481035709381104s
+epoch 490: {'train_loss': '0.64877'}; time used = 0.5631918907165527s
+epoch 495: {'train_loss': '0.64044'}; time used = 0.56540846824646s
+
+epoch 500: {'train_loss': '0.63358'}; time used = 0.5986835956573486s
+torch.int64
+Finished training. Time used = 119.75293254852295.
+Training classifier using 20.00% nodes...
+{'micro': 0.4618993280081146, 'macro': 0.3435896203635021, 'samples': 0.4618993280081146, 'weighted': 0.4066303776680317}
+  0%|          | 0/39434 [00:00<?, ?it/s] 20%|██        | 7936/39434 [00:00<00:00, 79352.70it/s] 39%|███▉      | 15412/39434 [00:00<00:00, 77913.42it/s] 61%|██████    | 24029/39434 [00:00<00:00, 80217.92it/s] 83%|████████▎ | 32651/39434 [00:00<00:00, 81928.51it/s]100%|██████████| 39434/39434 [00:00<00:00, 82112.56it/s]
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.27175402641296387 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5049576759338379 seconds.
+39434 sentences created
+mode 1: time used = 0.5997698307037354
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64426'}; time used = 1.4222073554992676s
+epoch 10: {'train_loss': '1.30800'}; time used = 0.895219087600708s
+epoch 15: {'train_loss': '1.17009'}; time used = 0.7164647579193115s
+epoch 20: {'train_loss': '1.00143'}; time used = 0.6248500347137451s
+epoch 25: {'train_loss': '0.83372'}; time used = 0.7068555355072021s
+epoch 30: {'train_loss': '0.69314'}; time used = 0.69580078125s
+epoch 35: {'train_loss': '0.57696'}; time used = 0.678818941116333s
+epoch 40: {'train_loss': '0.48688'}; time used = 0.6719496250152588s
+epoch 45: {'train_loss': '0.41675'}; time used = 0.6320445537567139s
+epoch 50: {'train_loss': '0.36109'}; time used = 0.6364853382110596s
+epoch 55: {'train_loss': '0.31864'}; time used = 0.6159729957580566s
+epoch 60: {'train_loss': '0.28298'}; time used = 0.6385138034820557s
+epoch 65: {'train_loss': '0.25534'}; time used = 0.6052508354187012s
+epoch 70: {'train_loss': '0.23270'}; time used = 0.5792365074157715s
+epoch 75: {'train_loss': '0.21405'}; time used = 0.6334877014160156s
+epoch 80: {'train_loss': '0.19731'}; time used = 0.5947082042694092s
+epoch 85: {'train_loss': '0.18161'}; time used = 0.613286018371582s
+epoch 90: {'train_loss': '0.17147'}; time used = 0.620002031326294s
+epoch 95: {'train_loss': '0.16054'}; time used = 0.5854833126068115s
+epoch 100: {'train_loss': '0.15032'}; time used = 0.5519576072692871s
+epoch 105: {'train_loss': '0.14181'}; time used = 0.6356713771820068s
+epoch 110: {'train_loss': '0.13404'}; time used = 0.5767691135406494s
+epoch 115: {'train_loss': '0.12773'}; time used = 0.5909864902496338s
+epoch 120: {'train_loss': '0.12209'}; time used = 0.5583343505859375s
+epoch 125: {'train_loss': '0.11622'}; time used = 0.5359461307525635s
+epoch 130: {'train_loss': '0.11096'}; time used = 0.5163486003875732s
+epoch 135: {'train_loss': '0.10620'}; time used = 0.5362303256988525s
+epoch 140: {'train_loss': '0.10213'}; time used = 0.5462543964385986s
+epoch 145: {'train_loss': '0.09763'}; time used = 0.5738034248352051s
+epoch 150: {'train_loss': '0.09413'}; time used = 0.6727752685546875s
+epoch 155: {'train_loss': '0.09085'}; time used = 0.569547176361084s
+epoch 160: {'train_loss': '0.08761'}; time used = 0.6230113506317139s
+epoch 165: {'train_loss': '0.08563'}; time used = 0.5669314861297607s
+epoch 170: {'train_loss': '0.08165'}; time used = 0.5568187236785889s
+epoch 175: {'train_loss': '0.07886'}; time used = 0.5908288955688477s
+epoch 180: {'train_loss': '0.07575'}; time used = 0.7659156322479248s
+epoch 185: {'train_loss': '0.07345'}; time used = 0.7984178066253662s
+epoch 190: {'train_loss': '0.07097'}; time used = 0.9078006744384766s
+epoch 195: {'train_loss': '0.06687'}; time used = 0.8760795593261719s
+epoch 200: {'train_loss': '0.06283'}; time used = 0.7464621067047119s
+epoch 205: {'train_loss': '0.05752'}; time used = 0.7524468898773193s
+epoch 210: {'train_loss': '0.05164'}; time used = 0.7517666816711426s
+epoch 215: {'train_loss': '0.04328'}; time used = 1.1293203830718994s
+epoch 220: {'train_loss': '0.03647'}; time used = 1.1683869361877441s
+epoch 225: {'train_loss': '0.03204'}; time used = 1.167179822921753s
+epoch 230: {'train_loss': '0.03000'}; time used = 1.0615124702453613s
+epoch 235: {'train_loss': '0.02745'}; time used = 1.1256096363067627s
+epoch 240: {'train_loss': '0.02675'}; time used = 1.150327205657959s
+epoch 245: {'train_loss': '0.02568'}; time used = 1.1489243507385254s
+epoch 250: {'train_loss': '0.02504'}; time used = 1.0142037868499756s
+epoch 255: {'train_loss': '0.02477'}; time used = 1.1642639636993408s
+epoch 260: {'train_loss': '0.02442'}; time used = 0.7683460712432861s
+epoch 265: {'train_loss': '0.02385'}; time used = 0.6438555717468262s
+epoch 270: {'train_loss': '0.02367'}; time used = 0.6743943691253662s
+epoch 275: {'train_loss': '0.02341'}; time used = 0.7207589149475098s
+epoch 280: {'train_loss': '0.02237'}; time used = 0.6569802761077881s
+epoch 285: {'train_loss': '0.02296'}; time used = 0.8166007995605469s
+epoch 290: {'train_loss': '0.02142'}; time used = 0.6257615089416504s
+epoch 295: {'train_loss': '0.02176'}; time used = 0.6489765644073486s
+epoch 300: {'train_loss': '0.02184'}; time used = 0.6814813613891602s
+epoch 305: {'train_loss': '0.02120'}; time used = 0.6161901950836182s
+epoch 310: {'train_loss': '0.02150'}; time used = 0.6576216220855713s
+epoch 315: {'train_loss': '0.02110'}; time used = 0.6735873222351074s
+epoch 320: {'train_loss': '0.02160'}; time used = 0.6490974426269531s
+epoch 325: {'train_loss': '0.01981'}; time used = 0.6058948040008545s
+epoch 330: {'train_loss': '0.02087'}; time used = 0.6442890167236328s
+epoch 335: {'train_loss': '0.01942'}; time used = 0.602095365524292s
+epoch 340: {'train_loss': '0.01983'}; time used = 0.6470041275024414s
+epoch 345: {'train_loss': '0.01877'}; time used = 0.6930294036865234s
+epoch 350: {'train_loss': '0.01899'}; time used = 0.5908031463623047s
+epoch 355: {'train_loss': '0.01943'}; time used = 0.63387131690979s
+epoch 360: {'train_loss': '0.01928'}; time used = 0.6295044422149658s
+epoch 365: {'train_loss': '0.01927'}; time used = 0.7189950942993164s
+epoch 370: {'train_loss': '0.01908'}; time used = 0.6532042026519775s
+epoch 375: {'train_loss': '0.01939'}; time used = 0.6642465591430664s
+epoch 380: {'train_loss': '0.01997'}; time used = 0.7520656585693359s
+epoch 385: {'train_loss': '0.01853'}; time used = 0.584054708480835s
+epoch 390: {'train_loss': '0.01789'}; time used = 0.7394068241119385s
+epoch 395: {'train_loss': '0.01855'}; time used = 0.7578105926513672s
+epoch 400: {'train_loss': '0.01852'}; time used = 0.6454787254333496s
+epoch 405: {'train_loss': '0.01859'}; time used = 0.6203477382659912s
+epoch 410: {'train_loss': '0.01849'}; time used = 0.5997998714447021s
+epoch 415: {'train_loss': '0.01759'}; time used = 0.7073452472686768s
+epoch 420: {'train_loss': '0.01775'}; time used = 0.6192758083343506s
+epoch 425: {'train_loss': '0.01744'}; time used = 0.6119213104248047s
+epoch 430: {'train_loss': '0.01805'}; time used = 0.6226770877838135s
+epoch 435: {'train_loss': '0.01817'}; time used = 0.6901073455810547s
+epoch 440: {'train_loss': '0.01804'}; time used = 0.5909192562103271s
+epoch 445: {'train_loss': '0.01776'}; time used = 0.5910038948059082s
+epoch 450: {'train_loss': '0.01839'}; time used = 0.6344389915466309s
+epoch 455: {'train_loss': '0.01687'}; time used = 0.623396635055542s
+epoch 460: {'train_loss': '0.01804'}; time used = 0.751239538192749s
+Early stopping condition satisfied. Abort training.
+torch.int64
+Finished training. Time used = 89.02539038658142.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899961962723469, 'macro': 0.6497144140461667, 'samples': 0.6899961962723469, 'weighted': 0.6797266901750884}
+  0%|          | 0/39434 [00:00<?, ?it/s] 12%|█▏        | 4742/39434 [00:00<00:00, 47418.46it/s] 32%|███▏      | 12659/39434 [00:00<00:00, 53903.54it/s] 48%|████▊     | 18875/39434 [00:00<00:00, 56139.48it/s] 69%|██████▉   | 27393/39434 [00:00<00:00, 62534.37it/s] 83%|████████▎ | 32906/39434 [00:00<00:00, 49431.05it/s] 96%|█████████▌| 37761/39434 [00:00<00:00, 43797.73it/s]100%|██████████| 39434/39434 [00:00<00:00, 51839.10it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.33935999870300293 seconds.
+Run epoch 1
+Epoch 1 ends in 1.0506949424743652 seconds.
+39434 sentences created
+mode 1: time used = 0.9001436233520508
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64040'}; time used = 1.2902638912200928s
+epoch 10: {'train_loss': '1.26248'}; time used = 1.1256577968597412s
+epoch 15: {'train_loss': '0.98028'}; time used = 1.1699767112731934s
+epoch 20: {'train_loss': '0.75926'}; time used = 1.1249964237213135s
+epoch 25: {'train_loss': '0.58309'}; time used = 1.2776992321014404s
+epoch 30: {'train_loss': '0.45832'}; time used = 1.3607721328735352s
+epoch 35: {'train_loss': '0.37044'}; time used = 1.482135534286499s
+epoch 40: {'train_loss': '0.30712'}; time used = 1.527883529663086s
+epoch 45: {'train_loss': '0.26098'}; time used = 1.7861731052398682s
+epoch 50: {'train_loss': '0.22536'}; time used = 1.9937925338745117s
+epoch 55: {'train_loss': '0.19942'}; time used = 1.840080976486206s
+epoch 60: {'train_loss': '0.17716'}; time used = 1.760582447052002s
+epoch 65: {'train_loss': '0.16087'}; time used = 1.6560025215148926s
+epoch 70: {'train_loss': '0.14631'}; time used = 1.4402577877044678s
+epoch 75: {'train_loss': '0.13557'}; time used = 1.6909971237182617s
+epoch 80: {'train_loss': '0.12552'}; time used = 1.5869789123535156s
+epoch 85: {'train_loss': '0.11542'}; time used = 1.4128880500793457s
+epoch 90: {'train_loss': '0.10969'}; time used = 1.5200130939483643s
+epoch 95: {'train_loss': '0.10298'}; time used = 1.7480213642120361s
+epoch 100: {'train_loss': '0.09602'}; time used = 1.7635445594787598s
+epoch 105: {'train_loss': '0.09065'}; time used = 1.8669824600219727s
+epoch 110: {'train_loss': '0.08545'}; time used = 1.501495361328125s
+epoch 115: {'train_loss': '0.08133'}; time used = 1.6372511386871338s
+epoch 120: {'train_loss': '0.07734'}; time used = 1.498011827468872s
+epoch 125: {'train_loss': '0.07228'}; time used = 1.6028122901916504s
+epoch 130: {'train_loss': '0.06669'}; time used = 1.5942554473876953s
+epoch 135: {'train_loss': '0.05886'}; time used = 1.9991190433502197s
+epoch 140: {'train_loss': '0.04938'}; time used = 1.6245605945587158s
+epoch 145: {'train_loss': '0.03869'}; time used = 1.8793981075286865s
+epoch 150: {'train_loss': '0.03168'}; time used = 1.6239914894104004s
+epoch 155: {'train_loss': '0.02989'}; time used = 1.6358318328857422s
+epoch 160: {'train_loss': '0.02825'}; time used = 1.7819840908050537s
+epoch 165: {'train_loss': '0.02795'}; time used = 1.690237283706665s
+epoch 170: {'train_loss': '0.02716'}; time used = 1.720552921295166s
+epoch 175: {'train_loss': '0.02592'}; time used = 1.7367160320281982s
+epoch 180: {'train_loss': '0.02478'}; time used = 1.7080388069152832s
+epoch 185: {'train_loss': '0.02533'}; time used = 1.837860107421875s
+epoch 190: {'train_loss': '0.02511'}; time used = 2.08248233795166s
+epoch 195: {'train_loss': '0.02360'}; time used = 1.8410520553588867s
+epoch 200: {'train_loss': '0.02343'}; time used = 2.0275163650512695s
+epoch 205: {'train_loss': '0.02263'}; time used = 2.0620734691619873s
+epoch 210: {'train_loss': '0.02286'}; time used = 1.673729419708252s
+epoch 215: {'train_loss': '0.02226'}; time used = 1.1213698387145996s
+epoch 220: {'train_loss': '0.02156'}; time used = 1.074280023574829s
+epoch 225: {'train_loss': '0.02112'}; time used = 1.1641676425933838s
+epoch 230: {'train_loss': '0.02181'}; time used = 1.4743289947509766s
+epoch 235: {'train_loss': '0.02063'}; time used = 1.4825918674468994s
+epoch 240: {'train_loss': '0.02098'}; time used = 1.8004975318908691s
+epoch 245: {'train_loss': '0.02046'}; time used = 1.7060112953186035s
+epoch 250: {'train_loss': '0.02051'}; time used = 1.4741642475128174s
+epoch 255: {'train_loss': '0.02033'}; time used = 1.5524864196777344s
+epoch 260: {'train_loss': '0.02029'}; time used = 1.8912103176116943s
+epoch 265: {'train_loss': '0.01992'}; time used = 1.7122085094451904s
+epoch 270: {'train_loss': '0.02003'}; time used = 1.5119986534118652s
+epoch 275: {'train_loss': '0.01997'}; time used = 1.9239099025726318s
+epoch 280: {'train_loss': '0.01927'}; time used = 1.7315170764923096s
+epoch 285: {'train_loss': '0.01993'}; time used = 1.5274722576141357s
+epoch 290: {'train_loss': '0.01874'}; time used = 1.8087730407714844s
+epoch 295: {'train_loss': '0.01909'}; time used = 1.8637244701385498s
+epoch 300: {'train_loss': '0.01958'}; time used = 1.6321403980255127s
+epoch 305: {'train_loss': '0.01890'}; time used = 1.5480542182922363s
+epoch 310: {'train_loss': '0.01895'}; time used = 1.524291753768921s
+epoch 315: {'train_loss': '0.01881'}; time used = 1.4266481399536133s
+epoch 320: {'train_loss': '0.01940'}; time used = 1.5200698375701904s
+epoch 325: {'train_loss': '0.01780'}; time used = 1.6127281188964844s
+epoch 330: {'train_loss': '0.01881'}; time used = 1.49741792678833s
+epoch 335: {'train_loss': '0.01786'}; time used = 1.7145404815673828s
+epoch 340: {'train_loss': '0.01798'}; time used = 1.6752398014068604s
+epoch 345: {'train_loss': '0.01713'}; time used = 1.562434196472168s
+epoch 350: {'train_loss': '0.01730'}; time used = 1.5659282207489014s
+epoch 355: {'train_loss': '0.01790'}; time used = 1.5884253978729248s
+epoch 360: {'train_loss': '0.01774'}; time used = 1.4385418891906738s
+epoch 365: {'train_loss': '0.01785'}; time used = 1.5333061218261719s
+epoch 370: {'train_loss': '0.01745'}; time used = 1.4537861347198486s
+epoch 375: {'train_loss': '0.01836'}; time used = 1.8532793521881104s
+epoch 380: {'train_loss': '0.01876'}; time used = 1.7621276378631592s
+epoch 385: {'train_loss': '0.01737'}; time used = 1.6156318187713623s
+epoch 390: {'train_loss': '0.01680'}; time used = 1.7391176223754883s
+epoch 395: {'train_loss': '0.01759'}; time used = 1.6111583709716797s
+epoch 400: {'train_loss': '0.01734'}; time used = 1.6955969333648682s
+epoch 405: {'train_loss': '0.01762'}; time used = 1.7290687561035156s
+epoch 410: {'train_loss': '0.01750'}; time used = 1.6680583953857422s
+epoch 415: {'train_loss': '0.01655'}; time used = 1.39994215965271s
+epoch 420: {'train_loss': '0.01678'}; time used = 1.8013830184936523s
+epoch 425: {'train_loss': '0.01653'}; time used = 1.5866029262542725s
+epoch 430: {'train_loss': '0.01715'}; time used = 1.4970207214355469s
+epoch 435: {'train_loss': '0.01742'}; time used = 1.3884010314941406s
+epoch 440: {'train_loss': '0.01723'}; time used = 1.5271742343902588s
+epoch 445: {'train_loss': '0.01695'}; time used = 1.4357526302337646s
+epoch 450: {'train_loss': '0.01765'}; time used = 1.477895975112915s
+epoch 455: {'train_loss': '0.01646'}; time used = 1.4280822277069092s
+epoch 460: {'train_loss': '0.01727'}; time used = 1.296757459640503s
+epoch 465: {'train_loss': '0.01672'}; time used = 1.5367112159729004s
+epoch 470: {'train_loss': '0.01669'}; time used = 1.349250316619873s
+epoch 475: {'train_loss': '0.01692'}; time used = 1.7106969356536865s
+epoch 480: {'train_loss': '0.01741'}; time used = 1.9879822731018066s
+epoch 485: {'train_loss': '0.01740'}; time used = 1.9127528667449951s
+epoch 490: {'train_loss': '0.01576'}; time used = 2.213620662689209s
+epoch 495: {'train_loss': '0.01659'}; time used = 2.0775318145751953s
+
+epoch 500: {'train_loss': '0.01612'}; time used = 1.8599677085876465s
+torch.int64
+Finished training. Time used = 179.64335823059082.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899328008114619, 'macro': 0.6513044732695176, 'samples': 0.6899328008114619, 'weighted': 0.6802914513886905}
+  0%|          | 0/39434 [00:00<?, ?it/s] 12%|█▏        | 4681/39434 [00:00<00:00, 39614.97it/s] 30%|███       | 11833/39434 [00:00<00:00, 45735.44it/s] 39%|███▉      | 15310/39434 [00:00<00:00, 41306.21it/s] 62%|██████▏   | 24351/39434 [00:00<00:00, 49345.81it/s] 84%|████████▍ | 33085/39434 [00:00<00:00, 56751.55it/s] 99%|█████████▉| 39121/39434 [00:00<00:00, 48042.70it/s]100%|██████████| 39434/39434 [00:00<00:00, 53805.33it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.32320380210876465 seconds.
+Run epoch 1
+Epoch 1 ends in 0.7036535739898682 seconds.
+39434 sentences created
+mode 1: time used = 0.9569559097290039
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '3.47138'}; time used = 1.5914347171783447s
+epoch 10: {'train_loss': '3.03783'}; time used = 1.0785410404205322s
+epoch 15: {'train_loss': '2.66163'}; time used = 1.1133546829223633s
+epoch 20: {'train_loss': '2.35556'}; time used = 1.0550546646118164s
+epoch 25: {'train_loss': '2.09806'}; time used = 1.2267429828643799s
+epoch 30: {'train_loss': '1.88608'}; time used = 1.1716210842132568s
+epoch 35: {'train_loss': '1.71081'}; time used = 1.3042364120483398s
+epoch 40: {'train_loss': '1.58079'}; time used = 1.132169485092163s
+epoch 45: {'train_loss': '1.48495'}; time used = 0.9191112518310547s
+epoch 50: {'train_loss': '1.41738'}; time used = 0.8126842975616455s
+epoch 55: {'train_loss': '1.37323'}; time used = 0.6912260055541992s
+epoch 60: {'train_loss': '1.34734'}; time used = 0.7217278480529785s
+epoch 65: {'train_loss': '1.33272'}; time used = 0.677901029586792s
+epoch 70: {'train_loss': '1.32468'}; time used = 0.6815640926361084s
+epoch 75: {'train_loss': '1.31979'}; time used = 0.6252615451812744s
+epoch 80: {'train_loss': '1.31638'}; time used = 0.6544575691223145s
+epoch 85: {'train_loss': '1.31371'}; time used = 0.7293798923492432s
+epoch 90: {'train_loss': '1.31194'}; time used = 0.7214374542236328s
+epoch 95: {'train_loss': '1.30932'}; time used = 0.6322178840637207s
+epoch 100: {'train_loss': '1.30684'}; time used = 0.6095919609069824s
+epoch 105: {'train_loss': '1.30509'}; time used = 0.6746394634246826s
+epoch 110: {'train_loss': '1.30218'}; time used = 0.6480860710144043s
+epoch 115: {'train_loss': '1.29975'}; time used = 0.7184419631958008s
+epoch 120: {'train_loss': '1.29752'}; time used = 0.6430139541625977s
+epoch 125: {'train_loss': '1.29360'}; time used = 0.5699701309204102s
+epoch 130: {'train_loss': '1.29083'}; time used = 0.659207820892334s
+epoch 135: {'train_loss': '1.28757'}; time used = 0.6834654808044434s
+epoch 140: {'train_loss': '1.28376'}; time used = 0.6231746673583984s
+epoch 145: {'train_loss': '1.28053'}; time used = 0.6446912288665771s
+epoch 150: {'train_loss': '1.27675'}; time used = 0.7443981170654297s
+epoch 155: {'train_loss': '1.27227'}; time used = 0.771481990814209s
+epoch 160: {'train_loss': '1.26793'}; time used = 0.7842118740081787s
+epoch 165: {'train_loss': '1.26436'}; time used = 0.8159034252166748s
+epoch 170: {'train_loss': '1.25932'}; time used = 0.805924654006958s
+epoch 175: {'train_loss': '1.25424'}; time used = 0.6658878326416016s
+epoch 180: {'train_loss': '1.24871'}; time used = 0.6892132759094238s
+epoch 185: {'train_loss': '1.24314'}; time used = 0.7334342002868652s
+epoch 190: {'train_loss': '1.23768'}; time used = 0.7435400485992432s
+epoch 195: {'train_loss': '1.23109'}; time used = 0.8412401676177979s
+epoch 200: {'train_loss': '1.22460'}; time used = 0.8102264404296875s
+epoch 205: {'train_loss': '1.21838'}; time used = 0.8514270782470703s
+epoch 210: {'train_loss': '1.21070'}; time used = 0.6794459819793701s
+epoch 215: {'train_loss': '1.20366'}; time used = 0.8198962211608887s
+epoch 220: {'train_loss': '1.19605'}; time used = 0.7230160236358643s
+epoch 225: {'train_loss': '1.18840'}; time used = 0.6610195636749268s
+epoch 230: {'train_loss': '1.18066'}; time used = 0.7403593063354492s
+epoch 235: {'train_loss': '1.17186'}; time used = 0.8136377334594727s
+epoch 240: {'train_loss': '1.16371'}; time used = 0.7938342094421387s
+epoch 245: {'train_loss': '1.15364'}; time used = 0.7808992862701416s
+epoch 250: {'train_loss': '1.14377'}; time used = 0.6971950531005859s
+epoch 255: {'train_loss': '1.13452'}; time used = 0.8002123832702637s
+epoch 260: {'train_loss': '1.12513'}; time used = 0.762963056564331s
+epoch 265: {'train_loss': '1.11457'}; time used = 0.7352933883666992s
+epoch 270: {'train_loss': '1.10400'}; time used = 0.7228202819824219s
+epoch 275: {'train_loss': '1.09314'}; time used = 0.6391167640686035s
+epoch 280: {'train_loss': '1.08300'}; time used = 0.7438535690307617s
+epoch 285: {'train_loss': '1.07229'}; time used = 0.7234401702880859s
+epoch 290: {'train_loss': '1.06108'}; time used = 0.831188440322876s
+epoch 295: {'train_loss': '1.04978'}; time used = 0.7585172653198242s
+epoch 300: {'train_loss': '1.03842'}; time used = 0.7368268966674805s
+epoch 305: {'train_loss': '1.02536'}; time used = 0.6856358051300049s
+epoch 310: {'train_loss': '1.01429'}; time used = 0.6915600299835205s
+epoch 315: {'train_loss': '1.00356'}; time used = 0.7242171764373779s
+epoch 320: {'train_loss': '0.99217'}; time used = 0.6098597049713135s
+epoch 325: {'train_loss': '0.98009'}; time used = 0.6361668109893799s
+epoch 330: {'train_loss': '0.96862'}; time used = 0.6682929992675781s
+epoch 335: {'train_loss': '0.95738'}; time used = 0.6919445991516113s
+epoch 340: {'train_loss': '0.94361'}; time used = 0.7447042465209961s
+epoch 345: {'train_loss': '0.93291'}; time used = 0.753807544708252s
+epoch 350: {'train_loss': '0.92155'}; time used = 0.8088669776916504s
+epoch 355: {'train_loss': '0.90928'}; time used = 0.7902796268463135s
+epoch 360: {'train_loss': '0.89725'}; time used = 0.7813317775726318s
+epoch 365: {'train_loss': '0.88941'}; time used = 0.6889224052429199s
+epoch 370: {'train_loss': '0.87807'}; time used = 0.8534510135650635s
+epoch 375: {'train_loss': '0.86520'}; time used = 1.2099065780639648s
+epoch 380: {'train_loss': '0.85511'}; time used = 1.3325939178466797s
+epoch 385: {'train_loss': '0.84340'}; time used = 1.2919847965240479s
+epoch 390: {'train_loss': '0.83303'}; time used = 1.210963249206543s
+epoch 395: {'train_loss': '0.82350'}; time used = 1.301414966583252s
+epoch 400: {'train_loss': '0.81015'}; time used = 1.085019826889038s
+epoch 405: {'train_loss': '0.80235'}; time used = 1.2182903289794922s
+epoch 410: {'train_loss': '0.79099'}; time used = 1.2762415409088135s
+epoch 415: {'train_loss': '0.78010'}; time used = 1.030928134918213s
+epoch 420: {'train_loss': '0.77081'}; time used = 1.2288637161254883s
+epoch 425: {'train_loss': '0.76002'}; time used = 1.1055679321289062s
+epoch 430: {'train_loss': '0.75147'}; time used = 1.1379599571228027s
+epoch 435: {'train_loss': '0.74337'}; time used = 1.114222764968872s
+epoch 440: {'train_loss': '0.73316'}; time used = 1.2630393505096436s
+epoch 445: {'train_loss': '0.72435'}; time used = 1.189347267150879s
+epoch 450: {'train_loss': '0.71588'}; time used = 1.1669151782989502s
+epoch 455: {'train_loss': '0.70617'}; time used = 1.1587886810302734s
+epoch 460: {'train_loss': '0.69725'}; time used = 1.2158279418945312s
+epoch 465: {'train_loss': '0.68771'}; time used = 1.0651872158050537s
+epoch 470: {'train_loss': '0.67917'}; time used = 1.1136033535003662s
+epoch 475: {'train_loss': '0.66977'}; time used = 1.0760610103607178s
+epoch 480: {'train_loss': '0.66396'}; time used = 1.1569976806640625s
+epoch 485: {'train_loss': '0.65646'}; time used = 1.1675446033477783s
+epoch 490: {'train_loss': '0.64877'}; time used = 1.2822318077087402s
+epoch 495: {'train_loss': '0.64044'}; time used = 1.1414670944213867s
+
+epoch 500: {'train_loss': '0.63358'}; time used = 1.2035198211669922s
+torch.int64
+Finished training. Time used = 117.34822821617126.
+Training classifier using 20.00% nodes...
+{'micro': 0.4618993280081146, 'macro': 0.3435896203635021, 'samples': 0.4618993280081146, 'weighted': 0.4066303776680317}
+  0%|          | 0/39434 [00:00<?, ?it/s] 24%|██▍       | 9422/39434 [00:00<00:00, 94211.33it/s] 43%|████▎     | 17150/39434 [00:00<00:00, 86374.19it/s] 54%|█████▍    | 21490/39434 [00:00<00:00, 57892.18it/s] 77%|███████▋  | 30264/39434 [00:00<00:00, 64190.64it/s] 97%|█████████▋| 38071/39434 [00:00<00:00, 67805.79it/s]100%|██████████| 39434/39434 [00:00<00:00, 70471.75it/s]
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.31551551818847656 seconds.
+Run epoch 1
+Epoch 1 ends in 0.48099589347839355 seconds.
+39434 sentences created
+mode 1: time used = 0.6821951866149902
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64426'}; time used = 1.3037583827972412s
+epoch 10: {'train_loss': '1.30800'}; time used = 1.3672864437103271s
+epoch 15: {'train_loss': '1.17009'}; time used = 1.120521068572998s
+epoch 20: {'train_loss': '1.00143'}; time used = 1.189382553100586s
+epoch 25: {'train_loss': '0.83372'}; time used = 1.2595360279083252s
+epoch 30: {'train_loss': '0.69314'}; time used = 1.065399169921875s
+epoch 35: {'train_loss': '0.57696'}; time used = 1.254127025604248s
+epoch 40: {'train_loss': '0.48688'}; time used = 1.1548616886138916s
+epoch 45: {'train_loss': '0.41675'}; time used = 1.1686022281646729s
+epoch 50: {'train_loss': '0.36109'}; time used = 1.1290538311004639s
+epoch 55: {'train_loss': '0.31864'}; time used = 1.1812362670898438s
+epoch 60: {'train_loss': '0.28298'}; time used = 1.1093122959136963s
+epoch 65: {'train_loss': '0.25534'}; time used = 1.0721931457519531s
+epoch 70: {'train_loss': '0.23270'}; time used = 1.1881155967712402s
+epoch 75: {'train_loss': '0.21405'}; time used = 1.2291858196258545s
+epoch 80: {'train_loss': '0.19731'}; time used = 1.1474366188049316s
+epoch 85: {'train_loss': '0.18161'}; time used = 1.2739465236663818s
+epoch 90: {'train_loss': '0.17147'}; time used = 1.1622202396392822s
+epoch 95: {'train_loss': '0.16054'}; time used = 1.3617663383483887s
+epoch 100: {'train_loss': '0.15032'}; time used = 1.1804306507110596s
+epoch 105: {'train_loss': '0.14181'}; time used = 1.1566684246063232s
+epoch 110: {'train_loss': '0.13404'}; time used = 1.1379451751708984s
+epoch 115: {'train_loss': '0.12773'}; time used = 1.0988123416900635s
+epoch 120: {'train_loss': '0.12209'}; time used = 1.1945867538452148s
+epoch 125: {'train_loss': '0.11622'}; time used = 1.1022140979766846s
+epoch 130: {'train_loss': '0.11096'}; time used = 1.1788108348846436s
+epoch 135: {'train_loss': '0.10620'}; time used = 1.1706562042236328s
+epoch 140: {'train_loss': '0.10213'}; time used = 1.206289529800415s
+epoch 145: {'train_loss': '0.09763'}; time used = 1.230504035949707s
+epoch 150: {'train_loss': '0.09413'}; time used = 1.2438418865203857s
+epoch 155: {'train_loss': '0.09085'}; time used = 1.2792425155639648s
+epoch 160: {'train_loss': '0.08761'}; time used = 1.0972120761871338s
+epoch 165: {'train_loss': '0.08563'}; time used = 1.1166398525238037s
+epoch 170: {'train_loss': '0.08165'}; time used = 1.0746922492980957s
+epoch 175: {'train_loss': '0.07886'}; time used = 1.0674941539764404s
+epoch 180: {'train_loss': '0.07575'}; time used = 1.1190991401672363s
+epoch 185: {'train_loss': '0.07345'}; time used = 1.1487081050872803s
+epoch 190: {'train_loss': '0.07097'}; time used = 1.0798964500427246s
+epoch 195: {'train_loss': '0.06687'}; time used = 1.2552824020385742s
+epoch 200: {'train_loss': '0.06283'}; time used = 1.254387378692627s
+epoch 205: {'train_loss': '0.05752'}; time used = 1.0616071224212646s
+epoch 210: {'train_loss': '0.05164'}; time used = 1.1423919200897217s
+epoch 215: {'train_loss': '0.04328'}; time used = 1.1686749458312988s
+epoch 220: {'train_loss': '0.03647'}; time used = 1.076927900314331s
+epoch 225: {'train_loss': '0.03204'}; time used = 1.0399339199066162s
+epoch 230: {'train_loss': '0.03000'}; time used = 1.132779836654663s
+epoch 235: {'train_loss': '0.02745'}; time used = 1.2369568347930908s
+epoch 240: {'train_loss': '0.02675'}; time used = 1.0719554424285889s
+epoch 245: {'train_loss': '0.02568'}; time used = 1.194396734237671s
+epoch 250: {'train_loss': '0.02504'}; time used = 1.1718220710754395s
+epoch 255: {'train_loss': '0.02477'}; time used = 1.131030559539795s
+epoch 260: {'train_loss': '0.02442'}; time used = 1.246577262878418s
+epoch 265: {'train_loss': '0.02385'}; time used = 1.2601749897003174s
+epoch 270: {'train_loss': '0.02367'}; time used = 1.4034900665283203s
+epoch 275: {'train_loss': '0.02341'}; time used = 1.2855753898620605s
+epoch 280: {'train_loss': '0.02237'}; time used = 1.4251790046691895s
+epoch 285: {'train_loss': '0.02296'}; time used = 1.2546472549438477s
+epoch 290: {'train_loss': '0.02142'}; time used = 1.1780548095703125s
+epoch 295: {'train_loss': '0.02176'}; time used = 1.1271297931671143s
+epoch 300: {'train_loss': '0.02184'}; time used = 1.1266181468963623s
+epoch 305: {'train_loss': '0.02120'}; time used = 1.0834994316101074s
+epoch 310: {'train_loss': '0.02150'}; time used = 1.1737637519836426s
+epoch 315: {'train_loss': '0.02110'}; time used = 1.0475761890411377s
+epoch 320: {'train_loss': '0.02160'}; time used = 1.0734758377075195s
+epoch 325: {'train_loss': '0.01981'}; time used = 1.1584138870239258s
+epoch 330: {'train_loss': '0.02087'}; time used = 1.2345139980316162s
+epoch 335: {'train_loss': '0.01942'}; time used = 1.1339738368988037s
+epoch 340: {'train_loss': '0.01983'}; time used = 1.1975393295288086s
+epoch 345: {'train_loss': '0.01877'}; time used = 1.1943492889404297s
+epoch 350: {'train_loss': '0.01899'}; time used = 1.3104748725891113s
+epoch 355: {'train_loss': '0.01943'}; time used = 1.3576645851135254s
+epoch 360: {'train_loss': '0.01928'}; time used = 1.2870028018951416s
+epoch 365: {'train_loss': '0.01927'}; time used = 1.160888671875s
+epoch 370: {'train_loss': '0.01908'}; time used = 1.177626609802246s
+epoch 375: {'train_loss': '0.01939'}; time used = 1.0544755458831787s
+epoch 380: {'train_loss': '0.01997'}; time used = 1.1061346530914307s
+epoch 385: {'train_loss': '0.01853'}; time used = 1.066033124923706s
+epoch 390: {'train_loss': '0.01789'}; time used = 1.2123887538909912s
+epoch 395: {'train_loss': '0.01855'}; time used = 1.2011301517486572s
+epoch 400: {'train_loss': '0.01852'}; time used = 1.1454572677612305s
+epoch 405: {'train_loss': '0.01859'}; time used = 1.1417429447174072s
+epoch 410: {'train_loss': '0.01849'}; time used = 1.3094160556793213s
+epoch 415: {'train_loss': '0.01759'}; time used = 1.2572968006134033s
+epoch 420: {'train_loss': '0.01775'}; time used = 1.2022323608398438s
+epoch 425: {'train_loss': '0.01744'}; time used = 1.155747890472412s
+epoch 430: {'train_loss': '0.01805'}; time used = 1.1474690437316895s
+epoch 435: {'train_loss': '0.01817'}; time used = 1.2132327556610107s
+epoch 440: {'train_loss': '0.01804'}; time used = 1.2150115966796875s
+epoch 445: {'train_loss': '0.01776'}; time used = 1.1169400215148926s
+epoch 450: {'train_loss': '0.01839'}; time used = 1.1571249961853027s
+epoch 455: {'train_loss': '0.01687'}; time used = 1.1303517818450928s
+epoch 460: {'train_loss': '0.01804'}; time used = 1.0561249256134033s
+Early stopping condition satisfied. Abort training.
+torch.int64
+Finished training. Time used = 131.0398771762848.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899961962723469, 'macro': 0.6497144140461667, 'samples': 0.6899961962723469, 'weighted': 0.6797266901750884}
+  0%|          | 0/39434 [00:00<?, ?it/s] 45%|████▍     | 17650/39434 [00:00<00:00, 176495.12it/s] 88%|████████▊ | 34838/39434 [00:00<00:00, 175083.42it/s]100%|██████████| 39434/39434 [00:00<00:00, 173767.89it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.1667015552520752 seconds.
+Run epoch 1
+Epoch 1 ends in 0.27034759521484375 seconds.
+39434 sentences created
+mode 1: time used = 0.27964353561401367
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.64040'}; time used = 0.5481102466583252s
+epoch 10: {'train_loss': '1.26248'}; time used = 0.6017742156982422s
+epoch 15: {'train_loss': '0.98028'}; time used = 0.6047604084014893s
+epoch 20: {'train_loss': '0.75926'}; time used = 0.5335507392883301s
+epoch 25: {'train_loss': '0.58309'}; time used = 0.5375773906707764s
+epoch 30: {'train_loss': '0.45832'}; time used = 0.577913761138916s
+epoch 35: {'train_loss': '0.37044'}; time used = 0.5764217376708984s
+epoch 40: {'train_loss': '0.30712'}; time used = 0.5925073623657227s
+epoch 45: {'train_loss': '0.26098'}; time used = 0.6079602241516113s
+epoch 50: {'train_loss': '0.22536'}; time used = 0.6209044456481934s
+epoch 55: {'train_loss': '0.19942'}; time used = 0.5606067180633545s
+epoch 60: {'train_loss': '0.17716'}; time used = 0.7044892311096191s
+epoch 65: {'train_loss': '0.16087'}; time used = 0.634535551071167s
+epoch 70: {'train_loss': '0.14631'}; time used = 0.6930818557739258s
+epoch 75: {'train_loss': '0.13557'}; time used = 0.5562515258789062s
+epoch 80: {'train_loss': '0.12552'}; time used = 0.5897800922393799s
+epoch 85: {'train_loss': '0.11542'}; time used = 0.6887228488922119s
+epoch 90: {'train_loss': '0.10969'}; time used = 0.6364049911499023s
+epoch 95: {'train_loss': '0.10298'}; time used = 0.6525046825408936s
+epoch 100: {'train_loss': '0.09602'}; time used = 0.6132049560546875s
+epoch 105: {'train_loss': '0.09065'}; time used = 0.53995680809021s
+epoch 110: {'train_loss': '0.08545'}; time used = 0.5198066234588623s
+epoch 115: {'train_loss': '0.08133'}; time used = 0.6476755142211914s
+epoch 120: {'train_loss': '0.07734'}; time used = 0.5809838771820068s
+epoch 125: {'train_loss': '0.07228'}; time used = 0.5677618980407715s
+epoch 130: {'train_loss': '0.06669'}; time used = 0.5932877063751221s
+epoch 135: {'train_loss': '0.05886'}; time used = 0.6722502708435059s
+epoch 140: {'train_loss': '0.04938'}; time used = 0.5604901313781738s
+epoch 145: {'train_loss': '0.03869'}; time used = 0.62677001953125s
+epoch 150: {'train_loss': '0.03168'}; time used = 0.582331657409668s
+epoch 155: {'train_loss': '0.02989'}; time used = 0.6321980953216553s
+epoch 160: {'train_loss': '0.02825'}; time used = 0.6776518821716309s
+epoch 165: {'train_loss': '0.02795'}; time used = 0.6200761795043945s
+epoch 170: {'train_loss': '0.02716'}; time used = 0.6927394866943359s
+epoch 175: {'train_loss': '0.02592'}; time used = 0.630061149597168s
+epoch 180: {'train_loss': '0.02478'}; time used = 0.6053926944732666s
+epoch 185: {'train_loss': '0.02533'}; time used = 0.5616514682769775s
+epoch 190: {'train_loss': '0.02511'}; time used = 0.6062524318695068s
+epoch 195: {'train_loss': '0.02360'}; time used = 0.615973949432373s
+epoch 200: {'train_loss': '0.02343'}; time used = 0.7136857509613037s
+epoch 205: {'train_loss': '0.02263'}; time used = 0.6282832622528076s
+epoch 210: {'train_loss': '0.02286'}; time used = 0.5667140483856201s
+epoch 215: {'train_loss': '0.02226'}; time used = 0.5181949138641357s
+epoch 220: {'train_loss': '0.02156'}; time used = 0.5329411029815674s
+epoch 225: {'train_loss': '0.02112'}; time used = 0.6459038257598877s
+epoch 230: {'train_loss': '0.02181'}; time used = 0.6497299671173096s
+epoch 235: {'train_loss': '0.02063'}; time used = 0.6181130409240723s
+epoch 240: {'train_loss': '0.02098'}; time used = 0.6109333038330078s
+epoch 245: {'train_loss': '0.02046'}; time used = 0.5798399448394775s
+epoch 250: {'train_loss': '0.02051'}; time used = 0.5845370292663574s
+epoch 255: {'train_loss': '0.02033'}; time used = 1.0294499397277832s
+epoch 260: {'train_loss': '0.02029'}; time used = 1.4779558181762695s
+epoch 265: {'train_loss': '0.01992'}; time used = 1.1200106143951416s
+epoch 270: {'train_loss': '0.02003'}; time used = 1.1213953495025635s
+epoch 275: {'train_loss': '0.01997'}; time used = 1.3092646598815918s
+epoch 280: {'train_loss': '0.01927'}; time used = 1.1777443885803223s
+epoch 285: {'train_loss': '0.01993'}; time used = 1.0984113216400146s
+epoch 290: {'train_loss': '0.01874'}; time used = 1.0960514545440674s
+epoch 295: {'train_loss': '0.01909'}; time used = 1.3163232803344727s
+epoch 300: {'train_loss': '0.01958'}; time used = 1.5405776500701904s
+epoch 305: {'train_loss': '0.01890'}; time used = 1.8763916492462158s
+epoch 310: {'train_loss': '0.01895'}; time used = 1.413114309310913s
+epoch 315: {'train_loss': '0.01881'}; time used = 1.718524694442749s
+epoch 320: {'train_loss': '0.01940'}; time used = 1.6650714874267578s
+epoch 325: {'train_loss': '0.01780'}; time used = 1.7186758518218994s
+epoch 330: {'train_loss': '0.01881'}; time used = 1.6391518115997314s
+epoch 335: {'train_loss': '0.01786'}; time used = 1.4131407737731934s
+epoch 340: {'train_loss': '0.01798'}; time used = 1.4121348857879639s
+epoch 345: {'train_loss': '0.01713'}; time used = 1.7213325500488281s
+epoch 350: {'train_loss': '0.01730'}; time used = 1.5994858741760254s
+epoch 355: {'train_loss': '0.01790'}; time used = 1.6891264915466309s
+epoch 360: {'train_loss': '0.01774'}; time used = 1.4363911151885986s
+epoch 365: {'train_loss': '0.01785'}; time used = 1.416069507598877s
+epoch 370: {'train_loss': '0.01745'}; time used = 1.5491359233856201s
+epoch 375: {'train_loss': '0.01836'}; time used = 1.647965908050537s
+epoch 380: {'train_loss': '0.01876'}; time used = 1.5606722831726074s
+epoch 385: {'train_loss': '0.01737'}; time used = 1.7713136672973633s
+epoch 390: {'train_loss': '0.01680'}; time used = 1.4174273014068604s
+epoch 395: {'train_loss': '0.01759'}; time used = 1.466642141342163s
+epoch 400: {'train_loss': '0.01734'}; time used = 1.4470241069793701s
+epoch 405: {'train_loss': '0.01762'}; time used = 1.3670551776885986s
+epoch 410: {'train_loss': '0.01750'}; time used = 1.7848830223083496s
+epoch 415: {'train_loss': '0.01655'}; time used = 1.524808645248413s
+epoch 420: {'train_loss': '0.01678'}; time used = 1.7636685371398926s
+epoch 425: {'train_loss': '0.01653'}; time used = 1.6162745952606201s
+epoch 430: {'train_loss': '0.01715'}; time used = 1.7598545551300049s
+epoch 435: {'train_loss': '0.01742'}; time used = 2.2035109996795654s
+epoch 440: {'train_loss': '0.01723'}; time used = 1.4046530723571777s
+epoch 445: {'train_loss': '0.01695'}; time used = 1.5838937759399414s
+epoch 450: {'train_loss': '0.01765'}; time used = 1.5080056190490723s
+epoch 455: {'train_loss': '0.01646'}; time used = 1.6759779453277588s
+epoch 460: {'train_loss': '0.01727'}; time used = 2.100857973098755s
+epoch 465: {'train_loss': '0.01672'}; time used = 1.5353505611419678s
+epoch 470: {'train_loss': '0.01669'}; time used = 1.6716828346252441s
+epoch 475: {'train_loss': '0.01692'}; time used = 1.5239975452423096s
+epoch 480: {'train_loss': '0.01741'}; time used = 1.4363796710968018s
+epoch 485: {'train_loss': '0.01740'}; time used = 1.553846836090088s
+epoch 490: {'train_loss': '0.01576'}; time used = 1.5416274070739746s
+epoch 495: {'train_loss': '0.01659'}; time used = 1.6403238773345947s
+
+epoch 500: {'train_loss': '0.01612'}; time used = 1.6195905208587646s
+torch.int64
+Finished training. Time used = 116.87908983230591.
+Training classifier using 20.00% nodes...
+{'micro': 0.6899328008114619, 'macro': 0.6513044732695176, 'samples': 0.6899328008114619, 'weighted': 0.6802914513886905}
+  0%|          | 0/39434 [00:00<?, ?it/s] 43%|████▎     | 17014/39434 [00:00<00:00, 170132.86it/s] 88%|████████▊ | 34745/39434 [00:00<00:00, 172220.94it/s]100%|██████████| 39434/39434 [00:00<00:00, 172869.61it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.1720740795135498 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2201371192932129 seconds.
+39434 sentences created
+mode 1: time used = 0.28069043159484863
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '3.47138'}; time used = 0.6026067733764648s
+epoch 10: {'train_loss': '3.03783'}; time used = 0.5850517749786377s
+epoch 15: {'train_loss': '2.66163'}; time used = 0.6332154273986816s
+epoch 20: {'train_loss': '2.35556'}; time used = 0.6723077297210693s
+epoch 25: {'train_loss': '2.09806'}; time used = 0.5364847183227539s
+epoch 30: {'train_loss': '1.88608'}; time used = 0.5425987243652344s
+epoch 35: {'train_loss': '1.71081'}; time used = 0.5596411228179932s
+epoch 40: {'train_loss': '1.58079'}; time used = 0.536113977432251s
+epoch 45: {'train_loss': '1.48495'}; time used = 0.5633065700531006s
+epoch 50: {'train_loss': '1.41738'}; time used = 0.5376617908477783s
+epoch 55: {'train_loss': '1.37323'}; time used = 0.6154320240020752s
+epoch 60: {'train_loss': '1.34734'}; time used = 0.6210479736328125s
+epoch 65: {'train_loss': '1.33272'}; time used = 0.6629533767700195s
+epoch 70: {'train_loss': '1.32468'}; time used = 1.1284945011138916s
+epoch 75: {'train_loss': '1.31979'}; time used = 1.2434797286987305s
+epoch 80: {'train_loss': '1.31638'}; time used = 1.0904512405395508s
+epoch 85: {'train_loss': '1.31371'}; time used = 1.0627872943878174s
+epoch 90: {'train_loss': '1.31194'}; time used = 1.1765129566192627s
+epoch 95: {'train_loss': '1.30932'}; time used = 1.1575372219085693s
+epoch 100: {'train_loss': '1.30684'}; time used = 1.1222715377807617s
+epoch 105: {'train_loss': '1.30509'}; time used = 1.0462276935577393s
+epoch 110: {'train_loss': '1.30218'}; time used = 1.0955901145935059s
+epoch 115: {'train_loss': '1.29975'}; time used = 1.1693089008331299s
+epoch 120: {'train_loss': '1.29752'}; time used = 1.0503270626068115s
+epoch 125: {'train_loss': '1.29360'}; time used = 1.1292495727539062s
+epoch 130: {'train_loss': '1.29083'}; time used = 1.0655686855316162s
+epoch 135: {'train_loss': '1.28757'}; time used = 1.2554123401641846s
+epoch 140: {'train_loss': '1.28376'}; time used = 1.2504394054412842s
+epoch 145: {'train_loss': '1.28053'}; time used = 0.6149983406066895s
+epoch 150: {'train_loss': '1.27675'}; time used = 0.6050758361816406s
+epoch 155: {'train_loss': '1.27227'}; time used = 0.7182669639587402s
+epoch 160: {'train_loss': '1.26793'}; time used = 0.5436215400695801s
+epoch 165: {'train_loss': '1.26436'}; time used = 0.6926310062408447s
+epoch 170: {'train_loss': '1.25932'}; time used = 0.7245218753814697s
+epoch 175: {'train_loss': '1.25424'}; time used = 0.6669340133666992s
+epoch 180: {'train_loss': '1.24871'}; time used = 0.5836989879608154s
+epoch 185: {'train_loss': '1.24314'}; time used = 0.5529124736785889s
+epoch 190: {'train_loss': '1.23768'}; time used = 0.6690638065338135s
+epoch 195: {'train_loss': '1.23109'}; time used = 0.6043243408203125s
+epoch 200: {'train_loss': '1.22460'}; time used = 0.5470333099365234s
+epoch 205: {'train_loss': '1.21838'}; time used = 0.5154573917388916s
+epoch 210: {'train_loss': '1.21070'}; time used = 0.5414626598358154s
+epoch 215: {'train_loss': '1.20366'}; time used = 0.5541613101959229s
+epoch 220: {'train_loss': '1.19605'}; time used = 0.537395715713501s
+epoch 225: {'train_loss': '1.18840'}; time used = 0.5436546802520752s
+epoch 230: {'train_loss': '1.18066'}; time used = 0.5573210716247559s
+epoch 235: {'train_loss': '1.17186'}; time used = 0.5540909767150879s
+epoch 240: {'train_loss': '1.16371'}; time used = 0.7732033729553223s
+epoch 245: {'train_loss': '1.15364'}; time used = 0.6908173561096191s
+epoch 250: {'train_loss': '1.14377'}; time used = 0.7165117263793945s
+epoch 255: {'train_loss': '1.13452'}; time used = 0.6483561992645264s
+epoch 260: {'train_loss': '1.12513'}; time used = 0.5811831951141357s
+epoch 265: {'train_loss': '1.11457'}; time used = 0.6785597801208496s
+epoch 270: {'train_loss': '1.10400'}; time used = 0.5970969200134277s
+epoch 275: {'train_loss': '1.09314'}; time used = 0.6174187660217285s
+epoch 280: {'train_loss': '1.08300'}; time used = 1.118819236755371s
+epoch 285: {'train_loss': '1.07229'}; time used = 1.134465217590332s
+epoch 290: {'train_loss': '1.06108'}; time used = 1.2203073501586914s
+epoch 295: {'train_loss': '1.04978'}; time used = 1.0059654712677002s
+epoch 300: {'train_loss': '1.03842'}; time used = 1.0561401844024658s
+epoch 305: {'train_loss': '1.02536'}; time used = 1.2177741527557373s
+epoch 310: {'train_loss': '1.01429'}; time used = 1.2207908630371094s
+epoch 315: {'train_loss': '1.00356'}; time used = 1.1938519477844238s
+epoch 320: {'train_loss': '0.99217'}; time used = 0.9782936573028564s
+epoch 325: {'train_loss': '0.98009'}; time used = 1.0105159282684326s
+epoch 330: {'train_loss': '0.96862'}; time used = 1.1458797454833984s
+epoch 335: {'train_loss': '0.95738'}; time used = 1.4003691673278809s
+epoch 340: {'train_loss': '0.94361'}; time used = 1.4380123615264893s
+epoch 345: {'train_loss': '0.93291'}; time used = 1.2420434951782227s
+epoch 350: {'train_loss': '0.92155'}; time used = 1.2678074836730957s
+epoch 355: {'train_loss': '0.90928'}; time used = 1.3040995597839355s
+epoch 360: {'train_loss': '0.89725'}; time used = 1.2669217586517334s
+epoch 365: {'train_loss': '0.88941'}; time used = 1.1884312629699707s
+epoch 370: {'train_loss': '0.87807'}; time used = 1.1344430446624756s
+epoch 375: {'train_loss': '0.86520'}; time used = 1.1521275043487549s
+epoch 380: {'train_loss': '0.85511'}; time used = 1.2162671089172363s
+epoch 385: {'train_loss': '0.84340'}; time used = 1.0907511711120605s
+epoch 390: {'train_loss': '0.83303'}; time used = 1.08341646194458s
+epoch 395: {'train_loss': '0.82350'}; time used = 1.2109382152557373s
+epoch 400: {'train_loss': '0.81015'}; time used = 1.1819591522216797s
+epoch 405: {'train_loss': '0.80235'}; time used = 1.1963777542114258s
+epoch 410: {'train_loss': '0.79099'}; time used = 0.551828145980835s
+epoch 415: {'train_loss': '0.78010'}; time used = 0.5725367069244385s
+epoch 420: {'train_loss': '0.77081'}; time used = 0.6880342960357666s
+epoch 425: {'train_loss': '0.76002'}; time used = 0.5847351551055908s
+epoch 430: {'train_loss': '0.75147'}; time used = 0.6708953380584717s
+epoch 435: {'train_loss': '0.74337'}; time used = 0.6137287616729736s
+epoch 440: {'train_loss': '0.73316'}; time used = 0.6376492977142334s
+epoch 445: {'train_loss': '0.72435'}; time used = 0.5389883518218994s
+epoch 450: {'train_loss': '0.71588'}; time used = 0.6072189807891846s
+epoch 455: {'train_loss': '0.70617'}; time used = 0.6239182949066162s
+epoch 460: {'train_loss': '0.69725'}; time used = 0.6913249492645264s
+epoch 465: {'train_loss': '0.68771'}; time used = 0.6326684951782227s
+epoch 470: {'train_loss': '0.67917'}; time used = 0.7266144752502441s
+epoch 475: {'train_loss': '0.66977'}; time used = 0.7107152938842773s
+epoch 480: {'train_loss': '0.66396'}; time used = 1.1069118976593018s
+epoch 485: {'train_loss': '0.65646'}; time used = 1.1623625755310059s
+epoch 490: {'train_loss': '0.64877'}; time used = 1.2268569469451904s
+epoch 495: {'train_loss': '0.64044'}; time used = 1.0879063606262207s
+
+epoch 500: {'train_loss': '0.63358'}; time used = 1.0858805179595947s
+torch.int64
+Finished training. Time used = 95.49338364601135.
+Training classifier using 20.00% nodes...
+{'micro': 0.4618993280081146, 'macro': 0.3435896203635021, 'samples': 0.4618993280081146, 'weighted': 0.4066303776680317}
+  0%|          | 0/39434 [00:00<?, ?it/s] 14%|█▎        | 5419/39434 [00:00<00:00, 54187.73it/s] 30%|██▉       | 11793/39434 [00:00<00:00, 56709.87it/s] 51%|█████     | 20100/39434 [00:00<00:00, 62675.03it/s] 70%|██████▉   | 27431/39434 [00:00<00:00, 65525.01it/s] 91%|█████████ | 35758/39434 [00:00<00:00, 69998.99it/s]100%|██████████| 39434/39434 [00:00<00:00, 72351.05it/s]actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.28580641746520996 seconds.
+Run epoch 1
+Epoch 1 ends in 0.45283985137939453 seconds.
+39434 sentences created
+mode 1: time used = 0.6847469806671143
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+epoch 5: {'train_loss': '1.53297'}; time used = 1.27437162399292s
+epoch 10: {'train_loss': '1.46519'}; time used = 1.3409945964813232s
+epoch 15: {'train_loss': '1.30352'}; time used = 1.7664437294006348s
+epoch 20: {'train_loss': '1.25546'}; time used = 1.7483100891113281s
+epoch 25: {'train_loss': '1.18139'}; time used = 1.5764977931976318s
+epoch 30: {'train_loss': '1.10470'}; time used = 1.3470842838287354s
+epoch 35: {'train_loss': '1.01542'}; time used = 1.2940943241119385s
+epoch 40: {'train_loss': '0.92502'}; time used = 1.630504846572876s
+epoch 45: {'train_loss': '0.83590'}; time used = 1.7785685062408447s
+epoch 50: {'train_loss': '0.75194'}; time used = 1.6771137714385986s
+epoch 55: {'train_loss': '0.67750'}; time used = 1.6839303970336914s
+epoch 60: {'train_loss': '0.60982'}; time used = 1.6657946109771729s
+epoch 65: {'train_loss': '0.55265'}; time used = 1.406141757965088s
+epoch 70: {'train_loss': '0.50616'}; time used = 1.5485825538635254s
+epoch 75: {'train_loss': '0.46413'}; time used = 1.7009646892547607s
+epoch 80: {'train_loss': '0.42707'}; time used = 1.6083381175994873s
+epoch 85: {'train_loss': '0.39324'}; time used = 1.7341790199279785s
+epoch 90: {'train_loss': '0.36915'}; time used = 1.4313082695007324s
+epoch 95: {'train_loss': '0.34430'}; time used = 1.464726209640503s
+epoch 100: {'train_loss': '0.32198'}; time used = 1.660240888595581s
+epoch 105: {'train_loss': '0.30363'}; time used = 1.5276284217834473s
+epoch 110: {'train_loss': '0.28652'}; time used = 1.6853868961334229s
+epoch 115: {'train_loss': '0.27189'}; time used = 1.4882280826568604s
+epoch 120: {'train_loss': '0.25845'}; time used = 1.9984030723571777s
+epoch 125: {'train_loss': '0.24581'}; time used = 1.7510991096496582s
+epoch 130: {'train_loss': '0.23469'}; time used = 1.7181158065795898s
+epoch 135: {'train_loss': '0.22489'}; time used = 1.9647951126098633s
+epoch 140: {'train_loss': '0.21525'}; time used = 1.6156280040740967s
+epoch 145: {'train_loss': '0.20589'}; time used = 1.7546718120574951s
+epoch 150: {'train_loss': '0.19875'}; time used = 1.7425947189331055s
+epoch 155: {'train_loss': '0.19109'}; time used = 1.6488332748413086s
+epoch 160: {'train_loss': '0.18458'}; time used = 1.7179460525512695s
+epoch 165: {'train_loss': '0.17853'}; time used = 1.9050848484039307s
+epoch 170: {'train_loss': '0.17176'}; time used = 1.4049162864685059s
+epoch 175: {'train_loss': '0.16649'}; time used = 1.4999268054962158s
+epoch 180: {'train_loss': '0.16124'}; time used = 1.5693566799163818s
+epoch 185: {'train_loss': '0.15634'}; time used = 1.6745541095733643s
+epoch 190: {'train_loss': '0.15189'}; time used = 2.196352958679199s
+epoch 195: {'train_loss': '0.14699'}; time used = 1.6515171527862549s
+epoch 200: {'train_loss': '0.14284'}; time used = 1.4546003341674805s
+epoch 205: {'train_loss': '0.13892'}; time used = 1.3794991970062256s
+epoch 210: {'train_loss': '0.13570'}; time used = 1.0155022144317627s
+epoch 215: {'train_loss': '0.13136'}; time used = 1.0472683906555176s
+epoch 220: {'train_loss': '0.12810'}; time used = 1.1479477882385254s
+epoch 225: {'train_loss': '0.12501'}; time used = 1.260857105255127s
+epoch 230: {'train_loss': '0.12275'}; time used = 1.2229628562927246s
+epoch 235: {'train_loss': '0.11858'}; time used = 1.0356111526489258s
+epoch 240: {'train_loss': '0.11615'}; time used = 0.9995326995849609s
+epoch 245: {'train_loss': '0.11314'}; time used = 1.225407600402832s
+epoch 250: {'train_loss': '0.11079'}; time used = 1.038602590560913s
+epoch 255: {'train_loss': '0.10880'}; time used = 1.1160011291503906s
+epoch 260: {'train_loss': '0.10633'}; time used = 0.9959359169006348s
+epoch 265: {'train_loss': '0.10442'}; time used = 1.1492564678192139s
+epoch 270: {'train_loss': '0.10212'}; time used = 1.190140724182129s
+epoch 275: {'train_loss': '0.09994'}; time used = 1.069234848022461s
+epoch 280: {'train_loss': '0.09829'}; time used = 1.1232633590698242s
+epoch 285: {'train_loss': '0.09599'}; time used = 1.14335298538208s
+epoch 290: {'train_loss': '0.09393'}; time used = 1.3206849098205566s
+epoch 295: {'train_loss': '0.09238'}; time used = 1.2602519989013672s
+epoch 300: {'train_loss': '0.09103'}; time used = 1.1985723972320557s
+epoch 305: {'train_loss': '0.08880'}; time used = 1.0708560943603516s
+epoch 310: {'train_loss': '0.08819'}; time used = 0.7275052070617676s
+epoch 315: {'train_loss': '0.08634'}; time used = 0.7227389812469482s
+epoch 320: {'train_loss': '0.08497'}; time used = 0.6835572719573975s
+epoch 325: {'train_loss': '0.08230'}; time used = 0.6344907283782959s
+epoch 330: {'train_loss': '0.08147'}; time used = 0.6912424564361572s
+epoch 335: {'train_loss': '0.07917'}; time used = 0.9643521308898926s
+epoch 340: {'train_loss': '0.07849'}; time used = 1.1036865711212158s
+epoch 345: {'train_loss': '0.07693'}; time used = 1.040330410003662s
+epoch 350: {'train_loss': '0.07618'}; time used = 1.1910691261291504s
+epoch 355: {'train_loss': '0.07471'}; time used = 1.331070899963379s
+epoch 360: {'train_loss': '0.07349'}; time used = 1.1858208179473877s
+epoch 365: {'train_loss': '0.07221'}; time used = 1.4542510509490967s
+epoch 370: {'train_loss': '0.07131'}; time used = 1.4640369415283203s
+epoch 375: {'train_loss': '0.07029'}; time used = 1.4179913997650146s
+epoch 380: {'train_loss': '0.07030'}; time used = 1.121016502380371s
+epoch 385: {'train_loss': '0.06798'}; time used = 1.1302967071533203s
+epoch 390: {'train_loss': '0.06650'}; time used = 1.4645018577575684s
+epoch 395: {'train_loss': '0.06584'}; time used = 1.2812104225158691s
+epoch 400: {'train_loss': '0.06469'}; time used = 1.3473470211029053s
+epoch 405: {'train_loss': '0.06366'}; time used = 1.1738314628601074s
+epoch 410: {'train_loss': '0.06251'}; time used = 1.2655720710754395s
+epoch 415: {'train_loss': '0.06081'}; time used = 1.2978675365447998s
+epoch 420: {'train_loss': '0.05935'}; time used = 1.242436170578003s
+epoch 425: {'train_loss': '0.05821'}; time used = 1.2392985820770264s
+epoch 430: {'train_loss': '0.05662'}; time used = 0.5398862361907959s
+epoch 435: {'train_loss': '0.05522'}; time used = 0.6618378162384033s
+epoch 440: {'train_loss': '0.05286'}; time used = 0.715050220489502s
+epoch 445: {'train_loss': '0.05009'}; time used = 0.6732916831970215s
+epoch 450: {'train_loss': '0.04707'}; time used = 0.6897139549255371s
+epoch 455: {'train_loss': '0.04218'}; time used = 0.636282205581665s
+epoch 460: {'train_loss': '0.03959'}; time used = 0.5650131702423096s
+epoch 465: {'train_loss': '0.03571'}; time used = 0.5815980434417725s
+epoch 470: {'train_loss': '0.03260'}; time used = 0.6801707744598389s
+epoch 475: {'train_loss': '0.03042'}; time used = 0.7045700550079346s
+epoch 480: {'train_loss': '0.02944'}; time used = 0.7090814113616943s
+epoch 485: {'train_loss': '0.02818'}; time used = 0.7557446956634521s
+epoch 490: {'train_loss': '0.02569'}; time used = 0.705686092376709s
+epoch 495: {'train_loss': '0.02586'}; time used = 0.7147798538208008s
+
+epoch 500: {'train_loss': '0.02512'}; time used = 0.6846878528594971s
+torch.int64
+Finished training. Time used = 135.56050324440002.
+Training classifier using 20.00% nodes...
+{'micro': 0.7054012932674021, 'macro': 0.666965650984615, 'samples': 0.7054012932674021, 'weighted': 0.6958327876103192}
+  0%|          | 0/39434 [00:00<?, ?it/s] 20%|█▉        | 7779/39434 [00:00<00:00, 77784.33it/s] 39%|███▊      | 15189/39434 [00:00<00:00, 75443.53it/s] 59%|█████▉    | 23350/39434 [00:00<00:00, 74676.27it/s] 71%|███████▏  | 28163/39434 [00:00<00:00, 61646.26it/s] 83%|████████▎ | 32846/39434 [00:00<00:00, 54328.96it/s] 96%|█████████▌| 37909/39434 [00:00<00:00, 53163.52it/s]100%|██████████| 39434/39434 [00:00<00:00, 60080.98it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 114, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 156, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 24.41 GiB (GPU 6; 10.76 GiB total capacity; 2.27 GiB already allocated; 5.90 GiB free; 2.29 GiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f80aa3231e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f80aa57964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f80aa57a464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f80aa57aaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f7e6986d90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f7e67ca7949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f7e67cc1777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f80ab875c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f80ab875f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f80ab980a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f80ab6104f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f80ab612166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f80ab61265d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f80ab61280a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f80ab34feb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f7e67c96b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f80ab1e2530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f80ab9ca81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f80ab91b82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f80ab452952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f80ab453f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f80aba278c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f80aba5108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f80ab978337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f80ad586205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f80aba5108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f80ab978337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f80ad4e5f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f80adb01bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f80adafd400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f80adafdfa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f80adaf6119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f80bb2964ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f80bc3f26df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f80c044d6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f80c078671f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:6')
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.30068421363830566 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5642576217651367 seconds.
+39434 sentences created
+mode 1: time used = 0.7740607261657715
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+  0%|          | 0/39434 [00:00<?, ?it/s] 12%|█▏        | 4688/39434 [00:00<00:00, 45683.47it/s] 32%|███▏      | 12694/39434 [00:00<00:00, 52437.93it/s] 54%|█████▍    | 21483/39434 [00:00<00:00, 59656.06it/s] 75%|███████▌  | 29761/39434 [00:00<00:00, 65111.01it/s] 97%|█████████▋| 38304/39434 [00:00<00:00, 70015.26it/s]100%|██████████| 39434/39434 [00:00<00:00, 76400.10it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 114, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 156, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 24.41 GiB (GPU 6; 10.76 GiB total capacity; 2.27 GiB already allocated; 5.90 GiB free; 2.29 GiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fc0c4a9f1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fc0c4cf564b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fc0c4cf6464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fc0c4cf6aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7fbe83fe990e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7fbe82423949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7fbe8243d777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fc0c5ff1c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fc0c5ff1f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fc0c60fca1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fc0c5d8c4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fc0c5d8e166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fc0c5d8e65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fc0c5d8e80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fc0c5acbeb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7fbe82412b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fc0c595e530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fc0c614681c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fc0c609782b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fc0c5bce952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fc0c5bcff4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fc0c61a38c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fc0c61cd08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fc0c60f4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fc0c7d02205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fc0c61cd08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fc0c60f4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fc0c7c61f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fc0c827dbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fc0c8279400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fc0c8279fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fc0c8272119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fc0d5a124ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fc0d6b6e6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fc0dabc96db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fc0daf0271f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:6')
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1046, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0194, 0.0080,  ..., 0.0000, 0.0000, 0.0000],
+        [0.1078, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0266, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:6')
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.6343047618865967 seconds.
+Run epoch 1
+Epoch 1 ends in 0.3778355121612549 seconds.
+39434 sentences created
+mode 1: time used = 0.6150205135345459
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500

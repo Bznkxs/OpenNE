@@ -1,0 +1,803 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/6654 [00:00<?, ?it/s] 74%|███████▍  | 4939/6654 [00:00<00:00, 47471.84it/s]100%|██████████| 6654/6654 [00:00<00:00, 46642.16it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  6%|▌         | 5517/93156 [00:00<00:01, 52860.32it/s] 13%|█▎        | 11803/93156 [00:00<00:01, 55438.85it/s] 23%|██▎       | 21819/93156 [00:00<00:01, 64013.19it/s] 36%|███▋      | 33816/93156 [00:00<00:00, 73499.28it/s] 49%|████▉     | 45871/93156 [00:00<00:00, 83246.29it/s] 58%|█████▊    | 54344/93156 [00:00<00:00, 79281.86it/s] 70%|███████   | 65649/93156 [00:00<00:00, 87084.01it/s] 82%|████████▏ | 76143/93156 [00:00<00:00, 91768.30it/s] 95%|█████████▍| 88307/93156 [00:00<00:00, 99066.00it/s]100%|██████████| 93156/93156 [00:00<00:00, 93888.70it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 90.97 GiB (GPU 7; 10.76 GiB total capacity; 832.55 MiB already allocated; 2.28 GiB free; 848.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fa4f4cd71e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fa4f4f2d64b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fa4f4f2e464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fa4f4f2eaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7fa2b422190e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7fa2b265b949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7fa2b2675777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fa4f6229c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fa4f6229f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fa4f6334a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fa4f5fc44f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fa4f5fc6166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fa4f5fc665d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fa4f5fc680a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fa4f5d03eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7fa2b264ab40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fa4f5b96530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fa4f637e81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fa4f62cf82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fa4f5e06952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fa4f5e07f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fa4f63db8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fa4f640508b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fa4f632c337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fa4f7f3a205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fa4f640508b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fa4f632c337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fa4f7e99f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fa4f84b5bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fa4f84b1400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fa4f84b1fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fa4f84aa119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fa505c4a4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fa506da66df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fa50ae016db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fa50b13a71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.11749649047851562 seconds.
+Run epoch 1
+Epoch 1 ends in 0.14911198616027832 seconds.
+6654 sentences created
+mode 1: time used = 0.18445062637329102
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '1.53120'}; time used = 0.2999765872955322s
+epoch 10: {'train_loss': '1.40364'}; time used = 0.04277515411376953s
+epoch 15: {'train_loss': '1.35129'}; time used = 0.027318239212036133s
+epoch 20: {'train_loss': '1.32991'}; time used = 0.033034563064575195s
+epoch 25: {'train_loss': '1.30732'}; time used = 0.036060333251953125s
+epoch 30: {'train_loss': '1.28034'}; time used = 0.03759050369262695s
+epoch 35: {'train_loss': '1.26418'}; time used = 0.03266596794128418s
+epoch 40: {'train_loss': '1.23767'}; time used = 0.02895832061767578s
+epoch 45: {'train_loss': '1.22949'}; time used = 0.04593682289123535s
+epoch 50: {'train_loss': '1.23241'}; time used = 0.03174471855163574s
+epoch 55: {'train_loss': '1.22316'}; time used = 0.036264896392822266s
+epoch 60: {'train_loss': '1.22770'}; time used = 0.04003763198852539s
+epoch 65: {'train_loss': '1.21690'}; time used = 0.028893232345581055s
+epoch 70: {'train_loss': '1.22151'}; time used = 0.038921356201171875s
+epoch 75: {'train_loss': '1.21799'}; time used = 0.03960299491882324s
+epoch 80: {'train_loss': '1.21093'}; time used = 0.035543203353881836s
+epoch 85: {'train_loss': '1.21618'}; time used = 0.0419621467590332s
+epoch 90: {'train_loss': '1.21590'}; time used = 0.03023695945739746s
+epoch 95: {'train_loss': '1.21616'}; time used = 0.03165769577026367s
+epoch 100: {'train_loss': '1.21367'}; time used = 0.02884387969970703s
+epoch 105: {'train_loss': '1.21715'}; time used = 0.031973838806152344s
+epoch 110: {'train_loss': '1.21914'}; time used = 0.029910802841186523s
+epoch 115: {'train_loss': '1.21622'}; time used = 0.029651641845703125s
+epoch 120: {'train_loss': '1.20068'}; time used = 0.03339052200317383s
+epoch 125: {'train_loss': '1.20843'}; time used = 0.03196358680725098s
+epoch 130: {'train_loss': '1.20877'}; time used = 0.029445171356201172s
+epoch 135: {'train_loss': '1.20881'}; time used = 0.042075157165527344s
+epoch 140: {'train_loss': '1.20599'}; time used = 0.02993011474609375s
+epoch 145: {'train_loss': '1.20662'}; time used = 0.03300595283508301s
+epoch 150: {'train_loss': '1.20567'}; time used = 0.03232908248901367s
+epoch 155: {'train_loss': '1.20190'}; time used = 0.044647932052612305s
+epoch 160: {'train_loss': '1.19892'}; time used = 0.04080557823181152s
+epoch 165: {'train_loss': '1.19999'}; time used = 0.030670881271362305s
+epoch 170: {'train_loss': '1.20061'}; time used = 0.03012371063232422s
+epoch 175: {'train_loss': '1.19335'}; time used = 0.030764341354370117s
+epoch 180: {'train_loss': '1.19448'}; time used = 0.04124641418457031s
+epoch 185: {'train_loss': '1.19064'}; time used = 0.032988548278808594s
+epoch 190: {'train_loss': '1.20477'}; time used = 0.039531707763671875s
+epoch 195: {'train_loss': '1.19746'}; time used = 0.022588729858398438s
+epoch 200: {'train_loss': '1.19325'}; time used = 0.027779340744018555s
+epoch 205: {'train_loss': '1.19262'}; time used = 0.020244836807250977s
+epoch 210: {'train_loss': '1.19706'}; time used = 0.021121501922607422s
+epoch 215: {'train_loss': '1.20029'}; time used = 0.0276186466217041s
+epoch 220: {'train_loss': '1.19481'}; time used = 0.04006671905517578s
+epoch 225: {'train_loss': '1.19961'}; time used = 0.023202180862426758s
+epoch 230: {'train_loss': '1.19699'}; time used = 0.026633739471435547s
+epoch 235: {'train_loss': '1.19184'}; time used = 0.041344642639160156s
+epoch 240: {'train_loss': '1.19808'}; time used = 0.0441286563873291s
+epoch 245: {'train_loss': '1.19694'}; time used = 0.03522992134094238s
+epoch 250: {'train_loss': '1.18383'}; time used = 0.030190706253051758s
+epoch 255: {'train_loss': '1.19273'}; time used = 0.02956986427307129s
+epoch 260: {'train_loss': '1.19952'}; time used = 0.029688119888305664s
+epoch 265: {'train_loss': '1.19238'}; time used = 0.03243899345397949s
+epoch 270: {'train_loss': '1.19199'}; time used = 0.03499603271484375s
+epoch 275: {'train_loss': '1.20075'}; time used = 0.042032718658447266s
+epoch 280: {'train_loss': '1.19636'}; time used = 0.03572273254394531s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 27.637057781219482.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '1.42036'}; time used = 0.13329052925109863s
+epoch 10: {'train_loss': '1.34220'}; time used = 0.0629129409790039s
+epoch 15: {'train_loss': '1.30455'}; time used = 0.024884939193725586s
+epoch 20: {'train_loss': '1.27238'}; time used = 0.03737807273864746s
+epoch 25: {'train_loss': '1.24881'}; time used = 0.028955459594726562s
+epoch 30: {'train_loss': '1.23064'}; time used = 0.036606550216674805s
+epoch 35: {'train_loss': '1.22355'}; time used = 0.032531023025512695s
+epoch 40: {'train_loss': '1.20794'}; time used = 0.04242658615112305s
+epoch 45: {'train_loss': '1.20900'}; time used = 0.05345559120178223s
+epoch 50: {'train_loss': '1.21043'}; time used = 0.041402578353881836s
+epoch 55: {'train_loss': '1.20279'}; time used = 0.02890634536743164s
+epoch 60: {'train_loss': '1.20811'}; time used = 0.017052888870239258s
+epoch 65: {'train_loss': '1.19420'}; time used = 0.02863454818725586s
+epoch 70: {'train_loss': '1.20038'}; time used = 0.01697564125061035s
+epoch 75: {'train_loss': '1.19585'}; time used = 0.01750922203063965s
+epoch 80: {'train_loss': '1.19130'}; time used = 0.01832866668701172s
+epoch 85: {'train_loss': '1.19629'}; time used = 0.021178007125854492s
+epoch 90: {'train_loss': '1.19694'}; time used = 0.0205690860748291s
+epoch 95: {'train_loss': '1.19689'}; time used = 0.02870345115661621s
+epoch 100: {'train_loss': '1.19430'}; time used = 0.03712344169616699s
+epoch 105: {'train_loss': '1.19880'}; time used = 0.04000067710876465s
+epoch 110: {'train_loss': '1.20340'}; time used = 0.034850358963012695s
+epoch 115: {'train_loss': '1.20185'}; time used = 0.019002914428710938s
+epoch 120: {'train_loss': '1.18830'}; time used = 0.019681453704833984s
+epoch 125: {'train_loss': '1.19490'}; time used = 0.01961827278137207s
+epoch 130: {'train_loss': '1.19984'}; time used = 0.019185304641723633s
+epoch 135: {'train_loss': '1.20013'}; time used = 0.026360273361206055s
+epoch 140: {'train_loss': '1.19843'}; time used = 0.020948171615600586s
+epoch 145: {'train_loss': '1.19951'}; time used = 0.019037723541259766s
+epoch 150: {'train_loss': '1.20107'}; time used = 0.02034163475036621s
+epoch 155: {'train_loss': '1.19838'}; time used = 0.02015995979309082s
+epoch 160: {'train_loss': '1.19703'}; time used = 0.02667093276977539s
+epoch 165: {'train_loss': '1.19783'}; time used = 0.020717144012451172s
+epoch 170: {'train_loss': '1.19952'}; time used = 0.03170132637023926s
+epoch 175: {'train_loss': '1.19328'}; time used = 0.028342247009277344s
+epoch 180: {'train_loss': '1.19434'}; time used = 0.03177666664123535s
+epoch 185: {'train_loss': '1.19056'}; time used = 0.037763118743896484s
+epoch 190: {'train_loss': '1.20442'}; time used = 0.03813910484313965s
+epoch 195: {'train_loss': '1.19790'}; time used = 0.02761554718017578s
+epoch 200: {'train_loss': '1.19449'}; time used = 0.02795267105102539s
+epoch 205: {'train_loss': '1.19355'}; time used = 0.030820131301879883s
+epoch 210: {'train_loss': '1.19793'}; time used = 0.040383338928222656s
+epoch 215: {'train_loss': '1.20082'}; time used = 0.02656412124633789s
+epoch 220: {'train_loss': '1.19626'}; time used = 0.04259610176086426s
+epoch 225: {'train_loss': '1.20085'}; time used = 0.03616142272949219s
+epoch 230: {'train_loss': '1.19740'}; time used = 0.023689985275268555s
+epoch 235: {'train_loss': '1.19304'}; time used = 0.03457140922546387s
+epoch 240: {'train_loss': '1.19886'}; time used = 0.029667139053344727s
+epoch 245: {'train_loss': '1.19877'}; time used = 0.028137922286987305s
+epoch 250: {'train_loss': '1.18510'}; time used = 0.028646230697631836s
+epoch 255: {'train_loss': '1.19422'}; time used = 0.05131244659423828s
+epoch 260: {'train_loss': '1.20098'}; time used = 0.027956247329711914s
+epoch 265: {'train_loss': '1.19417'}; time used = 0.022555112838745117s
+epoch 270: {'train_loss': '1.19381'}; time used = 0.04049277305603027s
+epoch 275: {'train_loss': '1.20121'}; time used = 0.022674083709716797s
+epoch 280: {'train_loss': '1.19708'}; time used = 0.01990675926208496s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 62.68161058425903.
+Training classifier using 20.00% nodes...
+{'micro': 0.2505576208178439, 'macro': 0.12052031802824731, 'samples': 0.2531930879038317, 'weighted': 0.14911446359363675}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '1.73803'}; time used = 0.12251591682434082s
+epoch 10: {'train_loss': '1.70556'}; time used = 0.037055015563964844s
+epoch 15: {'train_loss': '1.67127'}; time used = 0.03090214729309082s
+epoch 20: {'train_loss': '1.64399'}; time used = 0.02834773063659668s
+epoch 25: {'train_loss': '1.61275'}; time used = 0.026920557022094727s
+epoch 30: {'train_loss': '1.58962'}; time used = 0.023617982864379883s
+epoch 35: {'train_loss': '1.56870'}; time used = 0.027390480041503906s
+epoch 40: {'train_loss': '1.54137'}; time used = 0.024440765380859375s
+epoch 45: {'train_loss': '1.51667'}; time used = 0.020969867706298828s
+epoch 50: {'train_loss': '1.51137'}; time used = 0.020653724670410156s
+epoch 55: {'train_loss': '1.49054'}; time used = 0.025913476943969727s
+epoch 60: {'train_loss': '1.47982'}; time used = 0.024091005325317383s
+epoch 65: {'train_loss': '1.46096'}; time used = 0.022269725799560547s
+epoch 70: {'train_loss': '1.45635'}; time used = 0.02993321418762207s
+epoch 75: {'train_loss': '1.44205'}; time used = 0.038043975830078125s
+epoch 80: {'train_loss': '1.42741'}; time used = 0.027852535247802734s
+epoch 85: {'train_loss': '1.42734'}; time used = 0.028154611587524414s
+epoch 90: {'train_loss': '1.41136'}; time used = 0.025218486785888672s
+epoch 95: {'train_loss': '1.40355'}; time used = 0.02948784828186035s
+epoch 100: {'train_loss': '1.39914'}; time used = 0.026766300201416016s
+epoch 105: {'train_loss': '1.39266'}; time used = 0.03721022605895996s
+epoch 110: {'train_loss': '1.39240'}; time used = 0.046683311462402344s
+epoch 115: {'train_loss': '1.38091'}; time used = 0.048964738845825195s
+epoch 120: {'train_loss': '1.37431'}; time used = 0.022034168243408203s
+epoch 125: {'train_loss': '1.36883'}; time used = 0.02129673957824707s
+epoch 130: {'train_loss': '1.36705'}; time used = 0.032445669174194336s
+epoch 135: {'train_loss': '1.36319'}; time used = 0.02192521095275879s
+epoch 140: {'train_loss': '1.35939'}; time used = 0.02429795265197754s
+epoch 145: {'train_loss': '1.35133'}; time used = 0.020627737045288086s
+epoch 150: {'train_loss': '1.34583'}; time used = 0.024702072143554688s
+epoch 155: {'train_loss': '1.34154'}; time used = 0.028926849365234375s
+epoch 160: {'train_loss': '1.34345'}; time used = 0.030304431915283203s
+epoch 165: {'train_loss': '1.33277'}; time used = 0.024829626083374023s
+epoch 170: {'train_loss': '1.33043'}; time used = 0.035369157791137695s
+epoch 175: {'train_loss': '1.32725'}; time used = 0.02727055549621582s
+epoch 180: {'train_loss': '1.32484'}; time used = 0.02984452247619629s
+epoch 185: {'train_loss': '1.31628'}; time used = 0.025641679763793945s
+epoch 190: {'train_loss': '1.31557'}; time used = 0.02399468421936035s
+epoch 195: {'train_loss': '1.31149'}; time used = 0.0289919376373291s
+epoch 200: {'train_loss': '1.30593'}; time used = 0.055556297302246094s
+epoch 205: {'train_loss': '1.29967'}; time used = 0.03677630424499512s
+epoch 210: {'train_loss': '1.30020'}; time used = 0.03132224082946777s
+epoch 215: {'train_loss': '1.29891'}; time used = 0.018891572952270508s
+epoch 220: {'train_loss': '1.29328'}; time used = 0.023435354232788086s
+epoch 225: {'train_loss': '1.29324'}; time used = 0.024442195892333984s
+epoch 230: {'train_loss': '1.28713'}; time used = 0.02123570442199707s
+epoch 235: {'train_loss': '1.28085'}; time used = 0.02262401580810547s
+epoch 240: {'train_loss': '1.28404'}; time used = 0.0234835147857666s
+epoch 245: {'train_loss': '1.28112'}; time used = 0.03892683982849121s
+epoch 250: {'train_loss': '1.26649'}; time used = 0.028377294540405273s
+epoch 255: {'train_loss': '1.27266'}; time used = 0.02520012855529785s
+epoch 260: {'train_loss': '1.27044'}; time used = 0.0225980281829834s
+epoch 265: {'train_loss': '1.26327'}; time used = 0.022073030471801758s
+epoch 270: {'train_loss': '1.26611'}; time used = 0.019679784774780273s
+epoch 275: {'train_loss': '1.26688'}; time used = 0.023637771606445312s
+epoch 280: {'train_loss': '1.25954'}; time used = 0.024573564529418945s
+epoch 285: {'train_loss': '1.25668'}; time used = 0.02659916877746582s
+epoch 290: {'train_loss': '1.25584'}; time used = 0.018260478973388672s
+epoch 295: {'train_loss': '1.25460'}; time used = 0.021901845932006836s
+epoch 300: {'train_loss': '1.25056'}; time used = 0.02452397346496582s
+epoch 305: {'train_loss': '1.24709'}; time used = 0.024049997329711914s
+epoch 310: {'train_loss': '1.24394'}; time used = 0.027616262435913086s
+epoch 315: {'train_loss': '1.24505'}; time used = 0.027226924896240234s
+epoch 320: {'train_loss': '1.23819'}; time used = 0.022855043411254883s
+epoch 325: {'train_loss': '1.24390'}; time used = 0.021721601486206055s
+epoch 330: {'train_loss': '1.24533'}; time used = 0.02260422706604004s
+epoch 335: {'train_loss': '1.23944'}; time used = 0.019299745559692383s
+epoch 340: {'train_loss': '1.23493'}; time used = 0.01948237419128418s
+epoch 345: {'train_loss': '1.23428'}; time used = 0.030812501907348633s
+epoch 350: {'train_loss': '1.23737'}; time used = 0.019764423370361328s
+epoch 355: {'train_loss': '1.23717'}; time used = 0.021225452423095703s
+epoch 360: {'train_loss': '1.22698'}; time used = 0.022719860076904297s
+epoch 365: {'train_loss': '1.22788'}; time used = 0.03227090835571289s
+epoch 370: {'train_loss': '1.23592'}; time used = 0.02277374267578125s
+epoch 375: {'train_loss': '1.23499'}; time used = 0.040131330490112305s
+epoch 380: {'train_loss': '1.22082'}; time used = 0.03412294387817383s
+epoch 385: {'train_loss': '1.23543'}; time used = 0.03168487548828125s
+epoch 390: {'train_loss': '1.22326'}; time used = 0.018831729888916016s
+epoch 395: {'train_loss': '1.22417'}; time used = 0.02436041831970215s
+epoch 400: {'train_loss': '1.22501'}; time used = 0.02912282943725586s
+epoch 405: {'train_loss': '1.22259'}; time used = 0.025271892547607422s
+epoch 410: {'train_loss': '1.22317'}; time used = 0.024906158447265625s
+epoch 415: {'train_loss': '1.22700'}; time used = 0.020260334014892578s
+epoch 420: {'train_loss': '1.22002'}; time used = 0.02571558952331543s
+epoch 425: {'train_loss': '1.21609'}; time used = 0.06937646865844727s
+epoch 430: {'train_loss': '1.21698'}; time used = 0.026890039443969727s
+epoch 435: {'train_loss': '1.21123'}; time used = 0.02933478355407715s
+epoch 440: {'train_loss': '1.22381'}; time used = 0.024280548095703125s
+epoch 445: {'train_loss': '1.22516'}; time used = 0.028393030166625977s
+epoch 450: {'train_loss': '1.22004'}; time used = 0.036434173583984375s
+epoch 455: {'train_loss': '1.21609'}; time used = 0.04224729537963867s
+epoch 460: {'train_loss': '1.21543'}; time used = 0.06740689277648926s
+epoch 465: {'train_loss': '1.21739'}; time used = 0.045031070709228516s
+epoch 470: {'train_loss': '1.21354'}; time used = 0.03940558433532715s
+epoch 475: {'train_loss': '1.22391'}; time used = 0.03436589241027832s
+epoch 480: {'train_loss': '1.22318'}; time used = 0.03378105163574219s
+epoch 485: {'train_loss': '1.22386'}; time used = 0.02800440788269043s
+epoch 490: {'train_loss': '1.21284'}; time used = 0.03233814239501953s
+epoch 495: {'train_loss': '1.21543'}; time used = 0.05735373497009277s
+epoch 500: {'train_loss': '1.21716'}; time used = 0.051857948303222656s
+Finished training. Time used = 37.746705770492554.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '1.53120'}; time used = 0.15363049507141113s
+epoch 10: {'train_loss': '1.40364'}; time used = 0.023627519607543945s
+epoch 15: {'train_loss': '1.35129'}; time used = 0.030725479125976562s
+epoch 20: {'train_loss': '1.32991'}; time used = 0.036203861236572266s
+epoch 25: {'train_loss': '1.30732'}; time used = 0.02069091796875s
+epoch 30: {'train_loss': '1.28034'}; time used = 0.019864320755004883s
+epoch 35: {'train_loss': '1.26418'}; time used = 0.020029783248901367s
+epoch 40: {'train_loss': '1.23767'}; time used = 0.01896047592163086s
+epoch 45: {'train_loss': '1.22949'}; time used = 0.01874375343322754s
+epoch 50: {'train_loss': '1.23241'}; time used = 0.018736839294433594s
+epoch 55: {'train_loss': '1.22316'}; time used = 0.0421600341796875s
+epoch 60: {'train_loss': '1.22770'}; time used = 0.025318622589111328s
+epoch 65: {'train_loss': '1.21690'}; time used = 0.03445577621459961s
+epoch 70: {'train_loss': '1.22151'}; time used = 0.02384042739868164s
+epoch 75: {'train_loss': '1.21799'}; time used = 0.026731014251708984s
+epoch 80: {'train_loss': '1.21093'}; time used = 0.026757001876831055s
+epoch 85: {'train_loss': '1.21618'}; time used = 0.03529977798461914s
+epoch 90: {'train_loss': '1.21590'}; time used = 0.03591418266296387s
+epoch 95: {'train_loss': '1.21616'}; time used = 0.07043027877807617s
+epoch 100: {'train_loss': '1.21367'}; time used = 0.12317371368408203s
+epoch 105: {'train_loss': '1.21715'}; time used = 0.05216479301452637s
+epoch 110: {'train_loss': '1.21914'}; time used = 0.06990766525268555s
+epoch 115: {'train_loss': '1.21622'}; time used = 0.046216726303100586s
+epoch 120: {'train_loss': '1.20068'}; time used = 0.04425549507141113s
+epoch 125: {'train_loss': '1.20843'}; time used = 0.06404972076416016s
+epoch 130: {'train_loss': '1.20877'}; time used = 0.04938650131225586s
+epoch 135: {'train_loss': '1.20881'}; time used = 0.06409549713134766s
+epoch 140: {'train_loss': '1.20599'}; time used = 0.030053377151489258s
+epoch 145: {'train_loss': '1.20662'}; time used = 0.03031444549560547s
+epoch 150: {'train_loss': '1.20567'}; time used = 0.02681255340576172s
+epoch 155: {'train_loss': '1.20190'}; time used = 0.030696630477905273s
+epoch 160: {'train_loss': '1.19892'}; time used = 0.02693033218383789s
+epoch 165: {'train_loss': '1.19999'}; time used = 0.022197246551513672s
+epoch 170: {'train_loss': '1.20061'}; time used = 0.024617910385131836s
+epoch 175: {'train_loss': '1.19335'}; time used = 0.02100825309753418s
+epoch 180: {'train_loss': '1.19448'}; time used = 0.020722627639770508s
+epoch 185: {'train_loss': '1.19064'}; time used = 0.023231983184814453s
+epoch 190: {'train_loss': '1.20477'}; time used = 0.02144479751586914s
+epoch 195: {'train_loss': '1.19746'}; time used = 0.04439830780029297s
+epoch 200: {'train_loss': '1.19325'}; time used = 0.02367115020751953s
+epoch 205: {'train_loss': '1.19262'}; time used = 0.021782398223876953s
+epoch 210: {'train_loss': '1.19706'}; time used = 0.02291107177734375s
+epoch 215: {'train_loss': '1.20029'}; time used = 0.04350900650024414s
+epoch 220: {'train_loss': '1.19481'}; time used = 0.02085280418395996s
+epoch 225: {'train_loss': '1.19961'}; time used = 0.019526958465576172s
+epoch 230: {'train_loss': '1.19699'}; time used = 0.03006458282470703s
+epoch 235: {'train_loss': '1.19184'}; time used = 0.05701565742492676s
+epoch 240: {'train_loss': '1.19808'}; time used = 0.0406036376953125s
+epoch 245: {'train_loss': '1.19694'}; time used = 0.031676530838012695s
+epoch 250: {'train_loss': '1.18383'}; time used = 0.02496933937072754s
+epoch 255: {'train_loss': '1.19273'}; time used = 0.020140647888183594s
+epoch 260: {'train_loss': '1.19952'}; time used = 0.020153522491455078s
+epoch 265: {'train_loss': '1.19238'}; time used = 0.02082204818725586s
+epoch 270: {'train_loss': '1.19199'}; time used = 0.021268844604492188s
+epoch 275: {'train_loss': '1.20075'}; time used = 0.019286632537841797s
+epoch 280: {'train_loss': '1.19636'}; time used = 0.03198051452636719s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 49.74553155899048.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
