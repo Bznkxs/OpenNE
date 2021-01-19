@@ -16,7 +16,7 @@ def dict_to_cmd(dict1):
         for p, q in ls:
             if q != "-":
                 ret += "--" + p.replace('_', '-') + ' ' + str(q).replace('[', '').replace(']', '').replace(',', '') + " "
-        ret += "\n"
+        ret += "$*\n"
     return ret
 
 
