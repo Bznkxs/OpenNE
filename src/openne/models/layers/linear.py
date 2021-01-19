@@ -34,7 +34,7 @@ class Linear(Layer):
         torch.nn.init.xavier_uniform_(self.weight)
 
     def forward(self, inputs):
-        x = inputs
+        x = inputs[0]
         if self.training:
             # dropout
             if self.sparse_inputs:

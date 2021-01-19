@@ -1,16 +1,22 @@
 import torch
 import networkx as nx
+import numpy as np
+from scipy.linalg import fractional_matrix_power, inv
 from torch.utils.data import Sampler
 from .walker import Walker, BasicWalker
 
 class BaseSampler(Sampler):
-    def __init__(self, name, adj, batch_size):
+    def __init__(self, name, adj, features, batch_size, device):
         # super(BaseSampler, self).__init__()
         self.adj = adj
         self.nnodes = self.adj.size()[0]
         self.nedges = self.adj._indices().size()[1]
+        self.features = features
+        print(self.features.sum())
         self.batch_size = batch_size
-        self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges)
+        self.name = name
+        self.device = device
+        self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges, self.features, self.batch_size, self.device)
 
     def __iter__(self):
         batch = []
@@ -25,10 +31,12 @@ class BaseSampler(Sampler):
 
     def __len__(self):
         return (len(self.sampler) + self.batch_size - 1) // self.batch_size
-torch.sparse.Tensor(1)
+    
+    def sample(self):
+        return self.sampler.sample()
 
 class TripleGenerator(Sampler):
-    def __init__(self, adj, nnodes, nedges, name, **kwargs):
+    def __init__(self, adj, nnodes, nedges, features, batch_size, device, name, **kwargs):
         # super().__init__()
         self.nnodes = nnodes
         self.nedges = nedges
@@ -142,19 +150,102 @@ class NNRSampler(TripleGenerator):
     def __init__(self, *args, **kwargs):
         super(NNRSampler, self).__init__(*args, name='node-neighbor-random', **kwargs)
 
+class DGISampler():
+    def __init__(self, adj, nnodes, nedges, features, batch_size, device):
+        super(DGISampler, self).__init__()
+        #self.anchor_name, self.pos_name, self.neg_name = name.split('-')
+        self.sample_size = 2000
+        self.adj = adj
+        self.nnodes = nnodes
+        self.nedges = nedges
+        self.features = features
+        self.anchor = self.adj.to_dense()
+        self.positive = self.adj.to_dense()
+        self.batch_size = batch_size
+
+    def augment(self):
+        
+        self.negative = np.random.permutation(np.arange(self.nnodes))
+        
+    
+    def sample(self):
+        self.augment()
+        idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
+        ba, bd, bf = [], [], []
+        for i in idx:
+            ba.append(self.anchor[i: i + self.sample_size, i: i + self.sample_size])
+            bd.append(self.positive[i: i + self.sample_size, i: i + self.sample_size])
+            bf.append(self.features[i: i + self.sample_size])
+
+        
+        ba = torch.stack(ba).squeeze()
+        bd = torch.stack(bd).squeeze()
+        bf = torch.stack(bf).squeeze()
+        idx = np.random.permutation(self.sample_size)
+        shuf_fts = bf[idx, :]
+        return ba, bd, bf, shuf_fts
+
+class DiffSampler():
+    def __init__(self, adj, nnodes, nedges, features, batch_size, device):
+        super(DiffSampler, self).__init__()
+        #self.anchor_name, self.pos_name, self.neg_name = name.split('-')
+        self.sample_size = 2000
+        self.adj = adj
+        self.nnodes = nnodes
+        self.nedges = nedges
+        self.features = features
+        self.anchor = self.adj.to_dense()
+        self.positive = self.adj.to_dense()
+        self.batch_size = batch_size
+        self.device = device
+        self.positive = torch.FloatTensor(self.compute_ppr()).to(self.device)
+
+    def augment(self):
+        self.negative = np.random.permutation(np.arange(self.nnodes))
+    
+    def sample(self):
+        self.augment()
+        idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
+        ba, bd, bf = [], [], []
+        for i in idx:
+            ba.append(self.anchor[i: i + self.sample_size, i: i + self.sample_size])
+            bd.append(self.positive[i: i + self.sample_size, i: i + self.sample_size])
+            bf.append(self.features[i: i + self.sample_size])
+
+        
+        ba = torch.stack(ba).squeeze()
+        bd = torch.stack(bd).squeeze()
+        bf = torch.stack(bf).squeeze()
+        idx = np.random.permutation(self.sample_size)
+        shuf_fts = bf[idx, :]
+        return ba, bd, bf, shuf_fts
+    
+    def compute_ppr(self, alpha=0.2, self_loop=True):
+        a = self.anchor.cpu().numpy()
+        if self_loop:
+            a = a + np.eye(a.shape[0])                                # A^ = A + I_n
+        d = np.diag(np.sum(a, 1))                                     # D^ = Sigma A^_ii
+        dinv = fractional_matrix_power(d, -0.5)                       # D^(-1/2)
+        at = np.matmul(np.matmul(dinv, a), dinv)                      # A~ = D^(-1/2) x A^ x D^(-1/2)
+        return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))   # a(I_n-(1-a)A~)^-1
+
 
 available_anchors = ['node']
 available_positives = ['neighbor', 'rand_walk']
 available_negatives = ['random', 'except_neighbor']
 
 sampler_dict = {
-    "node-neighbor-random": NNRSampler
+    "node-neighbor-random": NNRSampler,
+    "dgi": DGISampler,
+    "mvgrl": DiffSampler
+
 }
 
 '''
 TO DO:
     ● node-random walk-random nodes (DeepWalk)
     ● node-neighborhood-except neighborhood (GAE)
-    ● graph-node-permuted nodes (DGI)
+    ● graph-node-permuted graph (DGI)
+    ● graph-diffusion-permuted graph (MVGRL)
     ● node-random walk-except neighborhood
 '''

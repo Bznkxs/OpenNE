@@ -6,6 +6,13 @@ import scipy.sparse as sp
 import torch
 import torch.nn.functional as F
 
+class model_input:
+    def __init__(self, typ, ind, adj, feature):
+        self.typ = typ
+        self.ind = ind
+        self.adj = adj
+        self.feat = feature
+
 
 class SS_GAE(ModelWithEmbeddings):
 
@@ -38,9 +45,9 @@ class SS_GAE(ModelWithEmbeddings):
         if not graphtype.attributed():
             raise TypeError("GAE only accepts attributed graphs!")
 
-    def build(self, graph, *, learning_rate=0.1, epochs=200,
+    def build(self, graph, *, learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100,
-              clf_ratio=0.5, batch_size=10000, enc='linear', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
+              clf_ratio=0.5, batch_size=4, enc='gcn', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -68,13 +75,13 @@ class SS_GAE(ModelWithEmbeddings):
         # Create models
         input_dim = self.features.shape[1] if not self.sparse else self.features[2][1]
         feature_shape = self.features.shape if not self.sparse else self.features[0].shape[0]
-
+        
         self.dimensions = [input_dim] + self.hiddens + [self.output_dim]
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions, 
                              adj=self.support[0], features=self.features,
-                             batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims)
+                             batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
     def train_model(self, graph, **kwargs):
@@ -108,7 +115,7 @@ class SS_GAE(ModelWithEmbeddings):
         return cost
 
         # Define models evaluation function
-
+    
     def evaluate(self, train=True):
         t_test = time.time()
         # st, ed = 0, self.batch_size
@@ -117,29 +124,66 @@ class SS_GAE(ModelWithEmbeddings):
         cur_loss = 0.
         batch_num = 0.
         output = None
-        for batch in self.model.sampler:
-            x, pos, neg = zip(*batch)
+        if self.sampler in ['dgi', 'mvgrl']:
+            batch_num = 1
+            ba, bd, bf, shuf_fts = self.model.sampler.sample()
+            bx = model_input('graph', None, ba, bf)
+            bpos = model_input('node', None, bd, bf)
+            bneg = model_input('node', None, bd, shuf_fts)
+
+            bx_r = model_input('graph', None, bd, bf)
+            bpos_r = model_input('node', None, ba, bf)
+            bneg_r = model_input('node', None, ba, shuf_fts)
             self.optimizer.zero_grad()
-            bx = torch.tensor(list(x))
-            bpos = torch.tensor(list(pos))
-            bneg = torch.tensor(list(neg))
-            '''
-            lbl_1 = torch.ones(1, len(x))
-            lbl = torch.cat((lbl_1, 1 - lbl_1), 1).to(self._device)
-            '''
-            batch_num += 1
-            loss = self.model(bx, bpos, bneg)
+            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
             if train:
                 loss.backward()
                 self.optimizer.step()
 
             cur_loss += loss.item()
 
+        else:    
+            for batch in self.model.sampler:
+                x, pos, neg = zip(*batch)
+                self.optimizer.zero_grad()
+                bx = torch.tensor(list(x))
+                bpos = torch.tensor(list(pos))
+                bneg = torch.tensor(list(neg))
+                bx = model_input('node', bx, self.adj[bx], self.features)
+                bpos = model_input('node', bpos, self.adj[bpos], self.features)
+                bneg = model_input('node', bneg, self.adj[bneg], self.features)
+                '''
+                lbl_1 = torch.ones(1, len(x))
+                lbl = torch.cat((lbl_1, 1 - lbl_1), 1).to(self._device)
+                '''
+                batch_num += 1
+                loss = self.model(bx, bpos, bneg)
+                if train:
+                    loss.backward()
+                    self.optimizer.step()
+
+                cur_loss += loss.item()
+
+        return output, cur_loss / batch_num, (time.time() - t_test)
+    
+    def evaluate_infomax(self, train=True):
+        t_test = time.time()
+        cur_loss = 0.
+        batch_num = 0.
+        output = None
+       
+        if train:
+            loss.backward()
+            self.optimizer.step()
+
+        cur_loss += loss.item()
+
         return output, cur_loss / batch_num, (time.time() - t_test)
 
-    def _get_embeddings(self, graph, **kwargs):
 
-        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes))).detach()
+    def _get_embeddings(self, graph, **kwargs):
+        all_nodes = model_input('node', torch.tensor(range(self.nb_nodes)), self.support[0], self.features)
+        self.embeddings = self.model.embed(all_nodes).detach()
 
     def preprocess_data(self, graph):
         """
@@ -162,7 +206,7 @@ class SS_GAE(ModelWithEmbeddings):
             self.support = [preprocess_graph(adj)]
         else:
             self.support = chebyshev_polynomials(adj, self.max_degree)
-
+        self.features_np = self.features.numpy()
         self.features = self.features.to(self._device)
         self.nb_nodes = self.features.shape[0]
         self.support = [i.to(self._device) for i in self.support]

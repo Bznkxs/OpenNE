@@ -33,6 +33,8 @@ class Bilinear(nn.Module):
         self.bil = nn.Bilinear(dim, dim, 1)
 
     def forward(self, x, y):
+        if len(x.size()) != len(y.size()):
+            x = torch.stack(y.size(0) * [x], dim=0)
         score = torch.squeeze(self.bil(x, y), dim=-1)
         return score
 
@@ -48,6 +50,8 @@ class MLP(nn.Module):
         self.layers.append(Linear(self.mlp_dim[-2], self.mlp_dim[-1], act=lambda x: x))
 
     def forward(self, x, y):
+        if len(x.size()) != len(y.size()):
+            x = torch.stack(y.size(0) * [x], dim=0)
         h = torch.cat([x, y], dim=1)
         for layer in self.layers:
             h = layer(h)
