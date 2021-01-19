@@ -31,8 +31,10 @@ def transfer(filename):
         # [("model", [("dataset", "cora"), (...)] )]
         r_args = []
         tmp_args = []
+        flag = 0
         for line in f:
             if line.startswith("actual args:"):
+                flag = 1
                 args = line
                 args = args[13:]  # "actual args: "
                 args = args.replace("'",'"')
@@ -43,14 +45,18 @@ def transfer(filename):
                 args = json.loads(args)
 
                 priority_list_args = [['model', 'dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr','early_stopping', 'dim', 'hiddens', 'readout', 'est']]
-
+                if args['dim'] == 512 or len(args.get('hiddens', '-')) == 3:
+                    flag = 0
+                    continue
                 nm = args['model']
                 tmp_args = [(nm, [])]
                 for i in priority_list_args[0]:
                     tmp_args[-1][1].append((i, args.get(i, '-')))
                 r_args.extend(tmp_args)
             elif line.startswith("{micro:"):
-                r_args.pop(-1)
+                if flag == 1:
+                    flag = 0
+                    r_args.pop(-1)
         return r_args
 
 def main():

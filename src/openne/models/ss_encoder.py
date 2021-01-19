@@ -52,7 +52,6 @@ class Encoder(nn.Module):
         """
         #print(x.device)
         def _forward(x):
-            print(x.dtype)
             hx = self.embed(x)
             if self.name != 'none':
                 for layer in self.layers:

@@ -1,6 +1,6 @@
 f1 = open("src/ss_node_0.2.sh", 'r')
 f2 = open("src/ss_node_1.sh", 'r')
-w = [x for x in f1]
+w = []
 w2 = [x for x in f2]
 print(len(w2), "exps")
 f1.close()
