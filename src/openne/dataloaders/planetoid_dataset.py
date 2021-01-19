@@ -52,6 +52,7 @@ class Planetoid(NetResources, ABC):
         features = sp.vstack((allx, tx)).tolil()
         features[test_idx, :] = features[test_idx_range, :]
         features = features.todense()
+        features = features.astype('float32')
         self.set_node_features(features)
 
         labels = np.vstack((ally, ty))
