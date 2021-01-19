@@ -69,7 +69,7 @@ class SS_NodeModel(ModelWithEmbeddings):
               **kwargs):
         self.graph = graph
         self.nb_nodes = graph.nodesize
-        self.adj = self.adjmat_device(graph=graph, weighted=False, directed=True, sparse=True)
+        self.adj = self.adjmat_device(graph=graph, weighted=False, directed=True, sparse=False)
         self.learning_rate = lr
         self.epochs = epochs
         self.dropout = dropout
@@ -99,6 +99,8 @@ class SS_NodeModel(ModelWithEmbeddings):
         input_dim = graph.features().shape[1]
         self.dimensions = [input_dim] + self.hiddens + [self.dim]
         self.dec_dims = [self.dimensions[-1] * 2, 1]
+        print(self.adj)
+        print(self.features)
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graph=graph, supports=[self.adj], features=self.features,
