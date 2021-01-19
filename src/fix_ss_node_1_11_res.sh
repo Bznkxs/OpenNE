@@ -1,10 +1,3 @@
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.001 --early-stopping 20 --dim 256 --hiddens 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.02 --early-stopping 20 --dim 256 --hiddens 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.03 --early-stopping 20 --dim 256 --hiddens 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.001 --early-stopping 20 --dim 256 --hiddens 256 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.01 --early-stopping 20 --dim 256 --hiddens 256 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.02 --early-stopping 20 --dim 256 --hiddens 256 256 --readout mean --est jsd $*
-python3 -m openne --model ss_nodemodel --dataset citeseer --enc gat --dec mlp --sampler node-rand_walk-except_neighbor --epochs 500 --lr 0.03 --early-stopping 20 --dim 256 --hiddens 256 256 --readout mean --est jsd $*
 python3 -m openne --model ss_nodemodel --dataset citeseer --enc gin --dec inner --sampler node-neighbor-random --epochs 500 --lr 0.01 --early-stopping 20 --dim 64 --readout mean --est jsd $*
 python3 -m openne --model ss_nodemodel --dataset citeseer --enc gin --dec inner --sampler node-neighbor-random --epochs 500 --lr 0.03 --early-stopping 20 --dim 64 --readout mean --est jsd $*
 python3 -m openne --model ss_nodemodel --dataset citeseer --enc gin --dec inner --sampler node-neighbor-random --epochs 500 --lr 0.001 --early-stopping 20 --dim 64 --hiddens 64 --readout mean --est jsd $*
