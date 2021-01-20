@@ -4,7 +4,7 @@ from .tasks import BaseTask
 from .classify import Classifier
 from ..utils import *
 from ..models import ModelWithEmbeddings
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
 
 class UnsupervisedNodeClassification(BaseTask):
     def __init__(self, **kwargs):
@@ -18,7 +18,7 @@ class UnsupervisedNodeClassification(BaseTask):
         #  by default validate == False
         #  validate is always false
         check_existance(self.kwargs, {"_validate": False, "_no_validate": False})
-        check_existance(self.kwargs, {"validate": False, 'clf_ratio': 0.5})
+        check_existance(self.kwargs, {"validate": False, 'clf_ratio': 0.2})
 
 
         def f_v(model, graph, **kwargs):
@@ -41,5 +41,5 @@ class UnsupervisedNodeClassification(BaseTask):
     def _classify(self, graph, vectors, seed=None, simple=False):
         self.debug("Training classifier using {:.2f}% nodes...".format(
                 self.kwargs['clf_ratio']*100))
-        clf = Classifier(vectors=vectors, clf=LogisticRegression(solver='lbfgs'), simple=simple, silent=self.kwargs['silent'])
+        clf = Classifier(vectors=vectors, clf=LogisticRegressionCV(cv=5, random_state=seed), simple=simple, silent=self.kwargs['silent'])
         return clf.train_and_evaluate(graph, self.train_kwargs()['clf_ratio'], seed=seed)

@@ -92,8 +92,8 @@ class Cora(Planetoid):
         return False
 
 class CiteSeer(Planetoid):
-    def __init__(self):
-        super(CiteSeer, self).__init__()
+    def __init__(self, **kwargs):
+        super(CiteSeer, self).__init__(**kwargs)
 
     @classmethod
     def weighted(cls):

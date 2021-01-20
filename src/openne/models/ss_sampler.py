@@ -1,3 +1,6 @@
+import random
+import tqdm
+import time
 import torch
 import networkx as nx
 import numpy as np
@@ -6,28 +9,29 @@ from torch.utils.data import Sampler
 from .walker import Walker, BasicWalker
 
 class BaseSampler(Sampler):
-    def __init__(self, name, adj, features, batch_size, device):
+    def __init__(self, name, adj, features, batch_size, device, negative_ratio=5, **kwargs):
         # super(BaseSampler, self).__init__()
         self.adj = adj
         self.nnodes = self.adj.size()[0]
         self.nedges = self.adj._indices().size()[1]
         self.features = features
-        print(self.features.sum())
+        self.negative_ratio = negative_ratio
         self.batch_size = batch_size
         self.name = name
         self.device = device
         self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges, self.features, self.batch_size, self.device)
+        '''
+        if name not in sampler_dict:
+            self.sampler = TripleGenerator(self.adj, self.nnodes, self.nedges, negative_ratio, name, **kwargs)
+        else:
+            self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges, self.features, self.batch_size, self.device)
+        '''
+        super(BaseSampler, self).__init__(self.sampler)
 
     def __iter__(self):
-        batch = []
-        for idx in self.sampler:
-            batch.append(idx)
-            if len(batch) == self.batch_size:
-                yield batch
-                batch = []
-
-        if len(batch) > 0:
-            yield batch
+        for idx in range(0, len(self.sampler), self.batch_size):
+            yield self.sampler[idx:idx+self.batch_size]
+        self.sampler.regenerate()
 
     def __len__(self):
         return (len(self.sampler) + self.batch_size - 1) // self.batch_size
@@ -35,23 +39,35 @@ class BaseSampler(Sampler):
     def sample(self):
         return self.sampler.sample()
 
+
+def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
+    if dw:
+        walker = BasicWalker(G, workers=workers, silent=silent)
+    else:
+        walker = Walker(G, p=p, q=q, workers=workers, silent=silent)
+    return walker.simulate_walks(num_walks=num_paths, walk_length=path_length)
+
 class TripleGenerator(Sampler):
-    def __init__(self, adj, nnodes, nedges, features, batch_size, device, name, **kwargs):
+    def __init__(self, adj, nnodes, nedges, negative_ratio, name, **kwargs):
         # super().__init__()
         self.nnodes = nnodes
         self.nedges = nedges
         self.adj = adj
         self.adj_ind = self.adj._indices()
         self.anchor_name, self.pos_name, self.neg_name = name.split('-')
+        self.negative_ratio = negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
-        self.anchor = []
-        self.positive = []
-        self.negative = []
         self.nodelist = [i for i in range(self.nnodes)]
+        self.anchor = torch.zeros(1)
+        self.positive = torch.zeros(1)
+        self.negative = torch.zeros(1)
+        self.samples = torch.zeros(1)
         self.g = nx.from_edgelist(self.adj_ind.t().numpy(), create_using=nx.DiGraph())
 
         self.generate()
+        print("sampler length =", len(self.anchor),len(self.positive),len(self.negative))
+        super(TripleGenerator, self).__init__(self)
 
     def generate(self):
         if (self.anchor_name, self.pos_name) == ('node', 'neighbor'):  # specialize
@@ -160,7 +176,7 @@ class DGISampler():
         self.nedges = nedges
         self.features = features
         self.anchor = self.adj.to_dense()
-        self.positive = self.adj.to_dense()
+        self.positive = self.anchor
         self.batch_size = batch_size
 
     def augment(self):

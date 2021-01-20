@@ -1,6 +1,9 @@
 from __future__ import print_function
 
 import time
+import datetime
+import os, sys
+import copy
 import ast
 
 import numpy as np
@@ -81,7 +84,7 @@ def addarg(arg, group, used_names, val, default=False, hlp=None, choices=None):
     return True
 
 
-def parse_args():
+def parse_args(*aa, **bbb):
     parser = ArgumentParser(formatter_class=RawDescriptionHelpFormatter,
                             conflict_handler='resolve')
     devicegroup = parser.add_mutually_exclusive_group()
@@ -126,7 +129,7 @@ def parse_args():
     # structure & training args
     generalgroup = parser.add_argument_group("GENERAL MODEL ARGUMENTS")
     no_default_args = ['epochs', 'output', ]
-    addarg("clf_ratio", generalgroup, used_names, 0.5, True)
+    addarg("clf_ratio", generalgroup, used_names, 0.2, True)
     validate_args = generalgroup.add_mutually_exclusive_group()
     validate_args.add_argument('--validate', action='store_true', dest='_validate')
     validate_args.add_argument('--no-validate', action='store_true', dest='_no_validate')
@@ -179,7 +182,7 @@ def parse_args():
         if shared_params:
             modelgroup.description = 'Shared params:\n{}'.format(' \n'.join(shared_params))
 
-    args = parser.parse_args()
+    args = parser.parse_args(*aa, **bbb)
 
     return args
 
@@ -209,10 +212,28 @@ def main(args):
     # parsing
     args = {x: y for x, y in args.__dict__.items() if y is not None}
 
-    if not args['silent']:
-        print("actual args:", args)
+    logs = []
+    def log(*args, silent=False, **kwargs):
+        args = copy.deepcopy(args)
+        if not silent:
+            print(*args, **kwargs)
+        logs.append((args, kwargs))
+
+    log("actual args:", args, silent=args['silent'])
 
     Task, Graph, Model = parse(**args)  # parse required Task, Dataset, Model (classes)
+
+    if not os.path.exists('logs'):
+        os.mkdir("logs")
+    while True:
+        lname = os.path.join("logs", "_".join((
+                             datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + str(time.time()*10000000)[-9:],
+                             Model.__name__[:2], args["enc"], args["dec"], args["sampler"], Graph.__name__[:2] , ".txt")
+                             ))
+        if not os.path.exists(lname):
+            break
+
+
     dellist = ['dataset', 'edgefile', 'adjfile', 'labelfile', 'features',
                'status', 'weighted', 'directed', 'root_dir', 'task', 'model']
     for item in dellist:
@@ -229,11 +250,16 @@ def main(args):
 
     # evaluation
     res = task.evaluate(model, res, graph)  # evaluate
-    if train_args['silent']:
-        print(res)
+    log(res, silent=not train_args["silent"])
 
+
+    # write to log
+    with open(lname, "w") as f:
+        for args, kwargs in logs:
+            print(*args, file=f, **kwargs)
 
 if __name__ == "__main__":
     random.seed(32)
     np.random.seed(32)
+    torch.random.manual_seed(32)
     main(parse_args())

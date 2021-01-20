@@ -41,8 +41,8 @@ class NCEEstimator(torch.nn.Module):
         return loss
 
 estimator_dict = {
-    "JSD": JSDEstimator,
-    "NCE": NCEEstimator
+    "jsd": JSDEstimator,
+    "nce": NCEEstimator
 }
 
 """
