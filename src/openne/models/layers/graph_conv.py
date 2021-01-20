@@ -16,7 +16,7 @@ class GraphConvolution(Layer):
 
         self.dropout = dropout  # note we modified the API
         self.act = act
-        self.support = support
+        # self.support = support
         self.sparse_inputs = sparse_inputs
         self.featureless = featureless
         self.output_dim = output_dim

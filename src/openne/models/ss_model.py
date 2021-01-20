@@ -13,7 +13,6 @@ class SSModel(nn.Module):
         super(SSModel, self).__init__()
         self.enc_dims = enc_dims
         self.dec_dims = dec_dims
-        self.adj = adj
 
         self.layers = nn.ModuleList()
         self.sigm = nn.Sigmoid()
@@ -26,10 +25,10 @@ class SSModel(nn.Module):
         self.normalize = norm
         self.device = device
         self.readout = BaseReadOut(self.readout_name)
-        self.encoder = Encoder(self.encoder_name, self.enc_dims, self.adj, self.features, dropout, self.readout)
+        self.encoder = Encoder(self.encoder_name, self.enc_dims, adj, self.features, dropout, self.readout)
         self.decoder = Decoder(self.decoder_name, self.enc_dims[-1], self.dec_dims)
         self.estimator = BaseEstimator(self.estimator_name)
-        self.sampler = BaseSampler(self.sampler_name, self.adj, self.features, batch_size, self.device)
+        self.sampler = BaseSampler(self.sampler_name, adj, self.features, batch_size, self.device)
 
     def embed(self, x):
         return self.encoder(x)

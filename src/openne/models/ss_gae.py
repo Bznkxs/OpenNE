@@ -27,8 +27,15 @@ class SS_GAE(ModelWithEmbeddings):
                                  "epochs": 200,
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
-                                 "early_stopping": 100,
+                                 "early_stopping": 50,
+                                 "patience": 100,
+                                 'enc': 'gcn',
+                                 'dec': 'inner',
+                                 'sampler': 'dgi',
+                                 'readout': 'mean',
+                                 "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
+                                 "batch_size": 100000,
                                  "hiddens": [64],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
@@ -46,8 +53,8 @@ class SS_GAE(ModelWithEmbeddings):
             raise TypeError("GAE only accepts attributed graphs!")
 
     def build(self, graph, *, learning_rate=0.01, epochs=300,
-              dropout=0., weight_decay=1e-4, early_stopping=100,
-              clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='node-neighbor-random', readout='mean', est='JSD', **kwargs):
+              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10,
+              clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -70,6 +77,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.sampler = sampler
         self.readout = readout
         self.est = est
+        self.patience = patience
 
         self.preprocess_data(graph)
         # Create models
@@ -83,10 +91,12 @@ class SS_GAE(ModelWithEmbeddings):
                              adj=self.support[0], features=self.features,
                              batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
+        self.cost_val = []
 
     def train_model(self, graph, **kwargs):
         # Train models
         output, train_loss, __ = self.evaluate()
+        self.cost_val.append(train_loss)
         self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
 
     def build_label(self, graph):
@@ -166,23 +176,17 @@ class SS_GAE(ModelWithEmbeddings):
 
         return output, cur_loss / batch_num, (time.time() - t_test)
     
-    def evaluate_infomax(self, train=True):
-        t_test = time.time()
-        cur_loss = 0.
-        batch_num = 0.
-        output = None
-       
-        if train:
-            loss.backward()
-            self.optimizer.step()
-
-        cur_loss += loss.item()
-
-        return output, cur_loss / batch_num, (time.time() - t_test)
+    def early_stopping_judge(self, graph, *, step=0, **kwargs):
+        if self.patience > len(self.cost_val) - self.early_stopping:
+            start = self.early_stopping
+        else:
+            start = -self.patience
+        return step > self.early_stopping and self.cost_val[-1] > torch.mean(
+                    torch.tensor(self.cost_val[start:-1])) * (1 - self.min_delta)
 
 
     def _get_embeddings(self, graph, **kwargs):
-        all_nodes = model_input('node', torch.tensor(range(self.nb_nodes)), self.support[0], self.features)
+        all_nodes = model_input('node', torch.tensor(range(self.nb_nodes)), self.support[0].to_dense(), self.features)
         self.embeddings = self.model.embed(all_nodes).detach()
 
     def preprocess_data(self, graph):
@@ -206,7 +210,6 @@ class SS_GAE(ModelWithEmbeddings):
             self.support = [preprocess_graph(adj)]
         else:
             self.support = chebyshev_polynomials(adj, self.max_degree)
-        self.features_np = self.features.numpy()
         self.features = self.features.to(self._device)
         self.nb_nodes = self.features.shape[0]
         self.support = [i.to(self._device) for i in self.support]

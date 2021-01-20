@@ -4,6 +4,8 @@ import torch
 import os
 from time import time
 from ..utils import *
+from .utils import scipy_coo_to_torch_sparse
+import scipy.sparse as sp
 import inspect
 import numpy
 
@@ -102,7 +104,7 @@ class ModelWithEmbeddings(torch.nn.Module):
                                      'debug_output_interval': 5,
                                      '_multiple_epochs': _multiple_epochs,
                                      'output': None,
-                                     'save': True,})
+                                     'save': False,})
         if graphtype:
             if not torch.cuda.is_available() or new_kwargs['cpu']:
                 new_kwargs['data_parallel'] = False
@@ -197,8 +199,12 @@ class ModelWithEmbeddings(torch.nn.Module):
         else:
             self.register_buffer(name, torch.tensor(*tensor_info, dtype=torch.float32))
 
-    def adjmat_device(self, graph, weighted, directed):
-        adj_mat = torch.from_numpy(graph.adjmat(weighted, directed)).type(torch.float32)
+    def adjmat_device(self, graph, weighted, directed, sparse=True):
+        adj_mat = graph.adjmat(weighted, directed, sparse=sparse)
+        if sparse:
+            adj_mat = scipy_coo_to_torch_sparse(sp.coo_matrix(adj_mat))
+        else:
+            adj_mat = torch.from_numpy(adj_mat).type(torch.float32)
         self.register_buffer('adj_mat', adj_mat)
         return self.adj_mat
 
@@ -224,26 +230,31 @@ class ModelWithEmbeddings(torch.nn.Module):
             epochs = 1
         time0 = time()
         for i in range(epochs):
-            self.embeddings = self.train_model(graph, step=i, **kwargs)
-            if kwargs['_multiple_epochs'] and (i + 1) % kwargs['validation_interval'] == 0:
-                for f_v in kwargs['_validation_hooks']:
-                    f_v(self, graph, step=i, **kwargs)
-            if kwargs['_multiple_epochs'] and (i + 1) % kwargs['debug_output_interval'] == 0:
-                if self.debug_info:
-                    self.debug_info += '; '
-                else:
-                    self.debug_info = ''
-                self.debug("epoch {}: {}time used = {}s".format(i + 1, self.debug_info, time() - time0))
-                time0 = time()
-            elif not kwargs['_multiple_epochs']:
-                if self.debug_info:
-                    self.debug_info += '\n'
-                else:
-                    self.debug_info = ''
-                self.debug("{}Time used = {}s".format(self.debug_info, time() - time0))
-                time0 = time()
-            if self.early_stopping_judge(graph, step=i, **kwargs):
-                self.debug("Early stopping condition satisfied. Abort training.")
+            try:
+                self.embeddings = self.train_model(graph, step=i, **kwargs)
+                if kwargs['_multiple_epochs'] and (i + 1) % kwargs['validation_interval'] == 0:
+                    for f_v in kwargs['_validation_hooks']:
+                        f_v(self, graph, step=i, **kwargs)
+                if kwargs['_multiple_epochs'] and (i + 1) % kwargs['debug_output_interval'] == 0:
+                    if self.debug_info:
+                        self.debug_info += '; '
+                    else:
+                        self.debug_info = ''
+                    self.debug("epoch {}: {}time used = {}s".format(i + 1, self.debug_info, time() - time0))
+                    time0 = time()
+                elif not kwargs['_multiple_epochs']:
+                    if self.debug_info:
+                        self.debug_info += '\n'
+                    else:
+                        self.debug_info = ''
+                    self.debug("{}Time used = {}s".format(self.debug_info, time() - time0))
+                    time0 = time()
+                if self.early_stopping_judge(graph, step=i, **kwargs):
+                    self.debug("Early stopping condition satisfied. Abort training.")
+                    break
+
+            except KeyboardInterrupt as _:
+                print(f"KeyboardInterrupt caught at epoch {i}")
                 break
         self.make_output(graph, **kwargs)
 

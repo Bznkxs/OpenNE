@@ -8,9 +8,13 @@ import torch
 #  from Graph Attention Networks(https://arxiv.org/abs/1710.10903)
 
 class GAT(Layer):
-    def __init__(self, input_dim, output_dim, adjmat, attn_heads=1, attn_heads_reduction='concat',
-                 dropout_input=0., dropout_coef=0., num_features_nonzero=0.,
-                 sparse_inputs=False, act=torch.nn.functional.elu, bias=False,
+    def __init__(self, input_dim, output_dim, adjmat, dropout=0., *,
+                 act=torch.nn.functional.elu,
+                 num_features_nonzero=0.,
+                 sparse_inputs=False, bias=False,
+
+                 dropout_coef=0.2,
+                 attn_heads=1, attn_heads_reduction='average',
                  **kwargs):
         super(GAT, self).__init__(**kwargs)
         if attn_heads_reduction not in ['concat', 'average']:
@@ -18,9 +22,18 @@ class GAT(Layer):
         self.attn_heads_reduction = attn_heads_reduction
         self.input_dim = input_dim
         self.output_dim = output_dim
-        self.adjmat = adjmat
-        self.attn_heads = attn_heads
-        self.dropout_input = dropout_input
+        if attn_heads_reduction == 'concat':
+            self.output_dim *= attn_heads
+        if isinstance(adjmat, list):  # input supports
+            self.adjmat = adjmat[0]
+        else:
+            self.adjmat = adjmat
+
+        self.aux = -10e9 * (1 - self.adjmat.to_dense())
+        self.attn_heads = int(attn_heads+0.5)
+        self.dropout_input = dropout
+        if dropout_coef is None:
+            dropout_coef = dropout
         self.dropout_coef = dropout_coef
         self.num_features_nonzero = num_features_nonzero
         self.sparse_inputs = sparse_inputs
@@ -31,26 +44,36 @@ class GAT(Layer):
         if self.bias:
             self.biases = []
         self.attn_kernels = []
-
         for head in range(self.attn_heads):
             # weights
-            self.weights.append(glorot([input_dim, output_dim]))
+            w = glorot([input_dim, output_dim])
+            setattr(self, 'weights_' + str(head),  w)
+            self.weights.append(w)
 
             # biases
             if self.bias:
-                self.biases.append(zeros([output_dim, 1]))
+                b = zeros([output_dim, 1])
+                setattr(self, "biases_" + str(head), b)
+                self.biases.append(b)
 
             # attention kernels: [k_self, k_neigh]
+            self.ak1, self.ak2 = zeros([output_dim, 1]), zeros([output_dim, 1])
+            setattr(self, "attn_kernels_A_" + str(head), self.ak1)
+            setattr(self, "attn_kernels_B_" + str(head), self.ak1)
+
             self.attn_kernels.append([
-                zeros([output_dim, 1]),
-                zeros([output_dim, 1])
+                self.ak1,self.ak2
             ])
+
+        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
 
         if self.logging:
             self._log_vars()
 
     def forward(self, inputs):
-        x = inputs  # input node features (n * input_dim)
+        x = inputs[0]  # input node features (n * input_dim)
+        adj = inputs[1]
+        aux = -10e9 * (1 - adj)
         if self.training:
             # dropout
             if self.sparse_inputs:
@@ -79,8 +102,10 @@ class GAT(Layer):
 
             c = f1 + f2.T
 
+            c += aux
+
             # leakyReLU and softmax
-            c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2))
+            c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
 
             if self.training:
                 # dropout
@@ -101,6 +126,6 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
-
+        y = self.batch_norm(y)
         return self.act(y)
 

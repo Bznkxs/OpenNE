@@ -37,7 +37,7 @@ class BasicWalker:
                 walk.append(random.choice(cur_nbrs))
             else:
                 break
-        walk = [str(i) for i in walk]
+
         return walk
 
     def simulate_walks_one_epoch(self, epoch, walk_length):
@@ -45,6 +45,7 @@ class BasicWalker:
         self.debug("Run epoch {}".format(epoch))
         # print("Run epoch {} (PID {})".format(epoch, os.getpid()))
         G = self.G
+
         nodes = list(G.nodes())
         walks = []
         random.shuffle(nodes)

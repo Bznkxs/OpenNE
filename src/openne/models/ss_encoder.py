@@ -7,19 +7,18 @@ class Encoder(nn.Module):
     def __init__(self, name, dimensions, adj, features, dropout, readout):
         super(Encoder, self).__init__()
         self.dimensions = dimensions
-        self.adj = adj
         self.layers = nn.ModuleList()
         self.features = features
-        self.nnodes = self.features.size()[0]
+        self.nnodes = adj.size()[0]
         self.sigm = nn.Sigmoid()
         self.name = name
         self.readout = readout
         if name == 'none':
-            self.embedding = nn.Embedding(self.nnodes, self.dimensions[-1])
+            self.embedding = nn.Embedding(self.nnodes + 1, self.dimensions[-1])
         else:
             for i in range(1, len(self.dimensions)-1):
-                self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.adj, dropout, act=F.relu))
-            self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.adj, dropout, act=lambda x: x))
+                self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], adj, dropout, act=F.relu))
+            self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], adj, dropout, act=lambda x: x))
 
     def embed(self, x):
         if self.name == 'none':
@@ -31,16 +30,14 @@ class Encoder(nn.Module):
         """
         special input: graph
         """
-        isgraph = False
-        if x.typ == 'graph':
-            isgraph = True
-            #x = torch.arange(self.nnodes)
         hx = self.embed(x.feat)
         if self.name != 'none':
             for layer in self.layers:
                 hx = layer([hx, x.adj])
-        if isgraph:
-            hx = self.sigm(self.readout(hx))
+
+        if x.typ == 'graph':
+            wsize = x.feat.size()[0]
+            hx = self.sigm(self.readout(hx)).repeat(wsize, 1)
         return hx
 
 "Layers"

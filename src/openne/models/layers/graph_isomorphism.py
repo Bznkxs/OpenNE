@@ -9,25 +9,35 @@ class GIN(Layer):
     """
 
     def __init__(self, input_dim, output_dim, adj,
-                 dropout=0., sparse_inputs=False,
+                 dropout=0., *, sparse_inputs=False,
                  act=torch.relu, **kwargs):
         super(GIN, self).__init__(**kwargs)
         self.input_dim = input_dim
         self.output_dim = output_dim
-        self.adj = adj
+        if isinstance(adj, list):  # input support
+            self.adj = adj[0]
+        else:
+            self.adj = adj
         self.dropout = dropout
         self.sparse_inputs = sparse_inputs
         self.mlp = torch.nn.Linear(input_dim, output_dim)
         self.eps = zeros([1])
         self.act = act
+        self.batch_norm = torch.nn.BatchNorm1d(output_dim)
 
     def forward(self, inputs):
-        x = inputs
+        x = inputs[0]
+        adj = inputs[1]
         if self.training:
             # dropout
             if self.sparse_inputs:
-                x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
+                x = sparse_dropout(x, self.dropout, self.num_features_nonzero)
             else:
-                x = torch.dropout(x, self.dropout_input, True)  # dropout
-        y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+                x = torch.dropout(x, self.dropout, True)  # dropout
+        # sum pooling
+        y = self.mlp((1 + self.eps) * x + torch.mm(adj, x))
+        # y = self.mlp(torch.mm(adj, x))
+        # y = torch.mm(adj, self.mlp(x))
+        # batch norm
+        y = self.batch_norm(y)
         return self.act(y)
