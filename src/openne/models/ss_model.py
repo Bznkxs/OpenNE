@@ -34,7 +34,6 @@ class SSModel(nn.Module):
         return self.encoder(x)
 
     def forward(self, x, pos, neg):
-        
         hx = self.embed(x)
         hpos = self.embed(pos)
         hneg = self.embed(neg)

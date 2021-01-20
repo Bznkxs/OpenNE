@@ -1,0 +1,1401 @@
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 65881.35it/s]actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.07026147842407227 seconds.
+Run epoch 1
+Epoch 1 ends in 0.053290367126464844 seconds.
+5416 sentences created
+mode 1: time used = 0.11742115020751953
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+epoch 5: {'train_loss': '1.32948'}; time used = 0.7741353511810303s
+epoch 10: {'train_loss': '1.22890'}; time used = 0.711169958114624s
+epoch 15: {'train_loss': '1.08750'}; time used = 0.8406956195831299s
+epoch 20: {'train_loss': '0.93978'}; time used = 1.0057177543640137s
+epoch 25: {'train_loss': '0.82565'}; time used = 0.9261996746063232s
+epoch 30: {'train_loss': '0.73195'}; time used = 0.8950083255767822s
+epoch 35: {'train_loss': '0.65526'}; time used = 0.7704033851623535s
+epoch 40: {'train_loss': '0.59592'}; time used = 0.778904914855957s
+epoch 45: {'train_loss': '0.54391'}; time used = 0.7022092342376709s
+epoch 50: {'train_loss': '0.49998'}; time used = 0.680429220199585s
+epoch 55: {'train_loss': '0.46192'}; time used = 0.27533984184265137s
+epoch 60: {'train_loss': '0.43260'}; time used = 0.36777830123901367s
+epoch 65: {'train_loss': '0.40339'}; time used = 0.3535902500152588s
+epoch 70: {'train_loss': '0.37746'}; time used = 0.5034348964691162s
+epoch 75: {'train_loss': '0.35843'}; time used = 0.47003793716430664s
+epoch 80: {'train_loss': '0.34022'}; time used = 0.3776974678039551s
+epoch 85: {'train_loss': '0.31834'}; time used = 0.29601311683654785s
+epoch 90: {'train_loss': '0.30337'}; time used = 0.29422545433044434s
+epoch 95: {'train_loss': '0.29371'}; time used = 0.32245850563049316s
+epoch 100: {'train_loss': '0.27787'}; time used = 0.35646843910217285s
+epoch 105: {'train_loss': '0.26784'}; time used = 0.31722450256347656s
+epoch 110: {'train_loss': '0.25578'}; time used = 0.2634263038635254s
+epoch 115: {'train_loss': '0.24594'}; time used = 0.2613184452056885s
+epoch 120: {'train_loss': '0.24078'}; time used = 0.47248244285583496s
+epoch 125: {'train_loss': '0.23037'}; time used = 0.44695210456848145s
+epoch 130: {'train_loss': '0.22101'}; time used = 0.561063289642334s
+epoch 135: {'train_loss': '0.21513'}; time used = 0.628840446472168s
+epoch 140: {'train_loss': '0.20685'}; time used = 0.40949416160583496s
+epoch 145: {'train_loss': '0.19976'}; time used = 0.29726243019104004s
+epoch 150: {'train_loss': '0.19177'}; time used = 0.2845783233642578s
+epoch 155: {'train_loss': '0.18916'}; time used = 0.2552826404571533s
+epoch 160: {'train_loss': '0.18258'}; time used = 0.35881900787353516s
+epoch 165: {'train_loss': '0.18127'}; time used = 0.27919983863830566s
+epoch 170: {'train_loss': '0.17192'}; time used = 0.4049570560455322s
+epoch 175: {'train_loss': '0.16701'}; time used = 0.3144652843475342s
+epoch 180: {'train_loss': '0.16671'}; time used = 0.3721482753753662s
+epoch 185: {'train_loss': '0.16050'}; time used = 0.333524227142334s
+epoch 190: {'train_loss': '0.15851'}; time used = 0.4220457077026367s
+epoch 195: {'train_loss': '0.15420'}; time used = 0.30783987045288086s
+epoch 200: {'train_loss': '0.15145'}; time used = 0.3865373134613037s
+epoch 205: {'train_loss': '0.14863'}; time used = 0.3705024719238281s
+epoch 210: {'train_loss': '0.14268'}; time used = 0.3174760341644287s
+epoch 215: {'train_loss': '0.14021'}; time used = 0.299041748046875s
+epoch 220: {'train_loss': '0.13826'}; time used = 0.43047356605529785s
+epoch 225: {'train_loss': '0.13666'}; time used = 0.33917927742004395s
+epoch 230: {'train_loss': '0.13211'}; time used = 0.3885786533355713s
+epoch 235: {'train_loss': '0.13324'}; time used = 0.26691412925720215s
+epoch 240: {'train_loss': '0.12754'}; time used = 0.3566608428955078s
+epoch 245: {'train_loss': '0.12545'}; time used = 0.6266520023345947s
+epoch 250: {'train_loss': '0.12369'}; time used = 0.5173313617706299s
+epoch 255: {'train_loss': '0.11926'}; time used = 0.5863056182861328s
+epoch 260: {'train_loss': '0.11845'}; time used = 0.39101076126098633s
+epoch 265: {'train_loss': '0.11611'}; time used = 0.7614362239837646s
+epoch 270: {'train_loss': '0.11466'}; time used = 0.8592691421508789s
+epoch 275: {'train_loss': '0.11506'}; time used = 0.8339838981628418s
+epoch 280: {'train_loss': '0.11003'}; time used = 0.8340001106262207s
+epoch 285: {'train_loss': '0.10823'}; time used = 0.7828483581542969s
+epoch 290: {'train_loss': '0.10863'}; time used = 0.7447965145111084s
+epoch 295: {'train_loss': '0.10665'}; time used = 0.6690623760223389s
+epoch 300: {'train_loss': '0.10543'}; time used = 0.7622225284576416s
+epoch 305: {'train_loss': '0.10435'}; time used = 0.6684463024139404s
+epoch 310: {'train_loss': '0.10245'}; time used = 0.6684818267822266s
+epoch 315: {'train_loss': '0.10352'}; time used = 0.8211164474487305s
+epoch 320: {'train_loss': '0.10107'}; time used = 0.8994743824005127s
+epoch 325: {'train_loss': '0.09797'}; time used = 0.8334529399871826s
+epoch 330: {'train_loss': '0.09704'}; time used = 0.9729018211364746s
+epoch 335: {'train_loss': '0.10003'}; time used = 0.7145659923553467s
+epoch 340: {'train_loss': '0.09554'}; time used = 0.8892097473144531s
+epoch 345: {'train_loss': '0.09516'}; time used = 0.8287861347198486s
+epoch 350: {'train_loss': '0.09151'}; time used = 0.8728868961334229s
+epoch 355: {'train_loss': '0.08956'}; time used = 0.8572425842285156s
+epoch 360: {'train_loss': '0.08799'}; time used = 0.7884140014648438s
+epoch 365: {'train_loss': '0.08928'}; time used = 0.6801338195800781s
+epoch 370: {'train_loss': '0.08721'}; time used = 0.8007254600524902s
+epoch 375: {'train_loss': '0.08992'}; time used = 0.7541918754577637s
+epoch 380: {'train_loss': '0.08637'}; time used = 0.7335920333862305s
+epoch 385: {'train_loss': '0.08628'}; time used = 0.7710132598876953s
+epoch 390: {'train_loss': '0.08912'}; time used = 0.9057347774505615s
+epoch 395: {'train_loss': '0.08071'}; time used = 0.8180134296417236s
+epoch 400: {'train_loss': '0.08628'}; time used = 0.9600691795349121s
+epoch 405: {'train_loss': '0.08342'}; time used = 1.0935170650482178s
+epoch 410: {'train_loss': '0.08176'}; time used = 1.3184232711791992s
+epoch 415: {'train_loss': '0.08088'}; time used = 0.8763267993927002s
+epoch 420: {'train_loss': '0.08142'}; time used = 0.664078950881958s
+epoch 425: {'train_loss': '0.07747'}; time used = 0.8513894081115723s
+epoch 430: {'train_loss': '0.07890'}; time used = 0.8073904514312744s
+epoch 435: {'train_loss': '0.07816'}; time used = 0.8862404823303223s
+epoch 440: {'train_loss': '0.07787'}; time used = 0.7465293407440186s
+epoch 445: {'train_loss': '0.07582'}; time used = 0.7038309574127197s
+epoch 450: {'train_loss': '0.07327'}; time used = 0.7914750576019287s
+epoch 455: {'train_loss': '0.07573'}; time used = 0.7718653678894043s
+epoch 460: {'train_loss': '0.07477'}; time used = 0.7682449817657471s
+epoch 465: {'train_loss': '0.07688'}; time used = 0.7593991756439209s
+epoch 470: {'train_loss': '0.07413'}; time used = 0.5412113666534424s
+epoch 475: {'train_loss': '0.07362'}; time used = 0.35271215438842773s
+epoch 480: {'train_loss': '0.07421'}; time used = 0.34185194969177246s
+epoch 485: {'train_loss': '0.07549'}; time used = 0.4331088066101074s
+epoch 490: {'train_loss': '0.07069'}; time used = 0.8716132640838623s
+epoch 495: {'train_loss': '0.07111'}; time used = 0.998042106628418s
+
+epoch 500: {'train_loss': '0.07191'}; time used = 1.0283422470092773s
+Finished training. Time used = 71.39532017707825.
+Training classifier using 20.00% nodes...
+{'micro': 0.7540378403322567, 'macro': 0.7372295972994937, 'samples': 0.7540378403322566, 'weighted': 0.7522323378705851}
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 172023.19it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 4.63 GiB (GPU 7; 10.76 GiB total capacity; 184.91 MiB already allocated; 2.97 GiB free; 190.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fa17bd8b1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fa17bfe164b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fa17bfe2464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fa17bfe2aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f9f3b2d590e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f9f3970f949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f9f39729777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fa17d2ddc7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fa17d2ddf97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fa17d3e8a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fa17d0784f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fa17d07a166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fa17d07a65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fa17d07a80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fa17cdb7eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f9f396feb40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fa17cc4a530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fa17d43281c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fa17d38382b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fa17ceba952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fa17cebbf4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fa17d48f8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fa17d4b908b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fa17d3e0337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fa17efee205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fa17d4b908b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fa17d3e0337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fa17ef4df78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fa17f569bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fa17f565400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fa17f565fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fa17f55e119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fa18ccfe4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fa18de5a6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fa191eb56db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fa1921ee71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.03460860252380371 seconds.
+Run epoch 1
+Epoch 1 ends in 0.026251554489135742 seconds.
+5416 sentences created
+mode 1: time used = 0.0399017333984375
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 50%|████▉     | 2704/5416 [00:00<00:00, 25915.91it/s]100%|██████████| 5416/5416 [00:00<00:00, 30068.57it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 4.63 GiB (GPU 7; 10.76 GiB total capacity; 187.62 MiB already allocated; 2.38 GiB free; 210.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7efe6ad7c1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7efe7318664b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7efe73187464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7efe73187aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7efc18f6590e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7efc1739f949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7efc173b9777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7efc52155c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7efc52155f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7efc52260a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7efc51ef04f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7efc51ef2166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7efc51ef265d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7efc51ef280a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7efc51c2feb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7efc1738eb40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7efc51ac2530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7efc522aa81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7efc521fb82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7efc51d32952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7efc51d33f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7efc523078c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7efc5233108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7efc52258337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7efc53e66205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7efc5233108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7efc52258337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7efc53dc5f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7efc543e1bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7efc543dd400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7efc543ddfa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7efc543d6119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7efdf23204ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7efe7bcab6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7efe7fd066db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7efe8003f71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.11707472801208496 seconds.
+Run epoch 1
+Epoch 1 ends in 0.1394362449645996 seconds.
+5416 sentences created
+mode 1: time used = 0.2573997974395752
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 46%|████▌     | 2482/5416 [00:00<00:00, 22112.70it/s]100%|██████████| 5416/5416 [00:00<00:00, 27333.69it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 4.63 GiB (GPU 7; 10.76 GiB total capacity; 187.62 MiB already allocated; 3.85 GiB free; 210.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f2a43de61e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f2a4403c64b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f2a4403d464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f2a4403daa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f27f316f90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f27f15a9949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f27f15c3777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f29ea71ec7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f29ea71ef97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f29ea829a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f29ea4b94f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f29ea4bb166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f29ea4bb65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f29ea4bb80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f29ea1f8eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f27f1598b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f29ea08b530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f29ea87381c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f29ea7c482b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f29ea2fb952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f29ea2fcf4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f29ea8d08c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f29ea8fa08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f29ea821337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f29ec42f205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f29ea8fa08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f29ea821337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f29ec38ef78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f29ec9aabb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f29ec9a6400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f29ec9a6fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f29ec99f119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f2a44b984ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f2a45cf46df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f2a49d4f6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f2a4a08871f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.10004281997680664 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07423543930053711 seconds.
+5416 sentences created
+mode 1: time used = 0.24212861061096191
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 70%|██████▉   | 3769/5416 [00:00<00:00, 35736.83it/s]100%|██████████| 5416/5416 [00:00<00:00, 39697.87it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 4.63 GiB (GPU 7; 10.76 GiB total capacity; 187.62 MiB already allocated; 2.25 GiB free; 210.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f89158501e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f8915aa664b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f8915aa7464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f8915aa7aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f86d4d9a90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f86d31d4949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f86d31ee777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f8916da2c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f8916da2f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f8916eada1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f8916b3d4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f8916b3f166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f8916b3f65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f8916b3f80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f891687ceb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f86d31c3b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f891670f530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f8916ef781c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f8916e4882b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f891697f952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f8916980f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f8916f548c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f8916f7e08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f8916ea5337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f8918ab3205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f8916f7e08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f8916ea5337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f8918a12f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f891902ebb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f891902a400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f891902afa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f8919023119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f89267c34ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f892791f6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f892b97a6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f892bcb371f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.08174514770507812 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07367920875549316 seconds.
+5416 sentences created
+mode 1: time used = 0.1685171127319336
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 94%|█████████▍| 5085/5416 [00:00<00:00, 49319.19it/s]100%|██████████| 5416/5416 [00:00<00:00, 48864.77it/s]
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.07059192657470703 seconds.
+Run epoch 1
+Epoch 1 ends in 0.06979513168334961 seconds.
+5416 sentences created
+mode 1: time used = 0.14240407943725586
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+epoch 5: {'train_loss': '1.36716'}; time used = 1.169769048690796s
+epoch 10: {'train_loss': '1.30316'}; time used = 1.2334575653076172s
+epoch 15: {'train_loss': '1.19286'}; time used = 1.0639517307281494s
+epoch 20: {'train_loss': '1.04106'}; time used = 1.0148897171020508s
+epoch 25: {'train_loss': '0.89131'}; time used = 1.4630053043365479s
+epoch 30: {'train_loss': '0.75865'}; time used = 1.0201458930969238s
+epoch 35: {'train_loss': '0.65185'}; time used = 1.3777668476104736s
+epoch 40: {'train_loss': '0.57493'}; time used = 1.29880952835083s
+epoch 45: {'train_loss': '0.50930'}; time used = 1.2028224468231201s
+epoch 50: {'train_loss': '0.44705'}; time used = 1.5789148807525635s
+epoch 55: {'train_loss': '0.40180'}; time used = 1.18593168258667s
+epoch 60: {'train_loss': '0.36659'}; time used = 1.24229097366333s
+epoch 65: {'train_loss': '0.33378'}; time used = 1.7805521488189697s
+epoch 70: {'train_loss': '0.31585'}; time used = 1.5110054016113281s
+epoch 75: {'train_loss': '0.29550'}; time used = 1.5055091381072998s
+epoch 80: {'train_loss': '0.28568'}; time used = 1.3875477313995361s
+epoch 85: {'train_loss': '0.27111'}; time used = 1.260817050933838s
+epoch 90: {'train_loss': '0.24522'}; time used = 1.1392662525177002s
+epoch 95: {'train_loss': '0.23417'}; time used = 1.054349422454834s
+epoch 100: {'train_loss': '0.22415'}; time used = 1.4948112964630127s
+epoch 105: {'train_loss': '0.21552'}; time used = 1.191391944885254s
+epoch 110: {'train_loss': '0.20530'}; time used = 1.2736117839813232s
+epoch 115: {'train_loss': '0.21367'}; time used = 1.1824195384979248s
+epoch 120: {'train_loss': '0.19777'}; time used = 1.7759816646575928s
+epoch 125: {'train_loss': '0.20755'}; time used = 1.4201266765594482s
+epoch 130: {'train_loss': '0.23616'}; time used = 1.0021510124206543s
+epoch 135: {'train_loss': '0.20746'}; time used = 1.4352447986602783s
+epoch 140: {'train_loss': '0.22240'}; time used = 1.2352294921875s
+epoch 145: {'train_loss': '0.19335'}; time used = 1.4790637493133545s
+epoch 150: {'train_loss': '0.18112'}; time used = 1.146467685699463s
+epoch 155: {'train_loss': '0.17279'}; time used = 1.1564736366271973s
+epoch 160: {'train_loss': '0.16469'}; time used = 1.0906004905700684s
+epoch 165: {'train_loss': '0.16288'}; time used = 1.502382516860962s
+epoch 170: {'train_loss': '0.15703'}; time used = 1.1294300556182861s
+epoch 175: {'train_loss': '0.15831'}; time used = 1.0385446548461914s
+epoch 180: {'train_loss': '0.14843'}; time used = 1.1633059978485107s
+epoch 185: {'train_loss': '0.14663'}; time used = 1.5395915508270264s
+epoch 190: {'train_loss': '0.14594'}; time used = 1.4531028270721436s
+epoch 195: {'train_loss': '0.14420'}; time used = 1.485762596130371s
+epoch 200: {'train_loss': '0.13921'}; time used = 1.303957223892212s
+epoch 205: {'train_loss': '0.14154'}; time used = 1.1141211986541748s
+epoch 210: {'train_loss': '0.13774'}; time used = 1.663872241973877s
+epoch 215: {'train_loss': '0.13394'}; time used = 1.1351888179779053s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 77.98800492286682.
+Training classifier using 20.00% nodes...
+{'micro': 0.755883710198431, 'macro': 0.7419479042693737, 'samples': 0.755883710198431, 'weighted': 0.7536260031690937}
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 159783.01it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 4.63 GiB (GPU 7; 10.76 GiB total capacity; 190.32 MiB already allocated; 2.68 GiB free; 210.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fce01de81e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fce1221064b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fce12211464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fce12211aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7fcbaffd190e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7fcbae40b949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7fcbae425777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7fcbe91c1c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7fcbe91c1f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7fcbe92cca1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7fcbe8f5c4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7fcbe8f5e166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7fcbe8f5e65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7fcbe8f5e80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7fcbe8c9beb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7fcbae3fab40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7fcbe8b2e530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fcbe931681c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fcbe926782b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7fcbe8d9e952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7fcbe8d9ff4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7fcbe93738c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7fcbe939d08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fcbe92c4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7fcbeaed2205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7fcbe939d08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fcbe92c4337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fcbeae31f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7fcbeb44dbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fcbeb449400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fcbeb449fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fcbeb442119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fcd34b834ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7fce12d176df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7fce16d726db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7fce170ab71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.028645753860473633 seconds.
+Run epoch 1
+Epoch 1 ends in 0.02407550811767578 seconds.
+5416 sentences created
+mode 1: time used = 0.04848814010620117
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/5416 [00:00<?, ?it/s] 57%|█████▋    | 3112/5416 [00:00<00:00, 29077.02it/s]100%|██████████| 5416/5416 [00:00<00:00, 29011.20it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 38.00 MiB (GPU 7; 10.76 GiB total capacity; 4.82 GiB already allocated; 10.44 MiB free; 4.83 GiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7fbb8e76e1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7fbb8e9c464b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7fbb8e9c5464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7fbb8e9c5aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: THCStorage_resizeBytes(THCState*, c10::StorageImpl*, long) + 0x84 (0x7fb94c187154 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf1c3a8 (0x7fb94c0db3a8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: at::native::(anonymous namespace)::resize_cuda_(at::Tensor&, c10::ArrayRef<long>, c10::optional<c10::MemoryFormat>) + 0x273 (0x7fb94d4d5083 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x2316613 (0x7fb94d4d5613 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #8: at::Tensor::resize_(c10::ArrayRef<long>, c10::optional<c10::MemoryFormat>) const + 0x11f (0x7fbb8feebedf in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::native::bmm_out_cuda(at::Tensor&, at::Tensor const&, at::Tensor const&) + 0x65 (0x7fb94d1a3705 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #10: at::native::bmm_cuda(at::Tensor const&, at::Tensor const&) + 0x60 (0x7fb94d1a3780 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #11: <unknown function> + 0xf1eb50 (0x7fb94c0ddb50 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #12: <unknown function> + 0xa56530 (0x7fbb8f62d530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7fbb8fe1581c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::bmm(at::Tensor const&, at::Tensor const&) + 0x4b (0x7fbb8fd65feb in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xcc63d1 (0x7fbb8f89d3d1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #16: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xc34 (0x7fbb8f89edc4 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: <unknown function> + 0x129b8c0 (0x7fbb8fe728c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: <unknown function> + 0x12c508b (0x7fbb8fe9c08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fbb8fdc3337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: <unknown function> + 0x2dfa205 (0x7fbb919d1205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x12c508b (0x7fbb8fe9c08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7fbb8fdc3337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7fbb91930f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x3375bb7 (0x7fbb91f4cbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7fbb91f48400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7fbb91f48fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7fbb91f41119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7fbb9f6e14ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #29: <unknown function> + 0xbd6df (0x7fbba083d6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #30: <unknown function> + 0x76db (0x7fbba48986db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #31: clone + 0x3f (0x7fbba4bd171f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.12598466873168945 seconds.
+Run epoch 1
+Epoch 1 ends in 0.10614442825317383 seconds.
+5416 sentences created
+mode 1: time used = 0.24921607971191406
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 84%|████████▍ | 4574/5416 [00:00<00:00, 45737.10it/s]100%|██████████| 5416/5416 [00:00<00:00, 32937.52it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 329.98 MiB already allocated; 1.48 GiB free; 344.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f12d7ad31e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f12d7d2964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f12d7d2a464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f12d7d2aaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f1076c9b90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f10750d5949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f10750ef777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f10afe8bc7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f10afe8bf97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f10aff96a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f10afc264f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f10afc28166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f10afc2865d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f10afc2880a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f10af965eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f10750c4b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f10af7f8530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f10affe081c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f10aff3182b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f10afa68952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f10afa69f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f10b003d8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f10b006708b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f10aff8e337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f10b1b9c205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f10b006708b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f10aff8e337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f10b1afbf78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f10b2117bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f10b2113400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f10b2113fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f10b210c119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f12d88854ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f12d99e16df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f12dda3c6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f12ddd7571f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.10206103324890137 seconds.
+Run epoch 1
+Epoch 1 ends in 0.1428828239440918 seconds.
+5416 sentences created
+mode 1: time used = 0.20992755889892578
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 95%|█████████▌| 5151/5416 [00:00<00:00, 51504.40it/s]100%|██████████| 5416/5416 [00:00<00:00, 52241.19it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 329.98 MiB already allocated; 1.98 GiB free; 344.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f76afaf71e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f76afd4d64b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f76afd4e464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f76afd4eaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f746f04190e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f746d47b949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f746d495777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f76b1049c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f76b1049f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f76b1154a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f76b0de44f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f76b0de6166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f76b0de665d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f76b0de680a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f76b0b23eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f746d46ab40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f76b09b6530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f76b119e81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f76b10ef82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f76b0c26952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f76b0c27f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f76b11fb8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f76b122508b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f76b114c337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f76b2d5a205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f76b122508b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f76b114c337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f76b2cb9f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f76b32d5bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f76b32d1400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f76b32d1fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f76b32ca119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f76c0a6a4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f76c1bc66df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f76c5c216db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f76c5f5a71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.10520148277282715 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07911038398742676 seconds.
+5416 sentences created
+mode 1: time used = 0.14729547500610352
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 97%|█████████▋| 5227/5416 [00:00<00:00, 52268.43it/s]100%|██████████| 5416/5416 [00:00<00:00, 50634.82it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 329.98 MiB already allocated; 2.45 GiB free; 344.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f3eb17cd1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f3eb1a2364b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f3eb1a24464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f3eb1a24aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f3c70d1790e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f3c6f151949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f3c6f16b777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f3eb2d1fc7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f3eb2d1ff97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f3eb2e2aa1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f3eb2aba4f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f3eb2abc166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f3eb2abc65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f3eb2abc80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f3eb27f9eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f3c6f140b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f3eb268c530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f3eb2e7481c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f3eb2dc582b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f3eb28fc952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f3eb28fdf4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f3eb2ed18c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f3eb2efb08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f3eb2e22337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f3eb4a30205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f3eb2efb08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f3eb2e22337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f3eb498ff78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f3eb4fabbb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f3eb4fa7400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f3eb4fa7fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f3eb4fa0119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f3ec27404ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f3ec389c6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f3ec78f76db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f3ec7c3071f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.0771944522857666 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07286357879638672 seconds.
+5416 sentences created
+mode 1: time used = 0.15123414993286133
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 54028.40it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 335.52 MiB already allocated; 2.14 GiB free; 364.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f84be0231e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f84be27964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f84be27a464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f84be27aaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f825d1eb90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f825b625949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f825b63f777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f82963dbc7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f82963dbf97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f82964e6a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f82961764f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f8296178166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f829617865d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f829617880a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f8295eb5eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f825b614b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f8295d48530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f829653081c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f829648182b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f8295fb8952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f8295fb9f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f829658d8c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f82965b708b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f82964de337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f82980ec205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f82965b708b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f82964de337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f829804bf78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f8298667bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f8298663400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f8298663fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f829865c119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f84bedd54ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f84bff316df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f84c3f8c6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f84c42c571f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.06628751754760742 seconds.
+Run epoch 1
+Epoch 1 ends in 0.05579018592834473 seconds.
+5416 sentences created
+mode 1: time used = 0.1353306770324707
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 102723.84it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 222, in forward
+    self.to(self._device)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 607, in to
+    return self._apply(convert)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 376, in _apply
+    param_applied = fn(param)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 605, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 7; 10.76 GiB total capacity; 14.80 MiB already allocated; 15.44 MiB free; 16.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.03126788139343262 seconds.
+Run epoch 1
+Epoch 1 ends in 0.03834819793701172 seconds.
+5416 sentences created
+mode 1: time used = 0.0674903392791748
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+  0%|          | 0/5416 [00:00<?, ?it/s] 62%|██████▏   | 3378/5416 [00:00<00:00, 33778.34it/s]100%|██████████| 5416/5416 [00:00<00:00, 45000.25it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 341.06 MiB already allocated; 1.63 GiB free; 366.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f239e9c31e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f239ec1964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f239ec1a464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f239ec1aaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f215cbb990e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f215aff3949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f215b00d777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f2363967c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f2363967f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f2363a72a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f23637024f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f2363704166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f236370465d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f236370480a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f2363441eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f215afe2b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f23632d4530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f2363abc81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f2363a0d82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f2363544952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f2363545f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f2363b198c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f2363b4308b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f2363a6a337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f2365678205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f2363b4308b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f2363a6a337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f23655d7f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f2365bf3bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f2365bef400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f2365beffa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f2365be8119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f237bdbf4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f23af73e6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f23b37996db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f23b3ad271f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.13622546195983887 seconds.
+Run epoch 1
+Epoch 1 ends in 0.11325979232788086 seconds.
+5416 sentences created
+mode 1: time used = 0.18796491622924805
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 59223.79it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 346.60 MiB already allocated; 2.35 GiB free; 366.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f6eb150c1e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f6eb176264b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f6eb1763464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f6eb1763aa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f6c70a5690e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f6c6ee90949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f6c6eeaa777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f6eb2a5ec7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f6eb2a5ef97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f6eb2b69a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f6eb27f94f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f6eb27fb166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f6eb27fb65d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f6eb27fb80a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f6eb2538eb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f6c6ee7fb40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f6eb23cb530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f6eb2bb381c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f6eb2b0482b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f6eb263b952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f6eb263cf4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f6eb2c108c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f6eb2c3a08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f6eb2b61337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f6eb476f205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f6eb2c3a08b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f6eb2b61337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f6eb46cef78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f6eb4ceabb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f6eb4ce6400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f6eb4ce6fa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f6eb4cdf119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f6ec247f4ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f6ec35db6df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f6ec76366db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f6ec796f71f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.06700253486633301 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07204532623291016 seconds.
+5416 sentences created
+mode 1: time used = 0.13587069511413574
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 78%|███████▊  | 4226/5416 [00:00<00:00, 40801.07it/s]100%|██████████| 5416/5416 [00:00<00:00, 37645.94it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 153, in evaluate
+    loss.backward()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/autograd/__init__.py", line 127, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+RuntimeError: CUDA out of memory. Tried to allocate 18.51 GiB (GPU 7; 10.76 GiB total capacity; 346.60 MiB already allocated; 5.19 GiB free; 366.00 MiB reserved in total by PyTorch)
+Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x42 (0x7f76e1c831e2 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1e64b (0x7f76e1ed964b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x1f464 (0x7f76e1eda464 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x1faa1 (0x7f76e1edaaa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x11e (0x7f74a11cd90e in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xf33949 (0x7f749f607949 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xf4d777 (0x7f749f621777 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x10e9c7d (0x7f76e31d5c7d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0x10e9f97 (0x7f76e31d5f97 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f76e32e0a1a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::TensorIterator::allocate_outputs() + 0x378 (0x7f76e2f704f8 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #11: at::TensorIterator::build(at::TensorIteratorConfig&) + 0x1e6 (0x7f76e2f72166 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #12: at::TensorIterator::TensorIterator(at::TensorIteratorConfig&) + 0xdd (0x7f76e2f7265d in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::TensorIterator::binary_op(at::Tensor&, at::Tensor const&, at::Tensor const&, bool) + 0x14a (0x7f76e2f7280a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::native::mul(at::Tensor const&, at::Tensor const&) + 0x47 (0x7f76e2cafeb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0xf22b40 (0x7f749f5f6b40 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cuda.so)
+frame #16: <unknown function> + 0xa56530 (0x7f76e2b42530 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f76e332a81c in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::mul(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f76e327b82b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0xcc6952 (0x7f76e2db2952 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: at::native::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0xdba (0x7f76e2db3f4a in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x129b8c0 (0x7f76e33878c0 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x12c508b (0x7f76e33b108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f76e32d8337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0x2dfa205 (0x7f76e4ee6205 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x12c508b (0x7f76e33b108b in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #26: at::_trilinear(at::Tensor const&, at::Tensor const&, at::Tensor const&, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, c10::ArrayRef<long>, long) + 0x1d7 (0x7f76e32d8337 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #27: torch::autograd::generated::TrilinearBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x6a8 (0x7f76e4e45f78 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #28: <unknown function> + 0x3375bb7 (0x7f76e5461bb7 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #29: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f76e545d400 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #30: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f76e545dfa1 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #31: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f76e5456119 in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_cpu.so)
+frame #32: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f76f2bf64ba in /home/duyufeng/.local/lib/python3.6/site-packages/torch/lib/libtorch_python.so)
+frame #33: <unknown function> + 0xbd6df (0x7f76f3d526df in /usr/lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #34: <unknown function> + 0x76db (0x7f76f7dad6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #35: clone + 0x3f (0x7f76f80e671f in /lib/x86_64-linux-gnu/libc.so.6)
+
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = linear
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.07964158058166504 seconds.
+Run epoch 1
+Epoch 1 ends in 0.09005427360534668 seconds.
+5416 sentences created
+mode 1: time used = 0.19698572158813477
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
