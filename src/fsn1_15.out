@@ -1,0 +1,754 @@
+  0%|          | 0/39434 [00:00<?, ?it/s] 11%|█         | 4405/39434 [00:00<00:00, 40994.17it/s] 27%|██▋       | 10693/39434 [00:00<00:00, 45772.93it/s] 42%|████▏     | 16386/39434 [00:00<00:00, 48631.73it/s] 66%|██████▌   | 25948/39434 [00:00<00:00, 57039.90it/s] 80%|███████▉  | 31358/39434 [00:00<00:00, 54287.83it/s] 93%|█████████▎| 36609/39434 [00:00<00:00, 53041.17it/s]100%|██████████| 39434/39434 [00:00<00:00, 54904.60it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.6719076633453369 seconds.
+Run epoch 1
+Epoch 1 ends in 0.9613745212554932 seconds.
+39434 sentences created
+mode 1: time used = 0.9611592292785645
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 21%|██        | 8111/39434 [00:00<00:00, 81108.14it/s] 39%|███▉      | 15428/39434 [00:00<00:00, 78550.73it/s] 61%|██████    | 24044/39434 [00:00<00:00, 80687.16it/s] 79%|███████▉  | 31089/39434 [00:00<00:00, 77315.91it/s]100%|██████████| 39434/39434 [00:00<00:00, 80842.98it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 6646/552076 [00:00<00:08, 64368.47it/s]  2%|▏         | 13070/552076 [00:00<00:08, 64328.65it/s]  3%|▎         | 18058/552076 [00:00<00:09, 58959.21it/s]  5%|▍         | 27332/552076 [00:00<00:07, 66192.32it/s]  6%|▌         | 32758/552076 [00:00<00:08, 60819.99it/s]  7%|▋         | 38090/552076 [00:00<00:09, 51644.29it/s]  8%|▊         | 43095/552076 [00:00<00:10, 50313.81it/s]  9%|▊         | 48285/552076 [00:00<00:09, 50778.62it/s] 10%|▉         | 53597/552076 [00:00<00:09, 51050.61it/s] 11%|█▏        | 62628/552076 [00:01<00:08, 58706.74it/s] 13%|█▎        | 70874/552076 [00:01<00:07, 64049.22it/s] 14%|█▍        | 79060/552076 [00:01<00:06, 68520.79it/s] 16%|█▌        | 86270/552076 [00:01<00:06, 69213.02it/s] 17%|█▋        | 94569/552076 [00:01<00:06, 72839.07it/s] 19%|█▊        | 102509/552076 [00:01<00:06, 74689.42it/s] 20%|█▉        | 110149/552076 [00:01<00:06, 70773.81it/s] 22%|██▏       | 121033/552076 [00:01<00:05, 79068.60it/s] 23%|██▎       | 129366/552076 [00:01<00:06, 65531.51it/s] 25%|██▍       | 136620/552076 [00:02<00:06, 67486.78it/s] 26%|██▋       | 146035/552076 [00:02<00:05, 73751.38it/s] 28%|██▊       | 156439/552076 [00:02<00:04, 80808.15it/s] 30%|███       | 167118/552076 [00:02<00:04, 87169.25it/s] 32%|███▏      | 176375/552076 [00:02<00:05, 74789.55it/s] 33%|███▎      | 184540/552076 [00:02<00:05, 72928.66it/s] 35%|███▌      | 195750/552076 [00:02<00:04, 81468.24it/s] 38%|███▊      | 207035/552076 [00:02<00:03, 88881.82it/s] 39%|███▉      | 216588/552076 [00:02<00:03, 85197.63it/s] 41%|████      | 225606/552076 [00:03<00:03, 86397.36it/s] 42%|████▏     | 234599/552076 [00:03<00:03, 83731.41it/s] 44%|████▍     | 243623/552076 [00:03<00:03, 85582.78it/s] 46%|████▌     | 252377/552076 [00:03<00:03, 75091.54it/s] 47%|████▋     | 260257/552076 [00:03<00:03, 74135.53it/s] 49%|████▊     | 267933/552076 [00:03<00:04, 70193.49it/s] 50%|████▉     | 275180/552076 [00:03<00:04, 66205.86it/s] 52%|█████▏    | 284931/552076 [00:03<00:03, 73260.81it/s] 53%|█████▎    | 292635/552076 [00:03<00:03, 73720.66it/s] 55%|█████▌    | 304462/552076 [00:04<00:02, 83112.11it/s] 57%|█████▋    | 313356/552076 [00:04<00:03, 68582.11it/s] 59%|█████▊    | 323272/552076 [00:04<00:03, 75572.17it/s] 60%|██████    | 331628/552076 [00:04<00:02, 76524.71it/s] 62%|██████▏   | 339843/552076 [00:04<00:02, 72783.42it/s] 63%|██████▎   | 347553/552076 [00:04<00:02, 71134.84it/s] 64%|██████▍   | 354977/552076 [00:04<00:02, 71067.01it/s] 66%|██████▌   | 362343/552076 [00:04<00:02, 71823.35it/s] 67%|██████▋   | 369680/552076 [00:05<00:02, 69677.58it/s] 69%|██████▉   | 380168/552076 [00:05<00:02, 77478.39it/s] 71%|███████   | 390374/552076 [00:05<00:01, 83512.68it/s] 73%|███████▎  | 400709/552076 [00:05<00:01, 88613.70it/s] 74%|███████▍  | 409926/552076 [00:05<00:01, 86236.79it/s] 76%|███████▋  | 421728/552076 [00:05<00:01, 92611.77it/s] 78%|███████▊  | 431307/552076 [00:05<00:01, 89976.67it/s] 80%|████████  | 441756/552076 [00:05<00:01, 93887.81it/s] 82%|████████▏ | 453772/552076 [00:05<00:00, 100477.98it/s] 84%|████████▍ | 464097/552076 [00:05<00:00, 93509.44it/s]  86%|████████▌ | 475156/552076 [00:06<00:00, 97774.25it/s] 88%|████████▊ | 485188/552076 [00:06<00:00, 89099.66it/s] 90%|█████████ | 498774/552076 [00:06<00:00, 99358.52it/s] 92%|█████████▏| 509372/552076 [00:06<00:00, 101254.59it/s] 94%|█████████▍| 521068/552076 [00:06<00:00, 105502.73it/s] 97%|█████████▋| 532910/552076 [00:06<00:00, 109071.97it/s] 99%|█████████▊| 544473/552076 [00:06<00:00, 110959.26it/s]100%|██████████| 552076/552076 [00:06<00:00, 81164.24it/s] 
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.29440903663635254 seconds.
+Run epoch 1
+Epoch 1 ends in 0.396237850189209 seconds.
+39434 sentences created
+mode 1: time used = 0.6416041851043701
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 33%|███▎      | 13124/39434 [00:00<00:00, 131236.37it/s] 67%|██████▋   | 26311/39434 [00:00<00:00, 131425.11it/s] 96%|█████████▌| 37720/39434 [00:00<00:00, 125694.51it/s]100%|██████████| 39434/39434 [00:00<00:00, 123022.02it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 6270/552076 [00:00<00:08, 62689.45it/s]  2%|▏         | 12547/552076 [00:00<00:08, 62712.67it/s]  4%|▍         | 23993/552076 [00:00<00:07, 72552.65it/s]  6%|▋         | 35273/552076 [00:00<00:06, 81249.28it/s]  9%|▊         | 47111/552076 [00:00<00:05, 89688.55it/s] 12%|█▏        | 65401/552076 [00:00<00:04, 105875.71it/s] 16%|█▌        | 86556/552076 [00:00<00:03, 124538.02it/s] 19%|█▉        | 106653/552076 [00:00<00:03, 140576.51it/s] 22%|██▏       | 123834/552076 [00:00<00:02, 148683.05it/s] 26%|██▋       | 145593/552076 [00:01<00:02, 164290.41it/s] 30%|███       | 165883/552076 [00:01<00:02, 174236.84it/s] 34%|███▍      | 187272/552076 [00:01<00:01, 184496.66it/s] 38%|███▊      | 207657/552076 [00:01<00:01, 189902.26it/s] 41%|████      | 227437/552076 [00:01<00:01, 190748.02it/s] 45%|████▍     | 247065/552076 [00:01<00:01, 191065.63it/s] 48%|████▊     | 266559/552076 [00:01<00:01, 168374.86it/s] 52%|█████▏    | 287014/552076 [00:01<00:01, 177807.34it/s] 56%|█████▌    | 307877/552076 [00:01<00:01, 186052.73it/s] 60%|█████▉    | 328711/552076 [00:01<00:01, 192221.55it/s] 63%|██████▎   | 349863/552076 [00:02<00:01, 197630.06it/s] 67%|██████▋   | 369982/552076 [00:02<00:00, 189326.84it/s] 71%|███████   | 390918/552076 [00:02<00:00, 194921.22it/s] 75%|███████▍  | 411471/552076 [00:02<00:00, 197986.15it/s] 78%|███████▊  | 432307/552076 [00:02<00:00, 200988.11it/s] 82%|████████▏ | 453172/552076 [00:02<00:00, 203225.01it/s] 86%|████████▌ | 473873/552076 [00:02<00:00, 204343.50it/s] 90%|████████▉ | 494387/552076 [00:02<00:00, 204458.77it/s] 93%|█████████▎| 514889/552076 [00:02<00:00, 204312.26it/s] 97%|█████████▋| 535360/552076 [00:02<00:00, 201203.61it/s]100%|██████████| 552076/552076 [00:03<00:00, 180835.90it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.20750021934509277 seconds.
+Run epoch 1
+Epoch 1 ends in 0.2983381748199463 seconds.
+39434 sentences created
+mode 1: time used = 0.401200532913208
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 14%|█▍        | 5543/39434 [00:00<00:00, 55426.35it/s] 27%|██▋       | 10501/39434 [00:00<00:00, 52813.53it/s] 38%|███▊      | 14975/39434 [00:00<00:00, 49744.13it/s] 51%|█████     | 20110/39434 [00:00<00:00, 50213.96it/s] 61%|██████    | 24094/39434 [00:00<00:00, 45326.99it/s] 71%|███████▏  | 28108/39434 [00:00<00:00, 43634.72it/s] 81%|████████  | 31916/39434 [00:00<00:00, 39113.52it/s] 92%|█████████▏| 36191/39434 [00:00<00:00, 38126.98it/s]100%|██████████| 39434/39434 [00:01<00:00, 39378.02it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 9282/552076 [00:00<00:05, 92818.76it/s]  3%|▎         | 18403/552076 [00:00<00:05, 92328.49it/s]  5%|▌         | 28040/552076 [00:00<00:05, 93502.85it/s]  7%|▋         | 39446/552076 [00:00<00:05, 98845.77it/s]  9%|▉         | 51011/552076 [00:00<00:04, 101099.58it/s] 11%|█         | 59634/552076 [00:00<00:06, 76294.24it/s]  12%|█▏        | 67126/552076 [00:00<00:07, 68355.94it/s] 13%|█▎        | 74020/552076 [00:00<00:07, 66943.07it/s] 15%|█▍        | 80762/552076 [00:01<00:07, 66576.56it/s] 16%|█▋        | 90659/552076 [00:01<00:06, 73670.70it/s] 18%|█▊        | 98285/552076 [00:01<00:06, 71099.18it/s] 19%|█▉        | 105596/552076 [00:01<00:06, 68257.74it/s] 21%|██        | 114624/552076 [00:01<00:05, 73645.83it/s] 22%|██▏       | 124016/552076 [00:01<00:05, 78744.12it/s] 24%|██▍       | 132155/552076 [00:01<00:05, 73989.48it/s] 25%|██▌       | 139798/552076 [00:01<00:06, 63795.30it/s] 27%|██▋       | 150643/552076 [00:01<00:05, 72786.01it/s] 29%|██▊       | 158655/552076 [00:02<00:06, 59460.21it/s] 30%|██▉       | 165514/552076 [00:02<00:06, 57498.48it/s] 31%|███       | 171917/552076 [00:02<00:07, 47675.71it/s] 32%|███▏      | 177422/552076 [00:02<00:08, 46773.20it/s] 33%|███▎      | 182619/552076 [00:02<00:08, 44371.55it/s] 34%|███▍      | 187446/552076 [00:02<00:08, 43692.33it/s] 35%|███▍      | 192091/552076 [00:02<00:09, 39206.23it/s] 36%|███▌      | 197887/552076 [00:03<00:08, 40495.88it/s] 37%|███▋      | 203304/552076 [00:03<00:08, 42868.01it/s] 38%|███▊      | 207773/552076 [00:03<00:08, 40690.18it/s] 38%|███▊      | 211993/552076 [00:03<00:08, 38708.20it/s] 39%|███▉      | 215990/552076 [00:03<00:08, 37813.74it/s] 40%|███▉      | 219864/552076 [00:03<00:10, 32132.79it/s] 41%|████      | 224197/552076 [00:03<00:09, 34832.99it/s] 41%|████▏     | 227895/552076 [00:03<00:09, 35332.74it/s] 42%|████▏     | 231581/552076 [00:04<00:08, 35703.58it/s] 43%|████▎     | 236306/552076 [00:04<00:08, 38213.37it/s] 44%|████▎     | 241095/552076 [00:04<00:07, 40093.70it/s] 44%|████▍     | 245216/552076 [00:04<00:07, 39420.69it/s] 46%|████▌     | 251297/552076 [00:04<00:06, 43514.39it/s] 46%|████▋     | 255836/552076 [00:04<00:06, 43340.78it/s] 47%|████▋     | 260302/552076 [00:04<00:06, 42930.98it/s] 48%|████▊     | 264827/552076 [00:04<00:06, 42140.51it/s] 49%|████▊     | 269110/552076 [00:04<00:06, 40612.94it/s] 50%|████▉     | 273631/552076 [00:04<00:06, 41889.76it/s] 50%|█████     | 277872/552076 [00:05<00:06, 39369.09it/s] 51%|█████     | 282688/552076 [00:05<00:06, 40590.76it/s] 52%|█████▏    | 286804/552076 [00:05<00:07, 35471.49it/s] 53%|█████▎    | 292413/552076 [00:05<00:06, 39867.55it/s] 54%|█████▎    | 296688/552076 [00:05<00:06, 40345.49it/s] 55%|█████▍    | 301115/552076 [00:05<00:06, 40443.73it/s] 55%|█████▌    | 305719/552076 [00:05<00:06, 40421.50it/s] 56%|█████▌    | 309861/552076 [00:05<00:06, 39729.95it/s] 57%|█████▋    | 313907/552076 [00:06<00:06, 37771.98it/s] 58%|█████▊    | 318347/552076 [00:06<00:06, 38708.32it/s] 58%|█████▊    | 322274/552076 [00:06<00:06, 38161.09it/s] 59%|█████▉    | 326913/552076 [00:06<00:05, 39164.92it/s] 60%|█████▉    | 330865/552076 [00:06<00:05, 38607.37it/s] 61%|██████    | 335113/552076 [00:06<00:05, 39619.55it/s] 61%|██████▏   | 339405/552076 [00:06<00:05, 39081.70it/s] 62%|██████▏   | 343641/552076 [00:06<00:05, 39685.87it/s] 63%|██████▎   | 348095/552076 [00:06<00:04, 41026.62it/s] 64%|██████▍   | 352221/552076 [00:07<00:05, 37925.69it/s] 65%|██████▍   | 356128/552076 [00:07<00:05, 38191.83it/s] 65%|██████▌   | 360662/552076 [00:07<00:04, 38949.67it/s] 66%|██████▌   | 365060/552076 [00:07<00:04, 40333.24it/s] 67%|██████▋   | 370261/552076 [00:07<00:04, 43245.22it/s] 68%|██████▊   | 375378/552076 [00:07<00:04, 43922.36it/s] 69%|██████▉   | 380549/552076 [00:07<00:03, 45806.92it/s] 70%|██████▉   | 386167/552076 [00:07<00:03, 48492.31it/s] 71%|███████   | 392545/552076 [00:07<00:03, 51349.02it/s] 72%|███████▏  | 398769/552076 [00:07<00:02, 54192.77it/s] 73%|███████▎  | 405069/552076 [00:08<00:02, 56564.93it/s] 75%|███████▍  | 411335/552076 [00:08<00:02, 56380.64it/s] 76%|███████▌  | 417575/552076 [00:08<00:02, 58060.58it/s] 77%|███████▋  | 423448/552076 [00:08<00:02, 53852.70it/s] 78%|███████▊  | 428941/552076 [00:08<00:02, 50957.89it/s] 79%|███████▉  | 435015/552076 [00:08<00:02, 52948.05it/s] 80%|███████▉  | 441082/552076 [00:08<00:02, 55049.99it/s] 81%|████████  | 447208/552076 [00:08<00:01, 55864.46it/s] 82%|████████▏ | 454492/552076 [00:08<00:01, 60063.03it/s] 83%|████████▎ | 460633/552076 [00:09<00:01, 59871.31it/s] 85%|████████▍ | 466715/552076 [00:09<00:01, 58265.30it/s] 86%|████████▌ | 472617/552076 [00:09<00:01, 58156.32it/s] 87%|████████▋ | 478486/552076 [00:09<00:01, 51723.53it/s] 88%|████████▊ | 483828/552076 [00:09<00:01, 51987.63it/s] 89%|████████▊ | 489194/552076 [00:09<00:01, 52477.75it/s] 90%|████████▉ | 494526/552076 [00:09<00:01, 51439.76it/s] 91%|█████████ | 500527/552076 [00:09<00:00, 53741.83it/s] 92%|█████████▏| 505973/552076 [00:09<00:00, 51656.07it/s] 93%|█████████▎| 511206/552076 [00:10<00:00, 46691.56it/s] 94%|█████████▎| 516247/552076 [00:10<00:00, 46970.00it/s] 94%|█████████▍| 521565/552076 [00:10<00:00, 48674.25it/s] 95%|█████████▌| 526517/552076 [00:10<00:00, 47355.01it/s] 96%|█████████▌| 531319/552076 [00:10<00:00, 41829.07it/s] 97%|█████████▋| 535667/552076 [00:10<00:00, 40237.67it/s] 98%|█████████▊| 541780/552076 [00:10<00:00, 43984.26it/s] 99%|█████████▉| 548075/552076 [00:10<00:00, 48261.55it/s]100%|██████████| 552076/552076 [00:10<00:00, 50679.08it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.7125129699707031 seconds.
+Run epoch 1
+Epoch 1 ends in 1.216233730316162 seconds.
+39434 sentences created
+mode 1: time used = 1.234973430633545
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 23%|██▎       | 9227/39434 [00:00<00:00, 92268.55it/s] 43%|████▎     | 16853/39434 [00:00<00:00, 86799.71it/s] 63%|██████▎   | 24859/39434 [00:00<00:00, 84660.78it/s] 93%|█████████▎| 36800/39434 [00:00<00:00, 92757.77it/s]100%|██████████| 39434/39434 [00:00<00:00, 93234.44it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  3%|▎         | 14643/552076 [00:00<00:03, 146425.95it/s]  5%|▌         | 29945/552076 [00:00<00:03, 148342.93it/s]  8%|▊         | 45758/552076 [00:00<00:03, 151149.07it/s] 11%|█         | 61602/552076 [00:00<00:03, 153261.45it/s] 14%|█▎        | 75727/552076 [00:00<00:03, 149446.18it/s] 16%|█▋        | 90659/552076 [00:00<00:03, 149406.96it/s] 19%|█▉        | 105259/552076 [00:00<00:03, 148365.31it/s] 22%|██▏       | 120738/552076 [00:00<00:02, 150235.22it/s] 25%|██▍       | 136458/552076 [00:00<00:02, 152258.07it/s] 28%|██▊       | 154494/552076 [00:01<00:02, 159721.88it/s] 31%|███       | 171049/552076 [00:01<00:02, 161426.70it/s] 34%|███▍      | 186984/552076 [00:01<00:02, 160341.19it/s] 37%|███▋      | 202875/552076 [00:01<00:02, 158920.33it/s] 40%|███▉      | 219699/552076 [00:01<00:02, 161602.92it/s] 43%|████▎     | 235802/552076 [00:01<00:02, 157676.30it/s] 46%|████▌     | 251620/552076 [00:01<00:01, 157825.20it/s] 48%|████▊     | 267390/552076 [00:01<00:01, 153212.53it/s] 51%|█████     | 282732/552076 [00:01<00:01, 153099.93it/s] 54%|█████▍    | 298057/552076 [00:01<00:01, 150945.29it/s] 57%|█████▋    | 313169/552076 [00:02<00:01, 150393.22it/s] 59%|█████▉    | 328221/552076 [00:02<00:01, 146451.85it/s] 62%|██████▏   | 343603/552076 [00:02<00:01, 148586.73it/s] 65%|██████▍   | 358492/552076 [00:02<00:01, 146934.68it/s] 68%|██████▊   | 374030/552076 [00:02<00:01, 149369.50it/s] 71%|███████   | 389426/552076 [00:02<00:01, 150716.74it/s] 74%|███████▎  | 406018/552076 [00:02<00:00, 154973.94it/s] 76%|███████▋  | 421561/552076 [00:02<00:00, 152884.77it/s] 79%|███████▉  | 436888/552076 [00:02<00:00, 148953.16it/s] 82%|████████▏ | 451833/552076 [00:02<00:00, 142133.41it/s] 84%|████████▍ | 466147/552076 [00:03<00:00, 138135.89it/s] 87%|████████▋ | 480984/552076 [00:03<00:00, 141052.58it/s] 90%|████████▉ | 495171/552076 [00:03<00:00, 140199.25it/s] 92%|█████████▏| 509250/552076 [00:03<00:00, 134707.01it/s] 95%|█████████▍| 523643/552076 [00:03<00:00, 137344.96it/s] 98%|█████████▊| 538664/552076 [00:03<00:00, 140966.64it/s]100%|██████████| 552076/552076 [00:03<00:00, 149692.65it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.3236703872680664 seconds.
+Run epoch 1
+Epoch 1 ends in 0.45023155212402344 seconds.
+39434 sentences created
+mode 1: time used = 0.5094339847564697
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 15%|█▌        | 5979/39434 [00:00<00:00, 59788.92it/s] 32%|███▏      | 12450/39434 [00:00<00:00, 61183.10it/s] 46%|████▋     | 18325/39434 [00:00<00:00, 60431.35it/s] 61%|██████    | 24041/39434 [00:00<00:00, 59411.26it/s] 84%|████████▍ | 33035/39434 [00:00<00:00, 66146.64it/s] 99%|█████████▊| 38894/39434 [00:00<00:00, 55538.75it/s]100%|██████████| 39434/39434 [00:00<00:00, 55413.23it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 3348/552076 [00:00<00:16, 33478.91it/s]  2%|▏         | 11603/552076 [00:00<00:13, 40744.63it/s]  4%|▍         | 23779/552076 [00:00<00:10, 50905.68it/s]  6%|▋         | 35874/552076 [00:00<00:08, 61608.82it/s]  9%|▊         | 48228/552076 [00:00<00:06, 72513.82it/s] 11%|█         | 60556/552076 [00:00<00:05, 82733.67it/s] 13%|█▎        | 70643/552076 [00:00<00:06, 76712.09it/s] 14%|█▍        | 79671/552076 [00:00<00:06, 77102.96it/s] 16%|█▌        | 88332/552076 [00:00<00:06, 76998.02it/s] 18%|█▊        | 100490/552076 [00:01<00:05, 86513.87it/s] 20%|██        | 111376/552076 [00:01<00:04, 91347.85it/s] 22%|██▏       | 121180/552076 [00:01<00:04, 89541.24it/s] 24%|██▎       | 130610/552076 [00:01<00:06, 68979.46it/s] 26%|██▌       | 142853/552076 [00:01<00:05, 79374.71it/s] 28%|██▊       | 154996/552076 [00:01<00:04, 88577.71it/s] 30%|███       | 167337/552076 [00:01<00:03, 96770.48it/s] 33%|███▎      | 179877/552076 [00:01<00:03, 103884.96it/s] 35%|███▍      | 192359/552076 [00:02<00:03, 109388.86it/s] 37%|███▋      | 204712/552076 [00:02<00:03, 113277.26it/s] 39%|███▉      | 217179/552076 [00:02<00:02, 116468.76it/s] 42%|████▏     | 229546/552076 [00:02<00:02, 118538.32it/s] 44%|████▍     | 241689/552076 [00:02<00:02, 117016.36it/s] 46%|████▌     | 253598/552076 [00:02<00:02, 116724.41it/s] 48%|████▊     | 265847/552076 [00:02<00:02, 118393.94it/s] 50%|█████     | 277796/552076 [00:02<00:02, 118718.82it/s] 53%|█████▎    | 289983/552076 [00:02<00:02, 119645.62it/s] 55%|█████▍    | 302235/552076 [00:02<00:02, 120492.60it/s] 57%|█████▋    | 314805/552076 [00:03<00:01, 122007.97it/s] 59%|█████▉    | 327446/552076 [00:03<00:01, 123294.53it/s] 62%|██████▏   | 340373/552076 [00:03<00:01, 125025.62it/s] 64%|██████▍   | 353155/552076 [00:03<00:01, 125850.79it/s] 66%|██████▋   | 365940/552076 [00:03<00:01, 126441.67it/s] 69%|██████▊   | 378598/552076 [00:03<00:01, 125999.32it/s] 71%|███████   | 391208/552076 [00:03<00:01, 107832.07it/s] 73%|███████▎  | 403691/552076 [00:03<00:01, 112422.90it/s] 75%|███████▌  | 415309/552076 [00:03<00:01, 113279.66it/s] 77%|███████▋  | 427594/552076 [00:03<00:01, 115988.83it/s] 80%|███████▉  | 439394/552076 [00:04<00:01, 108023.67it/s] 82%|████████▏ | 450448/552076 [00:04<00:01, 99107.52it/s]  83%|████████▎ | 460688/552076 [00:04<00:00, 97820.79it/s] 85%|████████▌ | 470698/552076 [00:04<00:00, 84810.65it/s] 87%|████████▋ | 479647/552076 [00:04<00:01, 71768.98it/s] 88%|████████▊ | 487496/552076 [00:04<00:00, 71424.67it/s] 90%|█████████ | 499069/552076 [00:04<00:00, 80691.91it/s] 93%|█████████▎| 511196/552076 [00:04<00:00, 89694.38it/s] 95%|█████████▍| 523446/552076 [00:05<00:00, 97529.43it/s] 97%|█████████▋| 534971/552076 [00:05<00:00, 102245.06it/s] 99%|█████████▉| 545803/552076 [00:05<00:00, 94215.35it/s] 100%|██████████| 552076/552076 [00:05<00:00, 102488.72it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.492401123046875 seconds.
+Run epoch 1
+Epoch 1 ends in 0.6057929992675781 seconds.
+39434 sentences created
+mode 1: time used = 0.8558900356292725
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 14%|█▍        | 5431/39434 [00:00<00:00, 52059.39it/s] 34%|███▎      | 13280/39434 [00:00<00:00, 57908.66it/s] 46%|████▋     | 18272/39434 [00:00<00:00, 53309.02it/s] 59%|█████▉    | 23416/39434 [00:00<00:00, 52733.57it/s] 73%|███████▎  | 28605/39434 [00:00<00:00, 52476.70it/s] 86%|████████▌ | 33841/39434 [00:00<00:00, 52440.41it/s] 98%|█████████▊| 38549/39434 [00:00<00:00, 49884.77it/s]100%|██████████| 39434/39434 [00:00<00:00, 51069.77it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 6137/552076 [00:00<00:08, 61369.33it/s]  2%|▏         | 12104/552076 [00:00<00:08, 60615.41it/s]  3%|▎         | 18221/552076 [00:00<00:08, 60779.36it/s]  4%|▍         | 24187/552076 [00:00<00:08, 60438.70it/s]  6%|▌         | 33020/552076 [00:00<00:07, 66762.31it/s]  7%|▋         | 39329/552076 [00:00<00:07, 65596.07it/s]  9%|▉         | 49361/552076 [00:00<00:06, 73196.19it/s] 11%|█         | 60317/552076 [00:00<00:06, 81288.59it/s] 13%|█▎        | 71049/552076 [00:00<00:05, 87666.77it/s] 15%|█▍        | 80097/552076 [00:01<00:05, 78969.42it/s] 16%|█▌        | 88466/552076 [00:01<00:05, 80326.92it/s] 18%|█▊        | 96757/552076 [00:01<00:06, 72659.39it/s] 19%|█▉        | 104344/552076 [00:01<00:06, 71585.46it/s] 20%|██        | 111796/552076 [00:01<00:06, 72440.48it/s] 22%|██▏       | 120759/552076 [00:01<00:05, 76862.04it/s] 23%|██▎       | 129146/552076 [00:01<00:05, 78837.52it/s] 25%|██▍       | 137174/552076 [00:01<00:05, 73355.39it/s] 27%|██▋       | 147648/552076 [00:01<00:05, 80600.27it/s] 29%|██▉       | 159787/552076 [00:02<00:04, 88370.20it/s] 31%|███       | 169089/552076 [00:02<00:04, 85175.38it/s] 32%|███▏      | 178913/552076 [00:02<00:04, 88713.05it/s] 34%|███▍      | 188789/552076 [00:02<00:03, 91505.04it/s] 36%|███▌      | 199973/552076 [00:02<00:03, 96782.76it/s] 38%|███▊      | 209888/552076 [00:02<00:04, 84788.16it/s] 40%|███▉      | 218802/552076 [00:02<00:04, 72956.22it/s] 41%|████      | 226693/552076 [00:02<00:05, 59068.69it/s] 42%|████▏     | 233444/552076 [00:03<00:06, 48593.81it/s] 43%|████▎     | 239201/552076 [00:03<00:06, 49269.97it/s] 44%|████▍     | 244759/552076 [00:03<00:06, 49856.68it/s] 45%|████▌     | 250188/552076 [00:03<00:06, 43621.60it/s] 46%|████▋     | 255648/552076 [00:03<00:06, 46421.73it/s] 47%|████▋     | 260915/552076 [00:03<00:06, 48133.91it/s] 48%|████▊     | 266094/552076 [00:03<00:05, 47970.19it/s] 49%|████▉     | 271082/552076 [00:03<00:06, 43878.75it/s] 50%|█████     | 276412/552076 [00:04<00:05, 46335.27it/s] 51%|█████     | 281224/552076 [00:04<00:06, 44170.82it/s] 52%|█████▏    | 285787/552076 [00:04<00:06, 43589.02it/s] 53%|█████▎    | 291338/552076 [00:04<00:05, 46129.19it/s] 54%|█████▍    | 297314/552076 [00:04<00:05, 49517.10it/s] 55%|█████▍    | 302848/552076 [00:04<00:04, 51131.09it/s] 56%|█████▌    | 308176/552076 [00:04<00:04, 50679.97it/s] 57%|█████▋    | 313328/552076 [00:04<00:04, 48401.83it/s] 58%|█████▊    | 318249/552076 [00:04<00:05, 44174.74it/s] 58%|█████▊    | 322794/552076 [00:05<00:05, 43850.20it/s] 59%|█████▉    | 327269/552076 [00:05<00:05, 42060.92it/s] 60%|██████    | 331746/552076 [00:05<00:05, 42837.86it/s] 61%|██████    | 336089/552076 [00:05<00:05, 39844.52it/s] 62%|██████▏   | 340157/552076 [00:05<00:05, 37268.24it/s] 62%|██████▏   | 343976/552076 [00:05<00:05, 36767.60it/s] 63%|██████▎   | 347719/552076 [00:05<00:05, 35752.46it/s] 65%|██████▌   | 360887/552076 [00:05<00:04, 45750.90it/s] 68%|██████▊   | 373813/552076 [00:05<00:03, 56749.75it/s] 70%|██████▉   | 385955/552076 [00:06<00:02, 67541.21it/s] 72%|███████▏  | 398571/552076 [00:06<00:01, 78480.71it/s] 74%|███████▍  | 410795/552076 [00:06<00:01, 87922.64it/s] 77%|███████▋  | 424435/552076 [00:06<00:01, 98414.88it/s] 79%|███████▉  | 437705/552076 [00:06<00:01, 106682.16it/s] 82%|████████▏ | 450949/552076 [00:06<00:00, 113291.10it/s] 84%|████████▍ | 463483/552076 [00:06<00:00, 115377.36it/s] 86%|████████▌ | 475874/552076 [00:06<00:00, 115874.12it/s] 88%|████████▊ | 488059/552076 [00:06<00:00, 116259.17it/s] 91%|█████████ | 500765/552076 [00:06<00:00, 119301.28it/s] 93%|█████████▎| 513728/552076 [00:07<00:00, 122220.81it/s] 95%|█████████▌| 526187/552076 [00:07<00:00, 99342.97it/s]  97%|█████████▋| 536983/552076 [00:07<00:00, 94040.65it/s] 99%|█████████▉| 547049/552076 [00:07<00:00, 77873.62it/s]100%|██████████| 552076/552076 [00:07<00:00, 72578.46it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    def train_model(self, graph, **kwargs):
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    batch_num += 1
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.8266572952270508 seconds.
+Run epoch 1
+Epoch 1 ends in 0.9074287414550781 seconds.
+39434 sentences created
+mode 1: time used = 1.0034153461456299
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s]  8%|▊         | 3120/39434 [00:00<00:01, 31199.14it/s] 15%|█▍        | 5828/39434 [00:00<00:01, 28865.76it/s] 23%|██▎       | 8924/39434 [00:00<00:01, 28459.06it/s] 30%|███       | 11986/39434 [00:00<00:00, 28513.92it/s] 40%|████      | 15867/39434 [00:00<00:00, 30705.37it/s] 48%|████▊     | 18870/39434 [00:00<00:00, 30499.31it/s] 56%|█████▌    | 22168/39434 [00:00<00:00, 30655.37it/s] 63%|██████▎   | 25007/39434 [00:00<00:00, 29811.20it/s] 73%|███████▎  | 28948/39434 [00:00<00:00, 31303.19it/s] 81%|████████  | 31991/39434 [00:01<00:00, 28358.46it/s] 90%|████████▉ | 35466/39434 [00:01<00:00, 30014.51it/s] 99%|█████████▊| 38882/39434 [00:01<00:00, 31148.12it/s]100%|██████████| 39434/39434 [00:01<00:00, 30347.12it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 5217/552076 [00:00<00:10, 52169.43it/s]  2%|▏         | 10282/552076 [00:00<00:10, 51702.81it/s]  3%|▎         | 14236/552076 [00:00<00:11, 45464.25it/s]  4%|▎         | 19996/552076 [00:00<00:10, 48526.02it/s]  5%|▍         | 25653/552076 [00:00<00:10, 48402.74it/s]  6%|▌         | 31491/552076 [00:00<00:10, 50488.79it/s]  7%|▋         | 36142/552076 [00:00<00:10, 49225.44it/s]  8%|▊         | 42408/552076 [00:00<00:09, 52608.34it/s]  9%|▊         | 47486/552076 [00:00<00:10, 48306.42it/s]  9%|▉         | 52258/552076 [00:01<00:11, 44171.03it/s] 10%|█         | 57538/552076 [00:01<00:10, 45582.33it/s] 12%|█▏        | 64018/552076 [00:01<00:09, 50033.56it/s] 13%|█▎        | 69903/552076 [00:01<00:09, 51240.98it/s] 14%|█▎        | 75874/552076 [00:01<00:08, 53518.13it/s] 15%|█▍        | 82195/552076 [00:01<00:08, 56097.77it/s] 16%|█▌        | 87912/552076 [00:01<00:08, 56198.40it/s] 17%|█▋        | 94959/552076 [00:01<00:07, 58830.58it/s] 18%|█▊        | 100927/552076 [00:01<00:08, 53480.05it/s] 19%|█▉        | 106429/552076 [00:02<00:08, 50298.04it/s] 20%|██        | 111605/552076 [00:02<00:09, 48103.00it/s] 21%|██        | 116538/552076 [00:02<00:09, 46636.61it/s] 22%|██▏       | 121309/552076 [00:02<00:09, 46952.64it/s] 23%|██▎       | 126072/552076 [00:02<00:09, 44373.95it/s] 24%|██▎       | 131083/552076 [00:02<00:09, 45782.50it/s] 25%|██▍       | 135727/552076 [00:02<00:09, 44292.19it/s] 26%|██▌       | 141473/552076 [00:02<00:08, 47561.25it/s] 27%|██▋       | 146435/552076 [00:02<00:08, 48160.12it/s] 28%|██▊       | 152236/552076 [00:03<00:08, 47887.05it/s] 28%|██▊       | 157079/552076 [00:03<00:09, 42270.06it/s] 29%|██▉       | 161465/552076 [00:03<00:10, 36528.27it/s] 30%|██▉       | 165368/552076 [00:03<00:10, 35773.41it/s] 31%|███       | 169678/552076 [00:03<00:10, 36705.43it/s] 31%|███▏      | 173501/552076 [00:03<00:10, 36288.30it/s] 33%|███▎      | 179744/552076 [00:03<00:08, 41501.56it/s] 34%|███▎      | 185950/552076 [00:03<00:08, 45285.66it/s] 35%|███▍      | 191758/552076 [00:04<00:07, 47742.32it/s] 36%|███▌      | 198332/552076 [00:04<00:06, 51078.15it/s] 37%|███▋      | 203693/552076 [00:04<00:07, 48152.88it/s] 38%|███▊      | 208720/552076 [00:04<00:07, 46131.67it/s] 39%|███▊      | 213500/552076 [00:04<00:07, 45968.47it/s] 40%|███▉      | 218214/552076 [00:04<00:07, 44256.37it/s] 40%|████      | 222735/552076 [00:04<00:07, 43050.20it/s] 41%|████      | 227114/552076 [00:04<00:07, 41934.30it/s] 42%|████▏     | 233622/552076 [00:04<00:06, 46152.26it/s] 43%|████▎     | 238408/552076 [00:05<00:06, 46252.41it/s] 44%|████▍     | 243153/552076 [00:05<00:09, 33948.09it/s] 45%|████▌     | 250010/552076 [00:05<00:07, 39316.03it/s] 46%|████▌     | 254644/552076 [00:05<00:07, 37526.30it/s] 47%|████▋     | 260070/552076 [00:05<00:07, 40943.81it/s] 48%|████▊     | 264613/552076 [00:05<00:06, 41858.23it/s] 49%|████▊     | 269118/552076 [00:05<00:06, 41747.17it/s] 50%|████▉     | 273516/552076 [00:05<00:07, 39475.68it/s] 50%|█████     | 278417/552076 [00:06<00:06, 41922.26it/s] 51%|█████▏    | 284243/552076 [00:06<00:05, 45772.19it/s] 52%|█████▏    | 289044/552076 [00:06<00:06, 43430.13it/s] 53%|█████▎    | 293569/552076 [00:06<00:06, 42812.58it/s] 54%|█████▍    | 298943/552076 [00:06<00:05, 45593.25it/s] 55%|█████▌    | 303681/552076 [00:06<00:05, 46114.66it/s] 56%|█████▌    | 308392/552076 [00:06<00:05, 43553.59it/s] 57%|█████▋    | 312847/552076 [00:06<00:05, 42356.23it/s] 58%|█████▊    | 318950/552076 [00:06<00:04, 46637.13it/s] 59%|█████▊    | 323800/552076 [00:07<00:04, 46164.33it/s] 60%|█████▉    | 329778/552076 [00:07<00:04, 49400.85it/s] 61%|██████    | 334874/552076 [00:07<00:04, 44920.22it/s] 62%|██████▏   | 339553/552076 [00:07<00:05, 42040.75it/s] 62%|██████▏   | 344429/552076 [00:07<00:04, 43373.41it/s] 63%|██████▎   | 348895/552076 [00:07<00:04, 43124.71it/s] 64%|██████▍   | 354863/552076 [00:07<00:04, 46631.74it/s] 65%|██████▌   | 359866/552076 [00:07<00:04, 47600.84it/s] 66%|██████▌   | 365343/552076 [00:07<00:04, 46378.01it/s] 67%|██████▋   | 370063/552076 [00:08<00:03, 46541.99it/s] 68%|██████▊   | 374775/552076 [00:08<00:04, 44070.89it/s] 69%|██████▊   | 379250/552076 [00:08<00:04, 38844.25it/s] 70%|██████▉   | 384107/552076 [00:08<00:04, 40733.94it/s] 71%|███████   | 390041/552076 [00:08<00:03, 44962.80it/s] 72%|███████▏  | 395871/552076 [00:08<00:03, 48275.22it/s] 73%|███████▎  | 401895/552076 [00:08<00:02, 50403.38it/s] 74%|███████▍  | 408194/552076 [00:08<00:02, 53616.69it/s] 75%|███████▌  | 414625/552076 [00:08<00:02, 56430.57it/s] 76%|███████▌  | 420763/552076 [00:09<00:02, 55836.96it/s] 77%|███████▋  | 427115/552076 [00:09<00:02, 57939.20it/s] 79%|███████▊  | 433725/552076 [00:09<00:01, 60166.52it/s] 80%|███████▉  | 439968/552076 [00:09<00:01, 60827.73it/s] 81%|████████  | 446147/552076 [00:09<00:01, 60263.15it/s] 82%|████████▏ | 452223/552076 [00:09<00:01, 56562.64it/s] 83%|████████▎ | 458226/552076 [00:09<00:01, 57418.69it/s] 84%|████████▍ | 464517/552076 [00:09<00:01, 58962.54it/s] 85%|████████▌ | 471038/552076 [00:09<00:01, 60706.21it/s] 86%|████████▋ | 477247/552076 [00:09<00:01, 61114.45it/s] 88%|████████▊ | 483394/552076 [00:10<00:01, 51728.09it/s] 89%|████████▊ | 488840/552076 [00:10<00:01, 47780.84it/s] 89%|████████▉ | 493869/552076 [00:10<00:01, 46426.41it/s] 91%|█████████ | 500399/552076 [00:10<00:01, 50833.56it/s] 92%|█████████▏| 506650/552076 [00:10<00:00, 53246.16it/s] 93%|█████████▎| 513211/552076 [00:10<00:00, 56436.48it/s] 94%|█████████▍| 519397/552076 [00:10<00:00, 57772.37it/s] 95%|█████████▌| 525948/552076 [00:10<00:00, 59894.15it/s] 96%|█████████▋| 532569/552076 [00:10<00:00, 60503.81it/s] 98%|█████████▊| 539126/552076 [00:11<00:00, 61938.45it/s] 99%|█████████▉| 545390/552076 [00:11<00:00, 61929.87it/s]100%|█████████▉| 552029/552076 [00:11<00:00, 62698.56it/s]100%|██████████| 552076/552076 [00:11<00:00, 49009.32it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.9342865943908691 seconds.
+Run epoch 1
+Epoch 1 ends in 1.1149256229400635 seconds.
+39434 sentences created
+mode 1: time used = 1.7241575717926025
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 11%|█         | 4354/39434 [00:00<00:00, 42617.14it/s] 22%|██▏       | 8686/39434 [00:00<00:00, 42825.15it/s] 44%|████▎     | 17170/39434 [00:00<00:00, 50297.23it/s] 60%|█████▉    | 23587/39434 [00:00<00:00, 53784.84it/s] 79%|███████▊  | 31013/39434 [00:00<00:00, 58633.52it/s] 93%|█████████▎| 36588/39434 [00:00<00:00, 56074.60it/s]100%|██████████| 39434/39434 [00:00<00:00, 59632.56it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|▏         | 7295/552076 [00:00<00:07, 72945.03it/s]  2%|▏         | 13167/552076 [00:00<00:08, 67113.43it/s]  4%|▎         | 19437/552076 [00:00<00:08, 65703.02it/s]  5%|▍         | 25638/552076 [00:00<00:08, 64527.03it/s]  6%|▌         | 32474/552076 [00:00<00:07, 65629.95it/s]  7%|▋         | 38794/552076 [00:00<00:07, 64881.21it/s]  8%|▊         | 44790/552076 [00:00<00:08, 62479.38it/s]  9%|▉         | 51306/552076 [00:00<00:07, 63258.99it/s] 10%|█         | 57243/552076 [00:00<00:08, 61453.67it/s] 11%|█▏        | 63458/552076 [00:01<00:08, 60689.61it/s] 13%|█▎        | 69901/552076 [00:01<00:07, 61765.16it/s] 14%|█▍        | 76471/552076 [00:01<00:07, 61237.76it/s] 15%|█▍        | 82511/552076 [00:01<00:07, 60107.18it/s] 16%|█▌        | 88680/552076 [00:01<00:07, 60572.64it/s] 17%|█▋        | 95041/552076 [00:01<00:07, 60661.65it/s] 18%|█▊        | 101421/552076 [00:01<00:07, 61569.97it/s] 19%|█▉        | 107564/552076 [00:01<00:07, 61471.30it/s] 21%|██        | 116509/552076 [00:01<00:06, 67836.02it/s] 23%|██▎       | 128200/552076 [00:01<00:05, 77608.18it/s] 25%|██▍       | 136593/552076 [00:02<00:05, 75089.02it/s] 27%|██▋       | 147917/552076 [00:02<00:04, 83530.18it/s] 28%|██▊       | 156893/552076 [00:02<00:04, 84852.99it/s] 30%|███       | 165819/552076 [00:02<00:04, 84104.62it/s] 32%|███▏      | 174540/552076 [00:02<00:04, 83724.26it/s] 33%|███▎      | 183130/552076 [00:02<00:04, 83447.65it/s] 35%|███▌      | 193360/552076 [00:02<00:04, 88330.44it/s] 37%|███▋      | 203861/552076 [00:02<00:03, 92750.02it/s] 39%|███▉      | 213955/552076 [00:02<00:03, 95063.94it/s] 41%|████      | 223607/552076 [00:03<00:03, 82125.14it/s] 42%|████▏     | 232234/552076 [00:03<00:04, 72984.49it/s] 43%|████▎     | 240011/552076 [00:03<00:04, 69031.14it/s] 45%|████▌     | 249897/552076 [00:03<00:03, 75900.61it/s] 47%|████▋     | 257961/552076 [00:03<00:04, 72922.71it/s] 48%|████▊     | 266897/552076 [00:03<00:03, 73028.29it/s] 50%|████▉     | 275787/552076 [00:03<00:03, 77159.84it/s] 52%|█████▏    | 285578/552076 [00:03<00:03, 82397.47it/s] 54%|█████▎    | 295546/552076 [00:03<00:02, 86916.52it/s] 55%|█████▌    | 304490/552076 [00:04<00:03, 79287.17it/s] 57%|█████▋    | 313682/552076 [00:04<00:02, 82694.75it/s] 58%|█████▊    | 322204/552076 [00:04<00:02, 82172.02it/s] 60%|██████    | 333206/552076 [00:04<00:02, 88923.05it/s] 62%|██████▏   | 343167/552076 [00:04<00:02, 91879.16it/s] 64%|██████▍   | 353877/552076 [00:04<00:02, 95969.84it/s] 67%|██████▋   | 367246/552076 [00:04<00:01, 104844.06it/s] 69%|██████▉   | 383585/552076 [00:04<00:01, 117471.05it/s] 73%|███████▎  | 404098/552076 [00:04<00:01, 134744.32it/s] 77%|███████▋  | 423481/552076 [00:04<00:00, 148306.58it/s] 80%|████████  | 442819/552076 [00:05<00:00, 159455.61it/s] 84%|████████▍ | 462500/552076 [00:05<00:00, 169081.24it/s] 88%|████████▊ | 483808/552076 [00:05<00:00, 180246.79it/s] 91%|█████████ | 502751/552076 [00:05<00:00, 149430.36it/s] 94%|█████████▍| 519216/552076 [00:05<00:00, 146696.86it/s] 97%|█████████▋| 534962/552076 [00:05<00:00, 137671.62it/s]100%|█████████▉| 550897/552076 [00:05<00:00, 143528.29it/s]100%|██████████| 552076/552076 [00:05<00:00, 94825.61it/s] 
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.3211040496826172 seconds.
+Run epoch 1
+Epoch 1 ends in 0.6523873805999756 seconds.
+39434 sentences created
+mode 1: time used = 0.7900345325469971
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 22%|██▏       | 8833/39434 [00:00<00:00, 79717.97it/s] 34%|███▎      | 13277/39434 [00:00<00:00, 64382.03it/s] 44%|████▍     | 17483/39434 [00:00<00:00, 53838.07it/s] 57%|█████▋    | 22520/39434 [00:00<00:00, 52747.31it/s] 79%|███████▊  | 30985/39434 [00:00<00:00, 59469.67it/s] 96%|█████████▋| 38036/39434 [00:00<00:00, 62400.83it/s]100%|██████████| 39434/39434 [00:00<00:00, 60558.91it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  2%|▏         | 12325/552076 [00:00<00:04, 123248.06it/s]  4%|▍         | 24035/552076 [00:00<00:04, 121336.76it/s]  6%|▋         | 35130/552076 [00:00<00:04, 118020.71it/s]  8%|▊         | 43450/552076 [00:00<00:04, 104853.68it/s] 10%|▉         | 55028/552076 [00:00<00:04, 107907.82it/s] 12%|█▏        | 66955/552076 [00:00<00:04, 111080.44it/s] 14%|█▍        | 78067/552076 [00:00<00:04, 111090.67it/s] 16%|█▌        | 88288/552076 [00:00<00:04, 94629.25it/s]  18%|█▊        | 100119/552076 [00:00<00:04, 100673.61it/s] 20%|█▉        | 110153/552076 [00:01<00:05, 87789.66it/s]  22%|██▏       | 119205/552076 [00:01<00:05, 84292.28it/s] 23%|██▎       | 127855/552076 [00:01<00:05, 83713.68it/s] 26%|██▌       | 140785/552076 [00:01<00:04, 93614.35it/s] 28%|██▊       | 153882/552076 [00:01<00:03, 102372.84it/s] 30%|███       | 166482/552076 [00:01<00:03, 108475.08it/s] 33%|███▎      | 179492/552076 [00:01<00:03, 114167.28it/s] 35%|███▍      | 192038/552076 [00:01<00:03, 113683.35it/s] 37%|███▋      | 203712/552076 [00:01<00:03, 108480.30it/s] 39%|███▉      | 216209/552076 [00:02<00:02, 112950.03it/s] 41%|████▏     | 227737/552076 [00:02<00:02, 109050.09it/s] 43%|████▎     | 240035/552076 [00:02<00:02, 111083.44it/s] 46%|████▌     | 251287/552076 [00:02<00:03, 97672.72it/s]  48%|████▊     | 262905/552076 [00:02<00:02, 102489.37it/s] 50%|████▉     | 273494/552076 [00:02<00:02, 99364.73it/s]  51%|█████▏    | 283689/552076 [00:02<00:02, 90520.47it/s] 54%|█████▎    | 295796/552076 [00:02<00:02, 97933.02it/s] 55%|█████▌    | 305998/552076 [00:02<00:02, 95260.67it/s] 57%|█████▋    | 315826/552076 [00:03<00:02, 91620.07it/s] 59%|█████▉    | 325229/552076 [00:03<00:02, 89361.60it/s] 61%|██████    | 335534/552076 [00:03<00:02, 93069.92it/s] 63%|██████▎   | 347114/552076 [00:03<00:02, 98892.38it/s] 66%|██████▌   | 364533/552076 [00:03<00:01, 113626.55it/s] 70%|██████▉   | 384651/552076 [00:03<00:01, 129825.54it/s] 73%|███████▎  | 402680/552076 [00:03<00:01, 141725.54it/s] 76%|███████▋  | 422139/552076 [00:03<00:00, 154300.72it/s] 80%|███████▉  | 441179/552076 [00:03<00:00, 163309.96it/s] 83%|████████▎ | 458543/552076 [00:04<00:00, 128030.91it/s] 86%|████████▌ | 473252/552076 [00:04<00:00, 124581.15it/s] 88%|████████▊ | 487064/552076 [00:04<00:00, 124453.16it/s] 91%|█████████ | 500458/552076 [00:04<00:00, 124651.31it/s] 94%|█████████▍| 519121/552076 [00:04<00:00, 138443.55it/s] 98%|█████████▊| 538454/552076 [00:04<00:00, 151331.66it/s]100%|██████████| 552076/552076 [00:04<00:00, 116700.09it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 56, in _forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 43, in embed
+    return self.features[x]
+RuntimeError: CUDA out of memory. Tried to allocate 38.00 MiB (GPU 7; 10.76 GiB total capacity; 1.50 GiB already allocated; 32.44 MiB free; 1.51 GiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.39784884452819824 seconds.
+Run epoch 1
+Epoch 1 ends in 0.5178790092468262 seconds.
+39434 sentences created
+mode 1: time used = 0.8777182102203369
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 13%|█▎        | 5201/39434 [00:00<00:00, 52009.31it/s] 25%|██▍       | 9724/39434 [00:00<00:00, 49138.14it/s] 37%|███▋      | 14694/39434 [00:00<00:00, 49304.29it/s] 48%|████▊     | 18989/39434 [00:00<00:00, 46959.20it/s] 57%|█████▋    | 22476/39434 [00:00<00:00, 42152.47it/s] 66%|██████▌   | 25938/39434 [00:00<00:00, 38676.13it/s] 75%|███████▍  | 29541/39434 [00:00<00:00, 37841.66it/s] 85%|████████▍ | 33386/39434 [00:00<00:00, 36656.09it/s] 95%|█████████▍| 37410/39434 [00:00<00:00, 37662.27it/s]100%|██████████| 39434/39434 [00:00<00:00, 40031.14it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 6248/552076 [00:00<00:10, 49939.14it/s]  2%|▏         | 11266/552076 [00:00<00:10, 49208.99it/s]  3%|▎         | 15560/552076 [00:00<00:11, 45180.69it/s]  4%|▎         | 20686/552076 [00:00<00:11, 46846.77it/s]  4%|▍         | 24567/552076 [00:00<00:12, 43373.94it/s]  5%|▌         | 28442/552076 [00:00<00:12, 41338.53it/s]  6%|▌         | 32075/552076 [00:00<00:13, 37489.16it/s]  7%|▋         | 35931/552076 [00:00<00:13, 37803.09it/s]  7%|▋         | 40349/552076 [00:00<00:13, 38806.66it/s]  8%|▊         | 44099/552076 [00:01<00:14, 36258.99it/s]  9%|▊         | 48099/552076 [00:01<00:14, 35995.37it/s]  9%|▉         | 52045/552076 [00:01<00:13, 36968.41it/s] 10%|█         | 56626/552076 [00:01<00:12, 39239.31it/s] 11%|█         | 60855/552076 [00:01<00:12, 39209.21it/s] 12%|█▏        | 64792/552076 [00:01<00:12, 38577.78it/s] 12%|█▏        | 68664/552076 [00:01<00:13, 36376.84it/s] 13%|█▎        | 73592/552076 [00:01<00:12, 39477.70it/s] 15%|█▌        | 85483/552076 [00:01<00:09, 49371.85it/s] 18%|█▊        | 96662/552076 [00:02<00:07, 59004.15it/s] 19%|█▉        | 105885/552076 [00:02<00:06, 66152.37it/s] 21%|██        | 115867/552076 [00:02<00:05, 73598.74it/s] 23%|██▎       | 128459/552076 [00:02<00:05, 84079.01it/s] 26%|██▌       | 140943/552076 [00:02<00:04, 93207.82it/s] 28%|██▊       | 153591/552076 [00:02<00:03, 101192.04it/s] 30%|██▉       | 165243/552076 [00:02<00:03, 105347.44it/s] 32%|███▏      | 176619/552076 [00:02<00:03, 97600.43it/s]  34%|███▍      | 188822/552076 [00:02<00:03, 103835.53it/s] 36%|███▋      | 200719/552076 [00:02<00:03, 107955.48it/s] 39%|███▊      | 213456/552076 [00:03<00:02, 113128.28it/s] 41%|████      | 226111/552076 [00:03<00:02, 116844.06it/s] 43%|████▎     | 238099/552076 [00:03<00:02, 116332.83it/s] 45%|████▌     | 250262/552076 [00:03<00:02, 117871.54it/s] 48%|████▊     | 262628/552076 [00:03<00:02, 119549.41it/s] 50%|████▉     | 274903/552076 [00:03<00:02, 120489.33it/s] 52%|█████▏    | 287034/552076 [00:03<00:02, 112018.77it/s] 54%|█████▍    | 298413/552076 [00:03<00:02, 100935.12it/s] 56%|█████▌    | 308838/552076 [00:03<00:02, 90626.32it/s]  58%|█████▊    | 319924/552076 [00:04<00:02, 95875.11it/s] 60%|██████    | 331559/552076 [00:04<00:02, 101218.28it/s] 62%|██████▏   | 343360/552076 [00:04<00:01, 105730.61it/s] 64%|██████▍   | 355082/552076 [00:04<00:01, 108933.08it/s] 66%|██████▋   | 366207/552076 [00:04<00:01, 108584.88it/s] 68%|██████▊   | 377228/552076 [00:04<00:01, 101144.63it/s] 70%|███████   | 388431/552076 [00:04<00:01, 104179.34it/s] 72%|███████▏  | 399024/552076 [00:04<00:01, 85034.87it/s]  74%|███████▍  | 408224/552076 [00:05<00:01, 86689.41it/s] 76%|███████▌  | 418827/552076 [00:05<00:01, 91705.49it/s] 78%|███████▊  | 428423/552076 [00:05<00:01, 91497.35it/s] 79%|███████▉  | 438826/552076 [00:05<00:01, 94926.98it/s] 81%|████████  | 448560/552076 [00:05<00:01, 94811.06it/s] 83%|████████▎ | 458355/552076 [00:05<00:00, 95730.37it/s] 85%|████████▍ | 468085/552076 [00:05<00:00, 96195.06it/s] 87%|████████▋ | 477790/552076 [00:05<00:00, 96315.66it/s] 88%|████████▊ | 488054/552076 [00:05<00:00, 98128.81it/s] 90%|█████████ | 499269/552076 [00:05<00:00, 101951.80it/s] 93%|█████████▎| 512268/552076 [00:06<00:00, 109005.27it/s] 95%|█████████▍| 524413/552076 [00:06<00:00, 112460.95it/s] 97%|█████████▋| 535818/552076 [00:06<00:00, 111913.31it/s] 99%|█████████▉| 548133/552076 [00:06<00:00, 115061.60it/s]100%|██████████| 552076/552076 [00:06<00:00, 86581.94it/s] 
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 112, in train_model
+    
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 152, in evaluate
+    self.optimizer.zero_grad()
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 55, in forward
+    support = torch.mm(self.support[i], pre_sup)
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.5618164539337158 seconds.
+Run epoch 1
+Epoch 1 ends in 0.552638053894043 seconds.
+39434 sentences created
+mode 1: time used = 1.3518707752227783
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64
+  0%|          | 0/39434 [00:00<?, ?it/s] 14%|█▍        | 5571/39434 [00:00<00:00, 46991.48it/s] 24%|██▍       | 9627/39434 [00:00<00:00, 44856.76it/s] 35%|███▌      | 13851/39434 [00:00<00:00, 42926.28it/s] 43%|████▎     | 16820/39434 [00:00<00:00, 37116.07it/s] 54%|█████▍    | 21254/39434 [00:00<00:00, 38800.79it/s] 64%|██████▎   | 25084/39434 [00:00<00:00, 38648.16it/s] 73%|███████▎  | 28636/39434 [00:00<00:00, 34693.68it/s] 81%|████████▏ | 32135/39434 [00:00<00:00, 34781.34it/s] 90%|████████▉ | 35442/39434 [00:00<00:00, 32732.28it/s] 98%|█████████▊| 38620/39434 [00:01<00:00, 31532.83it/s]100%|██████████| 39434/39434 [00:01<00:00, 35412.47it/s]
+  0%|          | 0/552076 [00:00<?, ?it/s]  1%|          | 4365/552076 [00:00<00:12, 42868.57it/s]  1%|▏         | 8112/552076 [00:00<00:13, 40816.65it/s]  2%|▏         | 13089/552076 [00:00<00:12, 43144.92it/s]  3%|▎         | 18632/552076 [00:00<00:11, 45972.80it/s]  4%|▍         | 24598/552076 [00:00<00:10, 49370.78it/s]  5%|▌         | 29570/552076 [00:00<00:10, 47831.05it/s]  6%|▌         | 33952/552076 [00:00<00:12, 42410.47it/s]  7%|▋         | 38553/552076 [00:00<00:11, 42995.49it/s]  8%|▊         | 43055/552076 [00:00<00:11, 43581.48it/s]  9%|▊         | 47335/552076 [00:01<00:12, 40809.09it/s]  9%|▉         | 51403/552076 [00:01<00:12, 40561.67it/s] 10%|█         | 56527/552076 [00:01<00:11, 42214.93it/s] 11%|█         | 60757/552076 [00:01<00:11, 42165.74it/s] 12%|█▏        | 66619/552076 [00:01<00:10, 46042.68it/s] 13%|█▎        | 71334/552076 [00:01<00:10, 45446.73it/s] 14%|█▍        | 75958/552076 [00:01<00:11, 41022.48it/s] 15%|█▍        | 82145/552076 [00:01<00:10, 45635.37it/s] 16%|█▌        | 86969/552076 [00:01<00:11, 42235.82it/s] 17%|█▋        | 92393/552076 [00:02<00:10, 45239.15it/s] 18%|█▊        | 98099/552076 [00:02<00:09, 47966.79it/s] 19%|█▉        | 104274/552076 [00:02<00:08, 51409.11it/s] 20%|█▉        | 110171/552076 [00:02<00:08, 53087.25it/s] 21%|██        | 116451/552076 [00:02<00:07, 55669.78it/s] 22%|██▏       | 122164/552076 [00:02<00:08, 53473.09it/s] 23%|██▎       | 128413/552076 [00:02<00:07, 55891.87it/s] 24%|██▍       | 134640/552076 [00:02<00:07, 56169.46it/s] 25%|██▌       | 140736/552076 [00:02<00:07, 56877.12it/s] 27%|██▋       | 147332/552076 [00:02<00:06, 59327.07it/s] 28%|██▊       | 153333/552076 [00:03<00:07, 54433.03it/s] 29%|██▉       | 159143/552076 [00:03<00:07, 55483.29it/s] 30%|██▉       | 164785/552076 [00:03<00:06, 55722.59it/s] 31%|███       | 170423/552076 [00:03<00:06, 55690.34it/s] 32%|███▏      | 176038/552076 [00:03<00:07, 50945.24it/s] 33%|███▎      | 181786/552076 [00:03<00:07, 52742.81it/s] 34%|███▍      | 188149/552076 [00:03<00:06, 54738.35it/s] 35%|███▌      | 193708/552076 [00:03<00:07, 48078.85it/s] 36%|███▋      | 200152/552076 [00:04<00:06, 51325.12it/s] 37%|███▋      | 206405/552076 [00:04<00:06, 54065.16it/s] 38%|███▊      | 211995/552076 [00:04<00:06, 52454.81it/s] 39%|███▉      | 217981/552076 [00:04<00:06, 54475.38it/s] 40%|████      | 223546/552076 [00:04<00:07, 42411.96it/s] 43%|████▎     | 235485/552076 [00:04<00:06, 52492.16it/s] 44%|████▍     | 242335/552076 [00:04<00:06, 48129.08it/s] 45%|████▍     | 248339/552076 [00:04<00:06, 49834.30it/s] 46%|████▌     | 254810/552076 [00:05<00:05, 52036.08it/s] 47%|████▋     | 261405/552076 [00:05<00:05, 54452.63it/s] 48%|████▊     | 267749/552076 [00:05<00:04, 56868.41it/s] 50%|████▉     | 274323/552076 [00:05<00:04, 58635.16it/s] 51%|█████     | 281009/552076 [00:05<00:04, 59580.34it/s] 52%|█████▏    | 287526/552076 [00:05<00:04, 61153.79it/s] 53%|█████▎    | 293782/552076 [00:05<00:04, 60225.97it/s] 54%|█████▍    | 299907/552076 [00:05<00:04, 59707.00it/s] 55%|█████▌    | 306230/552076 [00:05<00:04, 60720.66it/s] 57%|█████▋    | 312357/552076 [00:06<00:06, 39559.72it/s] 59%|█████▊    | 324137/552076 [00:06<00:04, 49403.40it/s] 61%|██████    | 334799/552076 [00:06<00:03, 58370.16it/s] 62%|██████▏   | 343996/552076 [00:06<00:03, 65344.09it/s] 64%|██████▍   | 352268/552076 [00:06<00:02, 66721.04it/s] 66%|██████▌   | 364065/552076 [00:06<00:02, 76718.78it/s] 68%|██████▊   | 373131/552076 [00:06<00:02, 77277.67it/s] 70%|██████▉   | 385238/552076 [00:06<00:01, 86682.72it/s] 72%|███████▏  | 394963/552076 [00:06<00:01, 87321.04it/s] 73%|███████▎  | 404436/552076 [00:07<00:01, 81261.34it/s] 76%|███████▌  | 416919/552076 [00:07<00:01, 90764.46it/s] 77%|███████▋  | 426775/552076 [00:07<00:01, 81685.79it/s] 79%|███████▉  | 435661/552076 [00:07<00:01, 62131.70it/s] 80%|████████  | 443077/552076 [00:07<00:01, 55014.70it/s] 81%|████████▏ | 449571/552076 [00:07<00:02, 47661.74it/s] 82%|████████▏ | 455207/552076 [00:08<00:02, 44075.08it/s] 83%|████████▎ | 460485/552076 [00:08<00:01, 46369.14it/s] 84%|████████▍ | 465618/552076 [00:08<00:01, 45288.74it/s] 85%|████████▌ | 471563/552076 [00:08<00:01, 48774.02it/s] 86%|████████▋ | 477243/552076 [00:08<00:01, 48125.91it/s] 88%|████████▊ | 483857/552076 [00:08<00:01, 52407.83it/s] 89%|████████▊ | 489370/552076 [00:08<00:01, 49423.59it/s] 90%|████████▉ | 494538/552076 [00:08<00:01, 43022.71it/s] 90%|█████████ | 499147/552076 [00:09<00:01, 43667.78it/s] 91%|█████████ | 503731/552076 [00:09<00:01, 42379.62it/s] 92%|█████████▏| 508129/552076 [00:09<00:01, 42814.06it/s] 93%|█████████▎| 514303/552076 [00:09<00:00, 47149.97it/s] 94%|█████████▍| 519232/552076 [00:09<00:00, 45472.38it/s] 95%|█████████▍| 523942/552076 [00:09<00:00, 45455.19it/s] 96%|█████████▌| 529749/552076 [00:09<00:00, 47661.68it/s] 97%|█████████▋| 535062/552076 [00:09<00:00, 48430.36it/s] 98%|█████████▊| 539984/552076 [00:09<00:00, 44977.42it/s] 99%|█████████▊| 544586/552076 [00:10<00:00, 44564.15it/s]100%|█████████▉| 549850/552076 [00:10<00:00, 46713.50it/s]100%|██████████| 552076/552076 [00:10<00:00, 54380.57it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 114, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 154, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 84, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 59, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_conv.py", line 56, in forward
+    output += support
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:7 and cpu!
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /home/duyufeng/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([[0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0554, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        ...,
+        [0.0000, 0.0114, 0.0047,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0531, 0.0000, 0.0000,  ..., 0.0000, 0.0000, 0.0000],
+        [0.0000, 0.0145, 0.0000,  ..., 0.0000, 0.0000, 0.0000]],
+       device='cuda:7')
+encoder = gcn
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.8204782009124756 seconds.
+Run epoch 1
+Epoch 1 ends in 0.7548387050628662 seconds.
+39434 sentences created
+mode 1: time used = 1.4064922332763672
+anchors and positive samples of len 552076 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 552076 552076 552076
+total iter: 500
+torch.int64

@@ -202,9 +202,9 @@ class ModelWithEmbeddings(torch.nn.Module):
     def adjmat_device(self, graph, weighted, directed, sparse=True):
         adj_mat = graph.adjmat(weighted, directed, sparse=sparse)
         if sparse:
-            adj_mat = scipy_coo_to_torch_sparse(sp.coo_matrix(adj_mat))
+            adj_mat = scipy_coo_to_torch_sparse(sp.coo_matrix(adj_mat)).to(self._device)
         else:
-            adj_mat = torch.from_numpy(adj_mat).type(torch.float32)
+            adj_mat = torch.from_numpy(adj_mat).type(torch.float32).to(self._device)
         self.register_buffer('adj_mat', adj_mat)
         return self.adj_mat
 
@@ -217,8 +217,10 @@ class ModelWithEmbeddings(torch.nn.Module):
         self.embeddings = None
         t1 = time()
         self.debug("Start training...")
+        setdevice(self._device)
         self.build(graph, **kwargs)
         self.to(self._device)
+
         # print([(i, v.shape) for i, v in self.named_parameters(recurse=True)])
         # print([i for i in self.named_modules()])
         self.after_build(graph, **kwargs)

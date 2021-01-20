@@ -1,0 +1,1388 @@
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '6.41292'}; time used = 0.02658843994140625s
+epoch 10: {'train_loss': '6.32878'}; time used = 0.016739845275878906s
+epoch 15: {'train_loss': '6.16862'}; time used = 0.016727209091186523s
+epoch 20: {'train_loss': '5.97722'}; time used = 0.015383243560791016s
+epoch 25: {'train_loss': '6.04750'}; time used = 0.01706528663635254s
+epoch 30: {'train_loss': '5.96511'}; time used = 0.01996588706970215s
+epoch 35: {'train_loss': '5.82590'}; time used = 0.020643949508666992s
+epoch 40: {'train_loss': '5.63698'}; time used = 0.020351648330688477s
+epoch 45: {'train_loss': '5.53123'}; time used = 0.020038843154907227s
+epoch 50: {'train_loss': '5.44339'}; time used = 0.016166210174560547s
+epoch 55: {'train_loss': '5.26437'}; time used = 0.018987655639648438s
+epoch 60: {'train_loss': '5.20667'}; time used = 0.02043008804321289s
+epoch 65: {'train_loss': '5.12553'}; time used = 0.020343542098999023s
+epoch 70: {'train_loss': '5.02510'}; time used = 0.018898963928222656s
+epoch 75: {'train_loss': '4.89522'}; time used = 0.019187211990356445s
+epoch 80: {'train_loss': '4.92565'}; time used = 0.01906108856201172s
+epoch 85: {'train_loss': '4.77256'}; time used = 0.01923513412475586s
+epoch 90: {'train_loss': '4.74197'}; time used = 0.019702911376953125s
+epoch 95: {'train_loss': '4.64861'}; time used = 0.020392656326293945s
+epoch 100: {'train_loss': '4.56097'}; time used = 0.02122664451599121s
+epoch 105: {'train_loss': '4.53692'}; time used = 0.025800704956054688s
+epoch 110: {'train_loss': '4.44792'}; time used = 0.020657777786254883s
+epoch 115: {'train_loss': '4.41941'}; time used = 0.02313232421875s
+epoch 120: {'train_loss': '4.38917'}; time used = 0.01875901222229004s
+epoch 125: {'train_loss': '4.27180'}; time used = 0.019148588180541992s
+epoch 130: {'train_loss': '4.15518'}; time used = 0.01907062530517578s
+epoch 135: {'train_loss': '4.20996'}; time used = 0.018671751022338867s
+epoch 140: {'train_loss': '4.11664'}; time used = 0.01817607879638672s
+epoch 145: {'train_loss': '4.03713'}; time used = 0.018021583557128906s
+epoch 150: {'train_loss': '3.96283'}; time used = 0.019037485122680664s
+epoch 155: {'train_loss': '3.84671'}; time used = 0.02368760108947754s
+epoch 160: {'train_loss': '3.90853'}; time used = 0.02244400978088379s
+epoch 165: {'train_loss': '3.81573'}; time used = 0.021930932998657227s
+epoch 170: {'train_loss': '3.85392'}; time used = 0.022267818450927734s
+epoch 175: {'train_loss': '3.78300'}; time used = 0.022856950759887695s
+epoch 180: {'train_loss': '3.73822'}; time used = 0.02250838279724121s
+epoch 185: {'train_loss': '3.67708'}; time used = 0.02192997932434082s
+epoch 190: {'train_loss': '3.69467'}; time used = 0.022385835647583008s
+epoch 195: {'train_loss': '3.64069'}; time used = 0.02215433120727539s
+epoch 200: {'train_loss': '3.57374'}; time used = 0.02207660675048828s
+epoch 205: {'train_loss': '3.55726'}; time used = 0.02199578285217285s
+epoch 210: {'train_loss': '3.55672'}; time used = 0.02247762680053711s
+epoch 215: {'train_loss': '3.56761'}; time used = 0.023235082626342773s
+epoch 220: {'train_loss': '3.53321'}; time used = 0.0222928524017334s
+epoch 225: {'train_loss': '3.48333'}; time used = 0.022074460983276367s
+epoch 230: {'train_loss': '3.41455'}; time used = 0.022135019302368164s
+epoch 235: {'train_loss': '3.26345'}; time used = 0.021977901458740234s
+epoch 240: {'train_loss': '3.39026'}; time used = 0.022114992141723633s
+epoch 245: {'train_loss': '3.39396'}; time used = 0.020055294036865234s
+epoch 250: {'train_loss': '3.33486'}; time used = 0.01808762550354004s
+epoch 255: {'train_loss': '3.39734'}; time used = 0.018485307693481445s
+epoch 260: {'train_loss': '3.32800'}; time used = 0.0181884765625s
+epoch 265: {'train_loss': '3.30721'}; time used = 0.01879286766052246s
+epoch 270: {'train_loss': '3.25989'}; time used = 0.018378496170043945s
+epoch 275: {'train_loss': '3.23027'}; time used = 0.018010854721069336s
+epoch 280: {'train_loss': '3.24702'}; time used = 0.019812583923339844s
+epoch 285: {'train_loss': '3.16656'}; time used = 0.022177934646606445s
+epoch 290: {'train_loss': '3.15817'}; time used = 0.022138595581054688s
+epoch 295: {'train_loss': '3.15963'}; time used = 0.022377967834472656s
+epoch 300: {'train_loss': '3.22389'}; time used = 0.026861190795898438s
+epoch 305: {'train_loss': '3.10830'}; time used = 0.02219247817993164s
+epoch 310: {'train_loss': '3.18850'}; time used = 0.023266315460205078s
+epoch 315: {'train_loss': '3.09876'}; time used = 0.022022724151611328s
+epoch 320: {'train_loss': '3.12315'}; time used = 0.02271270751953125s
+epoch 325: {'train_loss': '3.07729'}; time used = 0.021492958068847656s
+epoch 330: {'train_loss': '3.16692'}; time used = 0.02137136459350586s
+epoch 335: {'train_loss': '3.12907'}; time used = 0.02123284339904785s
+epoch 340: {'train_loss': '3.08344'}; time used = 0.02052474021911621s
+epoch 345: {'train_loss': '3.00517'}; time used = 0.01865100860595703s
+epoch 350: {'train_loss': '3.07471'}; time used = 0.01793193817138672s
+epoch 355: {'train_loss': '2.99866'}; time used = 0.018531084060668945s
+epoch 360: {'train_loss': '3.10487'}; time used = 0.01856255531311035s
+epoch 365: {'train_loss': '3.00550'}; time used = 0.017950057983398438s
+epoch 370: {'train_loss': '3.04839'}; time used = 0.01817488670349121s
+epoch 375: {'train_loss': '2.95896'}; time used = 0.024854421615600586s
+epoch 380: {'train_loss': '3.00821'}; time used = 0.026255369186401367s
+epoch 385: {'train_loss': '3.00348'}; time used = 0.02794480323791504s
+epoch 390: {'train_loss': '3.04179'}; time used = 0.0258023738861084s
+epoch 395: {'train_loss': '3.02085'}; time used = 0.01752448081970215s
+epoch 400: {'train_loss': '2.95133'}; time used = 0.017621755599975586s
+epoch 405: {'train_loss': '2.98730'}; time used = 0.018262147903442383s
+epoch 410: {'train_loss': '2.91360'}; time used = 0.017920732498168945s
+epoch 415: {'train_loss': '3.03888'}; time used = 0.01996755599975586s
+epoch 420: {'train_loss': '3.00807'}; time used = 0.020747900009155273s
+epoch 425: {'train_loss': '3.01115'}; time used = 0.019772052764892578s
+epoch 430: {'train_loss': '2.94034'}; time used = 0.021083354949951172s
+epoch 435: {'train_loss': '2.94319'}; time used = 0.021302461624145508s
+epoch 440: {'train_loss': '2.94890'}; time used = 0.021103382110595703s
+epoch 445: {'train_loss': '2.95670'}; time used = 0.02324843406677246s
+epoch 450: {'train_loss': '2.92606'}; time used = 0.02488112449645996s
+epoch 455: {'train_loss': '2.92027'}; time used = 0.020030498504638672s
+epoch 460: {'train_loss': '2.91579'}; time used = 0.01889491081237793s
+epoch 465: {'train_loss': '2.93357'}; time used = 0.018813371658325195s
+epoch 470: {'train_loss': '2.83125'}; time used = 0.019962072372436523s
+epoch 475: {'train_loss': '2.83933'}; time used = 0.01957106590270996s
+epoch 480: {'train_loss': '2.91697'}; time used = 0.019206762313842773s
+epoch 485: {'train_loss': '2.94508'}; time used = 0.020398855209350586s
+epoch 490: {'train_loss': '2.86966'}; time used = 0.019341707229614258s
+epoch 495: {'train_loss': '2.88411'}; time used = 0.019546031951904297s
+epoch 500: {'train_loss': '2.82717'}; time used = 0.019908666610717773s
+Finished training. Time used = 5.822240114212036.
+Training classifier using 20.00% nodes...
+{'micro': 0.29487771112136596, 'macro': 0.06506465736686692, 'samples': 0.29487771112136596, 'weighted': 0.13430282067466348}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '5.55832'}; time used = 0.03733563423156738s
+epoch 10: {'train_loss': '4.67000'}; time used = 0.019661664962768555s
+epoch 15: {'train_loss': '3.98939'}; time used = 0.023870468139648438s
+epoch 20: {'train_loss': '3.51294'}; time used = 0.021483421325683594s
+epoch 25: {'train_loss': '3.40695'}; time used = 0.025403499603271484s
+epoch 30: {'train_loss': '3.27472'}; time used = 0.02096867561340332s
+epoch 35: {'train_loss': '3.13836'}; time used = 0.022932767868041992s
+epoch 40: {'train_loss': '2.95003'}; time used = 0.02459120750427246s
+epoch 45: {'train_loss': '2.90008'}; time used = 0.027134418487548828s
+epoch 50: {'train_loss': '2.86244'}; time used = 0.024103403091430664s
+epoch 55: {'train_loss': '2.74068'}; time used = 0.024037599563598633s
+epoch 60: {'train_loss': '2.72135'}; time used = 0.02681255340576172s
+epoch 65: {'train_loss': '2.67605'}; time used = 0.022192716598510742s
+epoch 70: {'train_loss': '2.62137'}; time used = 0.02131366729736328s
+epoch 75: {'train_loss': '2.55152'}; time used = 0.021235942840576172s
+epoch 80: {'train_loss': '2.58896'}; time used = 0.023862838745117188s
+epoch 85: {'train_loss': '2.48834'}; time used = 0.019586801528930664s
+epoch 90: {'train_loss': '2.48176'}; time used = 0.01938009262084961s
+epoch 95: {'train_loss': '2.43222'}; time used = 0.01859426498413086s
+epoch 100: {'train_loss': '2.38903'}; time used = 0.0218050479888916s
+epoch 105: {'train_loss': '2.35745'}; time used = 0.026141643524169922s
+epoch 110: {'train_loss': '2.32605'}; time used = 0.022391796112060547s
+epoch 115: {'train_loss': '2.30731'}; time used = 0.021108150482177734s
+epoch 120: {'train_loss': '2.26679'}; time used = 0.017902135848999023s
+epoch 125: {'train_loss': '2.20963'}; time used = 0.023063182830810547s
+epoch 130: {'train_loss': '2.13760'}; time used = 0.01930069923400879s
+epoch 135: {'train_loss': '2.16330'}; time used = 0.019306182861328125s
+epoch 140: {'train_loss': '2.10171'}; time used = 0.02331376075744629s
+epoch 145: {'train_loss': '2.05583'}; time used = 0.024681568145751953s
+epoch 150: {'train_loss': '1.99546'}; time used = 0.022092342376708984s
+epoch 155: {'train_loss': '1.92016'}; time used = 0.02181863784790039s
+epoch 160: {'train_loss': '1.95884'}; time used = 0.021915435791015625s
+epoch 165: {'train_loss': '1.89644'}; time used = 0.024776220321655273s
+epoch 170: {'train_loss': '1.90737'}; time used = 0.021889686584472656s
+epoch 175: {'train_loss': '1.86853'}; time used = 0.021500825881958008s
+epoch 180: {'train_loss': '1.82652'}; time used = 0.02114391326904297s
+epoch 185: {'train_loss': '1.79729'}; time used = 0.02880239486694336s
+epoch 190: {'train_loss': '1.78456'}; time used = 0.022061586380004883s
+epoch 195: {'train_loss': '1.76250'}; time used = 0.019174814224243164s
+epoch 200: {'train_loss': '1.70932'}; time used = 0.01894402503967285s
+epoch 205: {'train_loss': '1.69655'}; time used = 0.022109270095825195s
+epoch 210: {'train_loss': '1.67549'}; time used = 0.019176721572875977s
+epoch 215: {'train_loss': '1.66930'}; time used = 0.019438982009887695s
+epoch 220: {'train_loss': '1.64033'}; time used = 0.01755523681640625s
+epoch 225: {'train_loss': '1.60272'}; time used = 0.02123093605041504s
+epoch 230: {'train_loss': '1.55617'}; time used = 0.022341489791870117s
+epoch 235: {'train_loss': '1.49387'}; time used = 0.02147817611694336s
+epoch 240: {'train_loss': '1.53545'}; time used = 0.021414518356323242s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4.303308486938477.
+Training classifier using 20.00% nodes...
+{'micro': 0.286571296723581, 'macro': 0.08138532453562543, 'samples': 0.286571296723581, 'weighted': 0.15221843340023927}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '4.78621'}; time used = 0.056386709213256836s
+epoch 10: {'train_loss': '3.65921'}; time used = 0.02730703353881836s
+epoch 15: {'train_loss': '3.15496'}; time used = 0.026520729064941406s
+epoch 20: {'train_loss': '2.91175'}; time used = 0.030788421630859375s
+epoch 25: {'train_loss': '2.94691'}; time used = 0.03056788444519043s
+epoch 30: {'train_loss': '2.88065'}; time used = 0.03278517723083496s
+epoch 35: {'train_loss': '2.76862'}; time used = 0.028789281845092773s
+epoch 40: {'train_loss': '2.56965'}; time used = 0.03115081787109375s
+epoch 45: {'train_loss': '2.50165'}; time used = 0.03631162643432617s
+epoch 50: {'train_loss': '2.42469'}; time used = 0.03166341781616211s
+epoch 55: {'train_loss': '2.29246'}; time used = 0.030013322830200195s
+epoch 60: {'train_loss': '2.23826'}; time used = 0.030813217163085938s
+epoch 65: {'train_loss': '2.16267'}; time used = 0.02417278289794922s
+epoch 70: {'train_loss': '2.08250'}; time used = 0.029101133346557617s
+epoch 75: {'train_loss': '2.00671'}; time used = 0.027892112731933594s
+epoch 80: {'train_loss': '1.99193'}; time used = 0.04168868064880371s
+epoch 85: {'train_loss': '1.88620'}; time used = 0.029931306838989258s
+epoch 90: {'train_loss': '1.85158'}; time used = 0.04652142524719238s
+epoch 95: {'train_loss': '1.79166'}; time used = 0.04753732681274414s
+epoch 100: {'train_loss': '1.74020'}; time used = 0.0401911735534668s
+epoch 105: {'train_loss': '1.68230'}; time used = 0.03599262237548828s
+epoch 110: {'train_loss': '1.65055'}; time used = 0.03600358963012695s
+epoch 115: {'train_loss': '1.61266'}; time used = 0.029785871505737305s
+epoch 120: {'train_loss': '1.56052'}; time used = 0.031914472579956055s
+epoch 125: {'train_loss': '1.51403'}; time used = 0.030222654342651367s
+epoch 130: {'train_loss': '1.45020'}; time used = 0.03030252456665039s
+epoch 135: {'train_loss': '1.45118'}; time used = 0.030738115310668945s
+epoch 140: {'train_loss': '1.39024'}; time used = 0.032724857330322266s
+epoch 145: {'train_loss': '1.35809'}; time used = 0.03125166893005371s
+epoch 150: {'train_loss': '1.30934'}; time used = 0.031246423721313477s
+epoch 155: {'train_loss': '1.25567'}; time used = 0.031580448150634766s
+epoch 160: {'train_loss': '1.26745'}; time used = 0.04224896430969238s
+epoch 165: {'train_loss': '1.22457'}; time used = 0.05831718444824219s
+epoch 170: {'train_loss': '1.21756'}; time used = 0.023192882537841797s
+epoch 175: {'train_loss': '1.19527'}; time used = 0.0334017276763916s
+epoch 180: {'train_loss': '1.15948'}; time used = 0.07950115203857422s
+epoch 185: {'train_loss': '1.14435'}; time used = 0.03579092025756836s
+epoch 190: {'train_loss': '1.12457'}; time used = 0.03268003463745117s
+epoch 195: {'train_loss': '1.12447'}; time used = 0.031839847564697266s
+epoch 200: {'train_loss': '1.07499'}; time used = 0.031154155731201172s
+epoch 205: {'train_loss': '1.07661'}; time used = 0.0429232120513916s
+epoch 210: {'train_loss': '1.05243'}; time used = 0.028947114944458008s
+epoch 215: {'train_loss': '1.04939'}; time used = 0.048415422439575195s
+epoch 220: {'train_loss': '1.03459'}; time used = 0.0401453971862793s
+epoch 225: {'train_loss': '1.01406'}; time used = 0.03395342826843262s
+epoch 230: {'train_loss': '0.99199'}; time used = 0.03349161148071289s
+epoch 235: {'train_loss': '0.96915'}; time used = 0.031069278717041016s
+epoch 240: {'train_loss': '0.97889'}; time used = 0.036995649337768555s
+epoch 245: {'train_loss': '0.96716'}; time used = 0.03655648231506348s
+epoch 250: {'train_loss': '0.95587'}; time used = 0.04947257041931152s
+epoch 255: {'train_loss': '0.95206'}; time used = 0.047493934631347656s
+epoch 260: {'train_loss': '0.94656'}; time used = 0.03954029083251953s
+epoch 265: {'train_loss': '0.93548'}; time used = 0.03274178504943848s
+epoch 270: {'train_loss': '0.92191'}; time used = 0.03467154502868652s
+epoch 275: {'train_loss': '0.90968'}; time used = 0.03262639045715332s
+epoch 280: {'train_loss': '0.91380'}; time used = 0.03477191925048828s
+epoch 285: {'train_loss': '0.89643'}; time used = 0.032798051834106445s
+epoch 290: {'train_loss': '0.88537'}; time used = 0.034471988677978516s
+epoch 295: {'train_loss': '0.88439'}; time used = 0.03388047218322754s
+epoch 300: {'train_loss': '0.87911'}; time used = 0.03189420700073242s
+epoch 305: {'train_loss': '0.86676'}; time used = 0.03262209892272949s
+epoch 310: {'train_loss': '0.88377'}; time used = 0.032933712005615234s
+epoch 315: {'train_loss': '0.86430'}; time used = 0.03408932685852051s
+epoch 320: {'train_loss': '0.86498'}; time used = 0.03532123565673828s
+epoch 325: {'train_loss': '0.85016'}; time used = 0.035875797271728516s
+epoch 330: {'train_loss': '0.85553'}; time used = 0.04916977882385254s
+epoch 335: {'train_loss': '0.85236'}; time used = 0.04801487922668457s
+epoch 340: {'train_loss': '0.84670'}; time used = 0.03508257865905762s
+epoch 345: {'train_loss': '0.83768'}; time used = 0.060532569885253906s
+epoch 350: {'train_loss': '0.84242'}; time used = 0.03870201110839844s
+epoch 355: {'train_loss': '0.83050'}; time used = 0.03672027587890625s
+epoch 360: {'train_loss': '0.83889'}; time used = 0.04005146026611328s
+epoch 365: {'train_loss': '0.83520'}; time used = 0.04003620147705078s
+epoch 370: {'train_loss': '0.83175'}; time used = 0.05637359619140625s
+epoch 375: {'train_loss': '0.82545'}; time used = 0.050965309143066406s
+epoch 380: {'train_loss': '0.82621'}; time used = 0.028148651123046875s
+epoch 385: {'train_loss': '0.81479'}; time used = 0.03250694274902344s
+epoch 390: {'train_loss': '0.81873'}; time used = 0.03556537628173828s
+epoch 395: {'train_loss': '0.81776'}; time used = 0.03232884407043457s
+epoch 400: {'train_loss': '0.82251'}; time used = 0.03516411781311035s
+epoch 405: {'train_loss': '0.80866'}; time used = 0.05504965782165527s
+epoch 410: {'train_loss': '0.80826'}; time used = 0.0332341194152832s
+epoch 415: {'train_loss': '0.81148'}; time used = 0.030230283737182617s
+epoch 420: {'train_loss': '0.80382'}; time used = 0.03249549865722656s
+epoch 425: {'train_loss': '0.80196'}; time used = 0.03289031982421875s
+epoch 430: {'train_loss': '0.80207'}; time used = 0.032874107360839844s
+epoch 435: {'train_loss': '0.80483'}; time used = 0.03260302543640137s
+epoch 440: {'train_loss': '0.79657'}; time used = 0.05304265022277832s
+epoch 445: {'train_loss': '0.79618'}; time used = 0.03602719306945801s
+epoch 450: {'train_loss': '0.79441'}; time used = 0.043074846267700195s
+epoch 455: {'train_loss': '0.79331'}; time used = 0.027089357376098633s
+epoch 460: {'train_loss': '0.78889'}; time used = 0.033217430114746094s
+epoch 465: {'train_loss': '0.79413'}; time used = 0.03404521942138672s
+epoch 470: {'train_loss': '0.78652'}; time used = 0.03553509712219238s
+epoch 475: {'train_loss': '0.77837'}; time used = 0.032480478286743164s
+epoch 480: {'train_loss': '0.78842'}; time used = 0.022523164749145508s
+epoch 485: {'train_loss': '0.78811'}; time used = 0.022529125213623047s
+epoch 490: {'train_loss': '0.79070'}; time used = 0.02301335334777832s
+epoch 495: {'train_loss': '0.77740'}; time used = 0.02726459503173828s
+epoch 500: {'train_loss': '0.78961'}; time used = 0.028782129287719727s
+Finished training. Time used = 11.880891799926758.
+Training classifier using 20.00% nodes...
+{'micro': 0.4688509460083064, 'macro': 0.39275850737380974, 'samples': 0.4688509460083064, 'weighted': 0.4401586848934796}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '6.13401'}; time used = 0.043141841888427734s
+epoch 10: {'train_loss': '4.75144'}; time used = 0.032204389572143555s
+epoch 15: {'train_loss': '4.37557'}; time used = 0.02215743064880371s
+epoch 20: {'train_loss': '4.28536'}; time used = 0.016570329666137695s
+epoch 25: {'train_loss': '4.05257'}; time used = 0.019849061965942383s
+epoch 30: {'train_loss': '4.11406'}; time used = 0.01833796501159668s
+epoch 35: {'train_loss': '3.80123'}; time used = 0.02023482322692871s
+epoch 40: {'train_loss': '3.80922'}; time used = 0.021281957626342773s
+epoch 45: {'train_loss': '3.71145'}; time used = 0.022501230239868164s
+epoch 50: {'train_loss': '3.61578'}; time used = 0.017909765243530273s
+epoch 55: {'train_loss': '3.51132'}; time used = 0.014650106430053711s
+epoch 60: {'train_loss': '3.46247'}; time used = 0.01743602752685547s
+epoch 65: {'train_loss': '3.25142'}; time used = 0.0189206600189209s
+epoch 70: {'train_loss': '3.20207'}; time used = 0.021332263946533203s
+epoch 75: {'train_loss': '3.19183'}; time used = 0.017976045608520508s
+epoch 80: {'train_loss': '3.06683'}; time used = 0.017531156539916992s
+epoch 85: {'train_loss': '2.97325'}; time used = 0.01629185676574707s
+epoch 90: {'train_loss': '2.84892'}; time used = 0.01905512809753418s
+epoch 95: {'train_loss': '2.79399'}; time used = 0.01778244972229004s
+epoch 100: {'train_loss': '2.74219'}; time used = 0.016768932342529297s
+epoch 105: {'train_loss': '2.66527'}; time used = 0.01571965217590332s
+epoch 110: {'train_loss': '2.56124'}; time used = 0.01741957664489746s
+epoch 115: {'train_loss': '2.51990'}; time used = 0.017485618591308594s
+epoch 120: {'train_loss': '2.37377'}; time used = 0.017367124557495117s
+epoch 125: {'train_loss': '2.41553'}; time used = 0.02093029022216797s
+epoch 130: {'train_loss': '2.32905'}; time used = 0.01759195327758789s
+epoch 135: {'train_loss': '2.28455'}; time used = 0.01730179786682129s
+epoch 140: {'train_loss': '2.15704'}; time used = 0.01722574234008789s
+epoch 145: {'train_loss': '2.16434'}; time used = 0.018420934677124023s
+epoch 150: {'train_loss': '2.11033'}; time used = 0.019767284393310547s
+epoch 155: {'train_loss': '2.05200'}; time used = 0.023102283477783203s
+epoch 160: {'train_loss': '1.95595'}; time used = 0.023999452590942383s
+epoch 165: {'train_loss': '1.94400'}; time used = 0.0204312801361084s
+epoch 170: {'train_loss': '1.84527'}; time used = 0.022657394409179688s
+epoch 175: {'train_loss': '1.87546'}; time used = 0.016616106033325195s
+epoch 180: {'train_loss': '1.85503'}; time used = 0.020496606826782227s
+epoch 185: {'train_loss': '1.79658'}; time used = 0.023137569427490234s
+epoch 190: {'train_loss': '1.75981'}; time used = 0.020413875579833984s
+epoch 195: {'train_loss': '1.72198'}; time used = 0.018707752227783203s
+epoch 200: {'train_loss': '1.67641'}; time used = 0.01798844337463379s
+epoch 205: {'train_loss': '1.65773'}; time used = 0.01904153823852539s
+epoch 210: {'train_loss': '1.60272'}; time used = 0.017756223678588867s
+epoch 215: {'train_loss': '1.54841'}; time used = 0.016156435012817383s
+epoch 220: {'train_loss': '1.51779'}; time used = 0.01655864715576172s
+epoch 225: {'train_loss': '1.51478'}; time used = 0.017169952392578125s
+epoch 230: {'train_loss': '1.46589'}; time used = 0.016788005828857422s
+epoch 235: {'train_loss': '1.41416'}; time used = 0.013916254043579102s
+epoch 240: {'train_loss': '1.38847'}; time used = 0.01454019546508789s
+epoch 245: {'train_loss': '1.35898'}; time used = 0.014580726623535156s
+epoch 250: {'train_loss': '1.33961'}; time used = 0.020070791244506836s
+epoch 255: {'train_loss': '1.33203'}; time used = 0.019088029861450195s
+epoch 260: {'train_loss': '1.32367'}; time used = 0.01870584487915039s
+epoch 265: {'train_loss': '1.27939'}; time used = 0.020016908645629883s
+epoch 270: {'train_loss': '1.25570'}; time used = 0.01959228515625s
+epoch 275: {'train_loss': '1.24544'}; time used = 0.01825857162475586s
+epoch 280: {'train_loss': '1.20882'}; time used = 0.01669025421142578s
+epoch 285: {'train_loss': '1.19765'}; time used = 0.017623424530029297s
+epoch 290: {'train_loss': '1.16624'}; time used = 0.01886582374572754s
+epoch 295: {'train_loss': '1.15813'}; time used = 0.020360231399536133s
+epoch 300: {'train_loss': '1.17738'}; time used = 0.018062353134155273s
+epoch 305: {'train_loss': '1.13671'}; time used = 0.01860666275024414s
+epoch 310: {'train_loss': '1.11340'}; time used = 0.018434762954711914s
+epoch 315: {'train_loss': '1.10903'}; time used = 0.020132780075073242s
+epoch 320: {'train_loss': '1.11843'}; time used = 0.01922154426574707s
+epoch 325: {'train_loss': '1.07703'}; time used = 0.01898026466369629s
+epoch 330: {'train_loss': '1.05909'}; time used = 0.01819157600402832s
+epoch 335: {'train_loss': '1.04421'}; time used = 0.017220497131347656s
+epoch 340: {'train_loss': '1.02421'}; time used = 0.021461963653564453s
+epoch 345: {'train_loss': '1.02982'}; time used = 0.022907257080078125s
+epoch 350: {'train_loss': '1.01639'}; time used = 0.020941495895385742s
+epoch 355: {'train_loss': '1.01235'}; time used = 0.02129077911376953s
+epoch 360: {'train_loss': '0.98592'}; time used = 0.021697998046875s
+epoch 365: {'train_loss': '0.98296'}; time used = 0.03001689910888672s
+epoch 370: {'train_loss': '0.98585'}; time used = 0.019927263259887695s
+epoch 375: {'train_loss': '0.97432'}; time used = 0.028432130813598633s
+epoch 380: {'train_loss': '0.97051'}; time used = 0.018243789672851562s
+epoch 385: {'train_loss': '0.94834'}; time used = 0.021078824996948242s
+epoch 390: {'train_loss': '0.92053'}; time used = 0.018209218978881836s
+epoch 395: {'train_loss': '0.94399'}; time used = 0.02428603172302246s
+epoch 400: {'train_loss': '0.92661'}; time used = 0.024357080459594727s
+epoch 405: {'train_loss': '0.92730'}; time used = 0.01677846908569336s
+epoch 410: {'train_loss': '0.92834'}; time used = 0.020552635192871094s
+epoch 415: {'train_loss': '0.91535'}; time used = 0.0186614990234375s
+epoch 420: {'train_loss': '0.89828'}; time used = 0.023656606674194336s
+epoch 425: {'train_loss': '0.90341'}; time used = 0.022215604782104492s
+epoch 430: {'train_loss': '0.90626'}; time used = 0.021098852157592773s
+epoch 435: {'train_loss': '0.89381'}; time used = 0.02462005615234375s
+epoch 440: {'train_loss': '0.89209'}; time used = 0.030280113220214844s
+epoch 445: {'train_loss': '0.88021'}; time used = 0.020966768264770508s
+epoch 450: {'train_loss': '0.87990'}; time used = 0.020876169204711914s
+epoch 455: {'train_loss': '0.87735'}; time used = 0.026238441467285156s
+epoch 460: {'train_loss': '0.86617'}; time used = 0.03007984161376953s
+epoch 465: {'train_loss': '0.86126'}; time used = 0.024970531463623047s
+epoch 470: {'train_loss': '0.86775'}; time used = 0.021368026733398438s
+epoch 475: {'train_loss': '0.86857'}; time used = 0.0277862548828125s
+epoch 480: {'train_loss': '0.84945'}; time used = 0.03938651084899902s
+epoch 485: {'train_loss': '0.84008'}; time used = 0.02036285400390625s
+epoch 490: {'train_loss': '0.84112'}; time used = 0.020673274993896484s
+epoch 495: {'train_loss': '0.83896'}; time used = 0.02686619758605957s
+epoch 500: {'train_loss': '0.83762'}; time used = 0.024037837982177734s
+Finished training. Time used = 12.166943073272705.
+Training classifier using 20.00% nodes...
+{'micro': 0.33917858790955235, 'macro': 0.18646871817943045, 'samples': 0.33917858790955235, 'weighted': 0.2610750443902996}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '9.07771'}; time used = 0.1204371452331543s
+epoch 10: {'train_loss': '8.91026'}; time used = 0.03400897979736328s
+epoch 15: {'train_loss': '8.66036'}; time used = 0.047194719314575195s
+epoch 20: {'train_loss': '8.47715'}; time used = 0.01786351203918457s
+epoch 25: {'train_loss': '8.14167'}; time used = 0.029290199279785156s
+epoch 30: {'train_loss': '8.08455'}; time used = 0.03638315200805664s
+epoch 35: {'train_loss': '7.63938'}; time used = 0.03616189956665039s
+epoch 40: {'train_loss': '7.56729'}; time used = 0.021725177764892578s
+epoch 45: {'train_loss': '7.36555'}; time used = 0.03154253959655762s
+epoch 50: {'train_loss': '7.23110'}; time used = 0.0276491641998291s
+epoch 55: {'train_loss': '7.02707'}; time used = 0.02592921257019043s
+epoch 60: {'train_loss': '6.96041'}; time used = 0.027072906494140625s
+epoch 65: {'train_loss': '6.60791'}; time used = 0.02241230010986328s
+epoch 70: {'train_loss': '6.54080'}; time used = 0.0576627254486084s
+epoch 75: {'train_loss': '6.46594'}; time used = 0.01833963394165039s
+epoch 80: {'train_loss': '6.25716'}; time used = 0.019121170043945312s
+epoch 85: {'train_loss': '6.10619'}; time used = 0.025600194931030273s
+epoch 90: {'train_loss': '5.92747'}; time used = 0.026623964309692383s
+epoch 95: {'train_loss': '5.85007'}; time used = 0.06480240821838379s
+epoch 100: {'train_loss': '5.75466'}; time used = 0.025847196578979492s
+epoch 105: {'train_loss': '5.73051'}; time used = 0.026800870895385742s
+epoch 110: {'train_loss': '5.55603'}; time used = 0.02711796760559082s
+epoch 115: {'train_loss': '5.48094'}; time used = 0.031495094299316406s
+epoch 120: {'train_loss': '5.25093'}; time used = 0.029849767684936523s
+epoch 125: {'train_loss': '5.35404'}; time used = 0.027669906616210938s
+epoch 130: {'train_loss': '5.30473'}; time used = 0.02578115463256836s
+epoch 135: {'train_loss': '5.19931'}; time used = 0.025908231735229492s
+epoch 140: {'train_loss': '5.06883'}; time used = 0.028636455535888672s
+epoch 145: {'train_loss': '5.10757'}; time used = 0.025234699249267578s
+epoch 150: {'train_loss': '4.99916'}; time used = 0.032738685607910156s
+epoch 155: {'train_loss': '4.97713'}; time used = 0.02601003646850586s
+epoch 160: {'train_loss': '4.82440'}; time used = 0.0175626277923584s
+epoch 165: {'train_loss': '4.81271'}; time used = 0.01711559295654297s
+epoch 170: {'train_loss': '4.69926'}; time used = 0.01734185218811035s
+epoch 175: {'train_loss': '4.78975'}; time used = 0.018257617950439453s
+epoch 180: {'train_loss': '4.82655'}; time used = 0.01764702796936035s
+epoch 185: {'train_loss': '4.75699'}; time used = 0.01700139045715332s
+epoch 190: {'train_loss': '4.67721'}; time used = 0.022336244583129883s
+epoch 195: {'train_loss': '4.69595'}; time used = 0.019017696380615234s
+epoch 200: {'train_loss': '4.65846'}; time used = 0.017207860946655273s
+epoch 205: {'train_loss': '4.68167'}; time used = 0.029040813446044922s
+epoch 210: {'train_loss': '4.61531'}; time used = 0.016957998275756836s
+epoch 215: {'train_loss': '4.53882'}; time used = 0.017663240432739258s
+epoch 220: {'train_loss': '4.46486'}; time used = 0.021333694458007812s
+epoch 225: {'train_loss': '4.56498'}; time used = 0.018298625946044922s
+epoch 230: {'train_loss': '4.43442'}; time used = 0.018085002899169922s
+epoch 235: {'train_loss': '4.44594'}; time used = 0.024279356002807617s
+epoch 240: {'train_loss': '4.40948'}; time used = 0.02507781982421875s
+epoch 245: {'train_loss': '4.40591'}; time used = 0.018251419067382812s
+epoch 250: {'train_loss': '4.32495'}; time used = 0.018456220626831055s
+epoch 255: {'train_loss': '4.45804'}; time used = 0.017285585403442383s
+epoch 260: {'train_loss': '4.47999'}; time used = 0.02037525177001953s
+epoch 265: {'train_loss': '4.38361'}; time used = 0.02690863609313965s
+epoch 270: {'train_loss': '4.42655'}; time used = 0.02576136589050293s
+epoch 275: {'train_loss': '4.41238'}; time used = 0.01908564567565918s
+epoch 280: {'train_loss': '4.31254'}; time used = 0.022943973541259766s
+epoch 285: {'train_loss': '4.35187'}; time used = 0.027744293212890625s
+epoch 290: {'train_loss': '4.40269'}; time used = 0.033376216888427734s
+epoch 295: {'train_loss': '4.23965'}; time used = 0.02200460433959961s
+epoch 300: {'train_loss': '4.45334'}; time used = 0.01708197593688965s
+epoch 305: {'train_loss': '4.34626'}; time used = 0.017163515090942383s
+epoch 310: {'train_loss': '4.31199'}; time used = 0.0191042423248291s
+epoch 315: {'train_loss': '4.39281'}; time used = 0.016196012496948242s
+epoch 320: {'train_loss': '4.31072'}; time used = 0.016957521438598633s
+epoch 325: {'train_loss': '4.35840'}; time used = 0.02042078971862793s
+epoch 330: {'train_loss': '4.27292'}; time used = 0.01862502098083496s
+epoch 335: {'train_loss': '4.25673'}; time used = 0.016632080078125s
+epoch 340: {'train_loss': '4.21488'}; time used = 0.018038272857666016s
+epoch 345: {'train_loss': '4.25240'}; time used = 0.037781715393066406s
+epoch 350: {'train_loss': '4.22692'}; time used = 0.0357820987701416s
+epoch 355: {'train_loss': '4.20596'}; time used = 0.04564809799194336s
+epoch 360: {'train_loss': '4.15478'}; time used = 0.02989649772644043s
+epoch 365: {'train_loss': '4.12292'}; time used = 0.035086631774902344s
+epoch 370: {'train_loss': '4.25776'}; time used = 0.025950193405151367s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 23.039289236068726.
+Training classifier using 20.00% nodes...
+{'micro': 0.28980156898938625, 'macro': 0.06756519432186321, 'samples': 0.28980156898938625, 'weighted': 0.1366288806205754}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '7.92557'}; time used = 0.0375666618347168s
+epoch 10: {'train_loss': '6.42783'}; time used = 0.028974056243896484s
+epoch 15: {'train_loss': '6.29153'}; time used = 0.03418421745300293s
+epoch 20: {'train_loss': '6.01615'}; time used = 0.03990364074707031s
+epoch 25: {'train_loss': '5.99693'}; time used = 0.02155303955078125s
+epoch 30: {'train_loss': '5.88872'}; time used = 0.022260427474975586s
+epoch 35: {'train_loss': '5.67134'}; time used = 0.021495819091796875s
+epoch 40: {'train_loss': '5.72792'}; time used = 0.04101848602294922s
+epoch 45: {'train_loss': '5.31443'}; time used = 0.02291727066040039s
+epoch 50: {'train_loss': '5.23439'}; time used = 0.029131174087524414s
+epoch 55: {'train_loss': '5.37842'}; time used = 0.03800225257873535s
+epoch 60: {'train_loss': '5.02775'}; time used = 0.0586552619934082s
+epoch 65: {'train_loss': '4.93214'}; time used = 0.029349803924560547s
+epoch 70: {'train_loss': '5.11318'}; time used = 0.044432640075683594s
+epoch 75: {'train_loss': '4.75716'}; time used = 0.030560016632080078s
+epoch 80: {'train_loss': '4.91290'}; time used = 0.028973102569580078s
+epoch 85: {'train_loss': '4.57063'}; time used = 0.03095698356628418s
+epoch 90: {'train_loss': '4.46576'}; time used = 0.031151294708251953s
+epoch 95: {'train_loss': '4.47804'}; time used = 0.03172421455383301s
+epoch 100: {'train_loss': '4.38248'}; time used = 0.026063919067382812s
+epoch 105: {'train_loss': '4.21329'}; time used = 0.03827214241027832s
+epoch 110: {'train_loss': '4.17841'}; time used = 0.02009749412536621s
+epoch 115: {'train_loss': '4.06738'}; time used = 0.022546768188476562s
+epoch 120: {'train_loss': '4.09585'}; time used = 0.025707721710205078s
+epoch 125: {'train_loss': '3.91134'}; time used = 0.0204160213470459s
+epoch 130: {'train_loss': '4.01153'}; time used = 0.019884109497070312s
+epoch 135: {'train_loss': '3.71261'}; time used = 0.021433353424072266s
+epoch 140: {'train_loss': '3.74077'}; time used = 0.03837466239929199s
+epoch 145: {'train_loss': '3.69124'}; time used = 0.029514312744140625s
+epoch 150: {'train_loss': '3.59575'}; time used = 0.030843734741210938s
+epoch 155: {'train_loss': '3.43336'}; time used = 0.03256535530090332s
+epoch 160: {'train_loss': '3.33293'}; time used = 0.03873848915100098s
+epoch 165: {'train_loss': '3.37216'}; time used = 0.02342820167541504s
+epoch 170: {'train_loss': '3.19923'}; time used = 0.03075432777404785s
+epoch 175: {'train_loss': '3.27688'}; time used = 0.018152475357055664s
+epoch 180: {'train_loss': '3.19802'}; time used = 0.02019047737121582s
+epoch 185: {'train_loss': '3.12592'}; time used = 0.020279645919799805s
+epoch 190: {'train_loss': '3.07516'}; time used = 0.02338409423828125s
+epoch 195: {'train_loss': '2.95585'}; time used = 0.02691960334777832s
+epoch 200: {'train_loss': '2.92331'}; time used = 0.02996206283569336s
+epoch 205: {'train_loss': '2.86077'}; time used = 0.026157379150390625s
+epoch 210: {'train_loss': '2.90571'}; time used = 0.02661871910095215s
+epoch 215: {'train_loss': '2.76366'}; time used = 0.028380632400512695s
+epoch 220: {'train_loss': '2.65427'}; time used = 0.025247573852539062s
+epoch 225: {'train_loss': '2.60378'}; time used = 0.034813642501831055s
+epoch 230: {'train_loss': '2.67606'}; time used = 0.028333663940429688s
+epoch 235: {'train_loss': '2.56727'}; time used = 0.0210723876953125s
+epoch 240: {'train_loss': '2.50120'}; time used = 0.021454334259033203s
+epoch 245: {'train_loss': '2.48141'}; time used = 0.021063804626464844s
+epoch 250: {'train_loss': '2.44216'}; time used = 0.0216524600982666s
+epoch 255: {'train_loss': '2.31811'}; time used = 0.018192529678344727s
+epoch 260: {'train_loss': '2.36013'}; time used = 0.019942283630371094s
+epoch 265: {'train_loss': '2.26140'}; time used = 0.020109891891479492s
+epoch 270: {'train_loss': '2.24037'}; time used = 0.022714853286743164s
+epoch 275: {'train_loss': '2.24386'}; time used = 0.01822638511657715s
+epoch 280: {'train_loss': '2.20187'}; time used = 0.01905369758605957s
+epoch 285: {'train_loss': '2.09529'}; time used = 0.029719114303588867s
+epoch 290: {'train_loss': '2.09707'}; time used = 0.019380807876586914s
+epoch 295: {'train_loss': '2.06199'}; time used = 0.0169832706451416s
+epoch 300: {'train_loss': '2.01111'}; time used = 0.021457433700561523s
+epoch 305: {'train_loss': '1.99250'}; time used = 0.019451618194580078s
+epoch 310: {'train_loss': '1.98989'}; time used = 0.02170586585998535s
+epoch 315: {'train_loss': '1.90807'}; time used = 0.021399259567260742s
+epoch 320: {'train_loss': '1.86564'}; time used = 0.026755094528198242s
+epoch 325: {'train_loss': '1.82191'}; time used = 0.024011850357055664s
+epoch 330: {'train_loss': '1.79836'}; time used = 0.025516271591186523s
+epoch 335: {'train_loss': '1.80908'}; time used = 0.0215914249420166s
+epoch 340: {'train_loss': '1.72521'}; time used = 0.02404022216796875s
+epoch 345: {'train_loss': '1.72707'}; time used = 0.022329330444335938s
+epoch 350: {'train_loss': '1.69699'}; time used = 0.027443885803222656s
+epoch 355: {'train_loss': '1.67281'}; time used = 0.028758764266967773s
+epoch 360: {'train_loss': '1.60582'}; time used = 0.025072336196899414s
+epoch 365: {'train_loss': '1.64764'}; time used = 0.03612065315246582s
+epoch 370: {'train_loss': '1.62135'}; time used = 0.04363751411437988s
+epoch 375: {'train_loss': '1.63632'}; time used = 0.02947402000427246s
+epoch 380: {'train_loss': '1.52935'}; time used = 0.03876328468322754s
+epoch 385: {'train_loss': '1.54169'}; time used = 0.034787654876708984s
+epoch 390: {'train_loss': '1.51100'}; time used = 0.026613235473632812s
+epoch 395: {'train_loss': '1.51237'}; time used = 0.029102802276611328s
+epoch 400: {'train_loss': '1.44511'}; time used = 0.026292085647583008s
+epoch 405: {'train_loss': '1.47883'}; time used = 0.022910356521606445s
+epoch 410: {'train_loss': '1.43677'}; time used = 0.031070232391357422s
+epoch 415: {'train_loss': '1.42420'}; time used = 0.027284860610961914s
+epoch 420: {'train_loss': '1.39677'}; time used = 0.02759408950805664s
+epoch 425: {'train_loss': '1.34486'}; time used = 0.030952930450439453s
+epoch 430: {'train_loss': '1.36482'}; time used = 0.03349161148071289s
+epoch 435: {'train_loss': '1.33347'}; time used = 0.022245407104492188s
+epoch 440: {'train_loss': '1.31407'}; time used = 0.03243827819824219s
+epoch 445: {'train_loss': '1.31605'}; time used = 0.03623366355895996s
+epoch 450: {'train_loss': '1.27439'}; time used = 0.04075741767883301s
+epoch 455: {'train_loss': '1.26080'}; time used = 0.028284788131713867s
+epoch 460: {'train_loss': '1.24626'}; time used = 0.028171062469482422s
+epoch 465: {'train_loss': '1.20551'}; time used = 0.028809070587158203s
+epoch 470: {'train_loss': '1.20555'}; time used = 0.02614593505859375s
+epoch 475: {'train_loss': '1.24914'}; time used = 0.02639627456665039s
+epoch 480: {'train_loss': '1.19363'}; time used = 0.025245189666748047s
+epoch 485: {'train_loss': '1.17502'}; time used = 0.02185988426208496s
+epoch 490: {'train_loss': '1.17001'}; time used = 0.02115917205810547s
+epoch 495: {'train_loss': '1.17958'}; time used = 0.024595260620117188s
+epoch 500: {'train_loss': '1.14006'}; time used = 0.020565271377563477s
+Finished training. Time used = 11.955114126205444.
+Training classifier using 20.00% nodes...
+{'micro': 0.29487771112136596, 'macro': 0.06506465736686692, 'samples': 0.29487771112136596, 'weighted': 0.13430282067466348}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '7.04271'}; time used = 0.09363389015197754s
+epoch 10: {'train_loss': '6.29107'}; time used = 0.03586387634277344s
+epoch 15: {'train_loss': '6.16454'}; time used = 0.031187772750854492s
+epoch 20: {'train_loss': '5.84661'}; time used = 0.030148029327392578s
+epoch 25: {'train_loss': '5.78239'}; time used = 0.026436328887939453s
+epoch 30: {'train_loss': '5.64356'}; time used = 0.028017520904541016s
+epoch 35: {'train_loss': '5.39794'}; time used = 0.02986764907836914s
+epoch 40: {'train_loss': '5.39329'}; time used = 0.02916717529296875s
+epoch 45: {'train_loss': '4.94573'}; time used = 0.02832961082458496s
+epoch 50: {'train_loss': '4.85837'}; time used = 0.03846001625061035s
+epoch 55: {'train_loss': '4.92809'}; time used = 0.029959678649902344s
+epoch 60: {'train_loss': '4.56532'}; time used = 0.026728153228759766s
+epoch 65: {'train_loss': '4.44824'}; time used = 0.0337371826171875s
+epoch 70: {'train_loss': '4.56917'}; time used = 0.026766061782836914s
+epoch 75: {'train_loss': '4.22236'}; time used = 0.02902531623840332s
+epoch 80: {'train_loss': '4.34831'}; time used = 0.02923870086669922s
+epoch 85: {'train_loss': '4.01849'}; time used = 0.03398776054382324s
+epoch 90: {'train_loss': '3.85517'}; time used = 0.028355836868286133s
+epoch 95: {'train_loss': '3.84936'}; time used = 0.020548343658447266s
+epoch 100: {'train_loss': '3.74830'}; time used = 0.018752098083496094s
+epoch 105: {'train_loss': '3.56054'}; time used = 0.018402099609375s
+epoch 110: {'train_loss': '3.49734'}; time used = 0.018837690353393555s
+epoch 115: {'train_loss': '3.38562'}; time used = 0.018532752990722656s
+epoch 120: {'train_loss': '3.37323'}; time used = 0.018883943557739258s
+epoch 125: {'train_loss': '3.21314'}; time used = 0.01875615119934082s
+epoch 130: {'train_loss': '3.26699'}; time used = 0.02637195587158203s
+epoch 135: {'train_loss': '2.99079'}; time used = 0.02986884117126465s
+epoch 140: {'train_loss': '2.99531'}; time used = 0.03106069564819336s
+epoch 145: {'train_loss': '2.95445'}; time used = 0.032071828842163086s
+epoch 150: {'train_loss': '2.84636'}; time used = 0.03951454162597656s
+epoch 155: {'train_loss': '2.68709'}; time used = 0.03272294998168945s
+epoch 160: {'train_loss': '2.61053'}; time used = 0.038294076919555664s
+epoch 165: {'train_loss': '2.62779'}; time used = 0.0418400764465332s
+epoch 170: {'train_loss': '2.45499'}; time used = 0.029985427856445312s
+epoch 175: {'train_loss': '2.49763'}; time used = 0.031228065490722656s
+epoch 180: {'train_loss': '2.42936'}; time used = 0.031591176986694336s
+epoch 185: {'train_loss': '2.37482'}; time used = 0.030501604080200195s
+epoch 190: {'train_loss': '2.29242'}; time used = 0.030432462692260742s
+epoch 195: {'train_loss': '2.20591'}; time used = 0.031245708465576172s
+epoch 200: {'train_loss': '2.16769'}; time used = 0.043181419372558594s
+epoch 205: {'train_loss': '2.11341'}; time used = 0.03090524673461914s
+epoch 210: {'train_loss': '2.12785'}; time used = 0.027917861938476562s
+epoch 215: {'train_loss': '2.01752'}; time used = 0.02884984016418457s
+epoch 220: {'train_loss': '1.93599'}; time used = 0.021123409271240234s
+epoch 225: {'train_loss': '1.87987'}; time used = 0.023172855377197266s
+epoch 230: {'train_loss': '1.91476'}; time used = 0.03924393653869629s
+epoch 235: {'train_loss': '1.82868'}; time used = 0.040384769439697266s
+epoch 240: {'train_loss': '1.78467'}; time used = 0.04807782173156738s
+epoch 245: {'train_loss': '1.75993'}; time used = 0.021518707275390625s
+epoch 250: {'train_loss': '1.71136'}; time used = 0.037955522537231445s
+epoch 255: {'train_loss': '1.65151'}; time used = 0.017901897430419922s
+epoch 260: {'train_loss': '1.66141'}; time used = 0.02505970001220703s
+epoch 265: {'train_loss': '1.57256'}; time used = 0.03746604919433594s
+epoch 270: {'train_loss': '1.56716'}; time used = 0.028597354888916016s
+epoch 275: {'train_loss': '1.55948'}; time used = 0.030898332595825195s
+epoch 280: {'train_loss': '1.51814'}; time used = 0.025113344192504883s
+epoch 285: {'train_loss': '1.46300'}; time used = 0.039856672286987305s
+epoch 290: {'train_loss': '1.46005'}; time used = 0.02268385887145996s
+epoch 295: {'train_loss': '1.43300'}; time used = 0.02737903594970703s
+epoch 300: {'train_loss': '1.39093'}; time used = 0.0197906494140625s
+epoch 305: {'train_loss': '1.37250'}; time used = 0.028003454208374023s
+epoch 310: {'train_loss': '1.37756'}; time used = 0.041147708892822266s
+epoch 315: {'train_loss': '1.32151'}; time used = 0.024837017059326172s
+epoch 320: {'train_loss': '1.30594'}; time used = 0.019704103469848633s
+epoch 325: {'train_loss': '1.26039'}; time used = 0.026302099227905273s
+epoch 330: {'train_loss': '1.25911'}; time used = 0.019884586334228516s
+epoch 335: {'train_loss': '1.24624'}; time used = 0.01928114891052246s
+epoch 340: {'train_loss': '1.19590'}; time used = 0.026840686798095703s
+epoch 345: {'train_loss': '1.20479'}; time used = 0.019746780395507812s
+epoch 350: {'train_loss': '1.18885'}; time used = 0.03835940361022949s
+epoch 355: {'train_loss': '1.16231'}; time used = 0.03334188461303711s
+epoch 360: {'train_loss': '1.12674'}; time used = 0.022183895111083984s
+epoch 365: {'train_loss': '1.14681'}; time used = 0.02198004722595215s
+epoch 370: {'train_loss': '1.13728'}; time used = 0.021370887756347656s
+epoch 375: {'train_loss': '1.14230'}; time used = 0.02199697494506836s
+epoch 380: {'train_loss': '1.07917'}; time used = 0.023611068725585938s
+epoch 385: {'train_loss': '1.09278'}; time used = 0.04342079162597656s
+epoch 390: {'train_loss': '1.08203'}; time used = 0.02272343635559082s
+epoch 395: {'train_loss': '1.07134'}; time used = 0.02547764778137207s
+epoch 400: {'train_loss': '1.04358'}; time used = 0.026269912719726562s
+epoch 405: {'train_loss': '1.05274'}; time used = 0.027907609939575195s
+epoch 410: {'train_loss': '1.02576'}; time used = 0.030388355255126953s
+epoch 415: {'train_loss': '1.02975'}; time used = 0.029001235961914062s
+epoch 420: {'train_loss': '1.01194'}; time used = 0.02338719367980957s
+epoch 425: {'train_loss': '0.98212'}; time used = 0.02707695960998535s
+epoch 430: {'train_loss': '0.99086'}; time used = 0.027568340301513672s
+epoch 435: {'train_loss': '0.97955'}; time used = 0.02442479133605957s
+epoch 440: {'train_loss': '0.96322'}; time used = 0.036042213439941406s
+epoch 445: {'train_loss': '0.96395'}; time used = 0.022241830825805664s
+epoch 450: {'train_loss': '0.95173'}; time used = 0.020430326461791992s
+epoch 455: {'train_loss': '0.94221'}; time used = 0.021859407424926758s
+epoch 460: {'train_loss': '0.93352'}; time used = 0.020630359649658203s
+epoch 465: {'train_loss': '0.91739'}; time used = 0.01943063735961914s
+epoch 470: {'train_loss': '0.91606'}; time used = 0.028203725814819336s
+epoch 475: {'train_loss': '0.95108'}; time used = 0.057869911193847656s
+epoch 480: {'train_loss': '0.91167'}; time used = 0.019469022750854492s
+epoch 485: {'train_loss': '0.89638'}; time used = 0.020420551300048828s
+epoch 490: {'train_loss': '0.90369'}; time used = 0.026124238967895508s
+epoch 495: {'train_loss': '0.90536'}; time used = 0.02274298667907715s
+epoch 500: {'train_loss': '0.89142'}; time used = 0.08467459678649902s
+Finished training. Time used = 24.21297836303711.
+Training classifier using 20.00% nodes...
+{'micro': 0.33317951084448544, 'macro': 0.12948526380777411, 'samples': 0.33317951084448544, 'weighted': 0.20620844263766175}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+epoch 5: {'train_loss': '7.92557'}; time used = 0.14608979225158691s
+epoch 10: {'train_loss': '6.42783'}; time used = 0.08624482154846191s
+epoch 15: {'train_loss': '6.29153'}; time used = 0.025326013565063477s
+epoch 20: {'train_loss': '6.01615'}; time used = 0.032639265060424805s
+epoch 25: {'train_loss': '5.99693'}; time used = 0.02816605567932129s
+epoch 30: {'train_loss': '5.88872'}; time used = 0.018544912338256836s
+epoch 35: {'train_loss': '5.67134'}; time used = 0.0320894718170166s
+epoch 40: {'train_loss': '5.72792'}; time used = 0.018493175506591797s
+epoch 45: {'train_loss': '5.31443'}; time used = 0.01945805549621582s
+epoch 50: {'train_loss': '5.23439'}; time used = 0.01958775520324707s
+epoch 55: {'train_loss': '5.37842'}; time used = 0.030886411666870117s
+epoch 60: {'train_loss': '5.02775'}; time used = 0.09147000312805176s
+epoch 65: {'train_loss': '4.93214'}; time used = 0.08839726448059082s
+epoch 70: {'train_loss': '5.11318'}; time used = 0.030458688735961914s
+epoch 75: {'train_loss': '4.75716'}; time used = 0.060147762298583984s
+epoch 80: {'train_loss': '4.91290'}; time used = 0.1267690658569336s
+epoch 85: {'train_loss': '4.57063'}; time used = 0.1173253059387207s
+epoch 90: {'train_loss': '4.46576'}; time used = 0.02834010124206543s
+epoch 95: {'train_loss': '4.47804'}; time used = 0.04558062553405762s
+epoch 100: {'train_loss': '4.38248'}; time used = 0.053076982498168945s
+epoch 105: {'train_loss': '4.21329'}; time used = 0.021107196807861328s
+epoch 110: {'train_loss': '4.17841'}; time used = 0.06027984619140625s
+epoch 115: {'train_loss': '4.06738'}; time used = 0.053922414779663086s
+epoch 120: {'train_loss': '4.09585'}; time used = 0.0733485221862793s
+epoch 125: {'train_loss': '3.91134'}; time used = 0.016645431518554688s
+epoch 130: {'train_loss': '4.01153'}; time used = 0.0346982479095459s
+epoch 135: {'train_loss': '3.71261'}; time used = 0.056172847747802734s
+epoch 140: {'train_loss': '3.74077'}; time used = 0.055265188217163086s
+epoch 145: {'train_loss': '3.69124'}; time used = 0.023047208786010742s
+epoch 150: {'train_loss': '3.59575'}; time used = 0.03156900405883789s
+epoch 155: {'train_loss': '3.43336'}; time used = 0.037626028060913086s
+epoch 160: {'train_loss': '3.33293'}; time used = 0.06335067749023438s
+epoch 165: {'train_loss': '3.37216'}; time used = 0.057021379470825195s
+epoch 170: {'train_loss': '3.19923'}; time used = 0.0210573673248291s
+epoch 175: {'train_loss': '3.27688'}; time used = 0.045269012451171875s
+epoch 180: {'train_loss': '3.19802'}; time used = 0.0364537239074707s
+epoch 185: {'train_loss': '3.12592'}; time used = 0.0616304874420166s
+epoch 190: {'train_loss': '3.07516'}; time used = 0.03396964073181152s
+epoch 195: {'train_loss': '2.95585'}; time used = 0.02390289306640625s
+epoch 200: {'train_loss': '2.92331'}; time used = 0.0313720703125s
+epoch 205: {'train_loss': '2.86077'}; time used = 0.045693397521972656s
+epoch 210: {'train_loss': '2.90571'}; time used = 0.038301944732666016s
+epoch 215: {'train_loss': '2.76366'}; time used = 0.0486302375793457s
+epoch 220: {'train_loss': '2.65427'}; time used = 0.03529524803161621s
+epoch 225: {'train_loss': '2.60378'}; time used = 0.036273956298828125s
+epoch 230: {'train_loss': '2.67606'}; time used = 0.04469633102416992s
+epoch 235: {'train_loss': '2.56727'}; time used = 0.03919482231140137s
+epoch 240: {'train_loss': '2.50120'}; time used = 0.05753135681152344s
+epoch 245: {'train_loss': '2.48141'}; time used = 0.07040071487426758s
+epoch 250: {'train_loss': '2.44216'}; time used = 0.05201888084411621s
+epoch 255: {'train_loss': '2.31811'}; time used = 0.04043126106262207s
+epoch 260: {'train_loss': '2.36013'}; time used = 0.03676724433898926s
+epoch 265: {'train_loss': '2.26140'}; time used = 0.03227734565734863s
+epoch 270: {'train_loss': '2.24037'}; time used = 0.02994847297668457s
+epoch 275: {'train_loss': '2.24386'}; time used = 0.031247377395629883s
+epoch 280: {'train_loss': '2.20187'}; time used = 0.01782679557800293s
+epoch 285: {'train_loss': '2.09529'}; time used = 0.055236101150512695s
+epoch 290: {'train_loss': '2.09707'}; time used = 0.017549753189086914s
+epoch 295: {'train_loss': '2.06199'}; time used = 0.0397028923034668s
+epoch 300: {'train_loss': '2.01111'}; time used = 0.04156899452209473s
+epoch 305: {'train_loss': '1.99250'}; time used = 0.029850244522094727s
+epoch 310: {'train_loss': '1.98989'}; time used = 0.03545641899108887s
+epoch 315: {'train_loss': '1.90807'}; time used = 0.07987761497497559s
+epoch 320: {'train_loss': '1.86564'}; time used = 0.034423828125s
+epoch 325: {'train_loss': '1.82191'}; time used = 0.11673545837402344s
+epoch 330: {'train_loss': '1.79836'}; time used = 0.07095980644226074s
+epoch 335: {'train_loss': '1.80908'}; time used = 0.04909920692443848s
+epoch 340: {'train_loss': '1.72521'}; time used = 0.04007840156555176s
+epoch 345: {'train_loss': '1.72707'}; time used = 0.03057551383972168s
+epoch 350: {'train_loss': '1.69699'}; time used = 0.027356624603271484s
+epoch 355: {'train_loss': '1.67281'}; time used = 0.049488067626953125s
+epoch 360: {'train_loss': '1.60582'}; time used = 0.04087328910827637s
+epoch 365: {'train_loss': '1.64764'}; time used = 0.04567909240722656s
+epoch 370: {'train_loss': '1.62135'}; time used = 0.05317330360412598s
+epoch 375: {'train_loss': '1.63632'}; time used = 0.05795931816101074s
+epoch 380: {'train_loss': '1.52935'}; time used = 0.048380374908447266s
+epoch 385: {'train_loss': '1.54169'}; time used = 0.039315223693847656s
+epoch 390: {'train_loss': '1.51100'}; time used = 0.024933338165283203s
+epoch 395: {'train_loss': '1.51237'}; time used = 0.021573305130004883s
+epoch 400: {'train_loss': '1.44511'}; time used = 0.023128747940063477s
+epoch 405: {'train_loss': '1.47883'}; time used = 0.020821332931518555s
+epoch 410: {'train_loss': '1.43677'}; time used = 0.01946711540222168s
+epoch 415: {'train_loss': '1.42420'}; time used = 0.06200122833251953s
+epoch 420: {'train_loss': '1.39677'}; time used = 0.03884124755859375s
+epoch 425: {'train_loss': '1.34486'}; time used = 0.04031014442443848s
+epoch 430: {'train_loss': '1.36482'}; time used = 0.03573203086853027s
+epoch 435: {'train_loss': '1.33347'}; time used = 0.0327608585357666s
+epoch 440: {'train_loss': '1.31407'}; time used = 0.027752161026000977s
+epoch 445: {'train_loss': '1.31605'}; time used = 0.027678489685058594s
+epoch 450: {'train_loss': '1.27439'}; time used = 0.04883575439453125s
+epoch 455: {'train_loss': '1.26080'}; time used = 0.031456947326660156s
+epoch 460: {'train_loss': '1.24626'}; time used = 0.030731678009033203s
+epoch 465: {'train_loss': '1.20551'}; time used = 0.031125307083129883s
+epoch 470: {'train_loss': '1.20555'}; time used = 0.030173301696777344s
+epoch 475: {'train_loss': '1.24914'}; time used = 0.030388355255126953s
+epoch 480: {'train_loss': '1.19363'}; time used = 0.022357702255249023s
+epoch 485: {'train_loss': '1.17502'}; time used = 0.01862049102783203s
+epoch 490: {'train_loss': '1.17001'}; time used = 0.02093362808227539s
+epoch 495: {'train_loss': '1.17958'}; time used = 0.018109798431396484s
+epoch 500: {'train_loss': '1.14006'}; time used = 0.018000364303588867s
+Finished training. Time used = 26.968225479125977.
+Training classifier using 20.00% nodes...
+{'micro': 0.29487771112136596, 'macro': 0.06506465736686692, 'samples': 0.29487771112136596, 'weighted': 0.13430282067466348}

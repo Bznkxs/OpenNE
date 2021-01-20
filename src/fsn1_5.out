@@ -1,0 +1,1517 @@
+  0%|          | 0/10556 [00:00<?, ?it/s] 34%|███▎      | 3553/10556 [00:00<00:00, 35528.09it/s] 85%|████████▍ | 8931/10556 [00:00<00:00, 39555.13it/s]100%|██████████| 10556/10556 [00:00<00:00, 44315.71it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/10556 [00:00<?, ?it/s]100%|██████████| 10556/10556 [00:00<00:00, 105790.13it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 65%|██████▍   | 6845/10556 [00:00<00:00, 68448.11it/s]100%|██████████| 10556/10556 [00:00<00:00, 81386.06it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 58%|█████▊    | 6157/10556 [00:00<00:00, 59590.39it/s]100%|██████████| 10556/10556 [00:00<00:00, 59353.78it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 55%|█████▌    | 5833/10556 [00:00<00:00, 58326.44it/s]100%|██████████| 10556/10556 [00:00<00:00, 58255.83it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 66%|██████▋   | 7008/10556 [00:00<00:00, 64904.63it/s]100%|██████████| 10556/10556 [00:00<00:00, 60976.05it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/10556 [00:00<?, ?it/s]100%|██████████| 10556/10556 [00:00<00:00, 165754.71it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/10556 [00:00<?, ?it/s] 31%|███       | 3292/10556 [00:00<00:00, 28473.19it/s] 62%|██████▏   | 6555/10556 [00:00<00:00, 29586.09it/s]100%|██████████| 10556/10556 [00:00<00:00, 35469.09it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 59%|█████▉    | 6242/10556 [00:00<00:00, 62419.32it/s]100%|██████████| 10556/10556 [00:00<00:00, 58899.77it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 38%|███▊      | 4062/10556 [00:00<00:00, 40619.36it/s] 92%|█████████▏| 9668/10556 [00:00<00:00, 44277.48it/s]100%|██████████| 10556/10556 [00:00<00:00, 47836.35it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 42%|████▏     | 4389/10556 [00:00<00:00, 43342.77it/s] 95%|█████████▍| 10011/10556 [00:00<00:00, 46540.04it/s]100%|██████████| 10556/10556 [00:00<00:00, 48927.00it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 45%|████▌     | 4789/10556 [00:00<00:00, 46457.86it/s] 75%|███████▌  | 7934/10556 [00:00<00:00, 40244.84it/s]100%|██████████| 10556/10556 [00:00<00:00, 39309.11it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 222, in forward
+    self.to(self._device)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 607, in to
+    return self._apply(convert)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  [Previous line repeated 2 more times]
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 376, in _apply
+    param_applied = fn(param)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 605, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 7; 10.76 GiB total capacity; 14.80 MiB already allocated; 14.44 MiB free; 16.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+  0%|          | 0/10556 [00:00<?, ?it/s] 45%|████▌     | 4799/10556 [00:00<00:00, 44817.17it/s] 81%|████████  | 8531/10556 [00:00<00:00, 42267.91it/s]100%|██████████| 10556/10556 [00:00<00:00, 43720.22it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s] 94%|█████████▍| 9967/10556 [00:00<00:00, 99666.06it/s]100%|██████████| 10556/10556 [00:00<00:00, 97236.05it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 222, in forward
+    self.to(self._device)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 607, in to
+    return self._apply(convert)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  [Previous line repeated 2 more times]
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 376, in _apply
+    param_applied = fn(param)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 605, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 7; 10.76 GiB total capacity; 14.80 MiB already allocated; 15.44 MiB free; 16.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+  0%|          | 0/10556 [00:00<?, ?it/s] 47%|████▋     | 4921/10556 [00:00<00:00, 46238.49it/s] 97%|█████████▋| 10286/10556 [00:00<00:00, 48237.09it/s]100%|██████████| 10556/10556 [00:00<00:00, 49230.08it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/5416 [00:00<?, ?it/s] 29%|██▊       | 1544/5416 [00:00<00:00, 11282.24it/s]100%|██████████| 5416/5416 [00:00<00:00, 24033.63it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.12089848518371582 seconds.
+Run epoch 1
+Epoch 1 ends in 0.10383343696594238 seconds.
+5416 sentences created
+mode 1: time used = 0.3070363998413086
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 89%|████████▊ | 4805/5416 [00:00<00:00, 48049.82it/s]100%|██████████| 5416/5416 [00:00<00:00, 43405.24it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_isomorphism.py", line 37, in forward
+    y = self.mlp((1 + self.eps) * x + torch.mm(self.adj, x))
+RuntimeError: !t.is_cuda() INTERNAL ASSERT FAILED at "/pytorch/aten/src/ATen/native/sparse/SparseTensorMath.cpp":822, please report a bug to PyTorch. 
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-rand_walk-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gin
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.09591794013977051 seconds.
+Run epoch 1
+Epoch 1 ends in 0.07680392265319824 seconds.
+5416 sentences created
+mode 1: time used = 0.1934950351715088
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500

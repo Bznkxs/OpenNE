@@ -1,0 +1,1066 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '5.44357'}; time used = 0.06229972839355469s
+epoch 10: {'train_loss': '4.54359'}; time used = 0.021018028259277344s
+epoch 15: {'train_loss': '3.95638'}; time used = 0.019509077072143555s
+epoch 20: {'train_loss': '3.49175'}; time used = 0.026852846145629883s
+epoch 25: {'train_loss': '3.24292'}; time used = 0.04372906684875488s
+epoch 30: {'train_loss': '3.15547'}; time used = 0.03731513023376465s
+epoch 35: {'train_loss': '3.07617'}; time used = 0.031019210815429688s
+epoch 40: {'train_loss': '2.97886'}; time used = 0.018868684768676758s
+epoch 45: {'train_loss': '2.93956'}; time used = 0.019449234008789062s
+epoch 50: {'train_loss': '2.91767'}; time used = 0.018894672393798828s
+epoch 55: {'train_loss': '2.81757'}; time used = 0.025517940521240234s
+epoch 60: {'train_loss': '2.77052'}; time used = 0.018413782119750977s
+epoch 65: {'train_loss': '2.73585'}; time used = 0.025934219360351562s
+epoch 70: {'train_loss': '2.72301'}; time used = 0.023527860641479492s
+epoch 75: {'train_loss': '2.61823'}; time used = 0.024147748947143555s
+epoch 80: {'train_loss': '2.67341'}; time used = 0.02012777328491211s
+epoch 85: {'train_loss': '2.60617'}; time used = 0.02547311782836914s
+epoch 90: {'train_loss': '2.60799'}; time used = 0.02552628517150879s
+epoch 95: {'train_loss': '2.50836'}; time used = 0.03405117988586426s
+epoch 100: {'train_loss': '2.47322'}; time used = 0.0242917537689209s
+epoch 105: {'train_loss': '2.34888'}; time used = 0.020621538162231445s
+epoch 110: {'train_loss': '2.41963'}; time used = 0.018085241317749023s
+epoch 115: {'train_loss': '2.35308'}; time used = 0.018585681915283203s
+epoch 120: {'train_loss': '2.36004'}; time used = 0.016969680786132812s
+epoch 125: {'train_loss': '2.31389'}; time used = 0.017089128494262695s
+epoch 130: {'train_loss': '2.25854'}; time used = 0.024692058563232422s
+epoch 135: {'train_loss': '2.16213'}; time used = 0.01673412322998047s
+epoch 140: {'train_loss': '2.15148'}; time used = 0.016864776611328125s
+epoch 145: {'train_loss': '2.17712'}; time used = 0.02006363868713379s
+epoch 150: {'train_loss': '2.15065'}; time used = 0.03317832946777344s
+epoch 155: {'train_loss': '2.07591'}; time used = 0.021076679229736328s
+epoch 160: {'train_loss': '2.08233'}; time used = 0.019988536834716797s
+epoch 165: {'train_loss': '2.04922'}; time used = 0.02414536476135254s
+epoch 170: {'train_loss': '1.98708'}; time used = 0.022298574447631836s
+epoch 175: {'train_loss': '2.00452'}; time used = 0.054917335510253906s
+epoch 180: {'train_loss': '1.99112'}; time used = 0.025079011917114258s
+epoch 185: {'train_loss': '1.94390'}; time used = 0.03398418426513672s
+epoch 190: {'train_loss': '1.90537'}; time used = 0.017330408096313477s
+epoch 195: {'train_loss': '1.88374'}; time used = 0.023762941360473633s
+epoch 200: {'train_loss': '1.83789'}; time used = 0.024895191192626953s
+epoch 205: {'train_loss': '1.81498'}; time used = 0.030072450637817383s
+epoch 210: {'train_loss': '1.80217'}; time used = 0.02331376075744629s
+epoch 215: {'train_loss': '1.79529'}; time used = 0.018967151641845703s
+epoch 220: {'train_loss': '1.73320'}; time used = 0.02587413787841797s
+epoch 225: {'train_loss': '1.69776'}; time used = 0.03549766540527344s
+epoch 230: {'train_loss': '1.69950'}; time used = 0.05590248107910156s
+epoch 235: {'train_loss': '1.67623'}; time used = 0.02757120132446289s
+epoch 240: {'train_loss': '1.66074'}; time used = 0.026667118072509766s
+epoch 245: {'train_loss': '1.60741'}; time used = 0.019937753677368164s
+epoch 250: {'train_loss': '1.63049'}; time used = 0.025332212448120117s
+epoch 255: {'train_loss': '1.55819'}; time used = 0.06724762916564941s
+epoch 260: {'train_loss': '1.54887'}; time used = 0.025333642959594727s
+epoch 265: {'train_loss': '1.57006'}; time used = 0.025107383728027344s
+epoch 270: {'train_loss': '1.56713'}; time used = 0.020413875579833984s
+epoch 275: {'train_loss': '1.52037'}; time used = 0.023908376693725586s
+epoch 280: {'train_loss': '1.49891'}; time used = 0.03965950012207031s
+epoch 285: {'train_loss': '1.48209'}; time used = 0.04047560691833496s
+epoch 290: {'train_loss': '1.45453'}; time used = 0.021830320358276367s
+epoch 295: {'train_loss': '1.44305'}; time used = 0.019362211227416992s
+epoch 300: {'train_loss': '1.40506'}; time used = 0.0334928035736084s
+epoch 305: {'train_loss': '1.42423'}; time used = 0.01985764503479004s
+epoch 310: {'train_loss': '1.39808'}; time used = 0.023819446563720703s
+epoch 315: {'train_loss': '1.36840'}; time used = 0.017651796340942383s
+epoch 320: {'train_loss': '1.35749'}; time used = 0.017457008361816406s
+epoch 325: {'train_loss': '1.37063'}; time used = 0.016973495483398438s
+epoch 330: {'train_loss': '1.31590'}; time used = 0.017279386520385742s
+epoch 335: {'train_loss': '1.30458'}; time used = 0.017244577407836914s
+epoch 340: {'train_loss': '1.29664'}; time used = 0.0170438289642334s
+epoch 345: {'train_loss': '1.27465'}; time used = 0.032926082611083984s
+epoch 350: {'train_loss': '1.28485'}; time used = 0.017258405685424805s
+epoch 355: {'train_loss': '1.26351'}; time used = 0.01746082305908203s
+epoch 360: {'train_loss': '1.26037'}; time used = 0.0171658992767334s
+epoch 365: {'train_loss': '1.22679'}; time used = 0.023413896560668945s
+epoch 370: {'train_loss': '1.22465'}; time used = 0.023213624954223633s
+epoch 375: {'train_loss': '1.20264'}; time used = 0.023611068725585938s
+epoch 380: {'train_loss': '1.18715'}; time used = 0.023404359817504883s
+epoch 385: {'train_loss': '1.16744'}; time used = 0.023303747177124023s
+epoch 390: {'train_loss': '1.17778'}; time used = 0.023752212524414062s
+epoch 395: {'train_loss': '1.15771'}; time used = 0.024961233139038086s
+epoch 400: {'train_loss': '1.16936'}; time used = 0.023661375045776367s
+epoch 405: {'train_loss': '1.14288'}; time used = 0.030434131622314453s
+epoch 410: {'train_loss': '1.13725'}; time used = 0.029521703720092773s
+epoch 415: {'train_loss': '1.13824'}; time used = 0.026392698287963867s
+epoch 420: {'train_loss': '1.11645'}; time used = 0.01769399642944336s
+epoch 425: {'train_loss': '1.09854'}; time used = 0.01775836944580078s
+epoch 430: {'train_loss': '1.09281'}; time used = 0.01845693588256836s
+epoch 435: {'train_loss': '1.09600'}; time used = 0.01886725425720215s
+epoch 440: {'train_loss': '1.08749'}; time used = 0.01785874366760254s
+epoch 445: {'train_loss': '1.07697'}; time used = 0.01947498321533203s
+epoch 450: {'train_loss': '1.07301'}; time used = 0.017542123794555664s
+epoch 455: {'train_loss': '1.04730'}; time used = 0.01701211929321289s
+epoch 460: {'train_loss': '1.05741'}; time used = 0.030215978622436523s
+epoch 465: {'train_loss': '1.05361'}; time used = 0.02552509307861328s
+epoch 470: {'train_loss': '1.06229'}; time used = 0.021494150161743164s
+epoch 475: {'train_loss': '1.03140'}; time used = 0.02475738525390625s
+epoch 480: {'train_loss': '1.02050'}; time used = 0.017075777053833008s
+epoch 485: {'train_loss': '1.02391'}; time used = 0.017284154891967773s
+epoch 490: {'train_loss': '1.01019'}; time used = 0.01738595962524414s
+epoch 495: {'train_loss': '0.99494'}; time used = 0.02426600456237793s
+epoch 500: {'train_loss': '1.00361'}; time used = 0.02063465118408203s
+Finished training. Time used = 27.340749979019165.
+Training classifier using 20.00% nodes...
+{'micro': 0.21449814126394054, 'macro': 0.12754749571406684, 'samples': 0.21675432006010517, 'weighted': 0.1497908735181521}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '4.63479'}; time used = 0.18062353134155273s
+epoch 10: {'train_loss': '3.55742'}; time used = 0.05473446846008301s
+epoch 15: {'train_loss': '3.21648'}; time used = 0.0354769229888916s
+epoch 20: {'train_loss': '2.99403'}; time used = 0.01973724365234375s
+epoch 25: {'train_loss': '2.87048'}; time used = 0.01999807357788086s
+epoch 30: {'train_loss': '2.84254'}; time used = 0.07278227806091309s
+epoch 35: {'train_loss': '2.76723'}; time used = 0.05535697937011719s
+epoch 40: {'train_loss': '2.66277'}; time used = 0.03237462043762207s
+epoch 45: {'train_loss': '2.59111'}; time used = 0.03412199020385742s
+epoch 50: {'train_loss': '2.53892'}; time used = 0.03045344352722168s
+epoch 55: {'train_loss': '2.43092'}; time used = 0.021187305450439453s
+epoch 60: {'train_loss': '2.35258'}; time used = 0.020426273345947266s
+epoch 65: {'train_loss': '2.27883'}; time used = 0.01931619644165039s
+epoch 70: {'train_loss': '2.24147'}; time used = 0.033535003662109375s
+epoch 75: {'train_loss': '2.12122'}; time used = 0.03779029846191406s
+epoch 80: {'train_loss': '2.13351'}; time used = 0.022698163986206055s
+epoch 85: {'train_loss': '2.05006'}; time used = 0.03431844711303711s
+epoch 90: {'train_loss': '2.02767'}; time used = 0.01953864097595215s
+epoch 95: {'train_loss': '1.91465'}; time used = 0.03161501884460449s
+epoch 100: {'train_loss': '1.86641'}; time used = 0.024384498596191406s
+epoch 105: {'train_loss': '1.75286'}; time used = 0.019146203994750977s
+epoch 110: {'train_loss': '1.78496'}; time used = 0.022399425506591797s
+epoch 115: {'train_loss': '1.71191'}; time used = 0.020474672317504883s
+epoch 120: {'train_loss': '1.69704'}; time used = 0.021210670471191406s
+epoch 125: {'train_loss': '1.64900'}; time used = 0.030433177947998047s
+epoch 130: {'train_loss': '1.58833'}; time used = 0.03100299835205078s
+epoch 135: {'train_loss': '1.51348'}; time used = 0.029683351516723633s
+epoch 140: {'train_loss': '1.48027'}; time used = 0.020154714584350586s
+epoch 145: {'train_loss': '1.48532'}; time used = 0.022408246994018555s
+epoch 150: {'train_loss': '1.46705'}; time used = 0.02822422981262207s
+epoch 155: {'train_loss': '1.39415'}; time used = 0.021636247634887695s
+epoch 160: {'train_loss': '1.38047'}; time used = 0.026465892791748047s
+epoch 165: {'train_loss': '1.35597'}; time used = 0.022205352783203125s
+epoch 170: {'train_loss': '1.30771'}; time used = 0.02212834358215332s
+epoch 175: {'train_loss': '1.30306'}; time used = 0.04912447929382324s
+epoch 180: {'train_loss': '1.28603'}; time used = 0.029548168182373047s
+epoch 185: {'train_loss': '1.25512'}; time used = 0.022162675857543945s
+epoch 190: {'train_loss': '1.23081'}; time used = 0.01745772361755371s
+epoch 195: {'train_loss': '1.20751'}; time used = 0.03260517120361328s
+epoch 200: {'train_loss': '1.18059'}; time used = 0.046834707260131836s
+epoch 205: {'train_loss': '1.16574'}; time used = 0.03779292106628418s
+epoch 210: {'train_loss': '1.14468'}; time used = 0.03832364082336426s
+epoch 215: {'train_loss': '1.13913'}; time used = 0.03567862510681152s
+epoch 220: {'train_loss': '1.10387'}; time used = 0.021419048309326172s
+epoch 225: {'train_loss': '1.07244'}; time used = 0.05029749870300293s
+epoch 230: {'train_loss': '1.07833'}; time used = 0.02074742317199707s
+epoch 235: {'train_loss': '1.05170'}; time used = 0.021541833877563477s
+epoch 240: {'train_loss': '1.04217'}; time used = 0.030406713485717773s
+epoch 245: {'train_loss': '1.01814'}; time used = 0.023599863052368164s
+epoch 250: {'train_loss': '1.01677'}; time used = 0.022516250610351562s
+epoch 255: {'train_loss': '0.98908'}; time used = 0.02170562744140625s
+epoch 260: {'train_loss': '0.97673'}; time used = 0.019121170043945312s
+epoch 265: {'train_loss': '0.99179'}; time used = 0.021211624145507812s
+epoch 270: {'train_loss': '0.98963'}; time used = 0.020105600357055664s
+epoch 275: {'train_loss': '0.96996'}; time used = 0.018959760665893555s
+epoch 280: {'train_loss': '0.94717'}; time used = 0.019449234008789062s
+epoch 285: {'train_loss': '0.94241'}; time used = 0.01864480972290039s
+epoch 290: {'train_loss': '0.93771'}; time used = 0.04321002960205078s
+epoch 295: {'train_loss': '0.92627'}; time used = 0.027605056762695312s
+epoch 300: {'train_loss': '0.90848'}; time used = 0.02016592025756836s
+epoch 305: {'train_loss': '0.92266'}; time used = 0.02438187599182129s
+epoch 310: {'train_loss': '0.91379'}; time used = 0.020341157913208008s
+epoch 315: {'train_loss': '0.90044'}; time used = 0.02743697166442871s
+epoch 320: {'train_loss': '0.88840'}; time used = 0.022041797637939453s
+epoch 325: {'train_loss': '0.89490'}; time used = 0.026703596115112305s
+epoch 330: {'train_loss': '0.87530'}; time used = 0.020214557647705078s
+epoch 335: {'train_loss': '0.87890'}; time used = 0.02414727210998535s
+epoch 340: {'train_loss': '0.86886'}; time used = 0.022495269775390625s
+epoch 345: {'train_loss': '0.85724'}; time used = 0.0315549373626709s
+epoch 350: {'train_loss': '0.87228'}; time used = 0.030147075653076172s
+epoch 355: {'train_loss': '0.85719'}; time used = 0.021045923233032227s
+epoch 360: {'train_loss': '0.85304'}; time used = 0.01890277862548828s
+epoch 365: {'train_loss': '0.84700'}; time used = 0.023084402084350586s
+epoch 370: {'train_loss': '0.84603'}; time used = 0.020584583282470703s
+epoch 375: {'train_loss': '0.83984'}; time used = 0.019342422485351562s
+epoch 380: {'train_loss': '0.82593'}; time used = 0.024590015411376953s
+epoch 385: {'train_loss': '0.82790'}; time used = 0.028388023376464844s
+epoch 390: {'train_loss': '0.82909'}; time used = 0.019426822662353516s
+epoch 395: {'train_loss': '0.82306'}; time used = 0.025899648666381836s
+epoch 400: {'train_loss': '0.82265'}; time used = 0.01842212677001953s
+epoch 405: {'train_loss': '0.82483'}; time used = 0.019163846969604492s
+epoch 410: {'train_loss': '0.82649'}; time used = 0.028431415557861328s
+epoch 415: {'train_loss': '0.81296'}; time used = 0.044188737869262695s
+epoch 420: {'train_loss': '0.81568'}; time used = 0.03128409385681152s
+epoch 425: {'train_loss': '0.80850'}; time used = 0.04458808898925781s
+epoch 430: {'train_loss': '0.80881'}; time used = 0.023649215698242188s
+epoch 435: {'train_loss': '0.80679'}; time used = 0.022708415985107422s
+epoch 440: {'train_loss': '0.80384'}; time used = 0.023470163345336914s
+epoch 445: {'train_loss': '0.80505'}; time used = 0.019504070281982422s
+epoch 450: {'train_loss': '0.80471'}; time used = 0.023890018463134766s
+epoch 455: {'train_loss': '0.78963'}; time used = 0.021340131759643555s
+epoch 460: {'train_loss': '0.79748'}; time used = 0.021285057067871094s
+epoch 465: {'train_loss': '0.79193'}; time used = 0.022443056106567383s
+epoch 470: {'train_loss': '0.80011'}; time used = 0.023439884185791016s
+epoch 475: {'train_loss': '0.80176'}; time used = 0.03274083137512207s
+epoch 480: {'train_loss': '0.79085'}; time used = 0.03671622276306152s
+epoch 485: {'train_loss': '0.79135'}; time used = 0.02653813362121582s
+epoch 490: {'train_loss': '0.78733'}; time used = 0.021800518035888672s
+epoch 495: {'train_loss': '0.78077'}; time used = 0.020220279693603516s
+epoch 500: {'train_loss': '0.79297'}; time used = 0.022449731826782227s
+Finished training. Time used = 31.716816425323486.
+Training classifier using 20.00% nodes...
+{'micro': 0.24609665427509295, 'macro': 0.11835093494561204, 'samples': 0.24868519909842224, 'weighted': 0.14646240137019437}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '8.81178'}; time used = 0.040966033935546875s
+epoch 10: {'train_loss': '8.49039'}; time used = 0.022976160049438477s
+epoch 15: {'train_loss': '8.27969'}; time used = 0.020722150802612305s
+epoch 20: {'train_loss': '8.10573'}; time used = 0.02093648910522461s
+epoch 25: {'train_loss': '7.91487'}; time used = 0.05034065246582031s
+epoch 30: {'train_loss': '7.66899'}; time used = 0.047057390213012695s
+epoch 35: {'train_loss': '7.44951'}; time used = 0.051390886306762695s
+epoch 40: {'train_loss': '7.24485'}; time used = 0.037511348724365234s
+epoch 45: {'train_loss': '6.94295'}; time used = 0.016312599182128906s
+epoch 50: {'train_loss': '6.64322'}; time used = 0.022015094757080078s
+epoch 55: {'train_loss': '6.59844'}; time used = 0.022634029388427734s
+epoch 60: {'train_loss': '6.31292'}; time used = 0.034856557846069336s
+epoch 65: {'train_loss': '6.29817'}; time used = 0.03131246566772461s
+epoch 70: {'train_loss': '6.14922'}; time used = 0.06768321990966797s
+epoch 75: {'train_loss': '6.11829'}; time used = 0.04936408996582031s
+epoch 80: {'train_loss': '5.99998'}; time used = 0.03491067886352539s
+epoch 85: {'train_loss': '5.65991'}; time used = 0.03508949279785156s
+epoch 90: {'train_loss': '5.75239'}; time used = 0.017538785934448242s
+epoch 95: {'train_loss': '5.61364'}; time used = 0.031082868576049805s
+epoch 100: {'train_loss': '5.63062'}; time used = 0.01605844497680664s
+epoch 105: {'train_loss': '5.41510'}; time used = 0.024443387985229492s
+epoch 110: {'train_loss': '5.30164'}; time used = 0.015917539596557617s
+epoch 115: {'train_loss': '5.10351'}; time used = 0.018154382705688477s
+epoch 120: {'train_loss': '5.17978'}; time used = 0.024297237396240234s
+epoch 125: {'train_loss': '5.16221'}; time used = 0.06409788131713867s
+epoch 130: {'train_loss': '4.91832'}; time used = 0.02108478546142578s
+epoch 135: {'train_loss': '5.03618'}; time used = 0.016008853912353516s
+epoch 140: {'train_loss': '5.05841'}; time used = 0.03677535057067871s
+epoch 145: {'train_loss': '4.86013'}; time used = 0.031668663024902344s
+epoch 150: {'train_loss': '4.98634'}; time used = 0.03319859504699707s
+epoch 155: {'train_loss': '4.80656'}; time used = 0.016281604766845703s
+epoch 160: {'train_loss': '4.82704'}; time used = 0.016228675842285156s
+epoch 165: {'train_loss': '4.87266'}; time used = 0.022417783737182617s
+epoch 170: {'train_loss': '4.74322'}; time used = 0.02788853645324707s
+epoch 175: {'train_loss': '4.62585'}; time used = 0.03708386421203613s
+epoch 180: {'train_loss': '4.72805'}; time used = 0.026250600814819336s
+epoch 185: {'train_loss': '4.70431'}; time used = 0.027380943298339844s
+epoch 190: {'train_loss': '4.62828'}; time used = 0.06023740768432617s
+epoch 195: {'train_loss': '4.59280'}; time used = 0.017852783203125s
+epoch 200: {'train_loss': '4.52476'}; time used = 0.01598501205444336s
+epoch 205: {'train_loss': '4.50576'}; time used = 0.13470935821533203s
+epoch 210: {'train_loss': '4.58053'}; time used = 0.059248924255371094s
+epoch 215: {'train_loss': '4.52691'}; time used = 0.06008172035217285s
+epoch 220: {'train_loss': '4.43613'}; time used = 0.05351996421813965s
+epoch 225: {'train_loss': '4.53365'}; time used = 0.04147791862487793s
+epoch 230: {'train_loss': '4.41427'}; time used = 0.01764202117919922s
+epoch 235: {'train_loss': '4.50838'}; time used = 0.033232927322387695s
+epoch 240: {'train_loss': '4.37633'}; time used = 0.028971195220947266s
+epoch 245: {'train_loss': '4.60353'}; time used = 0.04308938980102539s
+epoch 250: {'train_loss': '4.41405'}; time used = 0.02668905258178711s
+epoch 255: {'train_loss': '4.33979'}; time used = 0.04838991165161133s
+epoch 260: {'train_loss': '4.35038'}; time used = 0.04813241958618164s
+epoch 265: {'train_loss': '4.41278'}; time used = 0.043907880783081055s
+epoch 270: {'train_loss': '4.31099'}; time used = 0.017789840698242188s
+epoch 275: {'train_loss': '4.50686'}; time used = 0.017587900161743164s
+epoch 280: {'train_loss': '4.43793'}; time used = 0.017558574676513672s
+epoch 285: {'train_loss': '4.31505'}; time used = 0.0171053409576416s
+epoch 290: {'train_loss': '4.29730'}; time used = 0.017255067825317383s
+epoch 295: {'train_loss': '4.17529'}; time used = 0.017323017120361328s
+epoch 300: {'train_loss': '4.32876'}; time used = 0.018718242645263672s
+epoch 305: {'train_loss': '4.43312'}; time used = 0.020010948181152344s
+epoch 310: {'train_loss': '4.25633'}; time used = 0.018620967864990234s
+epoch 315: {'train_loss': '4.33997'}; time used = 0.01728367805480957s
+epoch 320: {'train_loss': '4.31209'}; time used = 0.02080249786376953s
+epoch 325: {'train_loss': '4.38208'}; time used = 0.019283771514892578s
+epoch 330: {'train_loss': '4.28043'}; time used = 0.020185232162475586s
+epoch 335: {'train_loss': '4.23482'}; time used = 0.028876543045043945s
+epoch 340: {'train_loss': '4.38200'}; time used = 0.07377052307128906s
+epoch 345: {'train_loss': '4.27873'}; time used = 0.04897141456604004s
+epoch 350: {'train_loss': '4.35144'}; time used = 0.05625605583190918s
+epoch 355: {'train_loss': '4.30880'}; time used = 0.03229880332946777s
+epoch 360: {'train_loss': '4.22342'}; time used = 0.032328128814697266s
+epoch 365: {'train_loss': '4.16006'}; time used = 0.027374267578125s
+epoch 370: {'train_loss': '4.36316'}; time used = 0.027904033660888672s
+epoch 375: {'train_loss': '4.29199'}; time used = 0.028203964233398438s
+epoch 380: {'train_loss': '4.21760'}; time used = 0.04058265686035156s
+epoch 385: {'train_loss': '4.28970'}; time used = 0.03142714500427246s
+epoch 390: {'train_loss': '4.25849'}; time used = 0.027881622314453125s
+epoch 395: {'train_loss': '4.21124'}; time used = 0.03208756446838379s
+epoch 400: {'train_loss': '4.08148'}; time used = 0.03972983360290527s
+epoch 405: {'train_loss': '4.25878'}; time used = 0.03261303901672363s
+epoch 410: {'train_loss': '4.21361'}; time used = 0.03588414192199707s
+epoch 415: {'train_loss': '4.13173'}; time used = 0.03622126579284668s
+epoch 420: {'train_loss': '4.17641'}; time used = 0.03290152549743652s
+epoch 425: {'train_loss': '4.18932'}; time used = 0.04383969306945801s
+epoch 430: {'train_loss': '4.14199'}; time used = 0.030608654022216797s
+epoch 435: {'train_loss': '4.18081'}; time used = 0.028374910354614258s
+epoch 440: {'train_loss': '4.11488'}; time used = 0.03200864791870117s
+epoch 445: {'train_loss': '4.18734'}; time used = 0.0356905460357666s
+epoch 450: {'train_loss': '4.22167'}; time used = 0.028250932693481445s
+epoch 455: {'train_loss': '4.18595'}; time used = 0.027262210845947266s
+epoch 460: {'train_loss': '4.10055'}; time used = 0.027984619140625s
+epoch 465: {'train_loss': '4.10674'}; time used = 0.036862850189208984s
+epoch 470: {'train_loss': '4.15979'}; time used = 0.031925201416015625s
+epoch 475: {'train_loss': '4.16537'}; time used = 0.032016754150390625s
+epoch 480: {'train_loss': '4.14902'}; time used = 0.023891210556030273s
+epoch 485: {'train_loss': '4.16495'}; time used = 0.031426191329956055s
+epoch 490: {'train_loss': '4.11986'}; time used = 0.03655409812927246s
+epoch 495: {'train_loss': '4.12229'}; time used = 0.027208328247070312s
+epoch 500: {'train_loss': '4.02275'}; time used = 0.028923511505126953s
+Finished training. Time used = 38.42859888076782.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 222, in forward
+    self.to(self._device)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 607, in to
+    return self._apply(convert)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 376, in _apply
+    param_applied = fn(param)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 605, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 7; 10.76 GiB total capacity; 94.00 MiB already allocated; 12.44 MiB free; 94.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '5.11789'}; time used = 0.11318826675415039s
+epoch 10: {'train_loss': '4.36427'}; time used = 0.025568723678588867s
+epoch 15: {'train_loss': '4.26034'}; time used = 0.052103519439697266s
+epoch 20: {'train_loss': '4.21984'}; time used = 0.023715496063232422s
+epoch 25: {'train_loss': '4.11219'}; time used = 0.023729562759399414s
+epoch 30: {'train_loss': '3.93631'}; time used = 0.03513765335083008s
+epoch 35: {'train_loss': '3.83407'}; time used = 0.03733086585998535s
+epoch 40: {'train_loss': '3.71079'}; time used = 0.025491714477539062s
+epoch 45: {'train_loss': '3.53404'}; time used = 0.06204032897949219s
+epoch 50: {'train_loss': '3.25058'}; time used = 0.016907215118408203s
+epoch 55: {'train_loss': '3.31219'}; time used = 0.026391267776489258s
+epoch 60: {'train_loss': '3.14058'}; time used = 0.0257720947265625s
+epoch 65: {'train_loss': '3.09107'}; time used = 0.028493404388427734s
+epoch 70: {'train_loss': '3.00879'}; time used = 0.03008294105529785s
+epoch 75: {'train_loss': '2.92179'}; time used = 0.04105210304260254s
+epoch 80: {'train_loss': '2.86616'}; time used = 0.023608684539794922s
+epoch 85: {'train_loss': '2.64135'}; time used = 0.02256011962890625s
+epoch 90: {'train_loss': '2.66297'}; time used = 0.060907602310180664s
+epoch 95: {'train_loss': '2.56034'}; time used = 0.0356290340423584s
+epoch 100: {'train_loss': '2.49807'}; time used = 0.042189836502075195s
+epoch 105: {'train_loss': '2.36307'}; time used = 0.05607151985168457s
+epoch 110: {'train_loss': '2.27849'}; time used = 0.03465914726257324s
+epoch 115: {'train_loss': '2.20733'}; time used = 0.021231889724731445s
+epoch 120: {'train_loss': '2.12663'}; time used = 0.042092084884643555s
+epoch 125: {'train_loss': '2.11352'}; time used = 0.034012556076049805s
+epoch 130: {'train_loss': '1.93972'}; time used = 0.02382826805114746s
+epoch 135: {'train_loss': '1.99926'}; time used = 0.02829742431640625s
+epoch 140: {'train_loss': '1.91457'}; time used = 0.03161501884460449s
+epoch 145: {'train_loss': '1.81853'}; time used = 0.02173328399658203s
+epoch 150: {'train_loss': '1.82751'}; time used = 0.02016305923461914s
+epoch 155: {'train_loss': '1.71419'}; time used = 0.02275872230529785s
+epoch 160: {'train_loss': '1.69608'}; time used = 0.018392086029052734s
+epoch 165: {'train_loss': '1.66110'}; time used = 0.018009185791015625s
+epoch 170: {'train_loss': '1.57906'}; time used = 0.022642135620117188s
+epoch 175: {'train_loss': '1.51982'}; time used = 0.024150371551513672s
+epoch 180: {'train_loss': '1.52233'}; time used = 0.01918935775756836s
+epoch 185: {'train_loss': '1.50069'}; time used = 0.03732013702392578s
+epoch 190: {'train_loss': '1.44333'}; time used = 0.018494367599487305s
+epoch 195: {'train_loss': '1.40702'}; time used = 0.018236160278320312s
+epoch 200: {'train_loss': '1.37865'}; time used = 0.03610968589782715s
+epoch 205: {'train_loss': '1.31339'}; time used = 0.04315638542175293s
+epoch 210: {'train_loss': '1.28579'}; time used = 0.03583574295043945s
+epoch 215: {'train_loss': '1.28196'}; time used = 0.017188310623168945s
+epoch 220: {'train_loss': '1.26075'}; time used = 0.019583940505981445s
+epoch 225: {'train_loss': '1.24135'}; time used = 0.016977310180664062s
+epoch 230: {'train_loss': '1.19587'}; time used = 0.016645193099975586s
+epoch 235: {'train_loss': '1.19926'}; time used = 0.03142428398132324s
+epoch 240: {'train_loss': '1.16373'}; time used = 0.017258644104003906s
+epoch 245: {'train_loss': '1.16813'}; time used = 0.017090559005737305s
+epoch 250: {'train_loss': '1.12023'}; time used = 0.02173638343811035s
+epoch 255: {'train_loss': '1.12967'}; time used = 0.0290985107421875s
+epoch 260: {'train_loss': '1.06687'}; time used = 0.01782059669494629s
+epoch 265: {'train_loss': '1.05517'}; time used = 0.020951509475708008s
+epoch 270: {'train_loss': '1.05074'}; time used = 0.021175146102905273s
+epoch 275: {'train_loss': '1.06702'}; time used = 0.0197603702545166s
+epoch 280: {'train_loss': '1.05600'}; time used = 0.016252994537353516s
+epoch 285: {'train_loss': '1.02119'}; time used = 0.0175325870513916s
+epoch 290: {'train_loss': '1.00558'}; time used = 0.01682877540588379s
+epoch 295: {'train_loss': '0.95887'}; time used = 0.017812490463256836s
+epoch 300: {'train_loss': '0.98020'}; time used = 0.022210121154785156s
+epoch 305: {'train_loss': '0.99911'}; time used = 0.019875288009643555s
+epoch 310: {'train_loss': '0.95044'}; time used = 0.020407438278198242s
+epoch 315: {'train_loss': '0.95375'}; time used = 0.020099163055419922s
+epoch 320: {'train_loss': '0.93998'}; time used = 0.02082037925720215s
+epoch 325: {'train_loss': '0.94130'}; time used = 0.02187371253967285s
+epoch 330: {'train_loss': '0.93314'}; time used = 0.023754119873046875s
+epoch 335: {'train_loss': '0.91369'}; time used = 0.0398406982421875s
+epoch 340: {'train_loss': '0.92987'}; time used = 0.02063298225402832s
+epoch 345: {'train_loss': '0.90836'}; time used = 0.030406951904296875s
+epoch 350: {'train_loss': '0.89619'}; time used = 0.0524287223815918s
+epoch 355: {'train_loss': '0.88541'}; time used = 0.05905914306640625s
+epoch 360: {'train_loss': '0.87971'}; time used = 0.03248476982116699s
+epoch 365: {'train_loss': '0.87847'}; time used = 0.04994606971740723s
+epoch 370: {'train_loss': '0.87670'}; time used = 0.03391265869140625s
+epoch 375: {'train_loss': '0.87888'}; time used = 0.02165961265563965s
+epoch 380: {'train_loss': '0.87699'}; time used = 0.02148747444152832s
+epoch 385: {'train_loss': '0.86393'}; time used = 0.01856517791748047s
+epoch 390: {'train_loss': '0.86382'}; time used = 0.02741837501525879s
+epoch 395: {'train_loss': '0.85728'}; time used = 0.0161592960357666s
+epoch 400: {'train_loss': '0.84752'}; time used = 0.025496244430541992s
+epoch 405: {'train_loss': '0.85730'}; time used = 0.03313112258911133s
+epoch 410: {'train_loss': '0.83848'}; time used = 0.015781641006469727s
+epoch 415: {'train_loss': '0.82142'}; time used = 0.033406734466552734s
+epoch 420: {'train_loss': '0.83396'}; time used = 0.03285360336303711s
+epoch 425: {'train_loss': '0.83107'}; time used = 0.030824661254882812s
+epoch 430: {'train_loss': '0.82136'}; time used = 0.03765606880187988s
+epoch 435: {'train_loss': '0.81510'}; time used = 0.027087688446044922s
+epoch 440: {'train_loss': '0.82248'}; time used = 0.03291010856628418s
+epoch 445: {'train_loss': '0.81402'}; time used = 0.01978015899658203s
+epoch 450: {'train_loss': '0.81312'}; time used = 0.02177143096923828s
+epoch 455: {'train_loss': '0.81699'}; time used = 0.018739938735961914s
+epoch 460: {'train_loss': '0.79849'}; time used = 0.019579410552978516s
+epoch 465: {'train_loss': '0.80200'}; time used = 0.02846550941467285s
+epoch 470: {'train_loss': '0.80932'}; time used = 0.022266149520874023s
+epoch 475: {'train_loss': '0.81498'}; time used = 0.025653362274169922s
+epoch 480: {'train_loss': '0.80735'}; time used = 0.023108720779418945s
+epoch 485: {'train_loss': '0.79830'}; time used = 0.02827000617980957s
+epoch 490: {'train_loss': '0.79887'}; time used = 0.0201723575592041s
+epoch 495: {'train_loss': '0.79514'}; time used = 0.02705860137939453s
+epoch 500: {'train_loss': '0.78639'}; time used = 0.031125545501708984s
+Finished training. Time used = 32.424391746520996.
+Training classifier using 20.00% nodes...
+{'micro': 0.24981412639405204, 'macro': 0.11960945887159402, 'samples': 0.25244177310293014, 'weighted': 0.148328875372571}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '8.81178'}; time used = 0.06262683868408203s
+epoch 10: {'train_loss': '8.49039'}; time used = 0.022072315216064453s
+epoch 15: {'train_loss': '8.27969'}; time used = 0.02397298812866211s
+epoch 20: {'train_loss': '8.10573'}; time used = 0.016737699508666992s
+epoch 25: {'train_loss': '7.91487'}; time used = 0.016871929168701172s
+epoch 30: {'train_loss': '7.66899'}; time used = 0.0169217586517334s
+epoch 35: {'train_loss': '7.44951'}; time used = 0.016827821731567383s
+epoch 40: {'train_loss': '7.24485'}; time used = 0.016893625259399414s
+epoch 45: {'train_loss': '6.94295'}; time used = 0.01704549789428711s
+epoch 50: {'train_loss': '6.64322'}; time used = 0.016690492630004883s
+epoch 55: {'train_loss': '6.59844'}; time used = 0.02372288703918457s
+epoch 60: {'train_loss': '6.31292'}; time used = 0.02548527717590332s
+epoch 65: {'train_loss': '6.29817'}; time used = 0.028638362884521484s
+epoch 70: {'train_loss': '6.14922'}; time used = 0.027011871337890625s
+epoch 75: {'train_loss': '6.11829'}; time used = 0.01975727081298828s
+epoch 80: {'train_loss': '5.99998'}; time used = 0.01941394805908203s
+epoch 85: {'train_loss': '5.65991'}; time used = 0.01746344566345215s
+epoch 90: {'train_loss': '5.75239'}; time used = 0.01751708984375s
+epoch 95: {'train_loss': '5.61364'}; time used = 0.01696920394897461s
+epoch 100: {'train_loss': '5.63062'}; time used = 0.016672134399414062s
+epoch 105: {'train_loss': '5.41510'}; time used = 0.017249345779418945s
+epoch 110: {'train_loss': '5.30164'}; time used = 0.01721501350402832s
+epoch 115: {'train_loss': '5.10351'}; time used = 0.016888141632080078s
+epoch 120: {'train_loss': '5.17978'}; time used = 0.016862154006958008s
+epoch 125: {'train_loss': '5.16221'}; time used = 0.01697254180908203s
+epoch 130: {'train_loss': '4.91832'}; time used = 0.01706075668334961s
+epoch 135: {'train_loss': '5.03618'}; time used = 0.016808748245239258s
+epoch 140: {'train_loss': '5.05841'}; time used = 0.01698589324951172s
+epoch 145: {'train_loss': '4.86013'}; time used = 0.019391775131225586s
+epoch 150: {'train_loss': '4.98634'}; time used = 0.016634225845336914s
+epoch 155: {'train_loss': '4.80656'}; time used = 0.017148733139038086s
+epoch 160: {'train_loss': '4.82704'}; time used = 0.01698756217956543s
+epoch 165: {'train_loss': '4.87266'}; time used = 0.01868271827697754s
+epoch 170: {'train_loss': '4.74322'}; time used = 0.03278303146362305s
+epoch 175: {'train_loss': '4.62585'}; time used = 0.0334925651550293s
+epoch 180: {'train_loss': '4.72805'}; time used = 0.025944948196411133s
+epoch 185: {'train_loss': '4.70431'}; time used = 0.019739151000976562s
+epoch 190: {'train_loss': '4.62828'}; time used = 0.024355173110961914s
+epoch 195: {'train_loss': '4.59280'}; time used = 0.028932571411132812s
+epoch 200: {'train_loss': '4.52476'}; time used = 0.023415803909301758s
+epoch 205: {'train_loss': '4.50576'}; time used = 0.027783632278442383s
+epoch 210: {'train_loss': '4.58053'}; time used = 0.038330078125s
+epoch 215: {'train_loss': '4.52691'}; time used = 0.043929338455200195s
+epoch 220: {'train_loss': '4.43613'}; time used = 0.05199241638183594s
+epoch 225: {'train_loss': '4.53365'}; time used = 0.056652069091796875s
+epoch 230: {'train_loss': '4.41427'}; time used = 0.041452646255493164s
+epoch 235: {'train_loss': '4.50838'}; time used = 0.03983807563781738s
+epoch 240: {'train_loss': '4.37633'}; time used = 0.03562188148498535s
+epoch 245: {'train_loss': '4.60353'}; time used = 0.031731605529785156s
+epoch 250: {'train_loss': '4.41405'}; time used = 0.02058100700378418s
+epoch 255: {'train_loss': '4.33979'}; time used = 0.019321680068969727s
+epoch 260: {'train_loss': '4.35038'}; time used = 0.019348621368408203s
+epoch 265: {'train_loss': '4.41278'}; time used = 0.017421960830688477s
+epoch 270: {'train_loss': '4.31099'}; time used = 0.017376184463500977s
+epoch 275: {'train_loss': '4.50686'}; time used = 0.017812252044677734s
+epoch 280: {'train_loss': '4.43793'}; time used = 0.02792954444885254s
+epoch 285: {'train_loss': '4.31505'}; time used = 0.019717931747436523s
+epoch 290: {'train_loss': '4.29730'}; time used = 0.03653669357299805s
+epoch 295: {'train_loss': '4.17529'}; time used = 0.02727031707763672s
+epoch 300: {'train_loss': '4.32876'}; time used = 0.028298139572143555s
+epoch 305: {'train_loss': '4.43312'}; time used = 0.02723240852355957s
+epoch 310: {'train_loss': '4.25633'}; time used = 0.05376148223876953s
+epoch 315: {'train_loss': '4.33997'}; time used = 0.02388906478881836s
+epoch 320: {'train_loss': '4.31209'}; time used = 0.027308940887451172s
+epoch 325: {'train_loss': '4.38208'}; time used = 0.024358749389648438s
+epoch 330: {'train_loss': '4.28043'}; time used = 0.03218698501586914s
+epoch 335: {'train_loss': '4.23482'}; time used = 0.02799224853515625s
+epoch 340: {'train_loss': '4.38200'}; time used = 0.025237083435058594s
+epoch 345: {'train_loss': '4.27873'}; time used = 0.03211808204650879s
+epoch 350: {'train_loss': '4.35144'}; time used = 0.03088545799255371s
+epoch 355: {'train_loss': '4.30880'}; time used = 0.031010150909423828s
+epoch 360: {'train_loss': '4.22342'}; time used = 0.030274629592895508s
+epoch 365: {'train_loss': '4.16006'}; time used = 0.027302980422973633s
+epoch 370: {'train_loss': '4.36316'}; time used = 0.03558182716369629s
+epoch 375: {'train_loss': '4.29199'}; time used = 0.02448868751525879s
+epoch 380: {'train_loss': '4.21760'}; time used = 0.034125566482543945s
+epoch 385: {'train_loss': '4.28970'}; time used = 0.033933162689208984s
+epoch 390: {'train_loss': '4.25849'}; time used = 0.0427699089050293s
+epoch 395: {'train_loss': '4.21124'}; time used = 0.029088973999023438s
+epoch 400: {'train_loss': '4.08148'}; time used = 0.027322053909301758s
+epoch 405: {'train_loss': '4.25878'}; time used = 0.02563643455505371s
+epoch 410: {'train_loss': '4.21361'}; time used = 0.025806427001953125s
+epoch 415: {'train_loss': '4.13173'}; time used = 0.025411605834960938s
+epoch 420: {'train_loss': '4.17641'}; time used = 0.0345911979675293s
+epoch 425: {'train_loss': '4.18932'}; time used = 0.059641122817993164s
+epoch 430: {'train_loss': '4.14199'}; time used = 0.02691650390625s
+epoch 435: {'train_loss': '4.18081'}; time used = 0.037935495376586914s
+epoch 440: {'train_loss': '4.11488'}; time used = 0.02678084373474121s
+epoch 445: {'train_loss': '4.18734'}; time used = 0.027767658233642578s
+epoch 450: {'train_loss': '4.22167'}; time used = 0.020188570022583008s
+epoch 455: {'train_loss': '4.18595'}; time used = 0.027183055877685547s
+epoch 460: {'train_loss': '4.10055'}; time used = 0.030337095260620117s
+epoch 465: {'train_loss': '4.10674'}; time used = 0.02982950210571289s
+epoch 470: {'train_loss': '4.15979'}; time used = 0.028797388076782227s
+epoch 475: {'train_loss': '4.16537'}; time used = 0.04949474334716797s
+epoch 480: {'train_loss': '4.14902'}; time used = 0.04934215545654297s
+epoch 485: {'train_loss': '4.16495'}; time used = 0.05046224594116211s
+epoch 490: {'train_loss': '4.11986'}; time used = 0.02825784683227539s
+epoch 495: {'train_loss': '4.12229'}; time used = 0.05274009704589844s
+epoch 500: {'train_loss': '4.02275'}; time used = 0.05913949012756348s
+Finished training. Time used = 64.49932980537415.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '7.08534'}; time used = 0.04961705207824707s
+epoch 10: {'train_loss': '5.53809'}; time used = 0.034986257553100586s
+epoch 15: {'train_loss': '4.87834'}; time used = 0.03211402893066406s
+epoch 20: {'train_loss': '4.65499'}; time used = 0.02326655387878418s
+epoch 25: {'train_loss': '4.54325'}; time used = 0.024201631546020508s
+epoch 30: {'train_loss': '4.42100'}; time used = 0.024523019790649414s
+epoch 35: {'train_loss': '4.36819'}; time used = 0.03148388862609863s
+epoch 40: {'train_loss': '4.32205'}; time used = 0.025237321853637695s
+epoch 45: {'train_loss': '4.17358'}; time used = 0.030558109283447266s
+epoch 50: {'train_loss': '3.99130'}; time used = 0.032373666763305664s
+epoch 55: {'train_loss': '4.09338'}; time used = 0.04139232635498047s
+epoch 60: {'train_loss': '3.94600'}; time used = 0.03329181671142578s
+epoch 65: {'train_loss': '4.00290'}; time used = 0.025525808334350586s
+epoch 70: {'train_loss': '3.95803'}; time used = 0.04466700553894043s
+epoch 75: {'train_loss': '3.98477'}; time used = 0.01696324348449707s
+epoch 80: {'train_loss': '3.96683'}; time used = 0.019134998321533203s
+epoch 85: {'train_loss': '3.72118'}; time used = 0.04155373573303223s
+epoch 90: {'train_loss': '3.84314'}; time used = 0.05376386642456055s
+epoch 95: {'train_loss': '3.77447'}; time used = 0.05517244338989258s
+epoch 100: {'train_loss': '3.79065'}; time used = 0.030667543411254883s
+epoch 105: {'train_loss': '3.65330'}; time used = 0.05416059494018555s
+epoch 110: {'train_loss': '3.58411'}; time used = 0.025373220443725586s
+epoch 115: {'train_loss': '3.47003'}; time used = 0.026235103607177734s
+epoch 120: {'train_loss': '3.50871'}; time used = 0.06724095344543457s
+epoch 125: {'train_loss': '3.52424'}; time used = 0.020385026931762695s
+epoch 130: {'train_loss': '3.30211'}; time used = 0.03811144828796387s
+epoch 135: {'train_loss': '3.42241'}; time used = 0.021548986434936523s
+epoch 140: {'train_loss': '3.42143'}; time used = 0.021784543991088867s
+epoch 145: {'train_loss': '3.27551'}; time used = 0.028653621673583984s
+epoch 150: {'train_loss': '3.35802'}; time used = 0.03281998634338379s
+epoch 155: {'train_loss': '3.21227'}; time used = 0.03814125061035156s
+epoch 160: {'train_loss': '3.21637'}; time used = 0.048567771911621094s
+epoch 165: {'train_loss': '3.21316'}; time used = 0.029944658279418945s
+epoch 170: {'train_loss': '3.10782'}; time used = 0.02324652671813965s
+epoch 175: {'train_loss': '3.01599'}; time used = 0.12121438980102539s
+epoch 180: {'train_loss': '3.06494'}; time used = 0.022965192794799805s
+epoch 185: {'train_loss': '3.03184'}; time used = 0.024298429489135742s
+epoch 190: {'train_loss': '2.97014'}; time used = 0.07191157341003418s
+epoch 195: {'train_loss': '2.92182'}; time used = 0.024089336395263672s
+epoch 200: {'train_loss': '2.85854'}; time used = 0.022638797760009766s
+epoch 205: {'train_loss': '2.80909'}; time used = 0.01761007308959961s
+epoch 210: {'train_loss': '2.81302'}; time used = 0.014765262603759766s
+epoch 215: {'train_loss': '2.77481'}; time used = 0.017486572265625s
+epoch 220: {'train_loss': '2.71495'}; time used = 0.024209976196289062s
+epoch 225: {'train_loss': '2.74133'}; time used = 0.01596236228942871s
+epoch 230: {'train_loss': '2.63645'}; time used = 0.02155160903930664s
+epoch 235: {'train_loss': '2.68221'}; time used = 0.028328418731689453s
+epoch 240: {'train_loss': '2.58169'}; time used = 0.03506731986999512s
+epoch 245: {'train_loss': '2.68287'}; time used = 0.050002336502075195s
+epoch 250: {'train_loss': '2.55261'}; time used = 0.024130821228027344s
+epoch 255: {'train_loss': '2.51330'}; time used = 0.025205373764038086s
+epoch 260: {'train_loss': '2.44179'}; time used = 0.022099018096923828s
+epoch 265: {'train_loss': '2.44130'}; time used = 0.04306364059448242s
+epoch 270: {'train_loss': '2.38654'}; time used = 0.04322338104248047s
+epoch 275: {'train_loss': '2.47875'}; time used = 0.022589445114135742s
+epoch 280: {'train_loss': '2.42214'}; time used = 0.015360593795776367s
+epoch 285: {'train_loss': '2.32207'}; time used = 0.015936851501464844s
+epoch 290: {'train_loss': '2.28753'}; time used = 0.017457962036132812s
+epoch 295: {'train_loss': '2.18553'}; time used = 0.024230480194091797s
+epoch 300: {'train_loss': '2.25147'}; time used = 0.01901721954345703s
+epoch 305: {'train_loss': '2.29715'}; time used = 0.01573801040649414s
+epoch 310: {'train_loss': '2.17488'}; time used = 0.015639543533325195s
+epoch 315: {'train_loss': '2.20265'}; time used = 0.021221160888671875s
+epoch 320: {'train_loss': '2.15559'}; time used = 0.021565914154052734s
+epoch 325: {'train_loss': '2.16674'}; time used = 0.022745847702026367s
+epoch 330: {'train_loss': '2.10398'}; time used = 0.024662017822265625s
+epoch 335: {'train_loss': '2.06385'}; time used = 0.015848398208618164s
+epoch 340: {'train_loss': '2.11140'}; time used = 0.022709369659423828s
+epoch 345: {'train_loss': '2.03475'}; time used = 0.03427457809448242s
+epoch 350: {'train_loss': '2.03150'}; time used = 0.02471756935119629s
+epoch 355: {'train_loss': '2.01173'}; time used = 0.041013240814208984s
+epoch 360: {'train_loss': '1.94370'}; time used = 0.07152152061462402s
+epoch 365: {'train_loss': '1.91207'}; time used = 0.036585092544555664s
+epoch 370: {'train_loss': '1.95841'}; time used = 0.021516799926757812s
+epoch 375: {'train_loss': '1.92008'}; time used = 0.016824007034301758s
+epoch 380: {'train_loss': '1.89913'}; time used = 0.016773462295532227s
+epoch 385: {'train_loss': '1.88869'}; time used = 0.016785383224487305s
+epoch 390: {'train_loss': '1.85490'}; time used = 0.016910791397094727s
+epoch 395: {'train_loss': '1.81609'}; time used = 0.01713728904724121s
+epoch 400: {'train_loss': '1.76492'}; time used = 0.021387338638305664s
+epoch 405: {'train_loss': '1.80416'}; time used = 0.0850076675415039s
+epoch 410: {'train_loss': '1.75865'}; time used = 0.021653413772583008s
+epoch 415: {'train_loss': '1.71646'}; time used = 0.02694845199584961s
+epoch 420: {'train_loss': '1.71287'}; time used = 0.04814958572387695s
+epoch 425: {'train_loss': '1.70825'}; time used = 0.03655505180358887s
+epoch 430: {'train_loss': '1.65911'}; time used = 0.0288388729095459s
+epoch 435: {'train_loss': '1.67397'}; time used = 0.05516862869262695s
+epoch 440: {'train_loss': '1.64374'}; time used = 0.01929020881652832s
+epoch 445: {'train_loss': '1.63805'}; time used = 0.017999649047851562s
+epoch 450: {'train_loss': '1.63209'}; time used = 0.022074222564697266s
+epoch 455: {'train_loss': '1.62247'}; time used = 0.03181338310241699s
+epoch 460: {'train_loss': '1.57485'}; time used = 0.027210235595703125s
+epoch 465: {'train_loss': '1.55941'}; time used = 0.028543949127197266s
+epoch 470: {'train_loss': '1.56504'}; time used = 0.023913145065307617s
+epoch 475: {'train_loss': '1.55761'}; time used = 0.016314983367919922s
+epoch 480: {'train_loss': '1.53360'}; time used = 0.02307438850402832s
+epoch 485: {'train_loss': '1.52010'}; time used = 0.0166168212890625s
+epoch 490: {'train_loss': '1.50020'}; time used = 0.016333580017089844s
+epoch 495: {'train_loss': '1.47968'}; time used = 0.0202484130859375s
+epoch 500: {'train_loss': '1.44119'}; time used = 0.016905784606933594s
+Finished training. Time used = 39.14674758911133.
+Training classifier using 20.00% nodes...
+{'micro': 0.19442379182156136, 'macro': 0.05473574045002617, 'samples': 0.19646882043576258, 'weighted': 0.06486433290490261}
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'none', 'dec': 'inner', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = none
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 9228 9228 9228
+total iter: 500
+epoch 5: {'train_loss': '5.81216'}; time used = 0.05949902534484863s
+epoch 10: {'train_loss': '4.58432'}; time used = 0.026158809661865234s
+epoch 15: {'train_loss': '4.37179'}; time used = 0.030115842819213867s
+epoch 20: {'train_loss': '4.35229'}; time used = 0.02868509292602539s
+epoch 25: {'train_loss': '4.28782'}; time used = 0.024219274520874023s
+epoch 30: {'train_loss': '4.15177'}; time used = 0.032552242279052734s
+epoch 35: {'train_loss': '4.07410'}; time used = 0.02498626708984375s
+epoch 40: {'train_loss': '3.98747'}; time used = 0.026307106018066406s
+epoch 45: {'train_loss': '3.81936'}; time used = 0.03239178657531738s
+epoch 50: {'train_loss': '3.57878'}; time used = 0.026189327239990234s
+epoch 55: {'train_loss': '3.65931'}; time used = 0.026752233505249023s
+epoch 60: {'train_loss': '3.49982'}; time used = 0.02684187889099121s
+epoch 65: {'train_loss': '3.49165'}; time used = 0.031200408935546875s
+epoch 70: {'train_loss': '3.42305'}; time used = 0.053296804428100586s
+epoch 75: {'train_loss': '3.38437'}; time used = 0.04716897010803223s
+epoch 80: {'train_loss': '3.34562'}; time used = 0.04153776168823242s
+epoch 85: {'train_loss': '3.10563'}; time used = 0.042951345443725586s
+epoch 90: {'train_loss': '3.16746'}; time used = 0.03513288497924805s
+epoch 95: {'train_loss': '3.07928'}; time used = 0.041890859603881836s
+epoch 100: {'train_loss': '3.03914'}; time used = 0.03908729553222656s
+epoch 105: {'train_loss': '2.89902'}; time used = 0.053757429122924805s
+epoch 110: {'train_loss': '2.81562'}; time used = 0.04156613349914551s
+epoch 115: {'train_loss': '2.72649'}; time used = 0.043071746826171875s
+epoch 120: {'train_loss': '2.68584'}; time used = 0.0248565673828125s
+epoch 125: {'train_loss': '2.68489'}; time used = 0.03493905067443848s
+epoch 130: {'train_loss': '2.47551'}; time used = 0.028455495834350586s
+epoch 135: {'train_loss': '2.55989'}; time used = 0.047844648361206055s
+epoch 140: {'train_loss': '2.50290'}; time used = 0.029006004333496094s
+epoch 145: {'train_loss': '2.38069'}; time used = 0.02232646942138672s
+epoch 150: {'train_loss': '2.41342'}; time used = 0.02658557891845703s
+epoch 155: {'train_loss': '2.28117'}; time used = 0.025930404663085938s
+epoch 160: {'train_loss': '2.26758'}; time used = 0.03228402137756348s
+epoch 165: {'train_loss': '2.23260'}; time used = 0.035974740982055664s
+epoch 170: {'train_loss': '2.13590'}; time used = 0.04583549499511719s
+epoch 175: {'train_loss': '2.05601'}; time used = 0.028876781463623047s
+epoch 180: {'train_loss': '2.06829'}; time used = 0.026592731475830078s
+epoch 185: {'train_loss': '2.03710'}; time used = 0.0387568473815918s
+epoch 190: {'train_loss': '1.97636'}; time used = 0.04562020301818848s
+epoch 195: {'train_loss': '1.92536'}; time used = 0.04027152061462402s
+epoch 200: {'train_loss': '1.87762'}; time used = 0.03078603744506836s
+epoch 205: {'train_loss': '1.80931'}; time used = 0.03940629959106445s
+epoch 210: {'train_loss': '1.78166'}; time used = 0.03699660301208496s
+epoch 215: {'train_loss': '1.76186'}; time used = 0.029822826385498047s
+epoch 220: {'train_loss': '1.72446'}; time used = 0.027881622314453125s
+epoch 225: {'train_loss': '1.71810'}; time used = 0.027222394943237305s
+epoch 230: {'train_loss': '1.63912'}; time used = 0.025768756866455078s
+epoch 235: {'train_loss': '1.65029'}; time used = 0.025791168212890625s
+epoch 240: {'train_loss': '1.58982'}; time used = 0.02592754364013672s
+epoch 245: {'train_loss': '1.62326'}; time used = 0.02507472038269043s
+epoch 250: {'train_loss': '1.53770'}; time used = 0.026749849319458008s
+epoch 255: {'train_loss': '1.53306'}; time used = 0.024194955825805664s
+epoch 260: {'train_loss': '1.45171'}; time used = 0.032875776290893555s
+epoch 265: {'train_loss': '1.43321'}; time used = 0.026913166046142578s
+epoch 270: {'train_loss': '1.41293'}; time used = 0.02577376365661621s
+epoch 275: {'train_loss': '1.45013'}; time used = 0.025077342987060547s
+epoch 280: {'train_loss': '1.41870'}; time used = 0.04245734214782715s
+epoch 285: {'train_loss': '1.35454'}; time used = 0.03579235076904297s
+epoch 290: {'train_loss': '1.32981'}; time used = 0.035302162170410156s
+epoch 295: {'train_loss': '1.25828'}; time used = 0.030715227127075195s
+epoch 300: {'train_loss': '1.29083'}; time used = 0.01999211311340332s
+epoch 305: {'train_loss': '1.31784'}; time used = 0.025608062744140625s
+epoch 310: {'train_loss': '1.24022'}; time used = 0.024446487426757812s
+epoch 315: {'train_loss': '1.24891'}; time used = 0.025932788848876953s
+epoch 320: {'train_loss': '1.22065'}; time used = 0.02597355842590332s
+epoch 325: {'train_loss': '1.21965'}; time used = 0.02563166618347168s
+epoch 330: {'train_loss': '1.19571'}; time used = 0.025127887725830078s
+epoch 335: {'train_loss': '1.16751'}; time used = 0.0369725227355957s
+epoch 340: {'train_loss': '1.18763'}; time used = 0.025281429290771484s
+epoch 345: {'train_loss': '1.15065'}; time used = 0.0247499942779541s
+epoch 350: {'train_loss': '1.13423'}; time used = 0.02470111846923828s
+epoch 355: {'train_loss': '1.11972'}; time used = 0.025022506713867188s
+epoch 360: {'train_loss': '1.09188'}; time used = 0.025174379348754883s
+epoch 365: {'train_loss': '1.08406'}; time used = 0.024644136428833008s
+epoch 370: {'train_loss': '1.09106'}; time used = 0.025145292282104492s
+epoch 375: {'train_loss': '1.08053'}; time used = 0.024242877960205078s
+epoch 380: {'train_loss': '1.07253'}; time used = 0.024501800537109375s
+epoch 385: {'train_loss': '1.05597'}; time used = 0.024479150772094727s
+epoch 390: {'train_loss': '1.05374'}; time used = 0.024516582489013672s
+epoch 395: {'train_loss': '1.03024'}; time used = 0.024541378021240234s
+epoch 400: {'train_loss': '1.01081'}; time used = 0.02454543113708496s
+epoch 405: {'train_loss': '1.02490'}; time used = 0.024717330932617188s
+epoch 410: {'train_loss': '0.99706'}; time used = 0.024532079696655273s
+epoch 415: {'train_loss': '0.97476'}; time used = 0.024573326110839844s
+epoch 420: {'train_loss': '0.98044'}; time used = 0.02482151985168457s
+epoch 425: {'train_loss': '0.97758'}; time used = 0.02531290054321289s
+epoch 430: {'train_loss': '0.95783'}; time used = 0.02498602867126465s
+epoch 435: {'train_loss': '0.95767'}; time used = 0.024980545043945312s
+epoch 440: {'train_loss': '0.95820'}; time used = 0.041120290756225586s
+epoch 445: {'train_loss': '0.94551'}; time used = 0.02623724937438965s
+epoch 450: {'train_loss': '0.94399'}; time used = 0.024448156356811523s
+epoch 455: {'train_loss': '0.94503'}; time used = 0.025301456451416016s
+epoch 460: {'train_loss': '0.92312'}; time used = 0.024934053421020508s
+epoch 465: {'train_loss': '0.91705'}; time used = 0.016206026077270508s
+epoch 470: {'train_loss': '0.92239'}; time used = 0.016143798828125s
+epoch 475: {'train_loss': '0.92430'}; time used = 0.016033411026000977s
+epoch 480: {'train_loss': '0.91153'}; time used = 0.019997119903564453s
+epoch 485: {'train_loss': '0.89822'}; time used = 0.02318716049194336s
+epoch 490: {'train_loss': '0.89806'}; time used = 0.022919178009033203s
+epoch 495: {'train_loss': '0.88872'}; time used = 0.02397775650024414s
+epoch 500: {'train_loss': '0.87740'}; time used = 0.023990392684936523s
+Finished training. Time used = 60.23773217201233.
+Training classifier using 20.00% nodes...
+{'micro': 0.2319702602230483, 'macro': 0.10951714775607124, 'samples': 0.23441021788129227, 'weighted': 0.13568980389098476}

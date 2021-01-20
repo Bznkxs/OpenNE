@@ -69,7 +69,7 @@ class SS_NodeModel(ModelWithEmbeddings):
               **kwargs):
         self.graph = graph
         self.nb_nodes = graph.nodesize
-        self.adj = self.adjmat_device(graph=graph, weighted=False, directed=True, sparse=True)
+        self.adj = self.adjmat_device(graph=graph, weighted=False, directed=True, sparse=False)
         self.learning_rate = lr
         self.epochs = epochs
         self.dropout = dropout
@@ -78,6 +78,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         self.weight_decay = weight_decay
         self.early_stopping = early_stopping
         self.patience = patience
+        self.sparse = False
         self.min_delta = min_delta
         self.enc = enc
         self.dec = dec
@@ -90,7 +91,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         if self.enc in ['gcn', ]:
             self.preprocess_data(graph)
         else:
-            features = torch.from_numpy(graph.features())
+            features = torch.from_numpy(graph.features()).to(self._device)
             self.register_buffer("features", features)
             self.support = [self.adj]
         self.dim = dim
@@ -142,12 +143,13 @@ class SS_NodeModel(ModelWithEmbeddings):
         output = None
         for batch in self.model.sampler:
             x, pos, neg = batch
+            x = x.to(self._device)
+            pos = pos.to(self._device)
+            neg = neg.to(self._device)
+            # print(x.device, pos.device, neg.device)
             self.optimizer.zero_grad()
-            bx = x
-            bpos = pos
-            bneg = neg
             batch_num += 1
-            loss = self.model(bx, bpos, bneg)
+            loss = self.model(x, pos, neg)
             if train:
                 loss.backward()
                 self.optimizer.step()
@@ -157,7 +159,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         return output, cur_loss / batch_num, (time.time() - t_test)
 
     def _get_embeddings(self, graph, **kwargs):
-        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes))).detach()
+        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes)).to(self._device)).detach()
 
     def preprocess_data(self, graph):
         """
@@ -170,7 +172,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         self.register_buffer("features", features)
         n = graph.nodesize
         self.build_label(graph)
-        adj_label = graph.adjmat(weighted=False, directed=False, sparse=True)
+        adj_label = graph.adjmat(weighted=False, directed=False, sparse=self.sparse)
         self.register_float_buffer("adj_label", adj_label + sp.eye(n).toarray())
         adj = nx.adjacency_matrix(g)  # the type of graph
         self.register_float_buffer("pos_weight", [float(n * n - adj.sum()) / adj.sum()])

@@ -1,0 +1,822 @@
+  0%|          | 0/6654 [00:00<?, ?it/s]100%|██████████| 6654/6654 [00:00<00:00, 144502.37it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s] 10%|█         | 9669/93156 [00:00<00:00, 96685.25it/s] 21%|██        | 19321/93156 [00:00<00:00, 95136.61it/s] 30%|███       | 28106/93156 [00:00<00:00, 92826.19it/s] 37%|███▋      | 34397/93156 [00:00<00:00, 81236.08it/s] 45%|████▍     | 41550/93156 [00:00<00:00, 78058.40it/s] 57%|█████▋    | 53502/93156 [00:00<00:00, 87125.46it/s] 71%|███████   | 66354/93156 [00:00<00:00, 96444.31it/s] 82%|████████▏ | 76068/93156 [00:00<00:00, 95657.68it/s] 92%|█████████▏| 85535/93156 [00:00<00:00, 81906.89it/s]100%|██████████| 93156/93156 [00:01<00:00, 85871.02it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.04051566123962402 seconds.
+Run epoch 1
+Epoch 1 ends in 0.10901856422424316 seconds.
+6654 sentences created
+mode 1: time used = 0.06815385818481445
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/6654 [00:00<?, ?it/s] 71%|███████   | 4706/6654 [00:00<00:00, 47058.14it/s]100%|██████████| 6654/6654 [00:00<00:00, 39493.71it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  7%|▋         | 6786/93156 [00:00<00:01, 67856.99it/s] 12%|█▏        | 11516/93156 [00:00<00:01, 60028.39it/s] 16%|█▌        | 14846/93156 [00:00<00:01, 44936.22it/s] 20%|██        | 18680/93156 [00:00<00:01, 42178.48it/s] 27%|██▋       | 24797/93156 [00:00<00:01, 46193.18it/s] 32%|███▏      | 29794/93156 [00:00<00:01, 46601.34it/s] 36%|███▋      | 33986/93156 [00:00<00:01, 44633.78it/s] 41%|████      | 38295/93156 [00:00<00:01, 43932.75it/s] 46%|████▌     | 43061/93156 [00:00<00:01, 43591.36it/s] 53%|█████▎    | 49468/93156 [00:01<00:00, 48214.25it/s] 59%|█████▉    | 55017/93156 [00:01<00:00, 49079.28it/s] 64%|██████▍   | 59962/93156 [00:01<00:00, 46457.90it/s] 69%|██████▉   | 64663/93156 [00:01<00:00, 46084.00it/s] 74%|███████▍  | 69349/93156 [00:01<00:00, 46313.42it/s] 87%|████████▋ | 81205/93156 [00:01<00:00, 56673.56it/s] 94%|█████████▍| 88023/93156 [00:01<00:00, 41577.39it/s]100%|██████████| 93156/93156 [00:02<00:00, 44582.79it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.13046860694885254 seconds.
+Run epoch 1
+Epoch 1 ends in 0.1551525592803955 seconds.
+6654 sentences created
+mode 1: time used = 0.22144603729248047
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/6654 [00:00<?, ?it/s]100%|██████████| 6654/6654 [00:00<00:00, 92801.99it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  6%|▌         | 5493/93156 [00:00<00:01, 54927.83it/s] 17%|█▋        | 15432/93156 [00:00<00:01, 63441.14it/s] 27%|██▋       | 24924/93156 [00:00<00:00, 69003.67it/s] 39%|███▉      | 36468/93156 [00:00<00:00, 78473.42it/s] 52%|█████▏    | 48355/93156 [00:00<00:00, 87380.62it/s] 61%|██████    | 57039/93156 [00:00<00:00, 79564.81it/s] 70%|██████▉   | 65093/93156 [00:00<00:00, 71676.69it/s] 81%|████████▏ | 75831/93156 [00:00<00:00, 79618.36it/s] 90%|█████████ | 84221/93156 [00:01<00:00, 74114.40it/s]100%|██████████| 93156/93156 [00:01<00:00, 86120.56it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.05838584899902344 seconds.
+Run epoch 1
+Epoch 1 ends in 0.04524064064025879 seconds.
+6654 sentences created
+mode 1: time used = 0.0973360538482666
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+  0%|          | 0/6654 [00:00<?, ?it/s] 87%|████████▋ | 5785/6654 [00:00<00:00, 57845.23it/s]100%|██████████| 6654/6654 [00:00<00:00, 47956.65it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  7%|▋         | 6224/93156 [00:00<00:01, 61072.14it/s] 18%|█▊        | 16542/93156 [00:00<00:01, 69591.23it/s] 27%|██▋       | 24986/93156 [00:00<00:00, 68325.53it/s] 32%|███▏      | 30017/93156 [00:00<00:01, 50165.03it/s] 37%|███▋      | 34468/93156 [00:00<00:01, 41848.74it/s] 41%|████▏     | 38489/93156 [00:00<00:01, 40147.48it/s] 46%|████▌     | 42404/93156 [00:00<00:01, 35297.27it/s] 49%|████▉     | 45971/93156 [00:01<00:01, 29052.70it/s] 54%|█████▍    | 50573/93156 [00:01<00:01, 32665.23it/s] 58%|█████▊    | 54133/93156 [00:01<00:01, 30440.14it/s] 62%|██████▏   | 57413/93156 [00:01<00:01, 26126.78it/s] 65%|██████▌   | 60639/93156 [00:01<00:01, 27142.02it/s] 69%|██████▉   | 64532/93156 [00:01<00:00, 29833.94it/s] 73%|███████▎  | 67737/93156 [00:01<00:00, 30458.64it/s] 76%|███████▌  | 70942/93156 [00:01<00:00, 30033.40it/s] 80%|███████▉  | 74274/93156 [00:01<00:00, 30948.29it/s] 83%|████████▎ | 77455/93156 [00:02<00:00, 29470.48it/s] 86%|████████▋ | 80477/93156 [00:02<00:00, 29626.23it/s] 90%|████████▉ | 83493/93156 [00:02<00:00, 27794.90it/s] 94%|█████████▎| 87103/93156 [00:02<00:00, 29825.00it/s] 97%|█████████▋| 90337/93156 [00:02<00:00, 30425.44it/s]100%|██████████| 93156/93156 [00:02<00:00, 35557.59it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.04749035835266113 seconds.
+Run epoch 1
+Epoch 1 ends in 0.08422589302062988 seconds.
+6654 sentences created
+mode 1: time used = 0.17988181114196777
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/6654 [00:00<?, ?it/s]100%|██████████| 6654/6654 [00:00<00:00, 88926.31it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  7%|▋         | 6298/93156 [00:00<00:01, 62084.82it/s] 13%|█▎        | 12207/93156 [00:00<00:01, 59410.37it/s] 22%|██▏       | 20773/93156 [00:00<00:01, 65383.38it/s] 27%|██▋       | 25527/93156 [00:00<00:01, 57042.11it/s] 35%|███▌      | 32703/93156 [00:00<00:01, 59019.01it/s] 44%|████▍     | 40970/93156 [00:00<00:00, 64559.74it/s] 51%|█████     | 47574/93156 [00:00<00:00, 64996.18it/s] 58%|█████▊    | 54222/93156 [00:00<00:00, 65433.79it/s] 68%|██████▊   | 63018/93156 [00:00<00:00, 70878.98it/s] 75%|███████▌  | 70101/93156 [00:01<00:00, 66087.00it/s] 86%|████████▋ | 80501/93156 [00:01<00:00, 74200.76it/s] 98%|█████████▊| 91456/93156 [00:01<00:00, 82153.30it/s]100%|██████████| 93156/93156 [00:01<00:00, 73259.82it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 146, in evaluate
+    pos = pos.to(self._device)
+RuntimeError: CUDA out of memory. Tried to allocate 2.00 MiB (GPU 7; 10.76 GiB total capacity; 187.62 MiB already allocated; 16.44 MiB free; 204.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.05220985412597656 seconds.
+Run epoch 1
+Epoch 1 ends in 0.08197307586669922 seconds.
+6654 sentences created
+mode 1: time used = 0.09428930282592773
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+  0%|          | 0/6654 [00:00<?, ?it/s]100%|██████████| 6654/6654 [00:00<00:00, 88206.81it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  9%|▊         | 8054/93156 [00:00<00:01, 80407.99it/s] 16%|█▌        | 14619/93156 [00:00<00:01, 75327.02it/s] 28%|██▊       | 25830/93156 [00:00<00:00, 83550.34it/s] 38%|███▊      | 35106/93156 [00:00<00:00, 86114.72it/s] 46%|████▌     | 42494/93156 [00:00<00:00, 81686.05it/s] 53%|█████▎    | 49533/93156 [00:00<00:00, 59568.31it/s] 60%|█████▉    | 55556/93156 [00:00<00:00, 58881.73it/s] 66%|██████▌   | 61492/93156 [00:00<00:00, 52111.28it/s] 72%|███████▏  | 66880/93156 [00:01<00:00, 49648.24it/s] 77%|███████▋  | 71993/93156 [00:01<00:00, 43857.70it/s] 83%|████████▎ | 77387/93156 [00:01<00:00, 46264.41it/s] 92%|█████████▏| 85291/93156 [00:01<00:00, 50673.72it/s] 97%|█████████▋| 90621/93156 [00:01<00:00, 50496.38it/s]100%|██████████| 93156/93156 [00:01<00:00, 58120.64it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.04513955116271973 seconds.
+Run epoch 1
+Epoch 1 ends in 0.040940284729003906 seconds.
+6654 sentences created
+mode 1: time used = 0.0908358097076416
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+  0%|          | 0/6654 [00:00<?, ?it/s] 77%|███████▋  | 5103/6654 [00:00<00:00, 51027.37it/s]100%|██████████| 6654/6654 [00:00<00:00, 43049.16it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  4%|▎         | 3429/93156 [00:00<00:02, 34095.99it/s]  8%|▊         | 7808/93156 [00:00<00:02, 36475.29it/s] 13%|█▎        | 12175/93156 [00:00<00:02, 38140.05it/s] 18%|█▊        | 16650/93156 [00:00<00:01, 39907.77it/s] 22%|██▏       | 20755/93156 [00:00<00:01, 40140.96it/s] 26%|██▌       | 24237/93156 [00:00<00:01, 38117.07it/s] 30%|██▉       | 27698/93156 [00:00<00:01, 36796.94it/s] 33%|███▎      | 31142/93156 [00:00<00:01, 32514.08it/s] 37%|███▋      | 34320/93156 [00:00<00:01, 31655.70it/s] 40%|████      | 37439/93156 [00:01<00:01, 30189.48it/s] 44%|████▍     | 41394/93156 [00:01<00:01, 30884.30it/s] 48%|████▊     | 44845/93156 [00:01<00:01, 29761.83it/s] 52%|█████▏    | 48467/93156 [00:01<00:01, 31443.74it/s] 55%|█████▌    | 51639/93156 [00:01<00:01, 31284.36it/s] 60%|██████    | 55896/93156 [00:01<00:01, 33660.67it/s] 64%|██████▍   | 60062/93156 [00:01<00:00, 34763.86it/s] 69%|██████▉   | 64634/93156 [00:01<00:00, 36902.74it/s] 74%|███████▎  | 68659/93156 [00:01<00:00, 37846.19it/s] 79%|███████▉  | 73509/93156 [00:02<00:00, 40516.11it/s] 83%|████████▎ | 77654/93156 [00:02<00:00, 32493.49it/s] 87%|████████▋ | 81223/93156 [00:02<00:00, 32888.47it/s] 92%|█████████▏| 85591/93156 [00:02<00:00, 35162.91it/s] 96%|█████████▌| 89554/93156 [00:02<00:00, 35939.81it/s]100%|██████████| 93156/93156 [00:02<00:00, 35573.26it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.12708711624145508 seconds.
+Run epoch 1
+Epoch 1 ends in 0.12139534950256348 seconds.
+6654 sentences created
+mode 1: time used = 0.2241816520690918
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 44.00 MiB (GPU 7; 10.76 GiB total capacity; 94.00 MiB already allocated; 15.44 MiB free; 94.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA out of memory. Tried to allocate 94.00 MiB (GPU 7; 10.76 GiB total capacity; 0 bytes already allocated; 51.44 MiB free; 0 bytes reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+  0%|          | 0/6654 [00:00<?, ?it/s] 52%|█████▏    | 3479/6654 [00:00<00:00, 34787.96it/s]100%|██████████| 6654/6654 [00:00<00:00, 42553.65it/s]
+  0%|          | 0/93156 [00:00<?, ?it/s]  7%|▋         | 6948/93156 [00:00<00:01, 69475.59it/s] 12%|█▏        | 11160/93156 [00:00<00:01, 55717.42it/s] 17%|█▋        | 15871/93156 [00:00<00:01, 52820.89it/s] 21%|██        | 19106/93156 [00:00<00:01, 43460.88it/s] 25%|██▍       | 22894/93156 [00:00<00:01, 40820.50it/s] 32%|███▏      | 29444/93156 [00:00<00:01, 46022.01it/s] 38%|███▊      | 35194/93156 [00:00<00:01, 46587.00it/s] 43%|████▎     | 39939/93156 [00:00<00:01, 44785.00it/s] 50%|████▉     | 46421/93156 [00:00<00:00, 49140.04it/s] 55%|█████▌    | 51363/93156 [00:01<00:00, 47776.73it/s] 61%|██████    | 56980/93156 [00:01<00:00, 50018.35it/s] 67%|██████▋   | 62557/93156 [00:01<00:00, 51240.91it/s] 74%|███████▎  | 68645/93156 [00:01<00:00, 53445.08it/s] 79%|███████▉  | 74043/93156 [00:01<00:00, 47996.65it/s] 87%|████████▋ | 80707/93156 [00:01<00:00, 52002.30it/s] 93%|█████████▎| 86549/93156 [00:01<00:00, 52345.24it/s] 99%|█████████▉| 92170/93156 [00:01<00:00, 51500.68it/s]100%|██████████| 93156/93156 [00:01<00:00, 50038.17it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 97, in forward
+    feat_in = torch.mm(x, weight)
+RuntimeError: expected scalar type Double but found Float
+actual args: {'cpu': False, 'devices': [7], 'model': 'ss_nodemodel', 'dataset': 'citeseer', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading CiteSeer Dataset from root dir: /home/duyufeng/OpenNE/data/CiteSeer
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.10433292388916016 seconds.
+Run epoch 1
+Epoch 1 ends in 0.08378314971923828 seconds.
+6654 sentences created
+mode 1: time used = 0.19155049324035645
+anchors and positive samples of len 93156 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 93156 93156 93156
+total iter: 500

@@ -1,6 +1,7 @@
 from .layers import Layer
 from ..inits import zeros, glorot
 from ..utils import *
+from ...utils import getdevice
 import torch
 
 
@@ -29,7 +30,7 @@ class GAT(Layer):
         else:
             self.adjmat = adjmat
 
-        self.aux = -10e9 * (1 - self.adjmat.to_dense())
+        self.aux = (-10e9 * (1 - self.adjmat)).to(getdevice())
         self.attn_heads = int(attn_heads+0.5)
         self.dropout_input = dropout
         if dropout_coef is None:

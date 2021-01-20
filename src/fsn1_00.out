@@ -1,0 +1,1475 @@
+  0%|          | 0/5416 [00:00<?, ?it/s] 44%|████▍     | 2378/5416 [00:00<00:00, 22307.78it/s] 86%|████████▋ | 4675/5416 [00:00<00:00, 22376.79it/s]100%|██████████| 5416/5416 [00:00<00:00, 21434.71it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  4%|▍         | 3267/75824 [00:00<00:02, 32667.69it/s]  8%|▊         | 6162/75824 [00:00<00:02, 30920.65it/s] 12%|█▏        | 9117/75824 [00:00<00:02, 29776.01it/s] 16%|█▌        | 12261/75824 [00:00<00:02, 29874.74it/s] 20%|██        | 15498/75824 [00:00<00:02, 29255.00it/s] 24%|██▎       | 17889/75824 [00:00<00:02, 27134.51it/s] 27%|██▋       | 20259/75824 [00:00<00:02, 24519.83it/s] 30%|██▉       | 22630/75824 [00:00<00:02, 24069.67it/s] 33%|███▎      | 25376/75824 [00:00<00:02, 24995.04it/s] 38%|███▊      | 28641/75824 [00:01<00:01, 25747.53it/s] 42%|████▏     | 31869/75824 [00:01<00:01, 27411.66it/s] 46%|████▌     | 34603/75824 [00:01<00:01, 26996.48it/s] 50%|████▉     | 37649/75824 [00:01<00:01, 27949.35it/s] 54%|█████▎    | 40637/75824 [00:01<00:01, 26777.69it/s] 57%|█████▋    | 43330/75824 [00:01<00:01, 23652.58it/s] 60%|██████    | 45773/75824 [00:01<00:01, 21995.59it/s] 63%|██████▎   | 48050/75824 [00:01<00:01, 21688.39it/s] 66%|██████▋   | 50274/75824 [00:02<00:01, 20672.87it/s] 69%|██████▉   | 52390/75824 [00:02<00:01, 19646.40it/s] 72%|███████▏  | 54400/75824 [00:02<00:01, 17492.78it/s] 74%|███████▍  | 56225/75824 [00:02<00:01, 17251.47it/s] 77%|███████▋  | 58527/75824 [00:02<00:00, 18532.66it/s] 80%|████████  | 60752/75824 [00:02<00:00, 19221.25it/s] 84%|████████▍ | 63598/75824 [00:02<00:00, 20851.47it/s] 88%|████████▊ | 66976/75824 [00:02<00:00, 22635.76it/s] 92%|█████████▏| 69787/75824 [00:02<00:00, 23164.33it/s] 96%|█████████▌| 72634/75824 [00:03<00:00, 18780.85it/s] 99%|█████████▊| 74697/75824 [00:03<00:00, 19089.78it/s]100%|██████████| 75824/75824 [00:03<00:00, 23232.96it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.11696720123291016 seconds.
+Run epoch 1
+Epoch 1 ends in 0.18833446502685547 seconds.
+5416 sentences created
+mode 1: time used = 0.3316800594329834
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 48%|████▊     | 2587/5416 [00:00<00:00, 25869.35it/s]100%|██████████| 5416/5416 [00:00<00:00, 36913.63it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  7%|▋         | 5118/75824 [00:00<00:01, 42691.94it/s] 11%|█▏        | 8582/75824 [00:00<00:01, 37287.55it/s] 16%|█▌        | 11984/75824 [00:00<00:01, 35092.39it/s] 21%|██        | 15674/75824 [00:00<00:01, 35614.95it/s] 26%|██▌       | 19859/75824 [00:00<00:01, 35568.45it/s] 31%|███▏      | 23708/75824 [00:00<00:01, 35737.34it/s] 39%|███▊      | 29195/75824 [00:00<00:01, 39912.04it/s] 44%|████▎     | 33019/75824 [00:00<00:01, 37495.38it/s] 48%|████▊     | 36682/75824 [00:01<00:01, 31211.60it/s] 53%|█████▎    | 39919/75824 [00:01<00:01, 29656.67it/s] 57%|█████▋    | 43334/75824 [00:01<00:01, 29629.39it/s] 61%|██████    | 46365/75824 [00:01<00:01, 28777.27it/s] 66%|██████▌   | 49737/75824 [00:01<00:00, 29127.93it/s] 70%|██████▉   | 52816/75824 [00:01<00:00, 29521.28it/s] 74%|███████▍  | 56402/75824 [00:01<00:00, 31174.31it/s] 79%|███████▊  | 59564/75824 [00:01<00:00, 30483.28it/s] 83%|████████▎ | 63013/75824 [00:01<00:00, 30346.79it/s] 88%|████████▊ | 66450/75824 [00:02<00:00, 31242.22it/s] 93%|█████████▎| 70602/75824 [00:02<00:00, 32638.90it/s] 98%|█████████▊| 74228/75824 [00:02<00:00, 32109.81it/s]100%|██████████| 75824/75824 [00:02<00:00, 32613.65it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.041263580322265625 seconds.
+Run epoch 1
+Epoch 1 ends in 0.04254961013793945 seconds.
+5416 sentences created
+mode 1: time used = 0.18831229209899902
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 60%|██████    | 3275/5416 [00:00<00:00, 28094.54it/s]100%|██████████| 5416/5416 [00:00<00:00, 30625.10it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s] 10%|█         | 7706/75824 [00:00<00:00, 77059.15it/s] 22%|██▏       | 17054/75824 [00:00<00:00, 81344.62it/s] 32%|███▏      | 23971/75824 [00:00<00:00, 77264.46it/s] 38%|███▊      | 29142/75824 [00:00<00:00, 65615.97it/s] 46%|████▋     | 35154/75824 [00:00<00:00, 63862.32it/s] 53%|█████▎    | 40511/75824 [00:00<00:00, 36363.30it/s] 68%|██████▊   | 51722/75824 [00:00<00:00, 45607.29it/s] 77%|███████▋  | 58091/75824 [00:01<00:00, 47406.43it/s] 85%|████████▍ | 64120/75824 [00:01<00:00, 50652.87it/s] 93%|█████████▎| 70266/75824 [00:01<00:00, 52257.01it/s]100%|██████████| 75824/75824 [00:01<00:00, 55241.50it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.09933996200561523 seconds.
+Run epoch 1
+Epoch 1 ends in 0.10040760040283203 seconds.
+5416 sentences created
+mode 1: time used = 0.219984769821167
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 61%|██████▏   | 3329/5416 [00:00<00:00, 32161.62it/s]100%|██████████| 5416/5416 [00:00<00:00, 36101.31it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s] 14%|█▍        | 10689/75824 [00:00<00:00, 106880.67it/s] 22%|██▏       | 17023/75824 [00:00<00:00, 88606.83it/s]  30%|███       | 22990/75824 [00:00<00:00, 76686.64it/s] 39%|███▉      | 29460/75824 [00:00<00:00, 72648.41it/s] 47%|████▋     | 35894/75824 [00:00<00:00, 68704.79it/s] 55%|█████▍    | 41362/75824 [00:00<00:00, 61477.16it/s] 63%|██████▎   | 47540/75824 [00:00<00:00, 59964.98it/s] 71%|███████   | 53476/75824 [00:00<00:00, 59725.38it/s] 79%|███████▉  | 60243/75824 [00:00<00:00, 61905.03it/s] 88%|████████▊ | 66467/75824 [00:01<00:00, 62004.63it/s] 96%|█████████▌| 72484/75824 [00:01<00:00, 61222.53it/s]100%|██████████| 75824/75824 [00:01<00:00, 63626.19it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.13247919082641602 seconds.
+Run epoch 1
+Epoch 1 ends in 0.1253492832183838 seconds.
+5416 sentences created
+mode 1: time used = 0.17132043838500977
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 118700.10it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s] 11%|█         | 7968/75824 [00:00<00:00, 79675.90it/s] 33%|███▎      | 25358/75824 [00:00<00:00, 95140.14it/s] 58%|█████▊    | 44054/75824 [00:00<00:00, 111579.80it/s] 79%|███████▉  | 59823/75824 [00:00<00:00, 121667.60it/s] 95%|█████████▍| 71752/75824 [00:00<00:00, 114176.32it/s]100%|██████████| 75824/75824 [00:00<00:00, 139504.60it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.0439295768737793 seconds.
+Run epoch 1
+Epoch 1 ends in 0.05219388008117676 seconds.
+5416 sentences created
+mode 1: time used = 0.057358503341674805
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 89761.34it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s] 14%|█▍        | 10949/75824 [00:00<00:00, 109486.45it/s] 26%|██▌       | 19792/75824 [00:00<00:00, 102184.81it/s] 33%|███▎      | 25337/75824 [00:00<00:00, 81558.85it/s]  41%|████      | 30869/75824 [00:00<00:00, 71398.47it/s] 49%|████▉     | 37211/75824 [00:00<00:00, 68800.55it/s] 63%|██████▎   | 47584/75824 [00:00<00:00, 76531.79it/s] 75%|███████▌  | 56941/75824 [00:00<00:00, 80208.10it/s] 87%|████████▋ | 66003/75824 [00:00<00:00, 83070.14it/s]100%|██████████| 75824/75824 [00:00<00:00, 84991.24it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.04653167724609375 seconds.
+Run epoch 1
+Epoch 1 ends in 0.038196563720703125 seconds.
+5416 sentences created
+mode 1: time used = 0.08868932723999023
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 69%|██████▊   | 3717/5416 [00:00<00:00, 37167.91it/s]100%|██████████| 5416/5416 [00:00<00:00, 33427.88it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  7%|▋         | 5632/75824 [00:00<00:01, 51594.69it/s] 13%|█▎        | 10136/75824 [00:00<00:01, 47342.90it/s] 20%|██        | 15534/75824 [00:00<00:01, 48164.15it/s] 27%|██▋       | 20236/75824 [00:00<00:01, 47814.84it/s] 31%|███▏      | 23816/75824 [00:00<00:01, 41306.66it/s] 36%|███▌      | 27263/75824 [00:00<00:01, 38705.17it/s] 42%|████▏     | 31763/75824 [00:00<00:01, 39031.90it/s] 49%|████▉     | 37011/75824 [00:00<00:00, 41746.18it/s] 54%|█████▍    | 41235/75824 [00:00<00:00, 41865.92it/s] 62%|██████▏   | 47184/75824 [00:01<00:00, 44843.36it/s] 70%|██████▉   | 53071/75824 [00:01<00:00, 46631.92it/s] 79%|███████▊  | 59622/75824 [00:01<00:00, 50820.61it/s] 85%|████████▌ | 64818/75824 [00:01<00:00, 49923.73it/s] 96%|█████████▌| 72425/75824 [00:01<00:00, 55663.01it/s]100%|██████████| 75824/75824 [00:01<00:00, 48341.81it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.1271505355834961 seconds.
+Run epoch 1
+Epoch 1 ends in 0.10870838165283203 seconds.
+5416 sentences created
+mode 1: time used = 0.19687271118164062
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 67%|██████▋   | 3649/5416 [00:00<00:00, 33600.62it/s]100%|██████████| 5416/5416 [00:00<00:00, 30136.26it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  6%|▋         | 4913/75824 [00:00<00:01, 46261.05it/s] 12%|█▏        | 9268/75824 [00:00<00:01, 45410.93it/s] 15%|█▌        | 11546/75824 [00:00<00:02, 28575.00it/s] 22%|██▏       | 16562/75824 [00:00<00:01, 32810.50it/s] 27%|██▋       | 20170/75824 [00:00<00:01, 33682.94it/s] 32%|███▏      | 24558/75824 [00:00<00:01, 36206.68it/s] 39%|███▉      | 29918/75824 [00:00<00:01, 40110.87it/s] 46%|████▋     | 35197/75824 [00:00<00:00, 42687.79it/s] 55%|█████▌    | 41790/75824 [00:00<00:00, 47735.61it/s] 63%|██████▎   | 47410/75824 [00:01<00:00, 48752.87it/s] 70%|███████   | 53451/75824 [00:01<00:00, 51747.09it/s] 78%|███████▊  | 58803/75824 [00:01<00:00, 47917.67it/s] 84%|████████▍ | 63776/75824 [00:01<00:00, 41706.86it/s] 90%|████████▉ | 68218/75824 [00:01<00:00, 41082.60it/s] 96%|█████████▌| 72833/75824 [00:01<00:00, 42481.58it/s]100%|██████████| 75824/75824 [00:01<00:00, 43521.83it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.0996396541595459 seconds.
+Run epoch 1
+Epoch 1 ends in 0.08159017562866211 seconds.
+5416 sentences created
+mode 1: time used = 0.24011850357055664
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 73%|███████▎  | 3930/5416 [00:00<00:00, 39299.85it/s]100%|██████████| 5416/5416 [00:00<00:00, 41050.78it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  6%|▋         | 4890/75824 [00:00<00:01, 44921.06it/s] 11%|█         | 8165/75824 [00:00<00:01, 39358.67it/s] 15%|█▌        | 11598/75824 [00:00<00:01, 36459.76it/s] 20%|██        | 15369/75824 [00:00<00:01, 36825.30it/s] 26%|██▌       | 19744/75824 [00:00<00:01, 38660.62it/s] 32%|███▏      | 24324/75824 [00:00<00:01, 40557.14it/s] 37%|███▋      | 27938/75824 [00:00<00:01, 39072.49it/s] 42%|████▏     | 31548/75824 [00:00<00:01, 37095.59it/s] 46%|████▋     | 35070/75824 [00:00<00:01, 35831.86it/s] 52%|█████▏    | 39711/75824 [00:01<00:00, 37888.17it/s] 57%|█████▋    | 43447/75824 [00:01<00:00, 37112.42it/s] 62%|██████▏   | 47125/75824 [00:01<00:00, 35198.61it/s] 67%|██████▋   | 50642/75824 [00:01<00:00, 34359.94it/s] 79%|███████▉  | 59908/75824 [00:01<00:00, 42354.46it/s] 89%|████████▉ | 67862/75824 [00:01<00:00, 46370.65it/s] 97%|█████████▋| 73279/75824 [00:01<00:00, 47322.36it/s]100%|██████████| 75824/75824 [00:01<00:00, 43523.09it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.045386314392089844 seconds.
+Run epoch 1
+Epoch 1 ends in 0.04458022117614746 seconds.
+5416 sentences created
+mode 1: time used = 0.15718841552734375
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s] 45%|████▌     | 2458/5416 [00:00<00:00, 24577.50it/s] 76%|███████▌  | 4129/5416 [00:00<00:00, 21428.00it/s]100%|██████████| 5416/5416 [00:00<00:00, 21327.14it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  7%|▋         | 5633/75824 [00:00<00:01, 52042.27it/s] 14%|█▎        | 10358/75824 [00:00<00:01, 48703.06it/s] 19%|█▉        | 14674/75824 [00:00<00:01, 46895.66it/s] 24%|██▍       | 18459/75824 [00:00<00:01, 43747.81it/s] 29%|██▉       | 22244/75824 [00:00<00:01, 39880.14it/s] 35%|███▌      | 26859/75824 [00:00<00:01, 40479.95it/s] 40%|████      | 30497/75824 [00:00<00:01, 39155.15it/s] 45%|████▌     | 34331/75824 [00:00<00:01, 37556.79it/s] 50%|█████     | 37959/75824 [00:00<00:01, 36996.98it/s] 55%|█████▍    | 41700/75824 [00:01<00:00, 37119.57it/s] 60%|██████    | 45821/75824 [00:01<00:00, 37022.92it/s] 65%|██████▌   | 49443/75824 [00:01<00:00, 35943.40it/s] 70%|███████   | 53229/75824 [00:01<00:00, 36328.72it/s] 75%|███████▍  | 56829/75824 [00:01<00:00, 34679.16it/s] 80%|███████▉  | 60290/75824 [00:01<00:00, 34388.39it/s] 84%|████████▍ | 63724/75824 [00:01<00:00, 30931.33it/s] 89%|████████▉ | 67331/75824 [00:01<00:00, 31532.59it/s] 93%|█████████▎| 70539/75824 [00:01<00:00, 31694.03it/s] 97%|█████████▋| 73745/75824 [00:02<00:00, 30677.48it/s]100%|██████████| 75824/75824 [00:02<00:00, 35807.30it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.09596800804138184 seconds.
+Run epoch 1
+Epoch 1 ends in 0.1573030948638916 seconds.
+5416 sentences created
+mode 1: time used = 0.30077099800109863
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+  0%|          | 0/5416 [00:00<?, ?it/s]100%|██████████| 5416/5416 [00:00<00:00, 76930.78it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s] 14%|█▍        | 10480/75824 [00:00<00:00, 104795.85it/s] 27%|██▋       | 20427/75824 [00:00<00:00, 103136.44it/s] 40%|████      | 30699/75824 [00:00<00:00, 103008.67it/s] 56%|█████▋    | 42675/75824 [00:00<00:00, 107518.98it/s] 72%|███████▏  | 54462/75824 [00:00<00:00, 110427.82it/s] 87%|████████▋ | 65816/75824 [00:00<00:00, 111342.50it/s]100%|██████████| 75824/75824 [00:00<00:00, 110985.99it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 106, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 28.00 MiB (GPU 6; 10.76 GiB total capacity; 63.89 MiB already allocated; 24.44 MiB free; 68.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.06507444381713867 seconds.
+Run epoch 1
+Epoch 1 ends in 0.09941220283508301 seconds.
+5416 sentences created
+mode 1: time used = 0.09955763816833496
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 30, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], self.supports, dropout, act=F.relu, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 28.00 MiB (GPU 6; 10.76 GiB total capacity; 42.80 MiB already allocated; 30.44 MiB free; 44.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 105, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 30, in __init__
+    self.encoder = Encoder(self.encoder_name, self.enc_dims, self.supports, self.features, dropout, self.readout)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 31, in __init__
+    self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 33, in __init__
+    self.aux = (-10e9 * (1 - self.adjmat.to_dense())).to(getdevice())
+RuntimeError: CUDA out of memory. Tried to allocate 28.00 MiB (GPU 6; 10.76 GiB total capacity; 98.80 MiB already allocated; 18.44 MiB free; 100.00 MiB reserved in total by PyTorch)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+  0%|          | 0/5416 [00:00<?, ?it/s] 74%|███████▍  | 4004/5416 [00:00<00:00, 38381.36it/s]100%|██████████| 5416/5416 [00:00<00:00, 33210.16it/s]
+  0%|          | 0/75824 [00:00<?, ?it/s]  2%|▏         | 1721/75824 [00:00<00:05, 13114.13it/s]  8%|▊         | 5868/75824 [00:00<00:04, 16459.10it/s] 13%|█▎        | 9604/75824 [00:00<00:03, 19655.74it/s] 18%|█▊        | 13849/75824 [00:00<00:02, 23009.44it/s] 24%|██▍       | 18052/75824 [00:00<00:02, 26294.13it/s] 30%|███       | 23088/75824 [00:00<00:01, 30655.37it/s] 35%|███▌      | 26708/75824 [00:00<00:01, 31270.21it/s] 41%|████      | 31198/75824 [00:00<00:01, 33501.03it/s] 46%|████▌     | 34962/75824 [00:00<00:01, 34617.73it/s] 52%|█████▏    | 39054/75824 [00:01<00:01, 35059.69it/s] 59%|█████▊    | 44434/75824 [00:01<00:00, 38543.67it/s] 64%|██████▍   | 48509/75824 [00:01<00:00, 39098.02it/s] 69%|██████▉   | 52575/75824 [00:01<00:00, 38577.63it/s] 75%|███████▍  | 56555/75824 [00:01<00:00, 38245.90it/s] 81%|████████  | 61144/75824 [00:01<00:00, 40121.74it/s] 88%|████████▊ | 66680/75824 [00:01<00:00, 43732.59it/s] 94%|█████████▍| 71205/75824 [00:01<00:00, 39145.53it/s] 99%|█████████▉| 75316/75824 [00:02<00:00, 32764.78it/s]100%|██████████| 75824/75824 [00:02<00:00, 36823.60it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+generating anchors and positive samples...
+5 2 2
+Walk iteration:
+Run epoch 0
+Epoch 0 ends in 0.12710928916931152 seconds.
+Run epoch 1
+Epoch 1 ends in 0.06026434898376465 seconds.
+5416 sentences created
+mode 1: time used = 0.19054031372070312
+anchors and positive samples of len 75824 generated
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 75824 75824 75824
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-rand_walk-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 93, in build
+    features = torch.from_numpy(graph.features()).to(self._device)
+RuntimeError: CUDA error: out of memory
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 512, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [512, 512, 512], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-random', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with random...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s]100%|██████████| 10556/10556 [00:00<00:00, 126557.34it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
+  0%|          | 0/10556 [00:00<?, ?it/s]100%|██████████| 10556/10556 [00:00<00:00, 119696.00it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 265, in <module>
+    main(parse_args())
+  File "/home/duyufeng/OpenNE/src/openne/__main__.py", line 249, in main
+    res = task.train(model, graph)  # train
+  File "/home/duyufeng/OpenNE/src/openne/tasks/tasks.py", line 35, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/models.py", line 236, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 111, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_nodemodel.py", line 151, in evaluate
+    loss = self.model(x, pos, neg)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 40, in forward
+    hx = self.embed(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_model.py", line 37, in embed
+    return self.encoder(x)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 83, in forward
+    self.full_embeddings = _forward(x)
+  File "/home/duyufeng/OpenNE/src/openne/models/ss_encoder.py", line 58, in _forward
+    hx = layer(hx)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/duyufeng/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/duyufeng/OpenNE/src/openne/models/layers/graph_attention.py", line 122, in forward
+    feat_out = torch.mm(c, feat_in)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_nodemodel', 'dataset': 'cora', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'enc': 'gat', 'dec': 'mlp', 'sampler': 'node-neighbor-except_neighbor', 'readout': 'mean', 'est': 'jsd'}
+Loading Cora Dataset from root dir: /home/duyufeng/OpenNE/data/Cora
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+encoder = gat
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+0.0 0.2
+1
+attn  0
+repeating 1 times...
+generating negative samples with except_neighbor...
+negative samples generated
+sampler length = 10556 10556 10556
+total iter: 500
