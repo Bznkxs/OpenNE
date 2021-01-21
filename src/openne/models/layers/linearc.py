@@ -14,7 +14,7 @@ class Linear(Layer):
 
         self.dropout = dropout  # note we modified the API
         self.act = act
-        self.adj = adj  # unused
+        self.adj = adj
         self.sparse_inputs = sparse_inputs
         self.output_dim = output_dim
         self.input_dim = input_dim
@@ -34,7 +34,7 @@ class Linear(Layer):
         torch.nn.init.xavier_uniform_(self.weight)
 
     def forward(self, inputs):
-        x = inputs
+        x = inputs[0]
         if self.training:
             # dropout
             if self.sparse_inputs:

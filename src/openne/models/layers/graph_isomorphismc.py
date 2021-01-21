@@ -27,7 +27,8 @@ class GIN(Layer):
         self.batch_norm = torch.nn.BatchNorm1d(output_dim)
 
     def forward(self, inputs):
-        x = inputs
+        x = inputs[0]
+        adj = inputs[1]
         if self.training:
             # dropout
             if self.sparse_inputs:
@@ -35,9 +36,9 @@ class GIN(Layer):
             else:
                 x = torch.dropout(x, self.dropout, True)  # dropout
         # sum pooling
-        y = (1 + self.eps) * x
-        y += torch.mm(self.adj, x)
-        y = self.mlp(y)
+        y = self.mlp((1 + self.eps) * x + torch.mm(adj, x))
+        # y = self.mlp(torch.mm(adj, x))
+        # y = torch.mm(adj, self.mlp(x))
         # batch norm
         y = self.batch_norm(y)
         return self.act(y)
