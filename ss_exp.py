@@ -78,19 +78,19 @@ pos = 1
 training_list = list(training_list.items())
 test_list = list(test_list.items())
 
-def gen_exps(glist, name):
+def gen_exps(glist, name, mode='w'):
     ll.clear()
     filename1 = os.path.join(os.path.dirname(__file__), f"src/{name}_{pos}.bat")
     print(filename1)
     filename2 = os.path.join(os.path.dirname(__file__), f"src/{name}_{pos}.sh")
     print(filename2)
-    with open(filename1, "w") as f1:
+    with open(filename1, mode) as f1:
         rec0(glist, basics_bat, form= "bat")
         for l in ll:
             if random.random() < pos:
                 print(l, file=f1)
     ll.clear()
-    with open(filename2, "w") as f2:
+    with open(filename2, mode) as f2:
 
         rec0(glist, basics_bash, form="bash")
         for l in ll:
@@ -137,12 +137,28 @@ training_list3 = list({
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 }.items())
 
+training_list4 = list({
+    "model": ["ss_gae"],
+    "dataset": ["cora", "citeseer", "pubmed"],
+    "enc": ["none"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": new_sampler_list,
+    "readout": ["mean"],
+    "est": ["jsd"],
+    "epochs": ["500"],
+    "early-stopping": ["20"],
+    "dim": ["64", "128", "256"],
+    "_hiddens": [0],
+    "lr": ["0.001", "0.01", "0.02", "0.03"],
+}.items())
+
 
 
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
     gen_exps(training_list2, 'ss_gat')
     gen_exps(training_list3, 'ss_graph')
+    gen_exps(training_list4, 'ss_graph', mode='a')
     #pos = 1
     #gen_exps(test_list, 'test')
 
