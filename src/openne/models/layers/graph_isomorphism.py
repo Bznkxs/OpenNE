@@ -3,6 +3,7 @@ from ..utils import sparse_dropout
 from ..inits import zeros
 import torch
 
+# from https://github.com/fanyun-sun/InfoGraph/blob/master/unsupervised/gin.py
 class GIN(Layer):
     """
     output = MLP((1+eps)input + sum(input))
