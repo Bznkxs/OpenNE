@@ -43,6 +43,15 @@ def dict_to_csv(dict1):
     ret += "\n"
     return ret
 
+
+
+
+class hlist(list):
+    def get(self):
+        return str(self[0:10])
+    def __hash__(self):
+        return hash(str(self[0:10]))
+
 def transfer(filename):
     """
     transfer single log file into md
@@ -69,6 +78,7 @@ def transfer(filename):
         nms = nm.split('_')
         time = nms[0][2:4] + '-' + nms[0][4:6] + '-' + nms[0][6:8] + ' ' + nms[1][:2] + ":" + nms[1][2:4] + ":" + nms[1][4:6]
         priority_list_args = [['dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr','early_stopping', 'dim', 'hiddens', 'readout', 'est',  'time'],[], []]
+
         for i in res:
             priority_list_args[1].append(i)
         tmp = 0
@@ -79,7 +89,7 @@ def transfer(filename):
                 tmp += 1
         args['time'] = time
         nm = args['model']
-        r_args = [(nm, [])]
+        r_args = [(nm, hlist())]
         for i in priority_list_args[0]:
             r_args[0][1].append((i, args.get(i, '-')))
         for i in res:
@@ -88,26 +98,51 @@ def transfer(filename):
             r_args[0][1].append((i, args.get(i, '-')))
         return r_args, rddd
 
+
+
 def main():
     os.system("git pull")
     curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
     X = []
-
+    print("????")
     for d in os.listdir(curdir):
         d = os.path.join(os.path.normpath(curdir), d)
-        print(d)
+        #print(d)
         if os.path.isfile(d) and d.endswith(".txt"):  # logfile
             try:
                 x, rd = transfer(d)
                 X.extend(x)
 
             except Exception as _:
+                print(d)
                 print(_)
                 continue
+    print(">")
     # sort
     # [("model", [("dataset", "cora"), (...)] )]
-    X.sort(key=lambda x: (x[1][rd['enc']][1], -x[1][rd['micro']][1]))
+    print("# items:", len(X))
 
+    X.sort(key=lambda x: (x[1][rd['dataset']][1],
+                          x[1][rd['enc']][1],
+                          x[1][rd['dec']][1],
+                          x[1][rd['sampler']][1],
+                          str(x[1][rd['lr']][1]),
+                          str(x[1][rd['dim']][1]),
+                          str(x[1][rd['hiddens']][1])
+                          , -x[1][rd['micro']][1]))
+    X = [X[i] for i in range(len(X)) if i == 0 or hash(X[i]) != hash(X[i-1])]
+    print("# items:", len(X))
+
+    x, y = 93,94
+    print(X[x][1].get())
+    print(X[y][1].get())
+    print(X[x][1].__hash__())
+    print(X[y][1].__hash__())
+    print(X[x].__hash__())
+    print(X[y].__hash__())
+    sd = {X[x]: 1, X[y]: 2}
+    print(sd[X[x]])
+    print(sd[X[y]])
     mdstr = "# Logs\n\n" + dict_to_md_table(X)
     mddir = os.path.join(curdir, "md")
     if not os.path.isdir(mddir):
