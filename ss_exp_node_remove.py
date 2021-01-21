@@ -19,6 +19,7 @@ def split(name, parts):
 if __name__ == '__main__':
     split("ss_gat_1", 5)
     split("ss_graph_1", 5)
+    split("fix_fsn", 3)
 
 # f1 = open("src/ss_node_0.2.sh", 'r')
 # f2 = open("src/ss_node_1.sh", 'r')
