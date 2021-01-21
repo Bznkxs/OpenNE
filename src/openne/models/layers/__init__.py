@@ -3,3 +3,4 @@ from .linear import Linear
 from .graph_conv import GraphConvolution
 from .graph_attention import GAT
 from .graph_isomorphism import GIN
+from . import c

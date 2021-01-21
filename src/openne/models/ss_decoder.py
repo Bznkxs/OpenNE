@@ -50,7 +50,7 @@ class MLP(nn.Module):
     def forward(self, x, y):
         h = torch.cat([x, y], dim=1)
         for layer in self.layers:
-            h = layer([h])
+            h = layer(h)
         return torch.squeeze(h, dim=-1)
 
 

@@ -22,7 +22,6 @@ training_list = {
     "dim": ["64", "128", "256"],
     "_hiddens": [0,1,2],
     "lr": ["0.001", "0.01", "0.02", "0.03"],
-
 }
 
 
@@ -98,9 +97,52 @@ def gen_exps(glist, name):
             if random.random() < pos:
                 print(l, file=f2)
 
+training_list2 = list({
+    "model": ["ss_nodemodel"],
+    "dataset": ["cora", "citeseer", "pubmed"],
+    "enc": ["gat"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": sampler_list,
+    "readout": ["mean"],
+    "est": ["jsd"],
+    "epochs": ["500"],
+    "early-stopping": ["20"],
+
+    "dim": ["64", "128", "256"],
+    "_hiddens": [0,1,2],
+    "lr": ["0.001", "0.01", "0.02", "0.03"],
+}.items())
+
+new_sampler_list = ["dgi", "mvgrl"]
+
+graph_samplers = [["graph"], ["node", "diffusion"], ["permuted"]]
+
+# for i in node_samplers[0]:
+#     for j in node_samplers[1]:
+#         for k in node_samplers[2]:
+#             new_sampler_list.append(i+"-"+j+"-"+k)
+
+training_list3 = list({
+    "model": ["ss_gae"],
+    "dataset": ["cora", "citeseer", "pubmed"],
+    "enc": ["gin", "gcn", "linear"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": new_sampler_list,
+    "readout": ["mean"],
+    "est": ["jsd"],
+    "epochs": ["500"],
+    "early-stopping": ["20"],
+    "dim": ["64", "128", "256"],
+    "_hiddens": [0,1,2],
+    "lr": ["0.001", "0.01", "0.02", "0.03"],
+}.items())
+
+
 
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
+    gen_exps(training_list2, 'ss_gat')
+    gen_exps(training_list3, 'ss_graph')
     #pos = 1
     #gen_exps(test_list, 'test')
 

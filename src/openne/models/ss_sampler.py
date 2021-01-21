@@ -3,29 +3,21 @@ import tqdm
 import time
 import torch
 import networkx as nx
-import numpy as np
-from scipy.linalg import fractional_matrix_power, inv
+import scipy.sparse as sp
 from torch.utils.data import Sampler
 from .walker import Walker, BasicWalker
-
+from .utils import scipy_coo_to_torch_sparse
 class BaseSampler(Sampler):
-    def __init__(self, name, adj, features, batch_size, device, negative_ratio=5, **kwargs):
-        # super(BaseSampler, self).__init__()
-        self.adj = adj
+    def __init__(self, name, graph, batch_size, negative_ratio=5, **kwargs):
+        self.adj = scipy_coo_to_torch_sparse(
+            sp.coo_matrix(graph.adjmat(weighted=False, directed=True, sparse=True)))
         self.nnodes = self.adj.size()[0]
         self.nedges = self.adj._indices().size()[1]
-        self.features = features
-        self.negative_ratio = negative_ratio
         self.batch_size = batch_size
-        self.name = name
-        self.device = device
-        self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges, self.features, self.batch_size, self.device)
-        '''
         if name not in sampler_dict:
-            self.sampler = TripleGenerator(self.adj, self.nnodes, self.nedges, negative_ratio, name, **kwargs)
+            self.sampler = TripleGenerator(graph, self.adj, self.nnodes, self.nedges, negative_ratio, name, **kwargs)
         else:
-            self.sampler = sampler_dict[name](adj, self.nnodes, self.nedges, self.features, self.batch_size, self.device)
-        '''
+            self.sampler = sampler_dict[name](graph, self.adj, self.nnodes, self.nedges, negative_ratio, **kwargs)
         super(BaseSampler, self).__init__(self.sampler)
 
     def __iter__(self):
@@ -35,9 +27,6 @@ class BaseSampler(Sampler):
 
     def __len__(self):
         return (len(self.sampler) + self.batch_size - 1) // self.batch_size
-    
-    def sample(self):
-        return self.sampler.sample()
 
 
 def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
@@ -47,24 +36,24 @@ def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
         walker = Walker(G, p=p, q=q, workers=workers, silent=silent)
     return walker.simulate_walks(num_walks=num_paths, walk_length=path_length)
 
+
+# triple generator for **one graph**
 class TripleGenerator(Sampler):
-    def __init__(self, adj, nnodes, nedges, negative_ratio, name, **kwargs):
-        # super().__init__()
+    def __init__(self, graph, adj, nnodes, nedges, negative_ratio, name, **kwargs):
         self.nnodes = nnodes
         self.nedges = nedges
-        self.adj = adj
+        self.graph = graph
+        self.adj = adj  # should be a sparse matrix
         self.adj_ind = self.adj._indices()
-        self.anchor_name, self.pos_name, self.neg_name = name.split('-')
-        self.negative_ratio = negative_ratio
+        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
+        self.negative_ratio = 1  # negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
-        self.nodelist = [i for i in range(self.nnodes)]
         self.anchor = torch.zeros(1)
         self.positive = torch.zeros(1)
         self.negative = torch.zeros(1)
         self.samples = torch.zeros(1)
-        self.g = nx.from_edgelist(self.adj_ind.t().numpy(), create_using=nx.DiGraph())
-
+        self.nodelist = [i for i in range(self.nnodes)]
         self.generate()
         print("sampler length =", len(self.anchor),len(self.positive),len(self.negative))
         super(TripleGenerator, self).__init__(self)
@@ -73,49 +62,117 @@ class TripleGenerator(Sampler):
         if (self.anchor_name, self.pos_name) == ('node', 'neighbor'):  # specialize
             self.anchor = self.adj_ind[0]
             self.positive = self.adj_ind[1]
-            self.gen_negative()
+            self.gen_node_negative()
         elif self.anchor_name == 'node':
 
-            self.gen_positive()
-            self.gen_negative()
+            self.gen_node_positive()
+            self.gen_node_negative()
 
         # todo: deal with 'graph' condition
+        elif self.anchor_name == 'graph':
+            self.gen_graph_positive()
+            self.gen_graph_negative()
 
-    def gen_positive(self):
+        self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
+
+    def regenerate(self):
+
+        if self.anchor_name == "node":
+            self.gen_node_negative(False)
+        else:
+            self.gen_graph_negative()
+        self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
+
+    def gen_node_positive(self):
+        print("generating anchors and positive samples...")
         if self.pos_name == 'neighbor':
             self.positive = self.adj_ind[1]
         elif self.pos_name == 'rand_walk':
             dw = getattr(self, 'dw', True)
             workers = getattr(self, 'workers', 1)
             silent = getattr(self, 'silent', False)
-            if dw:
-                walker = BasicWalker(self.g, workers=workers, silent=silent)
+            p = getattr(self, 'p', 0.5)
+            q = getattr(self, 'q', 0.5)
+            path_length = getattr(self, 'path_length', 50)
+            num_paths = getattr(self, 'num_paths', 5)
+            window = getattr(self, 'window', 5)
+            print(path_length, num_paths, window)
+            sentences = randwalk(dw, workers, silent, self.graph, p, q, path_length, num_paths)
+            print(f"{len(sentences)} sentences created")
+
+            anchor = []
+            positive = []
+            mode = 1
+
+            if mode == 1:
+                # brute force
+                # should optimize later on
+                t = time.time()
+                for sentence in tqdm.tqdm(sentences):
+                    for j in range(len(sentence)):
+                        for k in range(max(0, j - window), min(len(sentence), j + window + 1)):
+                            if k != j:
+                                anchor.append(sentence[j])
+                                positive.append(sentence[k])
+                # deduplicate
+                # items = set(zip(anchor, positive))
+                # anchor, positive = zip(*items)
+                self.anchor = torch.tensor(anchor)
+                self.positive = torch.tensor(positive)
+                print("mode 1: time used =", time.time() - t)
+
+
             else:
-                p = getattr(self, 'p', 0.5)
-                q = getattr(self, 'q', 0.5)
-                walker = Walker(self.g, p=p, q=q, workers=workers, silent=silent)
+                # simplify 1
+                t = time.time()
+                for sentence in tqdm.tqdm(sentences):
+                    s = torch.tensor(sentence)
+                    # deal with full windows
+                    j1 = torch.arange(0, len(s) - window)
+                    k1 = torch.arange(1, window+1)
+                    k1 = (j1.reshape((-1,1)) + k1).reshape(-1)
+                    j1 = j1.repeat_interleave(window)
 
-            path_length = getattr(self, 'path_length', 80)
-            num_paths = getattr(self, 'num_paths', 10)
-            sentences = walker.simulate_walks(num_walks=num_paths, walk_length=path_length)
-            window = getattr(self, 'window', 10)
+                    j2 = torch.arange(window, len(s))
+                    k2 = torch.arange(-window, 0)
+                    k2 = (j2.reshape((-1,1)) + k2).reshape(-1)
+                    j2 = j2.repeat_interleave(window)
 
-            # brute force
-            # should optimize later on
-            for sentence in sentences:
-                for j in range(len(sentence)):
-                    for k in range(max(0, j - window), min(len(sentence), j + window + 1)):
-                        if k != j:
-                            self.anchor.append(sentence[j])
-                            self.positive.append(sentence[k])
+                    anchor.append(s[j1])
+                    positive.append(s[k1])
+                    anchor.append(s[j2])
+                    positive.append(s[k2])
+
+                anchor = torch.cat(anchor).tolist()
+                positive = torch.cat(positive).tolist()
+                # items = set(zip(anchor, positive))
+                # anchor, positive = zip(*items)
+                self.anchor = torch.tensor(anchor)
+                self.positive = torch.tensor(positive)
+                print("mode 2: time used =", time.time() - t)
+
+
+
+        print(f"anchors and positive samples of len {len(self.anchor)} generated")
             # generate anchor and positive
 
         # todo: deal with other conditions
+    def gen_graph_positive(self):
+        print("generating anchors and positive samples:")
+        if self.pos_name == "node":
+            self.anchor = [-1] * self.nnodes
+            self.positive = list(range(self.nnodes))
+        print(f"anchors and positive samples of len {len(self.anchor)} generated")
 
-    def gen_negative(self):  # called after self.anchor is created
+    def gen_node_negative(self, repeat=True):  # called after self.anchor is created
+        if repeat:
+            print(f"repeating {self.negative_ratio} times...")
+            self.anchor = self.anchor.repeat(self.negative_ratio)
+            self.positive = self.positive.repeat(self.negative_ratio)
+            print(f"generating negative samples with {self.neg_name}...")
         if self.neg_name == 'random':
-            self.negative = torch.randint(high=self.nnodes, size=(self.nedges,)).tolist()
-        elif self.neg_name == 'except_neighbor':
+            self.negative = torch.randint(high=self.nnodes, size=(len(self.anchor),))
+        elif self.neg_name == 'except_neighbor':  # anchor must be node
             #  generate adjacency list
             w1 = {}
             #  for each anchor, generate a random node that is not neighbor
@@ -124,26 +181,25 @@ class TripleGenerator(Sampler):
             # pre-generate a rand list; especially useful for sparse graphs
             # for a graph with 50000 nodes and 100000 edges,
             # binary search is very rarely performed
-            ys = torch.randint(0, self.nnodes, [len(self.anchor)]).numpy()
-            for idx, x in enumerate(self.anchor):
+            ys = torch.randint(0, self.nnodes, [len(self.anchor)])
+            for idx, x in tqdm.tqdm(enumerate(self.anchor), total=len(self.anchor)):
                 x = int(x)
                 # try random node first
                 y = ys[idx]
-                if not self.g.has_edge(x, y):
-                    self.negative.append(y)
+                if not self.graph.G.has_edge(x, y):
                     continue
 
                 # generate k-th node that is not neighbor
                 if x not in w1:
-                    w1[x] = sorted(self.g.neighbors(x))
+                    w1[x] = sorted(self.graph.G.neighbors(x))
                 adj = w1[x]
                 if len(adj) == self.nnodes:  # connected to all nodes
-                    self.negative.append(-1)
+                    ys[idx] = -1
                 i = int(torch.randint(0, self.nnodes - len(adj), [1]))  # rand one out of neighborhood
                 if i < adj[0]:
-                    self.negative.append(i)
+                    ys[idx] = i
                 elif i >= adj[-1] - len(adj) + 1:
-                    self.negative.append(i + len(adj))
+                    ys[idx] = i + len(adj)
                 else:
                     # binary search to get i-th element out of neighborhood
                     l = 0
@@ -154,97 +210,43 @@ class TripleGenerator(Sampler):
                             r = mid - 1
                         else:
                             l = mid + 1
-                    self.negative.append(i + l)
-
+                    ys[idx] = i + l
+            self.negative = ys
+        if repeat:
+            print("negative samples generated")
         # todo: deal with other conditions
+    def gen_graph_negative(self):
+        print("generating negative samples...")
+        if self.neg_name == 'permuted':
+            self.negative = self.positive[torch.randperm(len(self.positive))]
+        elif self.neg_name == 'nodes_in_other_graph':
+            self.negative = torch.tensor([self.nnodes] * self.nnodes)
+        print("negative samples generated")
 
     def __iter__(self):
-        return iter(list(zip(self.anchor, self.positive, self.negative)))
+        return self.samples
 
+    def __getitem__(self, item):
+        return (self.anchor[item], self.positive[item], self.negative[item])
+
+    def __len__(self):
+        return len(self.anchor)
 
 class NNRSampler(TripleGenerator):
     def __init__(self, *args, **kwargs):
         super(NNRSampler, self).__init__(*args, name='node-neighbor-random', **kwargs)
 
-class DGISampler():
-    def __init__(self, adj, nnodes, nedges, features, batch_size, device):
-        super(DGISampler, self).__init__()
-        #self.anchor_name, self.pos_name, self.neg_name = name.split('-')
-        self.sample_size = 2000
-        self.adj = adj
-        self.nnodes = nnodes
-        self.nedges = nedges
-        self.features = features
-        self.anchor = self.adj.to_dense()
-        self.positive = self.anchor
-        self.batch_size = batch_size
+class NNESampler(TripleGenerator):
+    def __init__(self, *args, **kwargs):
+        super(NNESampler, self).__init__(*args, name='node-neighbor-except_neighbor', **kwargs)
 
-    def augment(self):
-        
-        self.negative = np.random.permutation(np.arange(self.nnodes))
-        
-    
-    def sample(self):
-        self.augment()
-        idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
-        ba, bd, bf = [], [], []
-        for i in idx:
-            ba.append(self.anchor[i: i + self.sample_size, i: i + self.sample_size])
-            bd.append(self.positive[i: i + self.sample_size, i: i + self.sample_size])
-            bf.append(self.features[i: i + self.sample_size])
+class NRRSampler(TripleGenerator):
+    def __init__(self, *args, **kwargs):
+        super(NRRSampler, self).__init__(*args, name='node-rand_walk-random', **kwargs)
 
-        
-        ba = torch.stack(ba).squeeze()
-        bd = torch.stack(bd).squeeze()
-        bf = torch.stack(bf).squeeze()
-        idx = np.random.permutation(self.sample_size)
-        shuf_fts = bf[idx, :]
-        return ba, bd, bf, shuf_fts
-
-class DiffSampler():
-    def __init__(self, adj, nnodes, nedges, features, batch_size, device):
-        super(DiffSampler, self).__init__()
-        #self.anchor_name, self.pos_name, self.neg_name = name.split('-')
-        self.sample_size = 2000
-        self.adj = adj
-        self.nnodes = nnodes
-        self.nedges = nedges
-        self.features = features
-        self.anchor = self.adj.to_dense()
-        self.positive = self.adj.to_dense()
-        self.batch_size = batch_size
-        self.device = device
-        self.positive = torch.FloatTensor(self.compute_ppr()).to(self.device)
-
-    def augment(self):
-        self.negative = np.random.permutation(np.arange(self.nnodes))
-    
-    def sample(self):
-        self.augment()
-        idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
-        ba, bd, bf = [], [], []
-        for i in idx:
-            ba.append(self.anchor[i: i + self.sample_size, i: i + self.sample_size])
-            bd.append(self.positive[i: i + self.sample_size, i: i + self.sample_size])
-            bf.append(self.features[i: i + self.sample_size])
-
-        
-        ba = torch.stack(ba).squeeze()
-        bd = torch.stack(bd).squeeze()
-        bf = torch.stack(bf).squeeze()
-        idx = np.random.permutation(self.sample_size)
-        shuf_fts = bf[idx, :]
-        return ba, bd, bf, shuf_fts
-    
-    def compute_ppr(self, alpha=0.2, self_loop=True):
-        a = self.anchor.cpu().numpy()
-        if self_loop:
-            a = a + np.eye(a.shape[0])                                # A^ = A + I_n
-        d = np.diag(np.sum(a, 1))                                     # D^ = Sigma A^_ii
-        dinv = fractional_matrix_power(d, -0.5)                       # D^(-1/2)
-        at = np.matmul(np.matmul(dinv, a), dinv)                      # A~ = D^(-1/2) x A^ x D^(-1/2)
-        return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))   # a(I_n-(1-a)A~)^-1
-
+class NRESampler(TripleGenerator):
+    def __init__(self, *args, **kwargs):
+        super(NRESampler, self).__init__(*args, name='node-rand_walk-except_neighbor', **kwargs)
 
 available_anchors = ['node']
 available_positives = ['neighbor', 'rand_walk']
@@ -252,16 +254,15 @@ available_negatives = ['random', 'except_neighbor']
 
 sampler_dict = {
     "node-neighbor-random": NNRSampler,
-    "dgi": DGISampler,
-    "mvgrl": DiffSampler
-
+    "node-neighbor-except_neighbor": NNESampler,
+    "node-rand_walk-random": NRRSampler,
+    "node-rand_walk-except_neighbor": NRESampler,
 }
 
 '''
 TO DO:
     ● node-random walk-random nodes (DeepWalk)
     ● node-neighborhood-except neighborhood (GAE)
-    ● graph-node-permuted graph (DGI)
-    ● graph-diffusion-permuted graph (MVGRL)
+    ● graph-node-permuted nodes (DGI)
     ● node-random walk-except neighborhood
 '''

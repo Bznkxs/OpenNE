@@ -45,9 +45,7 @@ class GAT(Layer):
         if self.bias:
             self.biases = []
         self.attn_kernels = []
-        print(self.attn_heads)
         for head in range(self.attn_heads):
-            print("attn ",head)
             # weights
             w = glorot([input_dim, output_dim])
             setattr(self, 'weights_' + str(head),  w)
@@ -60,12 +58,12 @@ class GAT(Layer):
                 self.biases.append(b)
 
             # attention kernels: [k_self, k_neigh]
-            ak1, ak2 = zeros([output_dim, 1]), zeros([output_dim, 1])
-            setattr(self, "attn_kernels_A_" + str(head), ak1)
-            setattr(self, "attn_kernels_B_" + str(head), ak1)
+            self.ak1, self.ak2 = zeros([output_dim, 1]), zeros([output_dim, 1])
+            setattr(self, "attn_kernels_A_" + str(head), self.ak1)
+            setattr(self, "attn_kernels_B_" + str(head), self.ak1)
 
             self.attn_kernels.append([
-                ak1,ak2
+                self.ak1,self.ak2
             ])
 
         self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
@@ -74,15 +72,16 @@ class GAT(Layer):
             self._log_vars()
 
     def forward(self, inputs):
-        x = inputs  # input node features (n * input_dim)
-        #print("input_device", x.device)
+        x = inputs[0]  # input node features (n * input_dim)
+        adj = inputs[1]
+        aux = -10e9 * (1 - adj)
         if self.training:
             # dropout
             if self.sparse_inputs:
                 x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
             else:
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
-        #print("mid", x.device)
+
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
             weight = self.weights[i]
@@ -104,7 +103,7 @@ class GAT(Layer):
 
             c = f1 + f2.T
 
-            c += self.aux
+            c += aux
 
             # leakyReLU and softmax
             c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
@@ -117,20 +116,17 @@ class GAT(Layer):
                 else:
                     c = torch.dropout(c, self.dropout_coef, True)  # dropout
                     feat_in = torch.dropout(feat_in, self.dropout_input, True)
-            #print(c.device, feat_in.device)
-            feat_out = torch.mm(c, feat_in)
 
+            feat_out = torch.mm(c, feat_in)
             if self.bias:
                 feat_out += bias
             y_list.append(feat_out)
 
         # aggregate
         if self.attn_heads_reduction == 'concat':
-            y = torch.cat(y_list, dim=1).to(x.device)  # concatenate along dim 1 (n * (k*output_dim))
+            y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
         else:
-            y = torch.mean(torch.stack(y_list), dim=0).to(x.device)   # (n * output_dim)
-        #print(y.device)
-        #print("??")
+            y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
         y = self.batch_norm(y)
         return self.act(y)
 

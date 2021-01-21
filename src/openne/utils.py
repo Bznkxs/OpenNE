@@ -122,3 +122,10 @@ def download_url(url, folder, log=True):
 class UnlimitedDataParallel(torch.nn.DataParallel):
     def __getattr__(self, name):
         return getattr(self.module, name)
+
+device_data = [None]
+def getdevice():
+    return device_data[0]
+
+def setdevice(device):
+    device_data[0] = device
