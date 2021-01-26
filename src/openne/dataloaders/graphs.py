@@ -4,22 +4,38 @@ from . import Adapter
 from sklearn.model_selection import train_test_split
 import numpy as np
 import networkx as nx
-from ..models.utils import process_graphs
+from ..models.utils import process_graphs, torch_sparse_to_scipy_coo
 import torch
 
 class Graphs(Adapter):
-    def __init__(self, dataset_name):
-        super(Graphs, self).__init__(TUDataset, '../../data', name=dataset_name)
-        self.num = len(self.data.dataset)
+    @classmethod
+    def weighted(cls):
+        return True
+
+    @classmethod
+    def attributed(cls):
+        return True
+
+    @classmethod
+    def directed(cls):
+        return True
+
+    def __init__(self, dataset_name, **kwargs):
+        super(Graphs, self).__init__(TUDataset, self.root_dir, name=dataset_name)
+        for kw in set(kwargs):
+            self.__setattr__(kw, kwargs.get(kw))
+        self.num = len(self.data)
 
     def load_data(self):
-        adj, start_idx = process_graphs(self.data.dataset)
-        self.set_g(nx.from_numpy_matrix(adj.numpy()))  # TODO: format conversion
-        feat = torch.cat([g.x for g in self.data.dataset]).numpy()
+        adj, start_idx = process_graphs(self.data)
+        self.set_g(nx.from_scipy_sparse_matrix(torch_sparse_to_scipy_coo(adj)))  # TODO: format conversion
+        feat = torch.cat([g.x for g in self.data]).numpy()
         self.set_node_features(featurevectors=feat)
+        self.set_node_label(torch.arange(start_idx[-1]).reshape([-1, 1]).tolist())
         self.start_idx = start_idx
 
-
+    def labels(self):
+        return self.data, np.arange(self.num).reshape([-1,1])
 
     def get_split_data(self, train_percent=None, validate_percent=None, validate_size=None, seed=None):
         """
@@ -31,16 +47,20 @@ class Graphs(Adapter):
         @return:
         """
         train_idx, test_idx = train_test_split(np.arange(self.num), train_size=train_percent, random_state=seed, shuffle=False)
-        X_train = train_idx
-        X_test = test_idx
-        Y_train = [data.y for data in self.data.dataset[train_idx]]
-        Y_test = [data.y for data in self.data.dataset[train_idx]]
+        train_idx = torch.from_numpy(train_idx)
+        test_idx = torch.from_numpy(test_idx)
+        X_train = train_idx.tolist()
+        X_test = test_idx.tolist()
+        Y_train = [self.data[int(i)].y.tolist() for i in train_idx]
+        Y_test = [self.data[int(i)].y.tolist() for i in test_idx]
         return X_train, Y_train, None, None, X_test, Y_test
 
 
+
+
 class MUTAG(Graphs):
-    def __init__(self):
-        super(MUTAG, self).__init__('MUTAG')
+    def __init__(self, **kwargs):
+        super(MUTAG, self).__init__('MUTAG', **kwargs)
 
 # todo: define other datasets in a similar manner
 

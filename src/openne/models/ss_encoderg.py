@@ -9,8 +9,6 @@ class Encoder(nn.Module):
         super(Encoder, self).__init__()
         self.dimensions = dimensions
         self.layers = nn.ModuleList()
-        self.features = features
-        self.nnodes = adj.size()[0]
         self.sigm = nn.Sigmoid()
         self.name = name
         self.readout = readout
@@ -23,7 +21,7 @@ class Encoder(nn.Module):
         """
         encoder for a batch of graphs
         @requires self.name != 'none'
-        @param x: Graphs from dataloaders.graphs
+        @param x: model_input, with .feat, .graphs, .typ
         @return:
         """
         hx = torch.cat(x.feat)
@@ -38,7 +36,7 @@ class Encoder(nn.Module):
             old_idx = start_idx[0]
             vectors = []
             for idx in start_idx[1:]:
-                vectors.append(self.sigm(self.readout(hx[old_idx:idx], start_idx)).repeat(idx-old_idx, 1))
+                vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(idx-old_idx, 1))
                 old_idx = idx
 
             hx = torch.cat(vectors)

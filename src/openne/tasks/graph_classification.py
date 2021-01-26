@@ -1,7 +1,7 @@
 from torch_geometric.datasets import TUDataset
 from torch_geometric.data import DataLoader
 from sklearn.model_selection import KFold
-from . import BaseTask
+from .tasks import BaseTask
 from .classify import Classifier
 from ..utils import *
 from ..models import ModelWithEmbeddings
@@ -15,7 +15,7 @@ class GraphClassification(BaseTask):
         pass
 
     def train_kwargs(self) -> dict:
-        return {}
+        return super(GraphClassification, self).train_kwargs()
 
     def evaluate(self, model, res, dataset):
         return self._classify(dataset, res, 0)

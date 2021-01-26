@@ -46,21 +46,24 @@ class Encoder(nn.Module):
     def reset(self):
         self.full_embeddings = None
 
-    def forward(self, x, start_idx=None):
+    def forward(self, x):
         """
         supports readout
         @param x:
         @param start_idx:
         @return:
         """
-
+        if isinstance(x, tuple):
+            x, start_idx = x
+        else:
+            start_idx = None
         if start_idx:
             self.requires_full_embeddings = True
             hx = self.node_forward(x)
             old_idx = start_idx[0]
             vectors = []
             for idx in start_idx[1:]:
-                vectors.append(self.sigm(self.readout(hx[old_idx:idx], start_idx)).repeat(idx-old_idx, 1))
+                vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(idx-old_idx, 1))
                 old_idx = idx
             hx = torch.cat(vectors)
         else:

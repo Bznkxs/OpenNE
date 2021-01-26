@@ -71,7 +71,7 @@ class SS_GAE(ModelWithEmbeddings):
             raise TypeError("GAE only accepts attributed graphs!")
 
     def build(self, graph, *, learning_rate=0.01, epochs=300,
-              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10,
+              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=0.00003,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
@@ -96,6 +96,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.patience = patience
+        self.min_delta = min_delta
 
         self.preprocess_data(graph)
         # Create models

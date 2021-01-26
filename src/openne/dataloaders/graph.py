@@ -369,7 +369,8 @@ class Adapter(Graph, ABC):
 
     @property
     def root_dir(self):
-        return osp.join(osp.dirname(osp.realpath(__file__)), '..', '..', 'data', type(self).__name__)
+        return osp.join('..', 'data', type(self).__name__)
+        # return osp.join(osp.dirname(osp.realpath(__file__)), '..', '..', '..', 'data', type(self).__name__)
 
     def download(self):
         pass

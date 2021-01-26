@@ -67,7 +67,7 @@ class SS_GraphModel(ModelWithEmbeddings):
               enc='gcn', dec='inner', sampler='node-rand_walk-random', readout='mean', est='JSD',
               hiddens=[],
               dropout=0., weight_decay=1e-4, early_stopping=5, patience=2, min_delta=1e-5,
-              batch_size=10000, negative_ratio=5, lr=0.1, epochs=200,
+              batch_size=10000, negative_ratio=5, lr=0.1, epochs=200, max_degree = 0,
               **kwargs):
         self.graph = graph
         self.nb_nodes = graph.nodesize
@@ -88,6 +88,7 @@ class SS_GraphModel(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.hiddens = hiddens
+        self.max_degree = max_degree
 
 
         if self.enc in ['gcn', ]:

@@ -58,7 +58,7 @@ class SS_GAEg(ModelWithEmbeddings):
             raise TypeError("GAE only accepts attributed graphs!")
 
     def build(self, graph, *, learning_rate=0.01, epochs=300,
-              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10,
+              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
@@ -83,6 +83,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.patience = patience
+        self.min_delta = min_delta
 
         self.preprocess_data(graph)
         # Create models
@@ -93,8 +94,8 @@ class SS_GAEg(ModelWithEmbeddings):
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
-                             adj=self.support[0], features=self.features,
-                             batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
+                             graphs=graph, features=self.features, batch_size=self.batch_size,
+                             dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
 
@@ -169,7 +170,7 @@ class SS_GAEg(ModelWithEmbeddings):
 
 
     def _get_embeddings(self, graph, **kwargs):
-        all_nodes = model_input('node', torch.tensor(range(self.nb_nodes)), self.support[0].to_dense(), self.features)
+        all_nodes = model_input('node', graph.data, [self.features])
         self.embeddings = self.model.embed(all_nodes).detach()
 
     def preprocess_data(self, graph):
