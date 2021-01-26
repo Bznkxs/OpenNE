@@ -7,7 +7,25 @@ import torch
 import torch.nn.functional as F
 
 class model_input:
+
     def __init__(self, typ, ind, adj, feature):
+        """
+        batch graph input
+        @param typ: "graphs"
+        @param ind: a slice, graph indices
+        @param adj: a collection, adj[ind] is the real input
+        @param feature: feature matrices, feat[ind] is the real input
+
+        @param typ: "graph"
+        @param ind: None
+        @param adj: graph adj
+        @param feature: graph feat
+
+        @param typ: "node"
+        @param ind: None
+        @param adj: graph adj
+        @param feature: graph feat
+        """
         self.typ = typ
         self.ind = ind
         self.adj = adj

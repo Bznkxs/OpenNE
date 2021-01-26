@@ -125,7 +125,7 @@ graph_samplers = [["graph"], ["node", "diffusion"], ["permuted"]]
 training_list3 = list({
     "model": ["ss_gae"],
     "dataset": ["cora", "citeseer", "pubmed"],
-    "enc": ["gin", "gcn", "linear"],
+    "enc": ["gin", "gcn", "gat"],
     "dec": ["inner", "bilinear", "mlp"],
     "sampler": new_sampler_list,
     "readout": ["mean"],
@@ -137,28 +137,10 @@ training_list3 = list({
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 }.items())
 
-training_list4 = list({
-    "model": ["ss_gae"],
-    "dataset": ["cora", "citeseer", "pubmed"],
-    "enc": ["none"],
-    "dec": ["inner", "bilinear", "mlp"],
-    "sampler": new_sampler_list,
-    "readout": ["mean"],
-    "est": ["jsd"],
-    "epochs": ["500"],
-    "early-stopping": ["20"],
-    "dim": ["64", "128", "256"],
-    "_hiddens": [0],
-    "lr": ["0.001", "0.01", "0.02", "0.03"],
-}.items())
-
-
-
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
     gen_exps(training_list2, 'ss_gat')
     gen_exps(training_list3, 'ss_graph')
-    gen_exps(training_list4, 'ss_graph', mode='a')
     #pos = 1
     #gen_exps(test_list, 'test')
 

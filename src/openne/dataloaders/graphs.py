@@ -1,14 +1,48 @@
 from torch_geometric.data import DataLoader
 from torch_geometric.datasets import TUDataset
+from . import Adapter
+from sklearn.model_selection import train_test_split
+import numpy as np
+import networkx as nx
+from ..models.utils import process_graphs
+import torch
+
+class Graphs(Adapter):
+    def __init__(self, dataset_name):
+        super(Graphs, self).__init__(TUDataset, '../../data', name=dataset_name)
+        self.num = len(self.data.dataset)
+
+    def load_data(self):
+        adj, start_idx = process_graphs(self.data.dataset)
+        self.set_g(nx.from_numpy_matrix(adj.numpy()))  # TODO: format conversion
+        feat = torch.cat([g.x for g in self.data.dataset]).numpy()
+        self.set_node_features(featurevectors=feat)
+        self.start_idx = start_idx
 
 
 
+    def get_split_data(self, train_percent=None, validate_percent=None, validate_size=None, seed=None):
+        """
+        TODO: confirm X_train and X_test
+        @param train_percent:
+        @param validate_percent:
+        @param validate_size:
+        @param seed:
+        @return:
+        """
+        train_idx, test_idx = train_test_split(np.arange(self.num), train_size=train_percent, random_state=seed, shuffle=False)
+        X_train = train_idx
+        X_test = test_idx
+        Y_train = [data.y for data in self.data.dataset[train_idx]]
+        Y_test = [data.y for data in self.data.dataset[train_idx]]
+        return X_train, Y_train, None, None, X_test, Y_test
 
 
+class MUTAG(Graphs):
+    def __init__(self):
+        super(MUTAG, self).__init__('MUTAG')
 
-
-
-
+# todo: define other datasets in a similar manner
 
 
 
