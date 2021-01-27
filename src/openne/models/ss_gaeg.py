@@ -7,16 +7,18 @@ import torch
 import torch.nn.functional as F
 
 class model_input:
-    def __init__(self, typ, graphs, feature):
+    def __init__(self, typ, graphs, feature, repeat=True):
         """
         batch graph input
-        @param typ: "graphs"
+        @param typ: "graphs"/"nodes"
         @param graphs: a collection
         @param feature: collection of feat
+        @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
         """
         self.typ = typ
         self.graphs = graphs
         self.feat = feature
+        self.repeat = repeat
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -28,7 +30,8 @@ class SS_GAEg(ModelWithEmbeddings):
 
     @classmethod
     def check_train_parameters(cls, **kwargs):
-        check_existance(kwargs, {"learning_rate": 0.01,
+        check_existance(kwargs, {'dim': 128,
+                                 "learning_rate": 0.01,
                                  "epochs": 200,
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
@@ -41,7 +44,7 @@ class SS_GAEg(ModelWithEmbeddings):
                                  "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
                                  "batch_size": 100000,
-                                 "hiddens": [64],
+                                 "hiddens": [],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
                              "epochs": (0, np.inf),
@@ -57,7 +60,7 @@ class SS_GAEg(ModelWithEmbeddings):
         if not graphtype.attributed():
             raise TypeError("GAE only accepts attributed graphs!")
 
-    def build(self, graph, *, learning_rate=0.01, epochs=300,
+    def build(self, graph, *, dim=128, hiddens=[], learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
@@ -84,6 +87,8 @@ class SS_GAEg(ModelWithEmbeddings):
         self.est = est
         self.patience = patience
         self.min_delta = min_delta
+        self.output_dim = dim
+        self.hiddens = hiddens
 
         self.preprocess_data(graph)
         # Create models
@@ -168,10 +173,24 @@ class SS_GAEg(ModelWithEmbeddings):
         return step > self.early_stopping and self.cost_val[-1] > torch.mean(
                     torch.tensor(self.cost_val[start:-1])) * (1 - self.min_delta)
 
+    def _get_vectors(self, graph):
+        """
+            Get self.vectors (which is a dict in format {node: embedding}) from self.embeddings.
+            This should only be called in self.make_output().
+
+            Rewrite when self.embeddings is not used and self.vectors is not acquired in self.train_model.
+        """
+        embs = self.embeddings
+        if embs is None:
+            return self.vectors
+        self.vectors = {}
+        for i, embedding in enumerate(embs):
+            self.vectors[i] = embedding
+        return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):
-        all_nodes = model_input('node', graph.data, [self.features])
-        self.embeddings = self.model.embed(all_nodes).detach()
+        all_graphs = model_input('graphs', graph.data, [self.features], repeat=False)
+        self.embeddings = self.model.embed(all_graphs).detach()
 
     def preprocess_data(self, graph):
         """

@@ -62,6 +62,25 @@ class MUTAG(Graphs):
     def __init__(self, **kwargs):
         super(MUTAG, self).__init__('MUTAG', **kwargs)
 
+"""
+PTC-MR, IMDB-BIN, IMDB-MULTI, REDDIT-BIN
+"""
+
+class PTC_MR(Graphs):
+    def __init__(self, **kwargs):
+        super(PTC_MR, self).__init__('PTC-MR', **kwargs)
+
+class IMDB_BINARY(Graphs):
+    def __init__(self, **kwargs):
+        super(IMDB_BINARY, self).__init__('IMDB-BINARY', **kwargs)
+
+class IMDB_MULTI(Graphs):
+    def __init__(self, **kwargs):
+        super(IMDB_MULTI, self).__init__('IMDB-MULTI', **kwargs)
+
+class REDDIT_BINARY(Graphs):
+    def __init__(self, **kwargs):
+        super(REDDIT_BINARY, self).__init__('REDDIT-BINARY', **kwargs)
 # todo: define other datasets in a similar manner
 
 

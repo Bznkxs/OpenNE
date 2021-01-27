@@ -58,12 +58,13 @@ class Encoder(nn.Module):
         else:
             start_idx = None
         if start_idx:
+
             self.requires_full_embeddings = True
             hx = self.node_forward(x)
             old_idx = start_idx[0]
             vectors = []
             for idx in start_idx[1:]:
-                vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(idx-old_idx, 1))
+                vectors.append(self.sigm(self.readout(hx[old_idx:idx]).reshape([1,-1])))
                 old_idx = idx
             hx = torch.cat(vectors)
         else:

@@ -164,6 +164,20 @@ class SS_GraphModel(ModelWithEmbeddings):
     def _get_embeddings(self, graph, **kwargs):
         self.embeddings = self.model.embed((torch.tensor(range(self.nb_nodes)).to(self._device),
                                             self.graph.start_idx)).detach()
+    def _get_vectors(self, graph):
+        """
+            Get self.vectors (which is a dict in format {node: embedding}) from self.embeddings.
+            This should only be called in self.make_output().
+
+            Rewrite when self.embeddings is not used and self.vectors is not acquired in self.train_model.
+        """
+        embs = self.embeddings
+        if embs is None:
+            return self.vectors
+        self.vectors = {}
+        for i, embedding in enumerate(embs):
+            self.vectors[i] = embedding
+        return self.vectors
 
     def preprocess_data(self, graph):
         """

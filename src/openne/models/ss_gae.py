@@ -41,7 +41,8 @@ class SS_GAE(ModelWithEmbeddings):
 
     @classmethod
     def check_train_parameters(cls, **kwargs):
-        check_existance(kwargs, {"learning_rate": 0.01,
+        check_existance(kwargs, {'dim': 128,
+                                 "learning_rate": 0.01,
                                  "epochs": 200,
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
@@ -70,7 +71,7 @@ class SS_GAE(ModelWithEmbeddings):
         if not graphtype.attributed():
             raise TypeError("GAE only accepts attributed graphs!")
 
-    def build(self, graph, *, learning_rate=0.01, epochs=300,
+    def build(self, graph, *, dim=128, learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=0.00003,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
@@ -101,7 +102,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.preprocess_data(graph)
         # Create models
         input_dim = self.features.shape[1] if not self.sparse else self.features[2][1]
-        feature_shape = self.features.shape if not self.sparse else self.features[0].shape[0]
+        self.output_dim = dim
         
         self.dimensions = [input_dim] + self.hiddens + [self.output_dim]
         self.dec_dims = [self.dimensions[-1] * 2, 1]
