@@ -22,11 +22,12 @@ class Encoder(nn.Module):
         """
         encoder for a batch of graphs
         @requires self.name != 'none'
-        @param x: model_input, with .feat, .graphs, .typ
+        @param x: model_input, with .feat, .adj, .start_idx, .typ
         @return:
         """
         hx = torch.cat(x.feat)
-        adj, start_idx = process_graphs(x.graphs)
+        adj = x.adj
+        start_idx = x.start_idx
 
 
         for layer in self.layers:

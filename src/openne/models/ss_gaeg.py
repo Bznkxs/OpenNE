@@ -7,7 +7,7 @@ import torch
 import torch.nn.functional as F
 
 class model_input:
-    def __init__(self, typ, graphs, feature, repeat=True):
+    def __init__(self, typ, adj, start_idx, feature, repeat=False):
         """
         batch graph input
         @param typ: "graphs"/"nodes"
@@ -16,7 +16,8 @@ class model_input:
         @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
         """
         self.typ = typ
-        self.graphs = graphs
+        self.adj = adj
+        self.start_idx = start_idx
         self.feat = feature
         self.repeat = repeat
 
@@ -57,8 +58,7 @@ class SS_GAEg(ModelWithEmbeddings):
 
     @classmethod
     def check_graphtype(cls, graphtype, **kwargs):
-        if not graphtype.attributed():
-            raise TypeError("GAE only accepts attributed graphs!")
+        pass
 
     def build(self, graph, *, dim=128, hiddens=[], learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
@@ -147,16 +147,37 @@ class SS_GAEg(ModelWithEmbeddings):
         output = None
         assert self.sampler in ['dgi', 'mvgrl']
         batch_num = 1
-        ba, bd, bf, shuf_fts = self.model.sampler.sample()
-        bx = model_input('graphs', ba, bf)
-        bpos = model_input('nodes', bd, bf)
-        bneg = model_input('nodes', bd, shuf_fts)
 
-        bx_r = model_input('graphs', bd, bf)
-        bpos_r = model_input('nodes', ba, bf)
-        bneg_r = model_input('nodes', ba, shuf_fts)
         self.optimizer.zero_grad()
-        loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
+
+        if self.sampler == 'dgi':
+            ba, bd, bf, shuf_fts = self.model.sampler.sample()
+            adj, start_idx = process_graphs(ba)
+            add, start_idd = process_graphs(bd)
+            bx = model_input('graphs', adj, start_idx, bf)
+            bpos = model_input('nodes', add, start_idd, bf)
+            bneg = model_input('nodes', add, start_idd, shuf_fts)
+
+            bx_r = model_input('graphs', add, start_idd, bf)
+            bpos_r = model_input('nodes', adj, start_idx, bf)
+            bneg_r = model_input('nodes', adj, start_idx, shuf_fts)
+
+            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
+        else:
+            ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat = self.model.sampler.sample()
+            adj, start_idx = process_graphs(ba)
+            add, start_idd = process_graphs(bdiff)
+            adn, start_idn = process_graphs(bneg)
+            adnd, start_idnd = process_graphs(bnegdiff)
+            bx = model_input('graphs', adj, start_idx, bfeat)
+            bpos = model_input('nodes', add, start_idd, bfeat)
+            bneg = model_input('nodes', adnd, start_idnd, bnegfeat)
+
+            bx_r = model_input('graphs', add, start_idd, bfeat)
+            bpos_r = model_input('nodes', adj, start_idx, bfeat)
+            bneg_r = model_input('nodes', adn, start_idn, bnegfeat)
+
+            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
         if train:
             loss.backward()
             self.optimizer.step()
@@ -189,7 +210,8 @@ class SS_GAEg(ModelWithEmbeddings):
         return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):
-        all_graphs = model_input('graphs', graph.data, [self.features], repeat=False)
+        adj, start_idx = process_graphs(graph.data)
+        all_graphs = model_input('graphs', adj, start_idx, [self.features], repeat=False)
         self.embeddings = self.model.embed(all_graphs).detach()
 
     def preprocess_data(self, graph):

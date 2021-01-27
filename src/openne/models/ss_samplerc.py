@@ -194,9 +194,9 @@ class DGISampler():
             bf.append(self.features[i: i + self.sample_size])
 
 
-        ba = torch.stack(ba).squeeze()
-        bd = torch.stack(bd).squeeze()
-        bf = torch.stack(bf).squeeze()
+        ba = torch.stack(ba)[0]
+        bd = torch.stack(bd)[0]
+        bf = torch.stack(bf)[0]
         idx = np.random.permutation(self.sample_size)
         shuf_fts = bf[idx, :]
         return ba, bd, bf, shuf_fts

@@ -68,8 +68,7 @@ class SS_GAE(ModelWithEmbeddings):
 
     @classmethod
     def check_graphtype(cls, graphtype, **kwargs):
-        if not graphtype.attributed():
-            raise TypeError("GAE only accepts attributed graphs!")
+        pass
 
     def build(self, graph, *, dim=128, learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=0.00003,

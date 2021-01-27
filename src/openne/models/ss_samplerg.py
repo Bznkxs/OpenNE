@@ -93,20 +93,68 @@ class DGISampler(GraphSampler):
 
 class DiffSampler(GraphSampler):
     def get_positive(self):
-        t = torch.FloatTensor(self.compute_ppr())
-        # convert t into sparse
-        idx = torch.nonzero(t).t()
-        val = t[idx[0], idx[1]]
-        self.positive = graphinput(self.graphs.x, None, idx, val)
+        def compute_ppr(edge_index, alpha=0.2, self_loop=True):
+            adj = torch.sparse_coo_tensor(edge_index, torch.ones(edge_index.shape[1])).to_dense()
 
-    def compute_ppr(self, alpha=0.2, self_loop=True):
-        a = self.anchor.cpu().numpy()
-        if self_loop:
-            a = a + np.eye(a.shape[0])                                # A^ = A + I_n
-        d = np.diag(np.sum(a, 1))                                     # D^ = Sigma A^_ii
-        dinv = fractional_matrix_power(d, -0.5)                       # D^(-1/2)
-        at = np.matmul(np.matmul(dinv, a), dinv)                      # A~ = D^(-1/2) x A^ x D^(-1/2)
-        return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))   # a(I_n-(1-a)A~)^-1
+            a = adj.cpu().numpy()
+            if self_loop:
+                a = a + np.eye(a.shape[0])                                # A^ = A + I_n
+            d = np.diag(np.sum(a, 1))                                     # D^ = Sigma A^_ii
+            dinv = fractional_matrix_power(d, -0.5)                       # D^(-1/2)
+            at = np.matmul(np.matmul(dinv, a), dinv)                      # A~ = D^(-1/2) x A^ x D^(-1/2)
+            return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))   # a(I_n-(1-a)A~)^-1
+
+        self.positive = []
+        for g in self.graphs:
+            t = torch.FloatTensor(compute_ppr(g.edge_index))
+            # convert t into sparse
+            idx = torch.nonzero(t).t()
+            val = t[idx[0], idx[1]]
+            self.positive.append(graphinput(g.x, None, idx, val))
+
+
+
+    def sample(self):
+        #  self.augment()  # seems to have no effect
+        # ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat
+        # sample
+        ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat = [], [], [], [], [], []
+
+        def get_submat(graph, i):
+            r = i + self.sample_size
+            eidx = graph.edge_index
+            eidx = eidx[:, (eidx[0] >= i) * (eidx[0] < r) * (eidx[1] >= i) * (eidx[1] < r)]
+            return eidx
+
+        for i, graph in enumerate(self.graphs):
+            # get ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat
+            pos = self.positive[i]
+            negidx = np.random.randint(0, len(self.graphs) - 2)
+            if negidx == i:
+                negidx = (negidx + 1) % len(self.graphs)
+            neg = self.graphs[negidx]
+            negdiff = self.positive[negidx]
+            if graph.x.shape[0] < self.sample_size + 1:
+                idx = [0]
+            else:
+                idx = np.random.randint(0, graph.x.shape[0] - self.sample_size + 1, 1)
+
+            for i in idx:
+                # get a sub-adjmat
+                r = i + self.sample_size
+                x = graph.x[i: r]
+                nx = neg.x[i:r]
+                eidx = get_submat(graph, i)
+                eidxd = get_submat(pos, i)
+                eidxn = get_submat(neg, i)
+                eidxnd = get_submat(negdiff, i)
+                ba.append(graphinput(x, None, eidx))
+                bdiff.append(graphinput(x, None, eidxd))
+                bneg.append(graphinput(nx, None, eidxn))
+                bnegdiff.append(graphinput(nx, None, eidxnd))
+                bfeat.append(x)
+                bnegfeat.append(nx)
+        return ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat
 
 
 available_anchors = ['node']

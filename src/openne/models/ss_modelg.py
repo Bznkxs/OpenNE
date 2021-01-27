@@ -42,7 +42,19 @@ class SSModel(nn.Module):
             hx = F.normalize(hx, dim=-1)
             hpos = F.normalize(hpos, dim=-1)
             hneg = F.normalize(hneg, dim=-1)
-        loss = self.estimator(self.decoder(hx, hpos), self.decoder(hx, hneg))
+
+        # repeat
+        def repeat(start_idx):
+            old_idx = start_idx[0]
+            vectors = []
+            for i, idx in enumerate(start_idx[1:]):
+                vectors.append(self.sigm(self.readout(hx[i])).repeat(idx-old_idx, 1))
+                old_idx = idx
+            return torch.cat(vectors)
+        hxp = repeat(pos.start_idx)
+        hxn = repeat(neg.start_idx)
+
+        loss = self.estimator(self.decoder(hxp, hpos), self.decoder(hxn, hneg))
         return loss
 
     def sample(self):

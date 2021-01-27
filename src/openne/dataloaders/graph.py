@@ -89,6 +89,8 @@ class Graph(Dataset, ABC):
         raise NotImplementedError
 
     def features(self):
+        if not self.attributed():
+            return np.ones((self.G.number_of_nodes(), 1))
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
 
@@ -365,6 +367,8 @@ class NetResources(Graph, ABC):
 class Adapter(Graph, ABC):
     def __init__(self, AdapteeClass, *args, **kwargs):
         self.data = AdapteeClass(*args, **kwargs)
+        print("Adapter of", self.data)
+
         super(Adapter, self).__init__(None, self.root_dir, {}, **kwargs)
 
     @property
