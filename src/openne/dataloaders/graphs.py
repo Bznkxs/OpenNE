@@ -50,7 +50,7 @@ class Graphs(Adapter, ABC):
         @param seed:
         @return:
         """
-        train_idx, test_idx = train_test_split(np.arange(self.num), train_size=train_percent, random_state=seed, shuffle=False)
+        train_idx, test_idx = train_test_split(np.arange(self.num), train_size=train_percent, random_state=seed, shuffle=True)
         train_idx = torch.from_numpy(train_idx)
         test_idx = torch.from_numpy(test_idx)
         X_train = train_idx.tolist()
