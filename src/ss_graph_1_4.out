@@ -2074,3 +2074,781 @@ Early stopping condition satisfied. Abort training.
 Finished training. Time used = 3501.296630859375.
 Training classifier using 20.00% nodes...
 {'micro': 0.46665398757448967, 'macro': 0.39281419179548616, 'samples': 0.46665398757448967, 'weighted': 0.4289123219009955}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77328'}; time used = 0.10094356536865234s
+epoch 10: {'train_loss': '2.77270'}; time used = 0.03988838195800781s
+epoch 15: {'train_loss': '2.77276'}; time used = 0.03690981864929199s
+epoch 20: {'train_loss': '2.77270'}; time used = 0.03769636154174805s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6652.625280380249.
+Training classifier using 20.00% nodes...
+{'micro': 0.46665398757448967, 'macro': 0.39281419179548616, 'samples': 0.46665398757448967, 'weighted': 0.4289123219009955}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77328'}; time used = 0.28697919845581055s
+epoch 10: {'train_loss': '2.77270'}; time used = 0.09638738632202148s
+epoch 15: {'train_loss': '2.77276'}; time used = 0.09816980361938477s
+epoch 20: {'train_loss': '2.77270'}; time used = 0.10664057731628418s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4297.385182619095.
+Training classifier using 20.00% nodes...
+{'micro': 0.46665398757448967, 'macro': 0.39281419179548616, 'samples': 0.46665398757448967, 'weighted': 0.4289123219009955}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77560'}; time used = 0.16342496871948242s
+epoch 10: {'train_loss': '2.77283'}; time used = 0.08612489700317383s
+epoch 15: {'train_loss': '2.77270'}; time used = 0.06897544860839844s
+epoch 20: {'train_loss': '2.77282'}; time used = 0.06527400016784668s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6150.214785575867.
+Training classifier using 20.00% nodes...
+{'micro': 0.5154050969950551, 'macro': 0.5048214933740619, 'samples': 0.5154050969950551, 'weighted': 0.49077501340311475}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77560'}; time used = 0.1570131778717041s
+epoch 10: {'train_loss': '2.77283'}; time used = 0.05672192573547363s
+epoch 15: {'train_loss': '2.77270'}; time used = 0.06666827201843262s
+epoch 20: {'train_loss': '2.77282'}; time used = 0.06296396255493164s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 8079.8010466098785.
+Training classifier using 20.00% nodes...
+{'micro': 0.5154050969950551, 'macro': 0.5048214933740619, 'samples': 0.5154050969950551, 'weighted': 0.49077501340311475}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77560'}; time used = 0.10108065605163574s
+epoch 10: {'train_loss': '2.77283'}; time used = 0.06747126579284668s
+epoch 15: {'train_loss': '2.77270'}; time used = 0.06968450546264648s
+epoch 20: {'train_loss': '2.77282'}; time used = 0.0680396556854248s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 5027.055603265762.
+Training classifier using 20.00% nodes...
+{'micro': 0.5154050969950551, 'macro': 0.5048214933740619, 'samples': 0.5154050969950551, 'weighted': 0.49077501340311475}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77560'}; time used = 0.346132755279541s
+epoch 10: {'train_loss': '2.77283'}; time used = 0.13744354248046875s
+epoch 15: {'train_loss': '2.77270'}; time used = 0.13794279098510742s
+epoch 20: {'train_loss': '2.77282'}; time used = 0.13204050064086914s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 8189.065403223038.
+Training classifier using 20.00% nodes...
+{'micro': 0.5154050969950551, 'macro': 0.5048214933740619, 'samples': 0.5154050969950551, 'weighted': 0.49077501340311475}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.78210'}; time used = 0.1928997039794922s
+epoch 10: {'train_loss': '2.77979'}; time used = 0.11997485160827637s
+epoch 15: {'train_loss': '2.77658'}; time used = 0.1161956787109375s
+epoch 20: {'train_loss': '2.77337'}; time used = 0.05278778076171875s
+epoch 25: {'train_loss': '2.77267'}; time used = 0.06250596046447754s
+epoch 30: {'train_loss': '2.77280'}; time used = 0.06440353393554688s
+epoch 35: {'train_loss': '2.77264'}; time used = 0.06579184532165527s
+epoch 40: {'train_loss': '2.77263'}; time used = 0.05120062828063965s
+epoch 45: {'train_loss': '2.77260'}; time used = 0.042160749435424805s
+epoch 50: {'train_loss': '2.77260'}; time used = 0.048038482666015625s
+epoch 55: {'train_loss': '2.77260'}; time used = 0.04238104820251465s
+epoch 60: {'train_loss': '2.77259'}; time used = 0.04550027847290039s
+epoch 65: {'train_loss': '2.77259'}; time used = 0.06842303276062012s
+epoch 70: {'train_loss': '2.77259'}; time used = 0.04518270492553711s
+epoch 75: {'train_loss': '2.77259'}; time used = 0.043402671813964844s
+epoch 80: {'train_loss': '2.77259'}; time used = 0.04178023338317871s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 7009.843551158905.
+Training classifier using 20.00% nodes...
+{'micro': 0.4211994421199442, 'macro': 0.30825596462066523, 'samples': 0.4211994421199442, 'weighted': 0.36486577889639105}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.78210'}; time used = 0.1912381649017334s
+epoch 10: {'train_loss': '2.77979'}; time used = 0.06586456298828125s
+epoch 15: {'train_loss': '2.77658'}; time used = 0.05331873893737793s
+epoch 20: {'train_loss': '2.77337'}; time used = 0.09430408477783203s
+epoch 25: {'train_loss': '2.77267'}; time used = 0.1293926239013672s
+epoch 30: {'train_loss': '2.77280'}; time used = 0.08018064498901367s
+epoch 35: {'train_loss': '2.77264'}; time used = 0.10871315002441406s
+epoch 40: {'train_loss': '2.77263'}; time used = 0.11311554908752441s
+epoch 45: {'train_loss': '2.77260'}; time used = 0.051026344299316406s
+epoch 50: {'train_loss': '2.77260'}; time used = 0.04777717590332031s
+epoch 55: {'train_loss': '2.77260'}; time used = 0.06826949119567871s
+epoch 60: {'train_loss': '2.77259'}; time used = 0.08198690414428711s
+epoch 65: {'train_loss': '2.77259'}; time used = 0.07081127166748047s
+epoch 70: {'train_loss': '2.77259'}; time used = 0.05636429786682129s
+epoch 75: {'train_loss': '2.77259'}; time used = 0.08091020584106445s
+epoch 80: {'train_loss': '2.77259'}; time used = 0.11648416519165039s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6639.058446884155.
+Training classifier using 20.00% nodes...
+{'micro': 0.4211994421199442, 'macro': 0.30825596462066523, 'samples': 0.4211994421199442, 'weighted': 0.36486577889639105}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.78210'}; time used = 0.16111111640930176s
+epoch 10: {'train_loss': '2.77979'}; time used = 0.06123018264770508s
+epoch 15: {'train_loss': '2.77658'}; time used = 0.07435035705566406s
+epoch 20: {'train_loss': '2.77337'}; time used = 0.04087257385253906s
+epoch 25: {'train_loss': '2.77267'}; time used = 0.12761569023132324s
+epoch 30: {'train_loss': '2.77280'}; time used = 0.07026171684265137s
+epoch 35: {'train_loss': '2.77264'}; time used = 0.06891417503356934s
+epoch 40: {'train_loss': '2.77263'}; time used = 0.03979659080505371s
+epoch 45: {'train_loss': '2.77260'}; time used = 0.08847451210021973s
+epoch 50: {'train_loss': '2.77260'}; time used = 0.05893087387084961s
+epoch 55: {'train_loss': '2.77260'}; time used = 0.08373045921325684s
+epoch 60: {'train_loss': '2.77259'}; time used = 0.1698014736175537s
+epoch 65: {'train_loss': '2.77259'}; time used = 0.08917951583862305s
+epoch 70: {'train_loss': '2.77259'}; time used = 0.09969115257263184s
+epoch 75: {'train_loss': '2.77259'}; time used = 0.10450267791748047s
+epoch 80: {'train_loss': '2.77259'}; time used = 0.07318329811096191s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 5421.5835127830505.
+Training classifier using 20.00% nodes...
+{'micro': 0.4211994421199442, 'macro': 0.30825596462066523, 'samples': 0.4211994421199442, 'weighted': 0.36486577889639105}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'bilinear', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.78210'}; time used = 0.3243727684020996s
+epoch 10: {'train_loss': '2.77979'}; time used = 0.07323551177978516s
+epoch 15: {'train_loss': '2.77658'}; time used = 0.07731294631958008s
+epoch 20: {'train_loss': '2.77337'}; time used = 0.08616185188293457s
+epoch 25: {'train_loss': '2.77267'}; time used = 0.11959052085876465s
+epoch 30: {'train_loss': '2.77280'}; time used = 0.06722545623779297s
+epoch 35: {'train_loss': '2.77264'}; time used = 0.06975245475769043s
+epoch 40: {'train_loss': '2.77263'}; time used = 0.05453014373779297s
+epoch 45: {'train_loss': '2.77260'}; time used = 0.04759716987609863s
+epoch 50: {'train_loss': '2.77260'}; time used = 0.07885479927062988s
+epoch 55: {'train_loss': '2.77260'}; time used = 0.07200765609741211s
+epoch 60: {'train_loss': '2.77259'}; time used = 0.055963754653930664s
+epoch 65: {'train_loss': '2.77259'}; time used = 0.05202603340148926s
+epoch 70: {'train_loss': '2.77259'}; time used = 0.05830645561218262s
+epoch 75: {'train_loss': '2.77259'}; time used = 0.06850481033325195s
+epoch 80: {'train_loss': '2.77259'}; time used = 0.07406973838806152s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4876.163273334503.
+Training classifier using 20.00% nodes...
+{'micro': 0.4211994421199442, 'macro': 0.30825596462066523, 'samples': 0.4211994421199442, 'weighted': 0.36486577889639105}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.14736485481262207s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.07584095001220703s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.08037710189819336s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.11688923835754395s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 65.09210968017578.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.06712913513183594s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.027415752410888672s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.02665543556213379s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.0248715877532959s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11.144869565963745.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.07446765899658203s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.03782987594604492s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.03565502166748047s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.04128885269165039s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.551663875579834.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.17620611190795898s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.18108582496643066s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.09667587280273438s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.03877091407775879s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 68.67514133453369.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.2211747169494629s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.08696150779724121s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.04962897300720215s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.09521198272705078s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 83.51690816879272.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.20554471015930176s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.05325675010681152s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.10268568992614746s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.12674808502197266s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 66.1922299861908.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.28560471534729004s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.030832767486572266s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.08055996894836426s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.12847018241882324s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 67.50398564338684.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.25531482696533203s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.06016135215759277s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.058716535568237305s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.07310962677001953s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 66.57472014427185.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77281'}; time used = 0.35834264755249023s
+epoch 10: {'train_loss': '2.77261'}; time used = 0.0641942024230957s
+epoch 15: {'train_loss': '2.77260'}; time used = 0.052969932556152344s
+epoch 20: {'train_loss': '2.77261'}; time used = 0.039699554443359375s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 91.28319358825684.
+Training classifier using 20.00% nodes...
+{'micro': 0.4563839229111196, 'macro': 0.41622967949663164, 'samples': 0.45638392291111957, 'weighted': 0.43803443012741683}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77281'}; time used = 0.12426209449768066s
+epoch 10: {'train_loss': '2.77261'}; time used = 0.05976295471191406s
+epoch 15: {'train_loss': '2.77260'}; time used = 0.03155922889709473s
+epoch 20: {'train_loss': '2.77261'}; time used = 0.0894157886505127s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 56.25532031059265.
+Training classifier using 20.00% nodes...
+{'micro': 0.4563839229111196, 'macro': 0.41622967949663164, 'samples': 0.45638392291111957, 'weighted': 0.43803443012741683}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [64, 64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77281'}; time used = 0.1808452606201172s
+epoch 10: {'train_loss': '2.77261'}; time used = 0.10451364517211914s
+epoch 15: {'train_loss': '2.77260'}; time used = 0.09566545486450195s
+epoch 20: {'train_loss': '2.77261'}; time used = 0.05315685272216797s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 58.375256061553955.
+Training classifier using 20.00% nodes...
+{'micro': 0.4563839229111196, 'macro': 0.41622967949663164, 'samples': 0.45638392291111957, 'weighted': 0.43803443012741683}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [64, 64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77281'}; time used = 0.17954587936401367s
+epoch 10: {'train_loss': '2.77261'}; time used = 0.04444527626037598s
+epoch 15: {'train_loss': '2.77260'}; time used = 0.17163848876953125s
+epoch 20: {'train_loss': '2.77261'}; time used = 0.18783950805664062s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 59.33562755584717.
+Training classifier using 20.00% nodes...
+{'micro': 0.4563839229111196, 'macro': 0.41622967949663164, 'samples': 0.45638392291111957, 'weighted': 0.43803443012741683}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.13768482208251953s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.08680534362792969s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.06492137908935547s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.060791015625s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 56.77732801437378.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.22090673446655273s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.07776403427124023s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.034075260162353516s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.037628889083862305s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 62.43758678436279.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.43999791145324707s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.14331746101379395s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.18044233322143555s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.09096312522888184s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 45.32730054855347.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.060890913009643555s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.033353328704833984s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.02621626853942871s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.025812864303588867s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 53.64582562446594.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.83866'}; time used = 0.10513496398925781s
+epoch 10: {'train_loss': '2.77498'}; time used = 0.037136077880859375s
+epoch 15: {'train_loss': '2.77910'}; time used = 0.035810232162475586s
+epoch 20: {'train_loss': '2.77359'}; time used = 0.04506206512451172s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 51.13067650794983.
+Training classifier using 20.00% nodes...
+{'micro': 0.6250792443261063, 'macro': 0.6158710354532656, 'samples': 0.6250792443261063, 'weighted': 0.6233546108224254}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.83866'}; time used = 0.06847190856933594s
+epoch 10: {'train_loss': '2.77498'}; time used = 0.030155420303344727s
+epoch 15: {'train_loss': '2.77910'}; time used = 0.027039766311645508s
+epoch 20: {'train_loss': '2.77359'}; time used = 0.026003122329711914s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 55.821040630340576.
+Training classifier using 20.00% nodes...
+{'micro': 0.6250792443261063, 'macro': 0.6158710354532656, 'samples': 0.6250792443261063, 'weighted': 0.6233546108224254}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.83866'}; time used = 0.12131333351135254s
+epoch 10: {'train_loss': '2.77498'}; time used = 0.05508875846862793s
+epoch 15: {'train_loss': '2.77910'}; time used = 0.03419017791748047s
+epoch 20: {'train_loss': '2.77359'}; time used = 0.04496312141418457s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 62.81235647201538.
+Training classifier using 20.00% nodes...
+{'micro': 0.6250792443261063, 'macro': 0.6158710354532656, 'samples': 0.6250792443261063, 'weighted': 0.6233546108224254}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.83866'}; time used = 0.136063814163208s
+epoch 10: {'train_loss': '2.77498'}; time used = 0.043576717376708984s
+epoch 15: {'train_loss': '2.77910'}; time used = 0.043772220611572266s
+epoch 20: {'train_loss': '2.77359'}; time used = 0.03874492645263672s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 69.50590801239014.
+Training classifier using 20.00% nodes...
+{'micro': 0.6250792443261063, 'macro': 0.6158710354532656, 'samples': 0.6250792443261063, 'weighted': 0.6233546108224254}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77570'}; time used = 0.1923971176147461s
+epoch 10: {'train_loss': '2.77267'}; time used = 0.04145669937133789s
+epoch 15: {'train_loss': '2.77313'}; time used = 0.07202696800231934s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.04191780090332031s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 59.06740140914917.
+Training classifier using 20.00% nodes...
+{'micro': 0.50088753645239, 'macro': 0.43682433344481875, 'samples': 0.50088753645239, 'weighted': 0.47591154048973855}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77570'}; time used = 0.07747936248779297s
+epoch 10: {'train_loss': '2.77267'}; time used = 0.0620880126953125s
+epoch 15: {'train_loss': '2.77313'}; time used = 0.04870009422302246s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.04908919334411621s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.871253490447998.
+Training classifier using 20.00% nodes...
+{'micro': 0.50088753645239, 'macro': 0.43682433344481875, 'samples': 0.50088753645239, 'weighted': 0.47591154048973855}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [128, 128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77570'}; time used = 0.13915586471557617s
+epoch 10: {'train_loss': '2.77267'}; time used = 0.033138275146484375s
+epoch 15: {'train_loss': '2.77313'}; time used = 0.06656837463378906s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.06638669967651367s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.21697187423706.
+Training classifier using 20.00% nodes...
+{'micro': 0.50088753645239, 'macro': 0.43682433344481875, 'samples': 0.50088753645239, 'weighted': 0.47591154048973855}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [128, 128], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77570'}; time used = 0.08237934112548828s
+epoch 10: {'train_loss': '2.77267'}; time used = 0.044114112854003906s
+epoch 15: {'train_loss': '2.77313'}; time used = 0.043627023696899414s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.04327821731567383s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11.420310020446777.
+Training classifier using 20.00% nodes...
+{'micro': 0.50088753645239, 'macro': 0.43682433344481875, 'samples': 0.50088753645239, 'weighted': 0.47591154048973855}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.07130742073059082s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.04242873191833496s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.03528237342834473s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.052988290786743164s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11.778014183044434.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.04842066764831543s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.03813052177429199s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.034636735916137695s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.03304433822631836s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 10.089414119720459.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.04971623420715332s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.027762651443481445s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.027503252029418945s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.026983261108398438s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11.082905292510986.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.04973316192626953s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.033898115158081055s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.04252028465270996s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.04158592224121094s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.038517951965332.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77292'}; time used = 0.10001778602600098s
+epoch 10: {'train_loss': '2.77281'}; time used = 0.03634953498840332s
+epoch 15: {'train_loss': '2.77261'}; time used = 0.032538652420043945s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.029331207275390625s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 13.086759567260742.
+Training classifier using 20.00% nodes...
+{'micro': 0.49194877646760493, 'macro': 0.3662555788699109, 'samples': 0.49194877646760493, 'weighted': 0.43068689431625484}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77292'}; time used = 0.09731817245483398s
+epoch 10: {'train_loss': '2.77281'}; time used = 0.03403449058532715s
+epoch 15: {'train_loss': '2.77261'}; time used = 0.03119349479675293s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.03932332992553711s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.02882981300354.
+Training classifier using 20.00% nodes...
+{'micro': 0.49194877646760493, 'macro': 0.3662555788699109, 'samples': 0.49194877646760493, 'weighted': 0.43068689431625484}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77292'}; time used = 0.03768730163574219s
+epoch 10: {'train_loss': '2.77281'}; time used = 0.03032374382019043s
+epoch 15: {'train_loss': '2.77261'}; time used = 0.03011298179626465s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.030991792678833008s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 10.345830917358398.
+Training classifier using 20.00% nodes...
+{'micro': 0.49194877646760493, 'macro': 0.3662555788699109, 'samples': 0.49194877646760493, 'weighted': 0.43068689431625484}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77292'}; time used = 0.0750281810760498s
+epoch 10: {'train_loss': '2.77281'}; time used = 0.022862911224365234s
+epoch 15: {'train_loss': '2.77261'}; time used = 0.019922971725463867s
+epoch 20: {'train_loss': '2.77259'}; time used = 0.020304203033447266s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 10.75415587425232.
+Training classifier using 20.00% nodes...
+{'micro': 0.49194877646760493, 'macro': 0.3662555788699109, 'samples': 0.49194877646760493, 'weighted': 0.43068689431625484}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77563'}; time used = 0.060944318771362305s
+epoch 10: {'train_loss': '2.77434'}; time used = 0.04700946807861328s
+epoch 15: {'train_loss': '2.77279'}; time used = 0.04546236991882324s
+epoch 20: {'train_loss': '2.77267'}; time used = 0.0433347225189209s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11.83437466621399.
+Training classifier using 20.00% nodes...
+{'micro': 0.3948903258526689, 'macro': 0.1887318395976306, 'samples': 0.3948903258526689, 'weighted': 0.22358513291244597}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77563'}; time used = 0.07448601722717285s
+epoch 10: {'train_loss': '2.77434'}; time used = 0.04107546806335449s
+epoch 15: {'train_loss': '2.77279'}; time used = 0.032209157943725586s
+epoch 20: {'train_loss': '2.77267'}; time used = 0.03194737434387207s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 15.606616020202637.
+Training classifier using 20.00% nodes...
+{'micro': 0.3948903258526689, 'macro': 0.1887318395976306, 'samples': 0.3948903258526689, 'weighted': 0.22358513291244597}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77563'}; time used = 0.09632062911987305s
+epoch 10: {'train_loss': '2.77434'}; time used = 0.0445401668548584s
+epoch 15: {'train_loss': '2.77279'}; time used = 0.04595017433166504s
+epoch 20: {'train_loss': '2.77267'}; time used = 0.04566669464111328s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 10.939354419708252.
+Training classifier using 20.00% nodes...
+{'micro': 0.3948903258526689, 'macro': 0.1887318395976306, 'samples': 0.3948903258526689, 'weighted': 0.22358513291244597}
+/home/cgq/anaconda3/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 256, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'hiddens': [256, 256], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'dgi', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.77563'}; time used = 0.10544586181640625s
+epoch 10: {'train_loss': '2.77434'}; time used = 0.04831981658935547s
+epoch 15: {'train_loss': '2.77279'}; time used = 0.04664444923400879s
+epoch 20: {'train_loss': '2.77267'}; time used = 0.035668373107910156s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.134451866149902.
+Training classifier using 20.00% nodes...
+{'micro': 0.3948903258526689, 'macro': 0.1887318395976306, 'samples': 0.3948903258526689, 'weighted': 0.22358513291244597}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.11852836608886719s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.03642725944519043s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.06611347198486328s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.03171992301940918s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4283.906371831894.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.2994563579559326s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.23950839042663574s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.0744924545288086s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.06680655479431152s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6431.3595316410065.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.02, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.1950700283050537s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.041116952896118164s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.06846737861633301s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.0342252254486084s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 10967.73137331009.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.03, 'early_stopping': 20, 'enc': 'linear', 'dec': 'mlp', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 0.15433645248413086s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.029045820236206055s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.0250241756439209s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.030381441116333008s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6505.795271396637.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
+actual args: {'cpu': False, 'devices': [6], 'model': 'ss_gae', 'dataset': 'pubmed', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.2, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'enc': 'linear', 'dec': 'mlp', 'sampler': 'mvgrl', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'est': 'jsd'}
+Loading PubMed Dataset from root dir: /data3/private/cgq/openne/OpenNE/data/PubMed
+Executing task UnsupervisedNodeClassification.
+Creating test set using 20.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: {'train_loss': '2.81406'}; time used = 1.0269293785095215s
+epoch 10: {'train_loss': '2.77265'}; time used = 0.40961146354675293s
+epoch 15: {'train_loss': '2.77835'}; time used = 0.7289268970489502s
+epoch 20: {'train_loss': '2.77264'}; time used = 0.44238877296447754s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 20704.83700108528.
+Training classifier using 20.00% nodes...
+{'micro': 0.5233929250665652, 'macro': 0.46372664037573347, 'samples': 0.5233929250665652, 'weighted': 0.5009520861567988}
