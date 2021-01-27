@@ -92,7 +92,7 @@ class Graph(Dataset, ABC):
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
 
-    def adjmat(self, directed, weighted, scaled=None, sparse=False):
+    def adjmat(self, directed=True, weighted=True, scaled=None, sparse=False):
         G = self.G
         if type(self).directed() and not directed:
             G = nx.to_undirected(G)
@@ -369,7 +369,8 @@ class Adapter(Graph, ABC):
 
     @property
     def root_dir(self):
-        return osp.join(osp.dirname(osp.realpath(__file__)), '..', '..', 'data', type(self).__name__)
+        return osp.join('..', 'data', type(self).__name__)
+        # return osp.join(osp.dirname(osp.realpath(__file__)), '..', '..', '..', 'data', type(self).__name__)
 
     def download(self):
         pass

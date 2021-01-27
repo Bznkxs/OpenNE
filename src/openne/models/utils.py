@@ -161,3 +161,27 @@ def alias_draw(J, q, *size):
     oj = alias.mul(1 - b)
 
     return (oq + oj).view(size)
+
+# from https://github.com/weihua916/powerful-gnns
+def process_graphs(graphs):
+    """
+
+    @param graphs: a list of graphs, with .x, .y, .edge_index, some with .edge_weight
+    @return: joined adj and start_idx ( start_idx[i] == starting node of graph i; len(start_idx) == num_graph + 1 )
+    """
+    edge_mat_list = []
+    elems = []
+    start_idx = [0]
+    for i, graph in enumerate(graphs):
+        start_idx.append(start_idx[i] + len(graph.x))
+        edge_mat_list.append(start_idx[i] + graph.edge_index)
+        if hasattr(graph, 'edge_weight') and graph.edge_weight is not None:
+            elems.append(graph.edge_weight)
+    Adj_block_idx = torch.cat(edge_mat_list, 1)
+
+    if len(elems) == 0:
+        Adj_block_elem = torch.ones(Adj_block_idx.shape[1])
+    else:
+        Adj_block_elem = torch.cat(elems)
+    Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
+    return Adj_block, start_idx

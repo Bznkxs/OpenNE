@@ -14,10 +14,12 @@ from .vgae import VGAE
 from .ss_gae import SS_GAE
 from .ss_deepwalk import SS_DeepWalk
 from .ss_nodemodel import SS_NodeModel
+from .ss_gaeg import SS_GAEg  # graph classification graph sampler
+from .ss_graphmodel import SS_GraphModel # graph classification node sampler
 # add import of new models here
 
 modellist = [GraphFactorization, GraRep, HOPE, LaplacianEigenmaps, LINE,
              LLE, Node2vec, DeepWalk, SDNE, TADW, GCN, GAE, VGAE, SS_GAE,
-             SS_DeepWalk, SS_NodeModel]  # add new models here
+             SS_DeepWalk, SS_NodeModel, SS_GAEg, SS_GraphModel]  # add new models here
 modeldict = {Cls.__name__.lower(): Cls for Cls in modellist}
 modeldict.update({Cls.othername.lower(): Cls for Cls in modellist if 'othername' in Cls.__dict__})

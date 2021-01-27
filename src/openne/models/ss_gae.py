@@ -7,7 +7,25 @@ import torch
 import torch.nn.functional as F
 
 class model_input:
+
     def __init__(self, typ, ind, adj, feature):
+        """
+        batch graph input
+        @param typ: "graphs"
+        @param ind: a slice, graph indices
+        @param adj: a collection, adj[ind] is the real input
+        @param feature: feature matrices, feat[ind] is the real input
+
+        @param typ: "graph"
+        @param ind: None
+        @param adj: graph adj
+        @param feature: graph feat
+
+        @param typ: "node"
+        @param ind: None
+        @param adj: graph adj
+        @param feature: graph feat
+        """
         self.typ = typ
         self.ind = ind
         self.adj = adj
@@ -53,7 +71,7 @@ class SS_GAE(ModelWithEmbeddings):
             raise TypeError("GAE only accepts attributed graphs!")
 
     def build(self, graph, *, learning_rate=0.01, epochs=300,
-              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10,
+              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=0.00003,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
@@ -78,6 +96,7 @@ class SS_GAE(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.patience = patience
+        self.min_delta = min_delta
 
         self.preprocess_data(graph)
         # Create models

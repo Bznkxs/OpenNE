@@ -31,6 +31,7 @@ class Encoder(nn.Module):
             self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], self.supports, dropout, act=lambda x: x, **kwargs))
         self.full_embeddings = None
         self.register_buffer("arange", torch.arange(self.nnodes))
+        self.requires_full_embeddings = requires_full_embeddings[self.name]
 
 
 
@@ -47,6 +48,31 @@ class Encoder(nn.Module):
 
     def forward(self, x):
         """
+        supports readout
+        @param x:
+        @param start_idx:
+        @return:
+        """
+        if isinstance(x, tuple):
+            x, start_idx = x
+        else:
+            start_idx = None
+        if start_idx:
+            self.requires_full_embeddings = True
+            hx = self.node_forward(x)
+            old_idx = start_idx[0]
+            vectors = []
+            for idx in start_idx[1:]:
+                vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(idx-old_idx, 1))
+                old_idx = idx
+            hx = torch.cat(vectors)
+        else:
+            self.requires_full_embeddings = requires_full_embeddings[self.name]
+            hx = self.node_forward(x)
+        return hx
+
+    def node_forward(self, x):
+        """
         x: batch input of indices
         special input: -1 which indicates graph
         """
@@ -58,32 +84,23 @@ class Encoder(nn.Module):
                     hx = layer(hx)
             return hx
 
-        if hasattr(x, "__getitem__") and x[0] == -1:  # must always be graph
-            wsize = x.size()[0]
-            x = self.arange
-            if self.full_embeddings is not None:
-                hx = self.full_embeddings
-            else:
-                hx = _forward(x)
-                self.full_embeddings = hx
-            hx = self.readout(hx).repeat(wsize, 1)
-        else:  # encoding of a list of nodes
-            if self.full_embeddings is not None:
-                hx = self.full_embeddings[x]
+        # encoding of a list of nodes
+        if self.full_embeddings is not None:
+            hx = self.full_embeddings[x]
 
-            else:
-                indices = x
-                if requires_full_embeddings[self.name] or len(x) > self.nnodes:
-                    #  these encoders require a full feature matrix
-                    #  (since they need to calculate output reprs with neighboring features)
-                    #  and so we must send all nodes into these layers
-                    x = self.arange
-                    if self.name == "none":
-                        return self.embed(x)[indices]
-                    self.full_embeddings = _forward(x)
-                    hx = self.full_embeddings[indices]
-                else:  # these encoders do not depend on other nodes to calculate repr
-                    hx = _forward(x)
+        else:
+            indices = x
+            if self.requires_full_embeddings or len(x) > self.nnodes:
+                #  these encoders require a full feature matrix
+                #  (since they need to calculate output reprs with neighboring features)
+                #  and so we must send all nodes into these layers
+                x = self.arange
+                if self.name == "none":
+                    return self.embed(x)[indices]
+                self.full_embeddings = _forward(x)
+                hx = self.full_embeddings[indices]
+            else:  # these encoders do not depend on other nodes to calculate repr
+                hx = _forward(x)
         return hx
 
         # # stage 1: status mark

@@ -7,13 +7,15 @@ from .ss_model import SSModel
 from .models import ModelWithEmbeddings
 from ..utils import check_existance, check_range
 from .utils import scipy_coo_to_torch_sparse, preprocess_features, preprocess_graph, chebyshev_polynomials
+from ..dataloaders import Graphs
 
 
-
-class SS_NodeModel(ModelWithEmbeddings):
-
+class SS_GraphModel(ModelWithEmbeddings):
+    """
+    graph classification version
+    """
     def __init__(self, dim=128, **kwargs):
-        super(SS_NodeModel, self).__init__(dim=dim, **kwargs)
+        super(SS_GraphModel, self).__init__(dim=dim, **kwargs)
 
     @classmethod
     def check_train_parameters(cls, **kwargs):
@@ -61,7 +63,7 @@ class SS_NodeModel(ModelWithEmbeddings):
             "max_degree": (0, np.inf)})
         return kwargs
 
-    def build(self, graph, *, dim=128,
+    def build(self, graph: Graphs, *, dim=128,
               enc='gcn', dec='inner', sampler='node-rand_walk-random', readout='mean', est='JSD',
               hiddens=[],
               dropout=0., weight_decay=1e-4, early_stopping=5, patience=2, min_delta=1e-5,
@@ -86,7 +88,7 @@ class SS_NodeModel(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.hiddens = hiddens
-        self.max_degree = 0
+        self.max_degree = max_degree
 
 
         if self.enc in ['gcn', ]:
@@ -160,7 +162,8 @@ class SS_NodeModel(ModelWithEmbeddings):
         return output, cur_loss / batch_num, (time.time() - t_test)
 
     def _get_embeddings(self, graph, **kwargs):
-        self.embeddings = self.model.embed(torch.tensor(range(self.nb_nodes)).to(self._device)).detach()
+        self.embeddings = self.model.embed((torch.tensor(range(self.nb_nodes)).to(self._device),
+                                            self.graph.start_idx)).detach()
 
     def preprocess_data(self, graph):
         """
