@@ -127,6 +127,6 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
-        y = self.batch_norm(y)
+        # y = self.batch_norm(y)
         return self.act(y)
 

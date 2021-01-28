@@ -31,7 +31,7 @@ class GraphConvolution(Layer):
             else:
                 self.bias = None
 
-        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
+        # self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
 
         if self.logging:
             self._log_vars()
