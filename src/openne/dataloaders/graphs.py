@@ -39,7 +39,7 @@ class Graphs(Adapter, ABC):
         self.start_idx = start_idx
 
     def labels(self):
-        return self.data, np.arange(self.num).reshape([-1,1])
+        return self.data, [g.y.tolist() for g in self.data]
 
     def get_split_data(self, train_percent=None, validate_percent=None, validate_size=None, seed=None):
         """
@@ -57,6 +57,7 @@ class Graphs(Adapter, ABC):
         X_test = test_idx.tolist()
         Y_train = [self.data[int(i)].y.tolist() for i in train_idx]
         Y_test = [self.data[int(i)].y.tolist() for i in test_idx]
+        # print("TRAIN", Y_train)
         return X_train, Y_train, None, None, X_test, Y_test
 
 

@@ -43,7 +43,7 @@ class Classifier(object):
     def train(self, X, Y, Y_all):
         self.binarizer.fit(Y_all)
         X_train = torch.stack([self.embeddings[x] for x in X])
-        print("X_Train", X_train)
+        # print("X_Train", X_train)
         Y = self.binarizer.transform(Y)  # lhs Y a numpy array
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
@@ -53,11 +53,12 @@ class Classifier(object):
         top_k_list = [len(l) for l in Y]
         Y_ = self.predict(X, top_k_list)  # Y_ Tensor
         Y = self.binarizer.transform(Y)  # Y  np array
-        print("true:", Y)
-        print("pred:", scipy.sparse.csr_matrix(numpy.asarray(Y_)))
+        # print("true:", Y)
+        # print("pred:", scipy.sparse.csr_matrix(numpy.asarray(Y_)))
         averages = ["micro", "macro", "samples", "weighted"][:self.f1cat]
         results = {}
         for average in averages:
+            # print("CLASSIFY", average)
             if self.silent:
                 with warnings.catch_warnings():
                     warnings.simplefilter("ignore")
