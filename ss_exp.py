@@ -137,10 +137,29 @@ training_list3 = list({
     "lr": ["0.001", "0.01", "0.02", "0.03"],
 }.items())
 
+training_list4 = list({
+    "model": ["ss_gaeg"],
+    "task": ['graphclassification'],
+    "dataset": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr", ],
+    "enc": ["gin", "gcn", "gat"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": new_sampler_list,
+    "readout": ["mean", 'sum'],
+    "est": ["jsd", 'nce'],
+    "epochs": ["500"],
+    "early-stopping": ["20"],
+    "dim": ["32", "64",],
+    "_hiddens": [0,1,2],
+    "lr": ["0.001", "0.01" ],
+    'clf-ratio': ['0.8'],
+    'patience': ['3']
+}.items())
+
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
     gen_exps(training_list2, 'ss_gat')
     gen_exps(training_list3, 'ss_graph')
+    gen_exps(training_list4, 'ss_graphs')
     #pos = 1
     #gen_exps(test_list, 'test')
 

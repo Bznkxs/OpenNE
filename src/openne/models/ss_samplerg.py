@@ -125,13 +125,15 @@ class DiffSampler(GraphSampler):
             eidx = graph.edge_index
             eidx = eidx[:, (eidx[0] >= i) * (eidx[0] < r) * (eidx[1] >= i) * (eidx[1] < r)]
             return eidx
-
+        old_graphs = self.graphs
+        # self.graphs = self.graphs[torch.randperm(len(self.graphs))]
         for i, graph in enumerate(self.graphs):
             # get ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat
             pos = self.positive[i]
+            # get a negative graph (a random graph)
             negidx = np.random.randint(0, len(self.graphs) - 2)
             if negidx == i:
-                negidx = (negidx + 1) % len(self.graphs)
+                negidx += 1
             neg = self.graphs[negidx]
             negdiff = self.positive[negidx]
             if graph.x.shape[0] < self.sample_size + 1:
@@ -154,6 +156,7 @@ class DiffSampler(GraphSampler):
                 bnegdiff.append(graphinput(nx, None, eidxnd))
                 bfeat.append(x)
                 bnegfeat.append(nx)
+        self.graphs = old_graphs
         return ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat
 
 
