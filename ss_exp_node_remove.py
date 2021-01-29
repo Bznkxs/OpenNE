@@ -7,6 +7,8 @@ def split(name, parts):
     M = parts
     w2 = [x for x in w2 if x not in w]
     print("after removing suspicious files: ",len(w2))
+    import random
+    random.shuffle(w2)
     size = int(len(w2) / M + 0.5)
     for m in range(M):
         w3 = w2[m * size : (m+1) * size]
@@ -17,9 +19,10 @@ def split(name, parts):
         f2.close()
 
 if __name__ == '__main__':
-    split("ss_gat_1", 5)
-    split("ss_graph_1", 5)
-    split("fix_fsn", 3)
+    #split("ss_gat_1", 5)
+    #split("ss_graph_1", 5)
+    #split("fix_fsn", 3)
+    split("ss_graphs_1", 3)
 
 # f1 = open("src/ss_node_0.2.sh", 'r')
 # f2 = open("src/ss_node_1.sh", 'r')

@@ -131,6 +131,6 @@ class GAT(Layer):
             y = torch.mean(torch.stack(y_list), dim=0).to(x.device)   # (n * output_dim)
         #print(y.device)
         #print("??")
-        y = self.batch_norm(y)
+        # y = self.batch_norm(y)
         return self.act(y)
 

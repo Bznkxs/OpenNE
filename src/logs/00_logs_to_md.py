@@ -79,7 +79,7 @@ def transfer(filename):
         time = nms[0][2:4] + '-' + nms[0][4:6] + '-' + nms[0][6:8] + ' ' + nms[1][:2] + ":" + nms[1][2:4] + ":" + nms[1][4:6]
         priority_list_args = [['dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr','early_stopping', 'dim', 'hiddens', 'readout', 'est',  'time'],[], []]
 
-        for i in res:
+        for i in ['micro', 'macro', 'samples', 'weighted']:
             priority_list_args[1].append(i)
         tmp = 0
         rddd = {}
@@ -92,7 +92,7 @@ def transfer(filename):
         r_args = [(nm, hlist())]
         for i in priority_list_args[0]:
             r_args[0][1].append((i, args.get(i, '-')))
-        for i in res:
+        for i in priority_list_args[1]:
             r_args[0][1].append((i, int(res[i]*10000+0.5)/10000))
         for i in priority_list_args[2]:
             r_args[0][1].append((i, args.get(i, '-')))

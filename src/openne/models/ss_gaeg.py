@@ -7,16 +7,19 @@ import torch
 import torch.nn.functional as F
 
 class model_input:
-    def __init__(self, typ, graphs, feature):
+    def __init__(self, typ, adj, start_idx, feature, repeat=False):
         """
         batch graph input
-        @param typ: "graphs"
+        @param typ: "graphs"/"nodes"
         @param graphs: a collection
         @param feature: collection of feat
+        @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
         """
         self.typ = typ
-        self.graphs = graphs
+        self.adj = adj
+        self.start_idx = start_idx
         self.feat = feature
+        self.repeat = repeat
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -28,12 +31,13 @@ class SS_GAEg(ModelWithEmbeddings):
 
     @classmethod
     def check_train_parameters(cls, **kwargs):
-        check_existance(kwargs, {"learning_rate": 0.01,
+        check_existance(kwargs, {'dim': 128,
+                                 "learning_rate": 0.01,
                                  "epochs": 200,
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
                                  "early_stopping": 50,
-                                 "patience": 100,
+                                 "patience": 3,
                                  'enc': 'gcn',
                                  'dec': 'inner',
                                  'sampler': 'dgi',
@@ -41,7 +45,7 @@ class SS_GAEg(ModelWithEmbeddings):
                                  "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
                                  "batch_size": 100000,
-                                 "hiddens": [64],
+                                 "hiddens": [],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
                              "epochs": (0, np.inf),
@@ -54,11 +58,10 @@ class SS_GAEg(ModelWithEmbeddings):
 
     @classmethod
     def check_graphtype(cls, graphtype, **kwargs):
-        if not graphtype.attributed():
-            raise TypeError("GAE only accepts attributed graphs!")
+        pass
 
-    def build(self, graph, *, learning_rate=0.01, epochs=300,
-              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10,
+    def build(self, graph, *, dim=128, hiddens=[], learning_rate=0.01, epochs=300,
+              dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
               clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
@@ -83,6 +86,9 @@ class SS_GAEg(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.patience = patience
+        self.min_delta = min_delta
+        self.output_dim = dim
+        self.hiddens = hiddens
 
         self.preprocess_data(graph)
         # Create models
@@ -93,10 +99,12 @@ class SS_GAEg(ModelWithEmbeddings):
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
-                             adj=self.support[0], features=self.features,
-                             batch_size=self.batch_size, dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
+                             graphs=graph, features=self.features, batch_size=self.batch_size,
+                             dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
+        self.negative_ratio = 5
+
 
     def train_model(self, graph, **kwargs):
         # Train models
@@ -141,16 +149,67 @@ class SS_GAEg(ModelWithEmbeddings):
         output = None
         assert self.sampler in ['dgi', 'mvgrl']
         batch_num = 1
-        ba, bd, bf, shuf_fts = self.model.sampler.sample()
-        bx = model_input('graphs', ba, bf)
-        bpos = model_input('nodes', bd, bf)
-        bneg = model_input('nodes', bd, shuf_fts)
 
-        bx_r = model_input('graphs', bd, bf)
-        bpos_r = model_input('nodes', ba, bf)
-        bneg_r = model_input('nodes', ba, shuf_fts)
         self.optimizer.zero_grad()
-        loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
+
+        if self.sampler == 'dgi':
+            ba, bd, bf, shuf_fts = self.model.sampler.sample()
+            adj, start_idx = process_graphs(ba)
+            add, start_idd = process_graphs(bd)
+            bx = model_input('graphs', adj, start_idx, bf)
+            bpos = model_input('nodes', add, start_idd, bf)
+            bneg = model_input('nodes', add, start_idd, shuf_fts)
+
+            bx_r = model_input('graphs', add, start_idd, bf)
+            bpos_r = model_input('nodes', adj, start_idx, bf)
+            bneg_r = model_input('nodes', adj, start_idx, shuf_fts)
+
+            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
+        else:
+            ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat = self.model.sampler.sample()
+            adj, start_idx = process_graphs(ba)
+            add, start_idd = process_graphs(bdiff)
+            adn, start_idn = process_graphs(bneg)
+            adnd, start_idnd = process_graphs(bnegdiff)
+            bx = model_input('graphs', adj, start_idx, bfeat)
+            bpos = model_input('nodes', add, start_idd, bfeat)
+            bneg = model_input('nodes', adnd, start_idnd, bnegfeat)
+
+            bx_r = model_input('graphs', add, start_idd, bfeat)
+            bpos_r = model_input('nodes', adj, start_idx, bfeat)
+            bneg_r = model_input('nodes', adn, start_idn, bnegfeat)
+
+            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
+            #
+            # ##
+            # loss = 0
+            # batch_num = self.negative_ratio + 1
+            # for i in range(int(len(ba) / batch_num + 0.5)):
+            #     l = i * batch_num
+            #     r = min(l + batch_num, len(ba))
+            #     adj, start_idx = process_graphs(ba[l: r])
+            #     add, start_idd = process_graphs(bdiff[l: r])
+            #     adjl = adj + adj
+            #     addl = add + add
+            #     start_idxl = start_idx + start_idx
+            #     feats = bfeat[l: r]
+            #     featsl = feats + feats
+            #
+            #     for j in range(1, r - l):
+            #         adnd = addl[j: r-l+j]
+            #         nfeats = featsl[j: r-l+j]
+            #         start_idnd = start_idxl[j: r-l+j]
+            #         adn = adjl[j:r-l+j]
+            #
+            #         bx = model_input('graphs', adj, start_idx, feats)
+            #         bpos = model_input('nodes', add, start_idd, feats)
+            #         bneg = model_input('nodes', adnd, start_idnd, nfeats)
+            #
+            #         bx_r = model_input('graphs', add, start_idd, feats)
+            #         bpos_r = model_input('nodes', adj, start_idx, feats)
+            #         bneg_r = model_input('nodes', adn, start_idnd, nfeats)
+            #
+            #         loss += self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
         if train:
             loss.backward()
             self.optimizer.step()
@@ -167,10 +226,26 @@ class SS_GAEg(ModelWithEmbeddings):
         return step > self.early_stopping and self.cost_val[-1] > torch.mean(
                     torch.tensor(self.cost_val[start:-1])) * (1 - self.min_delta)
 
+    def _get_vectors(self, graph):
+        """
+            Get self.vectors (which is a dict in format {node: embedding}) from self.embeddings.
+            This should only be called in self.make_output().
+
+            Rewrite when self.embeddings is not used and self.vectors is not acquired in self.train_model.
+        """
+        embs = self.embeddings
+        if embs is None:
+            return self.vectors
+        self.vectors = {}
+        for i, embedding in enumerate(embs):
+            self.vectors[i] = embedding
+        # (embs[:10])
+        return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):
-        all_nodes = model_input('node', torch.tensor(range(self.nb_nodes)), self.support[0].to_dense(), self.features)
-        self.embeddings = self.model.embed(all_nodes).detach()
+        adj, start_idx = process_graphs(graph.data)
+        all_graphs = model_input('graphs', adj, start_idx, [self.features], repeat=False)
+        self.embeddings = self.model.embed(all_graphs).detach()
 
     def preprocess_data(self, graph):
         """

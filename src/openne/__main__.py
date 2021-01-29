@@ -259,7 +259,8 @@ def main(args):
             print(*args, file=f, **kwargs)
 
 if __name__ == "__main__":
-    random.seed(32)
-    np.random.seed(32)
-    torch.random.manual_seed(32)
+    sd = 32
+    random.seed(sd)
+    np.random.seed(sd)
+    torch.random.manual_seed(sd)
     main(parse_args())

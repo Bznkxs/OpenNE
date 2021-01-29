@@ -67,7 +67,7 @@ class SS_GraphModel(ModelWithEmbeddings):
               enc='gcn', dec='inner', sampler='node-rand_walk-random', readout='mean', est='JSD',
               hiddens=[],
               dropout=0., weight_decay=1e-4, early_stopping=5, patience=2, min_delta=1e-5,
-              batch_size=10000, negative_ratio=5, lr=0.1, epochs=200,
+              batch_size=10000, negative_ratio=5, lr=0.1, epochs=200, max_degree = 0,
               **kwargs):
         self.graph = graph
         self.nb_nodes = graph.nodesize
@@ -88,6 +88,7 @@ class SS_GraphModel(ModelWithEmbeddings):
         self.readout = readout
         self.est = est
         self.hiddens = hiddens
+        self.max_degree = max_degree
 
 
         if self.enc in ['gcn', ]:
@@ -163,6 +164,20 @@ class SS_GraphModel(ModelWithEmbeddings):
     def _get_embeddings(self, graph, **kwargs):
         self.embeddings = self.model.embed((torch.tensor(range(self.nb_nodes)).to(self._device),
                                             self.graph.start_idx)).detach()
+    def _get_vectors(self, graph):
+        """
+            Get self.vectors (which is a dict in format {node: embedding}) from self.embeddings.
+            This should only be called in self.make_output().
+
+            Rewrite when self.embeddings is not used and self.vectors is not acquired in self.train_model.
+        """
+        embs = self.embeddings
+        if embs is None:
+            return self.vectors
+        self.vectors = {}
+        for i, embedding in enumerate(embs):
+            self.vectors[i] = embedding
+        return self.vectors
 
     def preprocess_data(self, graph):
         """

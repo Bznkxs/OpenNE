@@ -3,6 +3,7 @@ from ..utils import *
 class BaseTask:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
+        self.train_kwargs()
 
     def check(self, modelclass, datasetclass):
         raise NotImplementedError
