@@ -207,6 +207,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.vectors = {}
         for i, embedding in enumerate(embs):
             self.vectors[i] = embedding
+        # (embs[:10])
         return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):

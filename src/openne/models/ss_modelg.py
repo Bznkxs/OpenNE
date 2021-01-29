@@ -26,7 +26,7 @@ class SSModel(nn.Module):
         self.device = device
         self.readout = BaseReadOut(self.readout_name)
         self.encoder = Encoder(self.encoder_name, self.enc_dims, graphs, self.features, dropout, self.readout)
-        self.decoder = Decoder(self.decoder_name, self.enc_dims[-1], self.dec_dims)
+        self.decoder = Decoder(self.decoder_name, self.encoder.output_dim, self.dec_dims)
         self.estimator = BaseEstimator(self.estimator_name)
         self.sampler = BaseSampler(self.sampler_name, graphs.data, self.features, batch_size, self.device)
 
