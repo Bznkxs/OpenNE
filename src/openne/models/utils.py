@@ -7,6 +7,7 @@ import sys
 import torch
 import math
 import random
+from ..utils import getdevice
 
 def parse_index_file(filename):
     """Parse index file."""
@@ -184,4 +185,5 @@ def process_graphs(graphs):
     else:
         Adj_block_elem = torch.cat(elems)
     Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
+    Adj_block = Adj_block.to(getdevice())
     return Adj_block, start_idx

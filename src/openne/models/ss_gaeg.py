@@ -180,36 +180,6 @@ class SS_GAEg(ModelWithEmbeddings):
             bneg_r = model_input('nodes', adn, start_idn, bnegfeat)
 
             loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
-            #
-            # ##
-            # loss = 0
-            # batch_num = self.negative_ratio + 1
-            # for i in range(int(len(ba) / batch_num + 0.5)):
-            #     l = i * batch_num
-            #     r = min(l + batch_num, len(ba))
-            #     adj, start_idx = process_graphs(ba[l: r])
-            #     add, start_idd = process_graphs(bdiff[l: r])
-            #     adjl = adj + adj
-            #     addl = add + add
-            #     start_idxl = start_idx + start_idx
-            #     feats = bfeat[l: r]
-            #     featsl = feats + feats
-            #
-            #     for j in range(1, r - l):
-            #         adnd = addl[j: r-l+j]
-            #         nfeats = featsl[j: r-l+j]
-            #         start_idnd = start_idxl[j: r-l+j]
-            #         adn = adjl[j:r-l+j]
-            #
-            #         bx = model_input('graphs', adj, start_idx, feats)
-            #         bpos = model_input('nodes', add, start_idd, feats)
-            #         bneg = model_input('nodes', adnd, start_idnd, nfeats)
-            #
-            #         bx_r = model_input('graphs', add, start_idd, feats)
-            #         bpos_r = model_input('nodes', adj, start_idx, feats)
-            #         bneg_r = model_input('nodes', adn, start_idnd, nfeats)
-            #
-            #         loss += self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
         if train:
             loss.backward()
             self.optimizer.step()

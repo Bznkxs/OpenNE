@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from . import layers
 from .layers.others import FF
 from .utils import process_graphs
+from ..utils import getdevice
 
 
 class Encoder(nn.Module):
@@ -39,8 +40,8 @@ class Encoder(nn.Module):
         @param x: model_input, with .feat, .adj, .start_idx, .typ
         @return:
         """
-        hx = torch.cat(x.feat)
-        adj = x.adj
+        hx = torch.cat(x.feat).to(getdevice())
+        adj = x.adj.to(getdevice())
         start_idx = x.start_idx
 
         hxs = []
@@ -62,7 +63,7 @@ class Encoder(nn.Module):
                         repeat = 1
                     vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(repeat, 1))
                     old_idx = idx
-                return torch.cat(vectors)
+                return torch.cat(vectors).to(getdevice())
 
             # for hx in hxs:
             #     nhxs.append(pooling(hx))
