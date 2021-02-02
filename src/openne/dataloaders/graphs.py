@@ -84,7 +84,7 @@ PTC-MR, IMDB-BIN, IMDB-MULTI, REDDIT-BIN
 
 class PTC_MR(Graphs):
     def __init__(self, **kwargs):
-        super(PTC_MR, self).__init__('PTC-MR', **kwargs)
+        super(PTC_MR, self).__init__('PTC_MR', **kwargs)
     @classmethod
     def weighted(cls):
         return True
