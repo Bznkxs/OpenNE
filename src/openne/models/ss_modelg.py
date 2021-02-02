@@ -48,11 +48,12 @@ class SSModel(nn.Module):
             old_idx = start_idx[0]
             vectors = []
             for i, idx in enumerate(start_idx[1:]):
-                vectors.append(self.sigm(self.readout(hx[i])).repeat(idx-old_idx, 1))
+                vectors.append(self.sigm(hx[i]).repeat(idx-old_idx, 1))
                 old_idx = idx
             return torch.cat(vectors)
         hxp = repeat(pos.start_idx)
         hxn = repeat(neg.start_idx)
+        # print(hxp.shape, hxn.shape, hpos.shape, hneg.shape)
 
         loss = self.estimator(self.decoder(hxp, hpos), self.decoder(hxn, hneg))
         return loss

@@ -41,7 +41,7 @@ class Encoder(nn.Module):
         @return:
         """
         hx = torch.cat(x.feat).to(getdevice())
-        adj = x.adj.to(getdevice())
+        adj = x.adj.to_dense().to(getdevice())
         start_idx = x.start_idx
 
         hxs = []
@@ -74,6 +74,7 @@ class Encoder(nn.Module):
         else:
             # hx = torch.cat(hxs, 1)
             hx = self.local_d(hx)
+        # print(hx.shape)
         return hx
 
 

@@ -190,11 +190,14 @@ class SS_GAEg(ModelWithEmbeddings):
 
     def early_stopping_judge(self, graph, *, step=0, **kwargs):
         if self.patience > len(self.cost_val) - self.early_stopping:
-            start = self.early_stopping
+            return False
+        if self.cost_val[-1] > self.cost_val[-2]:
+            self.c_up += 1
+            if (self.c_up) >= self.patience:
+                return True
         else:
-            start = -self.patience
-        return step > self.early_stopping and self.cost_val[-1] > torch.mean(
-                    torch.tensor(self.cost_val[start:-1])) * (1 - self.min_delta)
+            self.c_up = 0
+        return False
 
     def _get_vectors(self, graph):
         """
