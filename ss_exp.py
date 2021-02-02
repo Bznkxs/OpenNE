@@ -145,7 +145,7 @@ training_list4 = list({
     "dec": ["inner", "bilinear", "mlp"],
     "sampler": new_sampler_list,
     "readout": ["mean", 'sum'],
-    "est": ["jsd", 'nce'],
+    "est": ["jsd"],
     "epochs": ["500"],
     "early-stopping": ["20"],
     "dim": ["32", "64",],

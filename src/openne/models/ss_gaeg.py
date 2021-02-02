@@ -104,6 +104,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
+        self.c_up = 0
 
 
     def train_model(self, graph, **kwargs):
