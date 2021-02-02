@@ -34,8 +34,9 @@ class NCEEstimator(torch.nn.Module):
             setattr(self, i, j)
 
     def forward(self, positive, negative):
-        ep = torch.exp(positive)
-        eq = torch.exp(negative)
+        ep = torch.exp(positive).sum()
+        eq = torch.exp(negative).sum()
+        # print(ep, eq)
         exp_loss = ep / (ep + eq)
         loss = -torch.log(exp_loss).mean()
         return loss

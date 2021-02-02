@@ -100,7 +100,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graphs=graph, features=self.features, batch_size=self.batch_size,
-                             dropout=self.dropout, dec_dims=self.dec_dims, device=self._device)
+                             dropout=self.dropout, dec_dims=self.dec_dims, device=self._device, norm=True)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
