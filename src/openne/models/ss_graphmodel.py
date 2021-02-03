@@ -106,7 +106,7 @@ class SS_GraphModel(ModelWithEmbeddings):
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graph=graph, supports=[self.adj], features=self.features,
                              batch_size=self.batch_size, negative_ratio=self.negative_ratio,
-                             dropout=self.dropout, dec_dims=self.dec_dims, **kwargs)
+                             dropout=self.dropout, dec_dims=self.dec_dims, norm=True, **kwargs)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.c_up = 0

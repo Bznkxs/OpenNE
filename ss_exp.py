@@ -155,11 +155,30 @@ training_list4 = list({
     'patience': ['3']
 }.items())
 
+training_list5 = list({
+    "model": ["ss_graphmodel"],
+    "task": ['graphclassification'],
+    "dataset": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr", ],
+    "enc": ["gin", "gcn", "gat", "none"],
+    "dec": ["inner", "bilinear", "mlp"],
+    "sampler": sampler_list,
+    "readout": ["mean", 'sum'],
+    "est": ["jsd", 'nce'],
+    "epochs": ["500"],
+    "early-stopping": ["20"],
+    "dim": ["32", "64",],
+    "_hiddens": [0,1,2],
+    "lr": ["0.001", "0.01" ],
+    'clf-ratio': ['0.8'],
+    'patience': ['3']
+}.items())
+
 if __name__ == "__main__":
     gen_exps(training_list, 'ss_node')
     gen_exps(training_list2, 'ss_gat')
     gen_exps(training_list3, 'ss_graph')
     gen_exps(training_list4, 'ss_graphs')
+    gen_exps(training_list5, 'ss_graphs2')
     #pos = 1
     #gen_exps(test_list, 'test')
 

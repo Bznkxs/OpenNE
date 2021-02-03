@@ -79,7 +79,7 @@ class Encoder(nn.Module):
         """
         #print(x.device)
         def _forward(x):
-            hx = self.embed(x)
+            hx = self.embed(x).to(torch.float32)
             if self.name != 'none':
                 for layer in self.layers:
                     hx = layer(hx)
