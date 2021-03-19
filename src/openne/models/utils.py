@@ -23,10 +23,16 @@ def scipy_coo_to_torch_sparse(scipy_sparse_coo):
     i = torch.tensor(indices, dtype=torch.long)
     return torch.sparse_coo_tensor(i, v, scipy_sparse_coo.shape)
 
+import time
 def torch_sparse_to_scipy_coo(torch_sparse):
+    print("torch_sparse_to_scipy_coo...")
+    t1 = time.time()
     a = torch_sparse.coalesce()
     (i, j), v = a.indices().numpy(), a.values().numpy()
-    return sp.coo_matrix((v, (i, j)), shape=a.shape)
+
+    ret = sp.coo_matrix((v, (i, j)), shape=a.shape)
+    print("time =", time.time() - t1)
+    return ret
 
 
 def preprocess_features(features, sparse=False):
@@ -34,8 +40,8 @@ def preprocess_features(features, sparse=False):
     rowsum = features.sum(1)
     r_inv = (rowsum**-1).flatten()
     r_inv[torch.isinf(r_inv)] = 0.
-    r_mat_inv = torch.diag(r_inv)
-    features = r_mat_inv.mm(features)
+    print(r_inv.shape)
+    features = r_inv.unsqueeze(1) * features
     return features.to_sparse() if sparse else features
 
 
@@ -173,7 +179,10 @@ def process_graphs(graphs):
     edge_mat_list = []
     elems = []
     start_idx = [0]
+    print("process", len(graphs), "graphs")
     for i, graph in enumerate(graphs):
+        # check
+        assert graph.edge_index.max() < len(graph.x)
         start_idx.append(start_idx[i] + len(graph.x))
         edge_mat_list.append(start_idx[i] + graph.edge_index)
         if hasattr(graph, 'edge_weight') and graph.edge_weight is not None:
@@ -186,4 +195,5 @@ def process_graphs(graphs):
         Adj_block_elem = torch.cat(elems)
     Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
     Adj_block = Adj_block.to(getdevice())
+    print(Adj_block.device)
     return Adj_block, start_idx

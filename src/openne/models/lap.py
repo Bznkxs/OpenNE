@@ -22,7 +22,7 @@ class LaplacianEigenmaps(ModelWithEmbeddings):
     @classmethod
     def check_train_parameters(cls, **kwargs):
         check_existance(kwargs, {'dim': 128})
-        check_range(kwargs, {'dim': 'positive'})
+        check_range(kwargs, {'dim': 'graphs_diff'})
         return kwargs
 
     def train_model(self, graph, **kwargs):

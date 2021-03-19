@@ -4,6 +4,8 @@ from .ss_modelg import SSModel
 import time
 import scipy.sparse as sp
 import torch
+import torch.cuda
+
 import torch.nn.functional as F
 
 class model_input:
@@ -44,7 +46,6 @@ class SS_GAEg(ModelWithEmbeddings):
                                  'readout': 'mean',
                                  "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
-                                 "batch_size": 100000,
                                  "hiddens": [],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
@@ -62,7 +63,7 @@ class SS_GAEg(ModelWithEmbeddings):
 
     def build(self, graph, *, dim=128, hiddens=[], learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
-              clf_ratio=0.5, batch_size=128, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
+              clf_ratio=0.5, batch_size=12800, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -72,6 +73,7 @@ class SS_GAEg(ModelWithEmbeddings):
                         early_stopping: Tolerance for early stopping (# of epochs)
                         max_degree: Maximum Chebyshev polynomial degree
         """
+        print("____________________build____________________")
         self.clf_ratio = clf_ratio
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -100,11 +102,12 @@ class SS_GAEg(ModelWithEmbeddings):
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graphs=graph, features=self.features, batch_size=self.batch_size,
-                             dropout=self.dropout, dec_dims=self.dec_dims, device=self._device, norm=True)
+                             dropout=self.dropout, dec_dims=self.dec_dims, norm=True)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
         self.c_up = 0
+        print("----------------------built--------------------")
 
 
     def train_model(self, graph, **kwargs):
@@ -112,26 +115,6 @@ class SS_GAEg(ModelWithEmbeddings):
         output, train_loss, __ = self.evaluate()
         self.cost_val.append(train_loss)
         self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
-
-    def build_label(self, graph):
-        g = graph.G
-        look_up = graph.look_up_dict
-        labels = []
-        label_dict = {}
-        label_id = 0
-        for node in g.nodes():
-            labels.append((node, g.nodes[node]['label']))
-            for l in g.nodes[node]['label']:
-                if l not in label_dict:
-                    label_dict[l] = label_id
-                    label_id += 1
-        self.labels = torch.zeros((len(labels), label_id))
-        self.label_dict = label_dict
-        for node, l in labels:
-            node_id = look_up[node]
-            for ll in l:
-                l_id = label_dict[ll]
-                self.labels[node_id][l_id] = 1
 
     def loss(self, output, adj_label):
         cost = F.binary_cross_entropy_with_logits(output, adj_label)
@@ -146,55 +129,37 @@ class SS_GAEg(ModelWithEmbeddings):
         # neg = self.gen_neg(self.x.size()[0], self.nb_nodes)
         # neg_inds = self.features[torch.tensor(neg)]
         cur_loss = 0.
-        batch_num = 0.
         output = None
         assert self.sampler in ['dgi', 'mvgrl']
-        batch_num = 1
 
-        self.optimizer.zero_grad()
-
-        if self.sampler == 'dgi':
-            ba, bd, bf, shuf_fts = self.model.sampler.sample()
-            adj, start_idx = process_graphs(ba)
-            add, start_idd = process_graphs(bd)
-            bx = model_input('graphs', adj, start_idx, bf)
-            bpos = model_input('nodes', add, start_idd, bf)
-            bneg = model_input('nodes', add, start_idd, shuf_fts)
-
-            bx_r = model_input('graphs', add, start_idd, bf)
-            bpos_r = model_input('nodes', adj, start_idx, bf)
-            bneg_r = model_input('nodes', adj, start_idx, shuf_fts)
-
-            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
-        else:
-            ba, bdiff, bfeat, bneg, bnegdiff, bnegfeat = self.model.sampler.sample()
-            adj, start_idx = process_graphs(ba)
-            add, start_idd = process_graphs(bdiff)
-            adn, start_idn = process_graphs(bneg)
-            adnd, start_idnd = process_graphs(bnegdiff)
-            bx = model_input('graphs', adj, start_idx, bfeat)
-            bpos = model_input('nodes', add, start_idd, bfeat)
-            bneg = model_input('nodes', adnd, start_idnd, bnegfeat)
-
-            bx_r = model_input('graphs', add, start_idd, bfeat)
-            bpos_r = model_input('nodes', adj, start_idx, bfeat)
-            bneg_r = model_input('nodes', adn, start_idn, bnegfeat)
-
-            loss = self.model(bx, bpos, bneg) + self.model(bx_r, bpos_r, bneg_r)
         if train:
-            loss.backward()
+            self.optimizer.zero_grad()
+        batch_num = len(self.model.sampler)
+        for bx, bpos, bneg in self.model.sampler:
+            loss = self.model(bx, bpos, bneg)
+            loss /= batch_num
+
+            if train:
+                loss.backward()
+
+            cur_loss += loss.item()
+            if getdevice() != torch.device('cpu'):
+
+                print("allocated & reserved:", torch.cuda.memory_allocated(),
+                      getattr(torch.cuda, "memory_reserved", torch.cuda.memory_cached)())
+        if getdevice() != torch.device('cpu'):
+            torch.cuda.empty_cache()
+        if train:
             self.optimizer.step()
 
-        cur_loss += loss.item()
-
-        return output, cur_loss / batch_num, (time.time() - t_test)
+        return output, cur_loss, (time.time() - t_test)
 
     def early_stopping_judge(self, graph, *, step=0, **kwargs):
         if self.patience > len(self.cost_val) - self.early_stopping:
             return False
         if self.cost_val[-1] > self.cost_val[-2]:
             self.c_up += 1
-            if (self.c_up) >= self.patience:
+            if self.c_up >= self.patience:
                 return True
         else:
             self.c_up = 0
@@ -230,20 +195,3 @@ class SS_GAEg(ModelWithEmbeddings):
         features = torch.from_numpy(graph.features()).type(torch.float32)
         features = preprocess_features(features, sparse=self.sparse)
         self.register_buffer("features", features)
-        n = graph.nodesize
-        self.build_label(graph)
-        adj_label = graph.adjmat(weighted=False, directed=False, sparse=True)
-        self.register_float_buffer("adj_label", adj_label + sp.eye(n).toarray())
-        adj = nx.adjacency_matrix(g)  # the type of graph
-        self.register_float_buffer("pos_weight", [float(n * n - adj.sum()) / adj.sum()])
-        self.norm = n * n / float((n * n - adj.sum()) * 2)
-
-        if self.max_degree == 0:
-            self.support = [preprocess_graph(adj)]
-        else:
-            self.support = chebyshev_polynomials(adj, self.max_degree)
-        self.features = self.features.to(self._device)
-        self.nb_nodes = self.features.shape[0]
-        self.support = [i.to(self._device) for i in self.support]
-        for n, i in enumerate(self.support):
-            self.register_buffer("support_{0}".format(n), i)

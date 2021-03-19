@@ -18,7 +18,7 @@ class HOPE(ModelWithEmbeddings):
     @classmethod
     def check_train_parameters(cls, **kwargs):
         check_existance(kwargs, {'dim': 128})
-        check_range(kwargs, {'dim': 'positive'})
+        check_range(kwargs, {'dim': 'graphs_diff'})
         if 'measurement' not in kwargs:
             check_existance(kwargs, {'beta': 0.02})
             check_existance(kwargs, {'alpha': 0.5})

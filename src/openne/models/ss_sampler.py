@@ -84,7 +84,7 @@ class TripleGenerator(Sampler):
         self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
 
     def gen_node_positive(self):
-        print("generating anchors and positive samples...")
+        print("generating anchors and graphs_diff samples...")
         if self.pos_name == 'neighbor':
             self.positive = self.adj_ind[1]
         elif self.pos_name == 'rand_walk':
@@ -115,8 +115,8 @@ class TripleGenerator(Sampler):
                                 anchor.append(sentence[j])
                                 positive.append(sentence[k])
                 # deduplicate
-                # items = set(zip(anchor, positive))
-                # anchor, positive = zip(*items)
+                # items = set(zip(anchor, graphs_diff))
+                # anchor, graphs_diff = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
                 print("mode 1: time used =", time.time() - t)
@@ -145,24 +145,24 @@ class TripleGenerator(Sampler):
 
                 anchor = torch.cat(anchor).tolist()
                 positive = torch.cat(positive).tolist()
-                # items = set(zip(anchor, positive))
-                # anchor, positive = zip(*items)
+                # items = set(zip(anchor, graphs_diff))
+                # anchor, graphs_diff = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
                 print("mode 2: time used =", time.time() - t)
 
 
 
-        print(f"anchors and positive samples of len {len(self.anchor)} generated")
-            # generate anchor and positive
+        print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
+            # generate anchor and graphs_diff
 
         # todo: deal with other conditions
     def gen_graph_positive(self):
-        print("generating anchors and positive samples:")
+        print("generating anchors and graphs_diff samples:")
         if self.pos_name == "node":
             self.anchor = [-1] * self.nnodes
             self.positive = list(range(self.nnodes))
-        print(f"anchors and positive samples of len {len(self.anchor)} generated")
+        print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
 
     def gen_node_negative(self, repeat=True):  # called after self.anchor is created
         if repeat:

@@ -40,8 +40,10 @@ class Encoder(nn.Module):
         @param x: model_input, with .feat, .adj, .start_idx, .typ
         @return:
         """
-        hx = torch.cat(x.feat).to(getdevice())
-        adj = x.adj.to_dense().to(getdevice())
+        hx = torch.cat(x.feat)
+        adj = x.adj
+        print("encoder:", hx.device, adj.device)
+        # adj = x.adj.to_dense().to(getdevice())
         start_idx = x.start_idx
 
         hxs = []

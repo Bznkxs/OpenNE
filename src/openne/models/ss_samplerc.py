@@ -108,7 +108,7 @@ class TripleGenerator(Sampler):
                         if k != j:
                             self.anchor.append(sentence[j])
                             self.positive.append(sentence[k])
-            # generate anchor and positive
+            # generate anchor and graphs_diff
 
         # todo: deal with other conditions
 

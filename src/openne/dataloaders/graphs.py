@@ -6,37 +6,75 @@ from . import Adapter
 from sklearn.model_selection import train_test_split
 import numpy as np
 import networkx as nx
-from ..models.utils import process_graphs, torch_sparse_to_scipy_coo
+from ..models.utils import process_graphs, torch_sparse_to_scipy_coo, getdevice
 import torch
+from tqdm import tqdm
+
+# class FakedNxGraph:
+#     def __init__(self, ):
+
 
 class Graphs(Adapter, ABC):
 
     def __init__(self, dataset_name, **kwargs):
+        print("Init dataset.")
         super(Graphs, self).__init__(TUDataset, self.root_dir, name=dataset_name)
+        print("tesatad tinI.")
         for kw in set(kwargs):
             self.__setattr__(kw, kwargs.get(kw))
         self.num = len(self.data)
 
     def load_data(self):
+        print("Load data.")
         if not self.attributed():
+            print("Not self.attributed(): set attribute as 1")
             class Data:
                 def __init__(self, x, edge_index, y):
                     self.x = x
                     self.edge_index = edge_index
                     self.y = y
             data = []
-            for g in self.data:
+            for g in tqdm(self.data):
                 data.append(Data(torch.ones(int(torch.max(g.edge_index)) + 1, 1), g.edge_index, g.y))
             self.data = data
+        for graph in self.data:
+            try:
+                assert graph.edge_index.max() < len(graph.x)
+            except AssertionError:
+                print("graph.edge_idx:", graph.edge_index.max(), "len=", len(graph.x))
+        print("process graphs...")
         adj, start_idx = process_graphs(self.data)
-        self.set_g(nx.from_scipy_sparse_matrix(torch_sparse_to_scipy_coo(adj)))  # TODO: format conversion
+        print("...graphs processed")
 
+        def encode_node(self):
+            print("encoding nodes...")
+            look_up = self.look_up_dict
+            look_back = self.look_back_list
+            look_up.clear()
+            look_back.clear()
+            for node in tqdm(self.G.nodes()):
+                look_up[node] = len(look_back)
+                look_back.append(node)
+                self.G.nodes[node]['status'] = ''
+
+        self.set_g(nx.from_scipy_sparse_matrix(torch_sparse_to_scipy_coo(adj)))  # TODO: format conversion
+        print("g set (?)")
 
         feat = torch.cat([g.x for g in self.data]).numpy()
+
+        print("feat set")
+
         self.set_node_features(featurevectors=feat)
 
+        print("node features set")
+
         self.set_node_label(torch.arange(start_idx[-1]).reshape([-1, 1]).tolist())
+
+        print("node label set")
+
         self.start_idx = start_idx
+
+        print("loaddata() finished.")
 
     def labels(self):
         return self.data, [g.y.tolist() for g in self.data]
