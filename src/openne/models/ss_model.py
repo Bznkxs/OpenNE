@@ -45,6 +45,11 @@ class SSModel(nn.Module):
             hx = F.normalize(hx, dim=-1)
             hpos = F.normalize(hpos, dim=-1)
             hneg = F.normalize(hneg, dim=-1)
+
+        if self.normalize:
+            hx = F.normalize(hx, dim=-1)
+            hpos = F.normalize(hpos, dim=-1)
+            hneg = F.normalize(hneg, dim=-1)
         loss = self.estimator(self.decoder(hx, hpos), self.decoder(hx, hneg))
         self.encoder.reset()  # remove full forward record
         return loss
