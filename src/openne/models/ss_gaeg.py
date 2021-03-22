@@ -61,7 +61,7 @@ class SS_GAEg(ModelWithEmbeddings):
     def check_graphtype(cls, graphtype, **kwargs):
         pass
 
-    def build(self, graph, *, dim=128, hiddens=[], learning_rate=0.01, epochs=300,
+    def build(self, graph, *, dim=128, hiddens=None, learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
               clf_ratio=0.5, batch_size=12800, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
@@ -73,6 +73,8 @@ class SS_GAEg(ModelWithEmbeddings):
                         early_stopping: Tolerance for early stopping (# of epochs)
                         max_degree: Maximum Chebyshev polynomial degree
         """
+        if hiddens is None:
+            hiddens = []
         print("____________________build____________________")
         self.clf_ratio = clf_ratio
         self.learning_rate = learning_rate

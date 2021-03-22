@@ -183,7 +183,8 @@ class GraphSampler:
             iter_head += 1
         return ret
 
-    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    @classmethod
+    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
         """
 
         @param f_pos:
@@ -192,7 +193,7 @@ class GraphSampler:
         @param e_diff:
         @param e_neg:
         @param e_diffneg:
-        @return: generate adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
+        @return: generate adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd for a batch of graphs
         """
         # graph_pos = graphinput(f_pos[i], None, e_anchor[i], None)
         # graph_neg = graphinput(f_neg[i], None, e_neg[i], None)
@@ -201,8 +202,12 @@ class GraphSampler:
         raise NotImplementedError
 
     def __iter__(self):
+        """
+        create batch samples
+        @return:
+        """
         f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
-        for i in slices:
+        for i in slices:  # for each batch
             adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
                 = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i])
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_pos[i])
@@ -230,9 +235,10 @@ class DGISampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = self.anchor
 
-    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    @classmethod
+    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
         g_anchor, g_neg = [], []
-        for i in range(self.num_graphs):
+        for i in range(len(f_pos)):
             g_anchor.append(graphinput(f_pos[i], None, e_anchor[i]))
             # g_diff = g_anchor
             g_neg.append(graphinput(f_neg[i], None, e_anchor[i]))
@@ -270,13 +276,14 @@ class DiffSampler(GraphSampler):
             e_negdiff.append(e_diff[negidx])
         return f_neg, e_neg, e_negdiff
 
-    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    @classmethod
+    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
-        for i in range(self.num_graphs):
+        for i in range(len(f_pos)):
             g_anchor.append(graphinput(f_pos[i], None, e_anchor[i]))
             g_diff.append(graphinput(f_pos[i], None, e_diff[i]))
-            g_neg.append(graphinput(f_neg[i], None, e_anchor[i]))
-            g_negdiff.append(graphinput(f_neg[i], None, e_diff[i]))
+            g_neg.append(graphinput(f_neg[i], None, e_neg[i]))
+            g_negdiff.append(graphinput(f_neg[i], None, e_diffneg[i]))
         adj, start_idx = process_graphs(g_anchor)
         add, start_idd = process_graphs(g_diff)
         adn, start_idn = process_graphs(g_neg)
