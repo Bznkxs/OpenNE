@@ -25,15 +25,6 @@ class GAT(Layer):
         self.output_dim = output_dim
         if attn_heads_reduction == 'concat':
             self.output_dim *= attn_heads
-        if isinstance(adjmat, list):  # input supports
-            self.adjmat = adjmat[0]
-        else:
-            self.adjmat = adjmat
-        
-        self.aux =  - self.adjmat.to_dense() + 1
-        self.aux = -10e9 * self.aux
-
-        self.aux = self.aux.to(getdevice())
         self.attn_heads = int(attn_heads+0.5)
         self.dropout_input = dropout
         if dropout_coef is None:

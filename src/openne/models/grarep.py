@@ -20,7 +20,7 @@ class GraRep(ModelWithEmbeddings):
     @classmethod
     def check_train_parameters(cls, **kwargs):
         check_existance(kwargs, {'kstep': 4, 'dim': 128})
-        check_range(kwargs, {"kstep": 'positive', 'dim': 'positive'})
+        check_range(kwargs, {"kstep": 'graphs_diff', 'dim': 'graphs_diff'})
         assert kwargs['dim'] % kwargs['kstep'] == 0
         return kwargs
 

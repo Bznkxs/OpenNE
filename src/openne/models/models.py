@@ -160,7 +160,7 @@ class ModelWithEmbeddings(torch.nn.Module):
 
             N.B. it is recommended that self.embeddings is acquired only after a training step,
             i.e. not appearing as rhs oprand in training calculations. If possible, try not
-            involve self.embeddings in the body of self.train_model() nor assign a nn.Parameter.
+            involve self.embeddings in the body of self.train_model() nor assign an nn.Parameter.
 
         """
         if self.embeddings is None and kwargs.get('_multiple_epochs', True):
@@ -219,6 +219,12 @@ class ModelWithEmbeddings(torch.nn.Module):
         self.debug("Start training...")
         setdevice(self._device)
         self.build(graph, **kwargs)
+        print("list of params:")
+        for k, v in self.named_parameters():
+            print("name =", k, ", size =", v.shape)
+        print("list of buffers:")
+        for k, v in self.named_buffers():
+            print("name =", k, ", size =", v.shape)
         self.to(self._device)
 
         # print([(i, v.shape) for i, v in self.named_parameters(recurse=True)])

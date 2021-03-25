@@ -12,6 +12,7 @@ import os
 import urllib
 import errno
 from ..utils import *
+from tqdm import tqdm
 
 
 # todo: add split_train_val_test here
@@ -89,10 +90,20 @@ class Graph(Dataset, ABC):
         raise NotImplementedError
 
     def features(self):
+        if not self.attributed():
+            return np.ones((self.G.number_of_nodes(), 1))
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
 
     def adjmat(self, directed=True, weighted=True, scaled=None, sparse=False):
+        """
+        Returns a **numpy array**.
+        @param directed:
+        @param weighted:
+        @param scaled:
+        @param sparse:
+        @return:
+        """
         G = self.G
         if type(self).directed() and not directed:
             G = nx.to_undirected(G)
@@ -123,14 +134,16 @@ class Graph(Dataset, ABC):
         return self.G.number_of_edges()
 
     def encode_node(self):
+        print("encoding nodes...")
         look_up = self.look_up_dict
         look_back = self.look_back_list
         look_up.clear()
         look_back.clear()
-        for node in self.G.nodes():
+        for node in tqdm(self.G.nodes()):
             look_up[node] = len(look_back)
             look_back.append(node)
             self.G.nodes[node]['status'] = ''
+
 
     def set_g(self, g):
         self.G = g
@@ -365,6 +378,8 @@ class NetResources(Graph, ABC):
 class Adapter(Graph, ABC):
     def __init__(self, AdapteeClass, *args, **kwargs):
         self.data = AdapteeClass(*args, **kwargs)
+        print("Adapter of", self.data)
+
         super(Adapter, self).__init__(None, self.root_dir, {}, **kwargs)
 
     @property

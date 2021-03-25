@@ -17,8 +17,8 @@ class GraphFactorization(ModelWithEmbeddings):
     @classmethod
     def check_train_parameters(cls, **kwargs):
         check_existance(kwargs, {'epochs': 130, 'lr': 0.003, 'weight_decay': 1., 'dim': 128})
-        check_range(kwargs, {'epochs': 'positive', 'lr': 'positive',
-                             'weight_decay': 'positive', 'dim': 'positive'})
+        check_range(kwargs, {'epochs': 'graphs_diff', 'lr': 'graphs_diff',
+                             'weight_decay': 'graphs_diff', 'dim': 'graphs_diff'})
         return kwargs
 
     def build(self, graph, *, lr=0.003, **kwargs):

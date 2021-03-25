@@ -40,6 +40,12 @@ class SSModel(nn.Module):
         hx = self.embed(x)
         hpos = self.embed(pos)
         hneg = self.embed(neg)
+
+        if self.normalize:
+            hx = F.normalize(hx, dim=-1)
+            hpos = F.normalize(hpos, dim=-1)
+            hneg = F.normalize(hneg, dim=-1)
+
         if self.normalize:
             hx = F.normalize(hx, dim=-1)
             hpos = F.normalize(hpos, dim=-1)

@@ -1,0 +1,175 @@
+{
+    "model": {
+        "_options": {
+            "node_clf_node_sampler": ["ss_nodemodel"],
+            "node_clf_graph_sampler": ["ss_gae"],
+            "graph_clf_node_sampler": ["ss_graphmodel"],
+            "graph_clf_graph_sampler": ["ss_gaeg"]
+        }
+    },
+    "task": {
+        "_options": {
+            "node": ["unsupervisednodeclassification"],
+            "graph": ["graphclassification"]
+        }
+    },
+    "dataset": {
+        "_options": {
+            "unigraph": ["cora", "citeseer", "pubmed"],
+            "multigraph": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr"]
+        }
+    },
+    "_model": {
+        "enc": {
+            "_options": {
+                "raw": ["none"],
+                "basic": ["linear"],
+                "gnn": ["gin", "gcn", "gat"]
+            }
+        },
+        "dec": {
+            "_options": {
+                "a": ["inner", "bilinear", "mlp"]
+            }
+        },
+        "sampler": {
+            "_options": {
+                "node": [
+                    "node-neighbor-random",
+                    "node-neighbor-except_neighbor",
+                    "node-rand_walk-random",
+                    "node-rand_walk-except_neighbor"
+                ],
+                "graph": ["dgi", "mvgrl"]
+            }
+        },
+        "readout": {
+            "_options": {
+                "default": ["mean"],
+                "others": ["sum"]
+            }
+        },
+        "est": {
+            "_options": {
+                "a": ["jsd", "nce"]
+            }
+        },
+        "_options": {
+            "node_node": {
+                "sampler": ["node"],
+                "readout": ["default"]
+            },
+            "node_graph": {
+                "enc": ["gnn"],
+                "sampler": ["graph"],
+                "readout": ["default"]
+            },
+            "graph_node": {
+                "sampler": ["node"]
+            },
+            "graph_graph": {
+                "enc": ["gnn"],
+                "sampler": ["graph"]
+            }
+        }
+    },
+    "_hyperparameters": {
+        "clf-ratio": {"_options": {"node": ["0.2"], "graph": ["0.8"]}},
+        "epochs": {"_options": {"a": ["500"]}},
+        "early-stopping": {"_options": {"a": ["20"]}},
+        "patience": {"_options": {"a": ["3"]}},
+        "dim": {"_options": {"node": ["64", "128", "256"], "graph": ["32", "64"],
+                             "d0": ["32"], "d1": ["64"], "d2": ["128"], "d3": ["256"]}},
+        "_hiddens": {"_options": {"h0": [0], "h1": [1], "h2": [2], "h3": [3]}},
+        "lr": {"_options": {"l0": ["0.001"], "l1": ["0.01"], "extended": ["0.02", "0.03"]}},
+        "_options": {
+            "node_clf": {
+                "clf-ratio": ["node"],
+                "dim": ["node"]
+            },
+            "graph_clf": {
+                "clf-ratio": ["graph"],
+                "dim": ["graph"]
+            },
+            "node_clf2": {
+                "clf-ratio": ["node"],
+                "dim": ["node"],
+                "lr": ["l0", "l1"]
+            },
+            "graph_clf2": {
+                "clf-ratio": ["graph"],
+                "dim": ["graph"],
+                "lr": ["l0", "l1"]
+            },
+            "node_clf1": {
+                "clf-ratio": ["node"],
+                "dim": ["d1"],
+                "lr": ["l0"]
+            },
+            "graph_clf1": {
+                "clf-ratio": ["graph"],
+                "dim": ["d1"],
+                "lr": ["l0"]
+            }
+        }
+    },
+    "_options": {
+        "node_node": {
+            "model": ["node_clf_node_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_node"],
+            "_hyperparameters": ["node_clf"]
+        },
+        "node_graph": {
+            "model": ["node_clf_graph_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_graph"],
+            "_hyperparameters": ["node_clf"]
+        },
+        "graph_node": {
+            "model": ["graph_clf_node_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["graph_node"],
+            "_hyperparameters": ["graph_clf"]
+        },
+        "graph_graph": {
+            "model": ["graph_clf_graph_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["graph_graph"],
+            "_hyperparameters": ["graph_clf"]
+        },
+        "node_node1": {
+            "model": ["node_clf_node_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_node"],
+            "_hyperparameters": ["node_clf1"]
+        },
+        "node_graph1": {
+            "model": ["node_clf_graph_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_graph"],
+            "_hyperparameters": ["node_clf1"]
+        },
+        "graph_node1": {
+            "model": ["graph_clf_node_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["graph_node"],
+            "_hyperparameters": ["graph_clf1"]
+        },
+        "graph_graph1": {
+            "model": ["graph_clf_graph_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["graph_graph"],
+            "_hyperparameters": ["graph_clf1"]
+        }
+
+    }
+}

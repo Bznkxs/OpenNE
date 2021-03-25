@@ -29,12 +29,12 @@ class _LINE(ModelWithEmbeddings):
                                  'batch_size': 1024,
                                  'negative_ratio': 5,
                                  'data_parallel': False})
-        check_range(kwargs, {'dim': 'positive',
-                             'order': 'positive',
-                             'table_size': 'positive',
-                             'lr': 'positive',
-                             'batch_size': 'positive',
-                             'negative_ratio': 'positive'})
+        check_range(kwargs, {'dim': 'graphs_diff',
+                             'order': 'graphs_diff',
+                             'table_size': 'graphs_diff',
+                             'lr': 'graphs_diff',
+                             'batch_size': 'graphs_diff',
+                             'negative_ratio': 'graphs_diff'})
 
     def first_loss(self, s, h, t):
         return -(F.logsigmoid(s * (self._embeddings[h] * self._embeddings[t]).sum(dim=1))).mean()
@@ -200,13 +200,13 @@ class LINE(ModelWithEmbeddings):
                                  'negative_ratio': 5,
                                  'epochs': 40,
                                  'data_parallel': False})
-        check_range(kwargs, {'dim': 'positive',
-                             'order': 'positive',
-                             'table_size': 'positive',
-                             'lr': 'positive',
-                             'batch_size': 'positive',
-                             'negative_ratio': 'positive',
-                             'epochs': 'positive'})
+        check_range(kwargs, {'dim': 'graphs_diff',
+                             'order': 'graphs_diff',
+                             'table_size': 'graphs_diff',
+                             'lr': 'graphs_diff',
+                             'batch_size': 'graphs_diff',
+                             'negative_ratio': 'graphs_diff',
+                             'epochs': 'graphs_diff'})
         return kwargs
 
     def build(self, graph, **kwargs):

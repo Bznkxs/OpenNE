@@ -5,8 +5,9 @@ from __future__ import print_function
 
 import numpy
 import torch
+import scipy.sparse
 from sklearn.multiclass import OneVsRestClassifier
-from sklearn.metrics import f1_score  # data process
+from sklearn.metrics import f1_score, accuracy_score  # data process
 from sklearn.preprocessing import MultiLabelBinarizer # data process
 from sklearn.exceptions import ConvergenceWarning
 from time import time
@@ -42,6 +43,7 @@ class Classifier(object):
     def train(self, X, Y, Y_all):
         self.binarizer.fit(Y_all)
         X_train = torch.stack([self.embeddings[x] for x in X])
+        # print("X_Train", X_train)
         Y = self.binarizer.transform(Y)  # lhs Y a numpy array
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
@@ -51,15 +53,19 @@ class Classifier(object):
         top_k_list = [len(l) for l in Y]
         Y_ = self.predict(X, top_k_list)  # Y_ Tensor
         Y = self.binarizer.transform(Y)  # Y  np array
+        # print("true:", Y)
+        # print("pred:", scipy.sparse.csr_matrix(numpy.asarray(Y_)))
         averages = ["micro", "macro", "samples", "weighted"][:self.f1cat]
         results = {}
         for average in averages:
+            # print("CLASSIFY", average)
             if self.silent:
                 with warnings.catch_warnings():
                     warnings.simplefilter("ignore")
                     results[average] = f1_score(Y, numpy.asarray(Y_), average=average)
             else:
                 results[average] = f1_score(Y, numpy.asarray(Y_), average=average)
+        results["accuracy"] = accuracy_score(Y, numpy.asarray(Y_))
         if not self.silent:
             print(results)
         return results

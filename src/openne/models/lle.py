@@ -27,7 +27,7 @@ class LLE(ModelWithEmbeddings):
     @classmethod
     def check_train_parameters(cls, **kwargs):
         check_existance(kwargs, {'dim': 128, 'sparse': False})
-        check_range(kwargs, {'dim': 'positive', 'sparse': [1, 0, True, False]})
+        check_range(kwargs, {'dim': 'graphs_diff', 'sparse': [1, 0, True, False]})
         return kwargs
 
     def train_model(self, graph, *, sparse=False, **kwargs):

@@ -40,5 +40,6 @@ class GIN(Layer):
         # y = self.mlp(torch.mm(adj, x))
         # y = torch.mm(adj, self.mlp(x))
         # batch norm
+        y = self.act(y)
         # y = self.batch_norm(y)
-        return self.act(y)
+        return y
