@@ -35,8 +35,10 @@ class model_input:
 class SS_GAE(ModelWithEmbeddings):
 
     def __init__(self, output_dim=32, hiddens=None, max_degree=0, **kwargs):
+        
         if hiddens is None:
             hiddens = [32]
+        
         super(SS_GAE, self).__init__(output_dim=output_dim, hiddens=hiddens, max_degree=max_degree, **kwargs)
 
     @classmethod

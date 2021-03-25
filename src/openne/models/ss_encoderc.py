@@ -13,12 +13,14 @@ class Encoder(nn.Module):
         self.sigm = nn.Sigmoid()
         self.name = name
         self.readout = readout
+        # self.act = nn.PReLU()
+        self.act = F.relu
         if name == 'none':
             self.embedding = nn.Embedding(self.nnodes + 1, self.dimensions[-1])
         else:
             for i in range(1, len(self.dimensions)-1):
-                self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], adj, dropout, act=F.relu))
-            self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], adj, dropout, act=lambda x: x))
+                self.layers.append(layer_dict[name](self.dimensions[i-1], self.dimensions[i], adj, dropout, act=self.act))
+            self.layers.append(layer_dict[name](self.dimensions[-2] * 2, self.dimensions[-1], adj, dropout, act=self.act))
 
     def embed(self, x):
         if self.name == 'none':

@@ -29,8 +29,11 @@ class GAT(Layer):
             self.adjmat = adjmat[0]
         else:
             self.adjmat = adjmat
+        
+        self.aux =  - self.adjmat.to_dense() + 1
+        self.aux = -10e9 * self.aux
 
-        self.aux = (-10e9 * (1 - self.adjmat)).to(getdevice())
+        self.aux = self.aux.to(getdevice())
         self.attn_heads = int(attn_heads+0.5)
         self.dropout_input = dropout
         if dropout_coef is None:
@@ -127,6 +130,6 @@ class GAT(Layer):
             y = torch.cat(y_list, dim=1)  # concatenate along dim 1 (n * (k*output_dim))
         else:
             y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
-        y = self.batch_norm(y)
+        # y = self.batch_norm(y)
         return self.act(y)
 

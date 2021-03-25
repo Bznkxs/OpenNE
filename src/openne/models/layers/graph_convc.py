@@ -46,16 +46,18 @@ class GraphConvolution(Layer):
                 x = torch.dropout(x, self.dropout, True)
 
         # convolve
-        output = torch.zeros([sup.size()[0], self.output_dim], device=x.device)
+        output = torch.zeros([sup.size()[0], self.output_dim * 2], device=x.device)
         if not self.featureless:
             pre_sup = torch.mm(x, getattr(self, 'weights'))
         else:
             pre_sup = getattr(self, 'weights')
         support = torch.mm(sup, pre_sup)
+        # jump connection
+        support = torch.cat((pre_sup, support), 1)
         output += support
 
         # bias
         if self.bias is not None:
             output += self.bias
-        # output = self.batch_norm(output)
+        #output = self.batch_norm(output)
         return self.act(output)
