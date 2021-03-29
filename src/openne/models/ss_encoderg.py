@@ -42,7 +42,7 @@ class Encoder(nn.Module):
         """
         hx = torch.cat(x.feat)
         adj = x.adj
-        print("encoder:", hx.device, adj.device)
+        # print("encoder:", hx.device, adj.device)
         # adj = x.adj.to_dense().to(getdevice())
         start_idx = x.start_idx
 

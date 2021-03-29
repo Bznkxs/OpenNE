@@ -7,8 +7,6 @@ import numpy as np
 from scipy.linalg import fractional_matrix_power, inv
 from ..utils import getdevice
 from .utils import process_graphs
-from torch.utils.data import Sampler
-from .walker import Walker, BasicWalker
 
 
 class BaseSampler:
@@ -91,7 +89,7 @@ def sample_subgraph(graphs, n_nodes, max_graph_size):
     anchor, diffusion = graphs
     feats, edges1, edges2 = anchor.x, anchor.edge_index, diffusion.edge_index
 
-    subfeats = feats[subnodes]
+    subfeats = feats[subnodes].to(getdevice())
 
     def sample_edges(edges):
         subedges = permuted_nodes[edges]  # permutation
@@ -208,6 +206,7 @@ class GraphSampler:
         """
         f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
         for i in slices:  # for each batch
+            f_pos_d = f_pos[i]
             adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
                 = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i])
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_pos[i])
@@ -243,8 +242,8 @@ class DGISampler(GraphSampler):
             # g_diff = g_anchor
             g_neg.append(graphinput(f_neg[i], None, e_anchor[i]))
             # g_negdiff = g_neg
-        adj, start_idx = process_graphs(g_anchor)
-        adn, start_idn = process_graphs(g_neg)
+        adj, start_idx = process_graphs(g_anchor, getdevice())
+        adn, start_idn = process_graphs(g_neg, getdevice())
         return adj, adj, adn, adn, start_idx, start_idx, start_idn, start_idn
 
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
@@ -284,29 +283,14 @@ class DiffSampler(GraphSampler):
             g_diff.append(graphinput(f_pos[i], None, e_diff[i]))
             g_neg.append(graphinput(f_neg[i], None, e_neg[i]))
             g_negdiff.append(graphinput(f_neg[i], None, e_diffneg[i]))
-        adj, start_idx = process_graphs(g_anchor)
-        add, start_idd = process_graphs(g_diff)
-        adn, start_idn = process_graphs(g_neg)
-        adnd, start_idnd = process_graphs(g_negdiff)
+        adj, start_idx = process_graphs(g_anchor, getdevice())
+        add, start_idd = process_graphs(g_diff, getdevice())
+        adn, start_idn = process_graphs(g_neg, getdevice())
+        adnd, start_idnd = process_graphs(g_negdiff, getdevice())
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
-
-
-available_anchors = ['node']
-available_positives = ['neighbor', 'rand_walk']
-available_negatives = ['random', 'except_neighbor']
 
 sampler_dict = {
     "dgi": DGISampler,
     "mvgrl": DiffSampler
-
 }
-
-'''
-TO DO:
-    ● node-random walk-random nodes (DeepWalk)
-    ● node-neighborhood-except neighborhood (GAE)
-    ● graph-node-permuted graph (DGI)
-    ● graph-diffusion-permuted graph (MVGRL)
-    ● node-random walk-except neighborhood
-'''
