@@ -17,7 +17,7 @@ sns.set(style='whitegrid')
 try:
     from . import parse_exps
     from parse_exps import ExpVariable
-except ValueError as _:
+except Exception as _:
     import parse_exps
     from parse_exps import ExpVariable
 import numpy as np

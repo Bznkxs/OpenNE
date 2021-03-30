@@ -116,7 +116,8 @@ class SS_GAEg(ModelWithEmbeddings):
         # Train models
         output, train_loss, __ = self.evaluate()
         self.cost_val.append(train_loss)
-        self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
+        self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}; Allocated: {torch.cuda.memory_allocated()}; " \
+                          f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
 
     def loss(self, output, adj_label):
         cost = F.binary_cross_entropy_with_logits(output, adj_label)
@@ -138,6 +139,7 @@ class SS_GAEg(ModelWithEmbeddings):
             self.optimizer.zero_grad()
         batch_num = len(self.model.sampler)
         for bx, bpos, bneg in self.model.sampler:
+
             loss = self.model(bx, bpos, bneg)
             loss /= batch_num
 
@@ -145,12 +147,12 @@ class SS_GAEg(ModelWithEmbeddings):
                 loss.backward()
 
             cur_loss += loss.item()
-            if getdevice() != torch.device('cpu'):
-
-                print("allocated & reserved:", torch.cuda.memory_allocated(),
-                      getattr(torch.cuda, "memory_reserved", torch.cuda.memory_cached)())
-        if getdevice() != torch.device('cpu'):
-            torch.cuda.empty_cache()
+            #
+            # if getdevice() != torch.device('cpu'):
+            #
+            #     print()
+        # if getdevice() != torch.device('cpu'):
+        #     torch.cuda.empty_cache()
         if train:
             self.optimizer.step()
 
@@ -184,7 +186,7 @@ class SS_GAEg(ModelWithEmbeddings):
         return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):
-        adj, start_idx = process_graphs(graph.data)
+        adj, start_idx = process_graphs(graph.data, getdevice())
         all_graphs = model_input('graphs', adj, start_idx, [self.features], repeat=False)
         self.embeddings = self.model.embed(all_graphs).detach()
 

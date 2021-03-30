@@ -170,16 +170,17 @@ def alias_draw(J, q, *size):
     return (oq + oj).view(size)
 
 # from https://github.com/weihua916/powerful-gnns
-def process_graphs(graphs):
+def process_graphs(graphs, device=None):
     """
 
+    @param device:
     @param graphs: a list of graphs, with .x, .y, .edge_index, some with .edge_weight
     @return: joined adj and start_idx ( start_idx[i] == starting node of graph i; len(start_idx) == num_graph + 1 )
     """
     edge_mat_list = []
     elems = []
     start_idx = [0]
-    print("process", len(graphs), "graphs")
+    # print("process", len(graphs), "graphs")
     for i, graph in enumerate(graphs):
         # check
         assert graph.edge_index.max() < len(graph.x)
@@ -194,6 +195,7 @@ def process_graphs(graphs):
     else:
         Adj_block_elem = torch.cat(elems)
     Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
-    Adj_block = Adj_block.to(getdevice())
-    print(Adj_block.device)
+    if device is not None:
+        Adj_block = Adj_block.to(device)
+    # print(Adj_block.device)
     return Adj_block, start_idx
