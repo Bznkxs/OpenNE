@@ -13,7 +13,7 @@ import urllib
 import errno
 from ..utils import *
 from tqdm import tqdm
-
+from typing import Union
 
 # todo: add split_train_val_test here
 class Graph(Dataset, ABC):

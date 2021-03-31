@@ -15,10 +15,10 @@ class GIN(Layer):
         super(GIN, self).__init__(**kwargs)
         self.input_dim = input_dim
         self.output_dim = output_dim
-        if isinstance(adj, list):  # input support
-            self.adj = adj[0]
-        else:
-            self.adj = adj
+        # if isinstance(adj, list):  # input support
+        #     self.adj = adj[0]
+        # else:
+        #     self.adj = adj
         self.dropout = dropout
         self.sparse_inputs = sparse_inputs
         self.mlp = torch.nn.Linear(input_dim, output_dim)

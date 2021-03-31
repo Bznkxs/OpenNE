@@ -7,13 +7,15 @@ from .ss_model import SSModel
 from .models import ModelWithEmbeddings
 from ..utils import check_existance, check_range
 from .utils import scipy_coo_to_torch_sparse, preprocess_features, preprocess_graph, chebyshev_polynomials
+from .ss_gae import SS_GAE
+
+SS_NodeModel = SS_GAE
 
 
-
-class SS_NodeModel(ModelWithEmbeddings):
+class SS_NodeModel_deprecated(ModelWithEmbeddings):
 
     def __init__(self, dim=128, **kwargs):
-        super(SS_NodeModel, self).__init__(dim=dim, **kwargs)
+        super(SS_NodeModel_deprecated, self).__init__(dim=dim, **kwargs)
 
     @classmethod
     def check_train_parameters(cls, **kwargs):

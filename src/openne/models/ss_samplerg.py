@@ -4,6 +4,7 @@ import time
 import torch
 import networkx as nx
 import numpy as np
+from typing import Union
 from scipy.linalg import fractional_matrix_power, inv
 from ..utils import getdevice
 from .utils import process_graphs
@@ -102,10 +103,12 @@ class NodeSampler:
         Returns values needed for generating (anchor, pos, neg)
         @return: f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices
         """
-        g_anchor, g_diff = self.anchor, self.graphs_diff
+        g_anchor = self.anchor
         feats, edges = [], []
+        list_graphs = list(range(self.num_graphs))
+        random.shuffle(list_graphs)
         # sample subgraphs
-        for i in range(self.num_graphs):
+        for i in list_graphs:
             f1, (e1,) = sample_subgraph([g_anchor[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
 
             feats.append(f1)
@@ -136,6 +139,7 @@ class NodeSampler:
             if iter_head < self.num_graphs:
                 accum_len += len(f_pos[iter_head])
             iter_head += 1
+        print("from sample slicer: ", ret)
         return ret
 
     @classmethod
@@ -344,9 +348,12 @@ class DiffSampler(GraphSampler):
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
         f_neg, e_neg, e_negdiff = [], [], []
         for i in range(self.num_graphs):
-            negidx = np.random.randint(0, len(self.graphs) - 2)
-            if negidx == i:
-                negidx += 1
+            if len(self.graphs) == 1:
+                negidx = i
+            else:
+                negidx = np.random.randint(0, len(self.graphs) - 2)
+                if negidx == i:
+                    negidx += 1
             f_neg.append(f_pos[negidx])
             e_neg.append(e_anchor[negidx])
             e_negdiff.append(e_diff[negidx])
