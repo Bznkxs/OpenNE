@@ -7,7 +7,7 @@ import numpy as np
 from scipy.linalg import fractional_matrix_power, inv
 from ..utils import getdevice
 from .utils import process_graphs
-
+from ss_input import model_input
 
 class BaseSampler:
     def __init__(self, name, graph, features, batch_size, negative_ratio=5, **kwargs):
@@ -41,27 +41,6 @@ class graphinput:
         self.edge_weight = edge_weight
 
 
-class model_input:
-    GRAPHS = "graphs"
-    NODES = "nodes"
-    TYPES = [GRAPHS, NODES]
-
-    def __init__(self, typ, adj, start_idx, feature, repeat=False):
-        """
-        batch graph input
-        @param typ: "graphs"/"nodes"
-        @param graphs: a collection
-        @param feature: collection of feat
-        @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
-        """
-        self.typ = typ
-        assert self.typ in self.TYPES
-        self.adj = adj
-        self.start_idx = start_idx
-        self.feat = feature
-        self.repeat = repeat
-
-
 def compute_ppr(edge_index, alpha=0.2, self_loop=True):
     adj = torch.sparse_coo_tensor(edge_index, torch.ones(edge_index.shape[1])).to_dense()
     print("adj:", adj.device)
@@ -74,16 +53,22 @@ def compute_ppr(edge_index, alpha=0.2, self_loop=True):
     return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))  # a(I_n-(1-a)A~)^-1
 
 
-def sample_subgraph(graphs, n_nodes, max_graph_size):
+def sample_subgraph(graphs, n_nodes, max_graph_size, do_sample=True):
     """
 
+    @param do_sample: if False, return original graph.
     @param graphs: a list of two graphs, [anchor, diffusion], which share the same features and node sampling.
     @param n_nodes: number of nodes in any graph.
     @param max_graph_size: threshold of sampling.
     @return: (subfeats of graph1, subedges of grpah1, subedges of graph2)
     """
     # sample node list
-    permuted_nodes = torch.randperm(n_nodes)
+    if do_sample:
+        permuted_nodes = torch.randperm(n_nodes)
+    else:
+        permuted_nodes = torch.arange(n_nodes)
+        max_graph_size = int(1e9)
+    map_idx = torch.argsort(permuted_nodes)
     subnodes = permuted_nodes[:max_graph_size]
 
     anchor, diffusion = graphs
@@ -92,7 +77,7 @@ def sample_subgraph(graphs, n_nodes, max_graph_size):
     subfeats = feats[subnodes].to(getdevice())
 
     def sample_edges(edges):
-        subedges = permuted_nodes[edges]  # permutation
+        subedges = map_idx[edges]  # permutation
         e_sample = (subedges[0] < max_graph_size) * (subedges[1] < max_graph_size)
 
         return subedges[:, e_sample]
@@ -118,6 +103,7 @@ class GraphSampler:
         self.batch_size = batch_size  # use this!
         print("sampler batch size =", self.batch_size)
         self.cache = None
+        self.sample_subgraph = True
 
     def get_diffused_graphs(self):
         """
@@ -146,7 +132,7 @@ class GraphSampler:
         f_pos, e_anchor, e_diff, = [], [], []
         # sample subgraphs
         for i in range(self.num_graphs):
-            f1, e1, e2 = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size)
+            f1, e1, e2 = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
             f_pos.append(f1)
             e_anchor.append(e1)
             e_diff.append(e2)

@@ -9,7 +9,7 @@ import torch.cuda
 import torch.nn.functional as F
 
 class model_input:
-    def __init__(self, typ, adj, start_idx, feature, repeat=False):
+    def __init__(self, typ, adj, start_idx, feature, repeat=False, num_graphs=1):
         """
         batch graph input
         @param typ: "graphs"/"nodes"
@@ -22,6 +22,7 @@ class model_input:
         self.start_idx = start_idx
         self.feat = feature
         self.repeat = repeat
+        self.num_graphs = num_graphs
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -43,6 +44,7 @@ class SS_GAEg(ModelWithEmbeddings):
                                  'enc': 'gcn',
                                  'dec': 'inner',
                                  'sampler': 'dgi',
+                                 'est': 'jsd',
                                  'readout': 'mean',
                                  "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
@@ -63,7 +65,7 @@ class SS_GAEg(ModelWithEmbeddings):
 
     def build(self, graph, *, dim=128, hiddens=None, learning_rate=0.01, epochs=300,
               dropout=0., weight_decay=1e-4, early_stopping=100, patience=10, min_delta=3e-5,
-              clf_ratio=0.5, batch_size=12800, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
+              clf_ratio=0.5, batch_size=4096, enc='gcn', dec='inner', sampler='dgi', readout='mean', est='jsd', **kwargs):
         """
                         learning_rate: Initial learning rate
                         epochs: Number of epochs to train
@@ -104,7 +106,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graphs=graph, features=self.features, batch_size=self.batch_size,
-                             dropout=self.dropout, dec_dims=self.dec_dims, norm=True)
+                             dropout=self.dropout, dec_dims=self.dec_dims, norm=False)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
@@ -116,8 +118,11 @@ class SS_GAEg(ModelWithEmbeddings):
         # Train models
         output, train_loss, __ = self.evaluate()
         self.cost_val.append(train_loss)
-        self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}; Allocated: {torch.cuda.memory_allocated()}; " \
-                          f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
+        if getdevice() != torch.device('cpu'):
+            self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}; Allocated: {torch.cuda.memory_allocated()}; " \
+                              f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
+        else:
+            self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}"
 
     def loss(self, output, adj_label):
         cost = F.binary_cross_entropy_with_logits(output, adj_label)
@@ -151,8 +156,8 @@ class SS_GAEg(ModelWithEmbeddings):
             # if getdevice() != torch.device('cpu'):
             #
             #     print()
-        # if getdevice() != torch.device('cpu'):
-        #     torch.cuda.empty_cache()
+            if getdevice() != torch.device('cpu'):
+                torch.cuda.empty_cache()
         if train:
             self.optimizer.step()
 
@@ -186,9 +191,17 @@ class SS_GAEg(ModelWithEmbeddings):
         return self.vectors
 
     def _get_embeddings(self, graph, **kwargs):
-        adj, start_idx = process_graphs(graph.data, getdevice())
-        all_graphs = model_input('graphs', adj, start_idx, [self.features], repeat=False)
-        self.embeddings = self.model.embed(all_graphs).detach()
+        slices = self.model.sampler.sampler.sample_slicer([g.x for g in graph.data])
+        embeddings = []
+        processed_nodes = 0
+        for i in slices:
+            adj, start_idx = process_graphs(graph.data[i], getdevice())
+            feature_slice = slice(processed_nodes, processed_nodes+start_idx[-1])
+            all_graphs = model_input('graphs', adj, start_idx, [self.features[feature_slice]], repeat=False)
+            processed_nodes += start_idx[-1]
+
+            embeddings.append(self.model.embed(all_graphs).detach())
+        self.embeddings = torch.cat(embeddings)
 
     def preprocess_data(self, graph):
         """

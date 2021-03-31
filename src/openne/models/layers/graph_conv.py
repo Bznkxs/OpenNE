@@ -44,7 +44,9 @@ class GraphConvolution(Layer):
                 x = sparse_dropout(x, self.dropout, self.num_features_nonzero)
             else:
                 x = torch.dropout(x, self.dropout, True)
-
+        print(x.shape, "x.shape")
+        print(self.support[0].shape, "support.shape")
+        print(getattr(self, "weights_0").shape, "weights.shape")
         # convolve
         output = torch.zeros([self.support[0].size()[0], self.output_dim], device=x.device)
         for i in range(len(self.support)):
