@@ -6,7 +6,7 @@ import networkx as nx
 import scipy.sparse as sp
 from torch.utils.data import Sampler
 from .walker import Walker, BasicWalker
-from .utils import scipy_coo_to_torch_sparse
+from .utils import scipy_coo_to_torch_sparse, getdevice
 class BaseSampler(Sampler):
     def __init__(self, name, graph, batch_size, negative_ratio=5, **kwargs):
         self.adj = scipy_coo_to_torch_sparse(
@@ -227,7 +227,7 @@ class TripleGenerator(Sampler):
         return self.samples
 
     def __getitem__(self, item):
-        return (self.anchor[item], self.positive[item], self.negative[item])
+        return self.anchor[item].to(getdevice()), self.positive[item].to(getdevice()), self.negative[item].to(getdevice())
 
     def __len__(self):
         return len(self.anchor)

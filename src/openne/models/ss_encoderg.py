@@ -63,7 +63,7 @@ class Encoder(nn.Module):
                         repeat = idx - old_idx
                     else:
                         repeat = 1
-                    vectors.append(self.sigm(self.readout(hx[old_idx:idx])).repeat(repeat, 1))
+                    vectors.append(self.readout(hx[old_idx:idx]).repeat(repeat, 1))
                     old_idx = idx
                 return torch.cat(vectors).to(getdevice())
 

@@ -12,10 +12,11 @@ class GAT(Layer):
     def __init__(self, input_dim, output_dim, adjmat, dropout=0., *,
                  act=torch.nn.functional.elu,
                  num_features_nonzero=0.,
-                 sparse_inputs=False, bias=False,
+                 sparse_inputs=False, bias=True,
 
                  dropout_coef=0.2,
-                 attn_heads=1, attn_heads_reduction='average',
+                 attn_heads=3, attn_heads_reduction='average',
+                 residual=True,
                  **kwargs):
         super(GAT, self).__init__(**kwargs)
         if attn_heads_reduction not in ['concat', 'average']:
@@ -26,6 +27,7 @@ class GAT(Layer):
         if attn_heads_reduction == 'concat':
             self.output_dim *= attn_heads
         self.attn_heads = int(attn_heads+0.5)
+        print("attn_heads=",self.attn_heads)
         self.dropout_input = dropout
         if dropout_coef is None:
             dropout_coef = dropout
@@ -34,11 +36,14 @@ class GAT(Layer):
         self.sparse_inputs = sparse_inputs
         self.act = act
         self.bias = bias
+        self.threshold_val = 1e-4
+        self.residual = residual
 
         self.weights = []
         if self.bias:
             self.biases = []
         self.attn_kernels = []
+        self.residuals = []
         for head in range(self.attn_heads):
             # weights
             w = glorot([input_dim, output_dim])
@@ -47,28 +52,34 @@ class GAT(Layer):
 
             # biases
             if self.bias:
-                b = zeros([output_dim, 1])
+                b = zeros([1, output_dim])
                 setattr(self, "biases_" + str(head), b)
                 self.biases.append(b)
 
             # attention kernels: [k_self, k_neigh]
-            self.ak1, self.ak2 = zeros([output_dim, 1]), zeros([output_dim, 1])
-            setattr(self, "attn_kernels_A_" + str(head), self.ak1)
-            setattr(self, "attn_kernels_B_" + str(head), self.ak1)
-
+            ak1, ak2 = zeros([output_dim, 1]), zeros([output_dim, 1])
+            setattr(self, "attn_kernels_A_" + str(head), ak1)
+            setattr(self, "attn_kernels_B_" + str(head), ak2)
+            print("head", head)
             self.attn_kernels.append([
-                self.ak1,self.ak2
+                ak1, ak2
             ])
 
-        self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
+            if self.residual:
+                res = glorot([input_dim, output_dim])
+                setattr(self, 'res_' + str(head), res)
+                self.residuals.append(res)
+
+
+        # self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
 
         if self.logging:
             self._log_vars()
 
     def forward(self, inputs):
+        # print(f"    Allocated: {torch.cuda.memory_allocated()} - ", end='')
         x = inputs[0]  # input node features (n * input_dim)
         adj = inputs[1]
-        aux = -10e9 * (1 - adj)
         if self.training:
             # dropout
             if self.sparse_inputs:
@@ -97,7 +108,13 @@ class GAT(Layer):
 
             c = f1 + f2.T
 
-            c += aux
+
+
+            #  attention mask
+            if adj.is_sparse:
+                adj = adj.to_dense()
+            adj[adj > self.threshold_val] = 1.0
+            c += -1e9 * (1.0 - adj)
 
             # leakyReLU and softmax
             c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
@@ -112,8 +129,14 @@ class GAT(Layer):
                     feat_in = torch.dropout(feat_in, self.dropout_input, True)
 
             feat_out = torch.mm(c, feat_in)
+
             if self.bias:
                 feat_out += bias
+
+            if self.residual:
+                feat_out += torch.mm(x, self.residuals[i])
+
+            feat_out = self.act(feat_out)
             y_list.append(feat_out)
 
         # aggregate
@@ -122,5 +145,7 @@ class GAT(Layer):
         else:
             y = torch.mean(torch.stack(y_list), dim=0)   # (n * output_dim)
         # y = self.batch_norm(y)
-        return self.act(y)
+
+        # print(torch.cuda.memory_allocated())
+        return y
 

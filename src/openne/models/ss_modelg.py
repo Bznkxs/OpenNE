@@ -30,31 +30,36 @@ class SSModel(nn.Module):
         self.sampler = BaseSampler(self.sampler_name, graphs.data, self.features, batch_size)
 
     def embed(self, x):
+        if self.normalize:
+            return F.normalize(self.encoder(x), dim=-1)
         return self.encoder(x)
 
     def forward(self, x, pos, neg):
-        hx = self.embed(x)
-        hpos = self.embed(pos)
-        hneg = self.embed(neg)
+        def get_anchor():
+            hx = self.embed(x)
 
-        if self.normalize:
-            hx = F.normalize(hx, dim=-1)
-            hpos = F.normalize(hpos, dim=-1)
-            hneg = F.normalize(hneg, dim=-1)
+            # repeat
+            def repeat(start_idx):
+                old_idx = start_idx[0]
+                vectors = []
+                for i, idx in enumerate(start_idx[1:]):
+                    vectors.append(hx[i].repeat(idx-old_idx, 1))
+                    old_idx = idx
+                return torch.cat(vectors)
+            hxp = repeat(pos.start_idx)
+            hxn = repeat(neg.start_idx)
+            return hxp, hxn
 
-        # repeat
-        def repeat(start_idx):
-            old_idx = start_idx[0]
-            vectors = []
-            for i, idx in enumerate(start_idx[1:]):
-                vectors.append(self.sigm(hx[i]).repeat(idx-old_idx, 1))
-                old_idx = idx
-            return torch.cat(vectors)
-        hxp = repeat(pos.start_idx)
-        hxn = repeat(neg.start_idx)
+        def get_score(anchor, sample):
+            h = self.embed(sample)
+            return self.decoder(anchor, h)
+
+        hxp, hxn = get_anchor()
+        pos_score = get_score(hxp, pos)
+        neg_score = get_score(hxn, neg)
         # print(hxp.shape, hxn.shape, hpos.shape, hneg.shape)
 
-        loss = self.estimator(self.decoder(hxp, hpos), self.decoder(hxn, hneg))
+        loss = self.estimator(pos_score, neg_score)
         return loss
 
     def sample(self):

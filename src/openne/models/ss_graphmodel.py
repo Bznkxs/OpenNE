@@ -5,7 +5,7 @@ import scipy.sparse as sp
 import networkx as nx
 from .ss_model import SSModel
 from .models import ModelWithEmbeddings
-from ..utils import check_existance, check_range
+from ..utils import check_existance, check_range, getdevice
 from .utils import scipy_coo_to_torch_sparse, preprocess_features, preprocess_graph, chebyshev_polynomials
 from ..dataloaders import Graphs
 
@@ -114,14 +114,18 @@ class SS_GraphModel(ModelWithEmbeddings):
     def train_model(self, graph, **kwargs):
         output, train_loss, __ = self.evaluate()
         self.cost_val.append(train_loss)
-        self.debug_info = str({"train_loss": "{:.5f}".format(train_loss)})
+        if getdevice() != torch.device('cpu'):
+            self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}; Allocated: {torch.cuda.memory_allocated()}; " \
+                              f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
+        else:
+            self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}"
 
     def early_stopping_judge(self, graph, *, step=0, **kwargs):
         if self.patience > len(self.cost_val) - self.early_stopping:
             return False
         if self.cost_val[-1] > self.cost_val[-2]:
             self.c_up += 1
-            if (self.c_up) >= self.patience:
+            if self.c_up >= self.patience:
                 return True
         else:
             self.c_up = 0
@@ -146,9 +150,6 @@ class SS_GraphModel(ModelWithEmbeddings):
         output = None
         for batch in self.model.sampler:
             x, pos, neg = batch
-            x = x.to(self._device)
-            pos = pos.to(self._device)
-            neg = neg.to(self._device)
             # print(x.device, pos.device, neg.device)
             self.optimizer.zero_grad()
             batch_num += 1
