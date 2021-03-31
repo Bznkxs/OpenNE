@@ -5,7 +5,7 @@ from . import layers
 from .layers.others import FF
 from .utils import process_graphs
 from ..utils import getdevice
-
+from .ss_input import model_input
 
 class Encoder(nn.Module):
     def __init__(self, name, dimensions, adj, features, dropout, readout):
@@ -24,7 +24,11 @@ class Encoder(nn.Module):
         self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], adj, dropout, act=lambda x: x))
         self.local_d = FF(self.output_dim)
         self.global_d = FF(self.output_dim)
+        self.full_embeddings = None
         self.init_emb()
+
+    def reset(self):
+        self.full_embeddings = None
 
     def init_emb(self):
         for m in self.modules():
@@ -33,7 +37,7 @@ class Encoder(nn.Module):
                 if m.bias is not None:
                     m.bias.data.fill_(0.0)
 
-    def forward(self, x):
+    def forward(self, x: model_input):
         """
         encoder for a batch of graphs
         @requires self.name != 'none'
@@ -46,12 +50,17 @@ class Encoder(nn.Module):
         # adj = x.adj.to_dense().to(getdevice())
         start_idx = x.start_idx
 
-        hxs = []
+        if x.actual_indices is not None:
+            if self.full_embeddings is not None:
+                hx = self.full_embeddings[x.actual_indices]
+                return hx
+
+        # hxs = []
         for layer in self.layers:
             hx = layer([hx, adj])
-            hxs.append(hx)
+            # hxs.append(hx)
 
-        if x.typ == 'graphs':
+        if x.typ == x.GRAPHS:
             # todo: this is a brute-force graph-wise pooling. change this to faster pooling
             # nhxs = []
 
@@ -76,6 +85,10 @@ class Encoder(nn.Module):
         else:
             # hx = torch.cat(hxs, 1)
             hx = self.local_d(hx)
+
+            if x.actual_indices is not None:
+                self.full_embeddings = hx
+                hx = hx[x.actual_indices]
         # print(hx.shape)
         return hx
 

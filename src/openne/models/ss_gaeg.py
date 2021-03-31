@@ -5,24 +5,9 @@ import time
 import scipy.sparse as sp
 import torch
 import torch.cuda
-
+from .ss_input import model_input
 import torch.nn.functional as F
 
-class model_input:
-    def __init__(self, typ, adj, start_idx, feature, repeat=False, num_graphs=1):
-        """
-        batch graph input
-        @param typ: "graphs"/"nodes"
-        @param graphs: a collection
-        @param feature: collection of feat
-        @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
-        """
-        self.typ = typ
-        self.adj = adj
-        self.start_idx = start_idx
-        self.feat = feature
-        self.repeat = repeat
-        self.num_graphs = num_graphs
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -91,6 +76,10 @@ class SS_GAEg(ModelWithEmbeddings):
         self.sampler = sampler
         self.readout = readout
         self.est = est
+        if est == 'jsd':
+            norm = False
+        else:
+            norm = True
         self.patience = patience
         self.min_delta = min_delta
         self.output_dim = dim
@@ -106,7 +95,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graphs=graph, features=self.features, batch_size=self.batch_size,
-                             dropout=self.dropout, dec_dims=self.dec_dims, norm=False)
+                             dropout=self.dropout, dec_dims=self.dec_dims, norm=norm)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
@@ -138,7 +127,6 @@ class SS_GAEg(ModelWithEmbeddings):
         # neg_inds = self.features[torch.tensor(neg)]
         cur_loss = 0.
         output = None
-        assert self.sampler in ['dgi', 'mvgrl']
 
         if train:
             self.optimizer.zero_grad()

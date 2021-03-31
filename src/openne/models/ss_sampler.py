@@ -40,13 +40,16 @@ def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
 # triple generator for **one graph**
 class TripleGenerator(Sampler):
     def __init__(self, graph, adj, nnodes, nedges, negative_ratio, name, **kwargs):
+        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
+        self.negative_ratio = 1  # negative_ratio
+        if kwargs.get('empty', False):
+            super(TripleGenerator, self).__init__(self)
+            return
         self.nnodes = nnodes
         self.nedges = nedges
         self.graph = graph
         self.adj = adj  # should be a sparse matrix
         self.adj_ind = self.adj._indices()
-        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
-        self.negative_ratio = 1  # negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
         self.anchor = torch.zeros(1)
@@ -54,9 +57,23 @@ class TripleGenerator(Sampler):
         self.negative = torch.zeros(1)
         self.samples = torch.zeros(1)
         self.nodelist = [i for i in range(self.nnodes)]
+        self.adjlist = {i: graph.G.neighbors(i) for i in range(self.nnodes)}
         self.generate()
         print("sampler length =", len(self.anchor),len(self.positive),len(self.negative))
         super(TripleGenerator, self).__init__(self)
+
+    def adapt(self, adj):
+        self.adj = adj
+        self.adj_ind = self.adj._indices()
+        self.nnodes = adj.shape[0]
+        self.nedges = adj._nnz()
+        self.graph = adj  # nx.DiGraph(adj)
+        self.adjlist = {i: [] for i in range(self.nnodes)}
+        for i in range(adj._nnz()):
+            x, y = adj._indices()[0, i].item(), adj._indices()[1, i].item()
+            self.adjlist[x].append(y)
+        self.nodelist = [i for i in range(self.nnodes)]
+        self.generate()
 
     def generate(self):
         if (self.anchor_name, self.pos_name) == ('node', 'neighbor'):  # specialize
@@ -186,12 +203,12 @@ class TripleGenerator(Sampler):
                 x = int(x)
                 # try random node first
                 y = ys[idx]
-                if not self.graph.G.has_edge(x, y):
+                if not self.adj[x, y]:
                     continue
 
                 # generate k-th node that is not neighbor
                 if x not in w1:
-                    w1[x] = sorted(self.graph.G.neighbors(x))
+                    w1[x] = sorted(self.adjlist[x])
                 adj = w1[x]
                 if len(adj) == self.nnodes:  # connected to all nodes
                     ys[idx] = -1

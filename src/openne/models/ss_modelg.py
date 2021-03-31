@@ -3,6 +3,7 @@ from .ss_decoder import Decoder
 from .ss_samplerg import BaseSampler
 from .ss_readout import BaseReadOut
 from .ss_estimator import BaseEstimator
+from .ss_input import model_input
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -34,7 +35,7 @@ class SSModel(nn.Module):
             return F.normalize(self.encoder(x), dim=-1)
         return self.encoder(x)
 
-    def forward(self, x, pos, neg):
+    def forward(self, x: model_input, pos: model_input, neg: model_input):
         def get_anchor():
             hx = self.embed(x)
 
@@ -46,8 +47,11 @@ class SSModel(nn.Module):
                     vectors.append(hx[i].repeat(idx-old_idx, 1))
                     old_idx = idx
                 return torch.cat(vectors)
-            hxp = repeat(pos.start_idx)
-            hxn = repeat(neg.start_idx)
+            if x.typ == x.GRAPHS:
+                hxp = repeat(pos.start_idx)
+                hxn = repeat(neg.start_idx)
+            else:
+                hxp = hxn = hx
             return hxp, hxn
 
         def get_score(anchor, sample):
@@ -60,6 +64,7 @@ class SSModel(nn.Module):
         # print(hxp.shape, hxn.shape, hpos.shape, hneg.shape)
 
         loss = self.estimator(pos_score, neg_score)
+        self.encoder.reset()
         return loss
 
     def sample(self):
