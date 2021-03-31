@@ -45,6 +45,7 @@ class Encoder(nn.Module):
         @return:
         """
         hx = torch.cat(x.feat)
+        # print(hx.shape)
         adj = x.adj
         # print("encoder:", hx.device, adj.device)
         # adj = x.adj.to_dense().to(getdevice())

@@ -15,7 +15,7 @@ class GAT(Layer):
                  sparse_inputs=False, bias=True,
 
                  dropout_coef=0.2,
-                 attn_heads=3, attn_heads_reduction='average',
+                 attn_heads=1, attn_heads_reduction='average',
                  residual=True,
                  **kwargs):
         super(GAT, self).__init__(**kwargs)

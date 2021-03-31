@@ -9,7 +9,8 @@ from ..utils import check_existance, check_range
 from .utils import scipy_coo_to_torch_sparse, preprocess_features, preprocess_graph, chebyshev_polynomials
 from .ss_gae import SS_GAE
 
-SS_NodeModel = SS_GAE
+
+#SS_GAE
 
 
 class SS_NodeModel_deprecated(ModelWithEmbeddings):
@@ -211,3 +212,7 @@ class SS_NodeModel_deprecated(ModelWithEmbeddings):
             for ll in l:
                 l_id = label_dict[ll]
                 self.labels[node_id][l_id] = 1
+
+
+class SS_NodeModel(SS_GAE):
+    pass

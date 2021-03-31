@@ -64,7 +64,7 @@ class BasicWalker:
 
     def simulate_walks_one_epoch(self, epoch, walk_length):
         stime = time()
-        self.debug("Run epoch {}".format(epoch))
+        #self.debug("Run epoch {}".format(epoch))
         # print("Run epoch {} (PID {})".format(epoch, os.getpid()))
         if self.G:
             nodes = list(self.G.nodes())
@@ -76,7 +76,7 @@ class BasicWalker:
             walks.append(self.rwalk(
                     walk_length=walk_length, start_node=node))
         etime = time()
-        self.debug("Epoch {} ends in {} seconds.".format(epoch, etime - stime))
+        #self.debug("Epoch {} ends in {} seconds.".format(epoch, etime - stime))
         # print("Epoch {} (PID {}) ends in {} seconds.".format(epoch, os.getpid(), etime - stime))
         return walks
 
@@ -87,7 +87,7 @@ class BasicWalker:
 
         walks = []
 
-        self.debug('Walk iteration:')
+        # self.debug('Walk iteration:')
 
         if self.workers:
             pool = multiprocessing.Pool(self.workers)

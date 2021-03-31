@@ -10,7 +10,8 @@ from ..utils import check_existance, check_range, getdevice
 from .utils import scipy_coo_to_torch_sparse, preprocess_features, preprocess_graph, chebyshev_polynomials
 from ..dataloaders import Graphs
 
-SS_GraphModel = SS_GAEg
+class SS_GraphModel(SS_GAEg):
+    pass
 
 class SS_GraphModel_deprecated(ModelWithEmbeddings):
     """

@@ -139,7 +139,7 @@ class NodeSampler:
             if iter_head < self.num_graphs:
                 accum_len += len(f_pos[iter_head])
             iter_head += 1
-        print("from sample slicer: ", ret)
+        # print("from sample slicer: ", ret)
         return ret
 
     @classmethod
@@ -160,12 +160,16 @@ class NodeSampler:
         """
         feats, edges, slices = self.get_sample()
         for i in slices:  # for each batch
-            print("*slice", i)
+            #print("*slice", i)
             f_pos_d = feats[i]
             adj, start_idx = self.process_graphs(feats[i], edges[i])
             self.node_sampler.adapt(adj.to('cpu'))
-            print("*shape", adj.shape)
+            #print("*shape", adj.shape)
             anchor_nodes, pos_nodes, neg_nodes = self.node_sampler[:]
+            #print("*indices", len(anchor_nodes), len(pos_nodes), len(neg_nodes))
+            #print(anchor_nodes[::197])
+            #print(pos_nodes[::197])
+            #print(neg_nodes[::197])
             bx = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=anchor_nodes)
             bpos = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=pos_nodes)
             bneg = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=neg_nodes)
