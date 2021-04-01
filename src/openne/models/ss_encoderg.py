@@ -18,7 +18,7 @@ class Encoder(nn.Module):
         self.readout = readout
         # self.output_dim = sum(self.dimensions[1:])
         self.output_dim = self.dimensions[-1]
-        assert self.name != 'none'
+        # assert self.name != 'none'
         for i in range(1, len(self.dimensions) - 1):
             self.layers.append(layer_dict[name](self.dimensions[i - 1], self.dimensions[i], adj, dropout, act=F.relu))
         self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], adj, dropout, act=lambda x: x))

@@ -147,11 +147,13 @@ def update(clear=False, md_deprecated=True):
         flag = 0
     menu = set(menu)
     curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
+    logdir = os.path.normpath(os.path.join(curdir, '..', '..', 'src', 'logs'))
+    print("reading files from", logdir)
     X = []
-    ld = os.listdir(curdir)
+    ld = os.listdir(logdir)
     for i, d in tqdm.tqdm(enumerate(ld), total=len(ld)):
         _d = d
-        d = os.path.join(os.path.normpath(curdir), d)
+        d = os.path.join(os.path.normpath(logdir), d)
         # print(d)
         if os.path.isfile(d) and d.endswith(".txt"):  # logfile
             if _d in menu:

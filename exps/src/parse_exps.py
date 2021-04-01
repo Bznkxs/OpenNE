@@ -100,8 +100,9 @@ def gen_bash(opt):
         res = ''
         flg = -1
         dim = '1'
+
         keys = list(opt.keys())
-        # sorted_keys = keys.sort(key=lambda x: )
+        keys.sort()
         for k in keys:
             v = opt[k]
             if k.startswith('_'):
