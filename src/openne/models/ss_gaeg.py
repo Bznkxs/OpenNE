@@ -63,7 +63,7 @@ class SS_GAEg(ModelWithEmbeddings):
         """
         if hiddens is None:
             hiddens = []
-        print("____________________build____________________")
+        # print("____________________build____________________")
         self.clf_ratio = clf_ratio
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -100,7 +100,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.cost_val = []
         self.negative_ratio = 5
         self.c_up = 0
-        print("----------------------built--------------------")
+        # print("----------------------built--------------------")
 
 
     def train_model(self, graph, **kwargs):
@@ -185,9 +185,9 @@ class SS_GAEg(ModelWithEmbeddings):
         slices = self.model.sampler.sampler.sample_slicer([g.x for g in graphs_data])
         embeddings = []
         processed_nodes = 0
-        print("ready get embeddings")
+        # print("ready get embeddings")
         for i in slices:
-            print("slice", i)
+            # print("slice", i)
             adj, start_idx = process_graphs(graphs_data[i], getdevice())
             feature_slice = slice(processed_nodes, processed_nodes+start_idx[-1])
             all_graphs = model_input(input_flag, adj, start_idx, [self.features[feature_slice]], repeat=False)

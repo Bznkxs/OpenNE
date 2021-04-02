@@ -38,7 +38,7 @@ class BaseSampler:
 
 def compute_ppr(edge_index, alpha=0.2, self_loop=True):
     adj = torch.sparse_coo_tensor(edge_index, torch.ones(edge_index.shape[1])).to_dense()
-    print("adj:", adj.device)
+    # print("adj:", adj.device)
     a = adj.cpu().numpy()
     if self_loop:
         a = a + np.eye(a.shape[0])  # A^ = A + I_n
@@ -93,7 +93,7 @@ class NodeSampler:
         self.num_graphs = len(graphs)
         self.graphs_diff = []
         self.batch_size = batch_size  # use this!
-        print("sampler batch size =", self.batch_size)
+        # print("sampler batch size =", self.batch_size)
         self.cache = None
         self.sample_subgraph = True
 
@@ -199,7 +199,7 @@ class GraphSampler:
         self.graphs_diff = []
         self.get_diffused_graphs()
         self.batch_size = batch_size  # use this!
-        print("sampler batch size =", self.batch_size)
+        # print("sampler batch size =", self.batch_size)
         self.cache = None
         self.sample_subgraph = True
 

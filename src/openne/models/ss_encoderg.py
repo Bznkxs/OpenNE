@@ -10,7 +10,7 @@ from .ss_input import model_input
 class Encoder(nn.Module):
     def __init__(self, name, dimensions, adj, features, dropout, readout):
         super(Encoder, self).__init__()
-        print("Encoder dimensions", dimensions)
+        # print("Encoder dimensions", dimensions)
         self.dimensions = dimensions
         self.layers = nn.ModuleList()
         self.sigm = nn.Sigmoid()
