@@ -5,24 +5,9 @@ import time
 import scipy.sparse as sp
 import torch
 import torch.cuda
-
+from .ss_input import model_input
 import torch.nn.functional as F
 
-class model_input:
-    def __init__(self, typ, adj, start_idx, feature, repeat=False, num_graphs=1):
-        """
-        batch graph input
-        @param typ: "graphs"/"nodes"
-        @param graphs: a collection
-        @param feature: collection of feat
-        @param repeat: (only for typ graphs) if True, embedding of graph will be repeated (num_node) times
-        """
-        self.typ = typ
-        self.adj = adj
-        self.start_idx = start_idx
-        self.feat = feature
-        self.repeat = repeat
-        self.num_graphs = num_graphs
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -40,7 +25,7 @@ class SS_GAEg(ModelWithEmbeddings):
                                  "dropout": 0.,
                                  "weight_decay": 1e-4,
                                  "early_stopping": 50,
-                                 "patience": 3,
+                                 "patience": 10,
                                  'enc': 'gcn',
                                  'dec': 'inner',
                                  'sampler': 'dgi',
@@ -48,6 +33,7 @@ class SS_GAEg(ModelWithEmbeddings):
                                  'readout': 'mean',
                                  "min_delta": 0.00003,
                                  "clf_ratio": 0.5,
+                                 "batch_size": 4096,
                                  "hiddens": [],
                                  "max_degree": 0})
         check_range(kwargs, {"learning_rate": (0, np.inf),
@@ -77,7 +63,7 @@ class SS_GAEg(ModelWithEmbeddings):
         """
         if hiddens is None:
             hiddens = []
-        print("____________________build____________________")
+        # print("____________________build____________________")
         self.clf_ratio = clf_ratio
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -91,6 +77,10 @@ class SS_GAEg(ModelWithEmbeddings):
         self.sampler = sampler
         self.readout = readout
         self.est = est
+        if est == 'jsd':
+            norm = False
+        else:
+            norm = True
         self.patience = patience
         self.min_delta = min_delta
         self.output_dim = dim
@@ -99,19 +89,18 @@ class SS_GAEg(ModelWithEmbeddings):
         self.preprocess_data(graph)
         # Create models
         input_dim = self.features.shape[1] if not self.sparse else self.features[2][1]
-        feature_shape = self.features.shape if not self.sparse else self.features[0].shape[0]
 
         self.dimensions = [input_dim] + self.hiddens + [self.output_dim]
         self.dec_dims = [self.dimensions[-1] * 2, 1]
         self.model = SSModel(encoder_name=self.enc, decoder_name=self.dec, sampler_name=self.sampler,
                              readout_name=self.readout, estimator_name=self.est, enc_dims=self.dimensions,
                              graphs=graph, features=self.features, batch_size=self.batch_size,
-                             dropout=self.dropout, dec_dims=self.dec_dims, norm=False)
+                             dropout=self.dropout, dec_dims=self.dec_dims, norm=norm)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.cost_val = []
         self.negative_ratio = 5
         self.c_up = 0
-        print("----------------------built--------------------")
+        # print("----------------------built--------------------")
 
 
     def train_model(self, graph, **kwargs):
@@ -138,7 +127,6 @@ class SS_GAEg(ModelWithEmbeddings):
         # neg_inds = self.features[torch.tensor(neg)]
         cur_loss = 0.
         output = None
-        assert self.sampler in ['dgi', 'mvgrl']
 
         if train:
             self.optimizer.zero_grad()
@@ -190,18 +178,26 @@ class SS_GAEg(ModelWithEmbeddings):
         # (embs[:10])
         return self.vectors
 
-    def _get_embeddings(self, graph, **kwargs):
-        slices = self.model.sampler.sampler.sample_slicer([g.x for g in graph.data])
+    def _ss_get_embeddings(self, graph, input_flag):
+        # self.to('cpu')
+        self.requires_grad_(False)
+        graphs_data = self.model.graphs_data
+        slices = self.model.sampler.sampler.sample_slicer([g.x for g in graphs_data])
         embeddings = []
         processed_nodes = 0
+        # print("ready get embeddings")
         for i in slices:
-            adj, start_idx = process_graphs(graph.data[i], getdevice())
+            # print("slice", i)
+            adj, start_idx = process_graphs(graphs_data[i], getdevice())
             feature_slice = slice(processed_nodes, processed_nodes+start_idx[-1])
-            all_graphs = model_input('graphs', adj, start_idx, [self.features[feature_slice]], repeat=False)
+            all_graphs = model_input(input_flag, adj, start_idx, [self.features[feature_slice]], repeat=False)
             processed_nodes += start_idx[-1]
 
             embeddings.append(self.model.embed(all_graphs).detach())
         self.embeddings = torch.cat(embeddings)
+
+    def _get_embeddings(self, graph, **kwargs):
+        self._ss_get_embeddings(graph, model_input.GRAPHS)
 
     def preprocess_data(self, graph):
         """

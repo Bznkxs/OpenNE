@@ -40,13 +40,16 @@ def randwalk(dw, workers, silent, G, p, q, path_length, num_paths):
 # triple generator for **one graph**
 class TripleGenerator(Sampler):
     def __init__(self, graph, adj, nnodes, nedges, negative_ratio, name, **kwargs):
+        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
+        self.negative_ratio = 1  # negative_ratio
+        if kwargs.get('empty', False):
+            super(TripleGenerator, self).__init__(self)
+            return
         self.nnodes = nnodes
         self.nedges = nedges
         self.graph = graph
         self.adj = adj  # should be a sparse matrix
         self.adj_ind = self.adj._indices()
-        self.anchor_name, self.pos_name, self.neg_name = name.lower().split('-')
-        self.negative_ratio = 1  # negative_ratio
         for i, j in kwargs.items():
             self.__setattr__(i, j)
         self.anchor = torch.zeros(1)
@@ -54,9 +57,23 @@ class TripleGenerator(Sampler):
         self.negative = torch.zeros(1)
         self.samples = torch.zeros(1)
         self.nodelist = [i for i in range(self.nnodes)]
+        self.adjlist = {i: graph.G.neighbors(i) for i in range(self.nnodes)}
         self.generate()
-        print("sampler length =", len(self.anchor),len(self.positive),len(self.negative))
+        # print("sampler length =", len(self.anchor),len(self.positive),len(self.negative))
         super(TripleGenerator, self).__init__(self)
+
+    def adapt(self, adj):
+        self.adj = adj
+        self.adj_ind = self.adj._indices()
+        self.nnodes = adj.shape[0]
+        self.nedges = adj._nnz()
+        self.graph = adj  # nx.DiGraph(adj)
+        self.adjlist = {i: [] for i in range(self.nnodes)}
+        for i in range(adj._nnz()):
+            x, y = adj._indices()[0, i].item(), adj._indices()[1, i].item()
+            self.adjlist[x].append(y)
+        self.nodelist = [i for i in range(self.nnodes)]
+        self.generate()
 
     def generate(self):
         if (self.anchor_name, self.pos_name) == ('node', 'neighbor'):  # specialize
@@ -84,7 +101,7 @@ class TripleGenerator(Sampler):
         self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
 
     def gen_node_positive(self):
-        print("generating anchors and graphs_diff samples...")
+        # print("generating anchors and graphs_diff samples...")
         if self.pos_name == 'neighbor':
             self.positive = self.adj_ind[1]
         elif self.pos_name == 'rand_walk':
@@ -93,13 +110,15 @@ class TripleGenerator(Sampler):
             silent = getattr(self, 'silent', False)
             p = getattr(self, 'p', 0.5)
             q = getattr(self, 'q', 0.5)
-            path_length = getattr(self, 'path_length', 50)
+            path_length = getattr(self, 'path_length', 30)
             num_paths = getattr(self, 'num_paths', 5)
             window = getattr(self, 'window', 5)
-            print(path_length, num_paths, window)
+            #print(path_length, num_paths, window)
             sentences = randwalk(dw, workers, silent, self.graph, p, q, path_length, num_paths)
-            print(f"{len(sentences)} sentences created")
-
+            #print(f"{len(sentences)} sentences created")
+            # sample sentences
+            sentences = random.sample(sentences, len(sentences) // path_length // window)
+            #print(f"{len(sentences)} sentences left")
             anchor = []
             positive = []
             mode = 1
@@ -108,24 +127,28 @@ class TripleGenerator(Sampler):
                 # brute force
                 # should optimize later on
                 t = time.time()
-                for sentence in tqdm.tqdm(sentences):
+                for sentence in  (sentences):
                     for j in range(len(sentence)):
-                        for k in range(max(0, j - window), min(len(sentence), j + window + 1)):
-                            if k != j:
-                                anchor.append(sentence[j])
-                                positive.append(sentence[k])
+                        try:
+                            k = random.randint(max(0, j - window), min(len(sentence) - 1, j + window) - 1)
+                            if k >= j:
+                                k += 1
+                            anchor.append(sentence[j])
+                            positive.append(sentence[k])
+                        except Exception as _:
+                            pass
                 # deduplicate
                 # items = set(zip(anchor, graphs_diff))
                 # anchor, graphs_diff = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
-                print("mode 1: time used =", time.time() - t)
+               # print("mode 1: time used =", time.time() - t)
 
 
             else:
                 # simplify 1
                 t = time.time()
-                for sentence in tqdm.tqdm(sentences):
+                for sentence in  (sentences):
                     s = torch.tensor(sentence)
                     # deal with full windows
                     j1 = torch.arange(0, len(s) - window)
@@ -149,27 +172,27 @@ class TripleGenerator(Sampler):
                 # anchor, graphs_diff = zip(*items)
                 self.anchor = torch.tensor(anchor)
                 self.positive = torch.tensor(positive)
-                print("mode 2: time used =", time.time() - t)
+              #  print("mode 2: time used =", time.time() - t)
 
 
 
-        print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
+        #print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
             # generate anchor and graphs_diff
 
         # todo: deal with other conditions
     def gen_graph_positive(self):
-        print("generating anchors and graphs_diff samples:")
+        #print("generating anchors and graphs_diff samples:")
         if self.pos_name == "node":
             self.anchor = [-1] * self.nnodes
             self.positive = list(range(self.nnodes))
-        print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
+        #print(f"anchors and graphs_diff samples of len {len(self.anchor)} generated")
 
     def gen_node_negative(self, repeat=True):  # called after self.anchor is created
         if repeat:
-            print(f"repeating {self.negative_ratio} times...")
+            # print(f"repeating {self.negative_ratio} times...")
             self.anchor = self.anchor.repeat(self.negative_ratio)
             self.positive = self.positive.repeat(self.negative_ratio)
-            print(f"generating negative samples with {self.neg_name}...")
+            # print(f"generating negative samples with {self.neg_name}...")
         if self.neg_name == 'random':
             self.negative = torch.randint(high=self.nnodes, size=(len(self.anchor),))
         elif self.neg_name == 'except_neighbor':  # anchor must be node
@@ -182,16 +205,16 @@ class TripleGenerator(Sampler):
             # for a graph with 50000 nodes and 100000 edges,
             # binary search is very rarely performed
             ys = torch.randint(0, self.nnodes, [len(self.anchor)])
-            for idx, x in tqdm.tqdm(enumerate(self.anchor), total=len(self.anchor)):
+            for idx, x in  (enumerate(self.anchor)) : #, total=len(self.anchor)):
                 x = int(x)
                 # try random node first
                 y = ys[idx]
-                if not self.graph.G.has_edge(x, y):
+                if not self.adj[x, y]:
                     continue
 
                 # generate k-th node that is not neighbor
                 if x not in w1:
-                    w1[x] = sorted(self.graph.G.neighbors(x))
+                    w1[x] = sorted(self.adjlist[x])
                 adj = w1[x]
                 if len(adj) == self.nnodes:  # connected to all nodes
                     ys[idx] = -1
@@ -212,11 +235,11 @@ class TripleGenerator(Sampler):
                             l = mid + 1
                     ys[idx] = i + l
             self.negative = ys
-        if repeat:
-            print("negative samples generated")
+        # if repeat:
+        #    print("negative samples generated")
         # todo: deal with other conditions
     def gen_graph_negative(self):
-        print("generating negative samples...")
+        # print("generating negative samples...")
         if self.neg_name == 'permuted':
             self.negative = self.positive[torch.randperm(len(self.positive))]
         elif self.neg_name == 'nodes_in_other_graph':

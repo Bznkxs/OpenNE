@@ -7,6 +7,8 @@ import multiprocessing
 import networkx as nx
 from time import time
 from .utils import alias_draw, alias_setup
+from openne.dataloaders.graph import Graph
+from typing import Union
 import os
 
 
@@ -14,10 +16,26 @@ def wrapper(class_instance, epoch, walk_length):
     return class_instance.simulate_walks_one_epoch(epoch, walk_length)
 
 class BasicWalker:
-    def __init__(self, G, workers, silent=False):
-        self.G = G.G   # nx.DiGraph(G.G)
-        self.node_size = G.nodesize
-        self.look_up_dict = G.look_up_dict
+    def __init__(self, G: Union[Graph, torch.sparse.Tensor], workers, silent=False):
+        if isinstance(G, Graph):
+            self.G = G.G   # nx.DiGraph(G.G)
+            self.adjlist = None
+            self.edgelist = None
+            self.adj = None
+            self.node_size = G.nodesize
+            self.look_up_dict = G.look_up_dict
+        elif isinstance(G, torch.sparse.Tensor):
+            self.adjlist = {i: [] for i in range(G.shape[0])}
+            self.edgelist = []
+            # create adj list by brute force
+            for i in range(G._nnz()):
+                x, y = G._indices()[0, i].item(), G._indices()[1, i].item()
+                self.adjlist[x].append(y)
+                self.edgelist.append([x, y])
+            self.adj = G
+            self.G = None
+            self.node_size = G.shape[0]
+            self.look_up_dict = {i: i for i in range(self.node_size)}
         self.silent = silent
         self.workers = None  # workers
 
@@ -26,13 +44,17 @@ class BasicWalker:
         Simulate a random walk starting from start node.
         """
         G = self.G
+        adjlist = self.adjlist
         # look_up_dict = self.look_up_dict
         # node_size = self.node_size
 
         walk = [start_node]
         while len(walk) < walk_length:
             cur = walk[-1]
-            cur_nbrs = list(G.neighbors(cur))
+            if adjlist is not None:
+                cur_nbrs = adjlist[cur]
+            else:
+                cur_nbrs = list(G.neighbors(cur))
             if len(cur_nbrs) > 0:
                 walk.append(random.choice(cur_nbrs))
             else:
@@ -42,18 +64,19 @@ class BasicWalker:
 
     def simulate_walks_one_epoch(self, epoch, walk_length):
         stime = time()
-        self.debug("Run epoch {}".format(epoch))
+        #self.debug("Run epoch {}".format(epoch))
         # print("Run epoch {} (PID {})".format(epoch, os.getpid()))
-        G = self.G
-
-        nodes = list(G.nodes())
+        if self.G:
+            nodes = list(self.G.nodes())
+        else:
+            nodes = list(range(self.node_size))
         walks = []
         random.shuffle(nodes)
         for node in nodes:
             walks.append(self.rwalk(
                     walk_length=walk_length, start_node=node))
         etime = time()
-        self.debug("Epoch {} ends in {} seconds.".format(epoch, etime - stime))
+        #self.debug("Epoch {} ends in {} seconds.".format(epoch, etime - stime))
         # print("Epoch {} (PID {}) ends in {} seconds.".format(epoch, os.getpid(), etime - stime))
         return walks
 
@@ -64,7 +87,7 @@ class BasicWalker:
 
         walks = []
 
-        self.debug('Walk iteration:')
+        # self.debug('Walk iteration:')
 
         if self.workers:
             pool = multiprocessing.Pool(self.workers)
@@ -102,6 +125,7 @@ class Walker(BasicWalker):
         Simulate a random walk starting from start node.
         """
         G = self.G
+        adjlist = self.adjlist
         alias_nodes = self.alias_nodes
         alias_edges = self.alias_edges
         look_up_dict = self.look_up_dict
@@ -111,7 +135,10 @@ class Walker(BasicWalker):
 
         while len(walk) < walk_length:
             cur = walk[-1]
-            cur_nbrs = list(G.neighbors(cur))
+            if G:
+                cur_nbrs = list(G.neighbors(cur))
+            else:
+                cur_nbrs = adjlist[cur]
             if len(cur_nbrs) > 0:
                 if len(walk) == 1:
                     walk.append(
@@ -131,17 +158,26 @@ class Walker(BasicWalker):
         Get the alias edge setup lists for a given edge.
         """
         G = self.G
+        adjlist = self.adjlist
         p = self.p
         q = self.q
 
         unnormalized_probs = []
-        for dst_nbr in G.neighbors(dst):
-            if dst_nbr == src:
-                unnormalized_probs.append(G[dst][dst_nbr]['weight']/p)
-            elif G.has_edge(dst_nbr, src):
-                unnormalized_probs.append(G[dst][dst_nbr]['weight'])
+        if G:
+            dst_nbrs = list(G.neighbors(dst))
+        else:
+            dst_nbrs = adjlist[dst]
+        for dst_nbr in dst_nbrs:
+            if G:
+                weight = G[dst][dst_nbr]['weight']
             else:
-                unnormalized_probs.append(G[dst][dst_nbr]['weight']/q)
+                weight = self.adj[dst, dst_nbr].item()
+            if dst_nbr == src:
+                unnormalized_probs.append(weight/p)
+            elif G.has_edge(dst_nbr, src):
+                unnormalized_probs.append(weight)
+            else:
+                unnormalized_probs.append(weight/q)
         norm_const = sum(unnormalized_probs)
         normalized_probs = [
             float(u_prob)/norm_const for u_prob in unnormalized_probs]
@@ -153,11 +189,20 @@ class Walker(BasicWalker):
         Preprocessing of transition probabilities for guiding the random walks.
         """
         G = self.G
+        adjlist = self.adjlist
 
         alias_nodes = {}
-        for node in G.nodes():
-            unnormalized_probs = [G[node][nbr]['weight']
-                                  for nbr in G.neighbors(node)]
+        if self.G:
+            nodes = list(self.G.nodes())
+        else:
+            nodes = list(range(self.node_size))
+        for node in nodes:
+            if G:
+                nbrs = list(G.neighbors(node))
+            else:
+                nbrs = adjlist[node]
+            unnormalized_probs = [G[node][nbr]['weight'] if G else self.adj[node, nbr].item()
+                                  for nbr in nbrs]
             norm_const = sum(unnormalized_probs)
             normalized_probs = [
                 float(u_prob)/norm_const for u_prob in unnormalized_probs]
@@ -168,7 +213,11 @@ class Walker(BasicWalker):
 
         look_up_dict = self.look_up_dict
         node_size = self.node_size
-        for edge in G.edges():
+        if self.edgelist:
+            edges = self.edgelist
+        else:
+            edges = G.edges()
+        for edge in edges:
             alias_edges[edge] = self.get_alias_edge(edge[0], edge[1])
 
         self.alias_nodes = alias_nodes

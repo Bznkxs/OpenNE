@@ -73,67 +73,69 @@ def transfer(filename):
     @param filename: filename
     @return: two dicts
     """
+    try:
+        with open(filename, 'r') as f:
+            # [("model", [("dataset", "cora"), (...)] )]
+            log_output = list(f.__iter__())
+            args, res = log_output[-2:]
 
-    with open(filename, 'r') as f:
-        # [("model", [("dataset", "cora"), (...)] )]
-        args, res = f.__iter__()
+            args = args[13:]  # "actual args: "
+            args = args.replace("'", '"')
+            args = args.replace("False", '"False"')
+            args = args.replace("True", '"True"')
 
-        args = args[13:]  # "actual args: "
-        args = args.replace("'", '"')
-        args = args.replace("False", '"False"')
-        args = args.replace("True", '"True"')
+            res = res.replace("'", '"')
+            # print(args)
+            args = json.loads(args)
+            res = json.loads(res)
+            args.update(res)
 
-        res = res.replace("'", '"')
-        # print(args)
-        args = json.loads(args)
-        res = json.loads(res)
-        args.update(res)
-
-        nm = os.path.basename(os.path.normpath(filename))
-        nms = nm.split('_')
-        time = nms[0][2:4] + '-' + nms[0][4:6] + '-' + nms[0][6:8] + ' ' + nms[1][:2] + ":" + nms[1][2:4] + ":" + nms[
-                                                                                                                      1][
-                                                                                                                  4:6]
-        priority_list_args = [
-            ['dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr', 'early_stopping', 'dim', 'hiddens', 'readout', 'est',
-             'time'], [], []]
-        default_value = {
-            'dataset': '-',
-            'enc': '-',
-            'dec': '-',
-            'sampler': '-',
-            'epochs': '500',
-            'lr': '0.01',
-            'early_stopping': '20',
-            'dim': '128',
-            'hiddens': '-',
-            'readout': 'mean',
-            'est': 'jsd',
-            'time': '-',
-            'micro': '-',
-            'macro': '-',
-            'samples': '-',
-            'weighted': '-'
-        }
-        for i in ['micro', 'macro', 'samples', 'weighted']:
-            priority_list_args[1].append(i)
-        tmp = 0
-        rddd = {}
-        for w in priority_list_args:
-            for j in w:
-                rddd[j] = tmp
-                tmp += 1
-        args['time'] = time
-        nm = args['model']
-        r_args = [(nm, hlist())]
-        for i in priority_list_args[0]:
-            r_args[0][1].append((i, args.get(i, default_value[i])))
-        for i in priority_list_args[1]:
-            r_args[0][1].append((i, int(res[i] * 10000 + 0.5) / 10000))
-        for i in priority_list_args[2]:
-            r_args[0][1].append((i, args.get(i, default_value[i])))
-        return r_args, rddd
-
+            nm = os.path.basename(os.path.normpath(filename))
+            nms = nm.split('_')
+            time = nms[0][2:4] + '-' + nms[0][4:6] + '-' + nms[0][6:8] + ' ' + nms[1][:2] + ":" + nms[1][2:4] + ":" + nms[
+                                                                                                                          1][
+                                                                                                                      4:6]
+            priority_list_args = [
+                ['dataset', 'enc', 'dec', 'sampler', 'epochs', 'lr', 'early_stopping', 'dim', 'hiddens', 'readout', 'est',
+                 'time'], [], []]
+            default_value = {
+                'dataset': '-',
+                'enc': '-',
+                'dec': '-',
+                'sampler': '-',
+                'epochs': '500',
+                'lr': '0.01',
+                'early_stopping': '20',
+                'dim': '128',
+                'hiddens': '-',
+                'readout': 'mean',
+                'est': 'jsd',
+                'time': '-',
+                'micro': '-',
+                'macro': '-',
+                'samples': '-',
+                'weighted': '-'
+            }
+            for i in ['micro', 'macro', 'samples', 'weighted']:
+                priority_list_args[1].append(i)
+            tmp = 0
+            rddd = {}
+            for w in priority_list_args:
+                for j in w:
+                    rddd[j] = tmp
+                    tmp += 1
+            args['time'] = time
+            nm = args['model']
+            r_args = [(nm, hlist())]
+            for i in priority_list_args[0]:
+                r_args[0][1].append((i, args.get(i, default_value[i])))
+            for i in priority_list_args[1]:
+                r_args[0][1].append((i, int(res[i] * 10000 + 0.5) / 10000))
+            for i in priority_list_args[2]:
+                r_args[0][1].append((i, args.get(i, default_value[i])))
+            return r_args, rddd
+    except Exception as _:
+        print("cannot open file?", _)
 
 def update(clear=False, md_deprecated=True):
     flag = 0
@@ -147,11 +149,13 @@ def update(clear=False, md_deprecated=True):
         flag = 0
     menu = set(menu)
     curdir = os.path.abspath(__file__)[:-os.path.basename(__file__).__len__()]
+    logdir = os.path.normpath(os.path.join(curdir, '..', '..', 'src', 'logs'))
+    print("reading files from", logdir)
     X = []
-    ld = os.listdir(curdir)
+    ld = os.listdir(logdir)
     for i, d in tqdm.tqdm(enumerate(ld), total=len(ld)):
         _d = d
-        d = os.path.join(os.path.normpath(curdir), d)
+        d = os.path.join(os.path.normpath(logdir), d)
         # print(d)
         if os.path.isfile(d) and d.endswith(".txt"):  # logfile
             if _d in menu:
@@ -161,7 +165,7 @@ def update(clear=False, md_deprecated=True):
                 X.extend(x)
                 menu.add(_d)
             except Exception as _:
-                print(d)
+                print("file", d)
                 print(_)
                 continue
     with open(menu_name, 'w') as fp:

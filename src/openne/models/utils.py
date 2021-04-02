@@ -25,13 +25,13 @@ def scipy_coo_to_torch_sparse(scipy_sparse_coo):
 
 import time
 def torch_sparse_to_scipy_coo(torch_sparse):
-    print("torch_sparse_to_scipy_coo...")
+    #print("torch_sparse_to_scipy_coo...")
     t1 = time.time()
     a = torch_sparse.coalesce()
     (i, j), v = a.indices().numpy(), a.values().numpy()
 
     ret = sp.coo_matrix((v, (i, j)), shape=a.shape)
-    print("time =", time.time() - t1)
+    #print("time =", time.time() - t1)
     return ret
 
 
@@ -40,7 +40,7 @@ def preprocess_features(features, sparse=False):
     rowsum = features.sum(1)
     r_inv = (rowsum**-1).flatten()
     r_inv[torch.isinf(r_inv)] = 0.
-    print(r_inv.shape)
+    #print(r_inv.shape)
     features = r_inv.unsqueeze(1) * features
     return features.to_sparse() if sparse else features
 
@@ -79,7 +79,7 @@ def sparse_mx_to_torch_sparse_tensor(sparse_mx):
 
 def chebyshev_polynomials(adj, k):
     """Calculate Chebyshev polynomials up to order k. Return a list of sparse matrices (tuple representation)."""
-    print("Calculating Chebyshev polynomials up to order {}...".format(k))
+    #print("Calculating Chebyshev polynomials up to order {}...".format(k))
 
     adj_normalized = normalize_adj(adj)
     laplacian = sp.eye(adj.shape[0]) - adj_normalized

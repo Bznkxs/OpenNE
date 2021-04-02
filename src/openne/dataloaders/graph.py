@@ -13,7 +13,7 @@ import urllib
 import errno
 from ..utils import *
 from tqdm import tqdm
-
+from typing import Union
 
 # todo: add split_train_val_test here
 class Graph(Dataset, ABC):
@@ -113,7 +113,7 @@ class Graph(Dataset, ABC):
         if type(self).weighted() and not weighted:
             A = A.astype(np.bool).astype(np.float32)
         if scaled is not None:  # e.g. scaled = 1
-            print(scaled)
+            # print(scaled)
             A = A / A.sum(scaled, keepdims=True)
         return A
 
@@ -134,12 +134,12 @@ class Graph(Dataset, ABC):
         return self.G.number_of_edges()
 
     def encode_node(self):
-        print("encoding nodes...")
+        # self.debug("Encoding nodes...")
         look_up = self.look_up_dict
         look_back = self.look_back_list
         look_up.clear()
         look_back.clear()
-        for node in tqdm(self.G.nodes()):
+        for node in (self.G.nodes()):
             look_up[node] = len(look_back)
             look_back.append(node)
             self.G.nodes[node]['status'] = ''
@@ -378,7 +378,7 @@ class NetResources(Graph, ABC):
 class Adapter(Graph, ABC):
     def __init__(self, AdapteeClass, *args, **kwargs):
         self.data = AdapteeClass(*args, **kwargs)
-        print("Adapter of", self.data)
+        #print("Adapter of", self.data)
 
         super(Adapter, self).__init__(None, self.root_dir, {}, **kwargs)
 

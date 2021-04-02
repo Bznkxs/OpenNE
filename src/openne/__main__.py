@@ -218,8 +218,9 @@ def main(args):
         if not silent:
             print(*args, **kwargs)
         logs.append((args, kwargs))
-
-    log("actual args:", args, silent=args['silent'])
+    log("[OpenNE] This is a welcome message.", silent=args['silent'], flush=True)
+    log('python3 -m openne', ' '.join(sys.argv[1:]), silent=args['silent'], flush=True)
+    log("actual args:", args, silent=args['silent'], flush=True)
 
     Task, Graph, Model = parse(**args)  # parse required Task, Dataset, Model (classes)
 

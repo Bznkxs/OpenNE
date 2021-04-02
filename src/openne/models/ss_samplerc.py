@@ -179,13 +179,7 @@ class DGISampler():
         self.positive = self.anchor
         self.batch_size = batch_size
 
-    def augment(self):
-
-        self.negative = np.random.permutation(np.arange(self.nnodes))
-
-
     def sample(self):
-        self.augment()
         idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
         ba, bd, bf = [], [], []
         for i in idx:
@@ -216,11 +210,7 @@ class DiffSampler():
         self.device = device
         self.positive = torch.FloatTensor(self.compute_ppr()).to(self.device)
 
-    def augment(self):
-        self.negative = np.random.permutation(np.arange(self.nnodes))
-
     def sample(self):
-        self.augment()
         idx = np.random.randint(0, self.nnodes - self.sample_size + 1, 1)
         ba, bd, bf = [], [], []
         for i in idx:

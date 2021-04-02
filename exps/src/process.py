@@ -2,6 +2,7 @@ import pandas as pd
 import seaborn as sns
 import sys
 import os
+import time
 from sys import argv
 
 curdir = os.path.dirname(__file__)
@@ -16,9 +17,13 @@ sns.set(style='whitegrid')
 
 try:
     from . import parse_exps
+    from . import logs_to_md
+    from logs_to_md import update
     from parse_exps import ExpVariable
 except Exception as _:
     import parse_exps
+    import logs_to_md
+    from logs_to_md import update
     from parse_exps import ExpVariable
 import numpy as np
 
@@ -48,10 +53,15 @@ def gen_work_table(exps: ExpVariable, exp_run):
     # run 1 -- framework of exp. table, get menu of experiment plan
     exp_plan = {parse_exps.gen_bash(k): {"done": False, "priority": 0} for k in exps.all()}
     for optname, i in exps.opt_groups.items():
+       # print("optname", optname)
         if optname[-1].isdigit():
+       #     print(" digit", optname[-1])
             for k in exps.opt_groups[optname]:
                 exp_plan[parse_exps.gen_bash(k)]["priority"] = int(optname[-1])
+       #         if optname[-1] == "1":
+       #             print(parse_exps.gen_bash(k))
             continue
+
         for exp in i:
             model, dataset, hyper, modelstr, hyperstr = parse_exp(exp)
             if modelstr in modelset:
@@ -63,15 +73,14 @@ def gen_work_table(exps: ExpVariable, exp_run):
             else:
                 modelset[modelstr] = {dataset: {hyperstr: 1}}
 
-
     # get exp opt group
     opt_groups = {"node_node": "ss_nodemodel",
                   "node_graph": "ss_gae",
                   "graph_node": "ss_graphmodel",
                   "graph_graph": "ss_gaeg"}
     opt_groups_lookup = {v: k for (k, v) in opt_groups.items()}
-    # print(modelset.keys())
-    # print("---")
+   # print(modelset.keys())
+   # print("---")
 
     # run 2 -- look through log files and mark
     for exp in exp_run.iterrows():
@@ -90,20 +99,23 @@ def gen_work_table(exps: ExpVariable, exp_run):
             continue
         modelstr = ','.join([optname] + model)
         hyperstr = ','.join(hyper)
-
+        # print(modelstr, dataset, hyperstr)
         if modelstr in modelset:
             if dataset in modelset[modelstr]:
                 if hyperstr in modelset[modelstr][dataset]:
                     modelset[modelstr][dataset][hyperstr] = 3
-
+                  #  print("#3")
                     # print(modelstr, dataset, hyperstr)
                 else:
+                  #  print("#2")
                     pass
                     # print(222, hyperstr, ":", modelstr, dataset, modelset[modelstr][dataset].keys())
             else:
+               # print("#1")
                 pass
-                #print(111)
+                # print(111)
         else:
+           # print("#0")
             pass
             # print(1000, modelstr)
 
@@ -189,6 +201,7 @@ def draw_table(table):
         booksheet.write(table.shape[0] + 1, j, '', styles_data[j])
     workbook.save(xls_name)
 
+
 def generate_exp_data():
     data = pd.read_csv(csv_name, skipinitialspace=True)
 
@@ -211,18 +224,41 @@ def generate_exp_data():
         print("will not generate table for human")
 
     # generate command series
-    exp_plan = [(k, v['priority']) for (k, v) in exp_plan.items() if v['done'] == False]
-    if len(argv) == 2 and argv[1] == 'minimal':
-        exp_plan = [(k, v) for (k, v) in exp_plan if v == 1]
-    exp_plan.sort(key=lambda x: -x[1])
-    with open(script_name, 'w') as fp:
-        for (k, v) in exp_plan:
-            print(k, file=fp)
-
+    # print("done\n", '\n '.join([f'{k} ****** {v}' for (k, v) in exp_plan.items() if v['done']]))
+    if len(argv) == 3 and argv[2] == 'minimal':
+        exp_plan = [(k, v) for (k, v) in exp_plan.items() if v['priority'] == 1]
+    all_exps = len(exp_plan)
+    exp_plan = [(k, v) for (k, v) in exp_plan if not v['done']]
+    new_exps = len(exp_plan)
+    print(f"Experiment progress = {all_exps-new_exps}/{all_exps}")
+    if argv[1] == 'gen':
+        exp_plan.sort(key=lambda x: -x[1]['priority'])
+        with open(script_name, 'w') as fp:
+            for (k, v) in exp_plan:
+                print(k, file=fp)
 
     # print(data)
     # sns.violinplot(x='enc', y='micro', hue='dataset', data=data)
     # plt.show()
 
+
 if __name__ == '__main__':
-    generate_exp_data()
+    """
+    args: 
+    [0] process.py
+    [1] gen/show
+        - gen = generate new experiment commands
+        - show = show progress
+    [2] (optional) <GROUP_NAME>
+        - minimal = minimal experiment group
+        * default: full
+    """
+    assert argv[1] in ['gen', 'show']
+    if argv[1] == 'show':
+        while 1:
+            update()
+            generate_exp_data()
+            time.sleep(20)
+    else:
+        update()
+        generate_exp_data()
