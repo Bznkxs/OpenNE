@@ -15,7 +15,7 @@ class GAT(Layer):
                  sparse_inputs=False, bias=True,
 
                  dropout_coef=0.2,
-                 attn_heads=3, attn_heads_reduction='average',
+                 attn_heads=1, attn_heads_reduction='average',
                  residual=True,
                  **kwargs):
         super(GAT, self).__init__(**kwargs)
@@ -27,7 +27,7 @@ class GAT(Layer):
         if attn_heads_reduction == 'concat':
             self.output_dim *= attn_heads
         self.attn_heads = int(attn_heads+0.5)
-        print("attn_heads=",self.attn_heads)
+        #print("attn_heads=",self.attn_heads)
         self.dropout_input = dropout
         if dropout_coef is None:
             dropout_coef = dropout
@@ -80,12 +80,23 @@ class GAT(Layer):
         # print(f"    Allocated: {torch.cuda.memory_allocated()} - ", end='')
         x = inputs[0]  # input node features (n * input_dim)
         adj = inputs[1]
+        #  attention mask
+        if adj.is_sparse:
+            adj = adj.to_dense()
+        adj[adj > self.threshold_val] = 1.0
+
         if self.training:
             # dropout
             if self.sparse_inputs:
                 x = sparse_dropout(x, self.dropout_input, self.num_features_nonzero)
             else:
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
+
+        def masked_softmax(vec, mask, dim=1, epsilon=1e-5):
+            exps = torch.exp(vec)
+            masked_exps = exps * mask.float()
+            masked_sums = masked_exps.sum(dim, keepdim=True) + epsilon
+            return (masked_exps/masked_sums)
 
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
@@ -107,17 +118,11 @@ class GAT(Layer):
             f2 = torch.mm(feat_in, a[1])
 
             c = f1 + f2.T
-
-
-
-            #  attention mask
-            if adj.is_sparse:
-                adj = adj.to_dense()
-            adj[adj > self.threshold_val] = 1.0
-            c += -1e9 * (1.0 - adj)
+            #c += -1e9 * (1.0 - adj)
 
             # leakyReLU and softmax
-            c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
+            c = masked_softmax(torch.nn.functional.leaky_relu(c, 0.2), adj)
+            #c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
 
             if self.training:
                 # dropout

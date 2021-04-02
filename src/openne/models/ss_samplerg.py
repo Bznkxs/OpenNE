@@ -7,7 +7,7 @@ import numpy as np
 from scipy.linalg import fractional_matrix_power, inv
 from ..utils import getdevice
 from .utils import process_graphs
-from ss_input import model_input
+from .ss_input import model_input
 
 class BaseSampler:
     def __init__(self, name, graph, features, batch_size, negative_ratio=5, **kwargs):
