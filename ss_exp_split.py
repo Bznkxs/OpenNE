@@ -17,6 +17,7 @@ def split(name, parts):
         w3 = w2[m * size: (m + 1) * size]
         print((m + 1) * size)
         f2 = open(f"src/{name}_{m}.sh", 'w')
+        f2.write("#!/bin/sh\n")
         for i in w3:
             f2.write(i)
         f2.close()
