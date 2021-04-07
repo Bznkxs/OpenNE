@@ -87,7 +87,7 @@ class NodeSampler:
     def __init__(self, node_sampler: ss_sampler.TripleGenerator, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
         self.node_sampler = node_sampler
-        self.sample_size = 2000
+        self.sample_size = 5000
         self.graphs = graphs
         self.anchor = self.graphs  # densere aut non densere, illa quaestio
         self.num_graphs = len(graphs)
@@ -159,6 +159,7 @@ class NodeSampler:
         @return:
         """
         feats, edges, slices = self.get_sample()
+        #print(slices)
         for i in slices:  # for each batch
             #print("*slice", i)
             f_pos_d = feats[i]
@@ -182,7 +183,7 @@ class NodeSampler:
         @return: number of batches = len(slices) * 2
         """
         _, _, slices = self.get_sample()
-        return len(slices) * 2
+        return len(slices)
 
 
 
@@ -192,7 +193,7 @@ class NodeSampler:
 class GraphSampler:
     def __init__(self, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
-        self.sample_size = 2000
+        self.sample_size = 5000
         self.graphs = graphs
         self.anchor = self.graphs  # densere aut non densere, illa quaestio
         self.num_graphs = len(graphs)

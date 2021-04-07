@@ -132,6 +132,8 @@ class SS_GAE_deprecated(ModelWithEmbeddings):
         if self.sampler in ['dgi', 'mvgrl']:
             batch_num = 1
             ba, bd, bf, shuf_fts = self.model.sampler.sample()
+            print(ba.shape, bd.shape, bf.shape, shuf_fts.shape)
+            exit(1)
             bx = model_input('graph', None, ba, bf)
             bpos = model_input('node', None, bd, bf)
             bneg = model_input('node', None, bd, shuf_fts)

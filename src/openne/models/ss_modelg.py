@@ -76,8 +76,6 @@ class SSModel(nn.Module):
         hxp, hxn = get_anchor()
         pos_score = get_score(hxp, pos)
         neg_score = get_score(hxn, neg)
-        # print(hxp.shape, hxn.shape, hpos.shape, hneg.shape)
-
         loss = self.estimator(pos_score, neg_score)
         self.encoder.reset()
         return loss

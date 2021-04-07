@@ -45,7 +45,6 @@ class Encoder(nn.Module):
         @return:
         """
         hx = torch.cat(x.feat)
-        # print(hx.shape)
         adj = x.adj
         # print("encoder:", hx.device, adj.device)
         # adj = x.adj.to_dense().to(getdevice())
@@ -60,7 +59,6 @@ class Encoder(nn.Module):
         for layer in self.layers:
             hx = layer([hx, adj])
             # hxs.append(hx)
-
         if x.typ == x.GRAPHS:
             # todo: this is a brute-force graph-wise pooling. change this to faster pooling
             # nhxs = []
@@ -82,15 +80,13 @@ class Encoder(nn.Module):
             #
             # hx = torch.cat(nhxs, 1)
             hx = pooling(hx)
-            hx = self.global_d(hx)
+            hx = self.sigm(self.global_d(hx))
         else:
             # hx = torch.cat(hxs, 1)
             hx = self.local_d(hx)
-
             if x.actual_indices is not None:
                 self.full_embeddings = hx
                 hx = hx[x.actual_indices]
-        # print(hx.shape)
         return hx
 
 

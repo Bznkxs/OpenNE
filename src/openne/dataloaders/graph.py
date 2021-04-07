@@ -94,6 +94,12 @@ class Graph(Dataset, ABC):
             return np.ones((self.G.number_of_nodes(), 1))
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
+    
+    def setfeatures(self, features):
+        if self.attributed():
+            for i in range(self.G.number_of_nodes()):
+                self.G.nodes[self.look_back_list[i]]['feature'] = features[i]
+
 
     def adjmat(self, directed=True, weighted=True, scaled=None, sparse=False):
         """

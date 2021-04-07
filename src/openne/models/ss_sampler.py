@@ -89,7 +89,7 @@ class TripleGenerator(Sampler):
         elif self.anchor_name == 'graph':
             self.gen_graph_positive()
             self.gen_graph_negative()
-
+        
         self.samples = torch.stack((self.anchor, self.positive, self.negative)).t()
 
     def regenerate(self):
