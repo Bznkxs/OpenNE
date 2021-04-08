@@ -7,3 +7,4 @@
 /src/testwalk.bat
 /**/*.pyc
 /ignored
+/src/logs/*
