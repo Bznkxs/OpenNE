@@ -8,3 +8,4 @@
 /**/*.pyc
 /ignored
 /src/logs/*
+/data/*

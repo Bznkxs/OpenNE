@@ -39,8 +39,7 @@ class PyG(Adapter, ABC):
 
         # print("node features set")
 
-        self.set_node_label(torch.arange(len(self.data.x)).reshape([-1, 1]).tolist())
-
+        self.set_node_label(self.data.y.reshape(-1,1).tolist())
         # print("node label set")
 
         # print("loaddata() finished.")

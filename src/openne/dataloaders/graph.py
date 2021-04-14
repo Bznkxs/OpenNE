@@ -40,11 +40,13 @@ class Graph(Dataset, ABC):
         rootprompt = ""
         if self.dir:
             rootprompt = "from root dir: {}".format(osp.abspath(self.dir))
-        self.debug("Loading {} Dataset {}".format(type(self).__name__, rootprompt))
+        self.debug("Loading {} Dataset {}".format(type(self).__name__, rootprompt),
+                   flush=True)
         self.load_data()
         self.debug(f"This is a {self.modifier()} dataset with {self.ngraph} "
                    f"{'graph' if self.ngraph == 1 else 'graphs'}, "
-                   f"{self.nodesize} nodes and {self.edgesize} edges.")
+                   f"{self.nodesize} nodes and {self.edgesize} edges.",
+                   flush=True)
 
     def modifier(self):
         if self.nodesize < 2000:
