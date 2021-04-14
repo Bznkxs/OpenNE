@@ -15,6 +15,7 @@ from ..utils import *
 from tqdm import tqdm
 from typing import Union
 
+
 # todo: add split_train_val_test here
 class Graph(Dataset, ABC):
     def __init__(self, resource_url, root_dir, name_dict, **kwargs):
@@ -30,7 +31,7 @@ class Graph(Dataset, ABC):
         self.look_up_dict = {}
         self.look_back_list = []
         self.name_dict = name_dict
-
+        self.ngraph = 1
         for kw in set(kwargs):
             self.__setattr__(kw, kwargs.get(kw))
 
@@ -41,6 +42,29 @@ class Graph(Dataset, ABC):
             rootprompt = "from root dir: {}".format(osp.abspath(self.dir))
         self.debug("Loading {} Dataset {}".format(type(self).__name__, rootprompt))
         self.load_data()
+        self.debug(f"This is a {self.modifier()} dataset with {self.ngraph} "
+                   f"{'graph' if self.ngraph == 1 else 'graphs'}, "
+                   f"{self.nodesize} nodes and {self.edgesize} edges.")
+
+    def modifier(self):
+        if self.nodesize < 2000:
+            scale = 'small'
+        elif self.nodesize < 10000:
+            scale = 'medium-sized'
+        else:
+            scale = 'large'
+        edge_density = self.edgesize * self.ngraph / (self.nodesize ** 2)
+        if edge_density < 0.01 and self.edgesize < self.nodesize * 15:
+            density = 'sparse'
+        elif edge_density < 0.25:
+            density = 'medium-dense'
+        else:
+            density = 'dense'
+        return scale + ' ' + density
+
+
+    def __getitem__(self, item):
+        return self.G
 
     def load_data(self):
         if not files_exist(self.paths):
@@ -49,7 +73,7 @@ class Graph(Dataset, ABC):
                 raise FileNotFoundError("Cannot find required files:\n{}".format(errmsg))
             makedirs(self.dir)
             self.debug('Downloading dataloaders "{}" from "{}".\n'
-                  'Files will be saved to "{}".'.format(type(self).__name__, self.resource_url, self.dir))
+                       'Files will be saved to "{}".'.format(type(self).__name__, self.resource_url, self.dir))
             self.download()
             self.debug('Downloaded.')
         self.read()
@@ -94,12 +118,11 @@ class Graph(Dataset, ABC):
             return np.ones((self.G.number_of_nodes(), 1))
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
-    
+
     def setfeatures(self, features):
         if self.attributed():
             for i in range(self.G.number_of_nodes()):
                 self.G.nodes[self.look_back_list[i]]['feature'] = features[i]
-
 
     def adjmat(self, directed=True, weighted=True, scaled=None, sparse=False):
         """
@@ -149,7 +172,6 @@ class Graph(Dataset, ABC):
             look_up[node] = len(look_back)
             look_back.append(node)
             self.G.nodes[node]['status'] = ''
-
 
     def set_g(self, g):
         self.G = g
@@ -280,8 +302,8 @@ class Graph(Dataset, ABC):
         state = torch.random.get_rng_state()
         training_size = int(train_percent * len(X))
         if validate_size is not None:
-            if training_size < validate_size * 2:    # training set too small
-                validate_size = training_size // 2   # force 50%
+            if training_size < validate_size * 2:  # training set too small
+                validate_size = training_size // 2  # force 50%
             training_size -= validate_size
         else:
             validate_size = int(validate_percent * len(X))
@@ -384,7 +406,7 @@ class NetResources(Graph, ABC):
 class Adapter(Graph, ABC):
     def __init__(self, AdapteeClass, *args, **kwargs):
         self.data = AdapteeClass(*args, **kwargs)
-        #print("Adapter of", self.data)
+        # print("Adapter of", self.data)
 
         super(Adapter, self).__init__(None, self.root_dir, {}, **kwargs)
 
