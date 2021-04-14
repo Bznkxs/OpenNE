@@ -1,6 +1,6 @@
 from .utils import *
 from .models import *
-from .ss_modelc import SSModel
+from ._________deprecated_ss_modelc import SSModel
 import time
 import scipy.sparse as sp
 import torch
