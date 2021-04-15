@@ -204,6 +204,7 @@ class SS_GAEg(ModelWithEmbeddings):
         """
         g = graph.G
         features = torch.from_numpy(graph.features()).type(torch.float32)
+        print(features.shape, features.type)
         features = preprocess_features(features, sparse=self.sparse)
         graph.setfeatures(features)
         self.register_buffer("features", features)

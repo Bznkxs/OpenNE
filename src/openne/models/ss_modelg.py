@@ -29,7 +29,7 @@ class SSModel(nn.Module):
         self.estimator_name = estimator_name
         self.features = features
         self.normalize = norm
-        self.readout = BaseReadOut(self.readout_name)
+        self.readout = BaseReadOut(self.readout_name, self.enc_dims)
 
         if isinstance(graphs, Graphs):
             graphs_data = graphs.data

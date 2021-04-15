@@ -15,7 +15,7 @@
     },
     "dataset": {
         "_options": {
-            "unigraph": ["cora", "citeseer", "pubmed"],
+            "unigraph": ["cora", "citeseer", "pubmed", "wikics", "coauthorcs", "coauthorphy", "amazoncomputers", "amazonphoto"],
             "multigraph": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr"]
         }
     },
@@ -36,17 +36,16 @@
             "_options": {
                 "node": [
                     "node-neighbor-random",
-                    "node-neighbor-except_neighbor",
                     "node-rand_walk-random",
-                    "node-rand_walk-except_neighbor"
+                    "gca"
                 ],
-                "graph": ["dgi", "mvgrl"]
+                "graph": ["dgi", "mvgrl", "graphcl"]
             }
         },
         "readout": {
             "_options": {
-                "default": ["mean"],
-                "others": ["sum"]
+                "default": ["mean", "sum", "jk-net"],
+                "others": ["sum", "jk-net"]
             }
         },
         "est": {
@@ -78,10 +77,10 @@
         "epochs": {"_options": {"a": ["500"]}},
         "early-stopping": {"_options": {"a": ["20"]}},
         "patience": {"_options": {"a": ["3"]}},
-        "dim": {"_options": {"node": ["64", "128", "256"], "graph": ["32", "64"],
+        "dim": {"_options": {"node": ["64", "128"], "graph": ["64", "128"],
                              "d0": ["32"], "d1": ["64"], "d2": ["128"], "d3": ["256"]}},
         "_hiddens": {"_options": {"h0": [0], "h1": [1], "h2": [2], "h3": [3]}},
-        "lr": {"_options": {"l0": ["0.001"], "l1": ["0.01"], "extended": ["0.02", "0.03"]}},
+        "lr": {"_options": {"l0": ["0.001"], "l1": ["0.01"]}},
         "_options": {
             "node_clf": {
                 "clf-ratio": ["node"],
