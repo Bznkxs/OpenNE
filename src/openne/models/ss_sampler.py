@@ -104,6 +104,9 @@ class TripleGenerator(Sampler):
         # print("generating anchors and graphs_diff samples...")
         if self.pos_name == 'neighbor':
             self.positive = self.adj_ind[1]
+        elif self.pos_name == 'self':
+            self.anchor = torch.arange(self.nnodes)
+            self.positive = self.anchor
         elif self.pos_name == 'rand_walk':
             dw = getattr(self, 'dw', True)
             workers = getattr(self, 'workers', 1)
@@ -195,6 +198,9 @@ class TripleGenerator(Sampler):
             # print(f"generating negative samples with {self.neg_name}...")
         if self.neg_name == 'random':
             self.negative = torch.randint(high=self.nnodes, size=(len(self.anchor),))
+        elif self.neg_name == 'except_self':
+            self.negative = torch.randint(high=self.nnodes - 1, size=(len(self.anchor),))
+            self.negative[self.negative >= self.anchor] += 1
         elif self.neg_name == 'except_neighbor':  # anchor must be node
             #  generate adjacency list
             w1 = {}

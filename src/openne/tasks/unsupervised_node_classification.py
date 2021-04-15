@@ -40,7 +40,7 @@ class UnsupervisedNodeClassification(BaseTask):
 
     def _classify(self, graph, vectors, seed=None, simple=False):
         self.debug("Training classifier using {:.2f}% nodes...".format(
-                self.kwargs['clf_ratio']*100))
+                self.kwargs['clf_ratio']*100), flush=True)
         
         clf = Classifier(vectors=vectors, clf=LogisticRegressionCV(cv=5, random_state=seed), simple=simple, silent=self.kwargs['silent'])
         return clf.train_and_evaluate(graph, self.train_kwargs()['clf_ratio'], seed=seed)

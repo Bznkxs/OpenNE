@@ -234,6 +234,8 @@ def generate_exp_data():
     # print("done\n", '\n '.join([f'{k} ****** {v}' for (k, v) in exp_plan.items() if v['done']]))
     if len(argv) == 3 and argv[2] == 'minimal':
         exp_plan = [(k, v) for (k, v) in exp_plan.items() if v['priority'] == 1]
+    else:
+        exp_plan = [(k, v) for (k, v) in exp_plan.items()]
     all_exps = len(exp_plan)
     #print(all_exps, list(exp_plan.keys())[0], list(exp_plan.items())[0])
 

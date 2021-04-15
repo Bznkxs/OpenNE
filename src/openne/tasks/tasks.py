@@ -31,7 +31,7 @@ class BaseTask:
         self.debug('finished')
 
     def train(self, model, graph):
-        self.debug(f"Executing task {self.__class__.__name__}.")
+        self.debug(f"Executing task {self.__class__.__name__}.", flush=True)
         self.split_dataset(graph)
         res = model(graph, **self.train_kwargs())
         return self._process(res)

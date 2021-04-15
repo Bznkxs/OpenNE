@@ -4,7 +4,7 @@ import time
 import torch
 import networkx as nx
 import numpy as np
-from typing import Union
+from typing import Union, List
 from scipy.linalg import fractional_matrix_power, inv
 from ..utils import getdevice
 from .utils import process_graphs
@@ -47,25 +47,35 @@ def compute_ppr(edge_index, alpha=0.2, self_loop=True):
     at = np.matmul(np.matmul(dinv, a), dinv)  # A~ = D^(-1/2) x A^ x D^(-1/2)
     return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))  # a(I_n-(1-a)A~)^-1
 
-def sample_subgraph(graphs, n_nodes, max_graph_size, do_sample=True):
+
+def sample_subgraph(graph_data: List[graphinput], n_nodes=None,
+                    max_graph_size=None, do_sample=True):
     """
 
     @param do_sample: if False, return original graph.
-    @param graphs: a list of N graphs, [anchor, ...], which share the same features and node sampling.
+    @param graph_data: a list of N graphs, [anchor, ...], which share the same features and node sampling.
     @param n_nodes: number of nodes in any graph.
     @param max_graph_size: threshold of sampling.
     @return: subfeats of graph1, [subedges of grpah1, subedges of graph2...]
     """
+
+    if n_nodes is None:
+        n_nodes = len(graph_data[0].x)
+
+    if max_graph_size is None:
+        max_graph_size = n_nodes * 1 // 5
+
     # sample node list
     if do_sample:
         permuted_nodes = torch.randperm(n_nodes)
     else:
         permuted_nodes = torch.arange(n_nodes)
         max_graph_size = int(1e9)
+
     map_idx = torch.argsort(permuted_nodes)
     subnodes = permuted_nodes[:max_graph_size]
 
-    feats = graphs[0].x
+    feats = graph_data[0].x
 
     subfeats = feats[subnodes].to(getdevice())
 
@@ -75,12 +85,59 @@ def sample_subgraph(graphs, n_nodes, max_graph_size, do_sample=True):
 
         return subedges[:, e_sample]
 
-    subedges = [sample_edges(graph.edge_index) for graph in graphs]
+    subedges = [sample_edges(graph.edge_index) for graph in graph_data]
 
     return subfeats, subedges
 
 
+def augment_subgraph(graph_data: graphinput, n_nodes=None, max_graph_size=None, do_sample=True):
+    subfeats, subedges = sample_subgraph([graph_data], n_nodes, max_graph_size, do_sample)
+    return subfeats, subedges[0]
 
+
+def drop_edges(graph: graphinput, max_edge_size=None):
+    """
+    @param graph: input graph
+    @param max_edge_size: threshold (0.8*n_edges by default)
+    @return: feats & edges
+    """
+    n_edges = graph.edge_index.shape[1]
+    if max_edge_size is None:
+        max_edge_size = n_edges * 4 // 5
+    keep_edges = torch.randperm(n_edges)[:max_edge_size]
+    # torch.multinomial(torch.arange(n_edges), max_edge_size,
+    #                               replacement=True)
+    subedges = graph.edge_index[:, keep_edges]
+    return graph.x, subedges
+
+
+def drop_nodes(graph: graphinput, max_graph_size=None):
+    """
+    @param graph: input graph
+    @param max_graph_size: threshold
+    @return: feats & edges
+    """
+    n_nodes = len(graph.x)
+    if max_graph_size is None:
+        max_graph_size = n_nodes * 4 // 5
+    subfeats, subedges = sample_subgraph([graph], max_graph_size=max_graph_size)
+    return subfeats, subedges[0]
+
+
+def mask_attribute(graph: graphinput, mask_size=None,
+                   mask_using: Union[None, torch.Tensor] = None):
+    n_nodes = len(graph.x)
+    if mask_size is None:
+        mask_size = n_nodes * 1 // 5
+    mask = torch.randperm(n_nodes)[:mask_size]
+    # torch.multinomial(torch.arange(n_nodes), mask_size,
+    #                         replacement=True)
+    feats = torch.clone(graph.x)
+    if mask_using is None:
+        feats[mask] = torch.randn_like(graph.x[mask])
+    else:
+        feats[mask] = mask_using
+    return feats, graph.edge_index
 
 
 class NodeSampler:
@@ -151,26 +208,24 @@ class NodeSampler:
         adj, start_idx = process_graphs(graphs, getdevice())
         return adj, start_idx
 
-
-
     def __iter__(self):
         """
         create batch samples
         @return:
         """
         feats, edges, slices = self.get_sample()
-        #print(slices)
+        # print(slices)
         for i in slices:  # for each batch
-            #print("*slice", i)
+            # print("*slice", i)
             f_pos_d = feats[i]
             adj, start_idx = self.process_graphs(feats[i], edges[i])
             self.node_sampler.adapt(adj.to('cpu'))
-            #print("*shape", adj.shape)
+            # print("*shape", adj.shape)
             anchor_nodes, pos_nodes, neg_nodes = self.node_sampler[:]
-            #print("*indices", len(anchor_nodes), len(pos_nodes), len(neg_nodes))
-            #print(anchor_nodes[::197])
-            #print(pos_nodes[::197])
-            #print(neg_nodes[::197])
+            # print("*indices", len(anchor_nodes), len(pos_nodes), len(neg_nodes))
+            # print(anchor_nodes[::197])
+            # print(pos_nodes[::197])
+            # print(neg_nodes[::197])
             bx = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=anchor_nodes)
             bpos = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=pos_nodes)
             bneg = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=neg_nodes)
@@ -184,10 +239,6 @@ class NodeSampler:
         """
         _, _, slices = self.get_sample()
         return len(slices)
-
-
-
-
 
 
 class GraphSampler:
@@ -231,7 +282,8 @@ class GraphSampler:
         f_pos, e_anchor, e_diff, = [], [], []
         # sample subgraphs
         for i in range(self.num_graphs):
-            f1, (e1, e2) = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
+            f1, (e1, e2) = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
+                                           self.sample_subgraph)
             f_pos.append(f1)
             e_anchor.append(e1)
             e_diff.append(e2)
@@ -340,6 +392,7 @@ class DGISampler(GraphSampler):
         return f_neg, e_anchor, e_diff
 
 
+
 class DiffSampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = []
@@ -379,7 +432,127 @@ class DiffSampler(GraphSampler):
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
 
+class AugmentationSampler(DGISampler):
+
+    @classmethod
+    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+        g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
+        aug_methods = [drop_edges, mask_attribute, drop_nodes]
+        aug = torch.randperm(len(aug_methods))[:2].numpy()
+        f_aug1, f_aug2 = aug_methods[aug[0]], aug_methods[aug[1]]
+        for i in range(len(f_pos)):
+            g_p = graphinput(f_pos[i], None, e_anchor[i])
+            g_n = graphinput(f_neg[i], None, e_neg[i])
+            f_a, e_a = f_aug1(g_p)
+            f_d, e_d = f_aug2(g_p)
+            f_n, e_n = f_aug1(g_n)
+            f_dn, e_dn = f_aug2(g_n)
+
+            g_anchor.append(graphinput(f_a, None, e_a))
+            g_diff.append(graphinput(f_d, None, e_d))
+            g_neg.append(graphinput(f_n, None, e_n))
+            g_negdiff.append(graphinput(f_dn, None, e_dn))
+
+        return g_anchor, g_diff, g_neg, g_negdiff
+
+
+    def __iter__(self):
+        """
+        create batch samples
+        @return:
+        """
+        f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
+        for i in slices:  # for each batch
+            g_anchor, g_diff, g_neg, g_negdiff = \
+                self.process_graphs(f_pos[i], f_neg[i], e_anchor[i],
+                                    e_diff[i], e_neg[i], e_diffneg[i])
+            f_p = [g.x for g in g_anchor]
+            f_d = [g.x for g in g_diff]
+            f_n = [g.x for g in g_neg]
+            f_nd = [g.x for g in g_negdiff]
+            adj, start_idx = process_graphs(g_anchor, getdevice())
+            add, start_idd = process_graphs(g_diff, getdevice())
+            adn, start_idn = process_graphs(g_neg, getdevice())
+            adnd, start_idnd = process_graphs(g_negdiff, getdevice())
+            bx = model_input(model_input.GRAPHS, adj, start_idx, f_p)
+            bpos = model_input(model_input.NODES, add, start_idd, f_d)
+            bneg = model_input(model_input.NODES, adnd, start_idnd, f_nd)
+
+            bx_r = model_input(model_input.GRAPHS, add, start_idd, f_d)
+            bpos_r = model_input(model_input.NODES, adj, start_idx, f_p)
+            bneg_r = model_input(model_input.NODES, adn, start_idn, f_n)
+
+            yield bx, bpos, bneg
+            yield bx_r, bpos_r, bneg_r
+        self.cache = None
+
+
+class GCASampler(DGISampler):
+
+    @classmethod
+    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+        g_anchor, g_diff = [], []
+        aug_methods = [drop_edges, mask_attribute]
+        f_aug1, f_aug2 = aug_methods[0], aug_methods[1]
+        for i in range(len(f_pos)):
+            g_p = graphinput(f_pos[i], None, e_anchor[i])
+            f_a, e_a = f_aug1(g_p)
+            f_d, e_d = f_aug2(g_p)
+
+            g_anchor.append(graphinput(f_a, None, e_a))
+            g_diff.append(graphinput(f_d, None, e_d))
+
+
+        return g_anchor, g_diff # adj, add, adj, add, start_idx, start_idd, start_idx, start_idd
+
+    def __iter__(self):
+        """
+        create batch samples
+        @return:
+        """
+        f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
+        for i in slices:  # for each batch
+
+            #adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
+            g_anchor, g_diff = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i])
+            f_p = [g.x for g in g_anchor]
+
+            adj, start_idx = process_graphs(g_anchor, getdevice())
+            add, start_idd = process_graphs(g_diff, getdevice())
+            adn = adj
+            adnd = add
+            start_idn = start_idx
+            start_idnd = start_idd
+            anchor_nodes = torch.arange(len(adj)).repeat(20)
+            neg_nodes = torch.randint(high=len(adj) - 1, size=(len(anchor_nodes),))
+            neg_nodes[neg_nodes >= anchor_nodes] += 1
+
+            bx = model_input(model_input.NODES, adj, start_idx, f_p, actual_indices=anchor_nodes)
+            bpos = model_input(model_input.NODES, add, start_idd, f_p, actual_indices=anchor_nodes)
+            bneg = model_input(model_input.NODES, adnd, start_idnd, f_p, actual_indices=neg_nodes)
+
+            bx_r = model_input(model_input.NODES, add, start_idd, f_p, actual_indices=anchor_nodes)
+            bpos_r = model_input(model_input.NODES, adj, start_idx, f_p, actual_indices=anchor_nodes)
+            bneg_r = model_input(model_input.NODES, adn, start_idn, f_p, actual_indices=neg_nodes)
+
+            yield bx, bpos, bneg
+            yield bx, bpos, bneg_r
+            yield bx_r, bpos_r, bneg
+            yield bx_r, bpos_r, bneg_r
+        self.cache = None
+
+    def __len__(self):
+        """
+
+        @return: number of batches = len(slices) * 2
+        """
+        _, _, _, _, _, _, slices = self.get_sample()
+        return len(slices) * 4
+
+
 sampler_dict = {
     "dgi": DGISampler,
-    "mvgrl": DiffSampler
+    "mvgrl": DiffSampler,
+    "aug": AugmentationSampler,
+    "gca": GCASampler
 }
