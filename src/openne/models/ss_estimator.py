@@ -18,10 +18,10 @@ class JSDEstimator(torch.nn.Module):
         for i, j in kwargs.items():
             setattr(self, i, j)
 
-    def forward(self, positive, negative):
+    def forward(self, hxp, hxn, pos, neg, decoder):
         m = torch.nn.LogSigmoid()
-        ep = m(positive).mean()
-        eq = m(-negative).mean()
+        ep = m(decoder(hxp, pos)).mean()
+        eq = m(-decoder(hxn, neg)).mean()
         loss = -(ep + eq)
         return loss
 

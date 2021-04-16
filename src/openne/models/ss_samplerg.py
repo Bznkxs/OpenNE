@@ -280,6 +280,10 @@ class GraphSampler:
         """
         g_anchor, g_diff = self.anchor, self.graphs_diff
         f_pos, e_anchor, e_diff, = [], [], []
+        # random shuffle anchor and diff
+        idx = np.permutation(self.num_graphs)
+        g_anchor = g_anchor[idx]
+        g_diff = g_diff[idx]
         # sample subgraphs
         for i in range(self.num_graphs):
             f1, (e1, e2) = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
@@ -386,9 +390,12 @@ class DGISampler(GraphSampler):
 
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
         f_neg = []
-        for f in f_pos:
-            rp = np.random.permutation(len(f))
-            f_neg.append(f[rp])
+        if self.num_graphs == 1:
+            for f in f_pos:
+                rp = np.random.permutation(len(f))
+                f_neg.append(f[rp])
+        else:
+            f_neg = f_pos
         return f_neg, e_anchor, e_diff
 
 
@@ -475,12 +482,12 @@ class AugmentationSampler(DGISampler):
             adn, start_idn = process_graphs(g_neg, getdevice())
             adnd, start_idnd = process_graphs(g_negdiff, getdevice())
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_p)
-            bpos = model_input(model_input.NODES, add, start_idd, f_d)
-            bneg = model_input(model_input.NODES, adnd, start_idnd, f_nd)
+            bpos = model_input(model_input.GRAPHS, add, start_idd, f_d)
+            bneg = model_input(model_input.GRAPHS, adnd, start_idnd, f_nd)
 
             bx_r = model_input(model_input.GRAPHS, add, start_idd, f_d)
-            bpos_r = model_input(model_input.NODES, adj, start_idx, f_p)
-            bneg_r = model_input(model_input.NODES, adn, start_idn, f_n)
+            bpos_r = model_input(model_input.GRAPHS, adj, start_idx, f_p)
+            bneg_r = model_input(model_input.GRAPHS, adn, start_idn, f_n)
 
             yield bx, bpos, bneg
             yield bx_r, bpos_r, bneg_r

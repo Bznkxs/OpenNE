@@ -74,9 +74,14 @@ class SSModel(nn.Module):
             return self.decoder(anchor, h)
 
         hxp, hxn = get_anchor()
+        hpos = self.embed(pos)
+        hneg = self.embed(neg)
+        '''
         pos_score = get_score(hxp, pos)
         neg_score = get_score(hxn, neg)
         loss = self.estimator(pos_score, neg_score)
+        '''
+        loss = self.estimator(hxp, hxn, hpos, hneg, self.decoder)                                                                                                                                                                                                           )
         self.encoder.reset()
         return loss
 

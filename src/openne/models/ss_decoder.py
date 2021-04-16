@@ -22,6 +22,8 @@ class InnerProd(nn.Module):
         self.dim = dim
 
     def forward(self, x, y):
+        x = F.normalize(x, dim=-1)
+        y = F.normalize(y, dim=-1)
         score = torch.sum((x * y), dim=-1)
         return score
 
