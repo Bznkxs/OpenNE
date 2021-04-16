@@ -10,7 +10,7 @@ from ..utils import getdevice
 from .utils import process_graphs
 from .ss_input import model_input, graphinput
 from . import ss_sampler
-
+from matplotlib import pyplot as plt
 
 class BaseSampler:
     def __init__(self, name, graph, features, batch_size, negative_ratio=5, **kwargs):
@@ -49,14 +49,15 @@ def compute_ppr(edge_index, alpha=0.2, self_loop=True):
 
 
 def sample_subgraph(graph_data: List[graphinput], n_nodes=None,
-                    max_graph_size=None, do_sample=True):
+                    max_graph_size=None, do_sample=True, permuted_nodes=None):
     """
 
     @param do_sample: if False, return original graph.
     @param graph_data: a list of N graphs, [anchor, ...], which share the same features and node sampling.
     @param n_nodes: number of nodes in any graph.
     @param max_graph_size: threshold of sampling.
-    @return: subfeats of graph1, [subedges of grpah1, subedges of graph2...]
+    @param permuted_nodes: optional, provide a permutation
+    @return: sub_feats of graph1, [sub_edges of grpah1, sub_edges of graph2...]
     """
 
     if n_nodes is None:
@@ -67,32 +68,65 @@ def sample_subgraph(graph_data: List[graphinput], n_nodes=None,
 
     # sample node list
     if do_sample:
-        permuted_nodes = torch.randperm(n_nodes)
+        if permuted_nodes is None:
+            permuted_nodes = torch.randperm(n_nodes)
     else:
         permuted_nodes = torch.arange(n_nodes)
         max_graph_size = int(1e9)
 
     map_idx = torch.argsort(permuted_nodes)
-    subnodes = permuted_nodes[:max_graph_size]
+    sub_nodes = permuted_nodes[:max_graph_size]
 
     feats = graph_data[0].x
 
-    subfeats = feats[subnodes].to(getdevice())
+    sub_feats = feats[sub_nodes].to(getdevice())
 
     def sample_edges(edges):
-        subedges = map_idx[edges]  # permutation
-        e_sample = (subedges[0] < max_graph_size) * (subedges[1] < max_graph_size)
+        _sub_edges = map_idx[edges]  # permutation
+        e_sample = (_sub_edges[0] < max_graph_size) * (_sub_edges[1] < max_graph_size)
 
-        return subedges[:, e_sample]
+        return _sub_edges[:, e_sample]
 
-    subedges = [sample_edges(graph.edge_index) for graph in graph_data]
+    sub_edges = [sample_edges(graph.edge_index) for graph in graph_data]
+    return sub_feats, sub_edges, permuted_nodes
 
-    return subfeats, subedges
 
-
-def augment_subgraph(graph_data: graphinput, n_nodes=None, max_graph_size=None, do_sample=True):
-    subfeats, subedges = sample_subgraph([graph_data], n_nodes, max_graph_size, do_sample)
-    return subfeats, subedges[0]
+# https://github.com/Shen-Lab/GraphCL/blob/master/unsupervised_TU/aug.py
+def augment_subgraph(graph_data: graphinput, max_graph_size=None):
+    n_nodes = len(graph_data.x)
+    if max_graph_size is None:
+        max_graph_size = n_nodes * 1 // 5
+    sub_nodes = [torch.randint(n_nodes, [1]).item()]
+    selected = torch.zeros(n_nodes, dtype=torch.bool)
+    visited = torch.zeros(n_nodes, dtype=torch.bool)
+    edge_index = graph_data.edge_index
+    candidate_nodes: List = edge_index[1, edge_index[0] == sub_nodes[0]].tolist()
+    selected[sub_nodes] = True
+    visited[candidate_nodes] = True
+    visited[sub_nodes] = True
+    cnt = 0
+    while len(sub_nodes) <= max_graph_size:
+        cnt += 1
+        if cnt > n_nodes:
+            break
+        if len(candidate_nodes) == 0:
+            break
+        idx = torch.randint(len(candidate_nodes), [1]).item()
+        sample_node = candidate_nodes[idx]
+        selected[sample_node] = True
+        candidate_nodes[idx] = candidate_nodes[-1]
+        candidate_nodes.pop(-1)
+        sub_nodes.append(sample_node)
+        new_candidates = edge_index[1, edge_index[0] == sample_node]
+        new_candidates = new_candidates[visited[new_candidates] == False].tolist()
+        visited[new_candidates] = True
+        candidate_nodes.extend(new_candidates)
+    sub_size = len(sub_nodes)
+    permuted_nodes = sub_nodes + [i for i in range(n_nodes) if not selected[i]]
+    # print("__", sub_size, max_graph_size)
+    sub_feats, sub_edges, _ = sample_subgraph([graph_data], n_nodes, sub_size, permuted_nodes=torch.tensor(permuted_nodes))
+    # print("__", n_nodes, sub_size, sub_nodes, sub_edges[0].shape, flush=True)
+    return sub_feats, sub_edges[0]
 
 
 def drop_edges(graph: graphinput, max_edge_size=None):
@@ -107,8 +141,8 @@ def drop_edges(graph: graphinput, max_edge_size=None):
     keep_edges = torch.randperm(n_edges)[:max_edge_size]
     # torch.multinomial(torch.arange(n_edges), max_edge_size,
     #                               replacement=True)
-    subedges = graph.edge_index[:, keep_edges]
-    return graph.x, subedges
+    sub_edges = graph.edge_index[:, keep_edges]
+    return graph.x, sub_edges
 
 
 def drop_nodes(graph: graphinput, max_graph_size=None):
@@ -120,8 +154,8 @@ def drop_nodes(graph: graphinput, max_graph_size=None):
     n_nodes = len(graph.x)
     if max_graph_size is None:
         max_graph_size = n_nodes * 4 // 5
-    subfeats, subedges = sample_subgraph([graph], max_graph_size=max_graph_size)
-    return subfeats, subedges[0]
+    subfeats, sub_edges, _ = sample_subgraph([graph], max_graph_size=max_graph_size)
+    return subfeats, sub_edges[0]
 
 
 def mask_attribute(graph: graphinput, mask_size=None,
@@ -132,9 +166,10 @@ def mask_attribute(graph: graphinput, mask_size=None,
     mask = torch.randperm(n_nodes)[:mask_size]
     # torch.multinomial(torch.arange(n_nodes), mask_size,
     #                         replacement=True)
+    print(mask)
     feats = torch.clone(graph.x)
     if mask_using is None:
-        feats[mask] = torch.randn_like(graph.x[mask])
+        feats[mask] = torch.randn_like(graph.x[mask]) * .5 + .5
     else:
         feats[mask] = mask_using
     return feats, graph.edge_index
@@ -166,7 +201,7 @@ class NodeSampler:
         random.shuffle(list_graphs)
         # sample subgraphs
         for i in list_graphs:
-            f1, (e1,) = sample_subgraph([g_anchor[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
+            f1, (e1,), _ = sample_subgraph([g_anchor[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
 
             feats.append(f1)
             edges.append(e1)
@@ -286,7 +321,7 @@ class GraphSampler:
         g_diff = g_diff[idx]
         # sample subgraphs
         for i in range(self.num_graphs):
-            f1, (e1, e2) = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
+            f1, (e1, e2), _ = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
                                            self.sample_subgraph)
             f_pos.append(f1)
             e_anchor.append(e1)
@@ -399,7 +434,6 @@ class DGISampler(GraphSampler):
         return f_neg, e_anchor, e_diff
 
 
-
 class DiffSampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = []
@@ -438,15 +472,24 @@ class DiffSampler(GraphSampler):
         adnd, start_idnd = process_graphs(g_negdiff, getdevice())
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
+def draw_graph_from_feat_edge(feats, edges, layout=None):
+    g = nx.DiGraph()
+    g.add_nodes_from(torch.arange(len(feats)).tolist())
+    g.add_edges_from(edges.t().tolist())
+    if layout is None:
+        layout = nx.spring_layout(g)
+    nx.draw_networkx(g, pos=layout)
+    return layout
+
 
 class AugmentationSampler(DGISampler):
 
     @classmethod
     def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
-        aug_methods = [drop_edges, mask_attribute, drop_nodes]
-        aug = torch.randperm(len(aug_methods))[:2].numpy()
-        f_aug1, f_aug2 = aug_methods[aug[0]], aug_methods[aug[1]]
+        aug_methods = [mask_attribute, augment_subgraph, drop_edges, drop_nodes]
+        f_aug1, f_aug2 = aug_methods[torch.randint(len(aug_methods), [1]).data], aug_methods[torch.randint(len(aug_methods), [1]).data]
+        print(f_aug1, f_aug2)
         for i in range(len(f_pos)):
             g_p = graphinput(f_pos[i], None, e_anchor[i])
             g_n = graphinput(f_neg[i], None, e_neg[i])
@@ -462,6 +505,19 @@ class AugmentationSampler(DGISampler):
 
         return g_anchor, g_diff, g_neg, g_negdiff
 
+    def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
+        f_neg, e_neg, e_negdiff = [], [], []
+        for i in range(self.num_graphs):
+            if len(self.graphs) == 1:
+                negidx = i
+            else:
+                negidx = np.random.randint(0, len(self.graphs) - 2)
+                if negidx == i:
+                    negidx += 1
+            f_neg.append(f_pos[negidx])
+            e_neg.append(e_anchor[negidx])
+            e_negdiff.append(e_diff[negidx])
+        return f_neg, e_neg, e_negdiff
 
     def __iter__(self):
         """
@@ -473,6 +529,19 @@ class AugmentationSampler(DGISampler):
             g_anchor, g_diff, g_neg, g_negdiff = \
                 self.process_graphs(f_pos[i], f_neg[i], e_anchor[i],
                                     e_diff[i], e_neg[i], e_diffneg[i])
+            # plt.subplot(231)
+            # pos = draw_graph_from_feat_edge(f_pos[i][0], e_anchor[i][0])
+            # plt.subplot(232)
+            # draw_graph_from_feat_edge(g_anchor[0].x, g_anchor[0].edge_index, pos)
+            # plt.subplot(233)
+            # draw_graph_from_feat_edge(g_diff[0].x, g_diff[0].edge_index, pos)
+            # plt.subplot(234)
+            # pos = draw_graph_from_feat_edge(f_neg[i][0], e_neg[i][0])
+            # plt.subplot(235)
+            # draw_graph_from_feat_edge(g_neg[0].x, g_neg[0].edge_index, pos)
+            # plt.subplot(236)
+            # draw_graph_from_feat_edge(g_negdiff[0].x, g_negdiff[0].edge_index, pos)
+            # plt.show()
             f_p = [g.x for g in g_anchor]
             f_d = [g.x for g in g_diff]
             f_n = [g.x for g in g_neg]
@@ -509,8 +578,7 @@ class GCASampler(DGISampler):
             g_anchor.append(graphinput(f_a, None, e_a))
             g_diff.append(graphinput(f_d, None, e_d))
 
-
-        return g_anchor, g_diff # adj, add, adj, add, start_idx, start_idd, start_idx, start_idd
+        return g_anchor, g_diff  # adj, add, adj, add, start_idx, start_idd, start_idx, start_idd
 
     def __iter__(self):
         """
@@ -520,7 +588,7 @@ class GCASampler(DGISampler):
         f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
         for i in slices:  # for each batch
 
-            #adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
+            # adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
             g_anchor, g_diff = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i])
             f_p = [g.x for g in g_anchor]
 

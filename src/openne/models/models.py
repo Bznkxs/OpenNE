@@ -300,4 +300,6 @@ class ModelWithEmbeddings(torch.nn.Module):
             return False
     def debug(self, *args, **kwargs):
         if not self.silent:
+            if 'flush' not in kwargs:
+                kwargs['flush'] = True
             print(*args, **kwargs)
