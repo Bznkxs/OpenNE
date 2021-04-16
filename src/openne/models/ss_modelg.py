@@ -62,7 +62,7 @@ class SSModel(nn.Module):
                     vectors.append(hx[i].repeat(idx-old_idx, 1))
                     old_idx = idx
                 return torch.cat(vectors)
-            if x.typ == x.GRAPHS:
+            if x.typ == x.GRAPHS and pos.typ == x.NODES:
                 hxp = repeat(pos.start_idx)
                 hxn = repeat(neg.start_idx)
             else:

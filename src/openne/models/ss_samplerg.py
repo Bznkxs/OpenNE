@@ -10,7 +10,7 @@ from ..utils import getdevice
 from .utils import process_graphs
 from .ss_input import model_input, graphinput
 from . import ss_sampler
-
+from matplotlib import pyplot as plt
 
 class BaseSampler:
     def __init__(self, name, graph, features, batch_size, negative_ratio=5, **kwargs):
@@ -88,8 +88,7 @@ def sample_subgraph(graph_data: List[graphinput], n_nodes=None,
         return _sub_edges[:, e_sample]
 
     sub_edges = [sample_edges(graph.edge_index) for graph in graph_data]
-
-    return sub_feats, sub_edges
+    return sub_feats, sub_edges, permuted_nodes
 
 
 # https://github.com/Shen-Lab/GraphCL/blob/master/unsupervised_TU/aug.py
@@ -124,8 +123,8 @@ def augment_subgraph(graph_data: graphinput, max_graph_size=None):
         candidate_nodes.extend(new_candidates)
     sub_size = len(sub_nodes)
     permuted_nodes = sub_nodes + [i for i in range(n_nodes) if not selected[i]]
-
-    sub_feats, sub_edges = sample_subgraph([graph_data], n_nodes, sub_size, permuted_nodes=torch.tensor(permuted_nodes))
+    # print("__", sub_size, max_graph_size)
+    sub_feats, sub_edges, _ = sample_subgraph([graph_data], n_nodes, sub_size, permuted_nodes=torch.tensor(permuted_nodes))
     # print("__", n_nodes, sub_size, sub_nodes, sub_edges[0].shape, flush=True)
     return sub_feats, sub_edges[0]
 
@@ -155,7 +154,7 @@ def drop_nodes(graph: graphinput, max_graph_size=None):
     n_nodes = len(graph.x)
     if max_graph_size is None:
         max_graph_size = n_nodes * 4 // 5
-    subfeats, sub_edges = sample_subgraph([graph], max_graph_size=max_graph_size)
+    subfeats, sub_edges, _ = sample_subgraph([graph], max_graph_size=max_graph_size)
     return subfeats, sub_edges[0]
 
 
@@ -167,9 +166,10 @@ def mask_attribute(graph: graphinput, mask_size=None,
     mask = torch.randperm(n_nodes)[:mask_size]
     # torch.multinomial(torch.arange(n_nodes), mask_size,
     #                         replacement=True)
+    print(mask)
     feats = torch.clone(graph.x)
     if mask_using is None:
-        feats[mask] = torch.randn_like(graph.x[mask])
+        feats[mask] = torch.randn_like(graph.x[mask]) * .5 + .5
     else:
         feats[mask] = mask_using
     return feats, graph.edge_index
@@ -201,7 +201,7 @@ class NodeSampler:
         random.shuffle(list_graphs)
         # sample subgraphs
         for i in list_graphs:
-            f1, (e1,) = sample_subgraph([g_anchor[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
+            f1, (e1,), _ = sample_subgraph([g_anchor[i]], len(g_anchor[i].x), self.sample_size, self.sample_subgraph)
 
             feats.append(f1)
             edges.append(e1)
@@ -317,7 +317,7 @@ class GraphSampler:
         f_pos, e_anchor, e_diff, = [], [], []
         # sample subgraphs
         for i in range(self.num_graphs):
-            f1, (e1, e2) = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
+            f1, (e1, e2), _ = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
                                            self.sample_subgraph)
             f_pos.append(f1)
             e_anchor.append(e1)
@@ -465,15 +465,24 @@ class DiffSampler(GraphSampler):
         adnd, start_idnd = process_graphs(g_negdiff, getdevice())
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
+def draw_graph_from_feat_edge(feats, edges, layout=None):
+    g = nx.DiGraph()
+    g.add_nodes_from(torch.arange(len(feats)).tolist())
+    g.add_edges_from(edges.t().tolist())
+    if layout is None:
+        layout = nx.spring_layout(g)
+    nx.draw_networkx(g, pos=layout)
+    return layout
+
 
 class AugmentationSampler(DGISampler):
 
     @classmethod
     def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
-        aug_methods = [augment_subgraph, drop_edges, mask_attribute, drop_nodes]
-        aug = torch.randperm(len(aug_methods))[:2].numpy()
-        f_aug1, f_aug2 = aug_methods[aug[0]], aug_methods[aug[1]]
+        aug_methods = [mask_attribute, augment_subgraph, drop_edges, drop_nodes]
+        f_aug1, f_aug2 = aug_methods[torch.randint(len(aug_methods), [1]).data], aug_methods[torch.randint(len(aug_methods), [1]).data]
+        print(f_aug1, f_aug2)
         for i in range(len(f_pos)):
             g_p = graphinput(f_pos[i], None, e_anchor[i])
             g_n = graphinput(f_neg[i], None, e_neg[i])
@@ -489,6 +498,20 @@ class AugmentationSampler(DGISampler):
 
         return g_anchor, g_diff, g_neg, g_negdiff
 
+    def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
+        f_neg, e_neg, e_negdiff = [], [], []
+        for i in range(self.num_graphs):
+            if len(self.graphs) == 1:
+                negidx = i
+            else:
+                negidx = np.random.randint(0, len(self.graphs) - 2)
+                if negidx == i:
+                    negidx += 1
+            f_neg.append(f_pos[negidx])
+            e_neg.append(e_anchor[negidx])
+            e_negdiff.append(e_diff[negidx])
+        return f_neg, e_neg, e_negdiff
+
     def __iter__(self):
         """
         create batch samples
@@ -499,6 +522,19 @@ class AugmentationSampler(DGISampler):
             g_anchor, g_diff, g_neg, g_negdiff = \
                 self.process_graphs(f_pos[i], f_neg[i], e_anchor[i],
                                     e_diff[i], e_neg[i], e_diffneg[i])
+            # plt.subplot(231)
+            # pos = draw_graph_from_feat_edge(f_pos[i][0], e_anchor[i][0])
+            # plt.subplot(232)
+            # draw_graph_from_feat_edge(g_anchor[0].x, g_anchor[0].edge_index, pos)
+            # plt.subplot(233)
+            # draw_graph_from_feat_edge(g_diff[0].x, g_diff[0].edge_index, pos)
+            # plt.subplot(234)
+            # pos = draw_graph_from_feat_edge(f_neg[i][0], e_neg[i][0])
+            # plt.subplot(235)
+            # draw_graph_from_feat_edge(g_neg[0].x, g_neg[0].edge_index, pos)
+            # plt.subplot(236)
+            # draw_graph_from_feat_edge(g_negdiff[0].x, g_negdiff[0].edge_index, pos)
+            # plt.show()
             f_p = [g.x for g in g_anchor]
             f_d = [g.x for g in g_diff]
             f_n = [g.x for g in g_neg]
@@ -508,12 +544,12 @@ class AugmentationSampler(DGISampler):
             adn, start_idn = process_graphs(g_neg, getdevice())
             adnd, start_idnd = process_graphs(g_negdiff, getdevice())
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_p)
-            bpos = model_input(model_input.NODES, add, start_idd, f_d)
-            bneg = model_input(model_input.NODES, adnd, start_idnd, f_nd)
+            bpos = model_input(model_input.GRAPHS, add, start_idd, f_d)
+            bneg = model_input(model_input.GRAPHS, adnd, start_idnd, f_nd)
 
             bx_r = model_input(model_input.GRAPHS, add, start_idd, f_d)
-            bpos_r = model_input(model_input.NODES, adj, start_idx, f_p)
-            bneg_r = model_input(model_input.NODES, adn, start_idn, f_n)
+            bpos_r = model_input(model_input.GRAPHS, adj, start_idx, f_p)
+            bneg_r = model_input(model_input.GRAPHS, adn, start_idn, f_n)
 
             yield bx, bpos, bneg
             yield bx_r, bpos_r, bneg_r

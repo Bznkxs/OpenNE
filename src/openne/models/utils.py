@@ -183,7 +183,7 @@ def process_graphs(graphs, device=None):
     # print("process", len(graphs), "graphs")
     for i, graph in enumerate(graphs):
         # check
-        assert graph.edge_index.max() < len(graph.x)
+        # assert graph.edge_index.max() < len(graph.x)
         start_idx.append(start_idx[i] + len(graph.x))
         edge_mat_list.append(start_idx[i] + graph.edge_index)
         if hasattr(graph, 'edge_weight') and graph.edge_weight is not None:
