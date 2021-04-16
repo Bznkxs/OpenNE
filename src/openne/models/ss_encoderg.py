@@ -55,10 +55,10 @@ class Encoder(nn.Module):
                 hx = self.full_embeddings[x.actual_indices]
                 return hx
 
-        # hxs = []
+        hxs = []
         for layer in self.layers:
             hx = layer([hx, adj])
-            # hxs.append(hx)
+            hxs.append(hx)
         if x.typ == x.GRAPHS:
             # todo: this is a brute-force graph-wise pooling. change this to faster pooling
             # nhxs = []
@@ -79,7 +79,12 @@ class Encoder(nn.Module):
             #     nhxs.append(pooling(hx))
             #
             # hx = torch.cat(nhxs, 1)
-            hx = pooling(hx)
+            if self.readout == 'jk-net':
+                for hx in hxs:
+                    nhxs.append(pooling(hx))
+                hx = self.readout.trans(torch.cat(nhxs, 1))
+            else:
+                hx = pooling(hx)
             hx = self.sigm(self.global_d(hx))
         else:
             # hx = torch.cat(hxs, 1)
