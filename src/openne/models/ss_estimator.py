@@ -15,14 +15,19 @@ class BaseEstimator(torch.nn.Module):
 class JSDEstimator(torch.nn.Module):
     def __init__(self, **kwargs):
         super().__init__()
+        self.m = torch.nn.LogSigmoid()
         for i, j in kwargs.items():
             setattr(self, i, j)
 
-    def forward(self, hxp, hxn, pos, neg, decoder):
-        m = torch.nn.LogSigmoid()
-        ep = m(decoder(hxp, pos)).mean()
-        eq = m(-decoder(hxn, neg)).mean()
-        loss = -(ep + eq)
+    def forward(self, pos_score, neg_score, pos_mask, neg_mask):
+        ep = self.m(pos_score)
+        eq = self.m(-neg_score)
+        
+        if pos_mask is not None:
+            ep = (ep * pos_mask).sum(1) / pos_mask.sum(1)
+            eq = (eq * neg_mask).sum(1) / neg_mask.sum(1)
+        loss = -(ep + eq).mean()
+        #print(ep.shape)
         return loss
 
 
@@ -33,12 +38,14 @@ class NCEEstimator(torch.nn.Module):
         for i, j in kwargs.items():
             setattr(self, i, j)
 
-    def forward(self, positive, negative):
-        ep = torch.exp(positive).sum()
-        eq = torch.exp(negative).sum()
-        # print(ep, eq)
+    def forward(self, pos_score, neg_score, pos_mask, neg_mask):
+        ep = torch.exp(pos_score)#.sum()
+        eq = torch.exp(neg_score)#.sum()
+        if pos_mask is not None:
+            ep = (ep * pos_mask).sum(1)
+            eq = (eq * neg_mask).sum(1)
         exp_loss = ep / (ep + eq)
-        loss = -torch.log(exp_loss).mean()
+        loss = -torch.log(exp_loss).sum()
         return loss
 
 estimator_dict = {

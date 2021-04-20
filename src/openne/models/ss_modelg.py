@@ -4,6 +4,7 @@ from .ss_samplerg import BaseSampler
 from .ss_readout import BaseReadOut
 from .ss_estimator import BaseEstimator
 from .ss_input import model_input, graphinput
+from ..utils import getdevice
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -30,7 +31,6 @@ class SSModel(nn.Module):
         self.features = features
         self.normalize = norm
         self.readout = BaseReadOut(self.readout_name, self.enc_dims)
-
         if isinstance(graphs, Graphs):
             graphs_data = graphs.data
         else:
@@ -40,6 +40,15 @@ class SSModel(nn.Module):
             weights = adjmat._values()
             graphs_data = [graphinput(feats, None, edgelist, weights)]
         self.graphs_data = graphs_data
+        self.num_graphs = len(graphs_data)
+        self.graph_sampler = False
+        if self.sampler_name in ['dgi', 'mvgrl', 'aug', 'gca']:
+            self.graph_sampler = True
+        self.mask = False
+        if (self.graph_sampler and self.num_graphs > 1) or self.sampler_name == 'gca':
+            self.mask = True
+        self.outer = self.graph_sampler
+        
         self.encoder = Encoder(self.encoder_name, self.enc_dims, graphs, self.features, dropout, self.readout)
         self.decoder = Decoder(self.decoder_name, self.encoder.output_dim, self.dec_dims)
         self.estimator = BaseEstimator(self.estimator_name)
@@ -51,9 +60,9 @@ class SSModel(nn.Module):
         return self.encoder(x)
 
     def forward(self, x: model_input, pos: model_input, neg: model_input):
+        
         def get_anchor():
-            hx = self.embed(x)
-
+            pos_mask, neg_mask = None, None
             # repeat
             def repeat(start_idx):
                 old_idx = start_idx[0]
@@ -62,26 +71,64 @@ class SSModel(nn.Module):
                     vectors.append(hx[i].repeat(idx-old_idx, 1))
                     old_idx = idx
                 return torch.cat(vectors)
+            
+            def get_mask(start_idx):
+                pos_mask = torch.zeros(hx.shape[0], hpos.shape[0])
+                neg_mask = torch.ones(hx.shape[0], hpos.shape[0])
+                old_idx = start_idx[0]
+                if self.sampler_name == 'aug':
+                    pos_mask = torch.diag(torch.ones(hx.shape[0]))
+                    neg_mask = 1 - pos_mask
+                else:
+                    for i, idx in enumerate(start_idx[1:]):
+                        pos_mask[i][old_idx:idx] = 1
+                        neg_mask[i][old_idx:idx] = 0
+                        old_idx = idx
+                return pos_mask.to(getdevice()), neg_mask.to(getdevice())
+            '''
             if x.typ == x.GRAPHS and pos.typ == x.NODES:
                 hxp = repeat(pos.start_idx)
                 hxn = repeat(neg.start_idx)
             else:
                 hxp = hxn = hx
-            return hxp, hxn
+            '''
+            if self.mask:
+                pos_mask, neg_mask = get_mask(pos.start_idx)
+            hxp = hxn = hx
+            return hxp, hxn, pos_mask, neg_mask
 
         def get_score(anchor, sample):
             h = self.embed(sample)
             return self.decoder(anchor, h)
-
-        hxp, hxn = get_anchor()
+        hx = self.embed(x)
         hpos = self.embed(pos)
         hneg = self.embed(neg)
+        hxp, hxn, pos_mask, neg_mask = get_anchor()
+        #print(hx.shape)
+        
+
+        pos_score = self.decoder(hxp, hpos, self.outer)
+        
+        if self.mask:
+            neg_score = pos_score
+        else:
+            neg_score = self.decoder(hxn, hneg, self.outer)
+        #print(pos_mask.sum(1), pos_mask.shape)
+        #exit(1)
         '''
-        pos_score = get_score(hxp, pos)
-        neg_score = get_score(hxn, neg)
-        loss = self.estimator(pos_score, neg_score)
+        if not self.graph_sampler:
+            neg_score = self.decoder(hxn, hneg)
+            loss = self.estimator(pos_score, neg_score)
+        elif self.num_graphs == 1 and self.sampler_name != 'gca':
+            neg_score = self.decoder(hxn, hneg)
+            loss = self.estimator(pos_score, neg_score)
+        else:
+            neg_score = self.decoder(hxn, hneg, outer=True)
+            loss = self.estimator(pos_score, neg_score, self.graph_sampler)
         '''
-        loss = self.estimator(hxp, hxn, hpos, hneg, self.decoder)                                                                                                                                                                                                           )
+        loss = self.estimator(pos_score, neg_score, pos_mask, neg_mask)
+        
+        # loss = self.estimator(hxp, hxn, hpos, hneg, self.decoder)                                                                                                                                                                                                           )
         self.encoder.reset()
         return loss
 

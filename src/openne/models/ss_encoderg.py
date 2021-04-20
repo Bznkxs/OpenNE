@@ -46,8 +46,11 @@ class Encoder(nn.Module):
         """
         hx = torch.cat(x.feat)
         adj = x.adj
+        
         # print("encoder:", hx.device, adj.device)
-        # adj = x.adj.to_dense().to(getdevice())
+        #adj = x.adj.to_dense().to(getdevice())
+        #print(adj.sum(1))
+        #exit(1)
         start_idx = x.start_idx
 
         if x.actual_indices is not None:

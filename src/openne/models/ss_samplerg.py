@@ -166,7 +166,7 @@ def mask_attribute(graph: graphinput, mask_size=None,
     mask = torch.randperm(n_nodes)[:mask_size]
     # torch.multinomial(torch.arange(n_nodes), mask_size,
     #                         replacement=True)
-    print(mask)
+    #print(mask)
     feats = torch.clone(graph.x)
     if mask_using is None:
         feats[mask] = torch.randn_like(graph.x[mask]) * .5 + .5
@@ -264,7 +264,7 @@ class NodeSampler:
             bx = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=anchor_nodes)
             bpos = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=pos_nodes)
             bneg = model_input(model_input.NODES, adj, start_idx, f_pos_d, actual_indices=neg_nodes)
-            yield bx, bpos, bneg
+            yield [[bx, bpos, bneg]]
         self.cache = None
 
     def __len__(self):
@@ -316,9 +316,9 @@ class GraphSampler:
         g_anchor, g_diff = self.anchor, self.graphs_diff
         f_pos, e_anchor, e_diff, = [], [], []
         # random shuffle anchor and diff
-        idx = np.permutation(self.num_graphs)
-        g_anchor = g_anchor[idx]
-        g_diff = g_diff[idx]
+        idx = np.random.permutation(self.num_graphs)
+        #g_anchor = [g_anchor[int(i)] for i in idx]
+        #g_diff = [g_diff[int(i)] for i in idx]
         # sample subgraphs
         for i in range(self.num_graphs):
             f1, (e1, e2), _ = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
@@ -394,8 +394,9 @@ class GraphSampler:
             bpos_r = model_input(model_input.NODES, adj, start_idx, f_pos[i])
             bneg_r = model_input(model_input.NODES, adn, start_idn, f_neg[i])
 
-            yield bx, bpos, bneg
-            yield bx_r, bpos_r, bneg_r
+            #yield bx, bpos, bneg
+            #yield bx_r, bpos_r, bneg_r
+            yield [[bx, bpos, bneg], [bx_r, bpos_r, bneg_r]]
         self.cache = None
 
     def __len__(self):
@@ -445,6 +446,7 @@ class DiffSampler(GraphSampler):
             self.graphs_diff.append(graphinput(g.x, None, idx, val))
 
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
+        '''
         f_neg, e_neg, e_negdiff = [], [], []
         for i in range(self.num_graphs):
             if len(self.graphs) == 1:
@@ -456,6 +458,17 @@ class DiffSampler(GraphSampler):
             f_neg.append(f_pos[negidx])
             e_neg.append(e_anchor[negidx])
             e_negdiff.append(e_diff[negidx])
+        '''
+        f_neg, e_neg, e_negdiff = [], [], []
+        if self.num_graphs == 1:
+            for f in f_pos:
+                rp = np.random.permutation(len(f))
+                f_neg.append(f[rp])
+        else:
+            f_neg = [f for f in f_pos]
+        e_neg = [e for e in e_anchor]
+        e_negdiff = [e for e in e_diff]
+            
         return f_neg, e_neg, e_negdiff
 
     @classmethod
@@ -467,9 +480,9 @@ class DiffSampler(GraphSampler):
             g_neg.append(graphinput(f_neg[i], None, e_neg[i]))
             g_negdiff.append(graphinput(f_neg[i], None, e_diffneg[i]))
         adj, start_idx = process_graphs(g_anchor, getdevice())
-        add, start_idd = process_graphs(g_diff, getdevice())
+        add, start_idd = process_graphs(g_diff, getdevice(), normalize=False)
         adn, start_idn = process_graphs(g_neg, getdevice())
-        adnd, start_idnd = process_graphs(g_negdiff, getdevice())
+        adnd, start_idnd = process_graphs(g_negdiff, getdevice(), normalize=False)
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
 def draw_graph_from_feat_edge(feats, edges, layout=None):
@@ -489,7 +502,7 @@ class AugmentationSampler(DGISampler):
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
         aug_methods = [mask_attribute, augment_subgraph, drop_edges, drop_nodes]
         f_aug1, f_aug2 = aug_methods[torch.randint(len(aug_methods), [1]).data], aug_methods[torch.randint(len(aug_methods), [1]).data]
-        print(f_aug1, f_aug2)
+        #print(f_aug1, f_aug2)
         for i in range(len(f_pos)):
             g_p = graphinput(f_pos[i], None, e_anchor[i])
             g_n = graphinput(f_neg[i], None, e_neg[i])
@@ -506,6 +519,7 @@ class AugmentationSampler(DGISampler):
         return g_anchor, g_diff, g_neg, g_negdiff
 
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
+        '''
         f_neg, e_neg, e_negdiff = [], [], []
         for i in range(self.num_graphs):
             if len(self.graphs) == 1:
@@ -517,6 +531,17 @@ class AugmentationSampler(DGISampler):
             f_neg.append(f_pos[negidx])
             e_neg.append(e_anchor[negidx])
             e_negdiff.append(e_diff[negidx])
+        '''
+        f_neg, e_neg, e_negdiff = [], [], []
+        if self.num_graphs == 1:
+            for f in f_pos:
+                rp = np.random.permutation(len(f))
+                f_neg.append(f[rp])
+        else:
+            f_neg = [f for f in f_pos]
+        e_neg = [e for e in e_anchor]
+        e_negdiff = [e for e in e_diff]
+            
         return f_neg, e_neg, e_negdiff
 
     def __iter__(self):
@@ -550,6 +575,8 @@ class AugmentationSampler(DGISampler):
             add, start_idd = process_graphs(g_diff, getdevice())
             adn, start_idn = process_graphs(g_neg, getdevice())
             adnd, start_idnd = process_graphs(g_negdiff, getdevice())
+            idx = range(len(f_p))
+            #start_idx, start_idd, start_idn, start_idnd = idx, idx, idx, idx
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_p)
             bpos = model_input(model_input.GRAPHS, add, start_idd, f_d)
             bneg = model_input(model_input.GRAPHS, adnd, start_idnd, f_nd)
@@ -558,8 +585,7 @@ class AugmentationSampler(DGISampler):
             bpos_r = model_input(model_input.GRAPHS, adj, start_idx, f_p)
             bneg_r = model_input(model_input.GRAPHS, adn, start_idn, f_n)
 
-            yield bx, bpos, bneg
-            yield bx_r, bpos_r, bneg_r
+            yield [[bx, bpos, bneg], [bx_r, bpos_r, bneg_r]]
         self.cache = None
 
 
@@ -579,6 +605,9 @@ class GCASampler(DGISampler):
             g_diff.append(graphinput(f_d, None, e_d))
 
         return g_anchor, g_diff  # adj, add, adj, add, start_idx, start_idd, start_idx, start_idd
+    
+    def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
+        return f_pos, e_anchor, e_diff
 
     def __iter__(self):
         """
@@ -598,22 +627,21 @@ class GCASampler(DGISampler):
             adnd = add
             start_idn = start_idx
             start_idnd = start_idd
-            anchor_nodes = torch.arange(len(adj)).repeat(20)
+            anchor_nodes = torch.arange(len(adj))#.repeat(20)
             neg_nodes = torch.randint(high=len(adj) - 1, size=(len(anchor_nodes),))
             neg_nodes[neg_nodes >= anchor_nodes] += 1
+            idx = torch.arange(len(adj)+1)
+            start_idx, start_idd, start_idn, start_idnd = idx, idx, idx, idx
 
             bx = model_input(model_input.NODES, adj, start_idx, f_p, actual_indices=anchor_nodes)
             bpos = model_input(model_input.NODES, add, start_idd, f_p, actual_indices=anchor_nodes)
-            bneg = model_input(model_input.NODES, adnd, start_idnd, f_p, actual_indices=neg_nodes)
+            bneg = model_input(model_input.NODES, adnd, start_idnd, f_p, actual_indices=anchor_nodes)
 
             bx_r = model_input(model_input.NODES, add, start_idd, f_p, actual_indices=anchor_nodes)
             bpos_r = model_input(model_input.NODES, adj, start_idx, f_p, actual_indices=anchor_nodes)
-            bneg_r = model_input(model_input.NODES, adn, start_idn, f_p, actual_indices=neg_nodes)
+            bneg_r = model_input(model_input.NODES, adn, start_idn, f_p, actual_indices=anchor_nodes)
 
-            yield bx, bpos, bneg
-            yield bx, bpos, bneg_r
-            yield bx_r, bpos_r, bneg
-            yield bx_r, bpos_r, bneg_r
+            yield [[bx, bpos, bneg], [bx, bpos, bneg_r], [bx_r, bpos_r, bneg], [bx_r, bpos_r, bneg_r]]
         self.cache = None
 
     def __len__(self):

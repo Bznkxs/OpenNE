@@ -63,10 +63,14 @@ def preprocess_graph(adj):
     # return sparse_to_tuple(adj_normalized)
     return sparse_mx_to_torch_sparse_tensor(adj_normalized)
 
-def preprocess_adj(adj):
+def preprocess_adj(adj, normalize=True):
     """Preprocessing of adjacency matrix for simple GCN models and conversion to tuple representation."""
-    adj_normalized = normalize_adj(adj + sp.eye(adj.shape[0]))
-    return scipy_coo_to_torch_sparse(adj_normalized)
+    adj = adj + sp.eye(adj.shape[0])
+    if normalize:
+        adj = normalize_adj(adj)
+    else:
+        adj = (adj).tocoo()
+    return scipy_coo_to_torch_sparse(adj)
 
 def sparse_mx_to_torch_sparse_tensor(sparse_mx):
     """Convert a scipy sparse matrix to a torch sparse tensor."""
@@ -170,7 +174,7 @@ def alias_draw(J, q, *size):
     return (oq + oj).view(size)
 
 # from https://github.com/weihua916/powerful-gnns
-def process_graphs(graphs, device=None):
+def process_graphs(graphs, device=None, normalize=True):
     """
 
     @param device:
@@ -194,7 +198,13 @@ def process_graphs(graphs, device=None):
         Adj_block_elem = torch.ones(Adj_block_idx.shape[1])
     else:
         Adj_block_elem = torch.cat(elems)
-    Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
+    #Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
+    Adj_block = sp.coo_matrix((Adj_block_elem, Adj_block_idx), shape=(start_idx[-1], start_idx[-1]))
+    adjarray = Adj_block.toarray()
+    
+    Adj_block = preprocess_adj(Adj_block, normalize)
+    #print(start_idx[-1], adjarray)
+    #exit(1)
     if device is not None:
         Adj_block = Adj_block.to(device)
     # print(Adj_block.device)

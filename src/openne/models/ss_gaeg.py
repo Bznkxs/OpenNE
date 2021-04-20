@@ -130,8 +130,10 @@ class SS_GAEg(ModelWithEmbeddings):
         if train:
             self.optimizer.zero_grad()
         batch_num = len(self.model.sampler)
-        for bx, bpos, bneg in self.model.sampler:
-            loss = self.model(bx, bpos, bneg)
+        for batch in self.model.sampler:
+            loss = 0.
+            for bx, bpos, bneg in batch:
+                loss += self.model(bx, bpos, bneg)
             loss /= batch_num
 
             if train:
@@ -204,7 +206,8 @@ class SS_GAEg(ModelWithEmbeddings):
         """
         g = graph.G
         features = torch.from_numpy(graph.features()).type(torch.float32)
-        print(features.shape, features.type)
+        
         features = preprocess_features(features, sparse=self.sparse)
+        print(features.shape)
         graph.setfeatures(features)
         self.register_buffer("features", features)
