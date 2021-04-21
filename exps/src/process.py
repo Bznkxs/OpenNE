@@ -8,7 +8,7 @@ from sys import argv
 curdir = os.path.dirname(__file__)
 sys.path.extend([os.path.join(curdir, '')])
 
-exp_name = 'node_enc'
+exp_name = 'graph_readout'
 script_name = os.path.join(curdir, '../../src/autogen_sample_script_' + exp_name + '.sh')
 xls_name = os.path.join(curdir, '../processed/exp_data_for_human.xls')
 csv_name = os.path.join(os.path.dirname(__file__), '../processed/logs.csv')
@@ -238,8 +238,8 @@ def generate_exp_data():
         exp_plan = [(k, v) for (k, v) in exp_plan.items()]
     all_exps = len(exp_plan)
     #print(all_exps, list(exp_plan.keys())[0], list(exp_plan.items())[0])
-
-    exp_plan = [(k, v) for (k, v) in exp_plan.items() if not v['done']]
+    #print(all_exps, exp_plan[:10])
+    exp_plan = [(k, v) for (k, v) in exp_plan if not v['done']]
     new_exps = len(exp_plan)
     print(f"Experiment progress = {all_exps-new_exps}/{all_exps}")
     if argv[1] == 'gen':

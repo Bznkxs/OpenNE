@@ -37,7 +37,7 @@ def torch_sparse_to_scipy_coo(torch_sparse):
 
 def preprocess_features(features, sparse=False):
     """Row-normalize feature matrix and convert to tuple representation"""
-    rowsum = features.sum(1)
+    rowsum = features.sum(1).clamp(min=1)
     r_inv = (rowsum**-1).flatten()
     r_inv[torch.isinf(r_inv)] = 0.
     #print(r_inv.shape)
@@ -49,6 +49,7 @@ def normalize_adj(adj):  #  safe. don't change by now
     """Symmetrically normalize adjacency matrix."""
     adj = sp.coo_matrix(adj)
     rowsum = np.array(adj.sum(1))
+    #print(rowsum.sum())
     d_inv_sqrt = np.power(rowsum, -0.5).flatten()
     d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
     d_mat_inv_sqrt = sp.diags(d_inv_sqrt)
@@ -200,11 +201,9 @@ def process_graphs(graphs, device=None, normalize=True):
         Adj_block_elem = torch.cat(elems)
     #Adj_block = torch.sparse.FloatTensor(Adj_block_idx, Adj_block_elem, torch.Size([start_idx[-1],start_idx[-1]]))
     Adj_block = sp.coo_matrix((Adj_block_elem, Adj_block_idx), shape=(start_idx[-1], start_idx[-1]))
-    adjarray = Adj_block.toarray()
     
     Adj_block = preprocess_adj(Adj_block, normalize)
-    #print(start_idx[-1], adjarray)
-    #exit(1)
+
     if device is not None:
         Adj_block = Adj_block.to(device)
     # print(Adj_block.device)

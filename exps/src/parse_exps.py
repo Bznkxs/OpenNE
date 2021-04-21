@@ -34,10 +34,14 @@ class ExpVariable:
         self.parse()
         if self.name == 'root':
             self.node_node = list(self.opt_groups["node_node"])
+            self.node_node.sort(key=lambda x: str(x))
             self.node_graph = list(self.opt_groups["node_graph"])
+            self.node_graph.sort(key=lambda x: str(x))
             self.node_list = self.node_node + self.node_graph
             self.graph_graph = list(self.opt_groups["graph_graph"])
+            self.graph_graph.sort(key=lambda x: str(x))
             self.graph_node = list(self.opt_groups["graph_node"])
+            self.graph_node.sort(key=lambda x: str(x))
             self.graph_list = self.graph_graph + self.graph_node        
             self.split = {}
             self.sample()
@@ -50,12 +54,12 @@ class ExpVariable:
         return ret
 
     def sample(self, s=100):
-        self.split['node_enc'] = sample_exps(self.node_list, 'enc', 'linear', s) 
+        self.split['node_enc'] = sample_exps(self.node_list, 'enc', 'gcn', s) 
         self.split['node_dec'] = sample_exps(self.node_list, 'dec', 'inner', s)
         self.split['node_est'] = sample_exps(self.node_list, 'est', 'jsd', s)
         self.split['node_sampler'] = sample_exps(self.node_list, 'sampler', 'dgi', s)
         self.split['node_readout'] = sample_exps(self.node_graph, 'readout', 'mean', s)
-        self.split['graph_enc'] = sample_exps(self.graph_list, 'enc', 'linear', s)
+        self.split['graph_enc'] = sample_exps(self.graph_list, 'enc', 'gcn', s)
         self.split['graph_dec'] = sample_exps(self.graph_list, 'dec', 'inner', s)
         self.split['graph_est'] = sample_exps(self.graph_list, 'est', 'jsd', s)
         self.split['graph_sampler'] = sample_exps(self.graph_list, 'sampler', 'dgi', s)
@@ -153,11 +157,11 @@ def sample_exps(exps, k ,v, size=100):
     random.shuffle(exps)
     sample_dict = {
         'enc': ['none', 'linear', 'gcn', 'gat', 'gin'],
-        'dec': ['inner', 'bilinear', 'mlp'],
+        'dec': ['inner', 'bilinear'],
         'sampler': ["node-neighbor-random",
                     "node-rand_walk-random",
-                    "gca","dgi", "mvgrl", "graphcl"],
-        'readout': ['mean', 'sum', 'jk-net'],
+                    "gca","dgi", "mvgrl", "aug"],
+        'readout': ['mean', 'sum'],
         'est': ['jsd', 'nce']
     }
     sampled = []

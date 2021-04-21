@@ -195,6 +195,7 @@ class SS_GAEg(ModelWithEmbeddings):
 
             embeddings.append(self.model.embed(all_graphs).detach())
         self.embeddings = torch.cat(embeddings)
+        #self.embeddings = self.features
 
     def _get_embeddings(self, graph, **kwargs):
         self._ss_get_embeddings(graph, model_input.GRAPHS)
@@ -208,6 +209,6 @@ class SS_GAEg(ModelWithEmbeddings):
         features = torch.from_numpy(graph.features()).type(torch.float32)
         
         features = preprocess_features(features, sparse=self.sparse)
-        print(features.shape)
+        #print(features.sum(1))
         graph.setfeatures(features)
         self.register_buffer("features", features)
