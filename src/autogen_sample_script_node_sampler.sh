@@ -1,3 +1,4 @@
+#!/bin/sh
 python3 -m openne --clf-ratio 0.2 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec inner --enc gin --est jsd --readout sum --sampler dgi --dataset amazon_computers --model ss_gae --task unsupervisednodeclassification $*
 python3 -m openne --clf-ratio 0.2 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec inner --enc gin --est jsd --readout sum --sampler node-neighbor-random --dataset amazon_computers --model ss_gae --task unsupervisednodeclassification $*
 python3 -m openne --clf-ratio 0.2 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec inner --enc gin --est jsd --readout sum --sampler node-rand_walk-random --dataset amazon_computers --model ss_gae --task unsupervisednodeclassification $*

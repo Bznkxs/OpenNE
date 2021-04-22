@@ -9,7 +9,7 @@ import torch
 #  from Graph Attention Networks(https://arxiv.org/abs/1710.10903)
 
 class GAT(Layer):
-    def __init__(self, input_dim, output_dim, adjmat, dropout=0., *,
+    def __init__(self, input_dim, output_dim, _, dropout=0., *,
                  act=torch.nn.functional.elu,
                  num_features_nonzero=0.,
                  sparse_inputs=False, bias=True,

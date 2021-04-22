@@ -7,8 +7,9 @@ from .utils import process_graphs
 from ..utils import getdevice
 from .ss_input import model_input
 
+
 class Encoder(nn.Module):
-    def __init__(self, name, dimensions, adj, features, dropout, readout):
+    def __init__(self, name, dimensions, graphs, features, dropout, readout):
         super(Encoder, self).__init__()
         # print("Encoder dimensions", dimensions)
         self.dimensions = dimensions
@@ -18,10 +19,16 @@ class Encoder(nn.Module):
         self.readout = readout
         # self.output_dim = sum(self.dimensions[1:])
         self.output_dim = self.dimensions[-1]
+        self.nodesize = getattr(graphs, 'nodesize', 1)
+        self.register_buffer('nodelist', torch.arange(self.nodesize))
         # assert self.name != 'none'
-        for i in range(1, len(self.dimensions) - 1):
-            self.layers.append(layer_dict[name](self.dimensions[i - 1], self.dimensions[i], adj, dropout, act=F.relu))
-        self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], adj, dropout, act=lambda x: x))
+        if name == 'none':
+            self.embedding = nn.Embedding(self.nodesize, self.dimensions[-1])
+        else:
+            for i in range(1, len(self.dimensions) - 1):
+                self.layers.append(
+                    layer_dict[name](self.dimensions[i - 1], self.dimensions[i], None, dropout, act=F.relu))
+            self.layers.append(layer_dict[name](self.dimensions[-2], self.dimensions[-1], None, dropout, act=lambda x: x))
         self.local_d = FF(self.output_dim)
         self.global_d = FF(self.output_dim)
         self.full_embeddings = None
@@ -46,11 +53,11 @@ class Encoder(nn.Module):
         """
         hx = torch.cat(x.feat)
         adj = x.adj
-        
+
         # print("encoder:", hx.device, adj.device)
-        #adj = x.adj.to_dense().to(getdevice())
-        #print(adj.sum(1))
-        #exit(1)
+        # adj = x.adj.to_dense().to(getdevice())
+        # print(adj.sum(1))
+        # exit(1)
         start_idx = x.start_idx
 
         if x.actual_indices is not None:
@@ -59,12 +66,17 @@ class Encoder(nn.Module):
                 return hx
 
         hxs = []
-        for layer in self.layers:
-            hx = layer([hx, adj])
-            hxs.append(hx)
+
+        if self.name != 'none':
+            for layer in self.layers:
+                hx = layer([hx, adj])
+                hxs.append(hx)
+        else:
+            hxs = [self.embedding(self.nodelist)] * len(self.dimensions)
+            hx = self.embedding(self.nodelist)
         if x.typ == x.GRAPHS:
             # todo: this is a brute-force graph-wise pooling. change this to faster pooling
-            # nhxs = []
+            nhxs = []
 
             def pooling(hx):
                 old_idx = start_idx[0]

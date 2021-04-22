@@ -8,13 +8,12 @@ import torch
 class Linear(Layer):
     """Linear layer."""
 
-    def __init__(self, input_dim, output_dim, adj=None, dropout=0., num_features_nonzero=0.,
+    def __init__(self, input_dim, output_dim, _, dropout=0., num_features_nonzero=0.,
                  sparse_inputs=False, act=torch.relu, bias=False, **kwargs):
         super(Linear, self).__init__(**kwargs)
 
         self.dropout = dropout  # note we modified the API
         self.act = act
-        self.adj = adj  # unused
         self.sparse_inputs = sparse_inputs
         self.output_dim = output_dim
         self.input_dim = input_dim
