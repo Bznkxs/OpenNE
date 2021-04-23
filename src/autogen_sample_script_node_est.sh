@@ -1,3 +1,4 @@
+#!/bin/sh
 python3 -m openne --clf-ratio 0.2 --dim 64 --early-stopping 20 --epochs 500 --lr 0.01 --patience 3 --hiddens 64 --dec bilinear --enc gcn --est jsd --readout sum --sampler mvgrl --dataset pubmed --model ss_gae --task unsupervisednodeclassification $*
 python3 -m openne --clf-ratio 0.2 --dim 64 --early-stopping 20 --epochs 500 --lr 0.01 --patience 3 --hiddens 64 --dec bilinear --enc gcn --est nce --readout sum --sampler mvgrl --dataset pubmed --model ss_gae --task unsupervisednodeclassification $*
 python3 -m openne --clf-ratio 0.2 --dim 128 --early-stopping 20 --epochs 500 --lr 0.01 --patience 3 --hiddens 128 --dec inner --enc gat --est jsd --readout mean --sampler node-neighbor-random --dataset coauthor_cs --model ss_nodemodel --task unsupervisednodeclassification $*

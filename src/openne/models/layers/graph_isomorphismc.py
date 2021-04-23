@@ -9,7 +9,7 @@ class GIN(Layer):
     output = MLP((1+eps)input + sum(input))
     """
 
-    def __init__(self, input_dim, output_dim, adj,
+    def __init__(self, input_dim, output_dim, _,
                  dropout=0., *, sparse_inputs=False,
                  act=torch.relu, **kwargs):
         super(GIN, self).__init__(**kwargs)
