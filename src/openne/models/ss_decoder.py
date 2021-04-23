@@ -1,4 +1,5 @@
 from .layers import Linear
+from .inits import glorot
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -36,7 +37,7 @@ class Bilinear(nn.Module):
         super(Bilinear, self).__init__()
         self.dim = dim
         self.bil = nn.Bilinear(dim, dim, 1)
-        self.weight = nn.Parameter(torch.FloatTensor(dim, dim))
+        self.weight = glorot([dim, dim])
 
     def forward(self, x, y, outer=False):
         if outer:
