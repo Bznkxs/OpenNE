@@ -1,3 +1,4 @@
+#!/bin/sh
 python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.01 --patience 3 --hiddens 64 64 --dec inner --enc gat --est jsd --readout sum --sampler mvgrl --dataset imdb_binary --model ss_gaeg --task graphclassification $*
 python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.01 --patience 3 --hiddens 64 64 --dec inner --enc gat --est nce --readout sum --sampler mvgrl --dataset imdb_binary --model ss_gaeg --task graphclassification $*
 python3 -m openne --clf-ratio 0.8 --dim 128 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --dec bilinear --enc gin --est jsd --readout sum --sampler node-rand_walk-random --dataset imdb_multi --model ss_graphmodel --task graphclassification $*

@@ -1,3 +1,4 @@
+#!/bin/sh
 python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec bilinear --enc gcn --est jsd --readout mean --sampler node-rand_walk-random --dataset ptc_mr --model ss_graphmodel --task graphclassification $*
 python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec bilinear --enc none --est jsd --readout mean --sampler node-rand_walk-random --dataset ptc_mr --model ss_graphmodel --task graphclassification $*
 python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --hiddens 64 64 64 --dec bilinear --enc linear --est jsd --readout mean --sampler node-rand_walk-random --dataset ptc_mr --model ss_graphmodel --task graphclassification $*

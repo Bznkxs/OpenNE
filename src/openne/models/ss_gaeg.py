@@ -2,6 +2,7 @@ from .utils import *
 from .models import *
 from .ss_modelg import SSModel
 import time
+import math
 import scipy.sparse as sp
 import torch
 import torch.cuda
@@ -106,6 +107,8 @@ class SS_GAEg(ModelWithEmbeddings):
         # Train models
         output, train_loss, __ = self.evaluate()
         self.cost_val.append(train_loss)
+        if math.isnan(train_loss):
+            exit(1)
         if getdevice() != torch.device('cpu'):
             self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}; Allocated: {torch.cuda.memory_allocated()}; " \
                               f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
