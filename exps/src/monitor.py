@@ -1,5 +1,29 @@
 """
 monitor
+
+objects:
+- cmd
+    - `cmd` objects are strings like `python3 -m openne --clf-ratio 0.2 --dim 128 --early-stopping 20 ...`.
+        - They always start with `python3 -m openne`.
+        - Arguments follow the format of "--argument-name argument_val [argument_val2 argument_val3...]
+            - for detailed format, please refer to OpenNE/readme.md or run `python3 -m openne --help`.
+    - `cmd` objects are extremely important in analysis for it provides all settings of an experiment.
+
+input: we deal with 2 kinds of files:
+- logs
+    - each log stores info of one successful run.
+    - looks like (line 1: welcome message; line 2: raw command; line3: parsed training args; line4: result)
+        ```
+        [OpenNE] This is a welcome message.
+        python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --dec mlp --enc gin --est jsd --readout sum --sampler node-rand_walk-random --dataset ptc_mr --model ss_graphmodel --task graphclassification
+        actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'ptc_mr', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'patience': 3, 'enc': 'gin', 'dec': 'mlp', 'sampler': 'node-rand_walk-random', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+        {'micro': 0.5797101449275363, 'macro': 0.5782929399367756, 'samples': 0.5797101449275363, 'weighted': 0.5800644461752263, 'accuracy': 0.5797101449275363}
+        ```
+- batch files
+    - files of multiple experiments
+    - may or may not start with '#!/bin/sh' (must start with this line if you want to run it in `sbatch`
+    - multiple cmd lines
+
 """
 
 from argparse import ArgumentParser
@@ -9,23 +33,40 @@ from multiprocessing import Pool
 import subprocess
 import re
 import json
+import datetime
 
 from typing import Dict, List, Set, Iterable, Sized, Tuple
 
 import tqdm
 
-cur_dir = os.path.abspath(os.path.dirname(__file__))
-root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))
-src_dir = os.path.join(root_dir, 'src')
-log_dir = os.path.join(src_dir, 'logs')
-processed_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed'))
+
+cur_dir = os.path.abspath(os.path.dirname(__file__))  # directory of this file
+root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))  # project root, directory of OpenNE
+src_dir = os.path.join(root_dir, 'src')  # OpenNE/src
+log_dir = os.path.join(src_dir, 'logs')  # OpenNE/src/logs, default path to openne raw logs
+processed_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed'))  #
 output_dir = os.path.normpath(os.path.join(processed_dir, 'output'))
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 
 class CMD:
+    """
+    Standard class for `cmd` object. This is supposed to use as a comparison & analysis tool for cmd.
+    """
     def __init__(self, cmd_str: str):
+        """
+        Construct a `cmd` object out of a raw string.
+
+        Arguments in the raw string are unordered, so in `__init__()`, we
+         - split arguments and store them in `self.args` and
+         - sort them in alphabetical order.
+
+        a cmd string of sorted arguments is the standard form of a `cmd` object,
+        which is stored in `self.sorted_cmd_str`.
+
+        @param cmd_str: raw string of `cmd` object.
+        """
         self.args = cmd_str.replace('$*', '').strip().replace('  ', ' ').split('--')
         self.start = self.args[0]
         self.args = self.args[1:]
@@ -34,62 +75,157 @@ class CMD:
         self.sorted_cmd_str = '--'.join(self.args)
 
     def __str__(self):
+        """
+        provided as standard conversion from `cmd` objects to strings.
+        @return: standard (sorted) form
+        """
         return self.sorted_cmd_str
 
     def __repr__(self):
-        return self.sorted_cmd_str
+        return str(self)
 
     def __hash__(self):
-        return hash(self.sorted_cmd_str)
+        """
+        Provided so that you can use `cmd` objects as keys in dicts and sets.
+
+        This is useful since you often need to count experiments and remove repetitive ones.
+        @return: hash of standard form
+        """
+        return hash(str(self))
 
 
 class Cache:
+    """
+    Cache stores important information about past runs of `monitor.py`.
+
+    The class has only one instance, `cache`, which is used globally.
+
+    In general, `cache` stores important information in a cache file to reduce time-consuming visits to multiple files.
+    - For example, OpenNE generates one log file in each run, which contains one cmd string.
+      To avoid opening thousands of log files every time we run `monitor.py`, we store
+      all pairs of `log files: cmd string` in cache.
+    - Another example is experiment progress. We store the number of finished experiments in cache, so we know
+      how many new experiments are done since last run of `monitor.py`.
+
+    `cache` is stored as a **json file** and can be parsed as a dict.
+    Each item stores certain information, e.g. item `cmd` stores a dict of `log files: cmd string`, as mentioned above.
+
+    `cachefile`: file that stores our cache.
+    `keys`: dict of `key: format`.
+    - key: item name of cache
+    - format: a list. format[0] gives item type. format[1] onwards gives all arguments used to initialize the item in an empty cache.
+        - e.g. `'time': [str, 'null']`
+            - 'time': there is an item named 'time' in cache
+            - str: this 'time' item is stored as string.
+            - 'null': in an empty cache (e.g. when we run monitor.py for the first time), we have `time = str('null')`
+        - e.g. `'cmd': [dict,]`
+            - There is an item named 'cmd', which is a dict.
+            - In an empty cache, cmd = dict().
+    """
     cachefile = os.path.join(processed_dir, '.monitorcache.json')
-    keys = {'cmd': dict}
+
+    # `time` stores last write time of cache.
+    # `cmd` stores all visited log files and their corresponding cmd strings.
+    # `progress` stores all visited batch files and how many experiments in the corresponding files are finished.
+    keys = {'time': [str, 'null'], 'cmd': [dict,], 'progress': [dict,]}
 
     def __init__(self):
-        if not os.path.exists(Cache.cachefile):
-            with open(Cache.cachefile, 'w') as fd:
+        """
+        `self.writes`: number of changes to `self.cache`.
+        Must only be changed in `self._write()` and `self._force_write()`.
+        """
+        if not os.path.exists(self.cachefile):  # if cache file does not exist
+            with open(self.cachefile, 'w') as fd:  # write a blank cache file
                 json.dump(self.blank(), fd)
 
-        with open(Cache.cachefile, 'r') as fd:
+        with open(Cache.cachefile, 'r') as fd:  # open & read cache file
             self.cache = json.load(fd)
 
         self.writes = 0
+        self.update_cache()
 
-    def get_cmd(self):
-        return self.cache['cmd']
+    def update_cache(self):
+        """
+        This is used to deal with modifications in cache `keys`.
+
+        If you decide to modify `cache` structure (say, add new key into `Cache.keys`),
+        this function helps keeping `cache` up with your modifications.
+        """
+        for key, typ in self.keys.items():
+            if key not in self.cache:
+                self.cache[key] = typ[0](*typ[1:])  # standard initialization
+                self._write()
 
     def _force_write(self):
-        if self.writes > 0:
-            with open(Cache.cachefile, 'w') as fd:
-                json.dump(self.cache, fd)
-                self.writes = 0
+        """
+        Force write `self.cache` to cache file. Also change time.
+        @return:
+        """
+        self.cache['time'] = datetime.datetime.now().astimezone(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
+        with open(Cache.cachefile, 'w') as fd:
+            json.dump(self.cache, fd)
+            self.writes = 0
 
     def _write(self, num=1):
+        """
+        Called when self.cache is modified.
+
+        Lazy write. Will only write (_force_write) on every 500 modifications.
+        @param num:
+        @return:
+        """
         self.writes += num
         if self.writes >= 500:
             self._force_write()
 
-    def write_cmd(self, new_cmd):
+    def get_time(self):
+        return datetime.datetime.strptime(self.cache['time'], "%Y%m%d_%H%M%S")
+
+    def get_cmd(self):
+        return self.cache['cmd']
+
+    def write_cmd(self, new_cmd: dict):
+        """
+        update self.cache['cmd'] with new `log file: cmd` pairs
+        @param new_cmd: dict of new `log file: cmd` pairs
+        """
         self.cache['cmd'].update(new_cmd)
         self._write(len(new_cmd))
 
-    def write_single_cmd(self, key, value):
-        self.cache['cmd'][key] = value
-        self._write()
+    def get_progress(self):
+        return self.cache['progress']
+
+    def write_progress(self, new_progress):
+        """
+        similar to write_cmd
+        @param new_progress:
+        @return:
+        """
+        self.cache['progress'].update(new_progress)
+        self._write(len(new_progress))
 
     def blank(self):
-        return {key: typ() for key, typ in self.keys.items()}
+        """
+        @return: a blank cache
+        """
+        return {key: typ[0](*typ[1:]) for key, typ in self.keys.items()}  # standard initialization
 
     def close(self):
+        """
+        call before exit. writes all to cache file.
+        """
         self._force_write()
 
 
-cache = Cache()
+cache = Cache()  # the only global Cache instance
 
 
 def normalcmd(cmd):
+    """
+    use this small function to normalize cmd.
+    @param cmd: (unordered) cmd
+    @return:
+    """
     return CMD(cmd).sorted_cmd_str
 
 
@@ -360,11 +496,34 @@ def show_exp_progress(batch_path, base_name, log_path, running_jobs=None):
     batch_cmd, logs = read_files(batch_path, base_name, log_path)
     finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
 
+    progress = cache.get_progress()
+    new_progress = {}
+    progress_val = {}
+    for file in batch_cmd:
+        if file not in progress or progress[file] != finished_ratio[file][0]:
+            new_progress[file] = finished_ratio[file][0]
+            value = finished_ratio[file][0]
+            if file in progress:
+                value -= progress[file]
+            progress_val[file] = f'+{value}'
+        else:
+            progress_val[file] = '+0'
+
+    cache.write_progress(new_progress)
+
     # display
+
+    progress_color = "\033[32m\033[1m"
+    static_color = "\033[34m\033[1m"
+    default_color = "\033[0m"
+
     title = 'Experiment progress'
     batch_files = list(batch_cmd.keys())
     batch_info = {batch_file: f'{finished_ratio[batch_file][0]}'
                               f'/{finished_ratio[batch_file][1]}'
+                              f'    {progress_color if batch_file in new_progress else static_color}'
+                              f'{progress_val[batch_file]}'
+                              f'{default_color}'
                   for batch_file in batch_files}
     title_description = \
         f"{sum(finished_ratio[batch_file][0] for batch_file in batch_files)}" \
@@ -487,7 +646,7 @@ def run_job_sbatch(name, partition):
     tmpdir = os.curdir
     os.chdir(src_dir)
     print(f"run {name} with partition {partition}")
-    subprocess.run(['sbatch', '-G', '1', '-p', partition, name])
+    subprocess.run(['sbatch', '-G', '1', '-p', partition, '--output=R-%x.%j.out', name])
     os.chdir(tmpdir)
     # subprocess.run(['sbatch', '-G', '1', '-p', partition, name])
 
