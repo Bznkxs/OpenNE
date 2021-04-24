@@ -396,7 +396,8 @@ class GraphSampler:
 
             #yield bx, bpos, bneg
             #yield bx_r, bpos_r, bneg_r
-            yield [[bx, bpos, bneg], [bx_r, bpos_r, bneg_r]]
+            yield [[bx, bpos, bneg]]
+            yield [[bx_r, bpos_r, bneg_r]]
         self.cache = None
 
     def __len__(self):
@@ -585,7 +586,8 @@ class AugmentationSampler(DGISampler):
             bpos_r = model_input(model_input.GRAPHS, adj, start_idx, f_p)
             bneg_r = model_input(model_input.GRAPHS, adn, start_idn, f_n)
 
-            yield [[bx, bpos, bneg], [bx_r, bpos_r, bneg_r]]
+            yield [[bx, bpos, bneg]]
+            yield [[bx_r, bpos_r, bneg_r]]
         self.cache = None
 
 
@@ -641,7 +643,10 @@ class GCASampler(DGISampler):
             bpos_r = model_input(model_input.NODES, adj, start_idx, f_p, actual_indices=anchor_nodes)
             bneg_r = model_input(model_input.NODES, adn, start_idn, f_p, actual_indices=anchor_nodes)
 
-            yield [[bx, bpos, bneg], [bx, bpos, bneg_r], [bx_r, bpos_r, bneg], [bx_r, bpos_r, bneg_r]]
+            yield [[bx, bpos, bneg]]
+            yield [[bx, bpos, bneg_r]]
+            yield [[bx_r, bpos_r, bneg]]
+            yield [[bx_r, bpos_r, bneg_r]]
         self.cache = None
 
     def __len__(self):

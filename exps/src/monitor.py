@@ -45,7 +45,8 @@ class CMD:
 
 class Cache:
     cachefile = os.path.join(processed_dir, '.monitorcache.json')
-    keys = {'cmd': list}
+    keys = {'cmd': dict}
+
     def __init__(self):
         if not os.path.exists(Cache.cachefile):
             with open(Cache.cachefile, 'w') as fd:
@@ -54,15 +55,38 @@ class Cache:
         with open(Cache.cachefile, 'r') as fd:
             self.cache = json.load(fd)
 
+        self.writes = 0
+
     def get_cmd(self):
         return self.cache['cmd']
 
-    def write_cmd(self):
-        pass
+    def _force_write(self):
+        if self.writes > 0:
+            with open(Cache.cachefile, 'w') as fd:
+                json.dump(self.cache, fd)
+                self.writes = 0
+
+    def _write(self, num=1):
+        self.writes += num
+        if self.writes >= 500:
+            self._force_write()
+
+    def write_cmd(self, new_cmd):
+        self.cache['cmd'].update(new_cmd)
+        self._write(len(new_cmd))
+
+    def write_single_cmd(self, key, value):
+        self.cache['cmd'][key] = value
+        self._write()
 
     def blank(self):
         return {key: typ() for key, typ in self.keys.items()}
 
+    def close(self):
+        self._force_write()
+
+
+cache = Cache()
 
 
 def normalcmd(cmd):
@@ -129,14 +153,14 @@ def get_batch_file_tree(path, base_name):
     return batch_file_tree
 
 
-def search_batch_files(path, base_name, leaf=True):
+def search_batch_files(path, base_name, mode='leaf'):
     """
-    Two modes: if leaf==True, keeps only the 'leaf files' in `path` with prefix `base_name` and suffix '.sh'
+    Two modes: if mode=leaf, keeps only the 'leaf files' in `path` with prefix `base_name` and suffix '.sh'
     e.g. if we have enc.sh, enc_0.sh, enc_1.sh, this will return the latter two files
-    if leaf==False, keeps only the 'root files'.
+    if mode==root, keeps only the 'root files'.
     @param path:
     @param base_name: a list of base names
-    @param leaf: mode selection
+    @param mode: mode selection ['leaf', 'root', 'all']
     @return: a list of files
     """
     files_iter = os.listdir(path)
@@ -152,14 +176,14 @@ def search_batch_files(path, base_name, leaf=True):
     for fd in files_iter:
         if fd.endswith('.sh') and prefix_of(base_name, fd):
             fd = fd.rstrip('.sh')
-            if leaf:
+            if mode == 'leaf':
                 prefix = prefix_of(batch_files, fd)
                 if prefix is not None:
                     remove(prefix)
                 child = has_prefix(batch_files, fd)
                 if child is None:
                     add(fd)
-            else:
+            elif mode == 'root':
                 child = has_prefix(batch_files, fd)
                 while child is not None:
                     remove(child)
@@ -167,13 +191,13 @@ def search_batch_files(path, base_name, leaf=True):
                 prefix = prefix_of(batch_files, fd)
                 if prefix is None:
                     add(fd)
+            else:
+                add(fd)
 
     ret = []
     for fd in batch_files:
         ret.append(os.path.join(path, fd + '.sh'))
     return ret
-
-
 
 
 def warn(e):
@@ -195,6 +219,7 @@ def get_command(f):
 def get_logs_from_file_list(arg):
     procnum, path, files_iter, cache_command = arg
     logs = []
+    new_logs = {}
     try:
         for ni, fd in enumerate(files_iter):
             if fd in cache_command:
@@ -204,13 +229,15 @@ def get_logs_from_file_list(arg):
                 try:
                     with open(os.path.join(path, fd), 'r') as f:
                         command = get_command(f)
+                        new_logs[fd] = command
                 except Exception as e:
                     warn(e)
+                    new_logs[fd] = None
             if command is not None:
                 logs.append(command)
     except Exception as e:
         print(e)
-    return procnum, logs
+    return procnum, logs, new_logs
 
 
 def ddd(arg):
@@ -226,7 +253,7 @@ def search_logs(path):
     n_files = len(files)
     sub_size = (n_files + n_split - 1) // n_split
 
-    cache_cmd = {}  # cache.get_cmd()
+    cache_cmd = cache.get_cmd()
 
     split_files = [(i, path, files[i * sub_size: (i + 1) * sub_size], cache_cmd) for i in range(n_split)]
 
@@ -237,8 +264,11 @@ def search_logs(path):
             ret_list.append(whatever_x)
     ret_list.sort(key=lambda x: x[0])
     all_commands = []
+    all_new_cmds = {}
     for k in range(n_split):
         all_commands.extend(ret_list[k][1])
+        all_new_cmds.update(ret_list[k][2])
+    cache.write_cmd(all_new_cmds)
     log(f'Found {len(set(all_commands))} logs.')
     return set(all_commands)
 
@@ -478,7 +508,6 @@ def stop_batch_files(batch_file_names, jobs):
             stop_job_sbatch(name, jobs[os.path.basename(name)].jobid)
 
 
-
 def parse_run(args):
     batch_path, base_name, log_path = parse_common_args(args)
     jobs = get_running_jobs()
@@ -495,20 +524,17 @@ def parse_run(args):
     # for name in batch_file_names:
     #     if os.path.basename(name) not in jobs:
     #         run_job_sbatch(name, partitions[0])
-
-    stop_batch_files(batch_file_names, jobs)
+    all_batch_file_names = search_batch_files(batch_path, base_name, 'all')
+    stop_batch_files(all_batch_file_names, jobs)
     run_batch_files(batch_file_names, partitions)
-
 
 
 def parse_stop(args):
     batch_path, base_name, log_path = parse_common_args(args)
     jobs = get_running_jobs()
 
-    batch_file_names = search_batch_files(batch_path, base_name)
+    batch_file_names = search_batch_files(batch_path, base_name, 'all')
     stop_batch_files(batch_file_names, jobs)
-
-
 
 
 parser = ArgumentParser()
@@ -533,3 +559,4 @@ parser_stop.set_defaults(func=parse_stop)
 if __name__ == '__main__':
     args = parser.parse_args()
     args.func(args)
+    cache.close()

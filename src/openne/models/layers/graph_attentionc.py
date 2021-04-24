@@ -96,7 +96,7 @@ class GAT(Layer):
             exps = torch.exp(vec)
             masked_exps = exps * mask.float()
             masked_sums = masked_exps.sum(dim, keepdim=True) + epsilon
-            return (masked_exps/masked_sums)
+            return masked_exps / masked_sums
 
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
