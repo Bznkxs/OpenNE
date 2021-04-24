@@ -8,16 +8,18 @@ import sys
 from multiprocessing import Pool
 import subprocess
 import re
+import json
 
 from typing import Dict, List, Set, Iterable, Sized, Tuple
 
 import tqdm
 
-cur_dir = os.path.dirname(__file__)
+cur_dir = os.path.abspath(os.path.dirname(__file__))
 root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))
 src_dir = os.path.join(root_dir, 'src')
 log_dir = os.path.join(src_dir, 'logs')
-output_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed', 'output'))
+processed_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed'))
+output_dir = os.path.normpath(os.path.join(processed_dir, 'output'))
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -39,6 +41,28 @@ class CMD:
 
     def __hash__(self):
         return hash(self.sorted_cmd_str)
+
+
+class Cache:
+    cachefile = os.path.join(processed_dir, '.monitorcache.json')
+    keys = {'cmd': list}
+    def __init__(self):
+        if not os.path.exists(Cache.cachefile):
+            with open(Cache.cachefile, 'w') as fd:
+                json.dump(self.blank(), fd)
+
+        with open(Cache.cachefile, 'r') as fd:
+            self.cache = json.load(fd)
+
+    def get_cmd(self):
+        return self.cache['cmd']
+
+    def write_cmd(self):
+        pass
+
+    def blank(self):
+        return {key: typ() for key, typ in self.keys.items()}
+
 
 
 def normalcmd(cmd):
@@ -169,16 +193,19 @@ def get_command(f):
 
 
 def get_logs_from_file_list(arg):
-    procnum, path, files_iter = arg
+    procnum, path, files_iter, cache_command = arg
     logs = []
     try:
         for ni, fd in enumerate(files_iter):
-            command = None
-            try:
-                with open(os.path.join(path, fd), 'r') as f:
-                    command = get_command(f)
-            except Exception as e:
-                warn(e)
+            if fd in cache_command:
+                command = cache_command[fd]
+            else:
+                command = None
+                try:
+                    with open(os.path.join(path, fd), 'r') as f:
+                        command = get_command(f)
+                except Exception as e:
+                    warn(e)
             if command is not None:
                 logs.append(command)
     except Exception as e:
@@ -198,7 +225,10 @@ def search_logs(path):
 
     n_files = len(files)
     sub_size = (n_files + n_split - 1) // n_split
-    split_files = [(i, path, files[i * sub_size: (i + 1) * sub_size]) for i in range(n_split)]
+
+    cache_cmd = {}  # cache.get_cmd()
+
+    split_files = [(i, path, files[i * sub_size: (i + 1) * sub_size], cache_cmd) for i in range(n_split)]
 
     log("Searching for logs...")
     ret_list = []
