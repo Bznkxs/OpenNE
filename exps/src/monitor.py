@@ -34,8 +34,9 @@ import subprocess
 import re
 import json
 import datetime
+import socket
 
-from typing import Dict, List, Set, Iterable, Sized, Tuple
+from typing import Dict, List, Set, Iterable, Sized, Tuple, Union
 
 import tqdm
 
@@ -46,6 +47,9 @@ src_dir = os.path.join(root_dir, 'src')  # OpenNE/src
 log_dir = os.path.join(src_dir, 'logs')  # OpenNE/src/logs, default path to openne raw logs
 processed_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed'))  #
 output_dir = os.path.normpath(os.path.join(processed_dir, 'output'))
+
+
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -67,6 +71,9 @@ class CMD:
 
         @param cmd_str: raw string of `cmd` object.
         """
+        if not cmd_str.startswith('python'):
+            self.args = self.start = self.sorted_cmd_str = None
+            return
         self.args = cmd_str.replace('$*', '').strip().replace('  ', ' ').split('--')
         self.start = self.args[0]
         self.args = self.args[1:]
@@ -92,6 +99,50 @@ class CMD:
         @return: hash of standard form
         """
         return hash(str(self))
+
+
+class RES:
+    recognized_criterion = ['micro', 'macro', 'samples', 'weighted']
+    def __init__(self, res_str):
+        try:
+            self.res = json.loads(res_str)
+        except json.JSONDecodeError:
+            self.res = None
+        for criterion in self.recognized_criterion:
+            if criterion not in self.res:
+                self.res[criterion] = None
+        self.standard_res = {self.res[criterion]
+                             for criterion in self.recognized_criterion}
+        self.res_str = ','.join(f'{criterion}: {self.res[criterion]}'
+                                for criterion in self.recognized_criterion)
+    def __str__(self):
+        return self.res_str
+
+    def __repr__(self):
+        return str(self)
+
+    def __lt__(self, other: 'RES'):
+        for criterion in self.recognized_criterion:
+            if self.res[criterion] < other.res[criterion]:
+                return True
+            if self.res[criterion] > other.res[criterion]:
+                return False
+        return False
+
+    def __eq__(self, other: 'RES'):
+        for criterion in self.recognized_criterion:
+            if abs(self.res[criterion] - other.res[criterion]) > 1e-10:
+                return False
+        return True
+
+    def __le__(self, other: 'RES'):
+        for criterion in self.recognized_criterion:
+            if self.res[criterion] < other.res[criterion]:
+                return True
+            if self.res[criterion] > other.res[criterion]:
+                return False
+        return True
+
 
 
 class Cache:
@@ -123,26 +174,52 @@ class Cache:
             - In an empty cache, cmd = dict().
     """
     cachefile = os.path.join(processed_dir, '.monitorcache.json')
-
+    otherfile = os.path.join(processed_dir, '.othermonitorcache.json')
     # `time` stores last write time of cache.
     # `cmd` stores all visited log files and their corresponding cmd strings.
     # `progress` stores all visited batch files and how many experiments in the corresponding files are finished.
     keys = {'time': [str, 'null'], 'cmd': [dict,], 'progress': [dict,]}
+
+    def _merge(self, key, value):
+        if key == 'time':
+            return  # ignore
+        if self.keys[key][0] == dict:
+            self.cache[key].update(value)
+
+    def merge(self, othercache):
+        for key in self.keys:
+            if key in othercache:
+                self._merge(key, othercache[key])
+                self._write(len(othercache[key]))
 
     def __init__(self):
         """
         `self.writes`: number of changes to `self.cache`.
         Must only be changed in `self._write()` and `self._force_write()`.
         """
-        if not os.path.exists(self.cachefile):  # if cache file does not exist
-            with open(self.cachefile, 'w') as fd:  # write a blank cache file
-                json.dump(self.blank(), fd)
 
-        with open(Cache.cachefile, 'r') as fd:  # open & read cache file
-            self.cache = json.load(fd)
+        try:
+            with open(Cache.cachefile, 'r') as fd:  # open & read cache file
+                self.cache = json.load(fd)
+        except Exception:
+            self.cache = self.blank()
+        # if not os.path.exists(self.cachefile):  # if cache file does not exist
+            with open(self.cachefile, 'w') as fd:  # write a blank cache file
+                json.dump(self.cache, fd)
+
+
 
         self.writes = 0
         self.update_cache()
+
+        if os.path.exists(self.otherfile):
+            try:
+                with open(self.otherfile, 'r') as fd:
+                    othercache = json.load(fd)
+                self.merge(othercache)
+            except Exception:
+                pass
+
 
     def update_cache(self):
         """
@@ -165,6 +242,8 @@ class Cache:
         with open(Cache.cachefile, 'w') as fd:
             json.dump(self.cache, fd)
             self.writes = 0
+        with open(Cache.otherfile, 'w') as fd:
+            json.dump(self.cache, fd)
 
     def _write(self, num=1):
         """
@@ -181,7 +260,7 @@ class Cache:
     def get_time(self):
         return datetime.datetime.strptime(self.cache['time'], "%Y%m%d_%H%M%S")
 
-    def get_cmd(self):
+    def get_cmd(self) -> dict:
         return self.cache['cmd']
 
     def write_cmd(self, new_cmd: dict):
@@ -228,6 +307,9 @@ def normalcmd(cmd):
     """
     return CMD(cmd).sorted_cmd_str
 
+def normalres(res):
+    return res
+
 
 def iscmd(cmd):
     return cmd.startswith('python')
@@ -264,6 +346,12 @@ def treeiter(batch_file_tree, name=None):
 
 
 def get_batch_file_tree(path, base_name):
+    """
+    currently not used
+    @param path: -
+    @param base_name: -
+    @return: -
+    """
     files_iter = os.listdir(path)
 
     batch_file_tree = {}
@@ -345,15 +433,46 @@ def log(*args, **kwargs):
     print(*args, **kwargs)
 
 
-def get_command(f):
+def get_command(f) -> Union[None, str]:
+    """
+    get cmd from file
+    @param f: **file handler**
+    @return: normal form of cmd if found; None if not found
+    """
     for pline in f:
         if pline.startswith('python'):  # recognized as command
             return normalcmd(pline)
     return None
 
 
+def get_command_and_result(f) -> Tuple:
+    cmd = res = None
+    for pline in f:
+        if pline.startswith('python'):
+            cmd = normalcmd(pline)
+        elif pline.startswith('{'):
+            res = normalres(pline)
+
+    return cmd, res
+
+
 def get_logs_from_file_list(arg):
-    procnum, path, files_iter, cache_command = arg
+    """
+    Open multiple log files and extract their cmd info.
+
+    This function is run in multiple processes to boost speed.
+
+    @param arg: [procnum, path, files_iter, cache_command,]
+        procnum: `int`, indicates process id
+        path: path to find log files
+        files_iter: `Iterable`, a bunch of filenames (just filenames without path)
+        cache_command: `dict`, 'command' items in cache
+
+    @return: [procnum, logs, new_logs]
+        logs: str, all cmd strings found (normal form)
+        new_logs: dict, new `log file: cmd` items (used to update cache)
+    """
+    procnum, path, files_iter, cache_command = arg[:4]
     logs = []
     new_logs = {}
     try:
@@ -365,6 +484,7 @@ def get_logs_from_file_list(arg):
                 try:
                     with open(os.path.join(path, fd), 'r') as f:
                         command = get_command(f)
+                        # command, res = get_command_and_result(f)
                         new_logs[fd] = command
                 except Exception as e:
                     warn(e)
@@ -376,28 +496,41 @@ def get_logs_from_file_list(arg):
     return procnum, logs, new_logs
 
 
-def ddd(arg):
-    proc, _, _ = arg
-    return proc, []
-
-
 def search_logs(path):
-    files = os.listdir(path)
-    files.sort()  # so it is sorted by time
+    """
+    Search for all log files in `path` and extract their cmd info.
+    @param path: path to log files.
+    @return: a set of all cmd strings.
+    """
+    files = os.listdir(path)  # all files (not necessarily log files)
+    files.sort()  # so they are sorted by time; in case you need to overwrite replicated experiments
+
+    # multiprocessing
+
+    # split into n_split processes
     n_split = 100
 
+    # split the files into `n_split` parts
     n_files = len(files)
     sub_size = (n_files + n_split - 1) // n_split
 
+    # get cache to boost speed
     cache_cmd = cache.get_cmd()
 
-    split_files = [(i, path, files[i * sub_size: (i + 1) * sub_size], cache_cmd) for i in range(n_split)]
+    # prepare args to feed to `get_logs_from_file_list`
+    multiprocess_args = [(i, path, files[i * sub_size: (i + 1) * sub_size], cache_cmd) for i in range(n_split)]
 
+    # multiprocessing and data collect
     log("Searching for logs...")
     ret_list = []
     with Pool(n_split) as p:
-        for whatever_x in tqdm.tqdm(p.imap_unordered(get_logs_from_file_list, split_files), total=n_split):
-            ret_list.append(whatever_x)
+        for whatever_x in tqdm.tqdm(p.imap_unordered(get_logs_from_file_list, multiprocess_args), total=n_split):
+            ret_list.append(whatever_x)  # whatever_x: retval from get_logs_from_file_list
+
+    # this is why we pass procnum into `get_logs_from_file_list`:
+    # Pool.imap_unordered returns a list of results in random order
+    # so we must restore order through a sort
+    # Recall that `get_logs_from...` returns [procnum, logs, new_logs]
     ret_list.sort(key=lambda x: x[0])
     all_commands = []
     all_new_cmds = {}
@@ -405,15 +538,22 @@ def search_logs(path):
         all_commands.extend(ret_list[k][1])
         all_new_cmds.update(ret_list[k][2])
     cache.write_cmd(all_new_cmds)
+
+    # get logs from cache in case they are from .othermonitorcache.json
+    all_commands = cache.get_cmd().values()
+
     log(f'Found {len(set(all_commands))} logs.')
     return set(all_commands)
 
 
 def get_files(filenames) -> Dict[str, List[str]]:
     """
-    read files and put list of lines in dict
-    @param filenames: list of files
-    @return: dict of lists
+    A basic operation. Mainly used in `get_cmd()` below.
+
+    Read a list of files. For each file, read all
+    lines as a list, and put item `file: lines` in the returning dict
+    @param filenames: a list of files (full path)
+    @return: dict of `file: lines`
     """
     ret = {}
     for file in filenames:
@@ -422,6 +562,13 @@ def get_files(filenames) -> Dict[str, List[str]]:
 
 
 def get_cmd(filenames) -> Dict[str, List[str]]:
+    """
+    Get all cmd lines in a list of batch files.
+
+    call `get_files` first, and normalize each cmd line.
+    @param filenames: a list of files (full path)
+    @return:
+    """
     r1 = get_files(filenames)
     ret = {}
     for file, val in r1.items():
@@ -696,24 +843,108 @@ def parse_stop(args):
     stop_batch_files(batch_file_names, jobs)
 
 
+PORT = 64531
+
+def get_ipv4():  # https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
+    # output = subprocess.check_output(
+    #     ['sinfo']
+    # ).decode('utf-8')
+    # regex = re.compile('[^\\w]')
+    # partitions = [regex.sub('', line.split(None, 1)[0]) for line in output.strip().split('\n')][1:]
+    # return partitions
+
+HOST = get_ipv4()
+blocksize = 64
+clearline = '\r' + ' ' * 30 + '\r'
+endingbytes = b'```eof```'
+
+def receive_data(socket):
+    data = b''
+    exitflag = False
+    while not exitflag:
+        block = socket.recv(blocksize)
+        data += block
+        if data.endswith(endingbytes):
+            exitflag = True
+            data = data.replace(endingbytes, b'')
+
+        print(clearline, end='')
+        print(f"({len(data)} bytes received.)", end='', flush=True)
+    print(f"(All received.)", flush=True)
+    print(data.decode('utf-8')[-200:])
+    return data
+
+def send_data(socket, data):
+    print(f"({len(data)} to send...)")
+    print(data.decode('utf-8')[-200:])
+    for i in range(0, len(data), blocksize):
+        socket.sendall(data[i:i + blocksize])
+        print(clearline, end='')
+        print(f"({i + len(data[i:i + blocksize])} bytes sent.)", end='', flush=True)
+    socket.sendall(endingbytes)
+    print(f"(All sent.)", flush=True)
+
+def parse_sync(args):
+
+    print(f"local IPv4: {HOST}")
+    if args.server == 'self':
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind((HOST, PORT))
+            s.listen()
+            print("Waiting for connection.")
+            conn, addr = s.accept()
+            with conn:
+                print(f'Connected by {addr}.')
+                data = receive_data(conn)
+                cache_block = json.loads(data.decode('utf-8'))
+                cache.merge(cache_block)
+                cachedata = json.dumps(cache.cache).encode('utf-8')
+                send_data(conn, cachedata)
+                print("Sync completed.")
+    else:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            print("Connecting...")
+            s.connect((args.server, PORT))
+            print(f"Connected to {args.server}.")
+            cachedata = json.dumps(cache.cache).encode('utf-8')
+            send_data(s, cachedata)
+            data = receive_data(s)
+            cache_block = json.loads(data.decode('utf-8'))
+            cache.merge(cache_block)
+            print("Sync completed.")
+
+
 parser = ArgumentParser()
 subparsers = parser.add_subparsers()
 parser_show = subparsers.add_parser('show', help='Show experiment progress.')
 parser_gen = subparsers.add_parser('gen', help='Generate new experiment settings.')
 parser_run = subparsers.add_parser('run', help='Run experiments.')
 parser_stop = subparsers.add_parser('stop', help='Stop experiments.')
-
+parser_sync = subparsers.add_parser('sync', help='Sync between multiple servers.')
 for parserx in [parser_show, parser_gen, parser_run, parser_stop]:
     parserx.add_argument('--base', default='autogen_sample_script_', help='Provide base name for autogen script.')
     parserx.add_argument('--range', nargs='*', default=[''],
                          help='Select process range for autogen script.')
     parserx.add_argument('--srcdir', default=src_dir, help='Path to autogen script.')
     parserx.add_argument('--logdir', default=log_dir, help='Path to logs.')
-
+parser_sync.add_argument('--server', default='self', help='Address of server. By default this machine will be server.')
 parser_show.set_defaults(func=parse_show)
 parser_gen.set_defaults(func=parse_gen)
 parser_run.set_defaults(func=parse_run)
 parser_stop.set_defaults(func=parse_stop)
+parser_sync.set_defaults(func=parse_sync)
+
 
 if __name__ == '__main__':
     args = parser.parse_args()
