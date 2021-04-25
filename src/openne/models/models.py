@@ -264,10 +264,13 @@ class ModelWithEmbeddings(torch.nn.Module):
             except KeyboardInterrupt as _:
                 print(f"KeyboardInterrupt caught at epoch {i}")
                 break
+
+        self.train(False)
         self.make_output(graph, **kwargs)
 
         t2 = time()
         self.debug("Finished training. Time used = {}.".format(t2 - t1))
+
         if self.save:
             embeddingpath = osp.abspath(osp.join(self.outputpath, self.outputembeddingfile))
             self.debug("Saving embeddings to {}...".format(embeddingpath))

@@ -175,7 +175,50 @@ def mask_attribute(graph: graphinput, mask_size=None,
     return feats, graph.edge_index
 
 
-class NodeSampler:
+# def hard_sample_slicer(graphs: List[graphinput], max_graph_size=5000):
+#     num_graphs = len(graphs)
+#     iter_head = 0
+#     accum_len = 0
+#     slice_head = 0
+#     ret = []
+#     while iter_head <= num_graphs:
+#         curlen = len(graphs[iter_head].x)
+#         if iter_head == num_graphs or (accum_len > 0 and accum_len + curlen > max_graph_size):
+#             i = slice(slice_head, iter_head)
+#             ret.append(i)
+#             accum_len = 0
+#             slice_head = iter_head
+#         if iter_head < num_graphs:
+#             if curlen <= max_graph_size:
+#                 accum_len += curlen
+#             else:
+#
+#         iter_head += 1
+#     # print("from sample slicer: ", ret)
+#     return ret
+
+class _Sampler:
+    def sample_slicer(self, f_pos):
+        iter_step = self.batch_size
+
+        iter_head = 0
+        accum_len = 0
+        slice_head = 0
+        ret = []
+        while iter_head <= self.num_graphs:
+            if iter_head == self.num_graphs or (accum_len > 0 and accum_len + len(f_pos[iter_head]) > iter_step):
+                i = slice(slice_head, iter_head)
+                ret.append(i)
+                accum_len = 0
+                slice_head = iter_head
+            if iter_head < self.num_graphs:
+                accum_len += len(f_pos[iter_head])
+            iter_head += 1
+        # print("from sample slicer: ", ret)
+        return ret
+
+
+class NodeSampler(_Sampler):
     def __init__(self, node_sampler: ss_sampler.TripleGenerator, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
         self.node_sampler = node_sampler
@@ -215,24 +258,7 @@ class NodeSampler:
             self.cache = self.sample()
         return self.cache
 
-    def sample_slicer(self, f_pos):
-        iter_step = self.batch_size
 
-        iter_head = 0
-        accum_len = 0
-        slice_head = 0
-        ret = []
-        while iter_head <= self.num_graphs:
-            if iter_head == self.num_graphs or (accum_len > 0 and accum_len + len(f_pos[iter_head]) > iter_step):
-                i = slice(slice_head, iter_head)
-                ret.append(i)
-                accum_len = 0
-                slice_head = iter_head
-            if iter_head < self.num_graphs:
-                accum_len += len(f_pos[iter_head])
-            iter_head += 1
-        # print("from sample slicer: ", ret)
-        return ret
 
     @classmethod
     def process_graphs(cls, feats, edges):
@@ -276,7 +302,7 @@ class NodeSampler:
         return len(slices)
 
 
-class GraphSampler:
+class GraphSampler(_Sampler):
     def __init__(self, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
         self.sample_size = 5000
@@ -339,23 +365,6 @@ class GraphSampler:
             self.cache = self.sample()
         return self.cache
 
-    def sample_slicer(self, f_pos):
-        iter_step = self.batch_size
-
-        iter_head = 0
-        accum_len = 0
-        slice_head = 0
-        ret = []
-        while iter_head <= self.num_graphs:
-            if iter_head == self.num_graphs or (accum_len > 0 and accum_len + len(f_pos[iter_head]) > iter_step):
-                i = slice(slice_head, iter_head)
-                ret.append(i)
-                accum_len = 0
-                slice_head = iter_head
-            if iter_head < self.num_graphs:
-                accum_len += len(f_pos[iter_head])
-            iter_head += 1
-        return ret
 
     @classmethod
     def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):

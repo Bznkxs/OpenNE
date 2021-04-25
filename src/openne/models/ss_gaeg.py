@@ -7,7 +7,7 @@ import torch
 import torch.cuda
 from .ss_input import model_input
 import torch.nn.functional as F
-
+from torch.cuda.amp import autocast
 
 
 class SS_GAEg(ModelWithEmbeddings):
@@ -132,7 +132,9 @@ class SS_GAEg(ModelWithEmbeddings):
         batch_num = len(self.model.sampler)
         for batch in self.model.sampler:
             loss = 0.
+            # print("batch", flush=True)
             for bx, bpos, bneg in batch:
+                # print("sample in batch", flush=True)
                 loss += self.model(bx, bpos, bneg)
             loss /= batch_num
 
@@ -179,21 +181,27 @@ class SS_GAEg(ModelWithEmbeddings):
         return self.vectors
 
     def _ss_get_embeddings(self, graph, input_flag):
+        # print("get embeddings", flush=True)
         # self.to('cpu')
         self.requires_grad_(False)
-        graphs_data = self.model.graphs_data
+        graphs_data = self.model.graphs_data  # List[graphinput]
         slices = self.model.sampler.sampler.sample_slicer([g.x for g in graphs_data])
         embeddings = []
         processed_nodes = 0
         # print("ready get embeddings")
         for i in slices:
             # print("slice", i)
+
             adj, start_idx = process_graphs(graphs_data[i], getdevice())
             feature_slice = slice(processed_nodes, processed_nodes+start_idx[-1])
             all_graphs = model_input(input_flag, adj, start_idx, [self.features[feature_slice]], repeat=False)
             processed_nodes += start_idx[-1]
-
-            embeddings.append(self.model.embed(all_graphs).detach())
+            if self.enc == 'gat' and adj.shape[0] > 10000:  # save space
+                with autocast():
+                    sub_embeddings = self.model.embed(all_graphs).detach()
+            else:
+                sub_embeddings = self.model.embed(all_graphs).detach()
+            embeddings.append(sub_embeddings)
         self.embeddings = torch.cat(embeddings)
         #self.embeddings = self.features
 
