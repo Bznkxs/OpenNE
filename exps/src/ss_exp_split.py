@@ -1,6 +1,6 @@
 from sys import argv
 import os
-
+import random
 cur_dir = os.path.dirname(__file__)
 root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))
 src_dir = os.path.join(root_dir, 'src')
@@ -14,7 +14,8 @@ def split(name, parts):
     M = parts
     w2 = [x for x in w2 if x not in w]
     print("after removing suspicious files: ", len(w2))
-    import random
+
+    random.seed(32)
     random.shuffle(w2)
     size = int(len(w2) / M + 0.5)
     for m in range(M):
