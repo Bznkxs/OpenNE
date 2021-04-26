@@ -39,13 +39,26 @@ class BaseSampler:
 def compute_ppr(edge_index, alpha=0.2, self_loop=True):
     adj = torch.sparse_coo_tensor(edge_index, torch.ones(edge_index.shape[1])).to_dense()
     # print("adj:", adj.device)
-    a = adj.cpu().numpy()
-    if self_loop:
-        a = a + np.eye(a.shape[0])  # A^ = A + I_n
-    d = np.diag(np.sum(a, 1))  # D^ = Sigma A^_ii
-    dinv = fractional_matrix_power(d, -0.5)  # D^(-1/2)
-    at = np.matmul(np.matmul(dinv, a), dinv)  # A~ = D^(-1/2) x A^ x D^(-1/2)
-    return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))  # a(I_n-(1-a)A~)^-1
+    if adj.shape[0] > 20000:
+        a = adj.cpu().numpy()
+        if self_loop:
+            a = a + np.eye(a.shape[0])  # A^ = A + I_n
+        d = (np.sum(a, 1))  # D^ = Sigma A^_ii
+        dinv = np.power(d, -0.5)  # D^(-1/2)
+        at = (dinv.reshape(-1, 1) * a) * (dinv.reshape(1, -1))
+        # dinv = fractional_matrix_power(d, -0.5)  # D^(-1/2)
+        # at = np.matmul(np.matmul(dinv, a), dinv)  # A~ = D^(-1/2) x A^ x D^(-1/2)
+
+        return alpha * inv((np.eye(a.shape[0]) - (1 - alpha) * at))  # a(I_n-(1-a)A~)^-1
+    else:
+        a = adj.to(getdevice())
+        eye = torch.eye(a.shape[0], device=getdevice())
+        if self_loop:
+            a = a + eye
+        d = torch.sum(a, 1)
+        dinv = torch.pow(d, -0.5)
+        at = (dinv.reshape((-1, 1)) * a) * (dinv.reshape((1, -1)))
+        return (alpha * torch.inverse((eye - (1 - alpha) * at))).cpu()
 
 
 def sample_subgraph(graph_data: List[graphinput], n_nodes=None,
@@ -342,7 +355,7 @@ class GraphSampler(_Sampler):
         g_anchor, g_diff = self.anchor, self.graphs_diff
         f_pos, e_anchor, e_diff, = [], [], []
         # random shuffle anchor and diff
-        idx = np.random.permutation(self.num_graphs)
+        # idx = np.random.permutation(self.num_graphs)
         #g_anchor = [g_anchor[int(i)] for i in idx]
         #g_diff = [g_diff[int(i)] for i in idx]
         # sample subgraphs
@@ -389,6 +402,10 @@ class GraphSampler(_Sampler):
         create batch samples
         @return:
         """
+        # print("sample:", end='', flush=True)
+        tstart = time.time()
+        tpointer = tstart
+        t_tot = 0
         f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
         for i in slices:  # for each batch
 
@@ -402,12 +419,14 @@ class GraphSampler(_Sampler):
             bx_r = model_input(model_input.GRAPHS, add, start_idd, f_pos[i])
             bpos_r = model_input(model_input.NODES, adj, start_idx, f_pos[i])
             bneg_r = model_input(model_input.NODES, adn, start_idn, f_neg[i])
-
+            t_tot += time.time() - tpointer
+            tpointer = time.time()
             #yield bx, bpos, bneg
             #yield bx_r, bpos_r, bneg_r
             yield [[bx, bpos, bneg]]
             yield [[bx_r, bpos_r, bneg_r]]
         self.cache = None
+        # print(f" (sample time, tot time) = ({t_tot}, {time.time() - tstart})", flush=True)
 
     def __len__(self):
         """
@@ -431,7 +450,7 @@ class DGISampler(GraphSampler):
             g_neg.append(graphinput(f_neg[i], None, e_anchor[i]))
             # g_negdiff = g_neg
         adj, start_idx = process_graphs(g_anchor, getdevice())
-        adn, start_idn = process_graphs(g_neg, getdevice())
+        adn, start_idn = adj, start_idx  # process_graphs(g_neg, getdevice())
         return adj, adj, adn, adn, start_idx, start_idx, start_idn, start_idn
 
     def get_negative_indices_and_features(self, f_pos, e_anchor, e_diff):
@@ -449,7 +468,9 @@ class DiffSampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = []
         for g in self.graphs:
-            t = torch.FloatTensor(compute_ppr(g.edge_index))
+            t = compute_ppr(g.edge_index)
+            if not isinstance(t, torch.Tensor):
+                t = torch.from_numpy(t)
             # convert t into sparse
             idx = torch.nonzero(t).t()
             val = t[idx[0], idx[1]]
@@ -491,8 +512,10 @@ class DiffSampler(GraphSampler):
             g_negdiff.append(graphinput(f_neg[i], None, e_diffneg[i]))
         adj, start_idx = process_graphs(g_anchor, getdevice())
         add, start_idd = process_graphs(g_diff, getdevice(), normalize=False)
-        adn, start_idn = process_graphs(g_neg, getdevice())
-        adnd, start_idnd = process_graphs(g_negdiff, getdevice(), normalize=False)
+        adn, start_idn = adj, start_idx
+        # adn, start_idn = process_graphs(g_neg, getdevice())
+        adnd, start_idnd = add, start_idd
+        # adnd, start_idnd = process_graphs(g_negdiff, getdevice(), normalize=False)
         return adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd
 
 def draw_graph_from_feat_edge(feats, edges, layout=None):
