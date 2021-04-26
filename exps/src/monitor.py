@@ -867,7 +867,7 @@ def get_ipv4():  # https://stackoverflow.com/questions/166506/finding-local-ip-a
     # return partitions
 
 HOST = get_ipv4()
-blocksize = 256
+blocksize = 1024
 clearline = '\r' + ' ' * 30 + '\r'
 endingbytes = b'```eof```'
 
