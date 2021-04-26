@@ -17,7 +17,7 @@ cur_dir = os.path.dirname(__file__)
 root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))
 src_dir = os.path.join(root_dir, 'src')
 log_dir = os.path.join(src_dir, 'logs')
-output_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed', 'output'))
+output_dir = os.path.normpath(os.path.join(cur_dir, '..', 'exps', 'processed', 'output'))
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -424,7 +424,7 @@ def run_job_sbatch(name, partition):
         with open(name, 'w') as fd:
             fd.write("#!/bin/sh\n")
             fd.write('\n'.join(lines))
-    tmpdir = os.curdir
+    tmpdir = os.getcwd()
     os.chdir(src_dir)
     print(f"run {name} with partition {partition}")
     subprocess.run(['sbatch', '-G', '1', '-p', partition, name])
