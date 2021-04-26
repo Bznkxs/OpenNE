@@ -70,6 +70,7 @@ class GAT(Layer):
                 setattr(self, 'res_' + str(head), res)
                 self.residuals.append(res)
 
+        self.inplace_leaky_relu = torch.nn.LeakyReLU(negative_slope=0.2, inplace=True)
 
         # self.batch_norm = torch.nn.BatchNorm1d(self.output_dim)
 
@@ -77,12 +78,17 @@ class GAT(Layer):
             self._log_vars()
 
     def forward(self, inputs):
-        # print(f"    Allocated: {torch.cuda.memory_allocated()} - ", end='')
+
+        # print(f"    Allocated: {torch.cuda.memory_allocated()} - ", end='', flush=True)
+
         x = inputs[0]  # input node features (n * input_dim)
         adj = inputs[1]
+        # print(f"        inputs: {x.shape}")
         #  attention mask
         if adj.is_sparse:
             adj = adj.to_dense()
+        if not self.training:
+            adj = adj.float()
         adj[adj > self.threshold_val] = 1.0
 
         if self.training:
@@ -92,12 +98,16 @@ class GAT(Layer):
             else:
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
 
-        def masked_softmax(vec, mask, dim=1, epsilon=1e-5):
+        def masked_softmax(vec, mask, dim=1, epsilon=1e-5, inplace=False):
+            if inplace:
+                exps = torch.exp_(vec)
+                masked_exps = exps.mul_(mask)
+                masked_sums = masked_exps.sum(dim, keepdim=True) + epsilon
+                return masked_exps.div_(masked_sums)
             exps = torch.exp(vec)
             masked_exps = exps * mask.float()
             masked_sums = masked_exps.sum(dim, keepdim=True) + epsilon
-            return (masked_exps/masked_sums)
-
+            return masked_exps / masked_sums
         y_list = []
         for i in range(self.attn_heads):  # do for every independent attention kernel
             weight = self.weights[i]
@@ -121,7 +131,10 @@ class GAT(Layer):
             #c += -1e9 * (1.0 - adj)
 
             # leakyReLU and softmax
-            c = masked_softmax(torch.nn.functional.leaky_relu(c, 0.2), adj)
+            if not self.training:
+                c = masked_softmax(self.inplace_leaky_relu(c), adj, inplace=True)
+            else:
+                c = masked_softmax(torch.nn.functional.leaky_relu(c, 0.2), adj)
             #c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
 
             if self.training:
