@@ -183,8 +183,10 @@ class Cache:
     def _merge(self, key, value):
         if key == 'time':
             return  # ignore
-        if self.keys[key][0] == dict:
+        elif key == 'cmd':
             self.cache[key].update(value)
+        elif key == 'progress':
+            return  # ignore
 
     def merge(self, othercache):
         for key in self.keys:
@@ -865,7 +867,7 @@ def get_ipv4():  # https://stackoverflow.com/questions/166506/finding-local-ip-a
     # return partitions
 
 HOST = get_ipv4()
-blocksize = 64
+blocksize = 256
 clearline = '\r' + ' ' * 30 + '\r'
 endingbytes = b'```eof```'
 
@@ -902,7 +904,11 @@ def parse_sync(args):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((HOST, PORT))
             s.listen()
-            print("Waiting for connection.")
+            print("Waiting for connection. "
+                  "Use the following command on another server to sync data:")
+            print()
+            print(f"python monitor.py sync --server {HOST}")
+            print()
             conn, addr = s.accept()
             with conn:
                 print(f'Connected by {addr}.')
