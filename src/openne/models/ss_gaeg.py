@@ -100,6 +100,7 @@ class SS_GAEg(ModelWithEmbeddings):
         self.cost_val = []
         self.negative_ratio = 5
         self.c_up = 0
+        self.emergency_stop = False
         # print("----------------------built--------------------")
 
 
@@ -114,6 +115,8 @@ class SS_GAEg(ModelWithEmbeddings):
                               f"Reserved: {getattr(torch.cuda, 'memory_reserved', torch.cuda.memory_cached)()}"
         else:
             self.debug_info = f"train_loss: {'{:.5f}'.format(train_loss)}"
+        if np.isnan(train_loss):
+            self.emergency_stop = True
 
     def loss(self, output, adj_label):
         cost = F.binary_cross_entropy_with_logits(output, adj_label)
@@ -157,6 +160,8 @@ class SS_GAEg(ModelWithEmbeddings):
         return output, cur_loss, (time.time() - t_test)
 
     def early_stopping_judge(self, graph, *, step=0, **kwargs):
+        if self.emergency_stop:
+            return True
         if self.patience > len(self.cost_val) - self.early_stopping:
             return False
         if self.cost_val[-1] > self.cost_val[-2]:
