@@ -10,7 +10,11 @@ class BaseEstimator(torch.nn.Module):
         self.estimator = estimator_dict[name.lower()](**kwargs)
 
     def forward(self, *args, **kwargs):
-        return self.estimator(*args, **kwargs)
+        est = self.estimator(*args, **kwargs)
+        if True in torch.isnan(est):
+            print("NaN in est!", flush=True)
+            exit(-1)
+        return est
 
 class JSDEstimator(torch.nn.Module):
     def __init__(self, **kwargs):
@@ -39,8 +43,9 @@ class NCEEstimator(torch.nn.Module):
             setattr(self, i, j)
 
     def forward(self, pos_score, neg_score, pos_mask, neg_mask):
-        ep = torch.exp(pos_score)#.sum()
-        eq = torch.exp(neg_score)#.sum()
+        mx_score = torch.max(torch.max(pos_score), torch.max(neg_score))
+        ep = torch.exp(pos_score - mx_score)#.sum()
+        eq = torch.exp(neg_score - mx_score)#.sum()
         if pos_mask is not None:
             ep = (ep * pos_mask).sum(1)
             eq = (eq * neg_mask).sum(1)

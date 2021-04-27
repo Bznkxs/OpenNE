@@ -1,3 +1,5 @@
+import psutil
+
 from .utils import *
 from .models import *
 from .ss_modelg import SSModel
@@ -137,14 +139,25 @@ class SS_GAEg(ModelWithEmbeddings):
             loss = 0.
             # print("batch", flush=True)
             for bx, bpos, bneg in batch:
-                # print("sample in batch", flush=True)
+            #    print("  sample in batch", flush=True)
                 # md_start = time.time()
+
                 loss += self.model(bx, bpos, bneg)
+                # process = psutil.Process(os.getpid())
+                # print(process.memory_info().rss)
                 # print("forward: ", time.time() - md_start)
+
             loss /= batch_num
+            if True in torch.isnan(loss):
+                print("gaeg: NaN in forward propagation!")
+                exit(-1)
             if train:
                 # bp_start = time.time()
                 loss.backward()
+                for k in self.parameters():
+                    if True in torch.isnan(k):
+                        print("NaN in backward prop!")
+                        exit(-1)
                 # print("bp: ", time.time() - bp_start)
 
             cur_loss += loss.item()

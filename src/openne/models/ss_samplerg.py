@@ -328,6 +328,9 @@ class GraphSampler(_Sampler):
         # print("sampler batch size =", self.batch_size)
         self.cache = None
         self.sample_subgraph = True
+        self.sampled = []
+        self.processed_graph_cache = {}
+
 
     def get_diffused_graphs(self):
         """
@@ -354,17 +357,25 @@ class GraphSampler(_Sampler):
         """
         g_anchor, g_diff = self.anchor, self.graphs_diff
         f_pos, e_anchor, e_diff, = [], [], []
+        self.sampled = []
         # random shuffle anchor and diff
         # idx = np.random.permutation(self.num_graphs)
         #g_anchor = [g_anchor[int(i)] for i in idx]
         #g_diff = [g_diff[int(i)] for i in idx]
         # sample subgraphs
         for i in range(self.num_graphs):
-            f1, (e1, e2), _ = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
-                                           self.sample_subgraph)
+            if len(g_anchor[i].x) <= self.sample_size:
+                self.sampled.append(False)
+                pnodes = torch.arange(len(g_anchor[i].x))
+            else:
+                self.sampled.append(True)
+                pnodes = None
+            f1, (e1, e2), pm = sample_subgraph([g_anchor[i], g_diff[i]], len(g_anchor[i].x), self.sample_size,
+                                           self.sample_subgraph, permuted_nodes=pnodes)
             f_pos.append(f1)
             e_anchor.append(e1)
             e_diff.append(e2)
+
 
         # get negative
         f_neg, e_neg, e_diffneg = self.get_negative_indices_and_features(f_pos, e_anchor, e_diff)
@@ -379,8 +390,7 @@ class GraphSampler(_Sampler):
         return self.cache
 
 
-    @classmethod
-    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, **kwargs):
         """
 
         @param f_pos:
@@ -407,11 +417,16 @@ class GraphSampler(_Sampler):
         tpointer = tstart
         t_tot = 0
         f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, slices = self.get_sample()
+        t_getsample = time.time() - tstart
+        t_process_graph = 0
         for i in slices:  # for each batch
 
             f_pos_d = f_pos[i]
+            tpointer = time.time()
             adj, add, adn, adnd, start_idx, start_idd, start_idn, start_idnd \
-                = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i])
+                = self.process_graphs(f_pos[i], f_neg[i], e_anchor[i], e_diff[i], e_neg[i], e_diffneg[i],
+                                      indices=i)
+            t_process_graph += time.time() - tpointer
             bx = model_input(model_input.GRAPHS, adj, start_idx, f_pos[i])
             bpos = model_input(model_input.NODES, add, start_idd, f_pos[i])
             bneg = model_input(model_input.NODES, adnd, start_idnd, f_neg[i])
@@ -420,13 +435,13 @@ class GraphSampler(_Sampler):
             bpos_r = model_input(model_input.NODES, adj, start_idx, f_pos[i])
             bneg_r = model_input(model_input.NODES, adn, start_idn, f_neg[i])
             t_tot += time.time() - tpointer
-            tpointer = time.time()
+
             #yield bx, bpos, bneg
             #yield bx_r, bpos_r, bneg_r
             yield [[bx, bpos, bneg]]
             yield [[bx_r, bpos_r, bneg_r]]
         self.cache = None
-        # print(f" (sample time, tot time) = ({t_tot}, {time.time() - tstart})", flush=True)
+        # print(f" (sample time, tot time, sample, process) = ({t_tot}, {time.time() - tstart}, {t_getsample}, {t_process_graph})", flush=True)
 
     def __len__(self):
         """
@@ -441,15 +456,31 @@ class DGISampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = self.anchor
 
-    @classmethod
-    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, **kwargs):
+
+        # if 'indices' in kwargs:
+        #     indices = kwargs['indices']
+        #     indices_h = (indices.start, indices.stop)
+        #     if True in self.sampled[indices]:
+        #         indices = None
+        #         indices_h = None
+        # else:
+        #     indices = None
+        #     indices_h = None
+        #
+        # if indices is None or indices_h not in self.processed_graph_cache:
         g_anchor, g_neg = [], []
         for i in range(len(f_pos)):
             g_anchor.append(graphinput(f_pos[i], None, e_anchor[i]))
             # g_diff = g_anchor
             g_neg.append(graphinput(f_neg[i], None, e_anchor[i]))
             # g_negdiff = g_neg
-        adj, start_idx = process_graphs(g_anchor, getdevice())
+        pg = process_graphs(g_anchor, getdevice())
+            # if indices is not None:
+            #     self.processed_graph_cache[indices_h] = pg
+        # else:
+        #     pg = self.processed_graph_cache[indices_h]
+        adj, start_idx = pg
         adn, start_idn = adj, start_idx  # process_graphs(g_neg, getdevice())
         return adj, adj, adn, adn, start_idx, start_idx, start_idn, start_idn
 
@@ -468,6 +499,8 @@ class DiffSampler(GraphSampler):
     def get_diffused_graphs(self):
         self.graphs_diff = []
         for g in self.graphs:
+            #self.graphs_diff.append(g)
+            #continue
             t = compute_ppr(g.edge_index)
             if not isinstance(t, torch.Tensor):
                 t = torch.from_numpy(t)
@@ -502,16 +535,39 @@ class DiffSampler(GraphSampler):
             
         return f_neg, e_neg, e_negdiff
 
-    @classmethod
-    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, **kwargs):
+        # t_start = time.time()
+        # if 'indices' in kwargs:
+        #     indices = kwargs['indices']
+        #     indices_h = (indices.start, indices.stop)
+        #     if True in self.sampled[indices]:
+        #         indices = None
+        #         indices_h = None
+        # else:
+        #     indices = None
+        #     indices_h = None
+        # # indices=None
+        # if indices is None or indices_h not in self.processed_graph_cache:
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
         for i in range(len(f_pos)):
             g_anchor.append(graphinput(f_pos[i], None, e_anchor[i]))
             g_diff.append(graphinput(f_pos[i], None, e_diff[i]))
             g_neg.append(graphinput(f_neg[i], None, e_neg[i]))
             g_negdiff.append(graphinput(f_neg[i], None, e_diffneg[i]))
-        adj, start_idx = process_graphs(g_anchor, getdevice())
-        add, start_idd = process_graphs(g_diff, getdevice(), normalize=False)
+        pg1 = process_graphs(g_anchor, getdevice())
+        pg2 = process_graphs(g_diff, getdevice(), normalize=False)
+        #     if indices is not None:
+        #         self.processed_graph_cache[indices_h] = [pg1, pg2]
+        #         # print("cached", kwargs['indices'], time.time() - t_start)
+        #     else:
+        #         pass
+        #         # print('some being true', time.time() - t_start)
+        # else:
+        #     pg1, pg2 = self.processed_graph_cache[indices_h]
+            # print("saved time", kwargs['indices'], time.time() - t_start)
+
+        adj, start_idx = pg1
+        add, start_idd = pg2
         adn, start_idn = adj, start_idx
         # adn, start_idn = process_graphs(g_neg, getdevice())
         adnd, start_idnd = add, start_idd
@@ -530,8 +586,7 @@ def draw_graph_from_feat_edge(feats, edges, layout=None):
 
 class AugmentationSampler(DGISampler):
 
-    @classmethod
-    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, **kwargs):
         g_anchor, g_diff, g_neg, g_negdiff = [], [], [], []
         aug_methods = [mask_attribute, augment_subgraph, drop_edges, drop_nodes]
         f_aug1, f_aug2 = aug_methods[torch.randint(len(aug_methods), [1]).data], aug_methods[torch.randint(len(aug_methods), [1]).data]
@@ -625,8 +680,7 @@ class AugmentationSampler(DGISampler):
 
 class GCASampler(DGISampler):
 
-    @classmethod
-    def process_graphs(cls, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg):
+    def process_graphs(self, f_pos, f_neg, e_anchor, e_diff, e_neg, e_diffneg, **kwargs):
         g_anchor, g_diff = [], []
         aug_methods = [drop_edges, mask_attribute]
         f_aug1, f_aug2 = aug_methods[0], aug_methods[1]
