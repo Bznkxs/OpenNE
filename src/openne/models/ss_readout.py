@@ -8,7 +8,11 @@ class BaseReadOut(torch.nn.Module):
         
 
     def forward(self, *args, **kwargs):
-        return self.readout(*args, **kwargs)
+        res = self.readout(*args, **kwargs)
+        if True in torch.isnan(res):
+            print("NaN in readout", flush=True)
+            exit(-1)
+        return res
 
 
 class AvgReadOut(torch.nn.Module):
