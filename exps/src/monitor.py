@@ -25,7 +25,7 @@ input: we deal with 2 kinds of files:
     - multiple cmd lines
 
 """
-
+import itertools
 from argparse import ArgumentParser
 import os
 import sys
@@ -36,10 +36,9 @@ import json
 import datetime
 import socket
 
-from typing import Dict, List, Set, Iterable, Sized, Tuple, Union
+from typing import Dict, List, Set, Iterable, Sized, Tuple, Union, _alias, Any
 
 import tqdm
-
 
 cur_dir = os.path.abspath(os.path.dirname(__file__))  # directory of this file
 root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))  # project root, directory of OpenNE
@@ -47,8 +46,6 @@ src_dir = os.path.join(root_dir, 'src')  # OpenNE/src
 log_dir = os.path.join(src_dir, 'logs')  # OpenNE/src/logs, default path to openne raw logs
 processed_dir = os.path.normpath(os.path.join(cur_dir, '..', 'processed'))  #
 output_dir = os.path.normpath(os.path.join(processed_dir, 'output'))
-
-
 
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
@@ -58,6 +55,7 @@ class CMD:
     """
     Standard class for `cmd` object. This is supposed to use as a comparison & analysis tool for cmd.
     """
+
     def __init__(self, cmd_str: str):
         """
         Construct a `cmd` object out of a raw string.
@@ -105,6 +103,7 @@ class CMD:
 
 class RES:
     recognized_criterion = ['micro', 'macro', 'samples', 'weighted']
+
     @classmethod
     def isresult(cls, res_str):
         try:
@@ -130,6 +129,7 @@ class RES:
                              for criterion in self.recognized_criterion}
         self.res_str = ','.join(f'{criterion}: {self.res[criterion]}'
                                 for criterion in self.recognized_criterion)
+
     def __str__(self):
         return self.res_str
 
@@ -157,7 +157,6 @@ class RES:
             if self.res[criterion] > other.res[criterion]:
                 return False
         return True
-
 
 
 class Cache:
@@ -193,7 +192,7 @@ class Cache:
     # `time` stores last write time of cache.
     # `cmd` stores all visited log files and their corresponding cmd strings.
     # `progress` stores all visited batch files and how many experiments in the corresponding files are finished.
-    keys = {'time': [str, 'null'], 'cmd': [dict,], 'progress': [dict,]}
+    keys = {'time': [str, 'null'], 'cmd': [dict, ], 'progress': [dict, ]}
 
     def _merge(self, key, value):
         if key == 'time':
@@ -220,11 +219,9 @@ class Cache:
                 self.cache = json.load(fd)
         except Exception:
             self.cache = self.blank()
-        # if not os.path.exists(self.cachefile):  # if cache file does not exist
+            # if not os.path.exists(self.cachefile):  # if cache file does not exist
             with open(self.cachefile, 'w') as fd:  # write a blank cache file
                 json.dump(self.cache, fd)
-
-
 
         self.writes = 0
         self.update_cache()
@@ -236,7 +233,6 @@ class Cache:
                 self.merge(othercache)
             except Exception:
                 pass
-
 
     def update_cache(self):
         """
@@ -323,6 +319,7 @@ def normalcmd(cmd):
     @return:
     """
     return CMD(cmd).sorted_cmd_str
+
 
 def normalres(res):
     return res
@@ -447,7 +444,8 @@ def parse_output_name(filename):
     return expname, jobid
 
 
-def search_output_files(path, base_name=None, suffix='.out'):
+def search_output_files(path, base_name=None, suffix='.out', all_files=True):
+    assert all_files is True, '`all_files` must be True!'
     if base_name is None:
         base_name = ['R-']
     filelist = os.listdir(path)
@@ -459,19 +457,25 @@ def search_output_files(path, base_name=None, suffix='.out'):
             expname, jobid = parse_output_name(filename)
             ti_c = os.path.getctime(fullname)
             if expname in output_files:
-                oldfilename, old_tic = output_files[expname]
-                if old_tic < ti_c:
-                    output_files[expname] = (fullname, ti_c)
+                if all_files:
+                    output_files[expname].append((fullname, ti_c))
+                else:  # we keep the original implementation but make it deprecated
+                    oldfilename, old_tic = output_files[expname]
+                    if old_tic < ti_c:
+                        output_files[expname] = [(fullname, ti_c)]
             else:
-                output_files[expname] = (fullname, ti_c)
+                output_files[expname] = [(fullname, ti_c)]
+    for expname in output_files:  # sort all output_files by creation time
+        output_files[expname].sort(key=lambda x: -x[1])
     return output_files
 
-
-def get_outputs(output_filenames):
-
+FullPath = str
+CMDStr = str
+Result = Union[str, float]
+def get_outputs(output_filenames) -> Dict[FullPath, Dict[CMDStr, Result]]:
     outputs = {}
     for filename in output_filenames:
-        #print(filename, ":")
+        # print(filename, ":")
         outputs[filename] = {}
         with open(filename, 'r') as fd:
             READY, GOT_CMD = 0, 1
@@ -480,32 +484,32 @@ def get_outputs(output_filenames):
             cur_res = None
             for line in fd:
                 if iscmd(line):
-                #    print("  got cmd")
+                    #    print("  got cmd")
                     if cur_st == READY:
                         cur_cmd = normalcmd(line)
                         cur_st = GOT_CMD
                     else:
-                    #    print("unknown error")
+                        #    print("unknown error")
                         outputs[filename][cur_cmd] = "unknown error"
                         cur_cmd = normalcmd(line)
                         # cur_st = GOT_CMD
                 elif RES.isresult(line):
-                #    print("  is result")
+                    #    print("  is result")
                     if cur_st == GOT_CMD:
                         outputs[filename][cur_cmd] = int(eval(line)['micro'] * 1000) / 1000
                         cur_st = READY
                 elif line.find('NaN') >= 0:
-                #    print("  NaN")
+                    #    print("  NaN")
                     if cur_st == GOT_CMD:
                         outputs[filename][cur_cmd] = 'NaN'
                         cur_st = READY
                 elif line.find('Killed') >= 0:
-                #    print("  Killed")
+                    #    print("  Killed")
                     if cur_st == GOT_CMD:
                         outputs[filename][cur_cmd] = 'killed'
                         cur_st = READY
                 elif line.find('CUDA') >= 0:
-                #    print("  CUDA")
+                    #    print("  CUDA")
                     if cur_st == GOT_CMD:
                         outputs[filename][cur_cmd] = 'cuda error'
                         cur_st = READY
@@ -536,7 +540,7 @@ def outputs_to_csv(outputs):
             else:
                 val = argsdict[arg]
             args.append(val)
-        csv_lines.append(','.join(args) + ',' + str(res).replace(',','.') + ',' + cmd)
+        csv_lines.append(','.join(args) + ',' + str(res).replace(',', '.') + ',' + cmd)
     csv_text = '\n'.join([csv_head] + csv_lines)
     csv_name = 'failure_analysis.csv'
     fullname = os.path.join(processed_dir, csv_name)
@@ -545,12 +549,48 @@ def outputs_to_csv(outputs):
     print(f"Wrote runtime failure analysis to {fullname}.")
 
 
-
 def get_slurm_outputs(batch_path, base_name):
-    output_file_dict = search_output_files(batch_path, base_name)
-    output_filenames = {fullname for (fullname, _) in output_file_dict.values()}
+    all_files = True
+    output_file_dict = search_output_files(batch_path, base_name, all_files=all_files)  # Dict[expname, List[Tuple[fullname, time]]]
+    # print(list(itertools.chain(*output_file_dict.values())))
+    output_filenames = {fullname for (fullname, _) in list(itertools.chain(*output_file_dict.values()))}
     outputs = get_outputs(output_filenames)
     return outputs, output_file_dict
+
+
+def merge_outputs(outputs: Dict[FullPath, Dict[CMDStr, Result]], output_file_dict: Dict[Any, List[Tuple[str, float]]])\
+        -> Dict[Any, Dict[CMDStr, Result]]:
+    # merge outputs; cover those earlier logs with older ones
+    merged_outputs = {}  # Dict[expname, Dict[CMDStr, Result]]
+    for expname in output_file_dict:
+        merged_outputs[expname] = {}
+        for fullname, _ in output_file_dict[expname]:  # already sorted latest to oldest
+            if fullname in outputs:  # yes it is
+                for cmd_str, res in outputs[fullname].items():
+                    if cmd_str not in merged_outputs[expname]:  # write new to old without rewrite
+                        merged_outputs[expname][cmd_str] = res
+    return merged_outputs
+
+
+def merge_progress_single(batch_cmd_single: list, finished_cmd_single: set, outputs_single: dict):
+    res = {}
+    for cmd in batch_cmd_single:
+        if cmd in finished_cmd_single:
+            res[cmd] = 1.  # random float
+        elif cmd in outputs_single:
+            res[cmd] = outputs_single[cmd]
+        else:
+            res[cmd] = 'unfinished'
+    return res
+
+def merge_progress(merged_outputs, batch_cmd, finished_cmd):
+    merged_progress = {}
+    for expname in merged_outputs:
+        batch_name = expname + '.sh'
+        if batch_name in batch_cmd:
+            merged_progress[expname] = merge_progress_single(batch_cmd[batch_name], finished_cmd[batch_name], merged_outputs[expname])
+    return merged_progress
+
 
 def warn(e):
     # print(e)
@@ -724,10 +764,13 @@ def get_unfinished(batch_cmd: Dict[str, Iterable], finished_cmd: Dict[str, Itera
     return unfinished_cmd
 
 
-def read_files(batch_path, base_name, log_path):
+def read_files(batch_path, base_name, log_path, do_search_logs=True):
     batch_files = search_batch_files(batch_path, base_name)
     batch_cmd = get_cmd(batch_files)
-    logs = search_logs(log_path)
+    if do_search_logs:
+        logs = search_logs(log_path)
+    else:
+        logs = None
     return batch_cmd, logs
 
 
@@ -806,6 +849,18 @@ def show_exp_progress(batch_path, base_name, log_path, running_jobs=None):
     show_batch_info(batch_files, batch_info, running_jobs, title, title_description)
 
 
+def check_outputs(batch_path, base_name, log_path):
+    r_base_name = ['R-' + name for name in base_name]
+    outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
+
+    merged_outputs = merge_outputs(outputs, output_file_dict)
+    # display outputs
+    batch_cmd, logs = read_files(batch_path, base_name, log_path)
+    finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
+    merged_progress = merge_progress(merged_outputs, batch_cmd, finished_cmd)
+    return outputs, output_file_dict, batch_cmd, logs, finished_cmd, finished_ratio, merged_progress
+
+
 def write_exps(explist):
     """
     write file
@@ -823,9 +878,12 @@ def write_exps(explist):
     return ret
 
 
+
+
 def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=True, failure_args=None):
-    batch_cmd, logs = read_files(batch_path, base_name, log_path)
-    finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
+    outputs, output_file_dict, batch_cmd, logs, finished_cmd, finished_ratio, merged_progress = check_outputs(batch_path, base_name, log_path)
+    # batch_cmd, logs = read_files(batch_path, base_name, log_path)
+    # finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
     unfinished = get_unfinished(batch_cmd, finished_cmd)
     print("Refreshing exps.")
     # combine failure args
@@ -837,18 +895,21 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
             failure_args = None
         #     print("None")
     if failure_args is not None:
-        r_base_name = ['R-' + name for name in base_name]
-        outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
+
+        # outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
         for batch_file in batch_cmd:
             exp_name = os.path.basename(batch_file).replace('.sh', '')
-            if exp_name in output_file_dict:
-                output_file_name, _ = output_file_dict[exp_name]
-                _, jobid = parse_output_name(output_file_name)
-                job_ids[batch_file] = jobid
-                output_info = outputs[output_file_name]
+            if exp_name in merged_progress:
+                output_info = merged_progress[exp_name]
+            # exp_name = os.path.basename(batch_file).replace('.sh', '')
+            # if exp_name in output_file_dict:
+            #     output_file_name, _ = output_file_dict[exp_name]
+            #     _, jobid = parse_output_name(output_file_name)
+            #     job_ids[batch_file] = jobid
+            #     output_info = outputs[output_file_name]
                 for cmd in output_info:
                     if failure_args.fail == False:
-                        if isinstance(output_info[cmd], str) and cmd in new_exps[batch_file]:
+                        if isinstance(output_info[cmd], str) and output_info[cmd] != 'unfinished' and cmd in new_exps[batch_file]:
                             new_exps[batch_file].remove(cmd)
                     else:
                         if failure_args.killed == False:
@@ -941,7 +1002,7 @@ def parse_gen(args):
     refresh_exps(batch_path, base_name, log_path, jobs)
 
 
-def run_job_sbatch(name, partition, failure_args=None):
+def run_job_sbatch(name, partition, sbatch_args=None):
     modify_batch = False
     with open(name, 'r') as fd:
         lines = list(fd)
@@ -954,8 +1015,14 @@ def run_job_sbatch(name, partition, failure_args=None):
             fd.write('\n'.join(lines))
     tmpdir = os.path.abspath(os.curdir)
     os.chdir(src_dir)
-    print(f"run {name} at {os.path.abspath(os.curdir)} with partition {partition}")
-    subprocess.run(['sbatch', '-G', '1', '-p', partition, '--output=R-%x.%j.out', name])
+
+    cmd_args = {'-G': '1', '-p': partition}
+    raw_s_args = [x for x in sbatch_args.split(' ') if x]
+    for i in range(0, len(raw_s_args), 2):
+        cmd_args[raw_s_args[i]] = raw_s_args[i + 1]
+    print(f"run {name} at {os.path.abspath(os.curdir)} with partition {cmd_args['-p']} and args {sbatch_args}")
+    cmd_args = list(itertools.chain(*cmd_args.items()))
+    subprocess.run(['sbatch', *cmd_args, '--output=R-%x.%j.out', name])
     os.chdir(tmpdir)
     # subprocess.run(['sbatch', '-G', '1', '-p', partition, name])
 
@@ -965,15 +1032,16 @@ def stop_job_sbatch(name, jobid):
     subprocess.run(['scancel', jobid])
 
 
-def run_batch_files(batch_file_names, partitions, failure_args=None):
+def run_batch_files(batch_file_names, partitions, sbatch_args=''):
     for name in batch_file_names:
-        run_job_sbatch(name, partitions[0], failure_args)
+        run_job_sbatch(name, partitions[0], sbatch_args)
 
 
 def stop_batch_files(batch_file_names, jobs):
     for name in batch_file_names:
         if os.path.basename(name) in jobs:
             stop_job_sbatch(name, jobs[os.path.basename(name)].jobid)
+
 
 def parse_failure_args(args):
     class Tmp:
@@ -989,9 +1057,11 @@ def parse_failure_args(args):
         setattr(ret, attr, getattr(args, attr, True))
     return ret
 
+
 def parse_run(args):
     batch_path, base_name, log_path = parse_common_args(args)
     failure_args = parse_failure_args(args)
+    sbatch_args = args.sbatch_args
     jobs = get_running_jobs()
     partitions = get_partition()
     if len(partitions) == 0:
@@ -1008,7 +1078,7 @@ def parse_run(args):
     #         run_job_sbatch(name, partitions[0])
     all_batch_file_names = search_batch_files(batch_path, base_name, 'all')
     stop_batch_files(all_batch_file_names, jobs)
-    run_batch_files(batch_file_names, partitions)
+    run_batch_files(batch_file_names, partitions, sbatch_args)
 
 
 def parse_stop(args):
@@ -1018,15 +1088,28 @@ def parse_stop(args):
     batch_file_names = search_batch_files(batch_path, base_name, 'all')
     stop_batch_files(batch_file_names, jobs)
 
+
+
+
+def get_output_status(output_info):
+    error_dict = {}
+    for _, res in output_info.items():
+        if isinstance(res, str):  # an error
+            if res.find(':'):
+                res = res.split(':')[0]
+            error_dict[res] = error_dict.get(res, 0) + 1
+        else:
+            error_dict['successful'] = error_dict.get('successful', 0) + 1
+    sorted_items = list(error_dict.items())
+    sorted_items.sort(key=lambda x: x[0])
+    return ', '.join(f'{cnt} {res}' for res, cnt in sorted_items)
+
+
 def parse_check(args):
     batch_path, base_name, log_path = parse_common_args(args)
-    r_base_name = ['R-' + name for name in base_name]
+    outputs, output_file_dict, batch_cmd, logs, finished_cmd, finished_ratio, merged_progress = check_outputs(batch_path, base_name, log_path)
+    last_run_batch_cmd, _ = read_files(output_dir, base_name, log_path, False)
     jobs = get_running_jobs()
-    outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
-    # display outputs
-    batch_cmd, logs = read_files(batch_path, base_name, log_path)
-    finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
-
     # display
 
     title = 'Runtime Analysis'
@@ -1034,36 +1117,44 @@ def parse_check(args):
     batch_info = {}
     for batch_file in batch_files:
 
-        finished_str = f'{finished_ratio[batch_file][0]}'\
-                       f'/{finished_ratio[batch_file][1]}'\
+        finished_str = f'{finished_ratio[batch_file][0]}' \
+                       f'/{finished_ratio[batch_file][1]}' \
                        f' finished'
         exp_name = os.path.basename(batch_file).replace('.sh', '')
         # print(exp_name)
         if exp_name in output_file_dict:
-            output_file_name, _ = output_file_dict[exp_name]
-            _, jobid = parse_output_name(output_file_name)
+            # all runs
+            output_info = merged_progress[exp_name]
+            run_status_str = get_output_status(output_info)
+            if run_status_str:
+                run_status_str = ', ' + run_status_str
 
-            output_info = outputs[output_file_name]
-            #if len(output_info) < 2:
+            # last run, legacy code
+            last_run_output_file_name, _ = output_file_dict[exp_name][0]
+            _, jobid = parse_output_name(last_run_output_file_name)
+
+            output_info = outputs[last_run_output_file_name]
+            # if len(output_info) < 2:
             #    print(exp_name, output_info)
-            error_dict = {}
-            for _, res in output_info.items():
-                if isinstance(res, str):  # an error
-                    if res.find(':'):
-                        res = res.split(':')[0]
-                    error_dict[res] = error_dict.get(res, 0) + 1
+            batchname = exp_name + '.sh'
+            last_run_str = get_output_status(merge_progress_single(last_run_batch_cmd[batchname], finished_cmd[batchname], output_info))
+            if args.long:
+                if last_run_str:
+                    last_run_str = f'\n last run (ID {jobid}): ' + last_run_str
                 else:
-                    error_dict['successful'] = error_dict.get('successful', 0) + 1
-            killed_str = ', ' + ', '.join(f'{cnt} {res}' for res, cnt in error_dict.items())
-
-            batch_info[batch_file] = finished_str + f' (ID {jobid})' + killed_str
+                    last_run_str = f'\n last run (ID {jobid})'
+            else:
+                last_run_str = f' (last run ID {jobid})'
+            batch_info[batch_file] = finished_str + run_status_str + last_run_str
         else:
             batch_info[batch_file] = finished_str
     show_batch_info(batch_files, batch_info, jobs, title)
     outputs_to_csv(outputs)
     # show_batch_info(batch_files)
 
+
 PORT = 64531
+
 
 def get_ipv4():  # https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -1084,10 +1175,12 @@ def get_ipv4():  # https://stackoverflow.com/questions/166506/finding-local-ip-a
     # partitions = [regex.sub('', line.split(None, 1)[0]) for line in output.strip().split('\n')][1:]
     # return partitions
 
+
 HOST = get_ipv4()
 blocksize = 1024
 clearline = '\r' + ' ' * 30 + '\r'
 endingbytes = b'```eof```'
+
 
 def receive_data(socket):
     data = b''
@@ -1105,6 +1198,7 @@ def receive_data(socket):
     print(data.decode('utf-8')[-200:])
     return data
 
+
 def send_data(socket, data):
     print(f"({len(data)} to send...)")
     print(data.decode('utf-8')[-200:])
@@ -1115,8 +1209,8 @@ def send_data(socket, data):
     socket.sendall(endingbytes)
     print(f"(All sent.)", flush=True)
 
-def parse_sync(args):
 
+def parse_sync(args):
     print(f"local IPv4: {HOST}")
     if args.server == 'self':
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -1149,9 +1243,6 @@ def parse_sync(args):
             print("Sync completed.")
 
 
-
-
-
 parser = ArgumentParser()
 subparsers = parser.add_subparsers()
 parser_show = subparsers.add_parser('show', help='Show experiment progress.')
@@ -1162,16 +1253,20 @@ parser_sync = subparsers.add_parser('sync', help='Sync between multiple servers.
 parser_check = subparsers.add_parser('check', help='Check experiment status.')
 for parserx in [parser_show, parser_gen, parser_run, parser_stop, parser_check]:
     parserx.add_argument('--base', default='autogen_sample_script_', help='Provide base name for autogen script.')
-    parserx.add_argument('--range', nargs='*', default=[''],
+    parserx.add_argument('--range', '-r', nargs='*', default=[''],
                          help='Select process range for autogen script.')
     parserx.add_argument('--srcdir', default=src_dir, help='Path to autogen script.')
     parserx.add_argument('--logdir', default=log_dir, help='Path to logs.')
 parser_sync.add_argument('--server', default='self', help='Address of server. By default this machine will be server.')
-parser_run.add_argument('--no-nan', action='store_false', dest='nan', help='Do not run experiments that have produced NaN.')
-parser_run.add_argument('--no-killed', action='store_false', dest='killed', help='Do not run experiments that are killed by slurm.')
+parser_run.add_argument('--no-nan', action='store_false', dest='nan',
+                        help='Do not run experiments that have produced NaN.')
+parser_run.add_argument('--no-killed', action='store_false', dest='killed',
+                        help='Do not run experiments that are killed by slurm.')
 parser_run.add_argument('--no-fail', action='store_false', dest='fail', help='Do not run experiments that have failed.')
-parser_run.add_argument('--no-cudaerr', action='store_false', dest='cudaerr', help='Do not run experiments that have cuda errors.')
-
+parser_run.add_argument('--no-cudaerr', action='store_false', dest='cudaerr',
+                        help='Do not run experiments that have cuda errors.')
+parser_run.add_argument('--sbatch-args', default='', help='Control sbatch args. For example, --sbatch-args "--mem 50G".')
+parser_check.add_argument('--long', '-l', action='store_true', help='Print long info about last run.')
 parser_show.set_defaults(func=parse_show)
 parser_gen.set_defaults(func=parse_gen)
 parser_run.set_defaults(func=parse_run)
