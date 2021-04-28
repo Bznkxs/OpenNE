@@ -99,9 +99,10 @@ class GAT(Layer):
                 x = torch.dropout(x, self.dropout_input, True)  # dropout
 
         def masked_softmax(vec, mask, dim=1, epsilon=1e-5, inplace=False):
-            if True in torch.isnan(vec):
-                print("GAT: NaN in input of masked softmax!")
-                exit(-1)
+            if False:
+                if True in torch.isnan(vec):
+                    print("GAT: NaN in input of masked softmax!")
+                    exit(-1)
             if inplace:
                 vec -= torch.max(vec)
                 exps = torch.exp_(vec)
@@ -139,18 +140,20 @@ class GAT(Layer):
             #c += -1e9 * (1.0 - adj)
 
             # leakyReLU and softmax
-            if True in torch.isnan(c):
-                print("GAT: NaN before masked softmax!")
-                exit(-1)
+            if False:
+                if True in torch.isnan(c):
+                    print("GAT: NaN before masked softmax!")
+                    exit(-1)
 
             if not self.training:
                 c = masked_softmax(self.inplace_leaky_relu(c), adj, inplace=True)
             else:
                 c = masked_softmax(torch.nn.functional.leaky_relu(c, 0.2), adj)
             #c = torch.nn.functional.softmax(torch.nn.functional.leaky_relu(c, 0.2), dim=0)
-            if True in torch.isnan(c):
-                print("GAT: NaN after masked softmax!")
-                exit(-1)
+            if False:
+                if True in torch.isnan(c):
+                    print("GAT: NaN after masked softmax!")
+                    exit(-1)
             if self.training:
                 # dropout
                 if self.sparse_inputs:

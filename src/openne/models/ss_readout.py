@@ -9,9 +9,10 @@ class BaseReadOut(torch.nn.Module):
 
     def forward(self, *args, **kwargs):
         res = self.readout(*args, **kwargs)
-        if True in torch.isnan(res):
-            print("NaN in readout", flush=True)
-            exit(-1)
+        if False:
+            if True in torch.isnan(res):
+                print("NaN in readout", flush=True)
+                exit(-1)
         return res
 
 
