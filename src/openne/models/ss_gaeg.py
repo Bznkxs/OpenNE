@@ -134,10 +134,9 @@ class SS_GAEg(ModelWithEmbeddings):
         if train:
             self.optimizer.zero_grad()
         batch_num = len(self.model.sampler)
-        print("epoch start", flush=True)
         for batch in self.model.sampler:
             loss = 0.
-            print("batch start", flush=True)
+            # print("batch", flush=True)
             for bx, bpos, bneg in batch:
             #    print("  sample in batch", flush=True)
                 # md_start = time.time()

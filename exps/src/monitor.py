@@ -453,8 +453,9 @@ def search_output_files(path, base_name=None, suffix='.out'):
     filelist = os.listdir(path)
     output_files = {}
     for filename in filelist:
+        #print(">", filename)
         if prefix_of(base_name, filename) and filename.endswith(suffix):
-            # print(">", filename, "   good")
+            #print("   good")
             fullname = os.path.abspath(os.path.join(path, filename))
             expname, jobid = parse_output_name(filename)
             ti_c = os.path.getctime(fullname)
@@ -525,7 +526,7 @@ def outputs_to_csv(outputs):
     for i in outputs:
         all_outputs.extend(outputs[i].items())
     recognized_args = ['dataset', 'enc', 'dec', 'sampler', 'readout', 'est', 'dim', 'hiddens']
-    csv_head = ','.join(recognized_args) + ',result,raw_cmd'
+    csv_head = ','.join(recognized_args) + ',result'
     csv_lines = []
     for cmd, res in all_outputs:
         argsdict = CMD(cmd).argsdict
@@ -536,7 +537,7 @@ def outputs_to_csv(outputs):
             else:
                 val = argsdict[arg]
             args.append(val)
-        csv_lines.append(','.join(args) + ',' + str(res).replace(',','.') + ',' + cmd)
+        csv_lines.append(','.join(args) + ',' + str(res))
     csv_text = '\n'.join([csv_head] + csv_lines)
     csv_name = 'failure_analysis.csv'
     fullname = os.path.join(processed_dir, csv_name)
@@ -827,27 +828,22 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
     batch_cmd, logs = read_files(batch_path, base_name, log_path)
     finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
     unfinished = get_unfinished(batch_cmd, finished_cmd)
-    print("Refreshing exps.")
+
     # combine failure args
     new_exps = unfinished
-    job_ids = {}
-    if failure_args is not None:
-        # print("failure_args")
-        if (failure_args.fail and failure_args.killed and failure_args.nan and failure_args.cudaerr):
-            failure_args = None
-        #     print("None")
     if failure_args is not None:
         r_base_name = ['R-' + name for name in base_name]
         outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
         for batch_file in batch_cmd:
             exp_name = os.path.basename(batch_file).replace('.sh', '')
+            # print(exp_name)
             if exp_name in output_file_dict:
                 output_file_name, _ = output_file_dict[exp_name]
                 _, jobid = parse_output_name(output_file_name)
-                job_ids[batch_file] = jobid
+
                 output_info = outputs[output_file_name]
                 for cmd in output_info:
-                    if failure_args.fail == False:
+                    if failure_args.err == False:
                         if isinstance(output_info[cmd], str) and cmd in new_exps[batch_file]:
                             new_exps[batch_file].remove(cmd)
                     else:
@@ -856,9 +852,6 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
                                 new_exps[batch_file].remove(cmd)
                         if failure_args.nan == False:
                             if output_info[cmd] == 'NaN' and cmd in new_exps[batch_file]:
-                                new_exps[batch_file].remove(cmd)
-                        if failure_args.cudaerr == False:
-                            if output_info[cmd] == 'cuda error' and cmd in new_exps[batch_file]:
                                 new_exps[batch_file].remove(cmd)
     ret = write_exps(new_exps)
 
@@ -870,7 +863,6 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
                                 f"remaining experiment"
                                 f"{'s' if len(new_exps[filename]) > 1 else ''}"
                                 f" out of {len(batch_cmd[filename])} total"
-                                f"{f' by runtime analysis of job {job_ids[filename]}' if filename in job_ids else ''}"
                       for filename in new_exps}
         show_batch_info(batch_files, batch_info, running_jobs, title)
 
@@ -980,11 +972,10 @@ def parse_failure_args(args):
         def __init__(self):
             self.nan = True
             self.killed = True
-            self.fail = True
-            self.cudaerr = True
+            self.err = True
 
     ret = Tmp()
-    attrs = ['nan', 'killed', 'fail', 'cudaerr']
+    attrs = ['nan', 'killed', 'err']
     for attr in attrs:
         setattr(ret, attr, getattr(args, attr, True))
     return ret
@@ -999,7 +990,7 @@ def parse_run(args):
         exit(1)
 
     #  update experiment
-    batch_file_names = refresh_exps(batch_path, base_name, log_path, jobs, failure_args=failure_args)
+    batch_file_names = refresh_exps(batch_path, base_name, log_path, jobs, failure_args)
 
     #  do not update
     # batch_file_names = search_batch_files(batch_path, base_name)
@@ -1170,7 +1161,6 @@ parser_sync.add_argument('--server', default='self', help='Address of server. By
 parser_run.add_argument('--no-nan', action='store_false', dest='nan', help='Do not run experiments that have produced NaN.')
 parser_run.add_argument('--no-killed', action='store_false', dest='killed', help='Do not run experiments that are killed by slurm.')
 parser_run.add_argument('--no-fail', action='store_false', dest='fail', help='Do not run experiments that have failed.')
-parser_run.add_argument('--no-cudaerr', action='store_false', dest='cudaerr', help='Do not run experiments that have cuda errors.')
 
 parser_show.set_defaults(func=parse_show)
 parser_gen.set_defaults(func=parse_gen)
