@@ -141,11 +141,14 @@ class SS_GAEg(ModelWithEmbeddings):
             # print("batch", flush=True)
             for bx, bpos, bneg in batch:
                 # print("sample in batch", flush=True)
+                # md_start = time.time()
                 loss += self.model(bx, bpos, bneg)
+                # print("forward: ", time.time() - md_start)
             loss /= batch_num
-
             if train:
+                # bp_start = time.time()
                 loss.backward()
+                # print("bp: ", time.time() - bp_start)
 
             cur_loss += loss.item()
             #

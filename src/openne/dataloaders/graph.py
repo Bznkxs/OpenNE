@@ -117,7 +117,7 @@ class Graph(Dataset, ABC):
 
     def features(self):
         if not self.attributed():
-            return np.ones((self.G.number_of_nodes(), 1))
+            return np.ones((self.G.number_of_nodes(), 1), dtype=np.float32)
         return np.vstack([self.G.nodes[self.look_back_list[i]]['feature']
                           for i in range(self.G.number_of_nodes())])
 
