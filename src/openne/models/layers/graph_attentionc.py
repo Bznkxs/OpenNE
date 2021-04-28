@@ -124,17 +124,26 @@ class GAT(Layer):
             else:
                 bias = 0.
             a = self.attn_kernels[i]
-
+            if True in torch.isnan(a[0]) or True in torch.isnan(a[1]):
+                print("GAT: NaN in kernel!")
+                exit(-1)
             # feature_in = h * W, (n * output_dim)
             feat_in = torch.mm(x, weight)
-
+            if True in torch.isnan(feat_in):
+                print("GAT: NaN in feat_in!")
+                exit(-1)
             # attention coefficients
             # c(i,j) = a^T(Wh_i || Wh_j) = a_1^T Wh_i + a_2^T Wh_j
             # c = a_1^T Wh + (a_2^T Wh)^T : broadcasting, (n * n)
 
             f1 = torch.mm(feat_in, a[0])
             f2 = torch.mm(feat_in, a[1])
-
+            if True in torch.isnan(f1):
+                print("GAT: NaN in f1!")
+                exit(-1)
+            if True in torch.isnan(f2):
+                print("GAT: NaN in f2!")
+                exit(-1)
             c = f1 + f2.T
             #c += -1e9 * (1.0 - adj)
 

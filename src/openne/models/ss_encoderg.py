@@ -58,6 +58,7 @@ class Encoder(nn.Module):
             print("NaN in input feat!")
             exit(-1)
 
+        print("forward: encoder")
         # print("encoder:", hx.device, adj.device)
         # adj = x.adj.to_dense().to(getdevice())
         # print(adj.sum(1))
@@ -71,6 +72,7 @@ class Encoder(nn.Module):
 
             if self.name != 'none':
                 for layer in self.layers:
+                    print("    encoder: layer")
                     hx = layer([hx, adj])
                     hxs.append(hx)
             else:
