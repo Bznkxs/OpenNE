@@ -134,10 +134,10 @@ class SS_GAEg(ModelWithEmbeddings):
         if train:
             self.optimizer.zero_grad()
         batch_num = len(self.model.sampler)
-        print("epoch start", flush=True)
+        # print("epoch start", flush=True)
         for batch in self.model.sampler:
             loss = 0.
-            print("batch start", flush=True)
+            # print("batch start", flush=True)
             for bx, bpos, bneg in batch:
             #    print("  sample in batch", flush=True)
                 # md_start = time.time()
@@ -154,10 +154,6 @@ class SS_GAEg(ModelWithEmbeddings):
             if train:
                 # bp_start = time.time()
                 loss.backward()
-                for k in self.parameters():
-                    if True in torch.isnan(k):
-                        print("NaN in backward prop!")
-                        exit(-1)
                 # print("bp: ", time.time() - bp_start)
 
             cur_loss += loss.item()
