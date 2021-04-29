@@ -77,6 +77,8 @@ class CMD:
         self.args = cmd_str.replace('$*', '').strip().replace('  ', ' ').split('--')
         self.start = self.args[0]
         self.args = self.args[1:]
+        self.keyval = [arg.split(' ', 1) for arg in self.args]
+        self.argsdict = {k: v for k, v in self.keyval}
         self.args.sort()
         self.args = [self.start] + self.args
         self.sorted_cmd_str = '--'.join(self.args)
@@ -103,6 +105,19 @@ class CMD:
 
 class RES:
     recognized_criterion = ['micro', 'macro', 'samples', 'weighted']
+    @classmethod
+    def isresult(cls, res_str):
+        try:
+            res = eval(res_str)
+        except Exception:
+            return False
+        if not isinstance(res, dict):
+            return False
+        for criterion in cls.recognized_criterion:
+            if criterion not in res:
+                return False
+        return True
+
     def __init__(self, res_str):
         try:
             self.res = json.loads(res_str)
@@ -426,6 +441,118 @@ def search_batch_files(path, base_name, mode='leaf'):
     return ret
 
 
+def parse_output_name(filename):
+    kernelname = filename.replace('R-', '').replace('.out', '')
+    expname, jobid = kernelname.split('.sh.')
+    return expname, jobid
+
+
+def search_output_files(path, base_name=None, suffix='.out'):
+    if base_name is None:
+        base_name = ['R-']
+    filelist = os.listdir(path)
+    output_files = {}
+    for filename in filelist:
+        #print(">", filename)
+        if prefix_of(base_name, filename) and filename.endswith(suffix):
+            #print("   good")
+            fullname = os.path.abspath(os.path.join(path, filename))
+            expname, jobid = parse_output_name(filename)
+            ti_c = os.path.getctime(fullname)
+            if expname in output_files:
+                oldfilename, old_tic = output_files[expname]
+                if old_tic < ti_c:
+                    output_files[expname] = (fullname, ti_c)
+            else:
+                output_files[expname] = (fullname, ti_c)
+    return output_files
+
+
+def get_outputs(output_filenames):
+
+    outputs = {}
+    for filename in output_filenames:
+        #print(filename, ":")
+        outputs[filename] = {}
+        with open(filename, 'r') as fd:
+            READY, GOT_CMD = 0, 1
+            cur_st = READY
+            cur_cmd = None
+            cur_res = None
+            for line in fd:
+                if iscmd(line):
+                #    print("  got cmd")
+                    if cur_st == READY:
+                        cur_cmd = normalcmd(line)
+                        cur_st = GOT_CMD
+                    else:
+                    #    print("unknown error")
+                        outputs[filename][cur_cmd] = "unknown error"
+                        cur_cmd = normalcmd(line)
+                        # cur_st = GOT_CMD
+                elif RES.isresult(line):
+                #    print("  is result")
+                    if cur_st == GOT_CMD:
+                        outputs[filename][cur_cmd] = int(eval(line)['micro'] * 1000) / 1000
+                        cur_st = READY
+                elif line.find('NaN') >= 0:
+                #    print("  NaN")
+                    if cur_st == GOT_CMD:
+                        outputs[filename][cur_cmd] = 'NaN'
+                        cur_st = READY
+                elif line.find('Killed') >= 0:
+                #    print("  Killed")
+                    if cur_st == GOT_CMD:
+                        outputs[filename][cur_cmd] = 'killed'
+                        cur_st = READY
+                elif line.find('CUDA') >= 0:
+                #    print("  CUDA")
+                    if cur_st == GOT_CMD:
+                        outputs[filename][cur_cmd] = 'cuda error'
+                        cur_st = READY
+                elif line.find('Error:') >= 0:
+                    if cur_st == GOT_CMD:
+                        outputs[filename][cur_cmd] = line
+                        cur_st = READY
+            # if cur_cmd == READY:
+            #     outputs[filename][cur_cmd] = "Unknown error"
+        # print(len(outputs[filename]))
+    return outputs
+
+
+def outputs_to_csv(outputs):
+    # merge all outputs in different files
+    all_outputs = []
+    for i in outputs:
+        all_outputs.extend(outputs[i].items())
+    recognized_args = ['dataset', 'enc', 'dec', 'sampler', 'readout', 'est', 'dim', 'hiddens']
+    csv_head = ','.join(recognized_args) + ',result'
+    csv_lines = []
+    for cmd, res in all_outputs:
+        argsdict = CMD(cmd).argsdict
+        args = []
+        for arg in recognized_args:
+            if arg not in argsdict:
+                val = '-'
+            else:
+                val = argsdict[arg]
+            args.append(val)
+        csv_lines.append(','.join(args) + ',' + str(res))
+    csv_text = '\n'.join([csv_head] + csv_lines)
+    csv_name = 'failure_analysis.csv'
+    fullname = os.path.join(processed_dir, csv_name)
+    with open(fullname, 'w') as fd:
+        fd.write(csv_text)
+    print(f"Wrote runtime failure analysis to {fullname}.")
+
+
+
+def get_slurm_outputs(batch_path, base_name):
+    output_file_dict = search_output_files(batch_path, base_name)
+    output_filenames = {fullname for (fullname, _) in output_file_dict.values()}
+    outputs = get_outputs(output_filenames)
+    return outputs, output_file_dict
+
 def warn(e):
     # print(e)
     pass
@@ -697,21 +824,46 @@ def write_exps(explist):
     return ret
 
 
-def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=True):
+def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=True, failure_args=None):
     batch_cmd, logs = read_files(batch_path, base_name, log_path)
     finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
     unfinished = get_unfinished(batch_cmd, finished_cmd)
-    ret = write_exps(unfinished)
+
+    # combine failure args
+    new_exps = unfinished
+    if failure_args is not None:
+        r_base_name = ['R-' + name for name in base_name]
+        outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
+        for batch_file in batch_cmd:
+            exp_name = os.path.basename(batch_file).replace('.sh', '')
+            # print(exp_name)
+            if exp_name in output_file_dict:
+                output_file_name, _ = output_file_dict[exp_name]
+                _, jobid = parse_output_name(output_file_name)
+
+                output_info = outputs[output_file_name]
+                for cmd in output_info:
+                    if failure_args.err == False:
+                        if isinstance(output_info[cmd], str) and cmd in new_exps[batch_file]:
+                            new_exps[batch_file].remove(cmd)
+                    else:
+                        if failure_args.killed == False:
+                            if output_info[cmd] == 'killed' and cmd in new_exps[batch_file]:
+                                new_exps[batch_file].remove(cmd)
+                        if failure_args.nan == False:
+                            if output_info[cmd] == 'NaN' and cmd in new_exps[batch_file]:
+                                new_exps[batch_file].remove(cmd)
+    ret = write_exps(new_exps)
 
     # display
     if display:
         title = f"Write to {output_dir}"
         batch_files = list(batch_cmd.keys())
-        batch_info = {filename: f"wrote {len(unfinished[filename])} "
+        batch_info = {filename: f"wrote {len(new_exps[filename])} "
                                 f"remaining experiment"
-                                f"{'s' if len(unfinished[filename]) > 1 else ''}"
+                                f"{'s' if len(new_exps[filename]) > 1 else ''}"
                                 f" out of {len(batch_cmd[filename])} total"
-                      for filename in unfinished}
+                      for filename in new_exps}
         show_batch_info(batch_files, batch_info, running_jobs, title)
 
     return ret
@@ -781,7 +933,7 @@ def parse_gen(args):
     refresh_exps(batch_path, base_name, log_path, jobs)
 
 
-def run_job_sbatch(name, partition):
+def run_job_sbatch(name, partition, failure_args=None):
     modify_batch = False
     with open(name, 'r') as fd:
         lines = list(fd)
@@ -792,10 +944,10 @@ def run_job_sbatch(name, partition):
         with open(name, 'w') as fd:
             fd.write("#!/bin/sh\n")
             fd.write('\n'.join(lines))
-    tmpdir = os.getcwd()
+    tmpdir = os.path.abspath(os.curdir)
     os.chdir(src_dir)
-    print(f"run {name} with partition {partition}")
-    subprocess.run(['sbatch', '-G', '1', '-p', partition, '--output=R-%x.%j.out', name])
+    print(f"run {name} at {os.path.abspath(os.curdir)} with partition {partition}")
+    subprocess.run(['sbatch', '-G', '1', '-p', partition, '--mem=50G', '--output=R-%x.%j.out', name])
     os.chdir(tmpdir)
     # subprocess.run(['sbatch', '-G', '1', '-p', partition, name])
 
@@ -805,9 +957,9 @@ def stop_job_sbatch(name, jobid):
     subprocess.run(['scancel', jobid])
 
 
-def run_batch_files(batch_file_names, partitions):
+def run_batch_files(batch_file_names, partitions, failure_args=None):
     for name in batch_file_names:
-        run_job_sbatch(name, partitions[0])
+        run_job_sbatch(name, partitions[0], failure_args)
 
 
 def stop_batch_files(batch_file_names, jobs):
@@ -815,9 +967,22 @@ def stop_batch_files(batch_file_names, jobs):
         if os.path.basename(name) in jobs:
             stop_job_sbatch(name, jobs[os.path.basename(name)].jobid)
 
+def parse_failure_args(args):
+    class Tmp:
+        def __init__(self):
+            self.nan = True
+            self.killed = True
+            self.err = True
+
+    ret = Tmp()
+    attrs = ['nan', 'killed', 'err']
+    for attr in attrs:
+        setattr(ret, attr, getattr(args, attr, True))
+    return ret
 
 def parse_run(args):
     batch_path, base_name, log_path = parse_common_args(args)
+    failure_args = parse_failure_args(args)
     jobs = get_running_jobs()
     partitions = get_partition()
     if len(partitions) == 0:
@@ -825,7 +990,7 @@ def parse_run(args):
         exit(1)
 
     #  update experiment
-    batch_file_names = refresh_exps(batch_path, base_name, log_path, jobs)
+    batch_file_names = refresh_exps(batch_path, base_name, log_path, jobs, failure_args)
 
     #  do not update
     # batch_file_names = search_batch_files(batch_path, base_name)
@@ -844,6 +1009,50 @@ def parse_stop(args):
     batch_file_names = search_batch_files(batch_path, base_name, 'all')
     stop_batch_files(batch_file_names, jobs)
 
+def parse_check(args):
+    batch_path, base_name, log_path = parse_common_args(args)
+    r_base_name = ['R-' + name for name in base_name]
+    jobs = get_running_jobs()
+    outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
+    # display outputs
+    batch_cmd, logs = read_files(batch_path, base_name, log_path)
+    finished_cmd, finished_ratio = check_progress(batch_cmd, logs)
+
+    # display
+
+    title = 'Runtime Analysis'
+    batch_files = list(batch_cmd.keys())
+    batch_info = {}
+    for batch_file in batch_files:
+
+        finished_str = f'{finished_ratio[batch_file][0]}'\
+                       f'/{finished_ratio[batch_file][1]}'\
+                       f' finished'
+        exp_name = os.path.basename(batch_file).replace('.sh', '')
+        # print(exp_name)
+        if exp_name in output_file_dict:
+            output_file_name, _ = output_file_dict[exp_name]
+            _, jobid = parse_output_name(output_file_name)
+
+            output_info = outputs[output_file_name]
+            #if len(output_info) < 2:
+            #    print(exp_name, output_info)
+            error_dict = {}
+            for _, res in output_info.items():
+                if isinstance(res, str):  # an error
+                    if res.find(':'):
+                        res = res.split(':')[0]
+                    error_dict[res] = error_dict.get(res, 0) + 1
+                else:
+                    error_dict['successful'] = error_dict.get('successful', 0) + 1
+            killed_str = ', ' + ', '.join(f'{cnt} {res}' for res, cnt in error_dict.items())
+
+            batch_info[batch_file] = finished_str + f' (ID {jobid})' + killed_str
+        else:
+            batch_info[batch_file] = finished_str
+    show_batch_info(batch_files, batch_info, jobs, title)
+    outputs_to_csv(outputs)
+    # show_batch_info(batch_files)
 
 PORT = 64531
 
@@ -931,6 +1140,9 @@ def parse_sync(args):
             print("Sync completed.")
 
 
+
+
+
 parser = ArgumentParser()
 subparsers = parser.add_subparsers()
 parser_show = subparsers.add_parser('show', help='Show experiment progress.')
@@ -938,19 +1150,24 @@ parser_gen = subparsers.add_parser('gen', help='Generate new experiment settings
 parser_run = subparsers.add_parser('run', help='Run experiments.')
 parser_stop = subparsers.add_parser('stop', help='Stop experiments.')
 parser_sync = subparsers.add_parser('sync', help='Sync between multiple servers.')
-for parserx in [parser_show, parser_gen, parser_run, parser_stop]:
+parser_check = subparsers.add_parser('check', help='Check experiment status.')
+for parserx in [parser_show, parser_gen, parser_run, parser_stop, parser_check]:
     parserx.add_argument('--base', default='autogen_sample_script_', help='Provide base name for autogen script.')
     parserx.add_argument('--range', nargs='*', default=[''],
                          help='Select process range for autogen script.')
     parserx.add_argument('--srcdir', default=src_dir, help='Path to autogen script.')
     parserx.add_argument('--logdir', default=log_dir, help='Path to logs.')
 parser_sync.add_argument('--server', default='self', help='Address of server. By default this machine will be server.')
+parser_run.add_argument('--no-nan', action='store_false', dest='nan', help='Do not run experiments that have produced NaN.')
+parser_run.add_argument('--no-killed', action='store_false', dest='killed', help='Do not run experiments that are killed by slurm.')
+parser_run.add_argument('--no-fail', action='store_false', dest='fail', help='Do not run experiments that have failed.')
+
 parser_show.set_defaults(func=parse_show)
 parser_gen.set_defaults(func=parse_gen)
 parser_run.set_defaults(func=parse_run)
 parser_stop.set_defaults(func=parse_stop)
 parser_sync.set_defaults(func=parse_sync)
-
+parser_check.set_defaults(func=parse_check)
 
 if __name__ == '__main__':
     args = parser.parse_args()

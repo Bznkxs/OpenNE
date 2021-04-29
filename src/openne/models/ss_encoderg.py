@@ -54,6 +54,10 @@ class Encoder(nn.Module):
         hx = torch.cat(x.feat)
         adj = x.adj
 
+        if True in torch.isnan(hx):
+            print("NaN in input feat!")
+            exit(-1)
+
         # print("encoder:", hx.device, adj.device)
         # adj = x.adj.to_dense().to(getdevice())
         # print(adj.sum(1))
@@ -72,6 +76,9 @@ class Encoder(nn.Module):
             else:
                 hxs = [self.embedding(self.nodelist)] * len(self.dimensions)
                 hx = self.embedding(self.nodelist)
+            if True in torch.isnan(hx):
+                print("NaN in real encoder!", flush=True)
+                exit(-1)
             if x.typ == x.GRAPHS:
                 # todo: this is a brute-force graph-wise pooling. change this to faster pooling
                 nhxs = []
@@ -105,6 +112,9 @@ class Encoder(nn.Module):
                 if x.actual_indices is not None:
                     self.full_embeddings = hx
                     hx = hx[x.actual_indices]
+        if True in torch.isnan(hx):
+            print("NaN in encoder!", flush=True)
+            exit(-1)
         return hx
 
 
