@@ -14,9 +14,10 @@ class Decoder(nn.Module):
 
     def forward(self, x, y, outer=False):
         score = self.layer(x, y, outer)
-        if True in torch.isnan(score):
-            print("NaN in decoder", flush=True)
-            exit(-1)
+        if False:
+            if True in torch.isnan(score):
+                print("NaN in decoder", flush=True)
+                exit(-1)
         return score
 
 

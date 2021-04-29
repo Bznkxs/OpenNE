@@ -156,10 +156,11 @@ class SS_GAEg(ModelWithEmbeddings):
             if train:
                 # bp_start = time.time()
                 loss.backward()
-                for k in self.parameters():
-                    if True in torch.isnan(k):
-                        print("NaN in backward prop!")
-                        exit(-1)
+                if False:
+                    for k in self.parameters():
+                        if True in torch.isnan(k):
+                            print("NaN in backward prop!")
+                            exit(-1)
                 # print("bp: ", time.time() - bp_start)
 
             cur_loss += loss.item()

@@ -11,9 +11,10 @@ class BaseEstimator(torch.nn.Module):
 
     def forward(self, *args, **kwargs):
         est = self.estimator(*args, **kwargs)
-        if True in torch.isnan(est):
-            print("NaN in est!", flush=True)
-            exit(-1)
+        if False:
+            if True in torch.isnan(est):
+                print("NaN in est!", flush=True)
+                exit(-1)
         return est
 
 class JSDEstimator(torch.nn.Module):
