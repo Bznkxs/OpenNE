@@ -319,8 +319,13 @@ class GraphSampler(_Sampler):
     def __init__(self, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
 
-        self.sample_size = 5000  # batch_size // 2 # 5000
+
         self.graphs = graphs
+        self.sample_size = 5000  # batch_size // 2 # 5000
+        for graph in graphs:
+            if len(graph.x) > batch_size // 2:
+                self.sample_size = batch_size // 2
+                break
         self.anchor = self.graphs  # densere aut non densere, illa quaestio
         self.num_graphs = len(graphs)
         self.graphs_diff = []
