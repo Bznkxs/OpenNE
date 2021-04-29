@@ -25,17 +25,46 @@ class JSDEstimator(torch.nn.Module):
             setattr(self, i, j)
 
     def forward(self, pos_score, neg_score, pos_mask, neg_mask):
+        if False:
+            if True in torch.isinf(pos_score):
+                print("inf in pos_score")
+                exit(-1)
+            if True in torch.isinf(neg_score):
+                print("inf in neg_score")
+                exit(-1)
         ep = self.m(pos_score)
         eq = self.m(-neg_score)
-        if True in torch.isnan(ep):
-            print("NaN in ep!", flush=True)
-            exit(-1)
-        if True in torch.isnan(eq):
-            print("NaN in eq!", flush=True)
-            exit(-1)
+        if False:
+            if True in torch.isinf(ep):
+                print("inf in ep")
+                exit(-1)
+            if True in torch.isinf(eq):
+                print("inf in eq")
+                exit(-1)
+            if True in torch.isnan(ep):
+                print("nan in ep")
+                exit(-1)
+            if True in torch.isnan(eq):
+                print("nan in eq")
+                exit(-1)
         if pos_mask is not None:
             ep = (ep * pos_mask).sum(1) / pos_mask.sum(1)
             eq = (eq * neg_mask).sum(1) / neg_mask.sum(1)
+        if False:
+            if True in torch.isinf(ep):
+                print("inf in ep")
+                exit(-1)
+            if True in torch.isinf(eq):
+                print("inf in eq")
+                exit(-1)
+            if True in torch.isnan(ep):
+                print("nan in ep")
+                exit(-1)
+            if True in torch.isnan(eq):
+                print("nan in eq")
+                print(neg_mask.sum(1))
+                print((eq * neg_mask).sum(1))
+                exit(-1)
         loss = -(ep + eq).mean()
         #print(ep.shape)
         return loss

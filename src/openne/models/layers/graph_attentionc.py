@@ -89,8 +89,8 @@ class GAT(Layer):
             adj = adj.to_dense()
         if not self.training:
             adj = adj.float()
-        adj[adj > self.threshold_val] = 1.0
-
+        # adj[adj > self.threshold_val] = 1.0
+        # # adj[adj <= self.threshold_val] = 0.
         if self.training:
             # dropout
             if self.sparse_inputs:

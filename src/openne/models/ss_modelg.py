@@ -84,6 +84,10 @@ class SSModel(nn.Module):
                         pos_mask[i][old_idx:idx] = 1
                         neg_mask[i][old_idx:idx] = 0
                         old_idx = idx
+                    if neg_mask.sum() == 0:
+                        print("all zero neg_mask")
+                        print(start_idx)
+                        print(neg.num_graphs)
                 return pos_mask.to(getdevice()), neg_mask.to(getdevice())
             '''
             if x.typ == x.GRAPHS and pos.typ == x.NODES:

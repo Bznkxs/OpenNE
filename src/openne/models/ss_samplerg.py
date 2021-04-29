@@ -235,7 +235,7 @@ class NodeSampler(_Sampler):
     def __init__(self, node_sampler: ss_sampler.TripleGenerator, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
         self.node_sampler = node_sampler
-        self.sample_size = 5000
+        self.sample_size = 5000  # stay still
         self.graphs = graphs
         self.anchor = self.graphs  # densere aut non densere, illa quaestio
         self.num_graphs = len(graphs)
@@ -318,7 +318,8 @@ class NodeSampler(_Sampler):
 class GraphSampler(_Sampler):
     def __init__(self, graphs, batch_size):
         # self.anchor_name, self.pos_name, self.neg_name = name.split('-')
-        self.sample_size = 5000
+
+        self.sample_size = 5000  # batch_size // 2 # 5000
         self.graphs = graphs
         self.anchor = self.graphs  # densere aut non densere, illa quaestio
         self.num_graphs = len(graphs)
