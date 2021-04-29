@@ -1150,7 +1150,7 @@ def parse_check(args):
         else:
             batch_info[batch_file] = finished_str
     show_batch_info(batch_files, batch_info, jobs, title)
-    outputs_to_csv(outputs)
+    outputs_to_csv(merged_progress)
     # show_batch_info(batch_files)
 
 PORT = 64531
