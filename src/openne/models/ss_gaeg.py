@@ -150,9 +150,10 @@ class SS_GAEg(ModelWithEmbeddings):
                 # print("forward: ", time.time() - md_start)
 
             loss /= batch_num
-            if True in torch.isnan(loss):
-                print("gaeg: NaN in forward propagation!")
-                exit(-1)
+            if False:
+                if True in torch.isnan(loss):
+                    print("gaeg: NaN in forward propagation!")
+                    exit(-1)
             if train:
                 # bp_start = time.time()
                 loss.backward()
