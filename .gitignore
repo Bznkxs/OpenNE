@@ -10,3 +10,4 @@
 /src/logs/*
 /data/*
 /exps/processed
+/**/.DS_Store
