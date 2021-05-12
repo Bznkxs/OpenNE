@@ -92,8 +92,3 @@ estimator_dict = {
     "jsd": JSDEstimator,
     "nce": NCEEstimator
 }
-
-"""
-todo:
-    "NCE": NCEEstimator,
-"""

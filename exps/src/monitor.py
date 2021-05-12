@@ -98,6 +98,17 @@ class CMD(str):
         self.args = [self.start] + self.args
         self.sorted_cmd_str = '--'.join(self.args)
 
+    def sync(self):
+        self.keyval = [(k, v) for k, v in self.argsdict.items()]
+        self.args = [f'{k} {v}' for k, v in self.keyval]
+        self.args.sort()
+        self.args = [self.start] + self.args
+        self.sorted_cmd_str = '--'.join(self.args)
+
+    def change_key(self, key, val):
+        self.argsdict[key] = val
+        self.sync()
+
     def __str__(self):
         """
         provided as standard conversion from `cmd` objects to strings.
@@ -1225,7 +1236,7 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
     if failure_args is not None:
         # print("failure_args")
         if failure_args.fail and failure_args.killed and failure_args.nan and failure_args.cudaerr \
-                and failure_args.finished and failure_args.unfinished:
+                and failure_args.finished and failure_args.unfinished and failure_args.others:
             failure_args = None
         #     print("None")
     if failure_args is not None:
@@ -1250,6 +1261,9 @@ def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=Tru
                                 failure_exps[batch_file].remove(cmd)
                         if not failure_args.cudaerr:
                             if output_info[cmd].is_cudaerr():
+                                failure_exps[batch_file].remove(cmd)
+                        if not failure_args.others:
+                            if output_info[cmd].is_others():
                                 failure_exps[batch_file].remove(cmd)
                     if not failure_args.finished:
                         if output_info[cmd].is_finished():
@@ -1407,9 +1421,10 @@ def parse_failure_args(args):
             self.cudaerr = True
             self.finished = True
             self.unfinished = True
+            self.others = True
 
     ret = Tmp()
-    attrs = ['nan', 'killed', 'fail', 'cudaerr', 'finished', 'unfinished']
+    attrs = ['nan', 'killed', 'fail', 'cudaerr', 'finished', 'unfinished', 'others']
     for attr in attrs:
         setattr(ret, attr, getattr(args, attr, True))
     return ret
@@ -2031,7 +2046,8 @@ for parserx in [parser_gen, parser_run]:
                          help='Do not run (successfully) finished experiments.')
     parserx.add_argument('--no-unfinished', action='store_false', dest='unfinished',
                          help='Do not run unfinished experiments (i.e. those which have never been run).')
-
+    parserx.add_argument('--no-others', action='store_false', dest='others',
+                         help='Do not run experiments with other errors.')
     parserx.add_argument('--filter-or-flags', action='store_true',
                          help='By default we apply filter AND the `--no-xxx` flags. Set this '
                               'to apply filter OR the flags.')
