@@ -7,7 +7,7 @@ import torch
 class GraphConvolution(Layer):
     """Graph convolution layer."""
 
-    def __init__(self, input_dim, output_dim, _, dropout=0., *,
+    def __init__(self, input_dim, output_dim, _=None, dropout=0., *,
                  act=torch.nn.PReLU(), bias=False,
                  num_features_nonzero=0.,
                  sparse_inputs=False,

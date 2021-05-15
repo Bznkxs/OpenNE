@@ -549,24 +549,24 @@ def iscmd(cmd):
     return cmd.startswith('python')
 
 
-def prefix_of(batch_files, filename: str):
+def prefix_of(batch_files, filename: str, self_contain=True):
     """
     @param filename: file name to put into batch_files
     @return: file name in batch_files that is prefix of `filename`
     """
     for file in batch_files:
-        if filename.startswith(file):
+        if filename.startswith(file) and (self_contain or filename != file):
             return file
     return None
 
 
-def has_prefix(batch_files, filename: str):
+def has_prefix(batch_files, filename: str, self_contain=True):
     """
     @param filename: file name to put into batch_files
     @return: file name in batch_files that has prefix `filename`
     """
     for file in batch_files:
-        if file.startswith(filename):
+        if file.startswith(filename) and (self_contain or filename != file):
             return file
     return None
 
@@ -1055,8 +1055,8 @@ def get_unfinished(batch_cmd: Dict[str, Iterable], finished_cmd: Dict[str, Itera
     return unfinished_cmd
 
 
-def read_files(batch_path, base_name, log_path, do_search_logs=True):
-    batch_files = search_batch_files(batch_path, base_name)
+def read_files(batch_path, base_name, log_path, do_search_logs=True, mode='leaf'):
+    batch_files = search_batch_files(batch_path, base_name, mode=mode)
     batch_cmd = get_cmd(batch_files)
     if do_search_logs:
         logs = search_logs(log_path)
@@ -1065,7 +1065,7 @@ def read_files(batch_path, base_name, log_path, do_search_logs=True):
     return batch_cmd, logs
 
 
-def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, title_description=None):
+def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, title_description=None, hierarchical=False):
     if running_jobs is None:
         running_jobs = {}
     if title is None:
@@ -1079,7 +1079,11 @@ def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, titl
     print(f"{title} (running jobs are {highlight_color}highlighted{default_color}): {title_description}")
 
     batch_files_sorted = list(batch_files)
-    batch_files_sorted.sort(key=lambda x: '0' + x if x in running_jobs else '1' + x)
+    batch_files_sorted.sort(key=lambda x: x.replace('.sh', ''))
+    # batch_files_sorted.sort(key=lambda x: '0' + x.replace('.sh','') if x in running_jobs else '1' + x.replace('.sh',''))
+    set_batch_files = set(x.replace('.sh', '') for x in batch_files)
+    starting_chars = {}
+
     for batch_file in batch_files_sorted:
         if batch_file in running_jobs:
             begin_color = highlight_color
@@ -1089,7 +1093,14 @@ def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, titl
             begin_color = ""
             end_color = ""
             description = ""
-        print(f"{begin_color}{batch_file}{end_color}{description}: {batch_info[batch_file]}")
+        starting_chars[batch_file] = ''
+        if hierarchical:
+            father = prefix_of(set_batch_files, batch_file.replace('.sh', ''), self_contain=False)
+            # print(f"batch_file {batch_file}, father {father}")
+            if father:
+                starting_chars[batch_file] = starting_chars[father + '.sh'] + '\t'
+                batch_info[batch_file] = batch_info[batch_file].replace('\n', '\n' + starting_chars[batch_file])
+        print(f"{starting_chars[batch_file]}{begin_color}{batch_file}{end_color}{description}: {batch_info[batch_file]}")
     print()
 
 
@@ -1142,7 +1153,7 @@ def show_exp_progress(batch_path, base_name, log_path, running_jobs=None):
     show_batch_info(batch_files, batch_info, running_jobs, title, title_description)
 
 
-def check_outputs(batch_path, base_name, log_path):
+def check_outputs(batch_path, base_name, log_path, mode='leaf'):
     r_base_name = ['R-' + name for name in base_name]
     outputs, output_file_dict = get_slurm_outputs(batch_path, r_base_name)
 
@@ -1152,7 +1163,7 @@ def check_outputs(batch_path, base_name, log_path):
         EXP.merge_exp_table(output_status_table, merged_outputs2[expname])
     # print(output_status_table)
     cache.write_status_table(output_status_table)
-    batch_cmd, logs = read_files(batch_path, base_name, log_path)
+    batch_cmd, logs = read_files(batch_path, base_name, log_path, mode=mode)
     logs1 = set(exp['cmd'] for exp in logs if exp['status'] == STATUS.FINISHED)
     finished_cmd, finished_ratio = check_progress(batch_cmd, logs1)
     # merged_progress = merge_progress(merged_outputs, batch_cmd, finished_cmd)
@@ -1191,7 +1202,7 @@ def write_exps(explist):
 
 def refresh_exps(batch_path, base_name, log_path, running_jobs=None, display=True, failure_args=None, **kwargs):
     outputs, output_file_dict, batch_cmd, logs1, finished_cmd, finished_ratio, merged_progress = check_outputs(
-        batch_path, base_name, log_path)
+        batch_path, base_name, log_path, mode='leaf')
     if kwargs.get('rerun', False):
         new_exps: Dict[str, set] = {k: set(v) for k, v in batch_cmd.items()}
         # write fake exps
@@ -1802,10 +1813,14 @@ def parse_stop(args):
     stop_batch_files(batch_file_names, jobs)
 
 
-def get_output_status(output_info):
+def get_output_status(output_info, count_finished=True):
     error_dict = {}
     for _, res in output_info.items():
+        if str(res) == '1.0':
+            res = 'finished'
         error_dict[str(res)] = error_dict.get(str(res), 0) + 1
+    if not count_finished and 'finished' in error_dict:
+        error_dict.pop('finished')
     sorted_items = list(error_dict.items())
     sorted_items.sort(key=lambda x: x[0])
     return ', '.join(f'{cnt} {res}' for res, cnt in sorted_items)
@@ -1813,8 +1828,12 @@ def get_output_status(output_info):
 
 def parse_check(args):
     batch_path, base_name, log_path = parse_common_args(args)
+    if args.long:
+        mode = 'all'
+    else:
+        mode = 'root'
     outputs, output_file_dict, batch_cmd, logs1, finished_cmd, finished_ratio, merged_progress = check_outputs(
-        batch_path, base_name, log_path)
+        batch_path, base_name, log_path, mode=mode)
 
     last_run_batch_cmd, _ = read_files(output_dir, base_name, log_path, False)
     jobs = get_running_jobs()
@@ -1833,7 +1852,7 @@ def parse_check(args):
         if exp_name in merged_progress:
             # all runs
             output_info = {k: v['status'] for k, v in merged_progress[exp_name].items()}
-            run_status_str = get_output_status(output_info)
+            run_status_str = get_output_status(output_info, count_finished=False)
             if run_status_str:
                 run_status_str = ', ' + run_status_str
 
@@ -1848,7 +1867,7 @@ def parse_check(args):
                 batchname = exp_name + '.sh'
                 last_run_str = get_output_status(
                     merge_progress_single(last_run_batch_cmd[batchname], finished_cmd[batchname], output_info))
-                if args.long:
+                if args.last_run:
                     if last_run_str:
                         last_run_str = f'\n last run (ID {jobid}): ' + last_run_str
                     else:
@@ -1860,7 +1879,7 @@ def parse_check(args):
                 batch_info[batch_file] = finished_str + run_status_str
         else:
             batch_info[batch_file] = finished_str
-    show_batch_info(batch_files, batch_info, jobs, title)
+    show_batch_info(batch_files, batch_info, jobs, title, hierarchical=args.long)
     outputs_to_csv(logs1)
     # show_batch_info(batch_files)
 
@@ -2017,6 +2036,7 @@ for parserx in [parser_show, parser_gen, parser_run, parser_stop, parser_check]:
                          help='Select process range for autogen script.')
     parserx.add_argument('--srcdir', default=src_dir, help='Path to autogen script.')
     parserx.add_argument('--logdir', default=log_dir, help='Path to logs.')
+    parserx.add_argument('--long', '-l', action='store_true', help='Print long info.')
 parser_sync.add_argument('--server', default='self', help='Address of server. By default this machine will be server.')
 parser_send = subparsers.add_parser('send', help='Send files between multiple servers.')
 parser_send.add_argument('--server', default='self', help='Address of server. By default this machine will be server.')
@@ -2063,7 +2083,8 @@ parser_run.add_argument('--daemon', '-d', nargs='?', type=int, dest='max_job_num
 parser_daemon.add_argument('--pid', default=None)
 parser_daemon.add_argument('--call', default=None)
 
-parser_check.add_argument('--long', '-l', action='store_true', help='Print long info about last run.')
+
+parser_check.add_argument('--last-run', '-L', action='store_true', help='Print info about last run.')
 parser_show.set_defaults(func=parse_show)
 parser_gen.set_defaults(func=parse_gen)
 parser_run.set_defaults(func=parse_run)

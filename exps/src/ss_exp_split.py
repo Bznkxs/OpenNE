@@ -1,6 +1,7 @@
 from sys import argv
 import os
 import random
+import math
 random.seed(32)
 cur_dir = os.path.dirname(__file__)
 root_dir = os.path.normpath(os.path.join(cur_dir, '..', '..'))
@@ -18,10 +19,15 @@ def split(name, parts):
     
     random.shuffle(w2)
     size = int(len(w2) / M + 0.5)
+    le = int(math.floor(math.log10(M - 1))) + 1
+
     for m in range(M):
         w3 = w2[m * size: (m + 1) * size]
         print((m + 1) * size)
-        f2 = open(os.path.join(src_dir, name + f'_{m}.sh'), 'w')
+        m_str = str(m)
+        while len(m_str) < le:
+            m_str = '0' + m_str
+        f2 = open(os.path.join(src_dir, name + f'_{m_str}.sh'), 'w')
         f2.write("#!/bin/sh\n")
         for i in w3:
             if i.startswith('#!'):

@@ -8,7 +8,7 @@ import torch
 class Linear(Layer):
     """Linear layer."""
 
-    def __init__(self, input_dim, output_dim, _, dropout=0., num_features_nonzero=0.,
+    def __init__(self, input_dim, output_dim, _=None, dropout=0., num_features_nonzero=0.,
                  sparse_inputs=False, act=torch.relu, bias=False, **kwargs):
         super(Linear, self).__init__(**kwargs)
 

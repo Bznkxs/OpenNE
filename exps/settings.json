@@ -16,7 +16,9 @@
     "dataset": {
         "_options": {
             "unigraph": ["cora", "citeseer", "pubmed", "wikics", "coauthorcs", "coauthorphy", "amazoncomputers", "amazonphoto"],
-            "multigraph": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr"]
+            "multigraph": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr"],
+            "unigraph_min": ["cora", "citeseer", "wikics"],
+            "multigraph_min": ["mutag", "imdb_binary", "imdb_multi", "ptc_mr"]
         }
     },
     "_model": {
@@ -24,12 +26,20 @@
             "_options": {
                 "raw": ["none"],
                 "basic": ["linear"],
-                "gnn": ["gin", "gcn", "gat"]
+                "gnn": ["gin", "gcn", "gat"],
+                "none": ["none"],
+                "linear": ["linear"],
+                "gin": ["gin"],
+                "gcn": ["gcn"],
+                "gat": ["gat"]
             }
         },
         "dec": {
             "_options": {
-                "a": ["inner", "bilinear", "mlp"]
+                "a": ["inner", "bilinear", "mlp"],
+                "inner": ["inner"],
+                "bilinear": ["bilinear"],
+                "mlp": ["mlp"]
             }
         },
         "sampler": {
@@ -39,18 +49,29 @@
                     "node-rand_walk-random",
                     "gca"
                 ],
-                "graph": ["dgi", "mvgrl", "graphcl"]
+                "graph": ["dgi", "mvgrl", "graphcl"],
+                "nnr": ["node-neighbor-random"],
+                "nrr": ["node-rand_walk-random"],
+                "gca": ["gca"],
+                "dgi": ["dgi"],
+                "mvgrl": ["mvgrl"],
+                "graphcl": ["graphcl"]
             }
         },
         "readout": {
             "_options": {
-                "default": ["mean", "sum", "jk-net"],
-                "others": ["sum", "jk-net"]
+                "default": ["mean"],
+                "others": ["sum", "jk-net"],
+                "mean": ["mean"],
+                "sum": ["sum"],
+                "jk-net": ["jk-net"]
             }
         },
         "est": {
             "_options": {
-                "a": ["jsd", "nce"]
+                "a": ["jsd", "nce"],
+                "jsd": ["jsd"],
+                "nce": ["nce"]
             }
         },
         "_options": {
@@ -59,16 +80,55 @@
                 "readout": ["default"]
             },
             "node_graph": {
-                "enc": ["gnn"],
-                "sampler": ["graph"],
-                "readout": ["default"]
+                "sampler": ["graph"]
             },
             "graph_node": {
                 "sampler": ["node"]
             },
             "graph_graph": {
-                "enc": ["gnn"],
                 "sampler": ["graph"]
+            },
+            "gae": {
+                "enc": ["gcn"],
+                "sampler": ["nnr"],
+                "dec": ["inner"],
+                "est": ["jsd"],
+                "readout": ["default"]
+            },
+            "dgi": {
+                "enc": ["gcn"],
+                "sampler": ["dgi"],
+                "dec": ["bilinear"],
+                "est": ["jsd"],
+                "readout": ["mean"]
+            },
+            "mvgrl": {
+                "enc": ["gcn"],
+                "sampler": ["mvgrl"],
+                "dec": ["inner"],
+                "est": ["jsd"],
+                "readout": ["sum"]
+            },
+            "gca": {
+                "enc": ["gcn"],
+                "sampler": ["gca"],
+                "dec": ["inner"],
+                "est": ["nce"],
+                "readout": ["default"]
+            },
+            "infograph": {
+                "enc": ["gin"],
+                "sampler": ["dgi"],
+                "dec": ["inner"],
+                "est": ["jsd"],
+                "readout": ["sum"]
+            },
+            "graphcl": {
+                "enc": ["gin"],
+                "sampler": ["graphcl"],
+                "dec": ["inner"],
+                "est": ["nce"],
+                "readout": ["sum"]
             }
         }
     },
@@ -144,31 +204,44 @@
         "node_node1": {
             "model": ["node_clf_node_sampler"],
             "task": ["node"],
-            "dataset": ["unigraph"],
+            "dataset": ["unigraph_min"],
             "_model": ["node_node"],
             "_hyperparameters": ["node_clf1"]
         },
         "node_graph1": {
             "model": ["node_clf_graph_sampler"],
             "task": ["node"],
-            "dataset": ["unigraph"],
+            "dataset": ["unigraph_min"],
             "_model": ["node_graph"],
             "_hyperparameters": ["node_clf1"]
         },
         "graph_node1": {
             "model": ["graph_clf_node_sampler"],
             "task": ["graph"],
-            "dataset": ["multigraph"],
+            "dataset": ["multigraph_min"],
             "_model": ["graph_node"],
             "_hyperparameters": ["graph_clf1"]
         },
         "graph_graph1": {
             "model": ["graph_clf_graph_sampler"],
             "task": ["graph"],
-            "dataset": ["multigraph"],
+            "dataset": ["multigraph_min"],
             "_model": ["graph_graph"],
             "_hyperparameters": ["graph_clf1"]
+        },
+        "baselines_node": {
+            "model": ["node_clf_node_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["gae", "dgi", "mvgrl", "gca"],
+            "_hyperparameters": ["node_clf"]
+        },
+        "baselines_graph": {
+            "model": ["graph_clf_node_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["infograph", "dgi", "mvgrl", "graphcl"],
+            "_hyperparameters": ["graph_clf"]
         }
-
     }
 }

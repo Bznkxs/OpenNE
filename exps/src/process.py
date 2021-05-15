@@ -8,8 +8,7 @@ from sys import argv
 curdir = os.path.dirname(__file__)
 sys.path.extend([os.path.join(curdir, '')])
 
-exp_name = 'graph_readout'
-script_name = os.path.join(curdir, '../../src/autogen_sample_script_' + exp_name + '.sh')
+script_name = os.path.join(curdir, f'../../src/autogen_sample_script_{argv[2]}.sh')
 xls_name = os.path.join(curdir, '../processed/exp_data_for_human.xls')
 csv_name = os.path.join(os.path.dirname(__file__), '../processed/logs.csv')
 
@@ -29,7 +28,7 @@ except Exception as _:
 import numpy as np
 
 
-def gen_work_table(exps: ExpVariable, exp_run, exp_name):
+def gen_work_table(exps: ExpVariable, exp_run):
     datasets = list(exps.vars['dataset'].select('unigraph')) + list(exps.vars['dataset'].select('multigraph'))
     table = [[]]
     table[0] = ['', '', '', '', '', ''] + datasets
@@ -52,20 +51,13 @@ def gen_work_table(exps: ExpVariable, exp_run, exp_name):
         return model, dataset, hyper, modelstr, hyperstr
 
     # run 1 -- framework of exp. table, get menu of experiment plan
-    split_exp = exps.split[exp_name]
-    exp_plan = {parse_exps.gen_bash(k): {"done": False, "priority": 0} for k in split_exp}
-    #print(exp_plan)
+    exp_plan = {parse_exps.gen_bash(k): {"done": False, "priority": 0, "group": ''} for k in exps.all()}
     for optname, i in exps.opt_groups.items():
-        print("optname", optname)
-        if optname[-1].isdigit():
-       #     print(" digit", optname[-1])
-            for k in exps.opt_groups[optname]:
-                kstr = parse_exps.gen_bash(k)
-                if kstr in exp_plan.keys():
-                    exp_plan[kstr]["priority"] = int(optname[-1])
-       #         if optname[-1] == "1":
-       #             print(parse_exps.gen_bash(k))
-            continue
+        for k in exps.opt_groups[optname]:
+            expbash = parse_exps.gen_bash(k)
+            if optname[-1].isdigit():
+                exp_plan[expbash]["priority"] = int(optname[-1])
+            exp_plan[expbash]["group"] = optname
 
         for exp in i:
             model, dataset, hyper, modelstr, hyperstr = parse_exp(exp)
@@ -87,53 +79,51 @@ def gen_work_table(exps: ExpVariable, exp_run, exp_name):
    # print(modelset.keys())
    # print("---")
 
-    # run 2 -- look through log files and mark
-    for exp in exp_run.iterrows():
-        exp = exp[1]
-        flg = 0
-        try:
-            dataset = exp['dataset']
-            flg = 1
-            model = [exp[attr] for attr in attrs]
-            flg = 2
-            optname = opt_groups_lookup[exp['name']]
-            flg = 3
-            hyper = [str(exp[hyperattr]) for hyperattr in hyperattrs1]
-        except KeyError as _:
-            print(_)
-            continue
-        modelstr = ','.join([optname] + model)
-        hyperstr = ','.join(hyper)
-        # print(modelstr, dataset, hyperstr)
-        if modelstr in modelset:
-            if dataset in modelset[modelstr]:
-                if hyperstr in modelset[modelstr][dataset]:
-                    modelset[modelstr][dataset][hyperstr] = 3
-                  #  print("#3")
-                    # print(modelstr, dataset, hyperstr)
-                else:
-                  #  print("#2")
-                    pass
-                    # print(222, hyperstr, ":", modelstr, dataset, modelset[modelstr][dataset].keys())
-            else:
-               # print("#1")
-                pass
-                # print(111)
-        else:
-           # print("#0")
-            pass
-            # print(1000, modelstr)
-
-    # run 3 -- go through exp plan again and finish table
-    for optname, i in exps.opt_groups.items():
-        if optname[-1].isdigit():
-            continue
-        for exp in i:
-            model, dataset, hyper, modelstr, hyperstr = parse_exp(exp)
-            if modelset[modelstr][dataset][hyperstr] == 3:
-                kstr = parse_exps.gen_bash(exp)
-                if kstr in exp_plan.keys():
-                    exp_plan[kstr]['done'] = True
+    # # run 2 -- look through log files and mark
+    # for exp in exp_run.iterrows():
+    #     exp = exp[1]
+    #     flg = 0
+    #     try:
+    #         dataset = exp['dataset']
+    #         flg = 1
+    #         model = [exp[attr] for attr in attrs]
+    #         flg = 2
+    #         optname = opt_groups_lookup[exp['name']]
+    #         flg = 3
+    #         hyper = [str(exp[hyperattr]) for hyperattr in hyperattrs1]
+    #     except KeyError as _:
+    #         print(_)
+    #         continue
+    #     modelstr = ','.join([optname] + model)
+    #     hyperstr = ','.join(hyper)
+    #     # print(modelstr, dataset, hyperstr)
+    #     if modelstr in modelset:
+    #         if dataset in modelset[modelstr]:
+    #             if hyperstr in modelset[modelstr][dataset]:
+    #                 modelset[modelstr][dataset][hyperstr] = 3
+    #               #  print("#3")
+    #                 # print(modelstr, dataset, hyperstr)
+    #             else:
+    #               #  print("#2")
+    #                 pass
+    #                 # print(222, hyperstr, ":", modelstr, dataset, modelset[modelstr][dataset].keys())
+    #         else:
+    #            # print("#1")
+    #             pass
+    #             # print(111)
+    #     else:
+    #        # print("#0")
+    #         pass
+    #         # print(1000, modelstr)
+    #
+    # # run 3 -- go through exp plan again and finish table
+    # for optname, i in exps.opt_groups.items():
+    #     if optname[-1].isdigit():
+    #         continue
+    #     for exp in i:
+    #         model, dataset, hyper, modelstr, hyperstr = parse_exp(exp)
+    #         if modelset[modelstr][dataset][hyperstr] == 3:
+    #             exp_plan[parse_exps.gen_bash(exp)]['done'] = True
 
     l1 = [(k, v) for k, v in modelset.items()]
     l1.sort(key=lambda x: x[0])
@@ -221,24 +211,22 @@ def generate_exp_data():
     exps = parse_exps.parse()
 
     # generate work-table
-    table, exp_plan = gen_work_table(exps, data, exp_name)
+    table, exp_plan = gen_work_table(exps, data)
 
     # draw table
-    try:
-        draw_table(table)
-    except Exception as _:
-        print(_)
-        print("will not generate table for human")
+    # try:
+    #     draw_table(table)
+    # except Exception as _:
+    #     print(_)
+    #     print("will not generate table for human")
 
     # generate command series
     # print("done\n", '\n '.join([f'{k} ****** {v}' for (k, v) in exp_plan.items() if v['done']]))
     if len(argv) == 3 and argv[2] == 'minimal':
         exp_plan = [(k, v) for (k, v) in exp_plan.items() if v['priority'] == 1]
     else:
-        exp_plan = [(k, v) for (k, v) in exp_plan.items()]
+        exp_plan = [(k, v) for (k, v) in exp_plan.items() if v['group'].startswith(argv[2])]
     all_exps = len(exp_plan)
-    #print(all_exps, list(exp_plan.keys())[0], list(exp_plan.items())[0])
-    #print(all_exps, exp_plan[:10])
     exp_plan = [(k, v) for (k, v) in exp_plan if not v['done']]
     new_exps = len(exp_plan)
     print(f"Experiment progress = {all_exps-new_exps}/{all_exps}")

@@ -186,7 +186,8 @@ def update(clear=False, md_deprecated=True):
                           str(x[1][rd['dim']][1]),
                           str(x[1][rd['hiddens']][1])
                           , -x[1][rd['micro']][1]))
-    X = [X[i] for i in range(len(X)) if i == 0 or hash(X[i]) != hash(X[i - 1])]
+    # X = [X[i] for i in range(len(X)) if i == 0 or hash(X[i]) != hash(X[i - 1])]
+    X = []
     print("# items:", len(X))
 
     mdstr_header, mdstr_body = dict_to_md_table(X, md_deprecated)
