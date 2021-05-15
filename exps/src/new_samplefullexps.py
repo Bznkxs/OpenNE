@@ -61,21 +61,27 @@ def sample(lines: List[CMD]):
         other_exps[dataset] = [x for x in new_exps[dataset] if hyperrank[dataset][gethyper(x)] >= 5]
 
     # step 5. write file
-    for dataset in dataset_cmd_dict:
-        # sampled first
-        sampled_output = os.path.join(src_dir, f'autogen_sample_script_baselines_0base5_{dataset}.sh')
-        with open(sampled_output, 'w') as f:
-            for x in sampled_new_exps[dataset]:
-                print(str(x), file=f)
-        other_output = os.path.join(src_dir, f'autogen_sample_script_baselines_1more_{dataset}.sh')
-        with open(other_output, 'w') as f:
-            for x in other_exps[dataset]:
-                print(str(x), file=f)
-        # full next
-        full_output = os.path.join(src_dir, f'autogen_script_baselines_{dataset}.sh')
-        with open(full_output, 'w') as f:
-            for x in new_exps[dataset]:
-                print(str(x), file=f)
+    all_sampled_output = os.path.join(src_dir, f'autogen_sample_script_baselines_0base5.sh')
+    all_other_output = os.path.join(src_dir, f'autogen_sample_script_baselines_1more.sh')
+    with open(all_sampled_output, 'w') as fa:
+        with open(all_other_output, 'w') as fao:
+            for dataset in dataset_cmd_dict:
+                # sampled first
+                sampled_output = os.path.join(src_dir, f'autogen_sample_script_baselines_0base5_{dataset}.sh')
+                with open(sampled_output, 'w') as f:
+                    for x in sampled_new_exps[dataset]:
+                        print(str(x), file=f)
+                        print(str(x), file=fa)
+                other_output = os.path.join(src_dir, f'autogen_sample_script_baselines_1more_{dataset}.sh')
+                with open(other_output, 'w') as f:
+                    for x in other_exps[dataset]:
+                        print(str(x), file=f)
+                        print(str(x), file=fao)
+                # full next
+                full_output = os.path.join(src_dir, f'autogen_script_baselines_{dataset}.sh')
+                with open(full_output, 'w') as f:
+                    for x in new_exps[dataset]:
+                        print(str(x), file=f)
 
     # fin
 
