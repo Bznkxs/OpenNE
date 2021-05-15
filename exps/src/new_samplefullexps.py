@@ -25,7 +25,7 @@ def sample(lines: List[CMD]):
     # step 1. collect CMDs with same datasets
     dataset_cmd_dict: Dict[str, List[CMD]] = {}
     for line in lines:
-        dataset = line.argsdict['dataset']
+        dataset = line.argsdict['dataset'].strip()
         if dataset not in dataset_cmd_dict:
             dataset_cmd_dict[dataset] = []
         dataset_cmd_dict[dataset].append(line)

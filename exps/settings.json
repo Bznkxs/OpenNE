@@ -49,13 +49,13 @@
                     "node-rand_walk-random",
                     "gca"
                 ],
-                "graph": ["dgi", "mvgrl", "graphcl"],
+                "graph": ["dgi", "mvgrl", "aug"],
                 "nnr": ["node-neighbor-random"],
                 "nrr": ["node-rand_walk-random"],
                 "gca": ["gca"],
                 "dgi": ["dgi"],
                 "mvgrl": ["mvgrl"],
-                "graphcl": ["graphcl"]
+                "graphcl": ["aug"]
             }
         },
         "readout": {
