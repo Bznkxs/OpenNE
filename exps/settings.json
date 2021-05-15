@@ -15,7 +15,7 @@
     },
     "dataset": {
         "_options": {
-            "unigraph": ["cora", "citeseer", "pubmed", "wikics", "coauthorcs", "coauthorphy", "amazoncomputers", "amazonphoto"],
+            "unigraph": ["cora", "citeseer", "pubmed", "wikics", "coauthor_cs", "coauthor_phy", "amazon_computers", "amazon_photo"],
             "multigraph": ["mutag", "imdb_binary", "imdb_multi", "reddit_binary", "ptc_mr"],
             "unigraph_min": ["cora", "citeseer", "wikics"],
             "multigraph_min": ["mutag", "imdb_binary", "imdb_multi", "ptc_mr"]

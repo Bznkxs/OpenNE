@@ -549,15 +549,20 @@ def iscmd(cmd):
     return cmd.startswith('python')
 
 
-def prefix_of(batch_files, filename: str, self_contain=True):
+def prefix_of(batch_files, filename: str, self_contain=True, longest=False):
     """
     @param filename: file name to put into batch_files
     @return: file name in batch_files that is prefix of `filename`
     """
+    longestfile = None
     for file in batch_files:
         if filename.startswith(file) and (self_contain or filename != file):
-            return file
-    return None
+            if not longest:
+                return file
+            else:
+                if longestfile is None or len(longestfile) < len(file):
+                    longestfile = file
+    return longestfile
 
 
 def has_prefix(batch_files, filename: str, self_contain=True):
@@ -633,7 +638,9 @@ def search_batch_files(path, base_name, mode='leaf'):
 
     for fd in files_iter:
         if fd.endswith('.sh') and prefix_of(base_name, fd):
-            fd = fd.rstrip('.sh')
+
+            fd = fd.replace('.sh', '')
+            #print("?found", fd)
             if mode == 'leaf':
                 prefix = prefix_of(batch_files, fd)
                 if prefix is not None:
@@ -1057,6 +1064,7 @@ def get_unfinished(batch_cmd: Dict[str, Iterable], finished_cmd: Dict[str, Itera
 
 def read_files(batch_path, base_name, log_path, do_search_logs=True, mode='leaf'):
     batch_files = search_batch_files(batch_path, base_name, mode=mode)
+#    print(batch_files)
     batch_cmd = get_cmd(batch_files)
     if do_search_logs:
         logs = search_logs(log_path)
@@ -1095,7 +1103,7 @@ def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, titl
             description = ""
         starting_chars[batch_file] = ''
         if hierarchical:
-            father = prefix_of(set_batch_files, batch_file.replace('.sh', ''), self_contain=False)
+            father = prefix_of(set_batch_files, batch_file.replace('.sh', ''), self_contain=False, longest=True)
             # print(f"batch_file {batch_file}, father {father}")
             if father:
                 starting_chars[batch_file] = starting_chars[father + '.sh'] + '\t'
@@ -1858,6 +1866,7 @@ def parse_check(args):
 
             # last run, legacy code
             if exp_name in output_file_dict:
+
                 last_run_output_file_name, _ = output_file_dict[exp_name][0]
                 _, jobid = parse_output_name(last_run_output_file_name)
 
@@ -1865,8 +1874,11 @@ def parse_check(args):
                 # if len(output_info) < 2:
                 #    print(exp_name, output_info)
                 batchname = exp_name + '.sh'
-                last_run_str = get_output_status(
-                    merge_progress_single(last_run_batch_cmd[batchname], finished_cmd[batchname], output_info))
+                if batchname not in last_run_batch_cmd or batchname not in finished_cmd:
+                    last_run_str = ''
+                else:
+                    last_run_str = get_output_status(
+                        merge_progress_single(last_run_batch_cmd[batchname], finished_cmd[batchname], output_info))
                 if args.last_run:
                     if last_run_str:
                         last_run_str = f'\n last run (ID {jobid}): ' + last_run_str
