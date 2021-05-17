@@ -93,7 +93,7 @@ class CMD(str):
             if len(itm) == 1:
                 self.argsdict[itm[0]] = None
             else:
-                self.argsdict[itm[0]] = itm[1]
+                self.argsdict[itm[0]] = itm[1].strip()
         self.args.sort()
         self.args = [self.start] + self.args
         self.sorted_cmd_str = '--'.join(self.args)
@@ -140,9 +140,11 @@ def normalcmd(cmd):
 
 class RES(dict):
     recognized_criterion = ['micro', 'macro', 'samples', 'weighted']
+
     @classmethod
     def fromdict(cls, d: dict):
         return RES(json.dumps(d))
+
     @classmethod
     def isresult(cls, res_str):
         try:
@@ -173,15 +175,18 @@ class RES(dict):
                              for criterion in self.recognized_criterion}
         self.update(self.standard_res)
         self.res_str = json.dumps(self.standard_res)
+
     def simple(self):
         if self.res['micro'] is None:
             return str('-')
-        return str(int(self.res['micro']*1000)/1000)
+        return str(int(self.res['micro'] * 1000) / 1000)
+
     def isvalid(self):
         for criterion in self.recognized_criterion:
             if self.res[criterion] is None:
                 return False
         return True
+
     @classmethod
     def empty_res(cls):
         return {a: None for a in cls.recognized_criterion}
@@ -285,16 +290,20 @@ STATUS.NAN = STATUS(STATUS._NAN)
 STATUS.OTHERS = STATUS(STATUS._OTHERS)
 STATUS.UNKNOWN = STATUS(STATUS._UNKNOWN)
 
+
 class EXP(dict):
     def __init__(self, cmd: CMD, status: STATUS, res: Optional[RES] = None, timestamp: Any = None):
         super().__init__()
         self.update({"cmd": cmd, "status": status, "res": res, "timestamp": timestamp})
+
     def todict(self):
         try:
-            return {'cmd': str(self['cmd']), 'status': str(self['status']), 'res': dict(self['res']), 'timestamp': self['timestamp']}
+            return {'cmd': str(self['cmd']), 'status': str(self['status']), 'res': dict(self['res']),
+                    'timestamp': self['timestamp']}
         except Exception:
             print(self['cmd'], self['status'], self['res'], self['timestamp'])
             exit(0)
+
     @classmethod
     def fromcmdstr(cls, cmdstr: str):
         cmd = CMD(cmdstr)
@@ -345,7 +354,6 @@ class EXP(dict):
         with open(filename, 'w') as f:
             f.write('[Fake log] This is a fake log.\n' + cmdstr + ' --fakecmd' + '\n?\n' + str(RES()))
 
-
     @classmethod
     def merge_exp_table(cls, old_dict, new_dict):
         for k, v in new_dict.items():
@@ -357,6 +365,7 @@ class EXP(dict):
                 old_dict[k] = v
             elif old_dict[k]['timestamp'] < v['timestamp']:
                 old_dict[k] = v
+
 
 class Cache:
     """
@@ -391,7 +400,7 @@ class Cache:
     # `time` stores last write time of cache.
     # `cmd` stores all visited log files and their corresponding cmd strings.
     # `progress` stores all visited batch files and how many experiments in the corresponding files are finished.
-    keys = {'version': [int, 4], 'time': [str, 'null'], 'cmd': [dict, ], 'progress': [dict, ], 'status_table': [dict,]}
+    keys = {'version': [int, 4], 'time': [str, 'null'], 'cmd': [dict, ], 'progress': [dict, ], 'status_table': [dict, ]}
 
     def _merge(self, key, value):
         if key == 'time':
@@ -400,7 +409,7 @@ class Cache:
             for k, v in value.items():
                 if k not in self.cache[key]:
                     self.cache[key][k] = v
-            #self.cache[key].update(value)
+            # self.cache[key].update(value)
         elif key == 'progress':
             return  # ignore
         elif key == 'status_table':
@@ -640,7 +649,7 @@ def search_batch_files(path, base_name, mode='leaf'):
         if fd.endswith('.sh') and prefix_of(base_name, fd):
 
             fd = fd.replace('.sh', '')
-            #print("?found", fd)
+            # print("?found", fd)
             if mode == 'leaf':
                 prefix = prefix_of(batch_files, fd)
                 if prefix is not None:
@@ -776,7 +785,8 @@ def outputs_to_csv(logs1):
             else:
                 val = argsdict[arg]
             args.append(val)
-        csv_lines.append(','.join(args) + ',' + str(status) + ',' + str(RES.fromdict(res).simple()).replace(',', ';') + ',' + cmd)
+        csv_lines.append(
+            ','.join(args) + ',' + str(status) + ',' + str(RES.fromdict(res).simple()).replace(',', ';') + ',' + cmd)
     csv_text = '\n'.join([csv_head] + csv_lines)
     csv_name = 'failure_analysis.csv'
     fullname = os.path.join(processed_dir, csv_name)
@@ -808,8 +818,9 @@ def merge_outputs(outputs: Dict[FullPath, Dict[CMDStr, Result]], output_file_dic
                         merged_outputs[expname][cmd_str] = res
     return merged_outputs
 
+
 def merge_outputs_2(outputs: Dict[FullPath, Dict[CMDStr, Result]], output_file_dict: Dict[Any, List[Tuple[str, float]]]) \
-       :
+        :
     # merge outputs; cover those earlier logs with older ones
     merged_outputs = {}  # Dict[expname, Dict[CMDStr, Result]]
     merged_outputs2 = {}
@@ -843,6 +854,7 @@ def merge_progress_single(batch_cmd_single: list, finished_cmd_single: set, outp
         else:
             res[cmd] = 'unfinished'
     return res
+
 
 # def merge_progress2(merged_outputs)
 
@@ -887,6 +899,7 @@ def get_command_and_result(f) -> Tuple:
 
     return cmd, res
 
+
 # def remove_all_fakes():
 #     ff
 
@@ -920,8 +933,8 @@ def get_logs_from_file_list(arg):
                         exp = EXP.fromlogfilehandler(f)
                         if exp is not None:
                             # print("??? EXP is NONE  !!!", fd)
-                        # command = get_command(f)
-                        # command, res = get_command_and_result(f)
+                            # command = get_command(f)
+                            # command, res = get_command_and_result(f)
                             new_logs[fd] = exp  # command
 
                             # if fd.find('fake') >= 0:
@@ -1003,7 +1016,6 @@ def search_logs(path):
             # if exp['status'] == STATUS.FINISHED:
             new_commands.append(exp)
 
-
     log(f'Found {len([exp for exp in new_commands if exp["status"] == STATUS.FINISHED])} experiments.')
     return new_commands
 
@@ -1038,15 +1050,30 @@ def get_cmd(filenames) -> Dict[str, List[str]]:
     return ret
 
 
+def get_CMD(filenames) -> Dict[str, List[CMD]]:
+    """
+    Get all cmd lines in a list of batch files.
+
+    call `get_files` first, and normalize each cmd line.
+    @param filenames: a list of files (full path)
+    @return:
+    """
+    r1 = get_files(filenames)
+    ret = {}
+    for file, val in r1.items():
+        ret[os.path.basename(file)] = [CMD(x) for x in val if iscmd(x)]
+    return ret
+
+
 def check_progress(batch_cmd: Dict[str, List], logs: Set) \
         -> (Dict[str, Set], Dict[str, Tuple[int]]):
     finished_cmd = {}
     finished_ratio = {}
-    #print(logs)
+    # print(logs)
     logs = set(str(x) for x in logs)
-    #print("___")
+    # print("___")
     for batch_file in batch_cmd:
-        #print(batch_cmd[batch_file])
+        # print(batch_cmd[batch_file])
         finished_cmd[batch_file] = logs.intersection(batch_cmd[batch_file])
         finished_ratio[batch_file] = (len(finished_cmd[batch_file]), len(batch_cmd[batch_file]))
 
@@ -1064,7 +1091,7 @@ def get_unfinished(batch_cmd: Dict[str, Iterable], finished_cmd: Dict[str, Itera
 
 def read_files(batch_path, base_name, log_path, do_search_logs=True, mode='leaf'):
     batch_files = search_batch_files(batch_path, base_name, mode=mode)
-#    print(batch_files)
+    #    print(batch_files)
     batch_cmd = get_cmd(batch_files)
     if do_search_logs:
         logs = search_logs(log_path)
@@ -1108,7 +1135,8 @@ def show_batch_info(batch_files, batch_info, running_jobs=None, title=None, titl
             if father:
                 starting_chars[batch_file] = starting_chars[father + '.sh'] + '\t'
                 batch_info[batch_file] = batch_info[batch_file].replace('\n', '\n' + starting_chars[batch_file])
-        print(f"{starting_chars[batch_file]}{begin_color}{batch_file}{end_color}{description}: {batch_info[batch_file]}")
+        print(
+            f"{starting_chars[batch_file]}{begin_color}{batch_file}{end_color}{description}: {batch_info[batch_file]}")
     print()
 
 
@@ -1729,7 +1757,8 @@ def start_daemon(batch_file_names, partitions, sbatch_args):
 
                 write_status()
 
-                if len(status['pending_jobs']) == 0 and len(status['ready_jobs']) == 0 and len(status['running_jobs']) == 0:
+                if len(status['pending_jobs']) == 0 and len(status['ready_jobs']) == 0 and len(
+                        status['running_jobs']) == 0:
                     # end
                     status['daemon_status'] = 'stopping'
                     write_status()
@@ -2094,7 +2123,6 @@ parser_run.add_argument('--daemon', '-d', nargs='?', type=int, dest='max_job_num
                              'in range are finished.')
 parser_daemon.add_argument('--pid', default=None)
 parser_daemon.add_argument('--call', default=None)
-
 
 parser_check.add_argument('--last-run', '-L', action='store_true', help='Print info about last run.')
 parser_show.set_defaults(func=parse_show)

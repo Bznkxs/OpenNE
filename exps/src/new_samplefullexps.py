@@ -7,6 +7,7 @@ from monitor import CMD, src_dir
 
 hyperparameter_list = ['dim', 'hiddens', 'lr']
 
+
 def readall():
     # step 0. read files
     fullexps_name = os.path.join(src_dir, 'autogen_script_baselines.sh')
@@ -15,11 +16,13 @@ def readall():
         lines = [x for x in lines if x.args is not None]
     return lines
 
+
 def gethyper(cmd: CMD):
     hp_list = []
     for hp_key in hyperparameter_list:
         hp_list.append(cmd.argsdict.get(hp_key, None))
     return tuple(hp_list)
+
 
 def sample(lines: List[CMD]):
     # step 1. collect CMDs with same datasets
@@ -29,7 +32,6 @@ def sample(lines: List[CMD]):
         if dataset not in dataset_cmd_dict:
             dataset_cmd_dict[dataset] = []
         dataset_cmd_dict[dataset].append(line)
-
 
     # step 2. random sample hyperparameters w.r.t. datasets (brute force)
     hyperparameters: Dict[str, List[Tuple]] = {}
@@ -44,14 +46,12 @@ def sample(lines: List[CMD]):
         hyperparameters[dataset] = hyperparameters_
         hyperrank[dataset] = {k: v for v, k in enumerate(hyperparameters_)}
 
-
     # step 3. select new exps
     new_exps: Dict[str, List[CMD]] = {}
     for dataset in dataset_cmd_dict:
         cmds = copy.deepcopy(dataset_cmd_dict[dataset])
         cmds.sort(key=lambda x: (hyperrank[dataset][gethyper(x)], str(x)))
         new_exps[dataset] = cmds
-
 
     # step 4. real sample
     sampled_new_exps: Dict[str, List[CMD]] = {}
@@ -84,6 +84,7 @@ def sample(lines: List[CMD]):
                         print(str(x), file=f)
 
     # fin
+
 
 if __name__ == '__main__':
     lines = readall()

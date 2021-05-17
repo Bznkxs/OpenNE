@@ -54,10 +54,11 @@ def compute_ppr(edge_index, alpha=0.2, self_loop=True):
         a = adj.to(getdevice())
         eye = torch.eye(a.shape[0], device=getdevice())
         if self_loop:
-            a = a + eye
+            a.add_(eye)
         d = torch.sum(a, 1)
         dinv = torch.pow(d, -0.5)
         at = (dinv.reshape((-1, 1)) * a) * (dinv.reshape((1, -1)))
+        del a
         return (alpha * torch.inverse((eye - (1 - alpha) * at))).cpu()
 
 
