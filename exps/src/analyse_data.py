@@ -10,6 +10,7 @@ decoders = ['inner', 'bilinear']
 estimators = ["jsd", "nce"]
 readouts = ["mean", "sum"]
 samplers = ["dgi", "node-neighbor-random", "node-rand_walk-random", "gca", "mvgrl", "aug"]
+encoderOrder = ["GCN", "lookup", "MLP", "GAT", "GIN",]
 encName = {
     "gcn": "GCN",
     "none": "lookup",
@@ -94,7 +95,7 @@ def get_enc_csv_data(sh_path: str, df: pd.DataFrame):
                 s = getDataFrame(i, dec, est, readout, hidden, sampler, dataset, dim)
 
                 if len(s) != 0 and s.iloc[0, 8] == "finished":
-                    result_1 = float(s.iloc[0, 9])
+                    result_1 = int(float(s.iloc[0, 9]) * 100)
                     result_dic[params][i] = [result_1]
                 else:
                     result_dic[params][i] = [0]
@@ -121,7 +122,7 @@ def get_dec_csv_data(sh_path: str, df: pd.DataFrame):
                 s = getDataFrame(enc, i, est, readout, hidden, sampler, dataset, dim)
 
                 if len(s) != 0 and s.iloc[0, 8] == "finished":
-                    result_1 = float(s.iloc[0, 9])
+                    result_1 = int(float(s.iloc[0, 9]) * 100)
                     result_dic[params][i] = [result_1]
                 else:
                     result_dic[params][i] = [0]
@@ -148,7 +149,7 @@ def get_readout_csv_data(sh_path: str, df: pd.DataFrame):
                 s = getDataFrame(enc, dec, est, i, hidden, sampler, dataset, dim)
 
                 if len(s) != 0 and s.iloc[0, 8] == "finished":
-                    result_1 = float(s.iloc[0, 9])
+                    result_1 = int(float(s.iloc[0, 9]) * 100)
                     result_dic[params][i] = [result_1]
                 else:
                     result_dic[params][i] = [0]
@@ -175,7 +176,7 @@ def get_estimator_csv_data(sh_path: str, df: pd.DataFrame):
                 s = getDataFrame(enc, dec, i, readout, hidden, sampler, dataset, dim)
 
                 if len(s) != 0 and s.iloc[0, 8] == "finished":
-                    result_1 = float(s.iloc[0, 9])
+                    result_1 = int(float(s.iloc[0, 9]) * 100)
                     result_dic[params][i] = [result_1]
                 else:
                     result_dic[params][i] = [0]
@@ -202,7 +203,7 @@ def get_sampler_csv_data(sh_path: str, df: pd.DataFrame):
                 s = getDataFrame(enc, dec, est, readout, hidden, i, dataset, dim)
 
                 if len(s) != 0 and s.iloc[0, 8] == "finished":
-                    result_1 = float(s.iloc[0, 9])
+                    result_1 = int(float(s.iloc[0, 9]) * 100)
                     result_dic[params][i] = [result_1]
                 else:
                     result_dic[params][i] = [0]
@@ -210,7 +211,7 @@ def get_sampler_csv_data(sh_path: str, df: pd.DataFrame):
 
 
 def plotEncRank(data, num, expName):
-    my_data = {"enc": [], "rank": []}
+    my_data = {"Encoder": [], "Rank": []}
     sort = {}
     rank = {}
     for i in encoders:
@@ -227,25 +228,29 @@ def plotEncRank(data, num, expName):
                 current_result = i[1]
                 current_comp += 1
                 sort[i[0]][current_comp] += 1
-            my_data["enc"].append(encName[i[0]])
-            my_data["rank"].append(current_comp)
+            my_data["Encoder"].append(encName[i[0]])
+            my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
+    df_0 = df_0.sort_values(by=["Encoder", "Rank"], ascending=[True,True])
     plt.figure(num + 10)
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.barplot(data=df_0, x="enc", y="rank")
+    sns.barplot(data=df_0, x="Encoder", y="Rank")
     plt.savefig("../graph/" + expName + "_bar.png")
     plt.close()
 
     plt.figure(num)
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.displot(data=df_0, x="enc", hue="rank", multiple="stack", hue_order=["1", "3", "2", "4", "5"])
+    sns.set_style("white")
+    current_palette = sns.color_palette()
+    sns.histplot(data=df_0, x="Encoder", hue="Rank", multiple="stack", shrink=.8,
+                 palette=sns.color_palette(palette=None, n_colors=5),)
     print(sort)
     plt.savefig("../graph/" + expName + "_dis.png")
     plt.close()
 
 
 def plotDecRank(data, num, expName):
-    my_data = {"dec": [], "rank": []}
+    my_data = {"Decoder": [], "Rank": []}
     sort = {}
     rank = {}
     for i in decoders:
@@ -262,17 +267,29 @@ def plotDecRank(data, num, expName):
                 current_result = i[1]
                 current_comp += 1
                 sort[i[0]][current_comp] += 1
-            my_data["dec"].append(i[0])
-            my_data["rank"].append(current_comp)
+            my_data["Decoder"].append(i[0])
+            my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
+    df_0 = df_0.sort_values("Decoder")
     plt.figure(num)
-    sns.displot(data=df_0, x="dec", hue="rank", multiple="stack", row_order=decoders)
+    plt.figure(figsize=(8, 6))
+    fig, axes = plt.subplots(1, 2)
+    sns.histplot(data=df_0, x="Decoder", hue="Rank", multiple="stack", shrink=.8,
+                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
     print(sort)
+    """
     plt.savefig("../graph/" + expName + "_dis.png")
+
+    plt.figure(num + 10)
+    """
+    sns.barplot(data=df_0, x="Decoder", y="Rank", ax=axes[1])
+    plt.subplots_adjust(wspace=0.5)
+    plt.savefig("../graph/" + expName + "_bar.png")
+    plt.close()
 
 
 def plotReadoutRank(data, num, expName):
-    my_data = {"readout": [], "rank": []}
+    my_data = {"Readout": [], "Rank": []}
     sort = {}
     rank = {}
     for i in readouts:
@@ -289,17 +306,29 @@ def plotReadoutRank(data, num, expName):
                 current_result = i[1]
                 current_comp += 1
                 sort[i[0]][current_comp] += 1
-            my_data["readout"].append(i[0])
-            my_data["rank"].append(current_comp)
+            my_data["Readout"].append(i[0])
+            my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
+    df_0 = df_0.sort_values("Readout")
     plt.figure(num)
-    sns.displot(data=df_0, x="readout", hue="rank", multiple="stack", row_order=readouts)
+    plt.figure(figsize=(8, 6))
+    fig, axes = plt.subplots(1, 2)
+    sns.histplot(data=df_0, x="Readout", hue="Rank", multiple="stack", shrink=.8,
+                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
     print(sort)
+    """
     plt.savefig("../graph/" + expName + "_dis.png")
+
+    plt.figure(num + 10)
+    """
+    sns.barplot(data=df_0, x="Readout", y="Rank", ax=axes[1])
+    plt.subplots_adjust(wspace=0.5)
+    plt.savefig("../graph/" + expName + "_bar.png")
+    plt.close()
 
 
 def plotEstimatorRank(data, num, expName):
-    my_data = {"estimator": [], "rank": []}
+    my_data = {"Estimator": [], "Rank": []}
     sort = {}
     rank = {}
     for i in estimators:
@@ -317,17 +346,29 @@ def plotEstimatorRank(data, num, expName):
                 current_result = i[1]
                 current_comp += 1
                 sort[i[0]][current_comp] += 1
-            my_data["estimator"].append(estName[i[0]])
-            my_data["rank"].append(current_comp)
+            my_data["Estimator"].append(estName[i[0]])
+            my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
+    df_0 = df_0.sort_values("Estimator")
     plt.figure(num)
-    sns.displot(data=df_0, x="estimator", hue="rank", multiple="stack")
+    plt.figure(figsize=(8, 6))
+    fig, axes = plt.subplots(1, 2)
+    sns.histplot(data=df_0, x="Estimator", hue="Rank", multiple="stack", shrink=.8,
+                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
     print(sort)
+    """
     plt.savefig("../graph/" + expName + "_dis.png")
+
+    plt.figure(num + 10)
+    """
+    sns.barplot(data=df_0, x="Estimator", y="Rank", ax=axes[1])
+    plt.subplots_adjust(wspace=0.5)
+    plt.savefig("../graph/" + expName + "_bar.png")
+    plt.close()
 
 
 def plotSamplerRank(data, num, expName):
-    my_data = {"sampler": [], "rank": []}
+    my_data = {"Sampler": [], "Rank": []}
     sort = {}
     rank = {}
     for i in samplers:
@@ -345,14 +386,25 @@ def plotSamplerRank(data, num, expName):
                 current_result = i[1]
                 current_comp += 1
                 sort[i[0]][current_comp] += 1
-            my_data["sampler"].append(samplerName[i[0]])
-            my_data["rank"].append(current_comp)
+            my_data["Sampler"].append(samplerName[i[0]])
+            my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
+    df_0 = df_0.sort_values("Sampler")
+    plt.figure(num + 10)
+    # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
+    sns.barplot(data=df_0, x="Sampler", y="Rank")
+    plt.savefig("../graph/" + expName + "_bar.png")
+    plt.close()
+
     plt.figure(num)
-    plt.figure(figsize=(12, 6))
-    ax = sns.displot(data=df_0, x="sampler", hue="rank", multiple="stack")
+    # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
+    sns.set_style("white")
+    current_palette = sns.color_palette()
+    sns.histplot(data=df_0, x="Sampler", hue="Rank", multiple="stack", shrink=.8,
+                 palette=sns.color_palette("ch:s=.25,rot=-.25", as_cmap=True))
     print(sort)
     plt.savefig("../graph/" + expName + "_dis.png")
+    plt.close()
 
 
 # 针对node_enc的版本
