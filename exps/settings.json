@@ -36,10 +36,9 @@
         },
         "dec": {
             "_options": {
-                "a": ["inner", "bilinear", "mlp"],
+                "a": ["inner", "bilinear"],
                 "inner": ["inner"],
-                "bilinear": ["bilinear"],
-                "mlp": ["mlp"]
+                "bilinear": ["bilinear"]
             }
         },
         "sampler": {
@@ -61,10 +60,9 @@
         "readout": {
             "_options": {
                 "default": ["mean"],
-                "others": ["sum", "jk-net"],
+                "others": ["sum"],
                 "mean": ["mean"],
-                "sum": ["sum"],
-                "jk-net": ["jk-net"]
+                "sum": ["sum"]
             }
         },
         "est": {
@@ -76,8 +74,7 @@
         },
         "_options": {
             "node_node": {
-                "sampler": ["node"],
-                "readout": ["default"]
+                "sampler": ["node"]
             },
             "node_graph": {
                 "sampler": ["graph"]
@@ -163,11 +160,13 @@
             "node_clf1": {
                 "clf-ratio": ["node"],
                 "dim": ["d1"],
+                "_hiddens": ["h0"],
                 "lr": ["l0"]
             },
             "graph_clf1": {
                 "clf-ratio": ["graph"],
                 "dim": ["d1"],
+                "_hiddens": ["h0"],
                 "lr": ["l0"]
             }
         }
@@ -226,6 +225,34 @@
             "model": ["graph_clf_graph_sampler"],
             "task": ["graph"],
             "dataset": ["multigraph_min"],
+            "_model": ["graph_graph"],
+            "_hyperparameters": ["graph_clf1"]
+        },
+        "node_node2": {
+            "model": ["node_clf_node_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_node"],
+            "_hyperparameters": ["node_clf1"]
+        },
+        "node_graph2": {
+            "model": ["node_clf_graph_sampler"],
+            "task": ["node"],
+            "dataset": ["unigraph"],
+            "_model": ["node_graph"],
+            "_hyperparameters": ["node_clf1"]
+        },
+        "graph_node2": {
+            "model": ["graph_clf_node_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
+            "_model": ["graph_node"],
+            "_hyperparameters": ["graph_clf1"]
+        },
+        "graph_graph2": {
+            "model": ["graph_clf_graph_sampler"],
+            "task": ["graph"],
+            "dataset": ["multigraph"],
             "_model": ["graph_graph"],
             "_hyperparameters": ["graph_clf1"]
         },

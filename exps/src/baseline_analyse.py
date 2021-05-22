@@ -12,6 +12,8 @@ csv_name = 'failure_analysis.csv'
 output_name = 'best_model_analysis.csv'
 full_csv_path = os.path.join(processed_dir, csv_name)
 full_output_path = os.path.join(processed_dir, output_name)
+output_latex_name = 'best_model_analysis.tex'
+full_output_latex_path = os.path.join(processed_dir, output_latex_name)
 
 settings_path = os.path.join(processed_dir, '..', 'settings.json')
 fig_path = os.path.join(processed_dir, "..", "graph")
@@ -70,13 +72,57 @@ def getmodel(argsdict):
 
 
 baseline_dict = {getmodel(modelargsdict): modelname for modelname, modelargsdict in baselines.items()}
-print(baseline_dict)
+# print(baseline_dict)
 
 def get_baseline(cmd: CMD):
     model_tuple = getmodel(cmd.argsdict)
     if model_tuple in baseline_dict:
         return baseline_dict[model_tuple]
-    return 'others'
+    return "others"
+
+def normalize(x):
+    n_set = {
+        'GIN', 'GCN', 'GAT', 'DGI', 'MVGRL',
+        'Bilinear', 'Inner',
+        'NCE', 'JSD',
+        'Mean', 'Sum',
+        'InfoGraph',
+        'JK-Net',
+        'GAE',
+        'GCA',
+        'GraphCL',
+        'MUTAG',
+        'Cora',
+        'CiteSeer',
+        'PubMed',
+        'IMDB MULTI',
+        'IMDB BINARY',
+        'Amazon Computers',
+        'Amazon Photo',
+        'Reddit BINARY',
+        'PTC_MR',
+        'WikiCS',
+        'Coauthor CS',
+        'Coauthor Phy'
+    }
+    if isinstance(x, str):
+        x = x.replace('node-neighbor-random', 'LINE')\
+        .replace('node-rand_walk-random', 'DeepWalk')\
+        .replace('aug', 'GraphCL').replace("'", '')
+        for w in n_set:
+            if w.lower().replace('_', ' ') == x.strip().lower().replace('_', ' '):
+                return w
+    return x
+
+def get_model_name(cmd: CMD):
+    model_tuple = getmodel(cmd.argsdict)
+    if model_tuple in baseline_dict:
+        return normalize(baseline_dict[model_tuple])
+    model_tuple = tuple(normalize(x) for x in model_tuple)
+
+    return f'"{str(model_tuple)}"'.replace('node-neighbor-random', 'LINE')\
+        .replace('node-rand_walk-random', 'DeepWalk')\
+        .replace('aug', 'GraphCL').replace("'", '')
     # for modelname in baselines:
     #     model = baselines[modelname]
     #     flg = True
@@ -101,6 +147,13 @@ def analyse():
         res = float(exp['result'])
         results[cmd.sorted_cmd_str] = res
         dataset = cmd.argsdict['dataset']
+        flg = 0
+        for kw in ['except_neighbor', 'jk-net', 'mlp']:
+            if cmd.sorted_cmd_str.find(kw) >= 0:
+                flg = 1
+                break
+        if flg == 1:
+            continue
         if dataset not in all_max:
             all_max[dataset] = (res, cmd)
         elif all_max[dataset][0] < res:
@@ -129,7 +182,8 @@ def analyse():
     exp_res_dict = {}
 
     with open(full_output_path, 'w') as fo:
-        print('dataset,model,max,raw_cmd', file=fo)
+        # print('dataset,model,max,raw_cmd', file=fo)
+        print('Task,Dataset,"Best design \nin design space","Best \nscore","Best \nbaseline","Best score \nof baseline"', file=fo)
         for batch_name in cmd_dict:
             res_frame = pandas.DataFrame()
             exps = []
@@ -138,6 +192,11 @@ def analyse():
             hypers = []
             res = []
             dataset = (cmd_dict[batch_name][0]).argsdict['dataset']
+            task = (cmd_dict[batch_name][0]).argsdict['task']
+            if task.find('graph') != -1:
+                task = 'graph'
+            else:
+                task = 'node'
             print(dataset, ': len =', len(cmd_dict[batch_name]))
             # we can directly use data in table
             #sns.boxplot(x='')
@@ -167,6 +226,8 @@ def analyse():
             res_frame['res'] = res
 
             # step 3.2. model-wise max, mean, etc.
+            best_baseline = None
+            best_baseline_score = 0
             for model in exp_res_dict[dataset]:
                 mxm = 0
                 mxi = None
@@ -185,20 +246,38 @@ def analyse():
                     'mean': sum_res / len_res
                 }
 
-                print(dataset,',', model, ':', len_res, mxm, sum_res / len_res)
-                print(dataset, model, mxm, mxi, sep=',', file=fo)
-            print(dataset, get_baseline(all_max[dataset][1]), all_max[dataset][0], all_max[dataset][1], sep=',', file=fo)
-            print(dataset, ',', get_baseline(all_max[dataset][1]), ':', '?', all_max[dataset][0], all_max[dataset][1])
+                print(dataset, ',', model, ':', len_res, mxm, sum_res / len_res)
+                if best_baseline_score < mxm:
+                    best_baseline_score = mxm
+                    best_baseline = CMD(mxi)
 
-            # step 3.3. paint
-            plt.figure()
-            sns.boxplot(x='model', y='res', data=res_frame)
-            sns.swarmplot(x='model', y='res', data=res_frame, color=".25")
-            plt.savefig(os.path.join(fig_path, f'baseline_{dataset}.png'))
+            print(
+                task,
+                normalize(dataset),
+                get_model_name(all_max[dataset][1]),
+                all_max[dataset][0],
+                get_model_name(best_baseline),
+                best_baseline_score,
+                sep=',',
+                file=fo
+            )
+                # print(dataset, model, mxm, mxi, sep=',', file=fo)
+            # print(dataset, get_baseline(all_max[dataset][1]), all_max[dataset][0], all_max[dataset][1], sep=',', file=fo)
+            print(task, ',', normalize(dataset), ',', get_baseline(all_max[dataset][1]), ':', '?', all_max[dataset][0], all_max[dataset][1])
 
+            # # step 3.3. paint
+            # plt.figure()
+            # sns.boxplot(x='model', y='res', data=res_frame)
+            # sns.swarmplot(x='model', y='res', data=res_frame, color=".25")
+            # plt.savefig(os.path.join(fig_path, f'baseline_{dataset}.png'))
+    # indices = pandas.MultiIndex(('task', 'dataset'))
+    output_df = pandas.read_csv(full_output_path, index_col=(1,))
+    print(output_df)
+    output_df = output_df.sort_values('Task')
+    output_df = output_df.drop(columns=['Task'])
+    print(output_df)
 
-
-
+    output_df.to_latex(full_output_latex_path)
 
 
 if __name__ == '__main__':
