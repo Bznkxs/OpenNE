@@ -17,6 +17,7 @@ from parse_exps import cartesian_prod
 from monitor import CMD, processed_dir, src_dir, get_CMD, get_cmd
 from new_samplefullexps import gethyper, hyperparameter_list
 from baseline_analyse import getmodel, modelargs
+from single_analyse import create_table
 
 csv_name = 'failure_analysis.csv'
 output_name = 'combined_model_analysis.csv'
@@ -34,33 +35,6 @@ if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
 
-def create_table(cmd_list, results, smooth=False):
-    args = 'dataset,enc,dec,sampler,readout,est,dim,hiddens,raw,res'.split(',')
-    if smooth:
-        results = results.copy()
-        for cmd in cmd_list:
-            if str(cmd) not in results:
-                results[str(cmd)] = -1
-    def default(arg, c):
-        if arg == 'raw':
-            return str(c)
-        if arg == 'res':
-            return results[str(c)]
-        return None
-
-    wdict = {a: [] for a in args}
-    for cmd in cmd_list:
-        if str(cmd) in results:
-            for i in args:
-                wdict[i].append(cmd.argsdict.get(i, default(i, cmd)))
-
-
-    table = pandas.DataFrame()
-    for a in args:
-        table[a] = wdict[a]
-
-    return table
-
 
 def entropy(it):
     return scipy.stats.entropy(it)
@@ -68,7 +42,7 @@ def entropy(it):
     # ans = 1
     # for x in it:
 
-def work(args):
+def work0(args):
     table, thresholds, n_all, n_1 = args
     for threshold in thresholds:
         quantiles = table.groupby('dataset')['res'].quantile(threshold)
@@ -89,7 +63,6 @@ def work(args):
         # step 3.1. for single module: get information
 
         stat_table_single = pandas.DataFrame()
-        stat_table_single1 = pandas.DataFrame()
         H = {}
         p = {}
         H1 = {}
@@ -103,8 +76,6 @@ def work(args):
             stat_table_single[m_arg] = H[m_arg]
 
             H1[m_arg] = distribution.groupby([m_arg]).apply(entropy)
-            #print(H1)
-            #stat_table_single1[m_arg] = H1[m_arg]
 
 
 
@@ -115,6 +86,8 @@ def work(args):
         stat_table_double = pandas.DataFrame()
         stat_table_double1 = pandas.DataFrame()
         I2 = {}
+        p2 = {}
+
         for i, m_arg0 in enumerate(modelargs):
             for j, m_arg1 in enumerate(modelargs):
                 if i <= j:
@@ -123,20 +96,16 @@ def work(args):
 
 
 
-                # dis_div = distribution / p[m_arg0] / p[m_arg1]
-                # for dataset in datasets:
-                #     print(dis_div[dis_div['dataset'] == dataset].unstack().to_numpy())
-                # print("????", m_arg0, m_arg1)
-                # print(distribution.to_string())
-                # print(n_m_x_y.to_string())
-                # print(n_x_y.to_string())
                 xy = f'{m_arg0}+{m_arg1}'
                 H[xy] = distribution.groupby(['dataset']).apply(scipy.stats.entropy)
                 H1[xy] = distribution.groupby([m_arg0, m_arg1]).apply(scipy.stats.entropy)
 
                 stat_table_double[xy] = -H[xy] + H[m_arg0] + H[m_arg1]
-
                 I2[xy] = -H1[xy] + H1[m_arg0] + H1[m_arg1]
+
+                p2[xy] = distribution / p[m_arg0] - p[m_arg1]
+                p2[f'{m_arg1}+{m_arg0}'] = distribution / p[m_arg1] - p[m_arg0]
+
 
 
         print(H1)
@@ -169,6 +138,67 @@ def work(args):
         plt.savefig(os.path.join(fig_path, f'combined_double_{int(threshold * 1000)/1000:.3f}.png'))
         plt.close(fig)
 
+def work(args):
+    table, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
+    for threshold in thresholds:
+        quantiles = table.groupby('dataset')['res'].quantile(threshold)
+        table_p = table[quantiles[table['dataset']].to_numpy() <= table['res'].to_numpy()]
+
+        # normalize: keep p(every module combination) the same
+        n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
+
+        n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
+        n_m_all = n_m_all_smooth
+
+        p_m_all = (n_m_all / n_all).apply(lambda x: 0 if np.isnan(x) else x)
+        nomin = sum(p_m_all)
+        all_distribution = p_m_all / nomin
+        print(all_distribution)
+        print(nomin)
+        print(all_distribution[all_distribution > 0.])
+        print(sum(all_distribution))
+        # step 3.1. for single module: get information
+
+        p = {}
+
+        for m_arg in modelargs:
+            distribution = all_distribution.groupby([m_arg]).apply(sum)
+            p[m_arg] = distribution
+            print(distribution)
+
+
+        # step 3.2. for two modules
+        heatmap = np.zeros([len(module_names), len(module_names)])
+        heatmap[:, :] = np.nan
+        for i, m_arg0 in enumerate(modelargs):
+            for j, m_arg1 in enumerate(modelargs):
+                if i <= j:
+                    break
+                distribution = all_distribution.groupby([m_arg0, m_arg1]).apply(sum)
+
+                mxr = distribution / p[m_arg0] - p[m_arg1]
+                mxr = mxr.unstack(m_arg1)
+                mat1 = mxr.to_numpy()
+                mxl = distribution / p[m_arg1] - p[m_arg0]
+                mxl = mxl.unstack(m_arg0)
+                mat2 = mxl.to_numpy()
+                print(mxr)
+
+                heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat1
+                heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat2
+
+        heatmap_df = pandas.DataFrame(heatmap)
+        heatmap_df.columns = module_names
+        heatmap_df.index = module_names
+        print(heatmap_df)
+
+        fig = plt.figure()
+        fig.set_size_inches(12,12)
+
+        sns.heatmap(heatmap_df, square=True).set_title("heatmap of $p(x|y)-y$")
+
+        plt.show()
+
 
 
 
@@ -189,7 +219,7 @@ def analyse():
     # step 2. open exps
     dirlist = os.listdir(src_dir)
     # step 2.1. find baseline files
-    from_all = True
+    from_all = False
     if from_all:
         all_exps = []
         for k in parse_exps.parse().all():
@@ -229,7 +259,7 @@ def analyse():
     # plt.show()
 
     # step 3.0. set threshold for res
-    thresholds = np.arange(0.8, 1, 0.2)
+    thresholds = np.arange(0.9, 1, 0.2)
     arg_cnt = {m_arg: len(table_smooth[m_arg].value_counts()) for m_arg in modelargs}
     cnt_arg_combination = 1
     for w in arg_cnt.values():
@@ -240,14 +270,81 @@ def analyse():
 
     n_all = table.groupby(['dataset'] + modelargs).apply(lambda x: len(x) + 0)
     n_1 = table_smooth.groupby(['dataset'] + modelargs).apply(lambda x: 0)
+    options = {}
+    module_names = []
+    module_no_dict = {}
+    module_intv = {}
+    for m_arg in modelargs:
+        options[m_arg] = list(set(table[m_arg].to_list()))
+        options[m_arg].sort()
+        x_st = len(module_names)
+        x_ed = x_st + len(options[m_arg])
+        module_intv[m_arg] = slice(x_st, x_ed)
+        for opt in options[m_arg]:
+            module_no_dict[opt] = len(module_names)
 
+            module_names.append(opt)
 
-    # work((table, thresholds, n_all, n_1))
+    work((table, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv))
     # multiprocess
-    n_split = 20
-    with Pool(n_split) as p:
-        for _ in tqdm(p.imap_unordered(work, [(table, thresholds[i * len(thresholds) // n_split: (i+1) * len(thresholds) // n_split], n_all, n_1) for i in range(n_split)]), total=n_split):
-            continue
+    # n_split = 20
+    # with Pool(n_split) as p:
+    #     for _ in tqdm(p.imap_unordered(work, [(table, thresholds[i * len(thresholds) // n_split: (i+1) * len(thresholds) // n_split], n_all, n_1) for i in range(n_split)]), total=n_split):
+    #         continue
+
+
+
+
+
+
+    for ttt in set(table['task'].to_list()):
+        print(ttt)
+        table_new = table[table['task'] == ttt]
+        table_new = table_new.sort_values(['dataset'])
+        table_new['rank'] = table_new.groupby(['dataset'])['res'].rank('min', ascending=False)
+        #print(table_new[['dataset', 'enc', 'res', 'rank']].sort_values(['dataset', 'enc', 'res', 'rank']).to_string())
+        q = table_new.groupby(['dataset'])['res'].size()
+        table_new = table_new.set_index(['dataset'] + modelargs)
+
+        table_new['rank'] = table_new['rank'] / q
+
+        table_new.reset_index(inplace=True)
+        table_new['rank'] = table_new['rank'].rank(method='min')
+        q = len(table_new)
+        table_new['rank'] = table_new['rank'] / q
+
+        heatmap = np.zeros([len(module_names), len(module_names)])
+        heatmap[:, :] = np.nan
+        for i, m_arg0 in enumerate(modelargs):
+            for j, m_arg1 in enumerate(modelargs):
+                if i <= j:
+                    break
+                # fill heatmap
+                # value: best rank
+                mxr = table_new.groupby([m_arg0, m_arg1])['rank'].min()
+
+                #print(mxr)
+                # mxr = mxr.reset_index()
+                mxr = mxr.unstack(m_arg1)
+                mat = mxr.to_numpy()
+                heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat
+                heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat.T
+                # print(mxr)
+
+        heatmap = heatmap ** 0.25
+        #print(heatmap)
+        heatmap_df = pandas.DataFrame(heatmap)
+        heatmap_df.columns = module_names
+        heatmap_df.index = module_names
+        #print(heatmap_df)
+
+        fig = plt.figure()
+        fig.set_size_inches(12,12)
+
+        sns.heatmap(heatmap_df, square=True).set_title(f"task {ttt}: heatmap of $\\min(rank)^{{0.25}}$")
+        plt.show()
+        plt.close()
+
 
 
 
