@@ -139,65 +139,68 @@ def work0(args):
         plt.close(fig)
 
 def work(args):
-    table, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
-    for threshold in thresholds:
-        quantiles = table.groupby('dataset')['res'].quantile(threshold)
-        table_p = table[quantiles[table['dataset']].to_numpy() <= table['res'].to_numpy()]
+    table_0, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
+    for ttt in set(table_0['task'].to_list()):
+        print(ttt)
+        table = table_0[table_0['task'] == ttt]
+        for threshold in thresholds:
+            quantiles = table.groupby('dataset')['res'].quantile(threshold)
+            table_p = table[quantiles[table['dataset']].to_numpy() <= table['res'].to_numpy()]
 
-        # normalize: keep p(every module combination) the same
-        n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
+            # normalize: keep p(every module combination) the same
+            n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
 
-        n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
-        n_m_all = n_m_all_smooth
+            n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
+            n_m_all = n_m_all_smooth
 
-        p_m_all = (n_m_all / n_all).apply(lambda x: 0 if np.isnan(x) else x)
-        nomin = sum(p_m_all)
-        all_distribution = p_m_all / nomin
-        print(all_distribution)
-        print(nomin)
-        print(all_distribution[all_distribution > 0.])
-        print(sum(all_distribution))
-        # step 3.1. for single module: get information
+            p_m_all = (n_m_all / n_all).apply(lambda x: 0 if np.isnan(x) else x)
+            nomin = sum(p_m_all)
+            all_distribution = p_m_all / nomin
+            print(all_distribution)
+            print(nomin)
+            print(all_distribution[all_distribution > 0.])
+            print(sum(all_distribution))
+            # step 3.1. for single module: get information
 
-        p = {}
+            p = {}
 
-        for m_arg in modelargs:
-            distribution = all_distribution.groupby([m_arg]).apply(sum)
-            p[m_arg] = distribution
-            print(distribution)
+            for m_arg in modelargs:
+                distribution = all_distribution.groupby([m_arg]).apply(sum)
+                p[m_arg] = distribution
+                print(distribution)
 
 
-        # step 3.2. for two modules
-        heatmap = np.zeros([len(module_names), len(module_names)])
-        heatmap[:, :] = np.nan
-        for i, m_arg0 in enumerate(modelargs):
-            for j, m_arg1 in enumerate(modelargs):
-                if i <= j:
-                    break
-                distribution = all_distribution.groupby([m_arg0, m_arg1]).apply(sum)
+            # step 3.2. for two modules
+            heatmap = np.zeros([len(module_names), len(module_names)])
+            heatmap[:, :] = np.nan
+            for i, m_arg0 in enumerate(modelargs):
+                for j, m_arg1 in enumerate(modelargs):
+                    if i <= j:
+                        break
+                    distribution = all_distribution.groupby([m_arg0, m_arg1]).apply(sum)
 
-                mxr = distribution / p[m_arg0] - p[m_arg1]
-                mxr = mxr.unstack(m_arg1)
-                mat1 = mxr.to_numpy()
-                mxl = distribution / p[m_arg1] - p[m_arg0]
-                mxl = mxl.unstack(m_arg0)
-                mat2 = mxl.to_numpy()
-                print(mxr)
+                    mxr = distribution / p[m_arg0] - p[m_arg1]
+                    mxr = mxr.unstack(m_arg1)
+                    mat1 = mxr.to_numpy()
+                    mxl = distribution / p[m_arg1] - p[m_arg0]
+                    mxl = mxl.unstack(m_arg0)
+                    mat2 = mxl.to_numpy()
+                    print(mxr)
 
-                heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat1
-                heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat2
+                    heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat1
+                    heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat2
 
-        heatmap_df = pandas.DataFrame(heatmap)
-        heatmap_df.columns = module_names
-        heatmap_df.index = module_names
-        print(heatmap_df)
+            heatmap_df = pandas.DataFrame(heatmap)
+            heatmap_df.columns = module_names
+            heatmap_df.index = module_names
+            print(heatmap_df)
 
-        fig = plt.figure()
-        fig.set_size_inches(12,12)
+            fig = plt.figure()
+            fig.set_size_inches(12,12)
 
-        sns.heatmap(heatmap_df, square=True).set_title("heatmap of $p(x|y)-y$")
+            sns.heatmap(heatmap_df, square=True).set_title(f"task {ttt}: heatmap of $p(x|y)-y$")
 
-        plt.show()
+            plt.show()
 
 
 
