@@ -1,6 +1,7 @@
 import json
 import os
 import random
+from typing import Union
 
 import pandas
 import seaborn as sns
@@ -108,7 +109,9 @@ def normalize(x):
     if isinstance(x, str):
         x = x.replace('node-neighbor-random', 'LINE')\
         .replace('node-rand_walk-random', 'DeepWalk')\
-        .replace('aug', 'GraphCL').replace("'", '')
+        .replace('aug', 'GraphCL').replace('unsupervisednodeclassification', 'Node').replace(
+            'graphclassification', 'Graph'
+        ).replace("'", '')
         for w in n_set:
             if w.lower().replace('_', ' ') == x.strip().lower().replace('_', ' '):
                 return w
@@ -123,16 +126,9 @@ def get_model_name(cmd: CMD):
     return f'"{str(model_tuple)}"'.replace('node-neighbor-random', 'LINE')\
         .replace('node-rand_walk-random', 'DeepWalk')\
         .replace('aug', 'GraphCL').replace("'", '')
-    # for modelname in baselines:
-    #     model = baselines[modelname]
-    #     flg = True
-    #     for key in model:
-    #         if cmd.argsdict[key] != model[key]:
-    #             flg = False
-    #             break
-    #     if flg:
-    #         return modelname
-    # return 'others'
+
+def get_model_name1(cmd: str):
+    return get_model_name(CMD(cmd)).replace('"', '')
 
     
 def analyse():

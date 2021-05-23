@@ -52,11 +52,11 @@ def work0(args):
         # normalize: keep p(every module combination) the same
         n_m_all = table_p.groupby(['dataset'] + modelargs).apply(lambda x: len(x))
 
-        n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
-        n_m_all = n_m_all_smooth
+        # n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
+        # n_m_all = n_m_all_smooth
         #print(n_m_all_smooth)
 
-        p_m_all = (n_m_all / n_all).apply(lambda x: 0 if np.isnan(x) else x)
+        p_m_all = (n_m_all / n_all)  # .apply(lambda x: 0 if np.isnan(x) else x)
         nomin = p_m_all.groupby(['dataset']).apply(sum)
         all_distribution = p_m_all / nomin
         #print(all_distribution.to_string())
@@ -70,8 +70,8 @@ def work0(args):
         for m_arg in modelargs:
             distribution = all_distribution.groupby(['dataset', m_arg]).apply(sum)
             p[m_arg] = distribution
-            print("????", m_arg)
-            print(distribution.to_string())
+            # print("????", m_arg)
+            # print(distribution.to_string())
             H[m_arg] = distribution.groupby(['dataset']).apply(entropy)
             stat_table_single[m_arg] = H[m_arg]
 
@@ -150,10 +150,10 @@ def work(args):
             # normalize: keep p(every module combination) the same
             n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
 
-            n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
-            n_m_all = n_m_all_smooth
+            # n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
+            # n_m_all = n_m_all_smooth
 
-            p_m_all = (n_m_all / n_all).apply(lambda x: 0 if np.isnan(x) else x)
+            p_m_all = (n_m_all / n_all)  # .apply(lambda x: 0 if np.isnan(x) else x)
             nomin = sum(p_m_all)
             all_distribution = p_m_all / nomin
             print(all_distribution)
@@ -296,10 +296,6 @@ def analyse():
     #         continue
 
 
-
-
-
-
     for ttt in set(table['task'].to_list()):
         print(ttt)
         table_new = table[table['task'] == ttt]
@@ -349,49 +345,6 @@ def analyse():
         plt.close()
 
 
-
-
-    # variance solution (bad)
-    # # step 3.1. for single module
-    # stat_table = pandas.DataFrame()
-    # for m_arg in modelargs:
-    #     # print(m_arg)
-    #     e = table.groupby(['dataset', m_arg]).mean()
-    #     # print(e)
-    #     v = e.groupby(['dataset']).var()
-    #     stat_table[m_arg] = v['res']
-    #     # print(v)
-    # print(stat_table)
-    #
-    # # step 3.2. for two modules
-    # for i, m_arg in enumerate(modelargs):
-    #     for j, m_arg1 in enumerate(modelargs):
-    #         if i <= j:
-    #             break
-    #         e = table.groupby(['dataset', m_arg, m_arg1]).mean()
-    #         v = e.groupby(['dataset', m_arg]).var()
-    #         m = v.groupby(['dataset']).mean()
-    #         v = e.groupby(['dataset', m_arg1]).var()
-    #         m1 = v.groupby(['dataset']).mean()
-    #
-    #         # v = e.groupby(['dataset']).var()
-    #         stat_table[f'{m_arg}+{m_arg1}'] = (m['res'] + m1['res']) / 2
-    #
-    # #stat_table.to_csv(full_output_path)
-    # us = stat_table.unstack()
-    # #us.columns =
-    #
-    # us.to_csv(full_output_path)
-    # us = pandas.read_csv(full_output_path)
-    # us.columns = ['args', 'dataset', 'res']
-    # print(us)
-    # for example ... coauthor_cs, est+sampler
-    # sns.barplot(data=us, x='args', y='res', hue='dataset')
-    # fig = plt.gcf()
-    #
-    # # Change seaborn plot size
-    # fig.set_size_inches(18, 8)
-    # plt.show()
 
 if __name__ == '__main__':
     analyse()

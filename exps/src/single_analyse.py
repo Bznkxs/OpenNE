@@ -67,12 +67,31 @@ def create_table(cmd_list, results, smooth=False):
 
 def entropy(it):
     return scipy.stats.entropy(it)
-    # res = 0
-    # ans = 1
-    # for x in it:
 
 
-
+def plot_filled_distribution(distributions, legend, graph_name):
+    fig = plt.figure()
+    stp = 0.01
+    rrr = np.arange(0, 1 + stp, stp)
+    sums = [0 * rrr]
+    for fi in distributions:
+        sums.append(sums[-1] + fi(rrr))
+    # div
+    divs = []
+    for s in sums:
+        rx = s / sums[-1]
+        divs.append(rx)
+    # fill
+    for i in range(len(divs) - 1):
+        plt.fill_between(rrr, divs[i + 1], divs[i], edgecolor="black")
+    plt.legend(legend)
+    plt.plot([0, 0], [0, 1], color='black')
+    plt.plot([1, 1], [0, 1], color='black')
+    plt.xlim([0, 1])
+    plt.ylim([0, 1])
+    fig.set_size_inches(8, 8)
+    plt.savefig(os.path.join(fig_path, graph_name))
+    plt.close()
 
 
 def analyse():
@@ -148,6 +167,7 @@ def analyse():
     n_all = table.groupby(['dataset'] + modelargs).apply(lambda x: len(x) + 0)
 
     for ttt in set(table['task'].to_list()):
+        print("task =", ttt)
         table_new = table[table['task'] == ttt]
         table_new = table_new.sort_values(['dataset'])
         table_new['rank'] = table_new.groupby(['dataset'])['res'].rank('min', ascending=False)
@@ -161,140 +181,36 @@ def analyse():
         table_new['rank'] = table_new['rank'].rank(method='min')
         q = len(table_new)
         table_new['rank'] = table_new['rank'] / q
-        #print(table_new[['dataset', 'enc', 'res', 'rank']].sort_values(['dataset', 'enc', 'res', 'rank']).to_string())
         for i, m_arg in enumerate(modelargs):
             print(m_arg, "############")
             table_new1 = table_new
-            # print(table_new1)
-            other_margs = modelargs[: i] + modelargs[i+1:]
-
-            # print(table_new1)
-            # print(table.groupby([m_arg]).size())
-
-            table_new1 = table_new1.sort_values(m_arg)
-            table_new1 = table_new1.set_index([m_arg] + other_margs + ['dataset'])
-            q = table_new1.groupby([m_arg]).size()
-            p = table_new1.groupby([m_arg])['rank'].rank('min')
-            # print(table_new1)
-            # print(p)
-            # print(q)
-            # print(p/q)
-            table_new1['r_' + m_arg] = p
-            table_new1['r_' + m_arg] /= q
-            table_new1['n_' + m_arg] = q
-            table_new1 = table_new1.reset_index()
-
+            table_new1 = table_new1.sort_values([m_arg])
             # get kde distributions
             distributions = []
             for option in options[m_arg]:
+                print(option, "avg rank =", table_new1[table_new1[m_arg] == option]['rank'].mean())
                 f = scipy.stats.gaussian_kde(table_new1[table_new1[m_arg] == option]['rank'])
                 distributions.append(f)
 
-            fig=plt.figure()
-            stp = 0.01
-            rrr = np.arange(0, 1 + stp, stp)
-            sums = [0 * rrr]
-            for fi in distributions:
-                sums.append(sums[-1] + fi(rrr))
-            # div
-            divs = []
-            for s in sums:
-                rx = s / sums[-1]
-                divs.append(rx)
-            # fill
-            for i in range(len(divs) - 1):
-                plt.fill_between(rrr, divs[i + 1], divs[i], edgecolor="black")
-            plt.legend(options[m_arg])
-            plt.plot([0,0],[0,1],color='black')
-            plt.plot([1,1],[0,1],color='black')
-            plt.xlim([0,1])
-            plt.ylim([0,1])
-            fig.set_size_inches(8, 8)
-            plt.savefig(os.path.join(fig_path, f'single_stack_norm_{ttt}_{m_arg}.png'))
-            print(f'single_stack_norm_{ttt}_{m_arg}.png')
-            # plt.show()
-            plt.close(fig)
+            plot_filled_distribution(distributions, options[m_arg], f'single_stack_norm_{ttt}_{m_arg}.png')
 
-            # fig = plt.figure()
-            sns.displot(data=table_new1, x='rank', hue=m_arg, kind='kde', multiple='fill')
-            # fig.set_size_inches(8, 8)
-            # plt.savefig(os.path.join(fig_path, f'single_stack_{ttt}_{m_arg}.png'))
-            # plt.show()
-            # plt.close(fig)
+        for i, m_arg0 in enumerate(modelargs):
+            for j, m_arg1 in enumerate(modelargs):
+                if i <= j:
+                    break
+                print(m_arg0, m_arg1, "############")
+                table_new1 = table_new
+                table_new1 = table_new1.sort_values([m_arg0, m_arg1])
+                # get kde distributions
+                distributions = []
+                c_options = []
+                for option0 in options[m_arg0]:
+                    for option1 in options[m_arg1]:
+                        f = scipy.stats.gaussian_kde(table_new1[(table_new1[m_arg0] == option0) & (table_new1[m_arg1] == option1)]['rank'])
+                        c_options.append(option0 + '+' + option1)
+                        distributions.append(f)
 
-            # fig = plt.figure()
-
-
-
-            # rankcurves = {}
-            # for option in options[m_arg]:
-            #     table_new2 = table_new1[table_new1[m_arg] == option]
-            #     x = table_new2['rank'].to_list()
-            #     y = table_new2['r_' + m_arg].to_list()
-            #     x.append(0)
-            #     y.append(0)
-            #     x.append(1)
-            #     y.append(1)
-            #     cxy = list(zip(x, y))
-            #     cxy.sort()
-            #     #print(list(zip(*cxy)))
-            #     x, y = zip(*cxy)
-            #     rankcurves[option] = (x, y)
-            #     print(option)
-            #     print(x)
-            #     print(y)
-            #     plt.plot(x, y)
-            # plt.legend(options[m_arg])
-            #
-            #
-            # fig.set_size_inches(8, 8)
-            # plt.savefig(os.path.join(fig_path, f'single_single_{ttt}_{m_arg}.png'))
-            # plt.show()
-            # plt.close(fig)
-
-
-
-            # plot cumulative lines
-            # pointers = {k: 0 for k in options[m_arg]}
-            # cum_prop = {k: 0. for k in options[m_arg]}
-            # cum_data = {k: ([], []) for k in options[m_arg]}
-            # while True:
-            #     flag = 0
-            #     min_rank = 100
-            #     min_option = None
-            #     for option, pi in pointers.items():
-            #         if len(rankcurves[option][0]) > pi:
-            #             flag = 1
-            #             if rankcurves[option][0][pi] < min_rank:
-            #                 min_rank = rankcurves[option][0][pi]
-            #                 min_option = option
-            #     if flag == 0:
-            #         break
-            #
-            #     cum_prop[min_option] = rankcurves[min_option][1][pointers[min_option]]
-            #     s = sum(cum_prop.values())
-            #     if s > 0:
-            #         for option, pi in pointers.items():
-            #             cum_data[option][0].append(min_rank)
-            #             cum_data[option][1].append(cum_prop[option] / s)
-            #     pointers[min_option] += 1
-            #
-            # # formalize data
-            # cumsum_data = []
-            # for i, k in enumerate(options[m_arg]):
-            #     x, y = cum_data[k]
-
-
-            # fig = plt.figure()
-            # sns.displot(data=newdf, x='x', hue=m_arg, kind='kde', multiple='fill')
-            # fig.set_size_inches(8, 8)
-            # plt.savefig(os.path.join(fig_path, f'single_stack_{ttt}_{m_arg}.png'))
-            # plt.show()
-            # plt.close(fig)
-        # table_new.to_csv(full_output_path)
-        # # exit(0)
-        # print(table_new)
-
+                plot_filled_distribution(distributions, c_options, f'dbl_stack_norm_{ttt}_{m_arg0}_{m_arg1}.png')
 
 
 if __name__ == '__main__':
