@@ -24,7 +24,7 @@ decName = {
 }
 estName = {
     "jsd": "JSD",
-    "nce": "infoNCE"
+    "nce": "InfoNCE"
 }
 readoutName = {
     "mean": "mean",
@@ -33,10 +33,10 @@ readoutName = {
 samplerName = {
     "dgi": "DGI",
     "mvgrl": "MVGRL",
-    "aug": "GraphCL",
+    "aug": "GCL",
     "gca": "GCA",
     "node-neighbor-random": "LINE",
-    "node-rand_walk-random": "DeepWalk",
+    "node-rand_walk-random": "DW",
 }
 
 
@@ -232,20 +232,30 @@ def plotEncRank(data, num, expName):
             my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
     df_0 = df_0.sort_values(by=["Encoder", "Rank"], ascending=[True,True])
+    sns.set(font_scale=2)
     plt.figure(num + 10)
+    fig, ax = plt.subplots(2,1,figsize=[9.6, 10])
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.barplot(data=df_0, x="Encoder", y="Rank")
+    ax[0].set(ylim=(1,5))
+    ax[0].set_yticks(np.arange(1,6,1))
+    g = sns.barplot(data=df_0, x="Encoder", y="Rank", ax=ax[0])
+    g.set(xticklabels=[], xlabel=None)
+    '''
+    plt.tight_layout()
     plt.savefig("../graph/" + expName + "_bar.png")
     plt.close()
 
     plt.figure(num)
+    '''
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.set_style("white")
+    #sns.set_style("white")
     current_palette = sns.color_palette()
-    sns.histplot(data=df_0, x="Encoder", hue="Rank", multiple="stack", shrink=.8,
-                 palette=sns.color_palette(palette=None, n_colors=5),)
+    ax[1].set(ylim=(0,100))
+    sns.histplot(data=df_0, x="Encoder", hue="Rank", multiple="stack", shrink=.8, legend=False, hue_order=[5,4,3,2,1],
+                 palette=sns.color_palette("mako_r", n_colors=5), ax=ax[1])
     print(sort)
-    plt.savefig("../graph/" + expName + "_dis.png")
+    plt.tight_layout()
+    plt.savefig("../graph/" + expName + ".png")
     plt.close()
 
 
@@ -271,20 +281,31 @@ def plotDecRank(data, num, expName):
             my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
     df_0 = df_0.sort_values("Decoder")
+    sns.set(font_scale=2)
     plt.figure(num)
+    fig, ax = plt.subplots(2,1,figsize=[4.8, 10])
+    '''
     plt.figure(figsize=(8, 6))
     fig, axes = plt.subplots(1, 2)
-    sns.histplot(data=df_0, x="Decoder", hue="Rank", multiple="stack", shrink=.8,
-                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
+    '''
+    d = sns.histplot(data=df_0, x="Decoder", hue="Rank", multiple="stack", shrink=.8, legend=False, hue_order=[2,1],
+                 palette=sns.color_palette(palette="mako_r", n_colors=2), ax=ax[1])
     print(sort)
-    """
+    ax[1].set(ylim=(0,100))
+    '''
+    plt.tight_layout()
     plt.savefig("../graph/" + expName + "_dis.png")
 
     plt.figure(num + 10)
-    """
-    sns.barplot(data=df_0, x="Decoder", y="Rank", ax=axes[1])
-    plt.subplots_adjust(wspace=0.5)
-    plt.savefig("../graph/" + expName + "_bar.png")
+    '''
+    ax[0].set(ylim=(1, 2))
+    g = sns.barplot(data=df_0, x="Decoder", y="Rank", ax=ax[0])
+    ax[0].set_yticks(np.arange(1,3,1))
+    g.set(xticklabels=[], xlabel=None)
+    d.set(ylabel=None)
+    g.set(ylabel=None)
+    plt.tight_layout()
+    plt.savefig("../graph/" + expName + ".png")
     plt.close()
 
 
@@ -310,20 +331,31 @@ def plotReadoutRank(data, num, expName):
             my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
     df_0 = df_0.sort_values("Readout")
+    sns.set(font_scale=2)
     plt.figure(num)
+    fig, ax = plt.subplots(2,1,figsize=[4.8, 10])
+    '''
     plt.figure(figsize=(8, 6))
     fig, axes = plt.subplots(1, 2)
-    sns.histplot(data=df_0, x="Readout", hue="Rank", multiple="stack", shrink=.8,
-                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
+    '''
+    d = sns.histplot(data=df_0, x="Readout", hue="Rank", multiple="stack", shrink=.8, legend=False, hue_order=[2,1],
+                 palette=sns.color_palette(palette="mako_r", n_colors=2), ax=ax[1])
     print(sort)
-    """
+    ax[1].set(ylim=(0,100))
+    '''
+    plt.tight_layout()
     plt.savefig("../graph/" + expName + "_dis.png")
 
     plt.figure(num + 10)
-    """
-    sns.barplot(data=df_0, x="Readout", y="Rank", ax=axes[1])
-    plt.subplots_adjust(wspace=0.5)
-    plt.savefig("../graph/" + expName + "_bar.png")
+    '''
+    ax[0].set(ylim=(1, 2))
+    g = sns.barplot(data=df_0, x="Readout", y="Rank", ax=ax[0])
+    ax[0].set_yticks(np.arange(1,3,1))
+    g.set(xticklabels=[], xlabel=None)
+    d.set(ylabel=None)
+    g.set(ylabel=None)
+    plt.tight_layout()
+    plt.savefig("../graph/" + expName + ".png")
     plt.close()
 
 
@@ -350,20 +382,27 @@ def plotEstimatorRank(data, num, expName):
             my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
     df_0 = df_0.sort_values("Estimator")
+    sns.set(font_scale=2)
     plt.figure(num)
-    plt.figure(figsize=(8, 6))
-    fig, axes = plt.subplots(1, 2)
-    sns.histplot(data=df_0, x="Estimator", hue="Rank", multiple="stack", shrink=.8,
-                 palette=sns.color_palette(palette=None, n_colors=2), ax=axes[0])
+    fig, ax = plt.subplots(2,1,figsize=[4.8, 10])
+    d = sns.histplot(data=df_0, x="Estimator", hue="Rank", multiple="stack", shrink=.8, legend=False, hue_order=[2,1],
+                 palette=sns.color_palette(palette="mako_r", n_colors=2), ax=ax[1])
+    d.set(ylabel=None)
     print(sort)
-    """
+    ax[1].set(ylim=(0,100))
+    '''
+    plt.tight_layout()
     plt.savefig("../graph/" + expName + "_dis.png")
 
     plt.figure(num + 10)
-    """
-    sns.barplot(data=df_0, x="Estimator", y="Rank", ax=axes[1])
-    plt.subplots_adjust(wspace=0.5)
-    plt.savefig("../graph/" + expName + "_bar.png")
+    '''
+    ax[0].set(ylim=(1, 2))
+    g = sns.barplot(data=df_0, x="Estimator", y="Rank", ax=ax[0])
+    ax[0].set_yticks(np.arange(1,3,1))
+    g.set(xticklabels=[], xlabel=None)
+    g.set(ylabel=None)
+    plt.tight_layout()
+    plt.savefig("../graph/" + expName + ".png")
     plt.close()
 
 
@@ -389,21 +428,34 @@ def plotSamplerRank(data, num, expName):
             my_data["Sampler"].append(samplerName[i[0]])
             my_data["Rank"].append(current_comp)
     df_0 = pd.DataFrame(my_data)
-    df_0 = df_0.sort_values("Sampler")
-    plt.figure(num + 10)
+    #df_0 = df_0.sort_values("Sampler")
+    df_0 = df_0.sort_values(by=["Sampler", "Rank"], ascending=[True,True])
+    sns.set(font_scale=2)
+    plt.figure(num + 10, figsize=[9.6, 20])
+    fig, ax = plt.subplots(2,1,figsize=[9.6, 10])
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.barplot(data=df_0, x="Sampler", y="Rank")
+    ax[0].set(ylim=(1,5))
+    g = sns.barplot(data=df_0, x="Sampler", y="Rank", ax=ax[0])
+    g.set(xticklabels=[], xlabel=None)
+
+    '''
+    plt.tight_layout()
     plt.savefig("../graph/" + expName + "_bar.png")
     plt.close()
 
     plt.figure(num)
+    '''
     # sns.violinplot(x="enc", y='rank', data=df_0, linewidth=2, width=0.8, palette='muted', order=encoders)
-    sns.set_style("white")
+    #sns.set_style("white")
     current_palette = sns.color_palette()
-    sns.histplot(data=df_0, x="Sampler", hue="Rank", multiple="stack", shrink=.8,
-                 palette=sns.color_palette("ch:s=.25,rot=-.25", as_cmap=True))
+    ax[1].set(ylim=(0,100))
+    d = sns.histplot(data=df_0, x="Sampler", hue="Rank", multiple="stack", shrink=.8, legend=False, hue_order=[6,5,4,3,2,1],
+                 palette=sns.color_palette("mako_r", n_colors=6), ax=ax[1])
     print(sort)
-    plt.savefig("../graph/" + expName + "_dis.png")
+    d.set(ylabel=None)
+    g.set(ylabel=None)
+    plt.tight_layout()
+    plt.savefig("../graph/" + expName + ".png")
     plt.close()
 
 

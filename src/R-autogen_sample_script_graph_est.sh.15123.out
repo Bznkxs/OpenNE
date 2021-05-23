@@ -1,0 +1,229 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est nce --hiddens 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2833.05it/s] 81%|████████  | 1612/2000 [00:00<00:00, 3635.95it/s]100%|██████████| 2000/2000 [00:00<00:00, 6154.88it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 22.53475; Allocated: 10924544; Reserved: 52428800; time used = 617.7574996948242s
+epoch 10: train_loss: 22.53655; Allocated: 10924544; Reserved: 52428800; time used = 598.9534494876862s
+epoch 15: train_loss: 22.52679; Allocated: 10924544; Reserved: 52428800; time used = 596.6474120616913s
+epoch 20: train_loss: 22.53636; Allocated: 10924544; Reserved: 52428800; time used = 595.3837332725525s
+epoch 25: train_loss: 22.53965; Allocated: 10924544; Reserved: 52428800; time used = 592.7975473403931s
+epoch 30: train_loss: 22.53854; Allocated: 10924544; Reserved: 52428800; time used = 587.0805506706238s
+epoch 35: train_loss: 22.53420; Allocated: 10924544; Reserved: 52428800; time used = 588.4682064056396s
+epoch 40: train_loss: 22.52279; Allocated: 10924544; Reserved: 52428800; time used = 596.4797120094299s
+epoch 45: train_loss: 22.53801; Allocated: 10924544; Reserved: 52428800; time used = 594.1216835975647s
+epoch 50: train_loss: 22.53657; Allocated: 10924544; Reserved: 52428800; time used = 590.5017168521881s
+epoch 55: train_loss: 22.53176; Allocated: 10924544; Reserved: 52428800; time used = 591.4214296340942s
+epoch 60: train_loss: 22.52249; Allocated: 10924544; Reserved: 52428800; time used = 591.2661719322205s
+epoch 65: train_loss: 22.53364; Allocated: 10924544; Reserved: 52428800; time used = 593.3690280914307s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 8245.474259138107.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.715, 'macro': 0.7133878064110623, 'samples': 0.715, 'weighted': 0.7127429289754872, 'accuracy': 0.715}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 64 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2786.17it/s] 85%|████████▌ | 1704/2000 [00:00<00:00, 3610.30it/s]100%|██████████| 2000/2000 [00:00<00:00, 6425.53it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+
+gaeg: NaN in forward propagation!
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 64 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2867.89it/s] 80%|███████▉  | 1599/2000 [00:00<00:00, 3671.44it/s]100%|██████████| 2000/2000 [00:00<00:00, 6167.78it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 22.53636; Allocated: 11004928; Reserved: 50331648; time used = 648.5068998336792s
+epoch 10: train_loss: 22.52352; Allocated: 11004928; Reserved: 50331648; time used = 635.4124507904053s
+epoch 15: train_loss: 22.42829; Allocated: 11004928; Reserved: 50331648; time used = 622.3709719181061s
+epoch 20: train_loss: 22.50242; Allocated: 11004928; Reserved: 50331648; time used = 610.5457043647766s
+epoch 25: train_loss: 22.41718; Allocated: 11004928; Reserved: 50331648; time used = 607.5396642684937s
+epoch 30: train_loss: 22.14780; Allocated: 11004928; Reserved: 50331648; time used = 580.2497470378876s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4096.831376791.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.7575, 'macro': 0.7563900521752234, 'samples': 0.7575, 'weighted': 0.7558967420308781, 'accuracy': 0.7575}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset imdb_multi --dec bilinear --dim 128 --early-stopping 20 --enc gat --epochs 500 --est nce --hiddens 128 128 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout mean --sampler node-neighbor-random --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'imdb_multi', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'patience': 3, 'enc': 'gat', 'dec': 'bilinear', 'sampler': 'node-neighbor-random', 'est': 'nce', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading IMDB_MULTI Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/IMDB_MULTI
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/1500 [00:00<?, ?it/s] 36%|███▌      | 538/1500 [00:00<00:00, 2552.35it/s]100%|██████████| 1500/1500 [00:00<00:00, 4916.86it/s]This is a large dense dataset with 1500 graphs, 19502 nodes and 118405 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+head 0
+total iter: 500
+epoch 5: train_loss: 30090.95166; Allocated: 3486720; Reserved: 8388608; time used = 15.35601806640625s
+epoch 10: train_loss: 30120.77002; Allocated: 3486720; Reserved: 8388608; time used = 15.032375574111938s
+epoch 15: train_loss: 30105.18359; Allocated: 3486720; Reserved: 8388608; time used = 15.03899621963501s
+epoch 20: train_loss: 29479.90723; Allocated: 3486720; Reserved: 8388608; time used = 14.844663381576538s
+epoch 25: train_loss: 29393.44189; Allocated: 3486720; Reserved: 8388608; time used = 15.065551996231079s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 81.69718599319458.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.3233333333333333, 'macro': 0.1628883291351805, 'samples': 0.3233333333333333, 'weighted': 0.1580016792611251, 'accuracy': 0.3233333333333333}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gat --epochs 500 --est jsd --hiddens 64 64 64 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2713.01it/s] 80%|███████▉  | 1590/2000 [00:00<00:00, 3489.92it/s]100%|██████████| 2000/2000 [00:00<00:00, 5943.20it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+head 0
+total iter: 500
+
+gaeg: NaN in forward propagation!
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gat --epochs 500 --est jsd --hiddens 128 128 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2835.91it/s] 80%|███████▉  | 1590/2000 [00:00<00:00, 3631.41it/s]100%|██████████| 2000/2000 [00:00<00:00, 6087.85it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+total iter: 500
+
+gaeg: NaN in forward propagation!
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2849.11it/s] 80%|████████  | 1605/2000 [00:00<00:00, 3651.95it/s]100%|██████████| 2000/2000 [00:00<00:00, 6150.49it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+
+gaeg: NaN in forward propagation!
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 128 128 --lr 0.01 --model ss_gaeg --patience 3 --readout mean --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2872.15it/s] 80%|███████▉  | 1592/2000 [00:00<00:00, 3673.81it/s]100%|██████████| 2000/2000 [00:00<00:00, 6141.89it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 22.53372; Allocated: 12971008; Reserved: 50331648; time used = 565.1020896434784s
+epoch 10: train_loss: 22.53684; Allocated: 12971008; Reserved: 50331648; time used = 552.942845582962s
+epoch 15: train_loss: 22.53124; Allocated: 12971008; Reserved: 50331648; time used = 557.762309551239s
+epoch 20: train_loss: 22.54385; Allocated: 12971008; Reserved: 50331648; time used = 561.4343709945679s
+epoch 25: train_loss: 22.54389; Allocated: 12971008; Reserved: 50331648; time used = 566.1263482570648s
+epoch 30: train_loss: 22.54131; Allocated: 12971008; Reserved: 50331648; time used = 574.3534376621246s
+epoch 35: train_loss: 22.50211; Allocated: 12971008; Reserved: 50331648; time used = 571.9123184680939s
+epoch 40: train_loss: 22.52200; Allocated: 12971008; Reserved: 50331648; time used = 579.2839949131012s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4798.977465629578.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.66, 'macro': 0.6587715776796468, 'samples': 0.66, 'weighted': 0.6593857888398234, 'accuracy': 0.66}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 128 128 --lr 0.01 --model ss_gaeg --patience 3 --readout mean --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2726.07it/s] 80%|████████  | 1606/2000 [00:00<00:00, 3510.32it/s]100%|██████████| 2000/2000 [00:00<00:00, 5998.91it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+
+gaeg: NaN in forward propagation!
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gat --epochs 500 --est nce --hiddens 64 64 64 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2689.70it/s] 79%|███████▉  | 1576/2000 [00:00<00:00, 3458.16it/s]100%|██████████| 2000/2000 [00:00<00:00, 5894.51it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+head 0
+total iter: 500
+epoch 5: train_loss: 22.54485; Allocated: 11273728; Reserved: 50331648; time used = 817.751378774643s
+epoch 10: train_loss: 22.54479; Allocated: 11273728; Reserved: 50331648; time used = 816.4826810359955s
+epoch 15: train_loss: 22.54465; Allocated: 11273728; Reserved: 50331648; time used = 830.4006564617157s
+epoch 20: train_loss: 22.54443; Allocated: 11273728; Reserved: 50331648; time used = 833.9142210483551s
+epoch 25: train_loss: 22.54161; Allocated: 11273728; Reserved: 50331648; time used = 829.8324270248413s
+epoch 30: train_loss: 22.53271; Allocated: 11273728; Reserved: 50331648; time used = 830.7947187423706s
+epoch 35: train_loss: 22.53460; Allocated: 11273728; Reserved: 50331648; time used = 832.3524525165558s
+epoch 40: train_loss: 22.38962; Allocated: 11273728; Reserved: 50331648; time used = 832.9338269233704s
+epoch 45: train_loss: 22.53607; Allocated: 11273728; Reserved: 50331648; time used = 835.2872169017792s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 7670.126314163208.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.57, 'macro': 0.50997150997151, 'samples': 0.57, 'weighted': 0.5048262108262108, 'accuracy': 0.57}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gat --epochs 500 --est nce --hiddens 128 128 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2666.07it/s] 92%|█████████▏| 1830/2000 [00:00<00:00, 3499.18it/s]100%|██████████| 2000/2000 [00:00<00:00, 6423.49it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+total iter: 500
+epoch 5: train_loss: 22.54452; Allocated: 13495808; Reserved: 50331648; time used = 681.1278867721558s
+epoch 10: train_loss: 22.54498; Allocated: 13495808; Reserved: 50331648; time used = 669.3381342887878s
+epoch 15: train_loss: 22.54450; Allocated: 13495808; Reserved: 50331648; time used = 666.0615291595459s
+epoch 20: train_loss: 22.54168; Allocated: 13495808; Reserved: 50331648; time used = 667.5977890491486s
+epoch 25: train_loss: 22.40410; Allocated: 13495808; Reserved: 50331648; time used = 666.8094818592072s
+epoch 30: train_loss: 22.27874; Allocated: 13495808; Reserved: 50331648; time used = 667.3655993938446s
+epoch 35: train_loss: 22.27700; Allocated: 13495808; Reserved: 50331648; time used = 666.2967133522034s
+epoch 40: train_loss: 22.14962; Allocated: 13495808; Reserved: 50331648; time used = 665.1531212329865s
+epoch 45: train_loss: 22.26168; Allocated: 13495808; Reserved: 50331648; time used = 668.2005128860474s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6061.085668087006.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.7325, 'macro': 0.7316126443052342, 'samples': 0.7325, 'weighted': 0.7311496761166607, 'accuracy': 0.7325}

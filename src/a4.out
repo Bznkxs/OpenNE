@@ -1,0 +1,11 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dim 64 --early-stopping 20 --epochs 500 --lr 0.001 --patience 3 --dec bilinear --enc gcn --est nce --readout sum --sampler node-rand_walk-random --dataset imdb_binary --model ss_gaeg --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'imdb_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'patience': 3, 'enc': 'gcn', 'dec': 'bilinear', 'sampler': 'node-rand_walk-random', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4}
+Loading IMDB_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/IMDB_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+srun: interrupt (one more within 1 sec to abort)
+srun: step:2966.0 task 0: running
+srun: sending Ctrl-C to job 2966.0
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+  0%|          | 0/1000 [00:00<?, ?it/s] 58%|█████▊    | 584/1000 [00:00<00:00, 2957.08it/s]100%|██████████| 1000/1000 [00:00<00:00, 4265.92it/s]slurmstepd: error: *** STEP 2966.0 ON thunlp-215-3 CANCELLED AT 2021-04-07T08:40:47 ***

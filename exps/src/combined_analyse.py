@@ -140,6 +140,7 @@ def work0(args):
 
 def work(args):
     table_0, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
+    data = []
     for ttt in set(table_0['task'].to_list()):
         print(ttt)
         table = table_0[table_0['task'] == ttt]
@@ -191,16 +192,30 @@ def work(args):
                     heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat2
 
             heatmap_df = pandas.DataFrame(heatmap)
+            module_names[3] = "MLP"
+            module_names[4] = 'Lookup'
+            module_names[-3] = 'InfoNCE'
+            module_names[6] = 'DW'
             heatmap_df.columns = module_names
             heatmap_df.index = module_names
             print(heatmap_df)
+            data.append(heatmap_df)
+            print(ttt)
+    df, df2 = data
+    #vmin = min(df.values.min(), df2.values.min())
+    #vmax = max(df.values.max(), df2.values.max())
 
-            fig = plt.figure()
-            fig.set_size_inches(12,12)
+    fig, axs = plt.subplots(ncols=3, figsize=[13, 5], gridspec_kw=dict(width_ratios=[1,1,0.05]))
+    #sns.set(font_scale=10)
+    sns.heatmap(df, cbar=False, square=False, cmap = 'vlag', center=0, ax=axs[0]).set_title("Node classification")
+    sns.heatmap(df2, yticklabels=False, cbar=False, square=False, cmap = 'vlag', center=0, ax=axs[1]).set_title("Graph classification")
 
-            sns.heatmap(heatmap_df, square=True).set_title(f"task {ttt}: heatmap of $p(x|y)-y$")
-
-            plt.show()
+    fig.colorbar(axs[1].collections[0], cax=axs[2])
+    for ax in fig.axes:
+            plt.sca(ax)
+            plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(os.path.join(fig_path, f'pairwise_{threshold}.png'))
 
 
 

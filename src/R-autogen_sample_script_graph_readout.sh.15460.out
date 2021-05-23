@@ -1,0 +1,88 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset mutag --dec bilinear --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --lr 0.001 --model ss_gaeg --patience 3 --readout mean --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'mutag', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'patience': 3, 'enc': 'gin', 'dec': 'bilinear', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading MUTAG Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/MUTAG
+Load data.
+This is a medium-sized medium-dense dataset with 188 graphs, 3371 nodes and 7092 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 976.40125; Allocated: 2584576; Reserved: 6291456; time used = 0.7499837875366211s
+epoch 10: train_loss: 934.40579; Allocated: 2584576; Reserved: 6291456; time used = 0.7520453929901123s
+epoch 15: train_loss: 902.12680; Allocated: 2584576; Reserved: 6291456; time used = 0.7468531131744385s
+epoch 20: train_loss: 883.13101; Allocated: 2584576; Reserved: 6291456; time used = 0.739903450012207s
+epoch 25: train_loss: 872.70441; Allocated: 2584576; Reserved: 6291456; time used = 0.7398643493652344s
+epoch 30: train_loss: 858.23785; Allocated: 2584576; Reserved: 6291456; time used = 0.7403857707977295s
+epoch 35: train_loss: 841.36942; Allocated: 2584576; Reserved: 6291456; time used = 0.7396097183227539s
+epoch 40: train_loss: 820.23886; Allocated: 2584576; Reserved: 6291456; time used = 0.7445812225341797s
+epoch 45: train_loss: 796.91211; Allocated: 2584576; Reserved: 6291456; time used = 0.7510507106781006s
+epoch 50: train_loss: 778.19131; Allocated: 2584576; Reserved: 6291456; time used = 0.7462286949157715s
+epoch 55: train_loss: 758.98203; Allocated: 2584576; Reserved: 6291456; time used = 0.7417490482330322s
+epoch 60: train_loss: 741.82098; Allocated: 2584576; Reserved: 6291456; time used = 0.7464594841003418s
+epoch 65: train_loss: 723.13666; Allocated: 2584576; Reserved: 6291456; time used = 0.7502651214599609s
+epoch 70: train_loss: 710.09167; Allocated: 2584576; Reserved: 6291456; time used = 0.743342399597168s
+epoch 75: train_loss: 705.99695; Allocated: 2584576; Reserved: 6291456; time used = 0.7431387901306152s
+epoch 80: train_loss: 703.55298; Allocated: 2584576; Reserved: 6291456; time used = 0.7406506538391113s
+epoch 85: train_loss: 693.92023; Allocated: 2584576; Reserved: 6291456; time used = 0.7419614791870117s
+epoch 90: train_loss: 681.42151; Allocated: 2584576; Reserved: 6291456; time used = 0.7439250946044922s
+epoch 95: train_loss: 669.46368; Allocated: 2584576; Reserved: 6291456; time used = 0.7404744625091553s
+epoch 100: train_loss: 660.16681; Allocated: 2584576; Reserved: 6291456; time used = 0.7404458522796631s
+epoch 105: train_loss: 665.12152; Allocated: 2584576; Reserved: 6291456; time used = 0.7408246994018555s
+epoch 110: train_loss: 663.35124; Allocated: 2584576; Reserved: 6291456; time used = 0.7439546585083008s
+epoch 115: train_loss: 660.17299; Allocated: 2584576; Reserved: 6291456; time used = 0.7433390617370605s
+epoch 120: train_loss: 653.14374; Allocated: 2584576; Reserved: 6291456; time used = 0.7445003986358643s
+epoch 125: train_loss: 643.80933; Allocated: 2584576; Reserved: 6291456; time used = 0.7449953556060791s
+epoch 130: train_loss: 637.73871; Allocated: 2584576; Reserved: 6291456; time used = 0.7422499656677246s
+epoch 135: train_loss: 637.06842; Allocated: 2584576; Reserved: 6291456; time used = 0.7405581474304199s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 25.976603269577026.
+Training classifier using 80.00% nodes...
+{'micro': 0.7105263157894737, 'macro': 0.6840513983371126, 'samples': 0.7105263157894737, 'weighted': 0.6984922624020369, 'accuracy': 0.7105263157894737}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset mutag --dec bilinear --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'mutag', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'patience': 3, 'enc': 'gin', 'dec': 'bilinear', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading MUTAG Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/MUTAG
+Load data.
+This is a medium-sized medium-dense dataset with 188 graphs, 3371 nodes and 7092 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 968.68195; Allocated: 2584576; Reserved: 6291456; time used = 0.7048015594482422s
+epoch 10: train_loss: 918.36407; Allocated: 2584576; Reserved: 6291456; time used = 0.6967642307281494s
+epoch 15: train_loss: 894.01755; Allocated: 2584576; Reserved: 6291456; time used = 0.6889784336090088s
+epoch 20: train_loss: 870.49561; Allocated: 2584576; Reserved: 6291456; time used = 0.6932516098022461s
+epoch 25: train_loss: 845.04056; Allocated: 2584576; Reserved: 6291456; time used = 0.6936628818511963s
+epoch 30: train_loss: 809.31027; Allocated: 2584576; Reserved: 6291456; time used = 0.6953303813934326s
+epoch 35: train_loss: 777.37958; Allocated: 2584576; Reserved: 6291456; time used = 0.693122148513794s
+epoch 40: train_loss: 749.09534; Allocated: 2584576; Reserved: 6291456; time used = 0.6947774887084961s
+epoch 45: train_loss: 724.45065; Allocated: 2584576; Reserved: 6291456; time used = 0.7001197338104248s
+epoch 50: train_loss: 698.36761; Allocated: 2584576; Reserved: 6291456; time used = 0.7022993564605713s
+epoch 55: train_loss: 686.22101; Allocated: 2584576; Reserved: 6291456; time used = 0.6897742748260498s
+epoch 60: train_loss: 672.14185; Allocated: 2584576; Reserved: 6291456; time used = 0.6906089782714844s
+epoch 65: train_loss: 656.05264; Allocated: 2584576; Reserved: 6291456; time used = 0.6939449310302734s
+epoch 70: train_loss: 643.77602; Allocated: 2584576; Reserved: 6291456; time used = 0.6861326694488525s
+epoch 75: train_loss: 635.64349; Allocated: 2584576; Reserved: 6291456; time used = 0.6793868541717529s
+epoch 80: train_loss: 626.63506; Allocated: 2584576; Reserved: 6291456; time used = 0.6832411289215088s
+epoch 85: train_loss: 617.02371; Allocated: 2584576; Reserved: 6291456; time used = 0.677727222442627s
+epoch 90: train_loss: 612.71124; Allocated: 2584576; Reserved: 6291456; time used = 0.6743807792663574s
+epoch 95: train_loss: 607.79294; Allocated: 2584576; Reserved: 6291456; time used = 0.6696395874023438s
+epoch 100: train_loss: 602.44534; Allocated: 2584576; Reserved: 6291456; time used = 0.6727790832519531s
+epoch 105: train_loss: 593.10922; Allocated: 2584576; Reserved: 6291456; time used = 0.6743254661560059s
+epoch 110: train_loss: 586.97159; Allocated: 2584576; Reserved: 6291456; time used = 0.6725983619689941s
+epoch 115: train_loss: 583.83353; Allocated: 2584576; Reserved: 6291456; time used = 0.6788465976715088s
+epoch 120: train_loss: 584.89590; Allocated: 2584576; Reserved: 6291456; time used = 0.673079252243042s
+epoch 125: train_loss: 578.21735; Allocated: 2584576; Reserved: 6291456; time used = 0.6897847652435303s
+epoch 130: train_loss: 574.67325; Allocated: 2584576; Reserved: 6291456; time used = 0.6767382621765137s
+epoch 135: train_loss: 569.25388; Allocated: 2584576; Reserved: 6291456; time used = 0.6732213497161865s
+epoch 140: train_loss: 563.75632; Allocated: 2584576; Reserved: 6291456; time used = 0.6769826412200928s
+epoch 145: train_loss: 569.70322; Allocated: 2584576; Reserved: 6291456; time used = 0.6781823635101318s
+epoch 150: train_loss: 567.55212; Allocated: 2584576; Reserved: 6291456; time used = 0.6807677745819092s
+epoch 155: train_loss: 559.57716; Allocated: 2584576; Reserved: 6291456; time used = 0.672868013381958s
+epoch 160: train_loss: 553.50256; Allocated: 2584576; Reserved: 6291456; time used = 0.6772587299346924s
+epoch 165: train_loss: 559.77609; Allocated: 2584576; Reserved: 6291456; time used = 0.680023193359375s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 26.04315447807312.
+Training classifier using 80.00% nodes...
+{'micro': 0.8157894736842104, 'macro': 0.7913725490196077, 'samples': 0.8157894736842105, 'weighted': 0.8026418988648091, 'accuracy': 0.8157894736842105}
