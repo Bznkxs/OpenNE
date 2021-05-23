@@ -37,7 +37,7 @@ if not os.path.exists(fig_path):
 def work(args):
     table_0, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
     data = []
-    for ttt in set(table_0['task'].to_list()):
+    for ttt in ['Node', 'Graph']:
         print(ttt)
         table = table_0[table_0['task'] == ttt]
         for threshold in thresholds:
@@ -105,7 +105,11 @@ def work(args):
     #vmin = min(df.values.min(), df2.values.min())
     #vmax = max(df.values.max(), df2.values.max())
 
-    fig, axs = plt.subplots(ncols=3, figsize=[13, 5], gridspec_kw=dict(width_ratios=[1,1,0.05]))
+    fig, axs = plt.subplots(ncols=3, figsize=[13, 7], gridspec_kw=dict(width_ratios=[1,1,0.05]))
+    plt.rcParams['font.size'] = '13'
+    for ax in axs:
+        for label in (ax.get_xticklabels() + ax.get_yticklabels()):
+            label.set_fontsize(13)
     #sns.set(font_scale=10)
     # plt.tight_layout()
     sns.heatmap(df, cbar=False, square=True, cmap = 'vlag', center=0, ax=axs[0]).set_title("Node classification")
@@ -114,9 +118,10 @@ def work(args):
     fig.colorbar(axs[1].collections[0], cax=axs[2])
     for ax in fig.axes:
             plt.sca(ax)
-            plt.xticks(rotation=60)
+            plt.xticks(rotation=90)
     #
-    fig.set_size_inches([13,6])
+    fig.set_size_inches([13,7])
+
 
     plt.savefig(os.path.join(fig_path, f'pairwise_{threshold}.png'))
     plt.show()
