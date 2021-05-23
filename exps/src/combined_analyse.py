@@ -34,110 +34,6 @@ datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
 if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
-
-
-def entropy(it):
-    return scipy.stats.entropy(it)
-    # res = 0
-    # ans = 1
-    # for x in it:
-
-def work0(args):
-    table, thresholds, n_all, n_1 = args
-    for threshold in thresholds:
-        quantiles = table.groupby('dataset')['res'].quantile(threshold)
-        # print(quantiles)
-        table_p = table[quantiles[table['dataset']].to_numpy() <= table['res'].to_numpy()]
-
-        # normalize: keep p(every module combination) the same
-        n_m_all = table_p.groupby(['dataset'] + modelargs).apply(lambda x: len(x))
-
-        # n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
-        # n_m_all = n_m_all_smooth
-        #print(n_m_all_smooth)
-
-        p_m_all = (n_m_all / n_all)  # .apply(lambda x: 0 if np.isnan(x) else x)
-        nomin = p_m_all.groupby(['dataset']).apply(sum)
-        all_distribution = p_m_all / nomin
-        #print(all_distribution.to_string())
-        # step 3.1. for single module: get information
-
-        stat_table_single = pandas.DataFrame()
-        H = {}
-        p = {}
-        H1 = {}
-
-        for m_arg in modelargs:
-            distribution = all_distribution.groupby(['dataset', m_arg]).apply(sum)
-            p[m_arg] = distribution
-            # print("????", m_arg)
-            # print(distribution.to_string())
-            H[m_arg] = distribution.groupby(['dataset']).apply(entropy)
-            stat_table_single[m_arg] = H[m_arg]
-
-            H1[m_arg] = distribution.groupby([m_arg]).apply(entropy)
-
-
-
-        # print("####################")
-        #print(stat_table_single)
-        # print("_____________________________________")
-        # step 3.2. for two modules
-        stat_table_double = pandas.DataFrame()
-        stat_table_double1 = pandas.DataFrame()
-        I2 = {}
-        p2 = {}
-
-        for i, m_arg0 in enumerate(modelargs):
-            for j, m_arg1 in enumerate(modelargs):
-                if i <= j:
-                    break
-                distribution = all_distribution.groupby(['dataset', m_arg0, m_arg1]).apply(sum)
-
-
-
-                xy = f'{m_arg0}+{m_arg1}'
-                H[xy] = distribution.groupby(['dataset']).apply(scipy.stats.entropy)
-                H1[xy] = distribution.groupby([m_arg0, m_arg1]).apply(scipy.stats.entropy)
-
-                stat_table_double[xy] = -H[xy] + H[m_arg0] + H[m_arg1]
-                I2[xy] = -H1[xy] + H1[m_arg0] + H1[m_arg1]
-
-                p2[xy] = distribution / p[m_arg0] - p[m_arg1]
-                p2[f'{m_arg1}+{m_arg0}'] = distribution / p[m_arg1] - p[m_arg0]
-
-
-
-        print(H1)
-        print(I2)
-
-        # print(stat_table_double)
-
-        p1 = stat_table_single.stack()
-        p1.index.set_names(['dataset', 'module'], inplace=True)
-        st1 = pandas.DataFrame()
-        st1['res'] = p1
-        p2 = stat_table_double.stack()
-        p2.index.set_names(['dataset', 'modules'], inplace=True)
-        st2 = pandas.DataFrame()
-        st2['res'] = p2
-        st1.reset_index(inplace=True)
-        st2.reset_index(inplace=True)
-
-        # draw
-        fig = plt.figure()
-        sns.barplot(data=st1, x='module', y='res', hue='dataset')
-        fig.set_size_inches(18, 8)
-        plt.savefig(os.path.join(fig_path, f'combined_single_{int(threshold * 1000)/1000:.3f}.png'))
-        plt.close(fig)
-        # plt.show()
-
-        fig = plt.figure()
-        sns.barplot(data=st2, x='modules', y='res', hue='dataset')
-        fig.set_size_inches(18, 8)
-        plt.savefig(os.path.join(fig_path, f'combined_double_{int(threshold * 1000)/1000:.3f}.png'))
-        plt.close(fig)
-
 def work(args):
     table_0, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
     data = []
@@ -150,17 +46,21 @@ def work(args):
 
             # normalize: keep p(every module combination) the same
             n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
+            print("N_M_all")
+            print(n_m_all)
+            print("N_all")
+            print(n_all)
 
-            # n_m_all_smooth = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
+            n_m_all = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
             # n_m_all = n_m_all_smooth
-
+            print((n_m_all / n_all).to_string())
             p_m_all = (n_m_all / n_all)  # .apply(lambda x: 0 if np.isnan(x) else x)
             nomin = sum(p_m_all)
             all_distribution = p_m_all / nomin
-            print(all_distribution)
-            print(nomin)
-            print(all_distribution[all_distribution > 0.])
-            print(sum(all_distribution))
+            # print(all_distribution)
+            # print(nomin)
+            # print(all_distribution[all_distribution > 0.])
+            # print(sum(all_distribution))
             # step 3.1. for single module: get information
 
             p = {}
@@ -198,7 +98,7 @@ def work(args):
             module_names[6] = 'DW'
             heatmap_df.columns = module_names
             heatmap_df.index = module_names
-            print(heatmap_df)
+            print(heatmap_df.to_string())
             data.append(heatmap_df)
             print(ttt)
     df, df2 = data
@@ -207,16 +107,19 @@ def work(args):
 
     fig, axs = plt.subplots(ncols=3, figsize=[13, 5], gridspec_kw=dict(width_ratios=[1,1,0.05]))
     #sns.set(font_scale=10)
-    sns.heatmap(df, cbar=False, square=False, cmap = 'vlag', center=0, ax=axs[0]).set_title("Node classification")
-    sns.heatmap(df2, yticklabels=False, cbar=False, square=False, cmap = 'vlag', center=0, ax=axs[1]).set_title("Graph classification")
+    # plt.tight_layout()
+    sns.heatmap(df, cbar=False, square=True, cmap = 'vlag', center=0, ax=axs[0]).set_title("Node classification")
+    sns.heatmap(df2, yticklabels=False, cbar=False, square=True, cmap = 'vlag', center=0, ax=axs[1]).set_title("Graph classification")
 
     fig.colorbar(axs[1].collections[0], cax=axs[2])
     for ax in fig.axes:
             plt.sca(ax)
-            plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(os.path.join(fig_path, f'pairwise_{threshold}.png'))
+            plt.xticks(rotation=60)
+    #
+    fig.set_size_inches([13,6])
 
+    plt.savefig(os.path.join(fig_path, f'pairwise_{threshold}.png'))
+    plt.show()
 
 
 
@@ -263,7 +166,6 @@ def analyse():
 
     # reconstruct table
     table = create_table(cmd_list, results)
-    table_smooth = create_table(cmd_list, results, True)
 
     # table = table[table['dataset'] == 'cora']
 
@@ -278,7 +180,7 @@ def analyse():
 
     # step 3.0. set threshold for res
     thresholds = np.arange(0.9, 1, 0.2)
-    arg_cnt = {m_arg: len(table_smooth[m_arg].value_counts()) for m_arg in modelargs}
+    arg_cnt = {m_arg: len(table[m_arg].value_counts()) for m_arg in modelargs}
     cnt_arg_combination = 1
     for w in arg_cnt.values():
         cnt_arg_combination *= w
@@ -286,8 +188,9 @@ def analyse():
     # # create all combinations
     #
 
-    n_all = table.groupby(['dataset'] + modelargs).apply(lambda x: len(x) + 0)
-    n_1 = table_smooth.groupby(['dataset'] + modelargs).apply(lambda x: 0)
+    n_all = table.groupby(modelargs).apply(lambda x: len(x))
+    n_1 = table.groupby(modelargs).apply(lambda x: 0)
+
     options = {}
     module_names = []
     module_no_dict = {}
@@ -304,60 +207,55 @@ def analyse():
             module_names.append(opt)
 
     work((table, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv))
-    # multiprocess
-    # n_split = 20
-    # with Pool(n_split) as p:
-    #     for _ in tqdm(p.imap_unordered(work, [(table, thresholds[i * len(thresholds) // n_split: (i+1) * len(thresholds) // n_split], n_all, n_1) for i in range(n_split)]), total=n_split):
-    #         continue
 
-
-    for ttt in set(table['task'].to_list()):
-        print(ttt)
-        table_new = table[table['task'] == ttt]
-        table_new = table_new.sort_values(['dataset'])
-        table_new['rank'] = table_new.groupby(['dataset'])['res'].rank('min', ascending=False)
-        #print(table_new[['dataset', 'enc', 'res', 'rank']].sort_values(['dataset', 'enc', 'res', 'rank']).to_string())
-        q = table_new.groupby(['dataset'])['res'].size()
-        table_new = table_new.set_index(['dataset'] + modelargs)
-
-        table_new['rank'] = table_new['rank'] / q
-
-        table_new.reset_index(inplace=True)
-        table_new['rank'] = table_new['rank'].rank(method='min')
-        q = len(table_new)
-        table_new['rank'] = table_new['rank'] / q
-
-        heatmap = np.zeros([len(module_names), len(module_names)])
-        heatmap[:, :] = np.nan
-        for i, m_arg0 in enumerate(modelargs):
-            for j, m_arg1 in enumerate(modelargs):
-                if i <= j:
-                    break
-                # fill heatmap
-                # value: best rank
-                mxr = table_new.groupby([m_arg0, m_arg1])['rank'].min()
-
-                #print(mxr)
-                # mxr = mxr.reset_index()
-                mxr = mxr.unstack(m_arg1)
-                mat = mxr.to_numpy()
-                heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat
-                heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat.T
-                # print(mxr)
-
-        heatmap = heatmap ** 0.25
-        #print(heatmap)
-        heatmap_df = pandas.DataFrame(heatmap)
-        heatmap_df.columns = module_names
-        heatmap_df.index = module_names
-        #print(heatmap_df)
-
-        fig = plt.figure()
-        fig.set_size_inches(12,12)
-
-        sns.heatmap(heatmap_df, square=True).set_title(f"task {ttt}: heatmap of $\\min(rank)^{{0.25}}$")
-        plt.show()
-        plt.close()
+    #
+    # for ttt in set(table['task'].to_list()):
+    #     print(ttt)
+    #     table_new = table[table['task'] == ttt]
+    #     table_new = table_new.sort_values(['dataset'])
+    #     table_new['rank'] = table_new.groupby(['dataset'])['res'].rank('min', ascending=False)
+    #     #print(table_new[['dataset', 'enc', 'res', 'rank']].sort_values(['dataset', 'enc', 'res', 'rank']).to_string())
+    #     q = table_new.groupby(['dataset'])['res'].size()
+    #     table_new = table_new.set_index(['dataset'] + modelargs)
+    #
+    #     table_new['rank'] = table_new['rank'] / q
+    #
+    #     table_new.reset_index(inplace=True)
+    #     table_new['rank'] = table_new['rank'].rank(method='min')
+    #     q = len(table_new)
+    #     table_new['rank'] = table_new['rank'] / q
+    #
+    #     heatmap = np.zeros([len(module_names), len(module_names)])
+    #     heatmap[:, :] = np.nan
+    #     for i, m_arg0 in enumerate(modelargs):
+    #         for j, m_arg1 in enumerate(modelargs):
+    #             if i <= j:
+    #                 break
+    #             # fill heatmap
+    #             # value: best rank
+    #             mxr = table_new.groupby([m_arg0, m_arg1])['rank'].min()
+    #
+    #             #print(mxr)
+    #             # mxr = mxr.reset_index()
+    #             mxr = mxr.unstack(m_arg1)
+    #             mat = mxr.to_numpy()
+    #             heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat
+    #             heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat.T
+    #             # print(mxr)
+    #
+    #     heatmap = heatmap ** 0.25
+    #     #print(heatmap)
+    #     heatmap_df = pandas.DataFrame(heatmap)
+    #     heatmap_df.columns = module_names
+    #     heatmap_df.index = module_names
+    #     #print(heatmap_df)
+    #
+    #     fig = plt.figure()
+    #     fig.set_size_inches(12,12)
+    #
+    #     sns.heatmap(heatmap_df, square=True).set_title(f"task {ttt}: heatmap of $\\min(rank)^{{0.25}}$")
+    #     plt.show()
+    #     plt.close()
 
 
 

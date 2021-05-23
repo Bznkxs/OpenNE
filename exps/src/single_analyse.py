@@ -36,6 +36,14 @@ datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
 if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
+graph_samplers = {
+    "dgi", "mvgrl", "aug"
+}
+
+def in_exp(cmd):
+    if cmd.argsdict['enc'] == 'linear' and cmd.argsdict['sampler'] in graph_samplers:
+        return False
+    return True
 
 def create_table(cmd_list, results, smooth=False):
     args = 'dataset,enc,dec,sampler,readout,est,dim,hiddens,task,raw,res'.split(',')
@@ -53,9 +61,10 @@ def create_table(cmd_list, results, smooth=False):
 
     wdict = {a: [] for a in args}
     for cmd in cmd_list:
-        if str(cmd) in results:
-            for i in args:
-                wdict[i].append(normalize(cmd.argsdict.get(i, default(i, cmd))))
+        if in_exp(cmd):
+            if str(cmd) in results:
+                for i in args:
+                    wdict[i].append(normalize(cmd.argsdict.get(i, default(i, cmd))))
 
 
     table = pandas.DataFrame()
