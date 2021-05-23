@@ -1,0 +1,220 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gat --epochs 500 --est jsd --hiddens 64 64 64 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 26%|██▋       | 526/2000 [00:00<00:00, 2810.45it/s] 80%|███████▉  | 1590/2000 [00:00<00:00, 3606.33it/s]100%|██████████| 2000/2000 [00:00<00:00, 6158.73it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+head 0
+total iter: 500
+epoch 5: train_loss: 3.42649; Allocated: 11273728; Reserved: 54525952; time used = 914.644428730011s
+epoch 10: train_loss: 1.48716; Allocated: 11273728; Reserved: 54525952; time used = 868.380761384964s
+epoch 15: train_loss: 1.45782; Allocated: 11273728; Reserved: 54525952; time used = 854.9728722572327s
+epoch 20: train_loss: 1.42762; Allocated: 11273728; Reserved: 54525952; time used = 899.1410026550293s
+epoch 25: train_loss: 1.40838; Allocated: 11273728; Reserved: 54525952; time used = 902.0363476276398s
+epoch 30: train_loss: 1.39197; Allocated: 11273728; Reserved: 54525952; time used = 904.8509106636047s
+epoch 35: train_loss: 1.38835; Allocated: 11273728; Reserved: 54525952; time used = 904.5893745422363s
+epoch 40: train_loss: 1.38654; Allocated: 11273728; Reserved: 54525952; time used = 907.0831325054169s
+epoch 45: train_loss: 1.38797; Allocated: 11273728; Reserved: 54525952; time used = 908.1183414459229s
+epoch 50: train_loss: 1.38724; Allocated: 11273728; Reserved: 54525952; time used = 901.8845059871674s
+epoch 55: train_loss: 1.38641; Allocated: 11273728; Reserved: 54525952; time used = 902.7032961845398s
+epoch 60: train_loss: 1.38668; Allocated: 11273728; Reserved: 54525952; time used = 909.8117399215698s
+epoch 65: train_loss: 1.38653; Allocated: 11273728; Reserved: 54525952; time used = 912.9560241699219s
+epoch 70: train_loss: 1.38631; Allocated: 11273728; Reserved: 54525952; time used = 898.8262286186218s
+epoch 75: train_loss: 1.38635; Allocated: 11273728; Reserved: 54525952; time used = 843.6372120380402s
+epoch 80: train_loss: 1.38630; Allocated: 11273728; Reserved: 54525952; time used = 847.5443880558014s
+epoch 85: train_loss: 1.38628; Allocated: 11273728; Reserved: 54525952; time used = 843.8455607891083s
+epoch 90: train_loss: 1.38625; Allocated: 11273728; Reserved: 54525952; time used = 844.566600561142s
+epoch 95: train_loss: 1.38624; Allocated: 11273728; Reserved: 54525952; time used = 846.025233745575s
+epoch 100: train_loss: 1.38624; Allocated: 11273728; Reserved: 54525952; time used = 844.1046421527863s
+epoch 105: train_loss: 1.38621; Allocated: 11273728; Reserved: 54525952; time used = 843.990647315979s
+epoch 110: train_loss: 1.38621; Allocated: 11273728; Reserved: 54525952; time used = 843.7687087059021s
+epoch 115: train_loss: 1.38620; Allocated: 11273728; Reserved: 54525952; time used = 843.1225776672363s
+epoch 120: train_loss: 1.38620; Allocated: 11273728; Reserved: 54525952; time used = 839.8318364620209s
+epoch 125: train_loss: 1.38618; Allocated: 11273728; Reserved: 54525952; time used = 840.7375845909119s
+epoch 130: train_loss: 1.38618; Allocated: 11273728; Reserved: 54525952; time used = 887.1606092453003s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 23202.90656876564.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.5425, 'macro': 0.4566467981502238, 'samples': 0.5425, 'weighted': 0.4501673112181652, 'accuracy': 0.5425}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gat --epochs 500 --est jsd --hiddens 128 128 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gat', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2817.37it/s] 80%|███████▉  | 1597/2000 [00:00<00:00, 3612.76it/s]100%|██████████| 2000/2000 [00:00<00:00, 6091.80it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+head 0
+head 0
+head 0
+total iter: 500
+epoch 5: train_loss: 2.15194; Allocated: 13495808; Reserved: 50331648; time used = 969.1921825408936s
+epoch 10: train_loss: 9.96432; Allocated: 13495808; Reserved: 50331648; time used = 960.7310266494751s
+epoch 15: train_loss: 1.78240; Allocated: 13495808; Reserved: 50331648; time used = 947.0973777770996s
+epoch 20: train_loss: 1.39295; Allocated: 13495808; Reserved: 50331648; time used = 943.5077896118164s
+epoch 25: train_loss: 1.40793; Allocated: 13495808; Reserved: 50331648; time used = 946.5595693588257s
+epoch 30: train_loss: 1.38817; Allocated: 13495808; Reserved: 50331648; time used = 939.5562381744385s
+
+Traceback (most recent call last):
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 267, in <module>
+    main(parse_args())
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 250, in main
+    res = task.train(model, graph)  # train
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/tasks/tasks.py", line 36, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/models.py", line 242, in forward
+    self.embeddings = self.train_model(graph, step=i, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_gaeg.py", line 110, in train_model
+    output, train_loss, __ = self.evaluate()
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_gaeg.py", line 147, in evaluate
+    loss += self.model(bx, bpos, bneg)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_modelg.py", line 108, in forward
+    hpos = self.embed(pos)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_modelg.py", line 60, in embed
+    return self.encoder(x)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_encoderg.py", line 74, in forward
+    hx = layer([hx, adj])
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/layers/layers.py", line 48, in __call__
+    outputs = super(Layer, self).__call__(inputs, **kwargs)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/layers/graph_attentionc.py", line 139, in forward
+    c = f1 + f2.T
+RuntimeError: CUDA out of memory. Tried to allocate 64.00 MiB (GPU 0; 10.76 GiB total capacity; 2.19 GiB already allocated; 337.12 MiB free; 2.19 GiB reserved in total by PyTorch)
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 64 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64, 64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2710.76it/s] 86%|████████▌ | 1720/2000 [00:00<00:00, 3525.86it/s]100%|██████████| 2000/2000 [00:00<00:00, 6303.57it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+
+Traceback (most recent call last):
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 267, in <module>
+    main(parse_args())
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 250, in main
+    res = task.train(model, graph)  # train
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/tasks/tasks.py", line 36, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_gaeg.py", line 99, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, norm=norm)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_modelg.py", line 55, in __init__
+    self.sampler = BaseSampler(self.sampler_name, graphs_data, self.features, batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 24, in __init__
+    self.sampler = sampler_dict[name](graph, batch_size=self.batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 332, in __init__
+    self.get_diffused_graphs()
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 510, in get_diffused_graphs
+    t = compute_ppr(g.edge_index)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 54, in compute_ppr
+    a = adj.to(getdevice())
+RuntimeError: CUDA error: out of memory
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 128 128 --lr 0.01 --model ss_gaeg --patience 3 --readout mean --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2769.58it/s] 80%|███████▉  | 1597/2000 [00:00<00:00, 3557.64it/s]100%|██████████| 2000/2000 [00:00<00:00, 6032.37it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+
+Traceback (most recent call last):
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 267, in <module>
+    main(parse_args())
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 250, in main
+    res = task.train(model, graph)  # train
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/tasks/tasks.py", line 36, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_gaeg.py", line 99, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, norm=norm)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_modelg.py", line 55, in __init__
+    self.sampler = BaseSampler(self.sampler_name, graphs_data, self.features, batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 24, in __init__
+    self.sampler = sampler_dict[name](graph, batch_size=self.batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 332, in __init__
+    self.get_diffused_graphs()
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 510, in get_diffused_graphs
+    t = compute_ppr(g.edge_index)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 54, in compute_ppr
+    a = adj.to(getdevice())
+RuntimeError: CUDA error: out of memory
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 --lr 0.01 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2764.43it/s] 80%|████████  | 1608/2000 [00:00<00:00, 3555.20it/s]100%|██████████| 2000/2000 [00:00<00:00, 6050.11it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+
+Traceback (most recent call last):
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/cuiganqu/anaconda3/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 267, in <module>
+    main(parse_args())
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/__main__.py", line 250, in main
+    res = task.train(model, graph)  # train
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/tasks/tasks.py", line 36, in train
+    res = model(graph, **self.train_kwargs())
+  File "/home/cuiganqu/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/models.py", line 221, in forward
+    self.build(graph, **kwargs)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_gaeg.py", line 99, in build
+    dropout=self.dropout, dec_dims=self.dec_dims, norm=norm)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_modelg.py", line 55, in __init__
+    self.sampler = BaseSampler(self.sampler_name, graphs_data, self.features, batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 24, in __init__
+    self.sampler = sampler_dict[name](graph, batch_size=self.batch_size)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 332, in __init__
+    self.get_diffused_graphs()
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 510, in get_diffused_graphs
+    t = compute_ppr(g.edge_index)
+  File "/var/lib/shared_volume/data/private/cgq/openne/OpenNE/src/openne/models/ss_samplerg.py", line 54, in compute_ppr
+    a = adj.to(getdevice())
+RuntimeError: CUDA error: out of memory

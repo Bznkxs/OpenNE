@@ -1,0 +1,767 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec bilinear --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout mean --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gcn', 'dec': 'bilinear', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 535/2000 [00:00<00:00, 2830.15it/s] 91%|█████████ | 1824/2000 [00:00<00:00, 3695.25it/s]100%|██████████| 2000/2000 [00:00<00:00, 6691.02it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 2.08628; Allocated: 13286912; Reserved: 29360128; time used = 44.97087645530701s
+epoch 10: train_loss: 1.53181; Allocated: 13286912; Reserved: 29360128; time used = 44.01225709915161s
+epoch 15: train_loss: 1.51079; Allocated: 13286912; Reserved: 29360128; time used = 44.39685869216919s
+epoch 20: train_loss: 1.39235; Allocated: 13286912; Reserved: 29360128; time used = 46.26406121253967s
+epoch 25: train_loss: 1.40074; Allocated: 13286912; Reserved: 29360128; time used = 47.87403178215027s
+epoch 30: train_loss: 1.40753; Allocated: 13286912; Reserved: 29360128; time used = 50.02313256263733s
+epoch 35: train_loss: 1.38770; Allocated: 13286912; Reserved: 29360128; time used = 50.58841896057129s
+epoch 40: train_loss: 1.38954; Allocated: 13286912; Reserved: 29360128; time used = 48.86476802825928s
+epoch 45: train_loss: 1.39541; Allocated: 13286912; Reserved: 29360128; time used = 49.868361949920654s
+epoch 50: train_loss: 1.38865; Allocated: 13286912; Reserved: 29360128; time used = 50.17470669746399s
+epoch 55: train_loss: 1.38953; Allocated: 13286912; Reserved: 29360128; time used = 50.05079245567322s
+epoch 60: train_loss: 1.38683; Allocated: 13286912; Reserved: 29360128; time used = 50.044288635253906s
+epoch 65: train_loss: 1.38752; Allocated: 13286912; Reserved: 29360128; time used = 48.84160494804382s
+epoch 70: train_loss: 1.38653; Allocated: 13286912; Reserved: 29360128; time used = 50.22979021072388s
+epoch 75: train_loss: 1.38665; Allocated: 13286912; Reserved: 29360128; time used = 48.670660734176636s
+epoch 80: train_loss: 1.38648; Allocated: 13286912; Reserved: 29360128; time used = 49.76990270614624s
+epoch 85: train_loss: 1.38633; Allocated: 13286912; Reserved: 29360128; time used = 49.28171753883362s
+epoch 90: train_loss: 1.38641; Allocated: 13286912; Reserved: 29360128; time used = 48.80254769325256s
+epoch 95: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 50.6350474357605s
+epoch 100: train_loss: 1.38631; Allocated: 13286912; Reserved: 29360128; time used = 49.17848587036133s
+epoch 105: train_loss: 1.38632; Allocated: 13286912; Reserved: 29360128; time used = 49.709187507629395s
+epoch 110: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 50.3897008895874s
+epoch 115: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 50.33978486061096s
+epoch 120: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 49.1546528339386s
+epoch 125: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 49.96438670158386s
+epoch 130: train_loss: 1.38630; Allocated: 13286912; Reserved: 29360128; time used = 49.421241760253906s
+epoch 135: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 50.346620321273804s
+epoch 140: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 48.92091608047485s
+epoch 145: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 49.736618518829346s
+epoch 150: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 50.33824014663696s
+epoch 155: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 49.911797523498535s
+epoch 160: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 49.726380586624146s
+epoch 165: train_loss: 1.38629; Allocated: 13286912; Reserved: 29360128; time used = 49.655258893966675s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 1626.6714050769806.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 64 64 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler aug --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'aug', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2737.60it/s] 80%|████████  | 1603/2000 [00:00<00:00, 3522.68it/s]100%|██████████| 2000/2000 [00:00<00:00, 6008.51it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 24.22917; Allocated: 10874368; Reserved: 29360128; time used = 140.23209810256958s
+epoch 10: train_loss: 24.23213; Allocated: 10874368; Reserved: 31457280; time used = 144.3372151851654s
+epoch 15: train_loss: 24.23122; Allocated: 10874368; Reserved: 31457280; time used = 143.41815304756165s
+epoch 20: train_loss: 24.23211; Allocated: 10874368; Reserved: 31457280; time used = 138.54551482200623s
+epoch 25: train_loss: 24.23216; Allocated: 10874368; Reserved: 29360128; time used = 144.1900758743286s
+epoch 30: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 141.63818907737732s
+epoch 35: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 144.50410056114197s
+epoch 40: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 147.03368520736694s
+epoch 45: train_loss: 24.23215; Allocated: 10874368; Reserved: 29360128; time used = 141.1977243423462s
+epoch 50: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 143.717693567276s
+epoch 55: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 137.6583776473999s
+epoch 60: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 139.04884886741638s
+epoch 65: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 133.8159351348877s
+epoch 70: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 138.87447428703308s
+epoch 75: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 134.82840538024902s
+epoch 80: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 137.81339049339294s
+epoch 85: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 139.9712917804718s
+epoch 90: train_loss: 24.23217; Allocated: 10874368; Reserved: 33554432; time used = 137.9044270515442s
+epoch 95: train_loss: 24.23217; Allocated: 10874368; Reserved: 33554432; time used = 144.48743414878845s
+epoch 100: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 143.97598099708557s
+epoch 105: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 142.956157207489s
+epoch 110: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 137.22150945663452s
+epoch 115: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 134.96687030792236s
+epoch 120: train_loss: 24.23217; Allocated: 10874368; Reserved: 29360128; time used = 146.920795917511s
+epoch 125: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 143.42782616615295s
+epoch 130: train_loss: 24.23217; Allocated: 10874368; Reserved: 33554432; time used = 152.2614221572876s
+epoch 135: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 135.8497302532196s
+epoch 140: train_loss: 24.23217; Allocated: 10874368; Reserved: 33554432; time used = 139.8955521583557s
+epoch 145: train_loss: 24.23217; Allocated: 10874368; Reserved: 31457280; time used = 135.86554479599s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 4174.928956985474.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec bilinear --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 64 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout mean --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gcn', 'dec': 'bilinear', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2738.40it/s] 80%|████████  | 1604/2000 [00:00<00:00, 3524.01it/s]100%|██████████| 2000/2000 [00:00<00:00, 6008.04it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 1.38670; Allocated: 11143168; Reserved: 31457280; time used = 61.89760208129883s
+epoch 10: train_loss: 1.40011; Allocated: 11143168; Reserved: 31457280; time used = 61.88030242919922s
+epoch 15: train_loss: 1.39307; Allocated: 11143168; Reserved: 31457280; time used = 61.6860146522522s
+epoch 20: train_loss: 1.38894; Allocated: 11143168; Reserved: 31457280; time used = 62.807528495788574s
+epoch 25: train_loss: 1.38721; Allocated: 11143168; Reserved: 31457280; time used = 63.220792055130005s
+epoch 30: train_loss: 1.38627; Allocated: 11143168; Reserved: 31457280; time used = 61.69902491569519s
+epoch 35: train_loss: 1.38654; Allocated: 11143168; Reserved: 31457280; time used = 61.5225772857666s
+epoch 40: train_loss: 1.38656; Allocated: 11143168; Reserved: 31457280; time used = 62.58990430831909s
+epoch 45: train_loss: 1.38632; Allocated: 11143168; Reserved: 31457280; time used = 59.86063551902771s
+epoch 50: train_loss: 1.38627; Allocated: 11143168; Reserved: 31457280; time used = 60.60981369018555s
+epoch 55: train_loss: 1.38628; Allocated: 11143168; Reserved: 31457280; time used = 62.367918252944946s
+epoch 60: train_loss: 1.38629; Allocated: 11143168; Reserved: 31457280; time used = 62.92955446243286s
+epoch 65: train_loss: 1.38628; Allocated: 11143168; Reserved: 31457280; time used = 61.088594913482666s
+epoch 70: train_loss: 1.38627; Allocated: 11143168; Reserved: 31457280; time used = 60.1555392742157s
+epoch 75: train_loss: 1.38626; Allocated: 11143168; Reserved: 31457280; time used = 61.02435302734375s
+epoch 80: train_loss: 1.38626; Allocated: 11143168; Reserved: 31457280; time used = 61.89228844642639s
+epoch 85: train_loss: 1.38626; Allocated: 11143168; Reserved: 31457280; time used = 60.77348875999451s
+epoch 90: train_loss: 1.38626; Allocated: 11143168; Reserved: 31457280; time used = 60.175309896469116s
+epoch 95: train_loss: 1.38625; Allocated: 11143168; Reserved: 31457280; time used = 61.0463171005249s
+epoch 100: train_loss: 1.38625; Allocated: 11143168; Reserved: 31457280; time used = 60.95127463340759s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 1258.8034369945526.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.6575, 'macro': 0.6570176811140667, 'samples': 0.6575, 'weighted': 0.6574035362228133, 'accuracy': 0.6575}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec bilinear --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout mean --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'patience': 3, 'enc': 'gcn', 'dec': 'bilinear', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 1982.61it/s] 79%|███████▉  | 1589/2000 [00:00<00:00, 2620.31it/s]100%|██████████| 2000/2000 [00:00<00:00, 4889.13it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 4.57870; Allocated: 13022208; Reserved: 29360128; time used = 37.74775314331055s
+epoch 10: train_loss: 1.51357; Allocated: 13022208; Reserved: 29360128; time used = 38.693692207336426s
+epoch 15: train_loss: 1.56395; Allocated: 13022208; Reserved: 29360128; time used = 37.32108449935913s
+epoch 20: train_loss: 1.47893; Allocated: 13022208; Reserved: 29360128; time used = 39.10895109176636s
+epoch 25: train_loss: 1.40361; Allocated: 13022208; Reserved: 29360128; time used = 37.48080849647522s
+epoch 30: train_loss: 1.38658; Allocated: 13022208; Reserved: 29360128; time used = 37.334773778915405s
+epoch 35: train_loss: 1.39060; Allocated: 13022208; Reserved: 29360128; time used = 37.95215630531311s
+epoch 40: train_loss: 1.39324; Allocated: 13022208; Reserved: 29360128; time used = 37.619431257247925s
+epoch 45: train_loss: 1.39184; Allocated: 13022208; Reserved: 29360128; time used = 37.42880892753601s
+epoch 50: train_loss: 1.38904; Allocated: 13022208; Reserved: 29360128; time used = 38.08344054222107s
+epoch 55: train_loss: 1.38712; Allocated: 13022208; Reserved: 31457280; time used = 37.75916004180908s
+epoch 60: train_loss: 1.38638; Allocated: 13022208; Reserved: 29360128; time used = 38.309921741485596s
+epoch 65: train_loss: 1.38638; Allocated: 13022208; Reserved: 29360128; time used = 37.691980600357056s
+epoch 70: train_loss: 1.38653; Allocated: 13022208; Reserved: 29360128; time used = 37.752052783966064s
+epoch 75: train_loss: 1.38652; Allocated: 13022208; Reserved: 29360128; time used = 38.68208384513855s
+epoch 80: train_loss: 1.38637; Allocated: 13022208; Reserved: 29360128; time used = 38.46872639656067s
+epoch 85: train_loss: 1.38627; Allocated: 13022208; Reserved: 29360128; time used = 38.895161390304565s
+epoch 90: train_loss: 1.38628; Allocated: 13022208; Reserved: 29360128; time used = 38.74939203262329s
+epoch 95: train_loss: 1.38629; Allocated: 13022208; Reserved: 29360128; time used = 37.75524401664734s
+epoch 100: train_loss: 1.38627; Allocated: 13022208; Reserved: 29360128; time used = 38.23785376548767s
+epoch 105: train_loss: 1.38625; Allocated: 13022208; Reserved: 29360128; time used = 37.38511323928833s
+epoch 110: train_loss: 1.38626; Allocated: 13022208; Reserved: 29360128; time used = 36.41422462463379s
+epoch 115: train_loss: 1.38625; Allocated: 13022208; Reserved: 31457280; time used = 37.31758213043213s
+epoch 120: train_loss: 1.38625; Allocated: 13022208; Reserved: 29360128; time used = 38.09612846374512s
+epoch 125: train_loss: 1.38625; Allocated: 13022208; Reserved: 29360128; time used = 37.48508882522583s
+epoch 130: train_loss: 1.38624; Allocated: 13022208; Reserved: 29360128; time used = 38.6430230140686s
+epoch 135: train_loss: 1.38625; Allocated: 13022208; Reserved: 29360128; time used = 37.87910175323486s
+epoch 140: train_loss: 1.38624; Allocated: 13022208; Reserved: 29360128; time used = 37.753373861312866s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 1096.5386691093445.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.65, 'macro': 0.6498599439775911, 'samples': 0.65, 'weighted': 0.6500700280112045, 'accuracy': 0.65}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2340.68it/s] 80%|████████  | 1600/2000 [00:00<00:00, 3055.21it/s]100%|██████████| 2000/2000 [00:00<00:00, 5455.44it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 57619.98460; Allocated: 12694016; Reserved: 50331648; time used = 578.1989798545837s
+epoch 10: train_loss: 5408531.77883; Allocated: 12694016; Reserved: 50331648; time used = 567.7928595542908s
+epoch 15: train_loss: 784487.81745; Allocated: 12694016; Reserved: 50331648; time used = 563.280580997467s
+epoch 20: train_loss: 60213.90870; Allocated: 12694016; Reserved: 50331648; time used = 558.6728730201721s
+epoch 25: train_loss: 189912.16901; Allocated: 12694016; Reserved: 50331648; time used = 550.2970404624939s
+epoch 30: train_loss: 78806.64526; Allocated: 12694016; Reserved: 50331648; time used = 529.9441237449646s
+epoch 35: train_loss: 879815.70692; Allocated: 12694016; Reserved: 50331648; time used = 535.9195096492767s
+epoch 40: train_loss: 397343.89455; Allocated: 12694016; Reserved: 50331648; time used = 549.8450036048889s
+epoch 45: train_loss: 26570.60075; Allocated: 12694016; Reserved: 50331648; time used = 546.3801126480103s
+epoch 50: train_loss: 548413.52509; Allocated: 12694016; Reserved: 50331648; time used = 526.118997335434s
+epoch 55: train_loss: 421948.73390; Allocated: 12694016; Reserved: 50331648; time used = 532.2632839679718s
+epoch 60: train_loss: 364908.84656; Allocated: 12694016; Reserved: 50331648; time used = 535.4663305282593s
+epoch 65: train_loss: 214663.30924; Allocated: 12694016; Reserved: 50331648; time used = 533.0855922698975s
+epoch 70: train_loss: 258081.78784; Allocated: 12694016; Reserved: 50331648; time used = 531.7807657718658s
+epoch 75: train_loss: 21289.16964; Allocated: 12694016; Reserved: 50331648; time used = 527.004846572876s
+epoch 80: train_loss: 212739.46174; Allocated: 12694016; Reserved: 50331648; time used = 549.7303802967072s
+epoch 85: train_loss: 236516.25182; Allocated: 12694016; Reserved: 50331648; time used = 536.6443543434143s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 9407.912678480148.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.7299999999999999, 'macro': 0.729452140584684, 'samples': 0.73, 'weighted': 0.7290869009744734, 'accuracy': 0.73}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2310.23it/s] 80%|███████▉  | 1594/2000 [00:00<00:00, 3017.22it/s]100%|██████████| 2000/2000 [00:00<00:00, 5396.25it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 1572669.65901; Allocated: 10924544; Reserved: 50331648; time used = 513.0860035419464s
+epoch 10: train_loss: 970772.47926; Allocated: 10924544; Reserved: 50331648; time used = 466.92818546295166s
+epoch 15: train_loss: 529208.78745; Allocated: 10924544; Reserved: 50331648; time used = 468.4336485862732s
+epoch 20: train_loss: 728286.85687; Allocated: 10924544; Reserved: 50331648; time used = 466.32931542396545s
+epoch 25: train_loss: 502769.84090; Allocated: 10924544; Reserved: 50331648; time used = 465.2365846633911s
+epoch 30: train_loss: 89267.62622; Allocated: 10924544; Reserved: 50331648; time used = 466.9400441646576s
+epoch 35: train_loss: 1188386.95557; Allocated: 10924544; Reserved: 50331648; time used = 468.16027998924255s
+epoch 40: train_loss: 82027.46056; Allocated: 10924544; Reserved: 50331648; time used = 466.3481981754303s
+epoch 45: train_loss: 522586.36611; Allocated: 10924544; Reserved: 50331648; time used = 465.748033285141s
+epoch 50: train_loss: 224763.33022; Allocated: 10924544; Reserved: 50331648; time used = 466.6906969547272s
+epoch 55: train_loss: 180260.82330; Allocated: 10924544; Reserved: 50331648; time used = 467.70924377441406s
+epoch 60: train_loss: 10954.07213; Allocated: 10924544; Reserved: 50331648; time used = 467.05848479270935s
+epoch 65: train_loss: 103044.85338; Allocated: 10924544; Reserved: 50331648; time used = 466.3923637866974s
+epoch 70: train_loss: 234318.99243; Allocated: 10924544; Reserved: 50331648; time used = 467.0239863395691s
+epoch 75: train_loss: 84064.77487; Allocated: 10924544; Reserved: 50331648; time used = 468.40905380249023s
+epoch 80: train_loss: 457030.63418; Allocated: 10924544; Reserved: 50331648; time used = 479.07910227775574s
+epoch 85: train_loss: 625796.35994; Allocated: 10924544; Reserved: 50331648; time used = 473.43747305870056s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 8430.154929161072.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.6225, 'macro': 0.5922197692395978, 'samples': 0.6225, 'weighted': 0.5888861658531316, 'accuracy': 0.6225}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec bilinear --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 128 128 --lr 0.01 --model ss_graphmodel --patience 3 --readout mean --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'patience': 3, 'enc': 'gcn', 'dec': 'bilinear', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'mean', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2344.92it/s] 81%|████████  | 1611/2000 [00:00<00:00, 3062.81it/s]100%|██████████| 2000/2000 [00:00<00:00, 5483.55it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 1.90353; Allocated: 13551616; Reserved: 29360128; time used = 57.599767208099365s
+epoch 10: train_loss: 1.53872; Allocated: 13551616; Reserved: 29360128; time used = 55.708869218826294s
+epoch 15: train_loss: 1.45075; Allocated: 13551616; Reserved: 29360128; time used = 55.736929416656494s
+epoch 20: train_loss: 1.41568; Allocated: 13551616; Reserved: 29360128; time used = 56.50241661071777s
+epoch 25: train_loss: 1.39233; Allocated: 13551616; Reserved: 29360128; time used = 53.7291624546051s
+epoch 30: train_loss: 1.38639; Allocated: 13551616; Reserved: 29360128; time used = 54.308878898620605s
+epoch 35: train_loss: 1.38727; Allocated: 13551616; Reserved: 29360128; time used = 54.67696022987366s
+epoch 40: train_loss: 1.38809; Allocated: 13551616; Reserved: 29360128; time used = 54.771620988845825s
+epoch 45: train_loss: 1.38792; Allocated: 13551616; Reserved: 29360128; time used = 57.01562857627869s
+epoch 50: train_loss: 1.38743; Allocated: 13551616; Reserved: 29360128; time used = 57.400890588760376s
+epoch 55: train_loss: 1.38697; Allocated: 13551616; Reserved: 29360128; time used = 56.61554193496704s
+epoch 60: train_loss: 1.38669; Allocated: 13551616; Reserved: 29360128; time used = 56.448514223098755s
+epoch 65: train_loss: 1.38653; Allocated: 13551616; Reserved: 29360128; time used = 58.0787992477417s
+epoch 70: train_loss: 1.38643; Allocated: 13551616; Reserved: 29360128; time used = 57.89613699913025s
+epoch 75: train_loss: 1.38636; Allocated: 13551616; Reserved: 29360128; time used = 57.208404541015625s
+epoch 80: train_loss: 1.38630; Allocated: 13551616; Reserved: 29360128; time used = 56.91291570663452s
+epoch 85: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 57.05529189109802s
+epoch 90: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 57.72517991065979s
+epoch 95: train_loss: 1.38628; Allocated: 13551616; Reserved: 29360128; time used = 57.3678674697876s
+epoch 100: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 57.33418679237366s
+epoch 105: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 56.615971326828s
+epoch 110: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 56.20049262046814s
+epoch 115: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 57.458505153656006s
+epoch 120: train_loss: 1.38626; Allocated: 13551616; Reserved: 29360128; time used = 57.38254404067993s
+epoch 125: train_loss: 1.38626; Allocated: 13551616; Reserved: 29360128; time used = 57.618261098861694s
+epoch 130: train_loss: 1.38627; Allocated: 13551616; Reserved: 29360128; time used = 58.320956230163574s
+epoch 135: train_loss: 1.38626; Allocated: 13551616; Reserved: 29360128; time used = 57.46375584602356s
+epoch 140: train_loss: 1.38626; Allocated: 13551616; Reserved: 29360128; time used = 57.4450581073761s
+epoch 145: train_loss: 1.38626; Allocated: 13551616; Reserved: 29360128; time used = 57.93510389328003s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 1662.0706269741058.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 128 128 --lr 0.01 --model ss_graphmodel --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2321.37it/s] 80%|████████  | 1604/2000 [00:00<00:00, 3033.14it/s]100%|██████████| 2000/2000 [00:00<00:00, 5435.29it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 1373218259974.19751; Allocated: 13223424; Reserved: 50331648; time used = 590.1320810317993s
+epoch 10: train_loss: 4323260473846.80420; Allocated: 13223424; Reserved: 50331648; time used = 580.5263435840607s
+epoch 15: train_loss: 793827771191.56689; Allocated: 13223424; Reserved: 50331648; time used = 584.5866055488586s
+epoch 20: train_loss: 290680580521.48816; Allocated: 13223424; Reserved: 50331648; time used = 591.0431423187256s
+epoch 25: train_loss: 95337073872.63518; Allocated: 13223424; Reserved: 50331648; time used = 588.3312501907349s
+epoch 30: train_loss: 180369459046.40021; Allocated: 13223424; Reserved: 50331648; time used = 588.4849181175232s
+epoch 35: train_loss: 90268870432.80920; Allocated: 13223424; Reserved: 50331648; time used = 579.6596310138702s
+epoch 40: train_loss: 40490648362.47581; Allocated: 13223424; Reserved: 50331648; time used = 579.6189222335815s
+epoch 45: train_loss: 164594630139.78778; Allocated: 13223424; Reserved: 50331648; time used = 579.883590221405s
+epoch 50: train_loss: 61025726833.20938; Allocated: 13223424; Reserved: 50331648; time used = 579.7735323905945s
+epoch 55: train_loss: 181006439230.59167; Allocated: 13223424; Reserved: 50331648; time used = 579.7566306591034s
+epoch 60: train_loss: 1113889642.76873; Allocated: 13223424; Reserved: 50331648; time used = 580.6173648834229s
+epoch 65: train_loss: 14165711194.64295; Allocated: 13223424; Reserved: 50331648; time used = 581.5962376594543s
+epoch 70: train_loss: 13904234360.35974; Allocated: 13223424; Reserved: 50331648; time used = 584.1602499485016s
+epoch 75: train_loss: 11930781802.93914; Allocated: 13223424; Reserved: 50331648; time used = 584.430986404419s
+epoch 80: train_loss: 5452631278.61992; Allocated: 13223424; Reserved: 50331648; time used = 586.6320221424103s
+epoch 85: train_loss: 1564457144.61563; Allocated: 13223424; Reserved: 50331648; time used = 587.7381405830383s
+epoch 90: train_loss: 434499005.82708; Allocated: 13223424; Reserved: 50331648; time used = 595.7899672985077s
+epoch 95: train_loss: 535673700.27945; Allocated: 13223424; Reserved: 50331648; time used = 595.8774545192719s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 11399.662146091461.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.7250000000000001, 'macro': 0.7241656009428521, 'samples': 0.725, 'weighted': 0.7237104741844078, 'accuracy': 0.725}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 64 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2316.28it/s] 80%|████████  | 1610/2000 [00:00<00:00, 3028.42it/s]100%|██████████| 2000/2000 [00:00<00:00, 5438.07it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 5206038670184.75098; Allocated: 11060736; Reserved: 52428800; time used = 591.4048006534576s
+epoch 10: train_loss: 1745007026682.66113; Allocated: 11060736; Reserved: 52428800; time used = 581.4445466995239s
+epoch 15: train_loss: 1130913621766.32129; Allocated: 11060736; Reserved: 52428800; time used = 579.6325628757477s
+epoch 20: train_loss: 441815287071.74634; Allocated: 11060736; Reserved: 52428800; time used = 579.6619560718536s
+epoch 25: train_loss: 226205219488.36115; Allocated: 11060736; Reserved: 52428800; time used = 581.1982522010803s
+epoch 30: train_loss: 134633956956.61662; Allocated: 11060736; Reserved: 52428800; time used = 580.4574420452118s
+epoch 35: train_loss: 211592446732.87335; Allocated: 11060736; Reserved: 52428800; time used = 581.5050799846649s
+epoch 40: train_loss: 164224298141.95599; Allocated: 11060736; Reserved: 52428800; time used = 579.0763492584229s
+epoch 45: train_loss: 126799021050.62141; Allocated: 11060736; Reserved: 52428800; time used = 581.3238806724548s
+epoch 50: train_loss: 27626931319.89276; Allocated: 11060736; Reserved: 52428800; time used = 580.5022249221802s
+epoch 55: train_loss: 125986427614.31593; Allocated: 11060736; Reserved: 52428800; time used = 581.4717655181885s
+epoch 60: train_loss: 9467569619.19617; Allocated: 11060736; Reserved: 52428800; time used = 578.8090190887451s
+epoch 65: train_loss: 29887091242.86410; Allocated: 11060736; Reserved: 52428800; time used = 580.6781487464905s
+epoch 70: train_loss: 10106573502.89673; Allocated: 11060736; Reserved: 52428800; time used = 579.8118009567261s
+epoch 75: train_loss: 54764230465.03267; Allocated: 11060736; Reserved: 52428800; time used = 580.2576282024384s
+epoch 80: train_loss: 70589378290.23427; Allocated: 11060736; Reserved: 52428800; time used = 579.911301612854s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 9339.566303014755.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.7250000000000001, 'macro': 0.7245592948717947, 'samples': 0.725, 'weighted': 0.7242287660256409, 'accuracy': 0.725}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 128 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gcn', 'dec': 'inner', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2300.77it/s] 80%|████████  | 1603/2000 [00:00<00:00, 3008.15it/s]100%|██████████| 2000/2000 [00:00<00:00, 5403.36it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 446067654.61628; Allocated: 12958720; Reserved: 50331648; time used = 536.9266312122345s
+epoch 10: train_loss: 1226946699.93164; Allocated: 12958720; Reserved: 50331648; time used = 529.9341666698456s
+epoch 15: train_loss: 2721476106.76132; Allocated: 12958720; Reserved: 50331648; time used = 526.2414925098419s
+epoch 20: train_loss: 2922985345.30062; Allocated: 12958720; Reserved: 50331648; time used = 524.7503418922424s
+epoch 25: train_loss: 767414488.64338; Allocated: 12958720; Reserved: 50331648; time used = 524.418140411377s
+epoch 30: train_loss: 163836992.14796; Allocated: 12958720; Reserved: 50331648; time used = 524.9759509563446s
+epoch 35: train_loss: 207051411.41790; Allocated: 12958720; Reserved: 52428800; time used = 524.5837733745575s
+epoch 40: train_loss: 182120127.76283; Allocated: 12958720; Reserved: 50331648; time used = 525.1383075714111s
+epoch 45: train_loss: 101366007.78220; Allocated: 12958720; Reserved: 50331648; time used = 523.5578243732452s
+epoch 50: train_loss: 4205081.71697; Allocated: 12958720; Reserved: 50331648; time used = 525.0046744346619s
+epoch 55: train_loss: 1.51728; Allocated: 12958720; Reserved: 50331648; time used = 524.6733596324921s
+epoch 60: train_loss: 1.38742; Allocated: 12958720; Reserved: 50331648; time used = 524.7584643363953s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 6671.865457057953.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler aug --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'aug', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2308.44it/s] 80%|███████▉  | 1599/2000 [00:00<00:00, 3016.41it/s]100%|██████████| 2000/2000 [00:00<00:00, 5406.74it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 24.22735; Allocated: 10729984; Reserved: 29360128; time used = 132.876633644104s
+epoch 10: train_loss: 24.23027; Allocated: 10729984; Reserved: 31457280; time used = 124.95796632766724s
+epoch 15: train_loss: 24.23128; Allocated: 10729984; Reserved: 31457280; time used = 131.89658212661743s
+epoch 20: train_loss: 24.23217; Allocated: 10729984; Reserved: 31457280; time used = 131.9331705570221s
+epoch 25: train_loss: 24.23214; Allocated: 10729984; Reserved: 29360128; time used = 135.7551965713501s
+epoch 30: train_loss: 24.23213; Allocated: 10729984; Reserved: 29360128; time used = 131.12200355529785s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 843.1098499298096.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 128 128 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler aug --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'aug', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2323.96it/s] 80%|███████▉  | 1593/2000 [00:00<00:00, 3033.47it/s]100%|██████████| 2000/2000 [00:00<00:00, 5414.60it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 24.23128; Allocated: 12178432; Reserved: 29360128; time used = 123.61984395980835s
+epoch 10: train_loss: 24.23176; Allocated: 12178432; Reserved: 29360128; time used = 121.06177020072937s
+epoch 15: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.9903211593628s
+epoch 20: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.1877303123474s
+epoch 25: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.45032000541687s
+epoch 30: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 139.86980199813843s
+epoch 35: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 135.30532145500183s
+epoch 40: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.33445286750793s
+epoch 45: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.0839114189148s
+epoch 50: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.35956931114197s
+epoch 55: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 137.71936750411987s
+epoch 60: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 138.83084774017334s
+epoch 65: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 136.0678312778473s
+epoch 70: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 128.65606260299683s
+epoch 75: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 129.1336452960968s
+epoch 80: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 122.76479744911194s
+epoch 85: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 119.94665384292603s
+epoch 90: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 120.85408735275269s
+epoch 95: train_loss: 24.23217; Allocated: 12178432; Reserved: 31457280; time used = 130.5473608970642s
+epoch 100: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 128.10145711898804s
+epoch 105: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 128.0841784477234s
+epoch 110: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.8514473438263s
+epoch 115: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.78988099098206s
+epoch 120: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.16013979911804s
+epoch 125: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 128.45706391334534s
+epoch 130: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.11391949653625s
+epoch 135: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.9652202129364s
+epoch 140: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.25055742263794s
+epoch 145: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.35300278663635s
+epoch 150: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.788503408432s
+epoch 155: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.4548840522766s
+epoch 160: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 126.25399231910706s
+epoch 165: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 115.51419949531555s
+epoch 170: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 123.85776591300964s
+epoch 175: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.67101192474365s
+epoch 180: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.40544843673706s
+epoch 185: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.54623532295227s
+epoch 190: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.47840118408203s
+epoch 195: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.76416850090027s
+epoch 200: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.77548027038574s
+epoch 205: train_loss: 24.23217; Allocated: 12178432; Reserved: 31457280; time used = 134.1306312084198s
+epoch 210: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.44712972640991s
+epoch 215: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.89273166656494s
+epoch 220: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.70118618011475s
+epoch 225: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.22772574424744s
+epoch 230: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 128.40819764137268s
+epoch 235: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.5850169658661s
+epoch 240: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.97862219810486s
+epoch 245: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.82911348342896s
+epoch 250: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.3970239162445s
+epoch 255: train_loss: 24.23217; Allocated: 12178432; Reserved: 27262976; time used = 124.1312141418457s
+epoch 260: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 126.3780586719513s
+epoch 265: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 123.98974895477295s
+epoch 270: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.17382764816284s
+epoch 275: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.7746045589447s
+epoch 280: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.62648582458496s
+epoch 285: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.68722987174988s
+epoch 290: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.24819660186768s
+epoch 295: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.20602178573608s
+epoch 300: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.62970209121704s
+epoch 305: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 136.10291194915771s
+epoch 310: train_loss: 24.23217; Allocated: 12178432; Reserved: 27262976; time used = 128.3392264842987s
+epoch 315: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 126.56448364257812s
+epoch 320: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.5754895210266s
+epoch 325: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.29388308525085s
+epoch 330: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 136.8036665916443s
+epoch 335: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 129.59274649620056s
+epoch 340: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.51148748397827s
+epoch 345: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.25717735290527s
+epoch 350: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.01068329811096s
+epoch 355: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.21808338165283s
+epoch 360: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 121.98317646980286s
+epoch 365: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 125.70968747138977s
+epoch 370: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 125.98203802108765s
+epoch 375: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 122.28754544258118s
+epoch 380: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.99865126609802s
+epoch 385: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.05119967460632s
+epoch 390: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.37768149375916s
+epoch 395: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 129.04401540756226s
+epoch 400: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.653480052948s
+epoch 405: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.28795886039734s
+epoch 410: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.53036880493164s
+epoch 415: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.10661959648132s
+epoch 420: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.79025220870972s
+epoch 425: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.13517141342163s
+epoch 430: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.43228387832642s
+epoch 435: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 129.96520829200745s
+epoch 440: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.75130581855774s
+epoch 445: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.43540143966675s
+epoch 450: train_loss: 24.23217; Allocated: 12178432; Reserved: 31457280; time used = 132.0184507369995s
+epoch 455: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.54402804374695s
+epoch 460: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.64997744560242s
+epoch 465: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 130.80559587478638s
+epoch 470: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 133.76792120933533s
+epoch 475: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 132.9006905555725s
+epoch 480: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 131.78522086143494s
+epoch 485: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 134.53153824806213s
+epoch 490: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.04016041755676s
+epoch 495: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 124.10425972938538s
+epoch 500: train_loss: 24.23217; Allocated: 12178432; Reserved: 29360128; time used = 127.00330901145935s
+Finished training. Time used = 13061.646591186523.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2408.90it/s] 80%|████████  | 1608/2000 [00:00<00:00, 3138.39it/s]100%|██████████| 2000/2000 [00:00<00:00, 5572.99it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 1.74425; Allocated: 10932736; Reserved: 33554432; time used = 39.07345676422119s
+epoch 10: train_loss: 1.62014; Allocated: 10932736; Reserved: 33554432; time used = 38.51878309249878s
+epoch 15: train_loss: 1.83009; Allocated: 10932736; Reserved: 33554432; time used = 37.558473348617554s
+epoch 20: train_loss: 1.51154; Allocated: 10932736; Reserved: 33554432; time used = 37.64403319358826s
+epoch 25: train_loss: 1.55522; Allocated: 10932736; Reserved: 33554432; time used = 38.87496638298035s
+epoch 30: train_loss: 1.49171; Allocated: 10932736; Reserved: 33554432; time used = 38.826961040496826s
+epoch 35: train_loss: 1.45695; Allocated: 10932736; Reserved: 33554432; time used = 37.57214641571045s
+epoch 40: train_loss: 1.40141; Allocated: 10932736; Reserved: 33554432; time used = 37.248915672302246s
+epoch 45: train_loss: 1.44312; Allocated: 10932736; Reserved: 33554432; time used = 38.276865005493164s
+epoch 50: train_loss: 1.40093; Allocated: 10932736; Reserved: 33554432; time used = 37.37829089164734s
+epoch 55: train_loss: 1.38681; Allocated: 10932736; Reserved: 33554432; time used = 37.519859075546265s
+epoch 60: train_loss: 1.38720; Allocated: 10932736; Reserved: 33554432; time used = 38.02648735046387s
+epoch 65: train_loss: 1.38706; Allocated: 10932736; Reserved: 33554432; time used = 38.26177167892456s
+epoch 70: train_loss: 1.38647; Allocated: 10932736; Reserved: 33554432; time used = 37.88281536102295s
+epoch 75: train_loss: 1.38697; Allocated: 10932736; Reserved: 33554432; time used = 37.9486083984375s
+epoch 80: train_loss: 1.38806; Allocated: 10932736; Reserved: 33554432; time used = 37.310710430145264s
+epoch 85: train_loss: 1.38724; Allocated: 10932736; Reserved: 33554432; time used = 40.67016887664795s
+epoch 90: train_loss: 1.38645; Allocated: 10932736; Reserved: 33554432; time used = 40.03781318664551s
+epoch 95: train_loss: 1.38685; Allocated: 10932736; Reserved: 33554432; time used = 37.69831371307373s
+epoch 100: train_loss: 1.38645; Allocated: 10932736; Reserved: 33554432; time used = 37.572859048843384s
+epoch 105: train_loss: 1.38651; Allocated: 10932736; Reserved: 33554432; time used = 37.93557143211365s
+epoch 110: train_loss: 1.38653; Allocated: 10932736; Reserved: 33554432; time used = 38.052732944488525s
+epoch 115: train_loss: 1.38647; Allocated: 10932736; Reserved: 33554432; time used = 37.74634623527527s
+epoch 120: train_loss: 1.38646; Allocated: 10932736; Reserved: 33554432; time used = 37.77940130233765s
+epoch 125: train_loss: 1.38644; Allocated: 10932736; Reserved: 33554432; time used = 37.806260108947754s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 957.0208170413971.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.54, 'macro': 0.45238095238095233, 'samples': 0.54, 'weighted': 0.44580952380952377, 'accuracy': 0.54}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 128 128 128 --lr 0.01 --model ss_graphmodel --patience 3 --readout sum --sampler aug --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'aug', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2904.80it/s] 80%|████████  | 1604/2000 [00:00<00:00, 3715.49it/s]100%|██████████| 2000/2000 [00:00<00:00, 6422.98it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 24.23216; Allocated: 12447232; Reserved: 29360128; time used = 144.85783910751343s
+epoch 10: train_loss: 24.23214; Allocated: 12447232; Reserved: 31457280; time used = 135.55840253829956s
+epoch 15: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 142.9762544631958s
+epoch 20: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.29284811019897s
+epoch 25: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.5671350955963s
+epoch 30: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.22019696235657s
+epoch 35: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 134.62309002876282s
+epoch 40: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 140.91961479187012s
+epoch 45: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 139.31135249137878s
+epoch 50: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 143.7603039741516s
+epoch 55: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 135.48857069015503s
+epoch 60: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 135.26332259178162s
+epoch 65: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.6595356464386s
+epoch 70: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 151.03356957435608s
+epoch 75: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.42191338539124s
+epoch 80: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.23525285720825s
+epoch 85: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.23455691337585s
+epoch 90: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.47697401046753s
+epoch 95: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.51848101615906s
+epoch 100: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.49731874465942s
+epoch 105: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.731858253479s
+epoch 110: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.29648232460022s
+epoch 115: train_loss: 24.23217; Allocated: 12447232; Reserved: 31457280; time used = 148.17818236351013s
+epoch 120: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.96936702728271s
+epoch 125: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.56324172019958s
+epoch 130: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 145.53579306602478s
+epoch 135: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 135.27399730682373s
+epoch 140: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 142.74326705932617s
+epoch 145: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.41142988204956s
+epoch 150: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 145.16982221603394s
+epoch 155: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 140.1657702922821s
+epoch 160: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.90566778182983s
+epoch 165: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 156.96515655517578s
+epoch 170: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 154.49432754516602s
+epoch 175: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.6637978553772s
+epoch 180: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.77145981788635s
+epoch 185: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 139.85193061828613s
+epoch 190: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 140.51396346092224s
+epoch 195: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 142.82895970344543s
+epoch 200: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 138.7391438484192s
+epoch 205: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 151.927387714386s
+epoch 210: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.38929319381714s
+epoch 215: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.1249134540558s
+epoch 220: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 151.09799480438232s
+epoch 225: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 143.78323101997375s
+epoch 230: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.5855894088745s
+epoch 235: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.57487106323242s
+epoch 240: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 154.1346447467804s
+epoch 245: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.3778531551361s
+epoch 250: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 154.84273076057434s
+epoch 255: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 143.87133765220642s
+epoch 260: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.37374901771545s
+epoch 265: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.67673349380493s
+epoch 270: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 135.13131618499756s
+epoch 275: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.00081157684326s
+epoch 280: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.24608492851257s
+epoch 285: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 136.05182075500488s
+epoch 290: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.69045519828796s
+epoch 295: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.14924144744873s
+epoch 300: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.15539026260376s
+epoch 305: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.03967380523682s
+epoch 310: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.2960169315338s
+epoch 315: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.88461875915527s
+epoch 320: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.68222784996033s
+epoch 325: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 142.90423464775085s
+epoch 330: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.7106328010559s
+epoch 335: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 149.68141222000122s
+epoch 340: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.3134868144989s
+epoch 345: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.71892285346985s
+epoch 350: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.96217560768127s
+epoch 355: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 143.9444544315338s
+epoch 360: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 139.6939401626587s
+epoch 365: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 148.97002911567688s
+epoch 370: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.33748483657837s
+epoch 375: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.94095587730408s
+epoch 380: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.30177450180054s
+epoch 385: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.49239206314087s
+epoch 390: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.640727519989s
+epoch 395: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 144.72522974014282s
+epoch 400: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 141.86843848228455s
+epoch 405: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 146.7116837501526s
+epoch 410: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.25683045387268s
+epoch 415: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 157.57277917861938s
+epoch 420: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.68913578987122s
+epoch 425: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.45420503616333s
+epoch 430: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 163.13365387916565s
+epoch 435: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.67525577545166s
+epoch 440: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 155.8355312347412s
+epoch 445: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 155.74609279632568s
+epoch 450: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.88597536087036s
+epoch 455: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 162.16484951972961s
+epoch 460: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 147.53639149665833s
+epoch 465: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 156.13446617126465s
+epoch 470: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 158.60853457450867s
+epoch 475: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 150.17545676231384s
+epoch 480: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 158.42307591438293s
+epoch 485: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 153.1062490940094s
+epoch 490: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 157.24239540100098s
+epoch 495: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 152.11367440223694s
+epoch 500: train_loss: 24.23217; Allocated: 12447232; Reserved: 29360128; time used = 140.1240677833557s
+Finished training. Time used = 14786.258335351944.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.485, 'macro': 0.3265993265993266, 'samples': 0.485, 'weighted': 0.3168013468013468, 'accuracy': 0.485}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 128 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 128 128 128 --lr 0.01 --model ss_graphmodel --patience 3 --readout sum --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.01, 'early_stopping': 20, 'hiddens': [128, 128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2754.49it/s] 80%|████████  | 1600/2000 [00:00<00:00, 3541.17it/s]100%|██████████| 2000/2000 [00:00<00:00, 6019.73it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 45.86911; Allocated: 13239808; Reserved: 29360128; time used = 60.71064019203186s
+epoch 10: train_loss: 1.40143; Allocated: 13239808; Reserved: 29360128; time used = 60.444509744644165s
+epoch 15: train_loss: 2.41946; Allocated: 13239808; Reserved: 29360128; time used = 58.720794677734375s
+epoch 20: train_loss: 1.76132; Allocated: 13239808; Reserved: 29360128; time used = 60.12373971939087s
+epoch 25: train_loss: 1.49804; Allocated: 13239808; Reserved: 29360128; time used = 56.54104495048523s
+epoch 30: train_loss: 1.39282; Allocated: 13239808; Reserved: 29360128; time used = 55.623104095458984s
+epoch 35: train_loss: 1.39422; Allocated: 13239808; Reserved: 29360128; time used = 56.30452537536621s
+epoch 40: train_loss: 1.38930; Allocated: 13239808; Reserved: 29360128; time used = 58.217637062072754s
+epoch 45: train_loss: 1.38726; Allocated: 13239808; Reserved: 29360128; time used = 60.3124418258667s
+epoch 50: train_loss: 1.39260; Allocated: 13239808; Reserved: 29360128; time used = 59.71198606491089s
+epoch 55: train_loss: 1.38615; Allocated: 13239808; Reserved: 29360128; time used = 58.67183470726013s
+epoch 60: train_loss: 1.38769; Allocated: 13239808; Reserved: 29360128; time used = 57.2153959274292s
+epoch 65: train_loss: 1.38705; Allocated: 13239808; Reserved: 29360128; time used = 55.4694447517395s
+epoch 70: train_loss: 1.38603; Allocated: 13239808; Reserved: 29360128; time used = 57.021440744400024s
+epoch 75: train_loss: 1.38606; Allocated: 13239808; Reserved: 29360128; time used = 55.57524633407593s
+epoch 80: train_loss: 1.38613; Allocated: 13239808; Reserved: 29360128; time used = 58.96723294258118s
+epoch 85: train_loss: 1.38581; Allocated: 13239808; Reserved: 29360128; time used = 59.30893802642822s
+epoch 90: train_loss: 1.38580; Allocated: 13239808; Reserved: 29360128; time used = 58.44543218612671s
+epoch 95: train_loss: 1.38572; Allocated: 13239808; Reserved: 29360128; time used = 59.54661798477173s
+epoch 100: train_loss: 1.38567; Allocated: 13239808; Reserved: 29360128; time used = 58.02184200286865s
+epoch 105: train_loss: 1.38568; Allocated: 13239808; Reserved: 29360128; time used = 55.398357629776s
+epoch 110: train_loss: 1.38558; Allocated: 13239808; Reserved: 29360128; time used = 55.83540320396423s
+epoch 115: train_loss: 1.38541; Allocated: 13239808; Reserved: 29360128; time used = 55.9714560508728s
+epoch 120: train_loss: 1.38609; Allocated: 13239808; Reserved: 29360128; time used = 59.62380576133728s
+epoch 125: train_loss: 1.38804; Allocated: 13239808; Reserved: 29360128; time used = 59.23311924934387s
+epoch 130: train_loss: 1.38645; Allocated: 13239808; Reserved: 29360128; time used = 59.08532667160034s
+epoch 135: train_loss: 1.38529; Allocated: 13239808; Reserved: 29360128; time used = 58.454681634902954s
+epoch 140: train_loss: 1.38505; Allocated: 13239808; Reserved: 29360128; time used = 55.34261608123779s
+epoch 145: train_loss: 1.38514; Allocated: 13239808; Reserved: 29360128; time used = 54.69008016586304s
+epoch 150: train_loss: 1.38505; Allocated: 13239808; Reserved: 29360128; time used = 55.83768129348755s
+epoch 155: train_loss: 1.56898; Allocated: 13239808; Reserved: 29360128; time used = 57.895581007003784s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 1796.5534784793854.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.5975, 'macro': 0.550778116476817, 'samples': 0.5975, 'weighted': 0.5464318947537301, 'accuracy': 0.5975}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset reddit_binary --dec inner --dim 64 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 64 64 64 --lr 0.001 --model ss_graphmodel --patience 3 --readout sum --sampler dgi --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_graphmodel', 'dataset': 'reddit_binary', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 64, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [64, 64, 64], 'patience': 3, 'enc': 'gin', 'dec': 'inner', 'sampler': 'dgi', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading REDDIT_BINARY Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/REDDIT_BINARY
+Load data.
+Not self.attributed(): set attribute as 1
+  0%|          | 0/2000 [00:00<?, ?it/s] 27%|██▋       | 538/2000 [00:00<00:00, 2327.77it/s] 80%|███████▉  | 1595/2000 [00:00<00:00, 3038.45it/s]100%|██████████| 2000/2000 [00:00<00:00, 5427.03it/s]This is a large sparse dataset with 2000 graphs, 859254 nodes and 1854762 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 12.44689; Allocated: 11077120; Reserved: 31457280; time used = 68.36283850669861s
+epoch 10: train_loss: 3.31565; Allocated: 11077120; Reserved: 31457280; time used = 67.23925399780273s
+epoch 15: train_loss: 3.43777; Allocated: 11077120; Reserved: 31457280; time used = 62.79200029373169s
+epoch 20: train_loss: 8.68724; Allocated: 11077120; Reserved: 31457280; time used = 61.61117887496948s
+epoch 25: train_loss: 6.89990; Allocated: 11077120; Reserved: 31457280; time used = 62.203028440475464s
+epoch 30: train_loss: 4.02746; Allocated: 11077120; Reserved: 31457280; time used = 63.395955085754395s
+epoch 35: train_loss: 2.78369; Allocated: 11077120; Reserved: 31457280; time used = 68.49644994735718s
+epoch 40: train_loss: 1.85313; Allocated: 11077120; Reserved: 31457280; time used = 67.84834408760071s
+epoch 45: train_loss: 2.02177; Allocated: 11077120; Reserved: 31457280; time used = 67.80402731895447s
+epoch 50: train_loss: 1.44601; Allocated: 11077120; Reserved: 31457280; time used = 63.599454164505005s
+epoch 55: train_loss: 1.54891; Allocated: 11077120; Reserved: 31457280; time used = 61.522013425827026s
+epoch 60: train_loss: 1.39518; Allocated: 11077120; Reserved: 31457280; time used = 61.96808338165283s
+epoch 65: train_loss: 1.42936; Allocated: 11077120; Reserved: 31457280; time used = 64.58513855934143s
+epoch 70: train_loss: 1.38831; Allocated: 11077120; Reserved: 31457280; time used = 67.15632128715515s
+epoch 75: train_loss: 1.39939; Allocated: 11077120; Reserved: 31457280; time used = 67.73042845726013s
+epoch 80: train_loss: 1.38727; Allocated: 11077120; Reserved: 31457280; time used = 67.50779485702515s
+epoch 85: train_loss: 1.39119; Allocated: 11077120; Reserved: 31457280; time used = 61.87000775337219s
+epoch 90: train_loss: 1.38637; Allocated: 11077120; Reserved: 31457280; time used = 62.165353536605835s
+epoch 95: train_loss: 1.38811; Allocated: 11077120; Reserved: 31457280; time used = 61.51485085487366s
+epoch 100: train_loss: 1.38645; Allocated: 11077120; Reserved: 31457280; time used = 66.1403398513794s
+epoch 105: train_loss: 1.38669; Allocated: 11077120; Reserved: 31457280; time used = 67.9071991443634s
+epoch 110: train_loss: 1.38664; Allocated: 11077120; Reserved: 31457280; time used = 67.84266757965088s
+epoch 115: train_loss: 1.38631; Allocated: 11077120; Reserved: 31457280; time used = 68.01860499382019s
+epoch 120: train_loss: 1.38641; Allocated: 11077120; Reserved: 31457280; time used = 61.199278354644775s
+epoch 125: train_loss: 1.38638; Allocated: 11077120; Reserved: 31457280; time used = 62.776947021484375s
+epoch 130: train_loss: 1.38631; Allocated: 11077120; Reserved: 31457280; time used = 62.36442041397095s
+epoch 135: train_loss: 1.38631; Allocated: 11077120; Reserved: 31457280; time used = 67.00867748260498s
+epoch 140: train_loss: 1.38631; Allocated: 11077120; Reserved: 31457280; time used = 67.39001560211182s
+epoch 145: train_loss: 1.38631; Allocated: 11077120; Reserved: 31457280; time used = 67.16787123680115s
+epoch 150: train_loss: 1.38630; Allocated: 11077120; Reserved: 31457280; time used = 67.65052700042725s
+epoch 155: train_loss: 1.38630; Allocated: 11077120; Reserved: 31457280; time used = 62.57490944862366s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 2021.5847780704498.
+Training classifier using 80.00% nodes...
+
+{'micro': 0.52, 'macro': 0.41111520058888484, 'samples': 0.52, 'weighted': 0.40351858667648144, 'accuracy': 0.52}

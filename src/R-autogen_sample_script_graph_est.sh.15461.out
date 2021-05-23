@@ -1,0 +1,55 @@
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset mutag --dec bilinear --dim 128 --early-stopping 20 --enc gin --epochs 500 --est nce --hiddens 128 128 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'mutag', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'bilinear', 'sampler': 'mvgrl', 'est': 'nce', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading MUTAG Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/MUTAG
+Load data.
+This is a medium-sized medium-dense dataset with 188 graphs, 3371 nodes and 7092 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 989.15915; Allocated: 3122176; Reserved: 6291456; time used = 0.823033332824707s
+epoch 10: train_loss: 989.74380; Allocated: 3122176; Reserved: 6291456; time used = 0.8198366165161133s
+epoch 15: train_loss: 989.16513; Allocated: 3122176; Reserved: 6291456; time used = 0.8301165103912354s
+epoch 20: train_loss: 988.52490; Allocated: 3122176; Reserved: 6291456; time used = 0.8011691570281982s
+epoch 25: train_loss: 988.68814; Allocated: 3122176; Reserved: 6291456; time used = 0.8127791881561279s
+epoch 30: train_loss: 988.30750; Allocated: 3122176; Reserved: 6291456; time used = 0.8198361396789551s
+epoch 35: train_loss: 987.51941; Allocated: 3122176; Reserved: 6291456; time used = 0.8265409469604492s
+epoch 40: train_loss: 985.85034; Allocated: 3122176; Reserved: 6291456; time used = 0.8442113399505615s
+epoch 45: train_loss: 983.84320; Allocated: 3122176; Reserved: 6291456; time used = 0.8143751621246338s
+epoch 50: train_loss: 966.27350; Allocated: 3122176; Reserved: 6291456; time used = 0.81695556640625s
+epoch 55: train_loss: 929.87665; Allocated: 3122176; Reserved: 6291456; time used = 0.8246936798095703s
+epoch 60: train_loss: 906.81488; Allocated: 3122176; Reserved: 6291456; time used = 0.8269853591918945s
+epoch 65: train_loss: 894.60019; Allocated: 3122176; Reserved: 6291456; time used = 0.8276870250701904s
+epoch 70: train_loss: 882.57599; Allocated: 3122176; Reserved: 6291456; time used = 0.8504500389099121s
+epoch 75: train_loss: 883.10822; Allocated: 3122176; Reserved: 6291456; time used = 0.8135643005371094s
+epoch 80: train_loss: 889.41751; Allocated: 3122176; Reserved: 6291456; time used = 0.8153259754180908s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 19.256550550460815.
+Training classifier using 80.00% nodes...
+{'micro': 0.6842105263157895, 'macro': 0.6161616161616161, 'samples': 0.6842105263157895, 'weighted': 0.6416799574694312, 'accuracy': 0.6842105263157895}
+[OpenNE] This is a welcome message.
+python3 -m openne --clf-ratio 0.8 --dataset mutag --dec bilinear --dim 128 --early-stopping 20 --enc gin --epochs 500 --est jsd --hiddens 128 128 --lr 0.001 --model ss_gaeg --patience 3 --readout sum --sampler mvgrl --task graphclassification
+actual args: {'cpu': False, 'devices': [0], 'task': 'graphclassification', 'model': 'ss_gaeg', 'dataset': 'mutag', 'local_dataset': False, 'name': 'SelfDefined', 'weighted': False, 'directed': False, 'clf_ratio': 0.8, '_validate': False, '_no_validate': False, 'dim': 128, 'epochs': 500, 'validation_interval': 5, 'debug_output_interval': 5, 'save': False, 'silent': False, 'sparse': False, 'lr': 0.001, 'early_stopping': 20, 'hiddens': [128, 128], 'patience': 3, 'enc': 'gin', 'dec': 'bilinear', 'sampler': 'mvgrl', 'est': 'jsd', 'readout': 'sum', 'kstep': 4, 'measurement': 'katz', 'table_size': 100000000.0, 'negative_ratio': 5, 'encoder_layer_list': [128], 'nu1': 1e-08, 'nu2': 0.0001, 'decay': False, 'pretrain': False, 'lamb': 0.4, 'path_length': 80, 'num_paths': 10, 'p': 1.0, 'q': 1.0, 'window': 10, 'workers': 8}
+Loading MUTAG Dataset from root dir: /var/lib/shared_volume/data/private/cgq/openne/OpenNE/data/MUTAG
+Load data.
+This is a medium-sized medium-dense dataset with 188 graphs, 3371 nodes and 7092 edges.
+Executing task GraphClassification.
+Creating test set using 80.0% nodes as training set...finished
+Start training...
+total iter: 500
+epoch 5: train_loss: 20449.65866; Allocated: 3122176; Reserved: 6291456; time used = 0.8182446956634521s
+epoch 10: train_loss: 391.34532; Allocated: 3122176; Reserved: 6291456; time used = 0.8217270374298096s
+epoch 15: train_loss: 55.60958; Allocated: 3122176; Reserved: 6291456; time used = 0.7864584922790527s
+epoch 20: train_loss: 2.44488; Allocated: 3122176; Reserved: 6291456; time used = 0.7965493202209473s
+epoch 25: train_loss: 2.01570; Allocated: 3122176; Reserved: 6291456; time used = 0.8027069568634033s
+epoch 30: train_loss: 1.73873; Allocated: 3122176; Reserved: 6291456; time used = 0.8077750205993652s
+epoch 35: train_loss: 1.54272; Allocated: 3122176; Reserved: 6291456; time used = 0.8217077255249023s
+epoch 40: train_loss: 1.49405; Allocated: 3122176; Reserved: 6291456; time used = 0.8258988857269287s
+epoch 45: train_loss: 1.42234; Allocated: 3122176; Reserved: 6291456; time used = 0.7821207046508789s
+epoch 50: train_loss: 1.39297; Allocated: 3122176; Reserved: 6291456; time used = 0.796360969543457s
+epoch 55: train_loss: 1.39555; Allocated: 3122176; Reserved: 6291456; time used = 0.8211793899536133s
+Early stopping condition satisfied. Abort training.
+Finished training. Time used = 12.473690509796143.
+Training classifier using 80.00% nodes...
+{'micro': 0.8157894736842104, 'macro': 0.7989417989417988, 'samples': 0.8157894736842105, 'weighted': 0.808131439710387, 'accuracy': 0.8157894736842105}
