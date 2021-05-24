@@ -16,8 +16,8 @@ import parse_exps
 from parse_exps import cartesian_prod
 from monitor import CMD, processed_dir, src_dir, get_CMD, get_cmd
 from new_samplefullexps import gethyper, hyperparameter_list
-from baseline_analyse import getmodel, modelargs, get_model_name1, normalize
-from single_analyse import create_table
+from baseline_analyse import getmodel, modelargs, get_model_name1, normalize, datasets
+from single_analyse import create_table_2
 
 csv_name = 'failure_analysis.csv'
 output_name = 'best_combinations.csv'
@@ -31,40 +31,25 @@ full_cache_path = os.path.join(processed_dir, cache_name)
 settings_path = os.path.join(processed_dir, '..', 'settings.json')
 fig_path = os.path.join(processed_dir, "..", "graph")
 
-datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
-            'wikics', 'amazon_photo', 'amazon_computer', 'mutag', 'imdb_binary',
-            'imdb_multi', 'reddit_binary', 'ptc_mr']
+
 
 
 def analyse():
     # step 1. open csv
-    if os.path.exists(full_cache_path):
-        table = pandas.read_csv(full_cache_path)
-    else:
-        table = pandas.read_csv(full_csv_path)
-        finished = table[table['status'] == 'finished']
-        results = {}
-        for i, exp in finished.iterrows():
-            cmd = CMD(exp['raw_cmd'])
-            res = float(exp['result'])
-            results[cmd.sorted_cmd_str] = res
 
-        # need only results
-        del table
-        del finished
+    table = pandas.read_csv(full_csv_path)
+    finished = table[table['status'] == 'finished']
+    results = {}
+    for i, exp in finished.iterrows():
+        cmd = CMD(exp['raw_cmd'])
+        res = float(exp['result'])
+        results[cmd.sorted_cmd_str] = res
 
-        # step 2. open exps
-        dirlist = os.listdir(src_dir)
-        # step 2.1. find files
-        all_exps = []
-        for k in parse_exps.parse().all():
-            all_exps.append(parse_exps.gen_bash(k))
-        cmd_set = set(CMD(i).sorted_cmd_str for i in all_exps)
-        cmd_list = list(CMD(i) for i in cmd_set)
+    # need only results
+    del table
+    del finished
 
-        # reconstruct table
-        table = create_table(cmd_list, results)
-        table.to_csv(full_cache_path)
+    table = create_table_2(results)
 
     table_new = table.sort_values(['task', 'dataset'])
     table_new['task'] = table_new['task'].apply(normalize)

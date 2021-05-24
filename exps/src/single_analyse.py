@@ -17,7 +17,7 @@ import parse_exps
 from parse_exps import cartesian_prod
 from monitor import CMD, processed_dir, src_dir, get_CMD, get_cmd
 from new_samplefullexps import gethyper, hyperparameter_list
-from baseline_analyse import getmodel, modelargs, normalize
+from baseline_analyse import getmodel, modelargs, normalize, in_exp
 
 csv_name = 'failure_analysis.csv'
 output_name = 'combined_model_analysis.csv'
@@ -36,14 +36,6 @@ datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
 if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
-graph_samplers = {
-    "dgi", "mvgrl", "aug"
-}
-
-def in_exp(cmd):
-    if cmd.argsdict['enc'] == 'linear' and cmd.argsdict['sampler'] in graph_samplers:
-        return False
-    return True
 
 def create_table(cmd_list, results, smooth=False):
     args = 'dataset,enc,dec,sampler,readout,est,dim,hiddens,task,raw,res'.split(',')
@@ -65,6 +57,30 @@ def create_table(cmd_list, results, smooth=False):
             if str(cmd) in results:
                 for i in args:
                     wdict[i].append(normalize(cmd.argsdict.get(i, default(i, cmd))))
+
+
+    table = pandas.DataFrame()
+    for a in args:
+        table[a] = wdict[a]
+
+    return table
+
+
+def create_table_2(results):
+    args = 'dataset,enc,dec,sampler,readout,est,dim,hiddens,task,raw,res'.split(',')
+    def default(arg, c):
+        if arg == 'raw':
+            return str(c)
+        if arg == 'res':
+            return results[str(c)]
+        return None
+
+    wdict = {a: [] for a in args}
+    for cmdstr in results:
+        cmd = CMD(cmdstr)
+        if in_exp(cmd):
+            for i in args:
+                wdict[i].append(normalize(cmd.argsdict.get(i, default(i, cmd))))
 
 
     table = pandas.DataFrame()

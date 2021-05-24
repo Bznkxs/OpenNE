@@ -6,6 +6,7 @@ from typing import Union
 import pandas
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 from monitor import CMD, processed_dir, src_dir, get_CMD
 from new_samplefullexps import gethyper, hyperparameter_list
 
@@ -63,24 +64,23 @@ baselines = {"gae": {
                 "readout": "sum"
             }
 }
-
-
-def getmodel(argsdict):
-    ma_list = []
-    for ma_key in modelargs:
-        ma_list.append(argsdict.get(ma_key, None))
-    return tuple(ma_list)
-
-
-baseline_dict = {getmodel(modelargsdict): modelname for modelname, modelargsdict in baselines.items()}
-# print(baseline_dict)
-
-def get_baseline(cmd: CMD):
-    model_tuple = getmodel(cmd.argsdict)
-    if model_tuple in baseline_dict:
-        return baseline_dict[model_tuple]
-    return "others"
-
+graph_samplers = {
+    "dgi", "mvgrl", "aug"
+}
+node_samplers = {
+    "node-neighbor-random",
+    "node-rand_walk-random",
+    "gca"
+}
+decoders = {
+    'inner', 'bilinear'
+}
+readouts = {
+    'sum', 'mean'
+}
+datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
+            'wikics', 'amazon_photo', 'amazon_computer', 'mutag', 'imdb_binary',
+            'imdb_multi', 'reddit_binary', 'ptc_mr']
 def normalize(x):
     n_set = {
         'GIN', 'GCN', 'GAT', 'DGI', 'MVGRL',
@@ -117,6 +117,53 @@ def normalize(x):
                 return w
     return x
 
+def in_exp(cmd):
+    if cmd.argsdict['enc'] == 'linear' and cmd.argsdict['sampler'] in graph_samplers:
+        return False
+    if cmd.argsdict['dec'] not in decoders:
+        return False
+    if cmd.argsdict['dataset'] not in datasets:
+        return False
+    if cmd.argsdict['readout'] not in readouts:
+        return False
+    if cmd.argsdict['sampler'] not in node_samplers.union(graph_samplers):
+        return False
+    if cmd.argsdict.get('epochs', None) != '500':
+        return False
+    if cmd.argsdict.get('patience', None) != '3':
+        return False
+    if cmd.argsdict.get('dim', None) not in ['32', '64', '128', '256']:
+        return False
+    if cmd.argsdict.get('hiddens', None) not in [None, '0', '1', '2', '3', '4']:
+        return False
+    if cmd.argsdict.get('lr', None) not in ['0.01', '0.001']:
+        return False
+    if cmd.argsdict.get('clf-ratio', None) not in ['0.2', '0.8']:
+        return False
+    if cmd.argsdict['clf-ratio'] == '0.2' and cmd.argsdict['task'] == 'graphclassification':
+        return False
+    if cmd.argsdict['clf-ratio'] == '0.8' and cmd.argsdict['task'] == 'unsupervisednodeclassification':
+        return False
+    return True
+
+def getmodel(argsdict):
+    ma_list = []
+    for ma_key in modelargs:
+        ma_list.append(normalize(argsdict.get(ma_key, None)))
+    return tuple(ma_list)
+
+
+baseline_dict = {getmodel(modelargsdict): modelname for modelname, modelargsdict in baselines.items()}
+# print(baseline_dict)
+
+def get_baseline(cmd: CMD):
+    model_tuple = getmodel(cmd.argsdict)
+    if model_tuple in baseline_dict:
+        return baseline_dict[model_tuple]
+    return "others"
+
+
+
 def get_model_name(cmd: CMD):
     model_tuple = getmodel(cmd.argsdict)
     if model_tuple in baseline_dict:
@@ -139,7 +186,10 @@ def analyse():
     results = {}
     all_max = {}  # {dataset: (res, cmd)}
     for i, exp in finished.iterrows():
+
         cmd = CMD(exp['raw_cmd'])
+        if not in_exp(cmd):
+            continue
         res = float(exp['result'])
         results[cmd.sorted_cmd_str] = res
         dataset = cmd.argsdict['dataset']

@@ -1,0 +1,321 @@
+task,dataset,model,res
+Graph,IMDB BINARY,"(GCN, MVGRL, Inner, NCE, Mean)",0.729
+Graph,IMDB BINARY,"(GIN, LINE, Bilinear, NCE, Sum)",0.729
+Graph,IMDB BINARY,"(GIN, LINE, Inner, NCE, Sum)",0.729
+Graph,IMDB BINARY,"(GCN, MVGRL, Inner, JSD, Mean)",0.725
+Graph,IMDB BINARY,"(GIN, DeepWalk, Inner, JSD, Mean)",0.725
+Graph,IMDB BINARY,"(GCN, DGI, Bilinear, NCE, Mean)",0.72
+Graph,IMDB BINARY,"(GCN, DGI, Inner, JSD, Mean)",0.72
+Graph,IMDB BINARY,"(GIN, DGI, Bilinear, NCE, Mean)",0.72
+Graph,IMDB BINARY,"(GIN, DeepWalk, Bilinear, NCE, Mean)",0.72
+Graph,IMDB BINARY,"(GIN, LINE, Bilinear, NCE, Mean)",0.72
+Graph,IMDB BINARY,"(GCN, LINE, Inner, NCE, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, GCA, Inner, JSD, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, LINE, Bilinear, JSD, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, MVGRL, Bilinear, JSD, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, MVGRL, Inner, JSD, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, MVGRL, Inner, JSD, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, MVGRL, Inner, NCE, Mean)",0.715
+Graph,IMDB BINARY,"(GIN, DeepWalk, Inner, JSD, Sum)",0.71
+Graph,IMDB BINARY,"(GIN, DeepWalk, Inner, NCE, Sum)",0.71
+Graph,IMDB MULTI,"(GIN, DeepWalk, Bilinear, JSD, Sum)",0.52
+Graph,IMDB MULTI,"(GIN, LINE, Bilinear, NCE, Sum)",0.52
+Graph,IMDB MULTI,"(GIN, LINE, Inner, NCE, Sum)",0.516
+Graph,IMDB MULTI,"(GCN, LINE, Bilinear, JSD, Mean)",0.51
+Graph,IMDB MULTI,"(GIN, DGI, Inner, JSD, Mean)",0.51
+Graph,IMDB MULTI,"(GIN, DGI, Inner, JSD, Mean)",0.506
+Graph,IMDB MULTI,"(GIN, DeepWalk, Bilinear, JSD, Mean)",0.506
+Graph,IMDB MULTI,"(GIN, LINE, Bilinear, NCE, Mean)",0.506
+Graph,IMDB MULTI,"(GIN, LINE, Inner, JSD, Sum)",0.506
+Graph,IMDB MULTI,"(GIN, MVGRL, Bilinear, NCE, Mean)",0.503
+Graph,IMDB MULTI,"(GIN, MVGRL, Inner, NCE, Mean)",0.5
+Graph,IMDB MULTI,"(GCN, DeepWalk, Bilinear, JSD, Mean)",0.496
+Graph,IMDB MULTI,"(GCN, DeepWalk, Inner, NCE, Mean)",0.496
+Graph,IMDB MULTI,"(GIN, DeepWalk, Inner, NCE, Mean)",0.496
+Graph,IMDB MULTI,"(GIN, LINE, Inner, NCE, Mean)",0.496
+Graph,IMDB MULTI,"(GIN, DeepWalk, Bilinear, NCE, Sum)",0.483
+Graph,IMDB MULTI,InfoGraph,0.483
+Graph,IMDB MULTI,"(GIN, LINE, Bilinear, JSD, Sum)",0.48
+Graph,IMDB MULTI,InfoGraph,0.48
+Graph,MUTAG,"(GAT, DeepWalk, Bilinear, JSD, Sum)",0.868
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, JSD, Sum)",0.868
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, JSD, Sum)",0.868
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, JSD, Mean)",0.868
+Graph,MUTAG,"(GCN, DeepWalk, Inner, JSD, Mean)",0.868
+Graph,MUTAG,"(GIN, MVGRL, Inner, JSD, Mean)",0.868
+Graph,MUTAG,GAE,0.868
+Graph,MUTAG,MVGRL,0.868
+Graph,MUTAG,"(GAT, DGI, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, DGI, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GAT, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, GCA, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, NCE, Mean)",0.842
+Graph,MUTAG,"(GAT, MVGRL, Bilinear, NCE, Mean)",0.842
+Graph,MUTAG,"(GCN, DGI, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DGI, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, GCA, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, GCA, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, GCA, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GCN, LINE, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, DGI, Bilinear, JSD, Mean)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, JSD, Mean)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, GCA, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, GraphCL, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, LINE, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(GIN, MVGRL, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, DeepWalk, Inner, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, GCA, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Bilinear, NCE, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,"(linear, LINE, Inner, JSD, Sum)",0.842
+Graph,MUTAG,InfoGraph,0.842
+Graph,MUTAG,InfoGraph,0.842
+Graph,MUTAG,MVGRL,0.842
+Graph,MUTAG,MVGRL,0.842
+Graph,MUTAG,MVGRL,0.842
+Graph,MUTAG,MVGRL,0.842
+Graph,PTC_MR,"(GCN, DGI, Bilinear, NCE, Mean)",0.739
+Graph,PTC_MR,"(GCN, DGI, Bilinear, NCE, Mean)",0.739
+Graph,PTC_MR,"(GIN, GraphCL, Bilinear, NCE, Sum)",0.695
+Graph,PTC_MR,"(GAT, LINE, Bilinear, JSD, Mean)",0.681
+Graph,PTC_MR,"(GAT, LINE, Bilinear, JSD, Sum)",0.681
+Graph,PTC_MR,"(GAT, LINE, Bilinear, NCE, Mean)",0.681
+Graph,PTC_MR,"(GAT, LINE, Inner, JSD, Mean)",0.681
+Graph,PTC_MR,"(GCN, GraphCL, Bilinear, NCE, Mean)",0.681
+Graph,PTC_MR,"(GAT, DGI, Inner, NCE, Sum)",0.666
+Graph,PTC_MR,"(GAT, DeepWalk, Inner, NCE, Mean)",0.666
+Graph,PTC_MR,"(GCN, DGI, Inner, NCE, Sum)",0.666
+Graph,PTC_MR,"(GCN, GCA, Bilinear, NCE, Sum)",0.666
+Graph,PTC_MR,"(GCN, LINE, Bilinear, JSD, Sum)",0.666
+Graph,PTC_MR,"(GIN, DeepWalk, Inner, JSD, Sum)",0.666
+Graph,PTC_MR,"(linear, LINE, Bilinear, NCE, Mean)",0.666
+Graph,PTC_MR,"(GAT, DGI, Bilinear, NCE, Sum)",0.652
+Graph,PTC_MR,"(GAT, DeepWalk, Bilinear, NCE, Mean)",0.652
+Graph,PTC_MR,"(GAT, GraphCL, Bilinear, NCE, Mean)",0.652
+Graph,PTC_MR,"(GCN, DGI, Inner, NCE, Mean)",0.652
+Graph,PTC_MR,"(GCN, DeepWalk, Inner, NCE, Sum)",0.652
+Graph,PTC_MR,"(linear, LINE, Inner, NCE, Sum)",0.652
+Graph,PTC_MR,GraphCL,0.652
+Graph,PTC_MR,GraphCL,0.652
+Graph,PTC_MR,GraphCL,0.652
+Graph,PTC_MR,GraphCL,0.652
+Graph,Reddit BINARY,"(GIN, GCA, Bilinear, JSD, Sum)",0.827
+Graph,Reddit BINARY,"(GIN, GCA, Inner, NCE, Sum)",0.795
+Graph,Reddit BINARY,"(GIN, LINE, Bilinear, NCE, Sum)",0.782
+Graph,Reddit BINARY,"(GIN, DeepWalk, Bilinear, NCE, Sum)",0.777
+Graph,Reddit BINARY,"(GIN, LINE, Bilinear, JSD, Sum)",0.772
+Graph,Reddit BINARY,"(GIN, LINE, Inner, JSD, Sum)",0.769
+Graph,Reddit BINARY,"(GIN, GCA, Bilinear, JSD, Sum)",0.765
+Graph,Reddit BINARY,"(GIN, DeepWalk, Inner, NCE, Sum)",0.755
+Graph,Reddit BINARY,"(GAT, LINE, Inner, JSD, Sum)",0.74
+Graph,Reddit BINARY,"(linear, GCA, Inner, JSD, Sum)",0.74
+Graph,Reddit BINARY,"(GAT, GCA, Inner, JSD, Sum)",0.735
+Graph,Reddit BINARY,"(linear, DeepWalk, Bilinear, NCE, Sum)",0.735
+Graph,Reddit BINARY,"(linear, LINE, Bilinear, NCE, Sum)",0.735
+Graph,Reddit BINARY,"(GAT, DeepWalk, Bilinear, NCE, Sum)",0.732
+Graph,Reddit BINARY,"(GAT, DeepWalk, Inner, JSD, Sum)",0.732
+Graph,Reddit BINARY,"(GAT, DeepWalk, Inner, JSD, Sum)",0.732
+Graph,Reddit BINARY,"(GAT, DeepWalk, Inner, NCE, Sum)",0.732
+Graph,Reddit BINARY,"(GAT, GCA, Bilinear, JSD, Sum)",0.732
+Graph,Reddit BINARY,"(GAT, GCA, Inner, JSD, Sum)",0.732
+Graph,Reddit BINARY,"(linear, DeepWalk, Bilinear, JSD, Sum)",0.732
+Graph,Reddit BINARY,"(linear, GCA, Inner, NCE, Sum)",0.732
+Graph,Reddit BINARY,"(linear, LINE, Inner, JSD, Sum)",0.732
+Node,Amazon Photo,"(GIN, DeepWalk, Inner, NCE, Mean)",0.92
+Node,Amazon Photo,"(GIN, LINE, Bilinear, NCE, Mean)",0.92
+Node,Amazon Photo,"(GAT, LINE, Inner, JSD, Mean)",0.916
+Node,Amazon Photo,"(GIN, DeepWalk, Inner, JSD, Sum)",0.915
+Node,Amazon Photo,"(GAT, DGI, Bilinear, NCE, Mean)",0.914
+Node,Amazon Photo,"(GAT, DGI, Bilinear, NCE, Mean)",0.914
+Node,Amazon Photo,"(GAT, LINE, Inner, NCE, Sum)",0.912
+Node,Amazon Photo,"(GIN, DGI, Bilinear, NCE, Mean)",0.912
+Node,Amazon Photo,GAE,0.912
+Node,Amazon Photo,"(GAT, LINE, Bilinear, NCE, Sum)",0.91
+Node,Amazon Photo,GAE,0.91
+Node,Amazon Photo,"(GAT, DeepWalk, Inner, JSD, Sum)",0.909
+Node,Amazon Photo,"(GAT, DeepWalk, Inner, NCE, Mean)",0.909
+Node,Amazon Photo,"(GAT, DeepWalk, Inner, NCE, Sum)",0.909
+Node,Amazon Photo,"(GCN, LINE, Bilinear, NCE, Sum)",0.909
+Node,Amazon Photo,"(GIN, DeepWalk, Inner, JSD, Sum)",0.909
+Node,Amazon Photo,"(GCN, DeepWalk, Bilinear, NCE, Mean)",0.908
+Node,Amazon Photo,"(GAT, MVGRL, Inner, NCE, Mean)",0.904
+Node,Amazon Photo,"(GIN, GCA, Inner, NCE, Sum)",0.902
+Node,Amazon Photo,GAE,0.902
+Node,Amazon Photo,GAE,0.902
+Node,CiteSeer,"(GAT, LINE, Inner, NCE, Mean)",0.711
+Node,CiteSeer,"(GAT, LINE, Inner, NCE, Mean)",0.711
+Node,CiteSeer,"(GCN, LINE, Bilinear, JSD, Mean)",0.709
+Node,CiteSeer,"(GIN, DeepWalk, Inner, NCE, Mean)",0.708
+Node,CiteSeer,"(GIN, LINE, Inner, NCE, Sum)",0.708
+Node,CiteSeer,"(GIN, LINE, Inner, NCE, Sum)",0.708
+Node,CiteSeer,"(linear, DeepWalk, Inner, NCE, Mean)",0.708
+Node,CiteSeer,"(GCN, DeepWalk, Inner, NCE, Mean)",0.707
+Node,CiteSeer,"(GIN, DeepWalk, Inner, NCE, Mean)",0.707
+Node,CiteSeer,"(GIN, DeepWalk, Inner, NCE, Mean)",0.707
+Node,CiteSeer,"(GIN, LINE, Inner, NCE, Mean)",0.707
+Node,CiteSeer,"(GAT, LINE, Inner, JSD, Mean)",0.706
+Node,CiteSeer,"(GAT, DGI, Bilinear, NCE, Mean)",0.704
+Node,CiteSeer,"(GCN, DGI, Bilinear, NCE, Mean)",0.703
+Node,CiteSeer,"(GCN, LINE, Inner, NCE, Mean)",0.703
+Node,CiteSeer,"(GIN, DGI, Bilinear, NCE, Mean)",0.703
+Node,CiteSeer,"(GAT, LINE, Bilinear, JSD, Mean)",0.702
+Node,CiteSeer,"(GAT, LINE, Bilinear, JSD, Mean)",0.702
+Node,CiteSeer,"(GIN, DGI, Inner, NCE, Mean)",0.702
+Node,CiteSeer,"(GIN, DGI, Inner, NCE, Mean)",0.702
+Node,CiteSeer,"(GIN, DeepWalk, Inner, NCE, Mean)",0.702
+Node,Coauthor CS,"(GAT, LINE, Inner, JSD, Mean)",0.94
+Node,Coauthor CS,"(GAT, LINE, Bilinear, NCE, Sum)",0.936
+Node,Coauthor CS,"(GAT, LINE, Inner, JSD, Mean)",0.934
+Node,Coauthor CS,"(GAT, LINE, Inner, JSD, Mean)",0.934
+Node,Coauthor CS,"(GAT, LINE, Inner, NCE, Mean)",0.934
+Node,Coauthor CS,"(GIN, LINE, Inner, NCE, Mean)",0.934
+Node,Coauthor CS,"(GAT, DeepWalk, Inner, JSD, Mean)",0.933
+Node,Coauthor CS,"(GAT, GCA, Inner, NCE, Mean)",0.933
+Node,Coauthor CS,"(GAT, GCA, Inner, NCE, Sum)",0.933
+Node,Coauthor CS,"(GAT, LINE, Inner, NCE, Mean)",0.933
+Node,Coauthor CS,"(GAT, MVGRL, Bilinear, NCE, Sum)",0.933
+Node,Coauthor CS,"(GIN, LINE, Inner, JSD, Mean)",0.931
+Node,Coauthor CS,"(linear, LINE, Inner, NCE, Mean)",0.931
+Node,Coauthor CS,"(linear, LINE, Inner, NCE, Mean)",0.931
+Node,Coauthor CS,GCA,0.931
+Node,Coauthor CS,GCA,0.931
+Node,Coauthor CS,"(GAT, LINE, Bilinear, JSD, Sum)",0.93
+Node,Coauthor CS,"(GCN, DGI, Bilinear, NCE, Mean)",0.929
+Node,Coauthor CS,"(GCN, LINE, Inner, NCE, Mean)",0.929
+Node,Coauthor CS,"(GIN, LINE, Inner, JSD, Mean)",0.929
+Node,Coauthor CS,GCA,0.929
+Node,Coauthor Phy,"(GIN, DeepWalk, Inner, JSD, Sum)",0.958
+Node,Coauthor Phy,"(GIN, LINE, Inner, JSD, Sum)",0.958
+Node,Coauthor Phy,"(GAT, GCA, Inner, JSD, Mean)",0.957
+Node,Coauthor Phy,"(GAT, LINE, Inner, JSD, Mean)",0.957
+Node,Coauthor Phy,"(GAT, DeepWalk, Inner, JSD, Mean)",0.956
+Node,Coauthor Phy,"(GCN, DGI, Inner, JSD, Mean)",0.955
+Node,Coauthor Phy,"(GCN, LINE, Bilinear, NCE, Sum)",0.955
+Node,Coauthor Phy,"(GIN, DeepWalk, Inner, NCE, Mean)",0.955
+Node,Coauthor Phy,"(GIN, LINE, Inner, JSD, Mean)",0.955
+Node,Coauthor Phy,GCA,0.955
+Node,Coauthor Phy,GCA,0.955
+Node,Coauthor Phy,"(GAT, DGI, Inner, JSD, Mean)",0.954
+Node,Coauthor Phy,"(GAT, DeepWalk, Inner, NCE, Sum)",0.954
+Node,Coauthor Phy,"(GCN, DeepWalk, Bilinear, NCE, Sum)",0.954
+Node,Coauthor Phy,"(GCN, DeepWalk, Inner, NCE, Mean)",0.954
+Node,Coauthor Phy,"(GCN, LINE, Inner, NCE, Mean)",0.954
+Node,Coauthor Phy,"(GIN, DeepWalk, Inner, JSD, Sum)",0.954
+Node,Coauthor Phy,GAE,0.954
+Node,Coauthor Phy,GAE,0.954
+Node,Coauthor Phy,GAE,0.954
+Node,Coauthor Phy,GCA,0.954
+Node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.854
+Node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.854
+Node,Cora,"(GAT, LINE, Inner, NCE, Mean)",0.853
+Node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.852
+Node,Cora,"(GIN, LINE, Inner, NCE, Sum)",0.852
+Node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.851
+Node,Cora,"(GCN, LINE, Inner, NCE, Mean)",0.847
+Node,Cora,"(GCN, LINE, Inner, NCE, Mean)",0.847
+Node,Cora,"(GCN, LINE, Inner, NCE, Mean)",0.846
+Node,Cora,"(GCN, LINE, Inner, NCE, Mean)",0.846
+Node,Cora,"(GCN, DeepWalk, Inner, NCE, Mean)",0.845
+Node,Cora,"(GIN, DeepWalk, Inner, NCE, Mean)",0.842
+Node,Cora,"(GIN, DeepWalk, Inner, NCE, Mean)",0.842
+Node,Cora,"(GAT, DeepWalk, Inner, NCE, Mean)",0.841
+Node,Cora,"(GAT, DeepWalk, Inner, NCE, Mean)",0.841
+Node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.841
+Node,Cora,"(GAT, DeepWalk, Inner, NCE, Mean)",0.838
+Node,Cora,"(GCN, DeepWalk, Inner, NCE, Mean)",0.838
+Node,Cora,"(GCN, DeepWalk, Inner, NCE, Mean)",0.838
+Node,PubMed,"(GIN, LINE, Inner, NCE, Sum)",0.839
+Node,PubMed,"(GIN, DeepWalk, Bilinear, JSD, Mean)",0.835
+Node,PubMed,GAE,0.83
+Node,PubMed,GAE,0.83
+Node,PubMed,"(GCN, DGI, Bilinear, NCE, Sum)",0.828
+Node,PubMed,"(GIN, LINE, Bilinear, JSD, Mean)",0.828
+Node,PubMed,GCA,0.828
+Node,PubMed,GCA,0.828
+Node,PubMed,"(GAT, LINE, Bilinear, NCE, Mean)",0.826
+Node,PubMed,"(GIN, LINE, Bilinear, NCE, Sum)",0.826
+Node,PubMed,"(GAT, DeepWalk, Bilinear, NCE, Mean)",0.824
+Node,PubMed,"(GCN, MVGRL, Bilinear, NCE, Mean)",0.824
+Node,PubMed,"(GIN, LINE, Bilinear, JSD, Sum)",0.823
+Node,PubMed,"(GAT, LINE, Bilinear, JSD, Sum)",0.822
+Node,PubMed,"(GAT, LINE, Bilinear, NCE, Sum)",0.822
+Node,PubMed,"(linear, LINE, Inner, JSD, Sum)",0.822
+Node,PubMed,"(GCN, DGI, Inner, NCE, Sum)",0.821
+Node,PubMed,"(GIN, GCA, Bilinear, JSD, Mean)",0.819
+Node,PubMed,"(GCN, DGI, Bilinear, NCE, Sum)",0.817
+Node,PubMed,"(GCN, LINE, Bilinear, JSD, Mean)",0.817
+Node,WikiCS,"(GIN, DeepWalk, Inner, NCE, Mean)",0.786
+Node,WikiCS,"(GCN, DeepWalk, Inner, NCE, Mean)",0.779
+Node,WikiCS,"(GCN, GraphCL, Bilinear, NCE, Mean)",0.775
+Node,WikiCS,"(GAT, LINE, Inner, NCE, Sum)",0.773
+Node,WikiCS,"(GAT, LINE, Inner, NCE, Sum)",0.773
+Node,WikiCS,"(GCN, DGI, Bilinear, NCE, Mean)",0.773
+Node,WikiCS,"(GIN, LINE, Inner, NCE, Sum)",0.773
+Node,WikiCS,"(GAT, DeepWalk, Inner, NCE, Mean)",0.771
+Node,WikiCS,"(GCN, DGI, Bilinear, NCE, Sum)",0.769
+Node,WikiCS,"(GAT, LINE, Inner, JSD, Sum)",0.766
+Node,WikiCS,"(GAT, MVGRL, Bilinear, JSD, Mean)",0.765
+Node,WikiCS,"(GCN, LINE, Bilinear, NCE, Sum)",0.765
+Node,WikiCS,"(GCN, GraphCL, Inner, NCE, Sum)",0.764
+Node,WikiCS,"(GIN, DeepWalk, Inner, NCE, Sum)",0.763
+Node,WikiCS,"(GAT, GraphCL, Bilinear, NCE, Mean)",0.762
+Node,WikiCS,"(GCN, LINE, Bilinear, JSD, Mean)",0.762
+Node,WikiCS,"(GIN, GraphCL, Bilinear, NCE, Mean)",0.762
+Node,WikiCS,"(GIN, LINE, Bilinear, NCE, Sum)",0.762
+Node,WikiCS,GCA,0.762
+Node,WikiCS,GCA,0.762

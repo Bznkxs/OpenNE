@@ -1,0 +1,18 @@
+Task,Dataset,"Best design 
+in design space","Best 
+score","Best 
+baseline","Best score 
+of baseline"
+node,Amazon Computers,"(GCN, DGI, Bilinear, NCE, Sum)",0.861,GAE,0.839
+node,Amazon Photo,"(GIN, DeepWalk, Inner, NCE, Mean)",0.92,GAE,0.912
+node,CiteSeer,"(GAT, LINE, Inner, NCE, Mean)",0.711,GAE,0.68
+node,Coauthor CS,"(GAT, LINE, Inner, JSD, Mean)",0.94,GCA,0.931
+node,Coauthor Phy,"(GIN, DeepWalk, Inner, JSD, Sum)",0.958,GCA,0.955
+node,Cora,"(GIN, LINE, Inner, NCE, Mean)",0.854,GAE,0.804
+graph,IMDB BINARY,"(GIN, LINE, Inner, NCE, Sum)",0.729,InfoGraph,0.665
+graph,IMDB MULTI,"(GIN, DeepWalk, Bilinear, JSD, Sum)",0.52,InfoGraph,0.483
+graph,MUTAG,"(GAT, MVGRL, Bilinear, JSD, Sum)",0.868,MVGRL,0.842
+graph,PTC_MR,"(GCN, DGI, Bilinear, NCE, Mean)",0.739,GraphCL,0.652
+node,PubMed,"(GIN, LINE, Inner, NCE, Sum)",0.839,GAE,0.83
+graph,Reddit BINARY,"(GIN, GCA, Bilinear, JSD, Sum)",0.827,GraphCL,0.682
+node,WikiCS,"(GIN, DeepWalk, Inner, NCE, Mean)",0.786,GCA,0.762
