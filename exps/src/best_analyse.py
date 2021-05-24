@@ -58,6 +58,7 @@ def analyse():
     table_new = table_new[table_new['rank'] < 20]
     table_new['model'] = table_new['raw'].apply(get_model_name1)
     table_new = table_new.sort_values(by=['task', 'dataset', 'rank', 'model'])
+    table_new = table_new.sort_values('task', ascending=False, kind='mergesort')
     table_new = table_new[['task', 'dataset', 'model', 'res']]
 
 

@@ -27,12 +27,6 @@ full_output_path = os.path.join(processed_dir, output_name)
 settings_path = os.path.join(processed_dir, '..', 'settings.json')
 fig_path = os.path.join(processed_dir, "..", "graph")
 
-datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
-            'wikics', 'amazon_photo', 'amazon_computer', 'mutag', 'imdb_binary',
-            'imdb_multi', 'reddit_binary', 'ptc_mr']
-
-
-
 if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
@@ -219,23 +213,6 @@ def analyse():
 
             plot_filled_distribution(distributions, options[m_arg], f'single_stack_norm_{ttt}_{m_arg}.png')
 
-        for i, m_arg0 in enumerate(modelargs):
-            for j, m_arg1 in enumerate(modelargs):
-                if i <= j:
-                    break
-                print(m_arg0, m_arg1, "############")
-                table_new1 = table_new
-                table_new1 = table_new1.sort_values([m_arg0, m_arg1])
-                # get kde distributions
-                distributions = []
-                c_options = []
-                for option0 in options[m_arg0]:
-                    for option1 in options[m_arg1]:
-                        f = scipy.stats.gaussian_kde(table_new1[(table_new1[m_arg0] == option0) & (table_new1[m_arg1] == option1)]['rank'])
-                        c_options.append(option0 + '+' + option1)
-                        distributions.append(f)
-
-                plot_filled_distribution(distributions, c_options, f'dbl_stack_norm_{ttt}_{m_arg0}_{m_arg1}.png')
 
 
 if __name__ == '__main__':

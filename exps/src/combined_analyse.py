@@ -27,10 +27,6 @@ full_output_path = os.path.join(processed_dir, output_name)
 settings_path = os.path.join(processed_dir, '..', 'settings.json')
 fig_path = os.path.join(processed_dir, "..", "graph")
 
-datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
-            'wikics', 'amazon_photo', 'amazon_computer', 'mutag', 'imdb_binary',
-            'imdb_multi', 'reddit_binary', 'ptc_mr']
-
 if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 

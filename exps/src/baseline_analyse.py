@@ -20,7 +20,7 @@ full_output_latex_path = os.path.join(processed_dir, output_latex_name)
 settings_path = os.path.join(processed_dir, '..', 'settings.json')
 fig_path = os.path.join(processed_dir, "..", "graph")
 
-modelargs = ['enc', 'sampler', 'dec', 'est', 'readout']
+modelargs = ['enc', 'readout', 'sampler', 'dec', 'est']
 baselines = {"gae": {
                 "enc": "gcn",
                 "sampler": "node-neighbor-random",
@@ -79,7 +79,7 @@ readouts = {
     'sum', 'mean'
 }
 datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
-            'wikics', 'amazon_photo', 'amazon_computer', 'mutag', 'imdb_binary',
+            'wikics', 'amazon_photo', 'amazon_computers', 'mutag', 'imdb_binary',
             'imdb_multi', 'reddit_binary', 'ptc_mr']
 def normalize(x):
     n_set = {
@@ -204,7 +204,7 @@ def analyse():
             all_max[dataset] = (res, cmd)
         elif all_max[dataset][0] < res:
             all_max[dataset] = (res, cmd)
-
+    print(all_max)
     # remove unwanted exps
 
     basetable = finished[finished['basemodel'] != 'others']
@@ -319,7 +319,7 @@ def analyse():
     # indices = pandas.MultiIndex(('task', 'dataset'))
     output_df = pandas.read_csv(full_output_path, index_col=(1,))
     print(output_df)
-    output_df = output_df.sort_values('Task')
+    output_df = output_df.sort_values('Task', ascending=False)
     output_df = output_df.drop(columns=['Task'])
     print(output_df)
 
