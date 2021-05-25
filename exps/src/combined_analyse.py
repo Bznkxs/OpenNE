@@ -31,11 +31,13 @@ if not os.path.exists(fig_path):
     os.makedirs(fig_path)
 
 def work(args):
-    table_0, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv = args
+    table_0, thresholds, options, module_names, module_no_dict, module_intv = args
     data = []
     for ttt in ['Node', 'Graph']:
         print(ttt)
         table = table_0[table_0['task'] == ttt]
+        n_all = table.groupby(modelargs).apply(lambda x: len(x))
+        n_1 = table.groupby(modelargs).apply(lambda x: 0)
         for threshold in thresholds:
             quantiles = table.groupby('dataset')['res'].quantile(threshold)
             table_p = table[quantiles[table['dataset']].to_numpy() <= table['res'].to_numpy()]
@@ -43,13 +45,16 @@ def work(args):
             # normalize: keep p(every module combination) the same
             n_m_all = table_p.groupby(modelargs).apply(lambda x: len(x))
             print("N_M_all")
-            print(n_m_all)
+            #print(n_m_all)
+            print(len(table_p))
+            print((n_m_all.sum()))
             print("N_all")
-            print(n_all)
-
+            #print(n_all)
+            print(len(table))
+            print((n_all.sum()))
             n_m_all = (n_m_all + n_1).apply(lambda x: 0 if np.isnan(x) else x)
             # n_m_all = n_m_all_smooth
-            print((n_m_all / n_all).to_string())
+            # print((n_m_all / n_all).to_string())
             p_m_all = (n_m_all / n_all)  # .apply(lambda x: 0 if np.isnan(x) else x)
             nomin = sum(p_m_all)
             all_distribution = p_m_all / nomin
@@ -60,11 +65,13 @@ def work(args):
             # step 3.1. for single module: get information
 
             p = {}
-
+            p1 = {}
             for m_arg in modelargs:
                 distribution = all_distribution.groupby([m_arg]).apply(sum)
                 p[m_arg] = distribution
-                print(distribution)
+                p1[m_arg] = n_m_all.groupby([m_arg]).apply(sum) / n_all.groupby([m_arg]).apply(sum)
+                # print(distribution)
+                print(p1[m_arg])
 
 
             # step 3.2. for two modules
@@ -76,22 +83,33 @@ def work(args):
                         break
                     distribution = all_distribution.groupby([m_arg0, m_arg1]).apply(sum)
 
-                    mxr = distribution / p[m_arg0] - p[m_arg1]
+                    # mxr = distribution / p[m_arg0] - p[m_arg1]
+                    # mxl = distribution / p[m_arg1] - p[m_arg0]
+
+                    p1xy = n_m_all.groupby([m_arg0, m_arg1]).apply(sum) / n_all.groupby([m_arg0, m_arg1]).apply(sum)
+                    print(m_arg0, m_arg1)
+                    print("---------")
+                    print(p1xy.unstack(m_arg1))
+                    print(p1[m_arg1])
+                    print('       :  ')
+                    mxr = p1xy - p1[m_arg0]
+                    mxl = p1xy - p1[m_arg1]
+
                     mxr = mxr.unstack(m_arg1)
                     mat1 = mxr.to_numpy()
-                    mxl = distribution / p[m_arg1] - p[m_arg0]
+
                     mxl = mxl.unstack(m_arg0)
                     mat2 = mxl.to_numpy()
+
+
                     print(mxr)
+                    print()
+                    print()
 
                     heatmap[module_intv[m_arg0], module_intv[m_arg1]] = mat1
                     heatmap[module_intv[m_arg1], module_intv[m_arg0]] = mat2
 
             heatmap_df = pandas.DataFrame(heatmap)
-            module_names[3] = "MLP"
-            module_names[4] = 'Lookup'
-            module_names[-3] = 'InfoNCE'
-            module_names[6] = 'DW'
             heatmap_df.columns = module_names
             heatmap_df.index = module_names
             print(heatmap_df.to_string())
@@ -189,8 +207,7 @@ def analyse():
     # # create all combinations
     #
 
-    n_all = table.groupby(modelargs).apply(lambda x: len(x))
-    n_1 = table.groupby(modelargs).apply(lambda x: 0)
+
 
     options = {}
     module_names = []
@@ -207,7 +224,7 @@ def analyse():
 
             module_names.append(opt)
 
-    work((table, thresholds, n_all, n_1, options, module_names, module_no_dict, module_intv))
+    work((table, thresholds, options, module_names, module_no_dict, module_intv))
 
     #
     # for ttt in set(table['task'].to_list()):

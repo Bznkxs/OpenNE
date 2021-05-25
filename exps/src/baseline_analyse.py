@@ -64,29 +64,30 @@ baselines = {"gae": {
                 "readout": "sum"
             }
 }
-graph_samplers = {
+raw_graph_samplers = {
     "dgi", "mvgrl", "aug"
 }
-node_samplers = {
+raw_node_samplers = {
     "node-neighbor-random",
     "node-rand_walk-random",
     "gca"
 }
-decoders = {
+raw_decoders = {
     'inner', 'bilinear'
 }
-readouts = {
+raw_readouts = {
     'sum', 'mean'
 }
-datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
+raw_datasets = ['cora', 'citeseer', 'pubmed', 'coauthor_cs', 'coauthor_phy',
             'wikics', 'amazon_photo', 'amazon_computers', 'mutag', 'imdb_binary',
             'imdb_multi', 'reddit_binary', 'ptc_mr']
 def normalize(x):
     n_set = {
         'GIN', 'GCN', 'GAT', 'DGI', 'MVGRL',
         'Bilinear', 'Inner',
-        'NCE', 'JSD',
+        'InfoNCE', 'JSD',
         'Mean', 'Sum',
+        'Linear',
         'InfoGraph',
         'JK-Net',
         'GAE',
@@ -107,37 +108,48 @@ def normalize(x):
         'Coauthor Phy'
     }
     if isinstance(x, str):
-        x = x.replace('node-neighbor-random', 'LINE')\
-        .replace('node-rand_walk-random', 'DeepWalk')\
+        x = x.strip().lower().replace('node-neighbor-random', 'LINE')\
+        .replace('node-rand_walk-random', 'DW')\
         .replace('aug', 'GraphCL').replace('unsupervisednodeclassification', 'Node').replace(
             'graphclassification', 'Graph'
+        ).replace(
+            'none', 'Lookup'
+        ).replace(
+            'nce', 'InfoNCE'
+        ).replace(
+            'linear', 'MLP'
+        ).replace(
+            'biMLP', 'Bilinear'
         ).replace("'", '')
         for w in n_set:
             if w.lower().replace('_', ' ') == x.strip().lower().replace('_', ' '):
                 return w
+
     return x
 
 def in_exp(cmd):
-    if cmd.argsdict['enc'] == 'linear' and cmd.argsdict['sampler'] in graph_samplers:
+    if cmd.argsdict['enc'] == 'linear' and cmd.argsdict['sampler'] in raw_graph_samplers:
         return False
-    if cmd.argsdict['dec'] not in decoders:
+    if cmd.argsdict['dec'] not in raw_decoders:
         return False
-    if cmd.argsdict['dataset'] not in datasets:
+    if cmd.argsdict['dataset'] not in raw_datasets:
         return False
-    if cmd.argsdict['readout'] not in readouts:
+    if cmd.argsdict['readout'] not in raw_readouts:
         return False
-    if cmd.argsdict['sampler'] not in node_samplers.union(graph_samplers):
+
+    if cmd.argsdict['sampler'] not in raw_node_samplers.union(raw_graph_samplers):
         return False
     if cmd.argsdict.get('epochs', None) != '500':
         return False
     if cmd.argsdict.get('patience', None) != '3':
         return False
+
     if cmd.argsdict.get('dim', None) not in ['32', '64', '128', '256']:
         return False
-    if cmd.argsdict.get('hiddens', None) not in [None, '0', '1', '2', '3', '4']:
-        return False
+
     if cmd.argsdict.get('lr', None) not in ['0.01', '0.001']:
         return False
+
     if cmd.argsdict.get('clf-ratio', None) not in ['0.2', '0.8']:
         return False
     if cmd.argsdict['clf-ratio'] == '0.2' and cmd.argsdict['task'] == 'graphclassification':
@@ -145,6 +157,8 @@ def in_exp(cmd):
     if cmd.argsdict['clf-ratio'] == '0.8' and cmd.argsdict['task'] == 'unsupervisednodeclassification':
         return False
     return True
+# print(in_exp(CMD("python3 -m openne --clf-ratio 0.8 --dataset mutag --dec bilinear --dim 64 --early-stopping 20 --enc gcn --epochs 500 --est jsd --hiddens 64 --lr 0.001 --model ss_gaeg --patience 3 --readout mean --sampler node-rand_walk-random --task graphclassification")))
+# exit(0)
 
 def getmodel(argsdict):
     ma_list = []
@@ -319,7 +333,7 @@ def analyse():
     # indices = pandas.MultiIndex(('task', 'dataset'))
     output_df = pandas.read_csv(full_output_path, index_col=(1,))
     print(output_df)
-    output_df = output_df.sort_values('Task', ascending=False)
+    output_df = output_df.sort_values('Task', ascending=False, kind='mergesort')
     output_df = output_df.drop(columns=['Task'])
     print(output_df)
 

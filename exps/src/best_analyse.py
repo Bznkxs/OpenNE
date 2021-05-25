@@ -16,7 +16,7 @@ import parse_exps
 from parse_exps import cartesian_prod
 from monitor import CMD, processed_dir, src_dir, get_CMD, get_cmd
 from new_samplefullexps import gethyper, hyperparameter_list
-from baseline_analyse import getmodel, modelargs, get_model_name1, normalize, datasets
+from baseline_analyse import getmodel, modelargs, get_model_name1, normalize
 from single_analyse import create_table_2
 
 csv_name = 'failure_analysis.csv'

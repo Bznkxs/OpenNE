@@ -88,8 +88,12 @@ def entropy(it):
     return scipy.stats.entropy(it)
 
 
-def plot_filled_distribution(distributions, legend, graph_name):
+def plot_filled_distribution(distributions, legend, title, graph_name):
     fig = plt.figure()
+    sns.set_theme(style="whitegrid")
+    # cmap = sns.cubehelix_palette(rot=-.2, as_cmap=True)
+    # sns.displot()
+    #sns.set_theme(style="whitegrid")
     stp = 0.01
     rrr = np.arange(0, 1 + stp, stp)
     sums = [0 * rrr]
@@ -101,16 +105,25 @@ def plot_filled_distribution(distributions, legend, graph_name):
         rx = s / sums[-1]
         divs.append(rx)
     # fill
-    for i in range(len(divs) - 1):
-        plt.fill_between(rrr, divs[i + 1], divs[i], edgecolor="black")
+
+    #print(facecolor)
+    facecolor = plt.get_cmap('Blues')(np.linspace(0., 1, (len(divs) - 1) * 2 + 1))
+    facecolor[:,3] = 0.8
+    for i in range(len(divs) - 2, -1, -1):
+        plt.fill_between(rrr, divs[i + 1], divs[i],
+                         facecolor=facecolor[len(facecolor) - 1 - (i * 2 + 1)],
+                         edgecolor="white"
+                         )
+    print()
     plt.legend(legend)
-    plt.plot([0, 0], [0, 1], color='black')
-    plt.plot([1, 1], [0, 1], color='black')
+    # plt.plot([0, 0], [0, 1], color='black')
+    # plt.plot([1, 1], [0, 1], color='black')
     plt.xlim([0, 1])
     plt.ylim([0, 1])
     fig.set_size_inches(8, 8)
+    plt.title(title)
     plt.savefig(os.path.join(fig_path, graph_name))
-    plt.close()
+    plt.close(fig)
 
 
 def analyse():
@@ -130,33 +143,29 @@ def analyse():
     # step 2. open exps
     dirlist = os.listdir(src_dir)
     # step 2.1. find baseline files
-    from_all = False
-    if from_all:
-        all_exps = []
-        for k in parse_exps.parse().all():
-            all_exps.append(parse_exps.gen_bash(k))
-        cmd_set = set(CMD(i).sorted_cmd_str for i in all_exps)
-        cmd_list = list(CMD(i) for i in cmd_set)
-    else:
-        script_prefix1 = 'autogen_sample_script_graph'
-        script_prefix2 = 'autogen_sample_script_node'
 
-        script_suffix = '.sh'
-        baseline_files = [os.path.join(src_dir, x) for x in dirlist if
-                          (x.startswith(script_prefix1) or x.startswith(script_prefix2)) and x.endswith(script_suffix)]
-        # step 2.2. read cmd
-        cmd_dict = get_cmd(baseline_files)
-        #print(len(cmd_dict))
+    script_prefix1 = 'autogen_sample_script_graph'
+    script_prefix2 = 'autogen_sample_script_node'
 
-        # merge
-        cmd_set = set()
-        for i in cmd_dict:
-            cmd_set.update(cmd_dict[i])
-        cmd_list = list(CMD(i) for i in cmd_set)
+    script_suffix = '.sh'
+    baseline_files = [os.path.join(src_dir, x) for x in dirlist if
+                      (x.startswith(script_prefix1) or x.startswith(script_prefix2)) and x.endswith(script_suffix)]
+    # step 2.2. read cmd
+    cmd_dict = get_cmd(baseline_files)
+    #print(len(cmd_dict))
+
+    # merge
+    cmd_set = set()
+    cmd_hash = {}
+    for i in cmd_dict:
+        cmd_set.update(cmd_dict[i])
+        cmd_hash[i] = set(CMD(j).sorted_cmd_str.__hash__() for j in cmd_dict[i])
+    cmd_list = list(CMD(i) for i in cmd_set)
 
     # reconstruct table
     table = create_table(cmd_list, results)
-    table_smooth = create_table(cmd_list, results, True)
+
+
 
     # table = table[table['dataset'] == 'cora']
 
@@ -166,6 +175,8 @@ def analyse():
     for m_arg in modelargs:
         options[m_arg] = list(set(table[m_arg].to_list()))
         options[m_arg].sort()
+
+    table = table.sort_values(['dataset'])
     # mutual information solution
 
     # get distribution of res: by kde
@@ -173,45 +184,48 @@ def analyse():
     # sns.displot(data=table, x="res", hue='dataset', kde=True)
     # plt.show()
 
-    # step 3.0. set threshold for res
-    thresholds = np.arange(0.8, 1, 0.2)
-    arg_cnt = {m_arg: len(table_smooth[m_arg].value_counts()) for m_arg in modelargs}
-    cnt_arg_combination = 1
-    for w in arg_cnt.values():
-        cnt_arg_combination *= w
     #
     # # create all combinations
     #
 
-    n_all = table.groupby(['dataset'] + modelargs).apply(lambda x: len(x) + 0)
-
     for ttt in set(table['task'].to_list()):
         print("task =", ttt)
         table_new = table[table['task'] == ttt]
+        # print(table_new)
         table_new = table_new.sort_values(['dataset'])
         table_new['rank'] = table_new.groupby(['dataset'])['res'].rank('min', ascending=False)
-        #print(table_new[['dataset', 'enc', 'res', 'rank']].sort_values(['dataset', 'enc', 'res', 'rank']).to_string())
         q = table_new.groupby(['dataset'])['res'].size()
         table_new = table_new.set_index(['dataset'] + modelargs)
 
         table_new['rank'] = table_new['rank'] / q
-
         table_new.reset_index(inplace=True)
-        table_new['rank'] = table_new['rank'].rank(method='min')
-        q = len(table_new)
-        table_new['rank'] = table_new['rank'] / q
-        for i, m_arg in enumerate(modelargs):
-            print(m_arg, "############")
-            table_new1 = table_new
-            table_new1 = table_new1.sort_values([m_arg])
-            # get kde distributions
-            distributions = []
-            for option in options[m_arg]:
-                print(option, "avg rank =", table_new1[table_new1[m_arg] == option]['rank'].mean())
-                f = scipy.stats.gaussian_kde(table_new1[table_new1[m_arg] == option]['rank'])
-                distributions.append(f)
 
-            plot_filled_distribution(distributions, options[m_arg], f'single_stack_norm_{ttt}_{m_arg}.png')
+        # no dataset merge
+        datasets = list(set(table_new['dataset'].to_list()))
+        datasets.sort()
+        for dataset in datasets:
+
+            print("#### dataset =", dataset)
+            table_new1 = table_new[table_new['dataset'] == dataset]
+            # print(table_new1)
+            for i, m_arg in enumerate(modelargs):
+                # print(m_arg, "############")
+                table_new2 = table_new1.sort_values([m_arg])
+                # get kde distributions
+                distributions = []
+                pps = []
+                for option in options[m_arg]:
+                    pps.append(option + f': {len(table_new2[table_new2[m_arg] == option])}')
+                    # print(option, "avg rank =", table_new2[table_new2[m_arg] == option]['rank'].mean())
+                    try:
+                        f = scipy.stats.gaussian_kde(table_new2[table_new2[m_arg] == option]['rank'])
+                    except Exception as _:
+                        dx = table_new2[table_new2[m_arg] == option]['rank'].to_numpy()
+                        dx += np.arange(len(dx)) / len(table_new1)
+                        f = scipy.stats.gaussian_kde(dx)
+                    distributions.append(f)
+
+                plot_filled_distribution(distributions, pps, f'{dataset}_{m_arg}', f'_single_{ttt}_{dataset}_{m_arg}.png')
 
 
 
