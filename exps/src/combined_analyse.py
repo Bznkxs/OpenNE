@@ -128,7 +128,17 @@ def work(args):
     # plt.tight_layout()
     sns.heatmap(df, cbar=False, square=True, cmap = 'vlag', center=0, ax=axs[0]).set_title("Node classification")
     sns.heatmap(df2, yticklabels=False, cbar=False, square=True, cmap = 'vlag', center=0, ax=axs[1]).set_title("Graph classification")
+    def blocks(ax):
+        wid = module_intv[modelargs[-1]].stop
+        for m_arg in modelargs:
+            pos = module_intv[m_arg].stop
+            ax.plot([0, wid], [pos, pos], color='black')
+            ax.plot([pos, pos], [0, wid], color='black')
+        ax.plot([0, wid], [0, 0], color='black')
+        ax.plot([0, 0], [0, wid], color='black')
 
+    blocks(axs[0])
+    blocks(axs[1])
     fig.colorbar(axs[1].collections[0], cax=axs[2])
     for ax in fig.axes:
             plt.sca(ax)
